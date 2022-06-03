@@ -1,0 +1,27 @@
+title: Global Preferences
+description: ''
+payload:
+  payloadtype: .GlobalPreferences
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Global preferences on macOS
+payloadkeys:
+- key: MultipleSessionEnabled
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables fast user switching.
+- key: com.apple.autologout.AutoLogOutDelay
+  type: <real>
+  presence: optional
+  content: The 'autologout' delay, in seconds. A value of '0' means 'autologout' is
+    off. In some cases, this delay may be restricted to values between 5 minutes and
+    24 hours.

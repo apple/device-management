@@ -1,0 +1,69 @@
+title: Domains
+description: Use this section to define Domains settings.
+payload:
+  payloadtype: com.apple.domains
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: This payload defines web domains that are under an enterprise's management.
+payloadkeys:
+- key: EmailDomains
+  title: Email Domains
+  type: <array>
+  presence: optional
+  content: |-
+    An array of domains. Email addresses that lack a suffix matching any of these strings are considered out of domain and marked in Mail.
+    This is the only field supported on macOS.
+  subkeys:
+  - key: EmailDomainsItem
+    type: <string>
+    presence: required
+    content: An email address.
+- key: WebDomains
+  title: Web Domains
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: An array of domains. URLs matching the patterns listed here are considered
+    managed.
+  subkeys:
+  - key: WebDomainsItem
+    type: <string>
+- key: SafariPasswordAutoFillDomains
+  title: Password Autofill Domains
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: |-
+    An array of domains. Users can only save passwords in Safari from URLs matching the patterns listed here. This property doesn't disable the autofill feature itself.
+    Supervised devices or Shared iPads need this property to enable saving passwords in Safari.
+    Available in iOS 9.3 and later.
+  subkeys:
+  - key: SafariPasswordAutoFillDomainsItem
+    type: <string>

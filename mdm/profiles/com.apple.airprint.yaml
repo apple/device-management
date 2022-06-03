@@ -1,0 +1,82 @@
+title: AirPrint
+description: Use this section to define settings for AirPrint.
+payload:
+  payloadtype: com.apple.airprint
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+payloadkeys:
+- key: AirPrint
+  title: Air print
+  type: <array>
+  presence: required
+  content: An array of AirPrint printers that are presented to the user.
+  subkeys:
+  - key: AirPrintItem
+    title: Identifier
+    type: <dictionary>
+    subkeys:
+    - key: IPAddress
+      title: IP Address
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+      type: <string>
+      presence: required
+      content: The IP address or hostname of the AirPrint destination.
+    - key: ResourcePath
+      title: Resource Path
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+      type: <string>
+      presence: required
+      content: |-
+        The resource path associated with the printer. This path corresponds to the 'rp' parameter of the '_ipps.tcp' Bonjour record. For example:
+        * 'printers/Canon_MG5300_series'
+        * 'printers/Xerox_Phaser_7600'
+        * 'ipp/print'
+        * 'Epson_IPP_Printer'
+    - key: Port
+      title: Port Number
+      supportedOS:
+        iOS:
+          introduced: '11.0'
+        macOS:
+          introduced: n/a
+      type: <integer>
+      presence: optional
+      range:
+        min: 0
+        max: 65535
+      content: The listening port of the AirPrint destination. Available only in iOS
+        11 and later.
+    - key: ForceTLS
+      title: Force TLS
+      supportedOS:
+        iOS:
+          introduced: '11.0'
+        macOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', AirPrint connections are secured by Transport Layer Security
+        (TLS). Available only in iOS 11 and later.

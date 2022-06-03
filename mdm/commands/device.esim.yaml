@@ -1,0 +1,27 @@
+title: eSIM Cellular Plan Management Command
+description: Instructs the device to query for active cellular plan eSIM "profiles"
+  at the designated carrier eSIM server URL.
+payload:
+  requesttype: RefreshCellularPlans
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      accessrights: None
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Instructs the device to query for active cellular plan eSIM "profiles" (not a profile in the MDM sense)
+    at the designated carrier eSIM server URL. This command is only supported on cellular devices, and only
+    a subset of those devices support eSIM configuration management. (Need details from CoreTelephony.)
+payloadkeys:
+- key: eSIMServerURL
+  type: <string>
+  presence: required
+  content: The carrier's eSIM server URL to query. Obtain this URL from each carrier
+    separately.

@@ -1,0 +1,117 @@
+title: Exchange Web Services
+description: ''
+payload:
+  payloadtype: com.apple.ews.account
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: For macOS 10.9 and higher, an Exchange Web services (EWS) account is configured
+    with support for Mail, Contacts, Calendar, Notes and Reminders. macOS 10.7-10.8
+    only supported Contacts.
+payloadkeys:
+- key: EmailAddress
+  type: <string>
+  presence: optional
+  content: The full email address for the account. If the email address string isn't
+    present in the payload, the device prompts for it during profile installation.
+- key: Host
+  type: <string>
+  presence: optional
+  content: |-
+    The Exchange server host name or IP address.
+    If using OAuth, the host name is ignored..
+- key: SSL
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables SSL.
+- key: OAuth
+  title: Use OAuth
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', enables OAuth for authentication. If OAuth is enabled, don't specify a password.
+    Available in macOS 10.14 and later
+- key: OAuthSignInURL
+  title: URL for OAuth sign-in
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <string>
+  presence: optional
+  content: The URL to load into a web view for authentication via OAuth when autodiscovery
+    isn't used. This setting requires a 'Host' value.
+- key: UserName
+  type: <string>
+  presence: optional
+  content: The user name for this Exchange account. This string is required for noninteractive
+    (for example, MDM) installation. If it's missing, the device prompts for it during
+    interactive profile installation.
+- key: Password
+  type: <string>
+  presence: optional
+  content: The password of the account. Use only with encrypted profiles.
+- key: PayloadCertificateUUID
+  title: Payload Certificate UUID
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+  type: <string>
+  presence: optional
+  format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  content: The UUID of of the certificate payload within the same profile to use for
+    the identity credential. Supported on macOS 10.12 or later.
+- key: AuthenticationCertificateUUID
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+  type: <string>
+  presence: optional
+  content: The UUID of of the certificate payload within the same profile to use for
+    the identity credential. Supported on macOS 10.11 or later. On macOS 10.12 or
+    later use the PayloadCertificateUUID.
+- key: allowMailDrop
+  title: Allow Mail Drop
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Mail Drop.
+- key: Path
+  type: <string>
+  presence: optional
+  content: The server path.
+- key: Port
+  type: <integer>
+  presence: optional
+  content: The server port number.
+- key: ExternalHost
+  type: <string>
+  presence: optional
+  content: The external server address.
+- key: ExternalSSL
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables SSL for connections to the external server.
+- key: ExternalPath
+  type: <string>
+  presence: optional
+  content: The external server path.
+- key: ExternalPort
+  type: <integer>
+  presence: optional
+  content: The external server port number.

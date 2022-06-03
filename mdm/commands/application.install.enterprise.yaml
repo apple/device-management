@@ -1,0 +1,118 @@
+title: Install Enterprise Application Command
+description: This command allows the server to install enterprise applications on
+  a device. It provides a more secure version of 'InstallApplication' that specifies
+  a 'ManifestURL'.
+payload:
+  requesttype: InstallEnterpriseApplication
+  supportedOS:
+    macOS:
+      introduced: 10.13.6
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+  content: This command allows the server to install an application on a device. It
+    provides a more secure version of 'InstallApplication' that specifies a 'ManifestURL'.
+payloadkeys:
+- key: Manifest
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that specifies where to download the app. This value is backward-compatible
+    with the manifest for the InstallApplicationCommand; however, it also allows you
+    to specify 'sha256s' and 'sha256'-size for SHA-256 hashes.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: A manifest, which is backward-compatible with the manifest for the 'InstallApplication'
+      command; however, it also allows you to specify 'sha256s' and 'sha256-size'
+      for SHA-256 hashes.
+- key: ManifestURL
+  type: <string>
+  presence: optional
+  content: The URL of the app manifest, which must begin with 'https:'.
+- key: ManifestURLPinningCerts
+  type: <array>
+  presence: optional
+  content: An array of DER-encoded certificates to pin the connection when fetching
+    the 'ManifestURL'.
+  subkeys:
+  - key: ManifestURLPinningCertsItem
+    type: <data>
+    presence: required
+    content: A certificate in DER-encoded format.
+- key: PinningRevocationCheckRequired
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', certificate revocation checks require a positive response when
+    using certificate pinning with 'ManifestURLPinningCerts'.
+- key: InstallAsManaged
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', install the app as a managed app. For manifest-based installation, if this value is 'true', but the package doesn't meet the criteria for management, the installation fails. Reinstall a managed app with this value set to 'false' to change the app to an unmanaged app.
+    To satisfy the criteria for management, the pkg must contain a single, signed application installed into '/Applications'.
+    This value is available in macOS 11 and later.
+- key: ManagementFlags
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <integer>
+  presence: optional
+  rangelist:
+  - 1
+  content: |-
+    The management flags. The only supported flag is:
+    * '1': Remove the app upon removal of the MDM profile. This also requires that you pass 'true' for 'InstallAsManaged'.
+    This value is available in macOS 11 and later.
+- key: Configuration
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that contains the initial configuration of the app, if you
+    choose to provide it. This value is available in macOS 11 and later.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: An app configuration key.
+- key: ChangeManagementState
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  rangelist:
+  - Managed
+  content: |-
+    The change management state. The only supported state is:
+    * 'Managed': Take management of the app if the user installed it already. This also requires that you pass 'true' for 'InstallAsManaged'.
+    This value is available in macOS 11 and later.
+- key: iOSApp
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the app is an iOS app that can run on an Apple silicon in macOS
+    11 and later.

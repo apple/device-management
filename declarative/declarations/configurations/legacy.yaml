@@ -1,0 +1,15 @@
+title: Legacy Profile
+description: Specifies an MDMv1 profile to download and install
+payload:
+  declarationtype: com.apple.configuration.legacy
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: ProfileURL
+  title: Profile's URL.
+  type: <string>
+  presence: required
+  content: |-
+    The URL of the profile to download and install. This must be an 'https://' URL. The system silently ignores any account or passcode payloads in the profile. Use their declarative configurations instead.
+    If a user enrollment triggers this configuration, the system silently ignores any MDM 1 payloads in macOS where the User Enrollment Mode setting is 'forbidden'. In iOS, the system rejects the entire profile.

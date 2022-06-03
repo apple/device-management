@@ -1,0 +1,28 @@
+title: System Policy Control
+description: ''
+payload:
+  payloadtype: com.apple.systempolicy.control
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Provides a way of enabling System Policy assessment processing. This corresponds
+    to the Gatekeeper UI in the Security pref pane.
+payloadkeys:
+- key: EnableAssessment
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables Gatekeeper.
+- key: AllowIdentifiedDevelopers
+  type: <boolean>
+  presence: optional
+  content: |-
+    If 'true', enables Gatekeeper's 'Mac App Store and identified developers' option.
+    If 'false', enables Gatekeeper's 'Mac App Store' option.
+    If the value of 'EnableAssessment' isn't set to 'true', this key has no effect.

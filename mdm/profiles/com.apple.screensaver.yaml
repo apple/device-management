@@ -1,0 +1,49 @@
+title: Screensaver
+description: ''
+payload:
+  payloadtype: com.apple.screensaver
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Specifies grace period for screensaver locking
+payloadkeys:
+- key: askForPassword
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the user is prompted for a password when the screen saver is
+    unlocked or stopped. When you use this prompt, you must also provide 'askForPasswordDelay'.
+    Available in macOS 10.13 and later.
+- key: askForPasswordDelay
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+  type: <integer>
+  presence: optional
+  content: The number of seconds to delay before the password will be required to
+    unlock or stop the screen saver (the grace period). A value of '2147483647' (for
+    example, '0x7FFFFFFF') disables this requirement. To use this option, you must
+    set 'askForPassword' to 'true'. Available in macOS 10.13 and later.
+- key: loginWindowIdleTime
+  type: <integer>
+  presence: optional
+  content: The number of seconds of inactivity before the screen saver activates (0
+    = Never activate).
+- key: loginWindowModulePath
+  type: <string>
+  presence: optional
+  content: The full path to the screen-saver module to use.
+- key: moduleName
+  type: <string>
+  presence: required
+  content: The name of the screen saver module.

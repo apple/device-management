@@ -1,0 +1,25 @@
+title: Time Server
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: 10.12.4
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Settings for time zone and server
+payloadkeys:
+- key: timeServer
+  type: <string>
+  presence: optional
+  content: The NTP server to connect to. Use commas to separate multiple time servers.
+- key: timeZone
+  type: <string>
+  presence: optional
+  content: The time zone path location string in '/usr/share/zoneinfo/'; for example,
+    'America/Denver' or 'Zulu'.

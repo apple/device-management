@@ -1,0 +1,25 @@
+title: Verify Firmware Password Command
+description: Verifies the device's firmware password.
+payload:
+  requesttype: VerifyFirmwarePassword
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Verifies the device's firmware password. This command is not available
+    on Apple silicon devices.
+payloadkeys:
+- key: Password
+  type: <string>
+  presence: required
+  content: The password to verify.
+responsekeys:
+- key: PasswordVerified
+  type: <boolean>
+  presence: required
+  content: If 'true', the provided password matches the firmware password on the device.

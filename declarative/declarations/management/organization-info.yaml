@@ -1,0 +1,37 @@
+title: Management:Organization Information
+description: Use this declaration to tell the client about the server's organization
+  information.
+payload:
+  declarationtype: com.apple.management.organization-info
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: Name
+  title: Organization Name
+  type: <string>
+  presence: required
+  content: The name of the organization.
+- key: Email
+  title: Organization Email Address
+  type: <string>
+  presence: optional
+  content: The email address of the contact person for the organization.
+- key: URL
+  title: Organization URL
+  type: <string>
+  presence: optional
+  content: The website of the organization to contact for support.
+- key: Proof
+  title: Organization Identity
+  type: <dictionary>
+  presence: optional
+  content: The additional properties that verify the identity and authenticity of
+    the organization.
+  subkeys:
+  - key: IdentityToken
+    title: Organization Identity Token
+    type: <string>
+    presence: optional
+    content: A token that verifies the identity of the organization when using this
+      service.

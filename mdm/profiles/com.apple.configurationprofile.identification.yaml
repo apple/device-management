@@ -1,0 +1,66 @@
+title: Identification
+payload:
+  payloadtype: com.apple.configurationprofile.identification
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: |-
+    This payload can be used on the device or user channel depending on what payload it is paired with.
+
+    Device channel:
+    *com.apple.MCX.FileVault2
+    *com.apple.ADCertificate.managed
+    *com.apple.DirectoryService.managed
+
+    User channel:
+    *com.apple.caldav.account
+    *com.apple.carddav.account
+    *com.apple.ews.account
+    *com.apple.ldap.account
+    *com.apple.mail.managed
+payloadkeys:
+- key: PayloadIdentification
+  type: <dictionary>
+  presence: required
+  content: The dictionary containing details about the user.
+  subkeys:
+  - key: UserName
+    type: <string>
+    presence: required
+    content: The UNIX user name for the accounts.
+  - key: FullName
+    type: <string>
+    presence: required
+    content: The full name of the account.
+  - key: EmailAddress
+    type: <string>
+    presence: required
+    content: The address for the account.
+  - key: AuthMethod
+    type: <string>
+    presence: required
+    rangelist:
+    - Password
+    - UserEnteredPassword
+    content: The authorization method. Either the password is supplied in the profile
+      or the user supplies it.
+  - key: Password
+    type: <string>
+    presence: required
+    content: The password for the account. Required when the 'AuthMethod' is of type
+      'password'.
+  - key: Prompt
+    type: <string>
+    presence: optional
+    content: The custom instructions for the user, if needed.
+  - key: PromptMessage
+    type: <string>
+    presence: optional
+    content: The additional descriptive text for the user prompt.

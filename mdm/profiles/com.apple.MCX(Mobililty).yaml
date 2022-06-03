@@ -1,0 +1,47 @@
+title: Mobile Accounts
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Sets up mobile account options for network based user accounts.
+payloadkeys:
+- key: com.apple.cachedaccounts.CreateAtLogin
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', creates the mobile account at login time.
+- key: com.apple.cachedaccounts.WarnOnCreate
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', asks the user if the mobile account should be created and allow
+    the user to not create it.
+- key: cachedaccounts.WarnOnCreate.allowNever
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows the user to stop the prompts about mobile account creation
+    every time the user logs in. This key is only valid if 'com.apple.cachedaccounts.WarnOnCreate'
+    is set to 'true'.
+- key: cachedaccounts.expiry.delete.disusedSeconds
+  type: <integer>
+  presence: optional
+  default: -1
+  content: |-
+    The minimum number of seconds a mobile account can exist before an automatic attempt is made to remove the mobile account.
+    Set to '0' to try to remove it at next login or logout time. Set to '-1' to never try to remove the mobile account.
+- key: cachedaccounts.askForSecureTokenAuthBypass
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', bypasses the secure token authorization dialog. This dialog
+    only appears on APFS volumes.

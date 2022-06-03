@@ -1,0 +1,157 @@
+title: Authenticate
+description: Check-in protocol authenticate request keys.
+payload:
+  requesttype: Authenticate
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      supervised: false
+  content: Check-in protocol authenticate request and response.
+payloadkeys:
+- key: DeviceName
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The device's name.
+- key: ModelName
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The device's model name.
+- key: Model
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The device's model.
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - Authenticate
+  content: The message type, which must have a value of 'Authenticate'.
+- key: Topic
+  type: <string>
+  presence: required
+  content: The topic to which the device subscribes.
+- key: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID (Unique Device ID).
+- key: EnrollmentID
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      userenrollment:
+        mode: required
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the device. Available in macOS 10.15
+    and iOS 13.0 and later.
+- key: OSVersion
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+  type: <string>
+  presence: optional
+  content: The device's OS version.
+- key: BuildVersion
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+  type: <string>
+  presence: optional
+  content: The device's build version.
+- key: ProductName
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+  type: <string>
+  presence: optional
+  content: The device's product name ('iPhone3,1').
+- key: SerialNumber
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
+    macOS:
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The device's serial number.
+- key: IMEI
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The device's IMEI (International Mobile Station Equipment Identity).
+- key: MEID
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The device's MEID (Mobile Equipment Identifier).

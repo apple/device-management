@@ -1,0 +1,281 @@
+title: Education Configuration
+description: ''
+payload:
+  payloadtype: com.apple.education
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.14'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: This payload is used to configure Classroom students, Classroom instructors,
+    and the Shared iPad login screen. These do not necessarily require the same set
+    of keys to be present in their payloads, so make sure to include all keys that
+    are required for the education product you are configuring.
+payloadkeys:
+- key: OrganizationUUID
+  type: <string>
+  presence: required
+  content: The organization's UUID identifier. This identifier can be any valid UUID.
+    All teacher and student devices that need to communicate with one another must
+    have the same organization UUID, particularly if they originated from different
+    Device Enrollment Programs.
+- key: OrganizationName
+  type: <string>
+  presence: required
+  content: The organization's display name. This name is shown in the iOS login screen.
+- key: PayloadCertificateUUID
+  type: <string>
+  presence: optional
+  content: |-
+    The UUID of an identity certificate payload within the same profile to use for  performing client authentication with other devices.
+    This key is required to configure Classroom. It does not impact the configuration of the Shared iPad login screen.
+- key: LeaderPayloadCertificateAnchorUUID
+  type: <array>
+  presence: optional
+  content: |-
+    The array of UUIDs referring to certificate payloads within the same profile that are used to authorize leader peer certificate identities. This array must contain all certificates needed to validate the entire chain of trust. Leader certificates must have the common name prefix leader (case insensitive).
+    Note: Identity payloads aren't supported.
+    This key is required when configuring a student device for Classroom, and is ignored when configuring an instructor device. It does not impact the configuration of the Shared iPad login screen.
+  subkeys:
+  - key: LeaderPayloadCertificateAnchorUUIDItem
+    type: <string>
+    presence: required
+    content: A certificate payload UUID.
+- key: MemberPayloadCertificateAnchorUUID
+  type: <array>
+  presence: optional
+  content: |-
+    The array of UUIDs referring to certificate payloads within the same profile that are used to authorize group member peer certificate identities. This array must contain all certificates needed to validate the entire chain of trust. Member certificates must have the common name prefix member (case insensitive).
+    Note: Identity payloads aren't supported.
+    This key is required when configuring an instructor device for Classroom, and is ignored when configuring a student device. It does not impact the configuration of the Shared iPad login screen.
+  subkeys:
+  - key: MemberPayloadCertificateAnchorUUIDItem
+    type: <string>
+    presence: required
+    content: A certificate payload UUID.
+- key: ResourcePayloadCertificateUUID
+  type: <string>
+  presence: optional
+  content: |-
+    The UUID of an identity certificate payload within the same profile that is used to perform client authentication when fetching additional resources, such as student images. If not specified, the MDM client identity is used.
+    If present, this key is used to configure both Classroom and the Shared iPad login screen.
+- key: UserIdentifier
+  type: <string>
+  presence: required
+  content: |-
+    The unique string that identifies the user of this device within the organization.
+    If this payload is intended to configure the Shared iPad login screen, this value must not be set.
+- key: Departments
+  type: <array>
+  presence: optional
+  content: |-
+    For shared iPad profiles: The array of dictionaries that defines which departments  are shown in the Shared iPad login screen.
+    If present, this key is used to configure both Classroom and the Shared iPad login screen.
+  subkeys:
+  - key: DepartmentsItem
+    type: <dictionary>
+    subkeys:
+    - key: Name
+      type: <string>
+      presence: required
+      content: The display name of the department.
+    - key: GroupBeaconIDs
+      type: <array>
+      presence: required
+      content: The group beacon identifiers that are members of this department.
+      subkeys:
+      - key: GroupBeaconIDsItem
+        type: <string>
+        presence: required
+        content: A group beacon identifier.
+- key: Groups
+  type: <array>
+  presence: required
+  content: |-
+    For shared iPad profiles: The array of dictionaries that defines which groups the user can select in the login window.
+
+    For leader/teacher profiles: The array of dictionaries that defines the groups that the user can control.
+
+    For member/student profiles: The array of dictionaries that defines the groups where the user is a member.
+  subkeys:
+  - key: GroupsItem
+    type: <dictionary>
+    subkeys:
+    - key: BeaconID
+      type: <integer>
+      presence: required
+      content: The group's unique beacon ID.
+    - key: Name
+      type: <string>
+      presence: required
+      content: The display name of the group.
+    - key: Description
+      type: <string>
+      presence: optional
+      content: The description of the group.
+    - key: ImageURL
+      supportedOS:
+        iOS:
+          deprecated: 9.3.2
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      content: Deprecated in iOS 9.3.1 and later. The URL of an image for the group.
+    - key: ConfigurationSource
+      type: <string>
+      presence: optional
+      content: The source that provided this group; for example,  iTunesU, SIS, or
+        MDM.
+    - key: LeaderIdentifiers
+      type: <array>
+      presence: optional
+      content: The user identifiers that are leaders of this group.
+      subkeys:
+      - key: LeaderIdentifiersItem
+        type: <string>
+        presence: required
+        content: A user identifier.
+    - key: MemberIdentifiers
+      type: <array>
+      presence: required
+      content: The entries in the Users array that are members of the group.
+      subkeys:
+      - key: MemberIdentifiersItem
+        type: <string>
+        presence: required
+        content: A member identifier.
+    - key: DeviceGroupIdentifiers
+      type: <array>
+      presence: optional
+      content: |-
+        The identifiers that refer to entries in the DeviceGroups array to which the instructor can assign users from this class.
+        The presence/value of this key does not impact the configuration of the Shared iPad login screen.
+      subkeys:
+      - key: DeviceGroupIdentifiersItem
+        type: <string>
+        presence: required
+        content: A device group identifier.
+- key: Users
+  type: <array>
+  presence: required
+  content: |-
+    For shared iPad profiles: The array of dictionaries that define the users that are shown in the iOS login window.
+
+    For leader/teacher profiles: The array of dictionaries that define users that are members of the teacher's groups.
+
+    For member/student profiles: The array of dictionaries that must contain the definition of the user specified in the 'UserIdentifier' key. With one-to-one member devices, this key should include only the device user and the teacher but not other class members.
+  subkeys:
+  - key: UsersItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The unique identifier for a user in the organization.
+    - key: Name
+      type: <string>
+      presence: required
+      content: The name of the user.
+    - key: GivenName
+      type: <string>
+      presence: optional
+      content: The given name of the user.
+    - key: FamilyName
+      type: <string>
+      presence: optional
+      content: The family name of the user.
+    - key: PhoneticGivenName
+      type: <string>
+      presence: optional
+      content: The user's phonetic given name. This name is used to sort users in
+        the Classroom app and the Shared iPad Login Screen.
+    - key: PhoneticFamilyName
+      type: <string>
+      presence: optional
+      content: The user's phonetic family name. This name is used to sort users in
+        the Classroom app and the shared iPad login screen.
+    - key: ImageURL
+      type: <string>
+      presence: optional
+      content: |-
+        A string containing a URL pointing to an image of the user. This image will be displayed in the iOS login screen and in the Classroom app. The recommended resolution is 256 x 256 pixels (512 x 512 pixels on a 2x device). The recommended formats are JPEG, PNG, and TIFF.
+        The 'ResourcePayloadCertificateUUID' identity certificate or the MDM client identity will be used to perform authentication when fetching the image.
+    - key: FullScreenImageURL
+      supportedOS:
+        iOS:
+          deprecated: 9.3.2
+        macOS:
+          deprecated: n/a
+      type: <string>
+      presence: optional
+      content: Deprecated in iOS 9.3.1 and later. The URL pointing to an image of
+        the user. The 'ResourcePayloadCertificateUUID' identity certificate or the
+        MDM client identity will be used to perform authentication when fetching the
+        specified resource.
+    - key: AppleID
+      type: <string>
+      presence: optional
+      content: |-
+        The managed Apple ID for this user.
+        This key is not required to configure Classroom, but it is used by Classroom if it is present.
+        This key is required when configuring the Shared iPad login screen.
+    - key: PasscodeType
+      type: <string>
+      presence: optional
+      rangelist:
+      - complex
+      - four
+      - six
+      content: The type of passcode UI to show when the user is at the login window.
+- key: DeviceGroups
+  type: <array>
+  presence: optional
+  content: 'For leader/teacher profiles: The array of dictionaries that defines which
+    device groups the leader can assign devices to. This key is not included in member
+    payloads.'
+  subkeys:
+  - key: DeviceGroupsItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The unique identifier for the device group in the organization.
+    - key: Name
+      type: <string>
+      presence: required
+      content: The name of the device group, which must be unique in the organization.
+    - key: SerialNumbers
+      type: <array>
+      presence: required
+      content: The serial numbers of the devices in the group.
+      subkeys:
+      - key: SerialNumbersItem
+        type: <string>
+        presence: required
+        content: A serial number.
+- key: ScreenObservationPermissionModificationAllowed
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows students enrolled in managed classes to modify their
+    teacher's permissions for screen observation on their device.

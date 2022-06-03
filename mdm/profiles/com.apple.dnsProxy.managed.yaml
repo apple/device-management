@@ -1,0 +1,49 @@
+title: DNS Proxy
+description: Use this section to configure a DNS proxy network extension
+payload:
+  payloadtype: com.apple.dnsProxy.managed
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: false
+      allowmanualinstall: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: As of iOS 15.0 this payload can now be installed on unsupervised devices
+    via MDM and can now only be installed via MDM.
+payloadkeys:
+- key: AppBundleIdentifier
+  title: App Bundle Identifier
+  type: <string>
+  presence: required
+  content: The bundle identifier of the app containing the DNS proxy network extension.
+- key: ProviderBundleIdentifier
+  title: Provider Bundle Identifier
+  type: <string>
+  presence: optional
+  content: The bundle identifier of the DNS proxy network extension to use. Declaring
+    the bundle identifier is useful for apps that contain more than one DNS proxy
+    extension.
+- key: ProviderConfiguration
+  title: Provider Configuration
+  type: <dictionary>
+  presence: optional
+  content: The dictionary of vendor-specific configuration items.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: Key/value pairs.

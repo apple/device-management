@@ -1,0 +1,23 @@
+title: Status Reason
+description: Information about a status error.
+payload:
+  declarationtype: status-reason
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: code
+  title: Error Code
+  type: <string>
+  presence: required
+  content: The error code for this error.
+- key: description
+  title: Error Description
+  type: <string>
+  presence: optional
+  content: A description of this error.
+- key: details
+  title: Error Details
+  type: <dictionary>
+  presence: optional
+  content: An arbitrary object containing details specific to this error.

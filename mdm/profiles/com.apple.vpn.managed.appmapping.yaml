@@ -1,0 +1,94 @@
+title: App-to-App-Layer VPN Mapping
+description: ''
+payload:
+  payloadtype: com.apple.vpn.managed.appmapping
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: This payload is only valid on macOS.
+payloadkeys:
+- key: AppLayerVPNMapping
+  type: <array>
+  presence: required
+  content: The array of VPN mapping dictionaries.
+  subkeys:
+  - key: AppLayerVPNMappingItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The bundle identifier of the app using the per-app VPN.
+    - key: VPNUUID
+      type: <string>
+      presence: required
+      content: The identifier of the per-app VPN payload, which defines the per-app
+        VPN that the app uses. See the 'VPNUUID' key of the AppLayerVPN payload.
+    - key: DesignatedRequirement
+      supportedOS:
+        macOS:
+          introduced: '10.10'
+      type: <string>
+      presence: required
+      content: The code signature designated requirement of the app using the per-app
+        VPN.
+    - key: SigningIdentifier
+      supportedOS:
+        macOS:
+          introduced: '10.10'
+      type: <string>
+      presence: required
+      content: The code signature signing identifier of the app using the per-app
+        VPN.
+    - key: Path
+      supportedOS:
+        macOS:
+          introduced: '10.15'
+      type: <string>
+      presence: optional
+      content: The file-system path of the executable using the per-app VPN.
+    - key: MatchTools
+      supportedOS:
+        macOS:
+          introduced: 10.15.4
+      type: <array>
+      presence: optional
+      content: |-
+        An array of dictionaries. Each dictionary specifies a per-app VPN rule. Use this property to restrict this per-app VPN rule to only match the app's spawned helper tool network traffic.
+        For example, to match network traffic that the 'curl' command generates when run from the Terminal.app, create an app mapping payload for Terminal.app and set the payload's 'MatchTools' key to an array that contains a dictionary that matches the 'curl' command-line tool.
+        If you don't specify the 'MatchTools' key, this per-app VPN rule matches all network traffic that the matching app and its spawned helper tools generate.
+      subkeys:
+      - key: MatchToolsItem
+        type: <dictionary>
+        subkeys:
+        - key: DesignatedRequirement
+          supportedOS:
+            macOS:
+              introduced: 10.15.4
+          type: <string>
+          presence: required
+          content: The code signature designated requirement of the command-line tool
+            using the per-app VPN.
+        - key: SigningIdentifier
+          supportedOS:
+            macOS:
+              introduced: 10.15.4
+          type: <string>
+          presence: required
+          content: The code signature signing identifier of the command-line tool
+            using the per-app VPN.
+        - key: Path
+          supportedOS:
+            macOS:
+              introduced: 10.15.4
+          type: <string>
+          presence: optional
+          content: The file-system path of the command-line tool using the per-app
+            VPN.

@@ -1,0 +1,23 @@
+title: Activation:Simple
+description: An activation used to install a set of configurations.
+payload:
+  declarationtype: com.apple.activation.simple
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: StandardConfigurations
+  type: <array>
+  presence: required
+  content: An array of strings that specify the identifiers of configurations to install.
+    A failure to install one of the configurations doesn't prevent other configurations
+    from installing.
+  subkeys:
+  - key: StandardConfigurationsItems
+    type: <string>
+- key: Predicate
+  type: <string>
+  presence: optional
+  content: A predicate format string as Apple's Predicate Programming <https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html>
+    describes. The activation only installs when the predicate evaluates to 'true'
+    or isn't present.

@@ -1,0 +1,49 @@
+title: 'Login Window: Scripts'
+description: ''
+payload:
+  payloadtype: com.apple.mcxloginscripts
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Login and logout managed script handling
+payloadkeys:
+- key: loginscripts
+  type: <array>
+  presence: optional
+  content: An array of one or more dictionaries of scripts to run at user login time.
+  subkeytype: ScriptsItems
+  subkeys: &id001
+  - key: ScriptsItems
+    type: <dictionary>
+    subkeys:
+    - key: filename
+      type: <string>
+      presence: required
+      content: The filename for display purposes.
+    - key: filedata
+      type: <data>
+      presence: required
+      content: The UTF-8 encoded data object representing the executable script.
+- key: logoutscripts
+  type: <array>
+  presence: optional
+  content: An array of one or more dictionaries of scripts to run at user logout time.
+  subkeytype: ScriptsItems
+  subkeys: *id001
+- key: skipLoginHook
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', doesn't execute the login scripts during login.
+- key: skipLogoutHook
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', doesn't execute the logout scripts during logout.

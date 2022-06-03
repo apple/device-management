@@ -1,0 +1,118 @@
+title: Active Directory Certificate
+description: Active Directory Certificate
+payload:
+  payloadtype: com.apple.ADCertificate.managed
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: A certificate can be requested from a Microsoft Certificate Authority (CA)
+    using DCE/RPC and the Active Directory Certificate profile payload instructions
+    detailed at support.apple.com/kb/HT5357.
+payloadkeys:
+- key: CertServer
+  title: Certificate Server
+  type: <string>
+  presence: required
+  content: The fully qualified host name of the CA.
+- key: CertTemplate
+  title: Certificate Template
+  type: <string>
+  presence: required
+  content: The certificate template for your environment. The default user certificate
+    value is `User`. The default computer certificate value is `Machine`.
+- key: Description
+  title: Description
+  type: <string>
+  presence: optional
+  content: A user-friendly description of the certification identity.
+- key: CertificateRenewalTimeInterval
+  title: Certificate Renewal Time Interval
+  type: <integer>
+  presence: optional
+  content: The number of days in advance of certificate expiration that the notification
+    center notifies the user.
+- key: CertificateAuthority
+  title: Certificate Authority
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+  type: <string>
+  presence: optional
+  content: |-
+    The name of the certificate authority (CA). This value is determined from the common name (CN) of the Active Directory entry. Available in macOS 10.8 and later.
+
+    Valid values:
+    * CN=<your CA Name>
+    * CN='Certification Authorities'
+    * CN='Public Key Services'
+    * ''CN='Services'
+    * ''CN='Configuration'
+    * ''CN=<your base Domain Name>
+- key: CertificateAcquisitionMechanism
+  title: Certificate Acquisition Mechanism
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+  type: <string>
+  presence: optional
+  content: This value is most commonly 'RPC'; if using web enrollment, use 'HTTP'.
+    Available in macOS 10.8 and later.
+- key: AllowAllAppsAccess
+  title: Allow All Apps Access
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', gives apps access to the private key. Available in macOS 10.10
+    and later.
+- key: PromptForCredentials
+  title: Prompt For Credentials
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the user is prompted for credentials when the profile is installed.
+    This key applies only to user certificates with the Manual Download profile delivery
+    method. Omit this key for computer certificates. Available in macOS 10.8 and later.
+- key: KeyIsExtractable
+  title: Key Is Extractable
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows exporting the private key. Available in macOS 10.10 and
+    later.
+- key: Keysize
+  title: Key Size
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+  type: <integer>
+  presence: optional
+  default: 2048
+  content: The RSA key size for the certificate signing request (CSR). Available in
+    macOS 10.11 and later.
+- key: EnableAutoRenewal
+  title: Key Size
+  supportedOS:
+    macOS:
+      introduced: 10.13.4
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the certificate obtained with this payload attempts auto-renewal.
+    Auto-renewal can only be used with device Active Directory certificate payloads.
+    Available in macOS 10.13.4 and later.

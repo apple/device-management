@@ -1,0 +1,60 @@
+title: Xsan
+description: ''
+payload:
+  payloadtype: com.apple.xsan
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Sets up Xsan clients and controls certain Xsan volume mount behaviors.
+payloadkeys:
+- key: sanName
+  type: <string>
+  presence: required
+  content: The name of the SAN. This key is required for all Xsan SANs. The name must
+    exactly match the name of the SAN defined in the metadata server.
+- key: sanConfigURLs
+  type: <array>
+  presence: required
+  content: |-
+    An array of LDAP URLs where Xsan systems can obtain SAN configuration updates. This key is required for all Xsan SANs. There should be one entry for each Xsan MDC.
+
+    Example URL: 'ldaps://mdc1.example.com:389'.
+  subkeys:
+  - key: sanConfigURLsItem
+    type: <string>
+    presence: required
+    content: A URL.
+- key: fsnameservers
+  type: <array>
+  presence: required
+  content: |-
+    An array of storage area network (SAN) File System Name Server coordinators. The list should contain the same addresses in the same order as the metadata controller (MDC) '/Library/Preferences/Xsan/fsnameservers' file.  Xsan SAN clients automatically receive updates to the 'fsnameservers' list from the SAN configuration servers whenever this list changes. StorNext administrators should update their profile whenever the 'fsnameservers' list changes.
+
+    This key is required for StorNext SANs.
+  subkeys:
+  - key: fsnameserversItem
+    type: <string>
+    presence: required
+    content: A name server.
+- key: sanAuthMethod
+  type: <string>
+  presence: optional
+  rangelist:
+  - auth_secret
+  content: |-
+    The authentication method for the SAN. This key is required for all Xsan SANs. It's optional for StorNext SANs but should be set if the StorNext SAN uses an 'auth_secret' file.
+
+    Only one value is accepted: 'auth_secret'
+- key: sharedSecret
+  type: <string>
+  presence: required
+  content: The shared secret used for Xsan network authentication. This key is required
+    when the 'sanAuthMethod' key is present. The value should equal the content of
+    the MDC's '/Library/Preferences/Xsan/.auth_secret' file.

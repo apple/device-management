@@ -1,0 +1,35 @@
+title: 'Login Items: Managed Items'
+description: ''
+payload:
+  payloadtype: com.apple.loginitems.managed
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: This payload handles login items usage on macOS.
+payloadkeys:
+- key: AutoLaunchedApplicationDictionary-managed
+  type: <array>
+  presence: required
+  content: An array of login item dictionaries.
+  subkeys:
+  - key: LoginItem
+    type: <dictionary>
+    presence: required
+    content: A login item.
+    subkeys:
+    - key: Path
+      type: <string>
+      presence: required
+      content: The URL or path string to the item's location.
+    - key: Hide
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, hide this item in the Users & Groups login items list.

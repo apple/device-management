@@ -1,0 +1,96 @@
+title: System Extensions
+description: ''
+payload:
+  payloadtype: com.apple.system-extension-policy
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+  content: Provides a way of enabling a set of team identifiers or specific system
+    extensions for loading without user approval. Also provides a way to block users
+    from approving additional system extensions. Payload must be user-approved only.
+    Starting in macOS 11.3, installing or removing this payload can change the state
+    of system extensions on the machine. If a system extension has been activated
+    by its containing application but is still in a pending state, installing a payload
+    which specifies that extension is Allowed will complete the activation process.
+    If a system extension is active, removing a payload which specified that extension
+    was Allowed will deactivate the extension.
+payloadkeys:
+- key: AllowUserOverrides
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', restricts users from approving additional system extensions
+    that configuration profiles don't explicitly allow.
+- key: AllowedTeamIdentifiers
+  type: <array>
+  presence: optional
+  content: |-
+    An array of team identifiers that defines valid, signed system extensions that are allowable to load. Approved system extensions are those signed with any of the specified team identifiers.
+    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using activationRequestForExtension:queue:.
+    It's an error for the same team identifier to appear in both this array and as a key in the 'AllowedSystemExtensions' dictionary.
+  subkeys:
+  - key: AllowedTeamIdentifiersItem
+    title: Identifier
+    type: <string>
+- key: AllowedSystemExtensionTypes
+  type: <dictionary>
+  presence: optional
+  content: |-
+    A dictionary that maps a team identifier to an array of strings, where each string is a type of system extension that you can install for that team identifier. The allowed extension types are 'DriverExtension', 'NetworkExtension', and 'EndpointSecurityExtension'.
+    If there's no entry for a specified team identifier in the dictionary, the system allows all extension types.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: The mapping of team identifier to an array of strings, where each string
+      is a type of system extension that may be installed for that team identifier.
+    subkeys:
+    - key: AllowedSystemExtensionTypesItems
+      type: <string>
+      presence: required
+      content: Permitted System Extension Type
+- key: AllowedSystemExtensions
+  type: <dictionary>
+  presence: optional
+  content: |-
+    A dictionary of approved system extensions on the computer. The dictionary maps the team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension to install.
+    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using activationRequestForExtension:queue:.
+    It's an error for the same team identifier to appear in both the 'AllowedTeamIdentifiers' array and as a key in this dictionary.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: The mapping of team identifiers to arrays of bundle identifiers, where
+      the bundle identifier is that of the system extension to be installed.
+    subkeys:
+    - key: AllowedSystemExtensionsItems
+      type: <string>
+      presence: required
+      content: Allowed system extension bundle ID
+- key: RemovableSystemExtensions
+  supportedOS:
+    macOS:
+      introduced: '12.0'
+  type: <dictionary>
+  presence: optional
+  content: |-
+    A dictionary of system extensions that are allowed to remove themselves from the machine. The dictionary maps team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension. An application using the 'OSSystemExtensionDeactivationRequest' API can deactivate the specified system extensions without requiring an administrator to authorize the operation.
+    Available in macOS 12 and later.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: The dictionary maps team identifiers (keys) to arrays of bundle identifiers,
+      where the bundle identifier defines the system extension.
+    subkeys:
+    - key: RemovableSystemExtensionsItems
+      type: <string>
+      presence: required
+      content: Removed system extension bundle ID

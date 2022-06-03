@@ -1,0 +1,28 @@
+title: Account:Subscribed Calendar
+description: Use this configuration to define settings for a subscribed calendar.
+payload:
+  declarationtype: com.apple.configuration.account.subscribed-calendar
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: A subscribed calendar configuration defines a subscribed calendar for a
+    user.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this calendar account. If not present,
+    the system generates a suitable default.
+- key: CalendarURL
+  title: Calendar URL
+  type: <string>
+  presence: required
+  content: The URL of the subscribed calendar. The URL must start with 'https://'.
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the credentials for
+    this account to authenticate with a calendar server. The corresponding asset must
+    be of type CredentialUserNameAndPassword.

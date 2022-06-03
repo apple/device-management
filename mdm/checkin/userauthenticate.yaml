@@ -1,0 +1,34 @@
+title: UserAuthenticate
+description: Authenticate network or mobile users with MDM.
+payload:
+  requesttype: UserAuthenticate
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Authenticate network or mobile users with MDM.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - UserAuthenticate
+  content: The message type, which must have a value of 'UserAuthenticate'.
+- key: UDID
+  type: <string>
+  presence: required
+  content: The device's UDID (Unique Device ID).
+- key: UserID
+  type: <string>
+  presence: required
+  content: Local mobile user's GUID or network user's GUID from an Open Directory
+    record.
+- key: DigestResponse
+  type: <string>
+  presence: required
+  content: A string provided by the client on second UserAuthenticate request after
+    receiving 'DigestChallenge' from server on first UserAuthenticate request.

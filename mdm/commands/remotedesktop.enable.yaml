@@ -1,0 +1,14 @@
+title: Remote Desktop Enable Command
+description: Enable Remote Desktop on the device.
+payload:
+  requesttype: EnableRemoteDesktop
+  supportedOS:
+    macOS:
+      introduced: 10.14.4
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Enable Remote Desktop.

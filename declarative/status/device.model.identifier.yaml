@@ -1,0 +1,17 @@
+title: Status Device Model Identifier
+description: The device's hardware identifier.
+payload:
+  statusitemtype: device.model.identifier
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: device.model.identifier
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: A two-part string that uniquely identifies the device's model. The first
+    part describes device's model family, and the second part describes the model's
+    version. The model's version is a comma-separated number where the first part
+    of the number is the version, and the second part is a variant, such as 'MacBookPro15,1'
+    or 'iPhone13,2'.

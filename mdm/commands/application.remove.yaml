@@ -1,0 +1,33 @@
+title: Remove Application Command
+description: This command allows a server to remove a managed app.
+payload:
+  requesttype: RemoveApplication
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '11.0'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      userchannel: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: This command allows a server to remove a managed app.
+payloadkeys:
+- key: Identifier
+  type: <string>
+  presence: required
+  content: The bundle identifier of the managed app.

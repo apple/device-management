@@ -1,0 +1,125 @@
+title: Network Proxy Configuration
+payload:
+  payloadtype: com.apple.SystemConfiguration
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: Proxies
+  type: <dictionary>
+  presence: required
+  content: The dictionary containing all the proxies for this device.
+  subkeys:
+  - key: FTPEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enables FTP proxy.
+  - key: FTPPassive
+    type: <integer>
+    presence: optional
+    content: If 'true', enables passive FTP mode.
+  - key: FTPPort
+    type: <integer>
+    presence: optional
+    content: The FTP proxy port.
+  - key: FTPProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the FTP proxy.
+  - key: GopherEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enables gopher proxy.
+  - key: GopherPort
+    type: <integer>
+    presence: optional
+    content: The gopher proxy port.
+  - key: GopherProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the gopher proxy.
+  - key: HTTPEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enables web proxy.
+  - key: HTTPPort
+    type: <integer>
+    presence: optional
+    content: The web proxy port.
+  - key: HTTPProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the web proxy.
+  - key: HTTPSEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enables secure web proxy.
+  - key: HTTPSPort
+    type: <integer>
+    presence: optional
+    content: The secure web proxy port.
+  - key: HTTPSProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the secure web proxy.
+  - key: ProxyAutoConfigEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enables automatic proxy configuration.
+  - key: ProxyAutoConfigURLString
+    type: <string>
+    presence: optional
+    content: The automatic proxy configuration URL.
+  - key: ProxyCaptiveLoginAllowed
+    supportedOS:
+      macOS:
+        introduced: '10.9'
+    type: <integer>
+    presence: optional
+    content: If 1, allows client to log into captive portal network.
+  - key: RTSPEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enable streaming proxy.
+  - key: RTSPPort
+    type: <integer>
+    presence: optional
+    content: The streaming proxy port.
+  - key: RTSPProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the streaming proxy.
+  - key: SOCKSEnable
+    type: <integer>
+    presence: optional
+    content: If 'true', enable the SOCKS proxy.
+  - key: SOCKSPortinteger
+    type: <integer>
+    presence: optional
+    content: The SOCKS proxy port.
+  - key: SOCKSProxy
+    type: <string>
+    presence: optional
+    content: The host name or IP address for the SOCKS proxy.
+  - key: FallBackAllowed
+    type: <integer>
+    presence: optional
+    content: |-
+      If '1', enables fallback. Default is '1'.
+      For managed devices, if not supplied, the default is '0'.
+  - key: ExceptionsList
+    type: <array>
+    presence: optional
+    content: The list of hosts and domains that should bypass proxy settings.
+    subkeys:
+    - key: Exception
+      type: <string>
+      presence: required
+      content: Bypass proxy settings for these Hosts & Domains

@@ -1,0 +1,25 @@
+title: Account:Google
+description: Use this configuration to define settings for access to Google services.
+payload:
+  declarationtype: com.apple.configuration.account.google
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: A Google configuration defines a Google account for a user. The user will
+    be prompted to enter their credentials shortly after the configuration successfully
+    installs.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this Google account. If not present,
+    the system generates a suitable default.
+- key: UserIdentityAssetReference
+  title: User Identity Asset Reference
+  type: <string>
+  presence: required
+  content: The identifier of an asset declaration that contains the user identity
+    for this Google account. The corresponding asset must be of type UserIdentity.
+    The asset must contain an 'EmailAddress' key that specifies the full Google email
+    address for the account.

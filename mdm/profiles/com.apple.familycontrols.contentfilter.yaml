@@ -1,0 +1,69 @@
+title: 'Parental Controls: Content Filter'
+description: ''
+payload:
+  payloadtype: com.apple.familycontrols.contentfilter
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Parental controls web filter.
+payloadkeys:
+- key: restrictWeb
+  type: <boolean>
+  presence: required
+  content: If 'true', enables web content filters.
+- key: useContentFilter
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', filters content automatically.
+- key: whitelistEnabled
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables web content filters.
+- key: siteWhitelist
+  type: <array>
+  presence: optional
+  content: |-
+    An array of sites that defines an allow list. If specified, this defines additional allowed sites besides those in the automated allow list and deny list, including disallowed adult sites.
+
+    This key is required if 'whiteListEnabled' is 'true'.
+  subkeys:
+  - key: siteWhitelistItem
+    type: <dictionary>
+    subkeys:
+    - key: address
+      type: <string>
+      presence: required
+      content: The site prefix, including http(s) scheme.
+    - key: pageTitle
+      type: <string>
+      presence: optional
+      content: The site page title.
+- key: filterWhitelist
+  type: <array>
+  presence: optional
+  content: The array of URLs that defines an allow list. When 'restrictWeb' and 'useContentFilter'
+    are enabled, only URLs in the allow list are available to the user.
+  subkeys:
+  - key: filterWhitelistItem
+    type: <string>
+    presence: required
+    content: An allowed site.
+- key: filterBlacklist
+  type: <array>
+  presence: optional
+  content: The array of URLs that defines a deny list. When 'restrictWeb' and 'useContentFilter'
+    are enabled, no URLs in the deny list are available to the user.
+  subkeys:
+  - key: filterBlacklistItem
+    type: <string>
+    presence: required
+    content: A disallowed site.

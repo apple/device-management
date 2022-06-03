@@ -1,0 +1,103 @@
+title: Account:Mail
+description: Use this configuration to define settings for access to email servers.
+payload:
+  declarationtype: com.apple.configuration.account.mail
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: An email configuration defines an email account for a user.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this mail account. If not present,
+    the system generates a suitable default.
+- key: UserIdentityAssetReference
+  title: User Identity Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the user identity
+    for this account. The corresponding asset must be of type UserIdentity.
+- key: IncomingServer
+  title: Incoming Server Settings
+  type: <dictionary>
+  presence: required
+  content: The settings for the incoming mail server for this account.
+  subkeys:
+  - key: ServerType
+    title: Server Type
+    type: <string>
+    presence: required
+    rangelist:
+    - IMAP
+    - POP
+    content: The mail protocol this account uses.
+  - key: HostName
+    title: Server Host Name
+    type: <string>
+    presence: required
+    content: The host name for the incoming mail server.
+  - key: Port
+    title: Server Port
+    type: <integer>
+    presence: optional
+    content: The port number for the incoming mail server.
+  - key: AuthenticationMethod
+    title: Server Authentication Method
+    type: <string>
+    presence: required
+    rangelist:
+    - None
+    - Password
+    - CRAMMD5
+    - NTLM
+    - HTTPMD5
+    content: The authentication method for the incoming mail server.
+  - key: AuthenticationCredentialsAssetReference
+    title: Authentication Credentials Asset Reference
+    type: <string>
+    presence: optional
+    content: |-
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type CredentialUserNameAndPassword.
+      If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.
+  - key: IMAPPathPrefix
+    title: IMAP Path Prefix
+    type: <string>
+    presence: optional
+    content: The path prefix for the IMAP server. The system uses this only when 'ServerType'
+      is 'IMAP'.
+- key: OutgoingServer
+  title: Outgoing Server Settings
+  type: <dictionary>
+  presence: required
+  content: The settings for the outgoing mail server for this account.
+  subkeys:
+  - key: HostName
+    title: Server Host Name
+    type: <string>
+    presence: required
+    content: The host name for the outgoing mail server.
+  - key: Port
+    title: Server Port
+    type: <integer>
+    presence: optional
+    content: The port number for the outgoing mail server.
+  - key: AuthenticationMethod
+    title: Server Authentication Method
+    type: <string>
+    presence: required
+    rangelist:
+    - None
+    - Password
+    - CRAMMD5
+    - NTLM
+    - HTTPMD5
+    content: The authentication method for the outgoing mail server.
+  - key: AuthenticationCredentialsAssetReference
+    title: Authentication Credentials Asset Reference
+    type: <string>
+    presence: optional
+    content: |-
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type CredentialUserNameAndPassword.
+      If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.

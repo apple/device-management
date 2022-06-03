@@ -1,0 +1,71 @@
+title: Xsan Preferences
+description: ''
+payload:
+  payloadtype: com.apple.xsan.preferences
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: The Xsan preferences payload can be used to configure which volumes automatically
+    mount at startup. For StorNext volumes this payload also determines whether the
+    mount uses Fibre Channel or Distributed LAN Client (DLC).
+payloadkeys:
+- key: onlyMount
+  type: <array>
+  presence: optional
+  content: An array of Xsan or StorNext volume names. The Xsan client attempts to
+    automatically mount these volumes at startup. The system administrator can mount
+    additional volumes manually by using the 'xsanctl(8)' mount command.
+  subkeys:
+  - key: onlyMountItem
+    type: <string>
+    presence: required
+    content: A volume name.
+- key: denyMount
+  type: <array>
+  presence: optional
+  content: An array of Xsan or StorNext volume names. If no 'onlyMount' array is present,
+    the Xsan client automatically attempts to mount all SAN volumes except the volumes
+    in this array. The system administrator can mount those volumes manually by using
+    the 'xsanctl(8)' mount command.
+  subkeys:
+  - key: denyMountItem
+    type: <string>
+    presence: required
+    content: A volume name.
+- key: denyDLC
+  type: <array>
+  presence: optional
+  content: An array of StorNext volume names. If the Xsan client is attempting to
+    mount a volume named in this array, the client only mounts the volume if its logical
+    units (LUNs) are available through Fibre Channel. It doesn't attempt to mount
+    the volume using Distributed LAN Client (DLC).
+  subkeys:
+  - key: denyDLCItem
+    type: <string>
+    presence: required
+    content: A volume name.
+- key: preferDLC
+  type: <array>
+  presence: optional
+  content: An array of StorNext volume names. If the Xsan client is attempting to
+    mount a volume named in this array, the Xsan client attempts to mount the volume
+    using DLC. If DLC isn't available, the client attempts to mount the volume if
+    its LUNs are available through Fibre Channel. The volume name must not also appear
+    in 'denyDLC'.
+  subkeys:
+  - key: preferDLCItem
+    type: <string>
+    presence: required
+    content: A volume name.
+- key: useDLC
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', use the DLC for all volumes.

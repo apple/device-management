@@ -1,0 +1,19 @@
+title: User Preferences
+payload:
+  payloadtype: com.apple.preference.users
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+payloadkeys:
+- key: DisableUsingiCloudPassword
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables the iCloud password for local accounts.

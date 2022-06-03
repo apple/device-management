@@ -1,0 +1,78 @@
+title: System Preferences
+payload:
+  payloadtype: com.apple.systempreferences
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Hide and show individual System Preference panes.
+    The following preference pane items are no longer supported on macOS 10.14:
+    • com.apple.preferences.appstore
+    The following preference pane items are no longer supported on macOS 10.15:
+    • com.apple.preference.ink
+    • com.apple.preferences.icloud
+    • com.apple.preferences.parentalcontrols
+payloadkeys:
+- key: EnabledPreferencePanes
+  type: <array>
+  presence: optional
+  content: The list of enabled System Preferences panes.
+  subkeys: &id001
+  - key: PreferencePanes
+    type: <string>
+    presence: optional
+    rangelist:
+    - com.apple.ClassroomSettings
+    - com.apple.Localization
+    - com.apple.preference.datetime
+    - com.apple.preference.desktopscreeneffect
+    - com.apple.preference.digihub.discs
+    - com.apple.preference.displays
+    - com.apple.preference.dock
+    - com.apple.preference.energysaver
+    - com.apple.preference.expose
+    - com.apple.preference.general
+    - com.apple.preference.ink
+    - com.apple.preference.keyboard
+    - com.apple.preference.mouse
+    - com.apple.preference.network
+    - com.apple.preference.notifications
+    - com.apple.preference.printfax
+    - com.apple.preference.screentime
+    - com.apple.preference.security
+    - com.apple.preference.sidecar
+    - com.apple.preference.sound
+    - com.apple.preference.speech
+    - com.apple.preference.spotlight
+    - com.apple.preference.startupdisk
+    - com.apple.preference.trackpad
+    - com.apple.preference.universalaccess
+    - com.apple.preferences.AppleIDPrefPane
+    - com.apple.preferences.appstore
+    - com.apple.preferences.Bluetooth
+    - com.apple.preferences.configurationprofiles
+    - com.apple.preferences.extensions
+    - com.apple.preferences.FamilySharingPrefPane
+    - com.apple.preferences.icloud
+    - com.apple.preferences.internetaccounts
+    - com.apple.preferences.parentalcontrols
+    - com.apple.preferences.password
+    - com.apple.preferences.sharing
+    - com.apple.preferences.softwareupdate
+    - com.apple.preferences.users
+    - com.apple.preferences.wallet
+    - com.apple.prefpanel.fibrechannel
+    - com.apple.prefs.backup
+    - com.apple.Xsan
+- key: DisabledPreferencePanes
+  type: <array>
+  presence: optional
+  content: The list of disabled System Preferences panes.
+  subkeys: *id001

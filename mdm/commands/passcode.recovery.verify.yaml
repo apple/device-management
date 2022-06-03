@@ -1,0 +1,24 @@
+title: Verify Recovery Lock Command
+description: Verifies the device's recovery lock password. (AppleSilicon devices only)
+payload:
+  requesttype: VerifyRecoveryLock
+  supportedOS:
+    macOS:
+      introduced: '11.5'
+      accessrights: DeviceLockAndRemovePasscode
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Verifies the device's recovery lock password. (AppleSilicon devices only)
+payloadkeys:
+- key: Password
+  type: <string>
+  presence: required
+  content: The password to verify.
+responsekeys:
+- key: PasswordVerified
+  type: <boolean>
+  presence: required
+  content: If 'true', the device verified the password.

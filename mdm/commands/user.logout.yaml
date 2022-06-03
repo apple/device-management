@@ -1,0 +1,17 @@
+title: Log Out User Command
+description: This command allows the server to force the current user to logout.
+payload:
+  requesttype: LogOutUser
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      accessrights: None
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: required
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to force the current user to logout.

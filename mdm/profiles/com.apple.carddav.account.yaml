@@ -1,0 +1,128 @@
+title: CardDAV
+description: Use this section to define settings for configuration access to CardDAV
+  servers.
+payload:
+  payloadtype: com.apple.carddav.account
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+payloadkeys:
+- key: CardDAVAccountDescription
+  title: Account Description
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <string>
+  presence: optional
+  content: The description of the account.
+- key: CardDAVHostName
+  title: Account Hostname
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <string>
+  presence: required
+  content: The server's address.
+- key: CardDAVUsername
+  title: Account Username
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <string>
+  presence: optional
+  content: The user name for logins.
+- key: CardDAVPassword
+  title: Account Password
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <string>
+  presence: optional
+  content: The user's password.
+- key: CardDAVPrincipalURL
+  title: Principal URL
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The base URL to the user's address book.
+- key: CardDAVUseSSL
+  title: Use SSL
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables SSL.
+- key: CardDAVPort
+  title: Port Number
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <integer>
+  presence: optional
+  content: The server's port.
+- key: CommunicationServiceRules
+  title: Communication Service Rules
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: An array of communication service rules for this account.
+  subkeys:
+  - key: DefaultServiceHandlers
+    title: Default Service Handlers
+    supportedOS:
+      iOS:
+        introduced: '10.0'
+      macOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of service handlers for contacts from this account.
+    subkeys:
+    - key: AudioCall
+      title: App for audio calls
+      supportedOS:
+        iOS:
+          introduced: '10.0'
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      content: A string containing the bundle identifier for the default application
+        that handles audio calls made to contacts from this account.
+- key: VPNUUID
+  title: VPNUUID
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    The VPNUUID of the per-app VPN the account uses for network communication.
+    Available in iOS 14 and later.

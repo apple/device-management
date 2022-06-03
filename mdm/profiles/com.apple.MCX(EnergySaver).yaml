@@ -1,0 +1,154 @@
+title: Energy Saver
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: com.apple.EnergySaver.desktop.ACPower
+  type: <dictionary>
+  presence: optional
+  content: The settings for a desktop computer.
+  subkeytype: PowerSettings
+  subkeys: &id001
+  - key: Display Sleep Timer
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    range:
+      min: 1
+      max: 180
+    content: The display sleep time, in minutes. A value of 0 means never.
+  - key: Disk Sleep Timer
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    range:
+      min: 1
+      max: 180
+    content: The disk sleep time, in minutes. A value of 0 means never.
+  - key: System Sleep Timer
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    range:
+      min: 1
+      max: 180
+    content: System sleep time, in minutes. A value of 0 means never.
+  - key: Reduce Processor Speed
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    content: May not be available on all systems.
+  - key: Dynamic Power Step
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    content: May not be available on all systems.
+  - key: Wake on LAN
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    content: If 'true', enables 'Wake for network access.'
+  - key: Wake On Modem Ring
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    content: If 'true', enables 'Wake for modem ring.'
+  - key: Automatic Restart On Power Loss
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    content: If 'true', enables 'Start up automatically after a power failure.'
+- key: com.apple.EnergySaver.portable.ACPower
+  type: <dictionary>
+  presence: optional
+  content: The settings for a laptop computer using AC power.
+  subkeytype: PowerSettings
+  subkeys: *id001
+- key: com.apple.EnergySaver.portable.BatteryPower
+  type: <dictionary>
+  presence: optional
+  content: The settings for a laptop computer using battery power.
+  subkeytype: PowerSettings
+  subkeys: *id001
+- key: com.apple.EnergySaver.desktop.Schedule
+  type: <dictionary>
+  presence: optional
+  content: The schedule for turning a computer on and off.
+  subkeytype: EnergySaver Schedule
+  subkeys:
+  - key: RepeatingPowerOn
+    type: <dictionary>
+    presence: optional
+    content: The schedule for turning the device on.
+    subkeytype: RepeatingPowerItem
+    subkeys: &id002
+    - key: eventtype
+      type: <string>
+      presence: required
+      rangelist:
+      - wake
+      - poweron
+      - wakepoweron
+      - sleep
+      - shutdown
+      - restart
+      content: The type of action defined by this schedule.
+    - key: weekdays
+      type: <integer>
+      presence: optional
+      content: |-
+        One or more days of the week in an unsigned integer bitmap:
+        * '1' = Mon
+        * '2' = Tue
+        * '4' = Wed
+        * '8' = Thu
+        * '16' = Fri
+        * '32' = Sat
+        * '64' = Sun
+    - key: time
+      type: <integer>
+      presence: optional
+      content: The time, in minutes, since midnight.
+  - key: RepeatingPowerOff
+    type: <dictionary>
+    presence: optional
+    content: The schedule for turning the device off.
+    subkeytype: RepeatingPowerItem
+    subkeys: *id002
+- key: SleepDisabled
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables sleep.
+- key: DestroyFVKeyOnStandby
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prevents the OS from storing a temporary FileVault key in SMC
+    or RAM for standby.

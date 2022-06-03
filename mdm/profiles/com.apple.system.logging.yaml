@@ -1,0 +1,48 @@
+title: System Logging
+description: ''
+payload:
+  payloadtype: com.apple.system.logging
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: Processes
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Not to be used.
+  subkeytype: Item
+  subkeys: &id001
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: TBD
+- key: Subsystems
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: A dictionary enabling the logging level for subsystems. See 'Customizing
+    Logging Behavior While Debugging' for more details about the format of the dictionary.
+  subkeytype: Item
+  subkeys: *id001
+- key: System
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: This dictionary has one key, 'Enable-Private-Data'. Setting that value
+    to 'true' enables private data logging for the entire system.
+  subkeytype: Item
+  subkeys: *id001

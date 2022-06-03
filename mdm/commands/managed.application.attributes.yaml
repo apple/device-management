@@ -1,0 +1,90 @@
+title: App Attributes Command
+description: Queries managed application attributes. Attributes can be set on managed
+  apps. These attributes can be changed over time.
+payload:
+  requesttype: ManagedApplicationAttributes
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: Queries managed application attributes. Attributes can be set on managed
+    apps. These attributes can be changed over time.
+payloadkeys:
+- key: Identifiers
+  type: <array>
+  presence: required
+  content: The bundle identifiers of the managed apps.
+  subkeys:
+  - key: IdentifiersItem
+    type: <string>
+responsekeys:
+- key: ApplicationAttributes
+  type: <array>
+  presence: required
+  content: An array of app attributes items.
+  subkeys:
+  - key: ApplicationAttributesItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The app's bundle identifier.
+    - key: Attributes
+      type: <dictionary>
+      presence: optional
+      content: The app's attributes.
+      subkeys:
+      - key: VPNUUID
+        type: <string>
+        presence: optional
+        content: A per-app VPN unique identifier for this app.
+      - key: AssociatedDomains
+        supportedOS:
+          iOS:
+            introduced: '13.0'
+          tvOS:
+            introduced: n/a
+        type: <array>
+        presence: optional
+        content: This app's associated domains. This value is available in iOS 13
+          and later.
+        subkeys:
+        - key: AssociatedDomain
+          type: <string>
+      - key: AssociatedDomainsEnableDirectDownloads
+        supportedOS:
+          iOS:
+            introduced: '14.0'
+          tvOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: true
+        content: If 'true', perform claimed site association verification directly
+          at the domain instead of on Apple's servers. Only set this to 'true' for
+          domains that can't access the internet. This value is available in iOS 14
+          and later.
+      - key: Removable
+        supportedOS:
+          iOS:
+            introduced: '14.0'
+          tvOS:
+            introduced: '14.0'
+        type: <boolean>
+        presence: optional
+        default: true
+        content: If 'false', this app isn't removable while it's a managed app. This
+          value is available in iOS 14 and later.

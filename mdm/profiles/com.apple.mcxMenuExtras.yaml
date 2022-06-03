@@ -1,0 +1,134 @@
+title: Managed Menu Extras
+payload:
+  payloadtype: com.apple.mcxMenuExtras
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Specified menu extras will be added or removed from the menu bar
+    after user login. Standard menu extra may be specified by file
+    name. Non-standard menu extras are specified by full path.
+payloadkeys:
+- key: delaySeconds
+  type: <real>
+  presence: optional
+  default: 2.5
+  content: The number of seconds to delay after login before adding or removing menu
+    extras. If the delay is too short, the menu extras don't appear, or disappear
+    from the menu bar.
+- key: maxWaitSeconds
+  type: <real>
+  presence: optional
+  default: 20.0
+  content: The maximum wait, in seconds, for all menu extras to be added or removed.
+- key: AirPort.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the AirPort menu extra.
+- key: Battery.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Battery menu extra.
+- key: Bluetooth.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Bluetooth menu extra.
+- key: CPU.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the CPU menu extra.
+- key: Clock.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Clock menu extra.
+- key: Displays.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Displays menu extra.
+- key: Eject.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Eject menu extra.
+- key: Fax.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Fax menu extra.
+- key: HomeSync.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the HomeSync menu extra.
+- key: iChat.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the iChat menu extra.
+- key: Ink.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Ink menu extra.
+- key: IrDA.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the IrDA menu extra.
+- key: PCCard.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the PCCard menu extra.
+- key: PPP.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the PPP menu extra.
+- key: PPPoE.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the PPPoE menu extra.
+- key: RemoteDesktop.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Remote Desktop menu extra.
+- key: Script Menu.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Script menu extra.
+- key: Spaces.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Spaces menu extra.
+- key: Sync.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Sync menu extra.
+- key: TextInput.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Text Input menu extra.
+- key: TimeMachine.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the TimeMachine menu extra.
+- key: UniversalAccess.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Universal Access menu extra.
+- key: User.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the User menu extra.
+- key: VPN.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the VPN menu extra.
+- key: Volume.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the Volume menu extra.
+- key: WWAN.menu
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables the WWAN menu extra.

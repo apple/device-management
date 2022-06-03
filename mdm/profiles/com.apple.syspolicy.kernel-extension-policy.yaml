@@ -1,0 +1,59 @@
+title: System Policy - Kernel Extensions
+description: ''
+payload:
+  payloadtype: com.apple.syspolicy.kernel-extension-policy
+  supportedOS:
+    macOS:
+      introduced: 10.13.2
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+  content: Provides a way of enabling a set of team identifiers or specific kernel
+    extensions for loading without user approval. Also provides a way to block users
+    from approving additional kernel extensions. Payload must be user-approved only.
+payloadkeys:
+- key: AllowNonAdminUserApprovals
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', nonadministrative users can approve additional kernel extensions in the Security & Privacy preferences.
+    Available in macOS 11 and later.
+- key: AllowUserOverrides
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', users can approve additional kernel extensions that configuration
+    profiles don't explicitly allow.
+- key: AllowedTeamIdentifiers
+  type: <array>
+  presence: optional
+  content: The array of team identifiers that define which validly signed kernel extensions
+    can load.
+  subkeys:
+  - key: AllowedTeamIdentifiersItem
+    title: Identifier
+    type: <string>
+- key: AllowedKernelExtensions
+  type: <dictionary>
+  presence: optional
+  content: The dictionary that represents a set of kernel extensions that the system
+    always allows to load on the computer. The dictionary maps team identifiers (keys)
+    to arrays of bundle identifiers.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: The kernal extension data.
+    subkeys:
+    - key: AllowedKernelExtensionsItems
+      type: <string>
+      presence: required
+      content: Kernel extension data.

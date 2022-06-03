@@ -1,0 +1,25 @@
+title: 'Login Window: Login Items'
+description: ''
+payload:
+  payloadtype: loginwindow
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: This payload handles login items management.
+payloadkeys:
+- key: DisableLoginItemsSuppression
+  supportedOS:
+    macOS:
+      introduced: all
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prevents the user from disabling login item launches by using
+    the Shift key.

@@ -1,0 +1,24 @@
+title: Clear Activation Lock Bypass Code Command
+description: Clears the Activation Lock bypass code from the device.
+payload:
+  requesttype: ClearActivationLockBypassCode
+  supportedOS:
+    iOS:
+      introduced: '7.1'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Clears the Activation Lock bypass code from the device.

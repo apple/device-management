@@ -1,0 +1,100 @@
+title: Printing
+payload:
+  payloadtype: com.apple.mcxprinting
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: RequireAdminToAddPrinters
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', requires an administrator password to add printers.
+- key: AllowLocalPrinters
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', allows printers that connect directly to a user's computer.
+- key: RequireAdminToPrintLocally
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', requires an administrator password to print locally.
+- key: ShowOnlyManagedPrinters
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', shows only managed printers.
+- key: PrintFooter
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prints the page footer (including the user name and date).
+- key: PrintMACAddress
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', includes the MAC address.
+- key: FooterFontSize
+  type: <string>
+  presence: optional
+  content: The footer font size.
+- key: FooterFontName
+  type: <string>
+  presence: optional
+  content: The footer font name.
+- key: DefaultPrinter
+  type: <dictionary>
+  presence: optional
+  content: The default printer for the user.
+  subkeys:
+  - key: DeviceURI
+    type: <string>
+    presence: optional
+    content: The device URI.
+  - key: DisplayName
+    type: <string>
+    presence: optional
+    content: The display name.
+- key: UserPrinterList
+  type: <dictionary>
+  presence: optional
+  content: The printers available to a user.
+  subkeys:
+  - key: Printer
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of printer details.
+    subkeys:
+    - key: DeviceURI
+      type: <string>
+      presence: optional
+      content: The device URI.
+    - key: DisplayName
+      type: <string>
+      presence: optional
+      content: The display name.
+    - key: Location
+      type: <string>
+      presence: optional
+      content: The printer's location.
+    - key: Model
+      type: <string>
+      presence: optional
+      content: The printer's model.
+    - key: PrinterLocked
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', locks the printer.
+    - key: PPDURL
+      type: <string>
+      presence: optional
+      content: The printer's PPDURL.

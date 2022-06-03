@@ -1,0 +1,105 @@
+title: Status Management Client Capabilities
+description: The client's protocol capabilities.
+payload:
+  statusitemtype: management.client-capabilities
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: management.client-capabilities
+  title: Status item value.
+  type: <dictionary>
+  presence: required
+  content: An object that contains the client's protocol capabilities. These typically
+    only change when the device upgrades its software. An implicit status subscription
+    for this status item is always present, so the client always reports changes to
+    the server.
+  subkeytype: Capabilities
+  subkeys:
+  - key: supported-versions
+    title: Supported Protocol Versions
+    type: <array>
+    presence: required
+    content: A list of protocol versions that the client supports.
+    subkeys:
+    - key: _supported-versions
+      title: Supported Protocol Version
+      type: <string>
+      content: A protocol version supported by the client.
+  - key: supported-features
+    title: Supported Features
+    type: <dictionary>
+    presence: required
+    content: A set of optional protocol features that the client supports. Each object's
+      key represents a feature, and the property value represents the feature's associated
+      parameters.
+    subkeys:
+    - key: ANY
+      type: <any>
+      presence: optional
+      content: Optional protocol features supported by the client.
+  - key: supported-payloads
+    title: Supported Payloads
+    type: <dictionary>
+    presence: required
+    content: A set of declaration and status items that the client supports.
+    subkeys:
+    - key: declarations
+      title: Supported Declarations
+      type: <dictionary>
+      presence: required
+      content: A set of declarations that the client supports.
+      subkeys:
+      - key: activations
+        title: Supported Activations
+        type: <array>
+        presence: optional
+        content: An array of strings that represents the activation types that the
+          client supports.
+        subkeys:
+        - key: _activations
+          title: Activation Type
+          type: <string>
+          content: Supported activation type.
+      - key: assets
+        title: Supported Assets
+        type: <array>
+        presence: optional
+        content: An array of strings that represents the assets that the client supports.
+        subkeys:
+        - key: _assets
+          title: Asset Type
+          type: <string>
+          content: Supported asset type.
+      - key: configurations
+        title: Supported Configurations
+        type: <array>
+        presence: optional
+        content: An array of strings that represents the configuration types that
+          the client supports.
+        subkeys:
+        - key: _configurations
+          title: Configuration Type
+          type: <string>
+          content: Supported configuration type.
+      - key: management
+        title: Supported Management Declarations
+        type: <array>
+        presence: optional
+        content: An array of strings that represents the declaration types that the
+          client supports.
+        subkeys:
+        - key: _management
+          title: Management Declaration Type
+          type: <string>
+          content: Supported management declaration type.
+    - key: status-items
+      title: Supported Status Items
+      type: <array>
+      presence: required
+      content: A list of status items that the client supports.
+      subkeys:
+      - key: _status_items
+        title: Status Item
+        type: <string>
+        content: Supported status item.

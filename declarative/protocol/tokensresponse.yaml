@@ -1,0 +1,16 @@
+title: Tokens Response
+description: The server's synchronization tokens.
+payload:
+  requesttype: TokensResponse
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: SyncTokens
+  title: Synchronization Tokens
+  type: <dictionary>
+  presence: required
+  content: A dictionary of synchronization tokens that describes the state of different
+    types of data on the server. The client uses these tokens to determine which endpoints
+    it needs to use to fetch new or updated data on the server.
+  subkeytype: SynchronizationTokens

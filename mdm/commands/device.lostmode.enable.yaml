@@ -1,0 +1,35 @@
+title: Enable MDM Lost Mode Location
+description: This command allows the server to put the device in MDM lost mode, with
+  a message, phone number, and footnote text. A message or phone number must be provided.
+payload:
+  requesttype: EnableLostMode
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to put the device in MDM lost mode, with
+    a message, phone number, and footnote text. A message or phone number must be
+    provided.
+payloadkeys:
+- key: Message
+  type: <string>
+  presence: optional
+  content: If present, display this text on the Lock screen. You must provide this
+    value if you don't provide a value for 'PhoneNumber'.
+- key: PhoneNumber
+  type: <string>
+  presence: optional
+  content: If present, display this phone number on the Lock screen. You must provide
+    this value if you don't provide a value for 'Message'.
+- key: Footnote
+  type: <string>
+  presence: optional
+  content: If present, display this text in place of Slide to Unlock.

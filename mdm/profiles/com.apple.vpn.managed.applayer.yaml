@@ -1,0 +1,167 @@
+title: App-Layer VPN
+description: ''
+payload:
+  payloadtype: com.apple.vpn.managed.applayer
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: The fields in this payload are the same as the VPN payload, with the addition
+    of the fields shown below.
+payloadkeys:
+- key: VPNUUID
+  type: <string>
+  presence: required
+  content: A globally unique identifier for this VPN configuration.
+- key: SafariDomains
+  type: <array>
+  presence: optional
+  content: An array with entries that must each specify a domain that triggers the
+    VPN connection in Safari. Each entry is in the format 'www.apple.com'.
+  subkeys:
+  - key: SafariDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: MailDomains
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      deprecated: '13.4'
+    macOS:
+      introduced: '10.15'
+  type: <array>
+  presence: optional
+  content: |-
+    An array with entries that must each specify a domain that triggers this VPN connection in Mail. Each entry is in the format 'www.apple.com'.
+    This property is deprecated in iOS 13.4 and later; use the 'VPNUUID' property of the Mail or ExchangeActiveSync payload instead.
+  subkeys:
+  - key: MailDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: CalendarDomains
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      deprecated: '13.4'
+    macOS:
+      introduced: '10.15'
+  type: <array>
+  presence: optional
+  content: |-
+    An array with entries that must each specify a domain that triggers this VPN connection in Calendar. Each entry is in the format 'www.apple.com'.
+    This property is deprecated in iOS 13.4 and later; use the 'VPNUUID' property of the CalDAV payload instead.
+  subkeys:
+  - key: CalendarDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: ContactsDomains
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      deprecated: '13.4'
+    macOS:
+      introduced: '10.15'
+  type: <array>
+  presence: optional
+  content: |-
+    An array with entries that must each specify a domain that triggers this VPN connection in Contacts. Each entry is in the format 'www.apple.com'.
+    This property is deprecated in iOS 13.4 and later; use the 'VPNUUID' property of the CardDAV payload instead.
+  subkeys:
+  - key: ContactsDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: AssociatedDomains
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: '11.0'
+  type: <array>
+  presence: optional
+  content: |-
+    An array with entries that must each specify a domain that triggers this VPN. The domains must also be part of the 'apple-app-site-association' file, as described in Supporting Associated Domains.
+    Available in iOS 14 and later, and macOS 11 and later.
+  subkeys:
+  - key: AssociatedDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: ExcludedDomains
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: '11.0'
+  type: <array>
+  presence: optional
+  content: |-
+    An array with entries that each specify a domain that doesn't trigger this VPN for connections to the domain.
+    Available in iOS 14 and later, and macOS 11 and later.
+  subkeys:
+  - key: ExcludedDomainsItem
+    type: <string>
+    presence: required
+    content: A domain.
+- key: OnDemandMatchAppEnabled
+  type: <integer>
+  presence: optional
+  rangelist:
+  - 0
+  - 1
+  content: If 'true', automatically connects the VPN when associated apps for this
+    per-app VPN service initiate network communication. Otherwise, the user must initiate
+    the connection manually before those apps can initiate network communication.
+    If this key isn't present, the value of the 'OnDemandEnabled' key determines the
+    status of per-app VPN On Demand.
+- key: SMBDomains
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: |-
+    An array of SMB domains that's accessible through this VPN connection.
+    Available in iOS 13 and later.
+  subkeys:
+  - key: SMBDomainsItem
+    type: <string>
+    presence: required
+    content: An SMB domain.
+- key: VPN
+  title: VPN
+  type: <dictionary>
+  presence: optional
+  content: A dictionary with additional VPN settings.
+  subkeys:
+  - key: ProviderType
+    type: <string>
+    presence: optional
+    rangelist:
+    - packet-tunnel
+    - app-proxy
+    default: app-proxy
+    content: The type of VPN service. If it is 'app-proxy', the service will tunnel
+      traffic at the application level. If it is 'packet-tunnel', the service will
+      tunnel traffic at the IP layer.

@@ -1,0 +1,64 @@
+title: App Configuration Command
+description: This command queries the device for the current configuration of managed
+  applications. This command requires the App Management right. macOS supports this
+  command as of 10.15, on the device channel and for User Enrollments only, because
+  Settings->ApplicationConfiguration is supported. Since macOS does not support Managed
+  Applications, this command can be used for any bundle identifier.
+payload:
+  requesttype: ManagedApplicationConfiguration
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.15'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: This command queries the device for the current configuration of managed
+    applications. This command requires the App Management right.
+payloadkeys:
+- key: Identifiers
+  type: <array>
+  presence: required
+  content: The bundle identifiers of the managed apps.
+  subkeys:
+  - key: IdentifiersItem
+    type: <string>
+responsekeys:
+- key: ApplicationConfigurations
+  type: <array>
+  presence: required
+  content: An array of app configurations items.
+  subkeys:
+  - key: ApplicationConfigurationsItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The app's bundle identifier.
+    - key: Configuration
+      type: <dictionary>
+      presence: optional
+      content: The app's configurations.
+      subkeys:
+      - key: ANY
+        type: <any>
+        presence: optional
+        content: The app's configuration items.

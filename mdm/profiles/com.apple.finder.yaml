@@ -1,0 +1,70 @@
+title: Finder
+description: ''
+payload:
+  payloadtype: com.apple.finder
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: ProhibitBurn
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables the Finder's burn support.
+- key: InterfaceLevel
+  supportedOS:
+    macOS:
+      removed: '10.15'
+  type: <string>
+  presence: optional
+  rangelist:
+  - Simple
+  - Full
+  content: If Finder should operate in Simple or Full mode.
+- key: ProhibitConnectTo
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, Connect to Server will be disabled.
+- key: ProhibitEject
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, Eject will be disabled.
+- key: ProhibitGoToFolder
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, Go To Folder will be disabled.
+- key: ShowExternalHardDrivesOnDesktop
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If set to false, extneral hard drives will not appear on the desktop.
+- key: ShowHardDrivesOnDesktop
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to false, internal hard drives will not appear on the desktop.
+- key: ShowMountedServersOnDesktop
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to false, mounted file servers will not appear on the desktop.
+- key: ShowRemovableMediaOnDesktop
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If set to false, removable media will not appear on the desktop.
+- key: WarnOnEmptyTrash
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If set to false, user will not be warned before emptying the trash.

@@ -1,0 +1,22 @@
+title: Management:Status Subscriptions
+description: Use this configuration to define the status subscriptions that cause
+  status to be reported by the client.
+payload:
+  declarationtype: com.apple.configuration.management.status-subscriptions
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: StatusItems
+  title: Status Items
+  type: <array>
+  presence: required
+  content: An array of status items that the device notifies subscribers about.
+  subkeys:
+  - key: StatusItem
+    type: <dictionary>
+    subkeys:
+    - key: Name
+      type: <string>
+      presence: required
+      content: The name of the status item to send to subscribers.

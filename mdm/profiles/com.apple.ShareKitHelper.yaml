@@ -1,0 +1,38 @@
+title: ShareKit
+description: ''
+payload:
+  payloadtype: com.apple.ShareKitHelper
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      deprecated: '10.12'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: macOS only. Specifies which ShareKit plugin can be accessed on client.
+    Both allow and disallow lists can be specified.
+payloadkeys:
+- key: SHKAllowedShareServices
+  type: <array>
+  presence: optional
+  content: The list of plugin IDs that show up in the user's Share menu. If this array
+    exists, only these items are permitted.
+  subkeys:
+  - key: SHKAllowedShareServicesItem
+    type: <string>
+    presence: required
+    content: A plugin ID.
+- key: SHKDeniedShareServices
+  type: <array>
+  presence: optional
+  content: The list of plugin IDs that won't show up in the user's Share menu. This
+    key is used only if there is no 'SHKAllowedShareServices' key.
+  subkeys:
+  - key: SHKDeniedShareServicesItem
+    type: <string>
+    presence: required
+    content: A plugin ID.

@@ -1,0 +1,46 @@
+title: AirPlay Security
+description: AirPlay Security settings
+payload:
+  payloadtype: com.apple.airplay.security
+  supportedOS:
+    tvOS:
+      introduced: '11.0'
+      supervised: false
+      allowmanualinstall: true
+  content: Manages the AirPlay Security settings on Apple TV (Settings > AirPlay >
+    Security). Use this payload to lock Apple TV to a particular style of AirPlay
+    security. The setting can enable/disable an on-screen passcode, or require a specific
+    password phrase.
+payloadkeys:
+- key: SecurityType
+  title: Security Type
+  type: <string>
+  presence: required
+  rangelist:
+  - PASSCODE_ONCE
+  - PASSCODE_ALWAYS
+  - PASSWORD
+  content: |-
+    The security policy for AirPlay.
+    'PASSCODE_ONCE' requires an onscreen passcode on first connection from a device. Subsequent connections from the same device aren't prompted.
+    'PASSCODE_ALWAYS' requires an onscreen passcode for every AirPlay connection. After an AirPlay connection ends, reconnecting within 30 seconds is allowed without a password.
+
+    'PASSWORD' requires a passphrase as specified in the 'Password' key.
+
+    'NONE' was deprecated in tvOS 11.3. Existing profiles using 'NONE' get the 'PASSWORD_ONCE' behavior.
+- key: AccessType
+  title: Access Type
+  type: <string>
+  presence: required
+  rangelist:
+  - ANY
+  - WIFI_ONLY
+  content: |-
+    The access policy for AirPlay.
+    'ANY' allows connections from both Ethernet/WiFi and Apple Wireless Direct Link.
+    'WIFI_ONLY' allows connections only from devices on the same Ethernet/WiFi network as Apple TV.
+- key: Password
+  title: Password
+  type: <string>
+  presence: optional
+  content: The AirPlay password; required if SecurityType is 'PASSWORD'.

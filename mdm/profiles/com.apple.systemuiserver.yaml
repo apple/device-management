@@ -1,0 +1,122 @@
+title: 'Media Management: Allowed Media'
+description: ''
+payload:
+  payloadtype: com.apple.systemuiserver
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      deprecated: '11.0'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: logout-eject
+  type: <dictionary>
+  presence: optional
+  content: The media type dictionary that defines volumes to eject when the user logs
+    out.
+  subkeytype: MediaItems
+  subkeys: &id002
+  - key: all-media
+    type: <string>
+    presence: optional
+    content: Unused; set to an empty string.
+  - key: cd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: &id001
+    - key: ActionStringItem
+      type: <string>
+      presence: optional
+      rangelist:
+      - authenticate
+      - read-only
+      - deny
+      - eject
+      content: |-
+        One of the following values:
+        * authenticate - User will be authenticated before media is mounted
+        * read-only - The media will be mounted read-only. Not valid for unmount-controls.
+        * deny - The media will not be mounted.
+        * eject - The media will not be mounted and it will be ejected if possible. Note that some volumes are not defined as ejectable, so using the deny key may be the best solution. Not valid for unmount-controls.
+  - key: dvd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: bd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: blankcd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: blankdvd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: blankbd
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: dvdram
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: disk-image
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: harddisk-internal
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: harddisk-external
+    type: <array>
+    presence: optional
+    content: |-
+      A string or an array of media action strings. Internally installed SD cards and USB flash drives are included in the hard disk-external category.
+
+      This key is the default for media types that don't fall into other categories.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+  - key: networkdisk
+    type: <array>
+    presence: optional
+    content: A media action string or an array of media action strings.
+    subkeytype: ActionStringItem
+    subkeys: *id001
+- key: mount-controls
+  type: <dictionary>
+  presence: optional
+  content: The media type dictionary that controls volume mounting.
+  subkeytype: MediaItems
+  subkeys: *id002
+- key: unmount-controls
+  type: <dictionary>
+  presence: optional
+  content: The media type dictionary that controls volume unmounting.
+  subkeytype: MediaItems
+  subkeys: *id002

@@ -1,0 +1,74 @@
+title: Device Location Command
+description: This command allows the server to ask for the device's location if it
+  is in MDM lost mode.
+payload:
+  requesttype: DeviceLocation
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+responsekeys:
+- key: Latitude
+  type: <real>
+  presence: required
+  content: The latitude of the device's location.
+- key: Longitude
+  type: <real>
+  presence: required
+  content: The longitude of the device's location.
+- key: HorizontalAccuracy
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <real>
+  presence: required
+  content: The radius of uncertainty for the location in meters, which is a negative
+    value if the horizontal accuracy is unknown.
+- key: VerticalAccuracy
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <real>
+  presence: required
+  content: The accuracy of the altitude value in meters, which is a negative value
+    if the vertical accuracy is unknown.
+- key: Altitude
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <real>
+  presence: required
+  content: The altitude of the device's location, which is a negative value if the
+    altitude is unknown.
+- key: Speed
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <real>
+  presence: required
+  content: The speed of the device in meters per second, which is a negative value
+    if the speed is unknown.
+- key: Course
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <real>
+  presence: required
+  content: The direction the device is traveling, which is a negative value if the
+    course is unknown.
+- key: Timestamp
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+  type: <string>
+  presence: required
+  content: The RFC 3339 timestamp of when the server determined the location of the
+    device.

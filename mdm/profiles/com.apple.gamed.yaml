@@ -1,0 +1,45 @@
+title: 'Parental Controls: Game Center'
+description: ''
+payload:
+  payloadtype: com.apple.gamed
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Parental controls Game Center restrictions.
+payloadkeys:
+- key: GKFeatureGameCenterAllowed
+  supportedOS:
+    macOS:
+      deprecated: '10.13'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables Game Center.
+- key: GKFeatureAccountModificationAllowed
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', allows account modifications.
+- key: GKFeatureAddingGameCenterFriendsAllowed
+  supportedOS:
+    macOS:
+      deprecated: '10.13'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', allows adding Game Center friends.
+- key: GKFeatureMultiplayerGamingAllowed
+  supportedOS:
+    macOS:
+      deprecated: '10.13'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', allows multiplayer gaming.

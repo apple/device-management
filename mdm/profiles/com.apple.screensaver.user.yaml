@@ -1,0 +1,30 @@
+title: Screensaver User
+description: ''
+payload:
+  payloadtype: com.apple.screensaver.user
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Specifies *user* screensaver settings. (Settings for loginwindow screensaver
+    use a different payload)
+payloadkeys:
+- key: moduleName
+  type: <string>
+  presence: required
+  content: The name of the screen saver module.
+- key: modulePath
+  type: <string>
+  presence: optional
+  content: A full path to the screen-saver module to use.
+- key: idleTime
+  type: <integer>
+  presence: optional
+  content: The number of seconds of inactivity before the screen saver activates ('0'
+    = Never activate).

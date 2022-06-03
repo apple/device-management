@@ -1,0 +1,70 @@
+title: Common Payload Keys
+description: Payload dictionary keys common to all payload types
+payload:
+  payloadtype: CommonPayloadKeys
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '5.0'
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '1.0'
+      allowmanualinstall: true
+payloadkeys:
+- key: PayloadIdentifier
+  type: <string>
+  presence: required
+  content: |-
+    The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
+    During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.
+- key: PayloadUUID
+  type: <string>
+  presence: required
+  content: |-
+    The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
+    During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.
+- key: PayloadType
+  type: <string>
+  presence: required
+  content: The payload type, which each payload domain's reference page specifies.
+- key: PayloadVersion
+  type: <integer>
+  presence: required
+  rangelist:
+  - 1
+  content: The version of this specific payload.
+- key: PayloadDescription
+  type: <string>
+  presence: optional
+  content: The human-readable description of this payload. This description appears
+    on the Detail screen.
+- key: PayloadDisplayName
+  type: <string>
+  presence: optional
+  content: The human-readable name for the profile payload. The name appears on the
+    Detail screen and doesn't need to be unique.
+- key: PayloadOrganization
+  type: <string>
+  presence: optional
+  content: The human-readable string containing the name of the organization that
+    provides the profile. This value doesn't need to match the organization payload
+    value in the enclosing dictionary.

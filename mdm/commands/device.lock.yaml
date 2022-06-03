@@ -1,0 +1,74 @@
+title: Device Lock Command
+description: This command allows the server to immediately lock the device. This command
+  requires the Device Lock and Passcode Removal right.
+payload:
+  requesttype: DeviceLock
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowPasscodeRemovalAndLock
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      accessrights: AllowPasscodeRemovalAndLock
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to immediately lock the device. This command
+    requires the Device Lock and Passcode Removal right.
+payloadkeys:
+- key: Message
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      sharedipad:
+        mode: ignored
+    macOS:
+      introduced: '10.14'
+  type: <string>
+  presence: optional
+  content: The message to display on the Lock screen of the device. This value doesn't
+    apply to a shared iPad device. This value is available in iOS 4 and later, and
+    macOS 10.14 and later.
+- key: PhoneNumber
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      sharedipad:
+        mode: ignored
+    macOS:
+      introduced: '11.5'
+  type: <string>
+  presence: optional
+  content: The phone number to display on the Lock screen. This value doesn't apply
+    to a shared iPad device. This value is available in iOS 7 and later and macOS
+    11.5 and later (for Apple silicon devices only).
+- key: PIN
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.8'
+  type: <string>
+  presence: optional
+  content: The six-character PIN for Find My. This value is available in macOS 10.8
+    and later.
+responsekeys:
+- key: MessageResult
+  type: <string>
+  presence: optional
+  content: |-
+    The message result if the command includes a message or phone number, which is one of the following values:
+    * 'Success': The message displayed successfully.
+    * 'DeviceInLostMode': The device is in Lost Mode.
+    * 'NoPasscodeSet': The message didn't display because there isn't a set passcode.
+    * 'Unknown': An unknown error occurred.

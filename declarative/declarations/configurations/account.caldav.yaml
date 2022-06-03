@@ -1,0 +1,37 @@
+title: Account:CalDAV
+description: Use this configuration to define settings for access to CalDAV servers.
+payload:
+  declarationtype: com.apple.configuration.account.caldav
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: A CalDAV configuration defines a CalDAV calendar and reminders account
+    for a user.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this calendar account. If not present,
+    the system generates a suitable default.
+- key: HostName
+  title: Server Host Name
+  type: <string>
+  presence: required
+  content: The hostname of the CalDAV server (or IP address).
+- key: Port
+  title: Server Port
+  type: <integer>
+  presence: optional
+  content: The port number for the CalDAV server.
+- key: Path
+  title: Server Path
+  type: <string>
+  presence: optional
+  content: The path for the CalDAV server.
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the credentials for
+    this account. The corresponding asset must be of type UserNameAndPasswordCredentials.

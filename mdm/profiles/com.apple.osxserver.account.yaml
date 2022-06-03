@@ -1,0 +1,60 @@
+title: macOS Server Account
+description: Use this section to define a macOS Server account
+payload:
+  payloadtype: com.apple.osxserver.account
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      deprecated: '12.0'
+      removed: '12.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: HostName
+  title: Account Hostname
+  type: <string>
+  presence: required
+  content: The server's address.
+- key: UserName
+  title: Account Username
+  type: <string>
+  presence: required
+  content: The user's user name.
+- key: Password
+  title: Account Password
+  type: <string>
+  presence: optional
+  content: The user's password.
+- key: AccountDescription
+  title: Account Description
+  type: <string>
+  presence: optional
+  content: The description of the account.
+- key: ConfiguredAccounts
+  title: Configured Accounts
+  type: <array>
+  presence: required
+  content: Array of dictionaries containing configured account types and relevant
+    settings
+  subkeys:
+  - key: ConfiguredAccountsItem
+    title: Configured Account
+    type: <dictionary>
+    subkeys:
+    - key: Type
+      title: Account Type
+      type: <string>
+      presence: required
+      rangelist:
+      - com.apple.osxserver.documents
+      content: com.apple.osxserver.documents (the Documents account type).
+    - key: Port
+      title: Port Number
+      type: <integer>
+      presence: optional
+      content: Designates the port number to use when contacting the server. If no
+        port number is specified, the default port is used.

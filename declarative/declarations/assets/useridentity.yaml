@@ -1,0 +1,18 @@
+title: User Identity
+description: User identity data.
+payload:
+  declarationtype: com.apple.asset.useridentity
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: FullName
+  title: Full Name
+  type: <string>
+  presence: optional
+  content: The user's full name.
+- key: EmailAddress
+  title: Email Address
+  type: <string>
+  presence: optional
+  content: The user's email address.

@@ -1,0 +1,43 @@
+title: FDE Recovery Key Escrow
+description: ''
+payload:
+  payloadtype: com.apple.security.FDERecoveryKeyEscrow
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    If FileVault is enabled after this payload is installed on the system, the FileVault PRK will be encrypted with the specified certificate, wrapped with a CMS envelope and stored at:
+    /var/db/FileVaultPRK.dat
+    The encrypted data will be made available to the MDM server as part of the SecurityInfo command. Alternatively, if a site uses their own administration software, they can extract the PRK from the above location at any time. As the PRK will be encrypted using the certificate provided in the profile, only the author of the profile can extract the data.
+    Notes:
+    * The payload must exist in a "system" scoped profile.
+    * It will be an error to install more than one payload of this type per machine.
+    * The old payload ("com.apple.security.FDERecoveryRedirect") will no longer be supported. It will still be allowed to be installed, but will be ignored. (This is so servers can send out the same profile to old and new clients).
+    * If only an old-style redirection payload is installed at the time FileVault is turned on (via Security Pref pane), an error will be displayed and FileVault will not be allowed to be enabled.
+    * No warning/error will be provided if FileVault is already enabled and an old-style payload is installed. In this case, it's assumed the recovery key has already been escrowed with the server.
+payloadkeys:
+- key: Location
+  type: <string>
+  presence: required
+  content: The description of the location where the recovery key will be escrowed.
+    This text will be inserted into the message the user sees when enabling FileVault.
+- key: EncryptCertPayloadUUID
+  type: <string>
+  presence: required
+  content: The UUID of a payload within the same profile that contains the certificate
+    that will be used to encrypt the recovery key. The referenced payload must be
+    of type 'com.apple.security.pkcs1'.
+- key: DeviceKey
+  type: <string>
+  presence: optional
+  content: |-
+    The string that's included in help text if the user appears to have forgotten the password. Site admins can use this key to look up the escrowed key for the particular computer.
+
+    This key replaces the 'RecordNumber' key used in the previous escrow mechanism. If the key is missing, the device serial number is used instead.

@@ -1,0 +1,54 @@
+title: Associated Domains
+description: Use this section to define settings for Associated Domains to be used
+  with features such as Extensible AppSSO, universal links and Password AutoFill.
+payload:
+  payloadtype: com.apple.associated-domains
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: Configures Associated Domains to be used with features such as Extensible
+    AppSSO, universal links and Password AutoFill. Settings are per-user. The effective
+    settings for a user will be the union of payloads installed for the device and
+    the user. Users on a system that are not managed by the MDM will not have any
+    effective settings, not even those from device payloads.
+payloadkeys:
+- key: Configuration
+  title: Configuration
+  type: <array>
+  presence: required
+  content: A dictionary that maps apps to their associated domains.
+  subkeys:
+  - key: ConfigurationItem
+    type: <dictionary>
+    subkeys:
+    - key: ApplicationIdentifier
+      type: <string>
+      presence: required
+      content: The app identifier to associate the domains with.
+    - key: AssociatedDomains
+      type: <array>
+      presence: required
+      content: |-
+        The domains to be associated with the app. Each string is in the form of ''service:domain''. Domains should be fully qualified hostnames, like 'www.example.com'.
+        See Supporting Associated Domains for more information.
+      subkeys:
+      - key: AssociatedDomain
+        type: <string>
+        presence: required
+    - key: EnableDirectDownloads
+      supportedOS:
+        macOS:
+          introduced: '11.0'
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', data for this domain should be downloaded directly instead
+        of through a CDN. The entitlement value for this domain must be set to 'service:domain?mode=managed'
+        or this value will be ignored. Available in macOS 11 and later.

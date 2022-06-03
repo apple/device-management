@@ -1,0 +1,20 @@
+title: 'Parental Controls: Dictionary'
+description: ''
+payload:
+  payloadtype: com.apple.Dictionary
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Parental controls dictionary restrictions.
+payloadkeys:
+- key: parentalControl
+  type: <boolean>
+  presence: required
+  content: If 'true', enables parental controls dictionary restrictions.

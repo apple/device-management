@@ -1,0 +1,231 @@
+title: Install Application Command
+description: This command allows the server to install an application on a device.
+  If the app is already being managed, this command will update the app.
+payload:
+  requesttype: InstallApplication
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.9'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: This command allows the server to install an application on a device. If
+    the app is already being managed, this command will update the app. macOS change
+    - 10.9 user channel for VPP, 10.10 device channel, 10.11 both.
+payloadkeys:
+- key: iTunesStoreID
+  type: <integer>
+  presence: optional
+  content: The app's iTunes Store identifier.
+- key: Identifier
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <string>
+  presence: optional
+  content: The app's bundle identifier.
+- key: Options
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that contains the app installation options.
+  subkeys:
+  - key: PurchaseMethod
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 0
+    content: |-
+      The app's purchase type, which must be one of the following values:
+      * '0': Free apps and Legacy Volume Purchase Program (VPP) with a redemption code. This option is only available in iOS.
+      * '1': Volume Purchase Program (VPP) app assignment.
+      Set this value to '1' to install first-party apps without user login to the iTunes Store, such as Mail or Safari, or to install an iOS app with user enrollment.
+- key: ManifestURL
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <string>
+  presence: optional
+  content: The URL of the app manifest, which must begin with 'https:'.
+- key: ManagementFlags
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <integer>
+  presence: optional
+  rangelist:
+  - 1
+  - 4
+  - 5
+  content: |-
+    The bitwise OR of the following management flags:
+    * '1': Remove app upon removal of MDM profile. This also requires that you pass 'true' for 'InstallAsManaged'.
+    * '4': Prevent backup of app data.
+    This value is available in iOS 5 and later, macOS 11 and later, and tvOS 10.2 and later.
+- key: Configuration
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '11.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that contains the initial configuration of the app, if you
+    choose to provide it. This value is available in iOS 7 and later, macOS 11 and
+    later, and tvOS 10.2 and later.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: An app configuration key.
+- key: Attributes
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that contains the initial attributes of the app, if you choose
+    to provide it. This value is available in iOS 7 and later, and tvOS 10.2 and later.
+  subkeys:
+  - key: VPNUUID
+    type: <string>
+    presence: optional
+    content: A per-app VPN unique identifier for this app. This value is available
+      in iOS 7 and later, and tvOS 10.2 and later.
+  - key: AssociatedDomains
+    supportedOS:
+      iOS:
+        introduced: '13.0'
+      tvOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    content: An array that contains the associated domains to add to this app. This
+      value is available in iOS 13 and later.
+    subkeys:
+    - key: AssociatedDomain
+      type: <string>
+  - key: AssociatedDomainsEnableDirectDownloads
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'true', perform claimed site association verification directly at
+      the domain instead of on Apple's servers. Only set this to 'true' for domains
+      that can't access the internet. This value is available in iOS 14 and later.
+  - key: Removable
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      tvOS:
+        introduced: '14.0'
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'false', this app isn't removable while it's a managed app. This value
+      is available in iOS 14 and later, and tvOS 14 and later.
+- key: ChangeManagementState
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  rangelist:
+  - Managed
+  content: |-
+    The change management state. The only supported state is:
+    * 'Managed': Take management of the app if the user installed it already. This also requires that you pass 'true' for 'InstallAsManaged'.
+    This value doesn't work with the User Enrollment feature introduced in iOS 13.
+    Available in iOS 9 and later, macOS 11 and later, and tvOS 10.2 and later.
+- key: InstallAsManaged
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', install the app as a managed app. For manifest-based installation,
+    if this value is 'true', but the package doesn't meet the criteria for management,
+    the installation fails. Reinstall a managed app with this value set to 'false'
+    to change the app to an unmanaged app. This value is available in macOS 11 and
+    later.
+- key: iOSApp
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the app is an iOS app that can run on an Apple silicon in macOS
+    11 and later.
+responsekeys:
+- key: Identifier
+  type: <string>
+  presence: optional
+  content: The app's bundle identifier, if the user accepted the request.
+- key: State
+  type: <string>
+  presence: optional
+  content: The app's installation state, if the user accepted the request. If this
+    value is 'NeedsRedemption', the server must send a redemption code to complete
+    the app installation.
+- key: RejectionReason
+  type: <string>
+  presence: optional
+  rangelist:
+  - AppAlreadyInstalled
+  - AppAlreadyQueued
+  - AppStoreDisabled
+  - CouldNotVerifyAppID
+  - ManagementChangeNotSupported
+  - NotAnApp
+  - NotSupported
+  - PurchaseMethodNotSupported
+  - PurchaseMethodNotSupportedInMultiUser
+  content: The reason, if installation fails.

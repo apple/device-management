@@ -1,0 +1,40 @@
+title: Lock Screen Message
+description: Use this section to define text displayed by shared devices in the login
+  window and lock screen.
+payload:
+  payloadtype: com.apple.shareddeviceconfiguration
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: Allows admins to specify optional text displayed on the login window and
+    lock screen (i.e. a footnote and Asset Tag Information).
+payloadkeys:
+- key: AssetTagInformation
+  title: Asset Tag
+  type: <string>
+  presence: optional
+  content: The asset tag information for the device, displayed in the login window
+    and Lock screen.
+- key: IfLostReturnToMessage
+  title: If Lost message
+  supportedOS:
+    iOS:
+      introduced: 9.3.1
+  type: <string>
+  presence: optional
+  content: Deprecated. Use 'LockScreenFootnote' instead.
+- key: LockScreenFootnote
+  supportedOS:
+    iOS:
+      introduced: 9.3.1
+  type: <string>
+  presence: optional
+  content: The footnote displayed in the login window and Lock screen.

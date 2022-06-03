@@ -1,0 +1,61 @@
+title: Check Out
+description: Check-in protocol check out request keys.
+payload:
+  requesttype: CheckOut
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      supervised: false
+  content: Check-in protocol check out request and response.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - CheckOut
+  content: The message type, which must have a value of 'CheckOut'.
+- key: Topic
+  type: <string>
+  presence: required
+  content: The topic to which the device subscribed.
+- key: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID (Unique Device ID).
+- key: EnrollmentID
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      userenrollment:
+        mode: required
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the device. Available in macOS 10.15
+    and iOS 13.0 and later.

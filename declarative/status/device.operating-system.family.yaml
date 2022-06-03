@@ -1,0 +1,14 @@
+title: Status Device Operating System Family
+description: The device's operating system family.
+payload:
+  statusitemtype: device.operating-system.family
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: device.operating-system.family
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: A string that identifies the operating system family in use on the device,
+    such as 'macOS' or 'iOS'.

@@ -1,0 +1,123 @@
+title: Device Restrictions Command
+description: This command allows the server to determine what restrictions are being
+  enforced on the device, and the total sum of all restrictions. This command requires
+  the Restrictions Query access right.
+payload:
+  requesttype: Restrictions
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowQueryRestrictions
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '6.1'
+      accessrights: AllowQueryRestrictions
+      supervised: false
+  content: This command allows the server to determine what restrictions are being
+    enforced on the device, and the total sum of all restrictions. This command requires
+    the Restrictions Query access right. This technically does work on macOS but it
+    returns a blank dictionary and there no plans to change this behavior.
+payloadkeys:
+- key: ProfileRestrictions
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the device reports restrictions from each profile. This value
+    is available in iOS 4 and later, and tvOS 6.1 and later.
+responsekeys:
+- key: GlobalRestrictions
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains the global restrictions in effect. This value
+    is available in iOS 4 and later, and tvOS 6.1 and later.
+  subkeytype: RestrictionsDictionary
+  subkeys: &id001
+  - key: restrictedBool
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of Boolean restrictions.
+    subkeytype: BooleanDictionary
+    subkeys:
+    - key: ANY restriction name
+      type: <dictionary>
+      presence: optional
+      content: The Boolean restriction parameters.
+      subkeys:
+      - key: value
+        type: <boolean>
+        presence: required
+        content: The value of the restriction.
+  - key: restrictedValue
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of numeric restrictions.
+    subkeytype: ValueDictionary
+    subkeys:
+    - key: ANY restriction name
+      type: <dictionary>
+      presence: optional
+      content: The numeric restriction parameters.
+      subkeys:
+      - key: value
+        type: <integer>
+        presence: required
+        content: The value of the restriction.
+  - key: intersection
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of intersected restrictions. Intersected restrictions indicate
+      that new restrictions can only reduce the number of strings in the set.
+    subkeytype: IntersectionDictionary
+    subkeys:
+    - key: ANY restriction name
+      type: <dictionary>
+      presence: optional
+      content: The intersected restriction parameters.
+      subkeys:
+      - key: values
+        type: <array>
+        presence: required
+        content: The values of the restriction.
+        subkeys:
+        - key: valuesItem
+          type: <string>
+  - key: union
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of unioned restrictions. Unioned restrictions indicate that
+      new restrictions can add to the set.
+    subkeytype: UnionDictionary
+    subkeys:
+    - key: ANY restriction name
+      type: <dictionary>
+      presence: optional
+      content: The unioned restriction parameters.
+      subkeys:
+      - key: values
+        type: <array>
+        presence: required
+        content: The values of the restriction.
+        subkeys:
+        - key: valuesItem
+          type: <string>
+- key: ProfileRestrictions
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains dictionaries of restrictions from each profile.
+    This value is only available when 'ProfileRestrictions' is 'true' in the command.
+    The keys are the identifiers of the profiles. This value is available in iOS 4
+    and later, and tvOS 6.1 and later.
+  subkeys:
+  - key: ANY profile identifier
+    type: <dictionary>
+    presence: optional
+    content: The profile identifiers.
+    subkeytype: RestrictionsDictionary
+    subkeys: *id001

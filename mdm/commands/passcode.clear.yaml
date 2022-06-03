@@ -1,0 +1,23 @@
+title: Clear Passcode Command
+description: This command allows the server to clear the passcode on the device. This
+  command requires the Device Lock and Passcode Removal right.
+payload:
+  requesttype: ClearPasscode
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowPasscodeRemovalAndLock
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to clear the passcode on the device. This
+    command requires the Device Lock and Passcode Removal right.
+payloadkeys:
+- key: UnlockToken
+  type: <data>
+  presence: required
+  content: The unlock token value that the device provides in its 'TokenUpdateMessage'
+    check-in message.

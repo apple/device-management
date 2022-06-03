@@ -1,0 +1,86 @@
+title: LOM Device Request Command
+description: Issues LOM requests to devices.
+payload:
+  requesttype: LOMDeviceRequest
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      accessrights: DeviceLockAndRemovePasscode
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Used to send LOM requests ("PowerON", "PowerOFF", "Reset") to LOM Controller
+    which then forwards the request to LOM Devices.
+payloadkeys:
+- key: RequestList
+  type: <array>
+  presence: required
+  content: An array of requests to perform.
+  subkeys:
+  - key: RequestListItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: DeviceRequestType
+      type: <string>
+      presence: required
+      rangelist:
+      - PowerON
+      - PowerOFF
+      - Reset
+      content: The requested action to perform on the device.
+    - key: DeviceRequestUUID
+      type: <string>
+      presence: required
+      content: The unique identifier of the request.
+    - key: DeviceDNSName
+      type: <string>
+      presence: required
+      content: The DNS name of the device. This should match the 'dNSName' in SCEP.PayloadContent.SubjectAltName.
+    - key: PrimaryIPv6AddressList
+      type: <array>
+      presence: required
+      content: An array that contains the IPv6 addresses for primary LOM-compatible
+        Ethernet interfaces for the device.
+      subkeys:
+      - key: PrimaryIPv6AddressListItem
+        type: <string>
+        presence: required
+    - key: SecondaryIPv6AddressList
+      type: <array>
+      presence: required
+      content: An array that contains the IPv6 addresses for secondary LOM-compatible
+        Ethernet interfaces for the device.
+      subkeys:
+      - key: SecondaryIPv6AddressListItem
+        type: <string>
+        presence: required
+    - key: LOMProtocolVersion
+      type: <integer>
+      presence: required
+      content: The LOM protocol version that the device supports. Provide the same
+        value that 'LOMProtocolVersion' receives in the LOMSetupRequestResponse.
+responsekeys:
+- key: ResponseList
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes the status of each request.
+  subkeys:
+  - key: ResponseListItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: DeviceRequestSuccess
+      type: <boolean>
+      presence: required
+      content: If 'true', the request was successful.
+    - key: DeviceRequestUUID
+      type: <string>
+      presence: required
+      content: The unique identifier of the request for this response list item.
+    - key: DeviceRequestReturnError
+      type: <string>
+      presence: optional
+      content: If present, a description of the error for a failed request.

@@ -1,0 +1,73 @@
+title: Managed Media List Command
+description: This command allows the server to query for installed 3rd party applications.
+payload:
+  requesttype: ManagedMediaList
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+  content: This command allows the server to query for installed 3rd party applications.
+responsekeys:
+- key: Books
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes managed books.
+  subkeys:
+  - key: BooksItem
+    type: <dictionary>
+    subkeys:
+    - key: iTunesStoreID
+      type: <integer>
+      presence: required
+      content: The book's iTunes Store identifier.
+    - key: State
+      type: <string>
+      presence: optional
+      content: |-
+        The installation state of this book, which is one of the following values:
+        * 'Queued'
+        * 'PromptingForLogin'
+        * 'Updating'
+        * 'Installing'
+        * 'Managed'
+        * 'ManagedButUninstalled'
+        * 'Installed'
+        * 'Uninstalled'
+        * 'Failed'
+        * 'Unknown'
+        The 'Failed' and 'Unknown' states are transient and the device only reports them once. Books from the Book Store report their state as 'Installed' instead of 'Managed'.
+    - key: PersistentID
+      type: <string>
+      presence: optional
+      content: The book's persistent identifier in reverse-DNS form; for example,
+        'com.acme.manuals.training'.
+    - key: Kind
+      type: <string>
+      presence: optional
+      content: |-
+        The kind of the media, which is one of the following values:
+        * 'pdf': A PDF file
+        * 'epub': An EPUB file in 'gzip' format
+        * 'ibooks': An iBooks Author file in 'gzip' format
+        * The file extension in the URL
+        This value is available in iOS 8 and later.
+    - key: Version
+      type: <string>
+      presence: optional
+      content: The book's version number.
+    - key: Author
+      type: <string>
+      presence: optional
+      content: The name of the book's author.
+    - key: Title
+      type: <string>
+      presence: optional
+      content: The book's title.

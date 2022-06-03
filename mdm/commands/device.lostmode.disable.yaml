@@ -1,0 +1,17 @@
+title: Disable MDM Lost Mode Location
+description: This command allows the server to take the device out of MDM lost mode.
+payload:
+  requesttype: DisableLostMode
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to take the device out of MDM lost mode.

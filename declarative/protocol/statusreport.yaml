@@ -1,0 +1,57 @@
+title: Status Report
+description: Status sent by the client.
+payload:
+  requesttype: StatusReport
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: StatusItems
+  title: Status Items
+  type: <dictionary>
+  presence: required
+  content: The status items for this report.
+- key: Errors
+  title: Errors
+  type: <array>
+  presence: required
+  content: An array of errors for this status report.
+  subkeys:
+  - key: _Errors
+    title: Error
+    type: <dictionary>
+    content: Error information for a status item that cannot be returned.
+    subkeys:
+    - key: StatusItem
+      title: Status Item
+      type: <string>
+      presence: required
+      content: The status item that this error pertains to.
+    - key: Reasons
+      title: Status Reasons
+      type: <array>
+      presence: optional
+      content: An array of reasons for the error.
+      subkeytype: StatusReason
+      subkeys:
+      - key: _Reasons
+        title: Status Reason
+        type: <dictionary>
+        content: Information about a status error.
+        subkeytype: StatusReason
+        subkeys:
+        - key: Code
+          title: Error Code
+          type: <string>
+          presence: required
+          content: The error code for this error.
+        - key: Description
+          title: Error Description
+          type: <string>
+          presence: optional
+          content: The description for this error.
+        - key: Details
+          title: Error Details
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that contains further details about this error.

@@ -1,0 +1,261 @@
+title: Privacy Preferences Policy Control
+description: Configures Security Preferences:Privacy settings
+payload:
+  payloadtype: com.apple.TCC.configuration-profile-policy
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: Services
+  type: <dictionary>
+  presence: required
+  content: A dictionary whose keys are limited to the privacy policy control services.  In
+    the case of conflicting specifications, the most restrictive setting (deny) is
+    used.
+  subkeys:
+  - key: AddressBook
+    type: <array>
+    presence: optional
+    content: Specifies the policies for contact information managed by the Contacts.app.
+    subkeytype: Identity
+    subkeys: &id001
+    - key: IdentityDict
+      type: <dictionary>
+      subkeys:
+      - key: Identifier
+        type: <string>
+        presence: required
+        content: The bundle ID or installation path of the binary.
+      - key: IdentifierType
+        type: <string>
+        presence: required
+        rangelist:
+        - bundleID
+        - path
+        content: The type of identifier value. Application bundles must be identified
+          by bundle ID. Nonbundled binaries must be identified by installation path.
+          Helper tools embedded within an application bundle automatically inherit
+          the permissions of their enclosing app bundle.
+      - key: CodeRequirement
+        type: <string>
+        presence: required
+        content: Obtained via the command ''codesign –display -r -''.
+      - key: StaticCode
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If 'true', statically validate the code requirement. Used only if
+          the process invalidates its dynamic code signature.
+      - key: Allowed
+        type: <boolean>
+        presence: required
+        content: If 'true', access is granted; otherwise, the process doesn't have
+          access. The user isn't prompted and can't change this value.
+      - key: Authorization
+        supportedOS:
+          macOS:
+            introduced: '11.0'
+        type: <string>
+        presence: optional
+        rangelist:
+        - Allow
+        - Deny
+        - AllowStandardUserToSetSystemService
+        content: |-
+          The 'Authorization' key is an optional replacement for the 'Allowed' key. Every payload must specify either 'Authorization' or 'Allowed', but not both.
+          'Allow': Equivalent to a 'true' value for the 'Allowed' key.
+          'Deny': Equivalent to a f'alse' value for the 'Allowed' key.
+          'AllowStandardUserToSetSystemService:' allows a standard (non-admin) user to configure the permissions for the specified app in the Privacy preferences for services that otherwise require admin authorization. 'AllowStandardUserToSetSystemService' is only valid for the 'ListenEvent' and 'ScreenCapture' services.
+          Available in macOS 11 and later.
+      - key: Comment
+        type: <string>
+        presence: optional
+        content: Not used.
+      - key: AEReceiverIdentifier
+        type: <string>
+        presence: optional
+        content: The identifier of the process receiving an AppleEvent sent by the
+          Identifier process. This identifier is required for AppleEvents service;
+          not valid for other services.
+      - key: AEReceiverIdentifierType
+        type: <string>
+        presence: optional
+        rangelist:
+        - bundleID
+        - path
+        content: The type of AEReceiverIdentifier value, either 'bundleID' or 'path'.
+          This setting is required for AppleEvents service; not valid for other services.
+      - key: AEReceiverCodeRequirement
+        type: <string>
+        presence: optional
+        content: The code requirement for the receiving binary. This code requirement
+          is required for AppleEvents service; not valid for other services.
+  - key: Calendar
+    type: <array>
+    presence: optional
+    content: Specifies the policies for calendar information managed by the Calendar.app.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Reminders
+    type: <array>
+    presence: optional
+    content: Specifies the policies for reminders information managed by the Reminders
+      app.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Photos
+    type: <array>
+    presence: optional
+    content: The pictures managed by the Photos app in '~/Pictures/.photoslibrary'.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Camera
+    type: <array>
+    presence: optional
+    content: A system camera. Access to the camera cannot be given in a profile; it
+      can only be denied.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Microphone
+    type: <array>
+    presence: optional
+    content: A system microphone. Access to the microphone cannot be given in a profile;
+      it can only be denied.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Accessibility
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the app via the Accessibility subsystem.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: PostEvent
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the application to use CoreGraphics APIs to
+      send CGEvents to the system event stream.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAllFiles
+    type: <array>
+    presence: optional
+    content: Allows the application access to all protected files, including system
+      administration files.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicySysAdminFiles
+    type: <array>
+    presence: optional
+    content: Allows the application access to some files used in system administration.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: AppleEvents
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the app sending restricted AppleEvents to
+      another process.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: MediaLibrary
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access Apple Music, music and video activity,
+      and the media library.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: FileProviderPresence
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows a File Provider application to know when the user is using files
+      managed by the File Provider.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: ListenEvent
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to use CoreGraphics and HID APIs to listen to
+      (receive) CGEvents and HID events from all processes. Access to these events
+      cannot be given in a profile; it can only be denied.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: ScreenCapture
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to capture (read) the contents of the system display.
+      Access to the contents cannot be given in a profile; it can only be denied.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SpeechRecognition
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to use the system Speech Recognition facility
+      and to send speech data to Apple.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyDesktopFolder
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access files in the user's Desktop folder.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyDocumentsFolder
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access files in the user's Documents folder.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyDownloadsFolder
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access files in the user's Downloads folder.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyNetworkVolumes
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access files on network volumes.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyRemovableVolumes
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access files on removable volumes.
+    subkeytype: Identity
+    subkeys: *id001

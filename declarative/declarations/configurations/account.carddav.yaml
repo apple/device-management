@@ -1,0 +1,36 @@
+title: Account:CardDAV
+description: Use this configuration to define settings for access to CardDAV servers.
+payload:
+  declarationtype: com.apple.configuration.account.carddav
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: A CardDAV configuration defines a CardDAV contacts account for a user.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this address book account. If not
+    present, the system generates a suitable default.
+- key: HostName
+  title: Server Host Name
+  type: <string>
+  presence: required
+  content: The hostname of the CardDAV server (or IP address).
+- key: Port
+  title: Server Port
+  type: <integer>
+  presence: optional
+  content: The port number for the CardDAV server.
+- key: Path
+  title: Server Path
+  type: <string>
+  presence: optional
+  content: The path for the CardDAV server.
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the credentials for
+    this account. The corresponding asset must be of type UserNameAndPasswordCredentials.

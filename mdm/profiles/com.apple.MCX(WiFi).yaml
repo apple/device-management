@@ -1,0 +1,39 @@
+title: Wi-Fi Managed Settings
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: RequireAdminForIBSS
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If YES, requires administrator authorization to enable IBSS.
+- key: RequireAdminForAirPortNetworkChange
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If YES, requires administrator authorization for network changes.
+- key: RequireAdminToTurnAirPortOnOff
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If YES, requires administrator authorization to turn Wi-Fi on or off.

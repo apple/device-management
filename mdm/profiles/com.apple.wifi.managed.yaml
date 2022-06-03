@@ -1,0 +1,627 @@
+title: Wi-Fi
+description: Use this section to define Wi-Fi settings
+payload:
+  payloadtype: com.apple.wifi.managed
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '5.1'
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '3.2'
+      allowmanualinstall: true
+payloadkeys:
+- key: AutoJoin
+  title: Auto Join
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'true', the device joins the network automatically.
+    If 'false', the user must tap the network name to join it.
+    Available in iOS 5.0 and later, and in macOS 10.7 and later.
+- key: SSID_STR
+  title: SSID
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <string>
+  presence: optional
+  content: The SSID of the Wi-Fi network to be used. In iOS 7.0 and later, the SSID
+    is optional if a 'DomainName' value is provided.
+- key: HIDDEN_NETWORK
+  title: Hidden
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', defines this network as hidden.
+- key: ProxyType
+  title: Proxy Type
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  rangelist:
+  - None
+  - Manual
+  - Auto
+  default: None
+  content: |-
+    The proxy type, if any, to use. If you choose the manual proxy type, you need the proxy server address, including its port and optionally a user name and password into the proxy server. If you choose the auto proxy type, you can enter a proxy autoconfiguration (PAC) URL.
+    Available in iOS 5.0 and later, and on all versions of macOS.
+- key: EncryptionType
+  title: Encryption Type
+  type: <string>
+  presence: optional
+  rangelist:
+  - WEP
+  - WPA
+  - WPA2
+  - WPA3
+  - Any
+  - None
+  default: Any
+  content: |-
+    The encryption type for the network.
+
+    WPA specifies WPA only; WPA2 applies to both encryption types.
+    Available in iOS 4.0 and later, and in all versions of macOS. The 'None' value is available in iOS 5.0 and later, and the 'WPA2' value is available in iOS 8.0 and later.
+- key: Password
+  title: Password
+  type: <string>
+  presence: optional
+  content: The password for the access point.
+- key: PayloadCertificateUUID
+  title: Certificate UUID
+  type: <string>
+  presence: optional
+  format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  content: The UUID of the certificate payload within the same profile to use for
+    the client credential.
+- key: EAPClientConfiguration
+  title: EAP Client Configuration
+  type: <dictionary>
+  presence: optional
+  content: The enterprise network configuration.
+  subkeys:
+  - key: AcceptEAPTypes
+    title: Accept EAP Types
+    type: <array>
+    presence: required
+    content: |-
+      The system accepts the following EAP types:
+      13 = TLS
+      17 = LEAP
+      18 = EAP-SIM
+      21 = TTLS
+      23 = EAP-AKA
+      25 = PEAP
+      43 = EAP-FAST
+
+      For EAP-TLS authentication without a network payload, install the necessary identity certificates and have your users select EAP-TLS mode in the 802.1X credentials dialog that appears when they connect to the network. For other EAP types, a network payload is necessary and must specify the correct settings for the network.
+    subkeys:
+    - key: EAPType
+      title: EAP Type
+      type: <integer>
+      rangelist:
+      - 13
+      - 17
+      - 18
+      - 21
+      - 23
+      - 25
+      - 43
+  - key: UserName
+    title: Username
+    type: <string>
+    presence: optional
+    content: The user name for the account. If you don't specify a value, the system
+      prompts the user during login.
+  - key: UserPassword
+    title: Password
+    type: <string>
+    presence: optional
+    content: The user's password. If you don't specify a value, the system prompts
+      the user during login.
+  - key: OneTimePassword
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the user receives a prompt for a password each time they connect
+      to the network.
+  - key: PayloadCertificateAnchorUUID
+    title: Certificate Anchor UUID
+    type: <array>
+    presence: optional
+    content: An array of the UUID of a certificate payload to trust for authentication.
+      Use this key to prevent the device from asking the user whether to trust the
+      listed certificates. Dynamic trust (the certificate dialogue) is in a disabled
+      state if you specify this property without also enabling  'TLSAllowTrustExceptions'.
+    subkeys:
+    - key: CertificateAnchorUUID
+      title: Individual Certificate Anchor UUID
+      type: <string>
+      format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  - key: TLSTrustedCertificates
+    title: TLS Trusted Certificates
+    type: <array>
+    presence: optional
+    content: An array of trusted certificates. Each entry in the array must contain
+      certificate data that represents an anchor certificate used for verifying the
+      server certificate.
+    subkeys:
+    - key: TLSTrustedCertificatesItem
+      type: <string>
+      presence: required
+      content: A certificate identifier.
+  - key: TLSTrustedServerNames
+    title: TLS Trusted Server Names
+    type: <array>
+    presence: optional
+    content: |-
+      The list of accepted server certificate common names. If a server presents a certificate that isn't in this list, the system doesn't trust it.
+      If you specify this property, the system disables dynamic trust (the certificate dialog) unless you also specify 'TLSAllowTrustExceptions'  with the value 'true'.
+      If necessary, use wildcards to specify the name, such as 'wpa.*.example.com'.
+    subkeys:
+    - key: TLSTrustedServerName
+      title: Individual Trusted TLS Server Name
+      type: <string>
+  - key: TLSAllowTrustExceptions
+    title: Allow Trust Exceptions
+    supportedOS:
+      iOS:
+        removed: '8.0'
+    type: <boolean>
+    presence: optional
+    default: true
+    content: |-
+      If 'true', allows a dynamic trust decision by the user. The dynamic trust is the certificate dialogue that appears when the system doesn't trust a certificate.
+      If 'false', the authentication fails if the system doesn't already trust the certificate.
+      As of iOS 8, Apple no longer supports this key.
+  - key: TLSCertificateIsRequired
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or EAP-FAST. If 'false', allows for zero-factor authentication for EAP-TLS.
+      If you don't specify a value, the default is 'true' for EAP-TLS, and 'false' for other EAP types.
+  - key: TTLSInnerAuthentication
+    title: TTLS Inner Authentication
+    type: <string>
+    presence: optional
+    rangelist:
+    - PAP
+    - EAP
+    - CHAP
+    - MSCHAP
+    - MSCHAPv2
+    default: MSCHAPv2
+    content: The inner authentication that the TTLS module uses.
+  - key: TLSMinimumVersion
+    supportedOS:
+      iOS:
+        introduced: '11.0'
+      macOS:
+        introduced: '10.13'
+      tvOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    rangelist:
+    - '1.0'
+    - '1.1'
+    - '1.2'
+    default: '1.0'
+    content: The minimum TLS version for EAP authentication.
+  - key: TLSMaximumVersion
+    supportedOS:
+      iOS:
+        introduced: '11.0'
+      macOS:
+        introduced: '10.13'
+      tvOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    rangelist:
+    - '1.0'
+    - '1.1'
+    - '1.2'
+    default: '1.2'
+    content: The maximum TLS version for EAP authentication.
+  - key: OuterIdentity
+    title: Outer Identity
+    type: <string>
+    presence: optional
+    content: |-
+      A name that hides the user's true name. The user's actual name appears only inside the encrypted tunnel. For example, you might set this to anonymous or anon, or anon@mycompany.net. It can increase security because an attacker can't see the authenticating user's name in the clear.
+
+      This key is only relevant to TTLS, PEAP, and EAP-FAST.
+  - key: EAPFASTUsePAC
+    title: Use PAC
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the device uses an existing PAC if it's present. Otherwise,
+      the server must present its identity using a certificate.
+  - key: EAPFASTProvisionPAC
+    title: Provision PAC
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If 'true', allows PAC provisioning.
+
+      This value is only applicable if 'EAPFASTUsePAC' is 'true'. This value must be 'true' for EAP-FAST PAC usage to succeed because there is no other way to provision a PAC.
+  - key: EAPFASTProvisionPACAnonymously
+    title: Provision PAC Anonymously
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', provisions the device anonymously. Note that there are known
+      machine-in-the-middle attacks for anonymous provisioning.
+  - key: EAPSIMNumberOfRANDs
+    title: Allow Two RANDs
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 2
+    - 3
+    default: 3
+    content: |-
+      The minimum number of RAND values to accept from the server.
+      For use with EAP-SIM only.
+  - key: SystemModeCredentialsSource
+    type: <string>
+    presence: optional
+    content: |-
+      Set this string to 'ActiveDirectory' to use the AD computer name and password credentials.
+      If using this property, you can't use 'SystemModeUseOpenDirectoryCredentials'.
+  - key: SystemModeUseOpenDirectoryCredentials
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If 'true', the system mode connection tries to use the Open Directory credentials.
+      If using this property, you can't use  'SystemModeCredentialsSource'.
+  - key: OneTimeUserPassword
+    title: Per-Connection Password
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the user receives a prompt for a password each time they connect
+      to the network.
+- key: DisplayedOperatorName
+  title: Displayed Operator Name
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <string>
+  presence: optional
+  content: |-
+    The operator name to display when connected to this network. Used only with Wi-Fi Hotspot 2.0 access points.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+- key: DomainName
+  title: Domain Name
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <string>
+  presence: optional
+  content: |-
+    The primary domain of the tunnel.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+- key: RoamingConsortiumOIs
+  title: Roaming OIs
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <array>
+  presence: optional
+  content: |-
+    An array of Roaming Consortium Organization Identifiers used for Wi-Fi Hotspot 2.0 negotiation.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  subkeys:
+  - key: RoamingConsortiumOI
+    type: <string>
+    format: ^([0-9A-Za-z]{6})|([0-9A-Za-z]{9})$
+- key: ServiceProviderRoamingEnabled
+  title: Roaming Enable
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', allows connection to roaming service providers.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+- key: IsHotspot
+  title: Is Hotspot
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', the device treats the network as a hotspot.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+- key: HESSID
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <string>
+  presence: optional
+  content: The HESSID used for Wi-Fi Hotspot 2.0 negotiation.
+- key: NAIRealmNames
+  title: Realm Names
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+  type: <array>
+  presence: optional
+  content: |-
+    An array of Network Access Identifier Realm names used for Wi-Fi Hotspot 2.0 negotiation.
+    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  subkeys:
+  - key: NAIRealmName
+    type: <string>
+- key: MCCAndMNCs
+  title: MCC/MNCs
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: |-
+    An array of Mobile Country Code/Mobile Network Code (MCC/MNC) pairs used for Wi-Fi Hotspot 2.0 negotiation. Each string must contain exactly six digits.
+    Available in iOS 7.0 and later. This feature is not supported in macOS.
+  subkeys:
+  - key: MCCAndMNC
+    type: <string>
+    format: ^[0-9]{6}$
+- key: CaptiveBypass
+  title: Disable Captive Network Detection
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', Captive Network detection will be bypassed when the device connects to the network.
+    Available in iOS 10.0 and later.
+- key: QoSMarkingPolicy
+  title: QoS Marking Policy
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+    macOS:
+      introduced: '10.13'
+  type: <dictionary>
+  presence: optional
+  content: |-
+    A dictionary that contains the list of apps that are allowed to benefit from L2 and L3 marking. When this dictionary isn't present, all apps are allowed to use L2 and L3 marking when the Wi-Fi network supports Cisco QoS fast lane.
+    Available in iOS 10.0 and later, and in macOS 10.13 and later.
+  subkeys:
+  - key: QoSMarkingAllowListAppIdentifiers
+    title: Allowlisted App Identifiers
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+      macOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    content: An array of app bundle identifiers that defines the allow list for L2
+      and L3 marking for traffic that goes to the Wi-Fi network. If the array isn't
+      present, but the 'QoSMarkingPolicy' key is present — even empty — no apps can
+      use L2 and L3 marking.
+    subkeys: &id001
+    - key: appBundleID
+      title: Allowlisted App
+      type: <string>
+  - key: QoSMarkingWhitelistedAppIdentifiers
+    title: Whitelisted App Identifiers
+    supportedOS:
+      iOS:
+        deprecated: '14.5'
+    type: <array>
+    presence: optional
+    content: Use 'QoSMarkingAllowListAppIdentifiers' instead.
+    subkeys: *id001
+  - key: QoSMarkingAppleAudioVideoCalls
+    title: QoS marking for audio/video calls
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'true', adds audio and video traffic of built-in audio/video services,
+      such as FaceTime and Wi-Fi Calling, to the allow list for L2 and L3 marking
+      for traffic that goes to the Wi-Fi network.
+  - key: QoSMarkingEnabled
+    title: Allow QoS marking
+    type: <boolean>
+    presence: optional
+    default: true
+    content: |-
+      If 'true', disables L3 marking and only uses L2 marking for traffic that goes to the Wi-Fi network.
+
+      If 'false', the system behaves as if Wi-Fi doesn't have an association with a Cisco QoS fast lane network.
+- key: SetupModes
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.7'
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: An array of strings that contain the type of connection mode to be attached.
+  subkeys:
+  - key: SetupModesItem
+    type: <string>
+    presence: required
+    rangelist:
+    - System
+    - Loginwindow
+    content: A type of connection mode.
+- key: EnableIPv6
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables IPv6 on this interface.
+- key: TLSCertificateRequired
+  title: Certificate Required
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or EAP-FAST.
+    If 'false', allows for zero-factor authentication for EAP-TLS.
+- key: ProxyServer
+  title: Proxy Server
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The proxy server's network address.
+- key: ProxyServerPort
+  title: Proxy Server Port
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 65535
+  content: The proxy server's port number.
+- key: ProxyUsername
+  title: Proxy Username
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The user name used to authenticate to the proxy server.
+- key: ProxyPassword
+  title: Proxy Password
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The password used to authenticate to the proxy server.
+- key: ProxyPACURL
+  title: Proxy Username
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The URL of the PAC file that defines the proxy configuration.
+- key: ProxyPACFallbackAllowed
+  title: Proxy PAC Fallback Allowed
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows connecting directly to the destination if the PAC file
+    is unreachable.
+- key: DisableAssociationMACRandomization
+  title: Disable MAC address randomization during association
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: '7.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true,' disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
+    This value is only locked when the profile is installed by MDM. If the profile is manually installed, the value is set but the user can change it.
+    Available in iOS 14 and later, and watchOS 7 and later.

@@ -1,0 +1,52 @@
+title: System Migration
+description: ''
+payload:
+  payloadtype: com.apple.systemmigration
+  supportedOS:
+    macOS:
+      introduced: 10.12.4
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Provides a way of customizing items migrated during System Migration.
+payloadkeys:
+- key: CustomBehavior
+  type: <array>
+  presence: optional
+  content: The list of custom behavior dictionaries.
+  subkeys:
+  - key: CustomBehaviorItem
+    type: <dictionary>
+    subkeys:
+    - key: Context
+      type: <string>
+      presence: required
+      content: The context that custom paths apply to.
+    - key: Paths
+      type: <array>
+      presence: required
+      content: The list of custom behavior path dictionaries.
+      subkeys:
+      - key: PathsItem
+        type: <dictionary>
+        subkeys:
+        - key: SourcePath
+          type: <string>
+          presence: required
+          content: The path to the migrating file or directory on the source system.
+        - key: SourcePathInUserHome
+          type: <boolean>
+          presence: required
+          content: If 'true', the source path is located within a user home directory.
+        - key: TargetPath
+          type: <string>
+          presence: required
+          content: The path to the destination file or directory on the target system.
+        - key: TargetPathInUserHome
+          type: <boolean>
+          presence: required
+          content: If 'true', the target path is located within a user home directory.

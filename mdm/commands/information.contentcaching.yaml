@@ -1,0 +1,629 @@
+title: Content Caching Information Command
+description: This command allows the server to query for information about Content
+  Caching.
+payload:
+  requesttype: ContentCachingInformation
+  supportedOS:
+    macOS:
+      introduced: 10.15.4
+      accessrights: AllowQueryNetworkInformation
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to query for information about Content Caching.
+responsekeys:
+- key: StatusResponse
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains the status of content caching on a device.
+  subkeys:
+  - key: Activated
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the device has enabled content caching. Enabling content caching
+      doesn't guarantee service. See the 'Active' key for the readiness of content
+      caching to serve requests.
+  - key: Active
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', content caching is ready to serve requests.
+  - key: ActualCacheUsed
+    type: <integer>
+    presence: optional
+    content: The actual amount of disk space, in bytes, that cached content uses.
+      See related values 'CacheUsed' and 'PersonalCacheUsed'.
+  - key: AlertsForPeerFilterRanges
+    type: <dictionary>
+    presence: optional
+    content: |-
+      The error conditions the content cache detected in the 'PeerFilterRanges' in the installed 'com.apple.AssetCache.managed' payload.
+      To display these alerts on the device, set 'DisplayAlerts' to 'true' in the installed ContentCaching profile.
+    subkeys:
+    - key: Index into the PeerFilterRanges in the installed com.apple.AssetCache.managed
+        payload
+      type: <dictionary>
+      presence: required
+      content: A dictionary that describes the alerts for the peer filter ranges.
+      subkeys:
+      - key: className
+        type: <string>
+        presence: required
+        rangelist:
+        - AssetCacheUnfriendlyPeersInFilterRangeAlert
+        content: The type of the alert.
+      - key: postDate
+        type: <date>
+        presence: required
+        content: The date of the alert.
+      - key: peerFilterRangeIndex
+        type: <integer>
+        presence: required
+        content: The index into the 'PeerFilterRanges' in the installed ContentCaching
+          payload.
+      - key: addresses
+        type: <array>
+        presence: required
+        content: An array of local IP addresses of peer content caches that rejected
+          requests from the content cache.
+        subkeys:
+        - key: address
+          type: <string>
+          presence: required
+          content: Local IP address of a peer Content Cache that rejected requests
+            from this Content Cache.
+  - key: Alerts
+    type: <array>
+    presence: optional
+    content: |-
+      An array that contains the error conditions the content cache detected that aren't related to peer filter ranges, parent content caches, or peer content caches.
+      See 'AlertsForPeerFilterRanges' for errors related to peer filter ranges.
+      See 'Parents' and 'Peers' for errors related to parent and peer content caches.
+      To display these alerts on the device, set 'DisplayAlerts' to 'true' in the installed ContentCaching profile.
+    subkeys:
+    - key: AlertsItem
+      type: <dictionary>
+      presence: required
+      subkeys:
+      - key: className
+        type: <string>
+        presence: required
+        rangelist:
+        - AssetCacheLowSpaceAlert
+        - AssetCacheNoSpaceAlert
+        - AssetCacheRegistrationRejectedAlert
+        - AssetCacheRegistrationUnavailableAlert
+        - AssetCacheResourceMissingAlert
+        content: The type of the alert.
+      - key: postDate
+        type: <date>
+        presence: required
+        content: The date of the alert.
+      - key: cacheLimit
+        type: <integer>
+        presence: optional
+        content: The limit, in bytes, for the content cache at the time of the alert.
+          This value only applies to 'AssetCacheLowSpaceAlert' and 'AssetCacheNoSpaceAlert'
+          types.
+      - key: reservedVolumeSpace
+        type: <integer>
+        presence: optional
+        content: The space, in bytes, that the system reserves at the time of the
+          alert. This value only applies to the 'AssetCacheLowSpaceAlert' and 'AssetCacheNoSpaceAlert'
+          types.
+      - key: resource
+        type: <string>
+        presence: optional
+        content: The resource that was missing or inaccessible at the time of the
+          alert. This value only applies to the 'AssetCacheResourceMissingAlert' type.
+      - key: pathPreventingAccess
+        type: <string>
+        presence: optional
+        content: The subpath of the resource that was missing or inaccessible at the
+          time of the alert. This value only applies to the 'AssetCacheResourceMissingAlert'
+          type.
+  - key: CacheDetails
+    type: <dictionary>
+    presence: optional
+    content: The amount of disk space that various categories of cached content use.
+      Apple defines these categories and they're subject to change.
+    subkeys:
+    - key: Category Name
+      type: <integer>
+      presence: required
+      content: The amount of disk space, in bytes, that this category of cached content
+        uses.
+  - key: CacheFree
+    type: <integer>
+    presence: optional
+    content: The amount of disk space, in bytes, available to the content cache.
+  - key: CacheLimit
+    type: <integer>
+    presence: optional
+    content: The maximum amount of disk space, in bytes, available to the content
+      cache. A value of '0' indicates an unlimited amount. This value corresponds
+      to 'CacheLimit' in the installed ContentCaching profile.
+  - key: CacheStatus
+    type: <string>
+    presence: optional
+    rangelist:
+    - LOWSPACE
+    - OK
+    content: The level of cache pressure. 'LowSpace' means cache pressure is high.
+  - key: CacheUsed
+    type: <integer>
+    presence: optional
+    content: The amount of disk space, in bytes, cached content uses. Content caching
+      allocates space in its cache for entire files even when it stores only part
+      of those files in its cache.
+  - key: DataMigrationCompleted
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the content cache finished moving from one volume to another.
+  - key: DataMigrationError
+    type: <dictionary>
+    presence: optional
+    content: The error that occurred while the content cache moved from one volume
+      to another.
+    subkeys:
+    - key: domain
+      type: <string>
+      presence: required
+      content: The error domain.
+    - key: code
+      type: <integer>
+      presence: required
+      content: The error code.
+    - key: userInfo
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains additional information about the error.
+      subkeys:
+      - key: ANY
+        type: <any>
+        presence: optional
+        content: A dictionary that contains additional details about the error.
+  - key: DataMigrationProgress
+    type: <real>
+    presence: optional
+    range:
+      min: 0.0
+      max: 1.0
+    content: A floating-point number between '0.0' and '1.0' that indicates the percentage
+      of progress in moving the content cache from one volume to another. A value
+      of '1.0' indicates that the content cache has fully migrated.
+  - key: MaxCachePressureLast1Hour
+    type: <real>
+    presence: optional
+    range:
+      min: 0.0
+      max: 1.0
+    content: A floating-point number between '0.0' and '1.0' that represents how often
+      the cache needed more disk space over the last hour of operation. A lower value
+      is better.
+  - key: Parents
+    type: <array>
+    presence: optional
+    content: An array of dictionaries that describes parent content caches.
+    subkeys:
+    - key: ParentsItem
+      type: <dictionary>
+      presence: optional
+      subkeys:
+      - key: address
+        type: <string>
+        presence: required
+        content: The local IP address of the parent content cache.
+      - key: alert
+        type: <dictionary>
+        presence: optional
+        content: A dictionary that describes an alert related to the parent content
+          cache.
+        subkeys:
+        - key: className
+          type: <string>
+          presence: required
+          rangelist:
+          - AssetCacheParentCycleAlert
+          - AssetCacheParentDepthAlert
+          content: The type of the alert.
+        - key: postDate
+          type: <date>
+          presence: required
+          content: The date of the alert.
+        - key: addresses
+          type: <array>
+          presence: required
+          content: An array of local IP addresses of parent content caches.
+          subkeys:
+          - key: address
+            type: <string>
+            presence: required
+            content: Local IP address of a parent Content Cache.
+      - key: details
+        type: <dictionary>
+        presence: required
+        content: A dictionary that contains additional details about the parent content
+          cache.
+        subkeys:
+        - key: ac-power
+          type: <boolean>
+          presence: optional
+          default: false
+          content: If 'true', the parent content cache power source is AC; otherwise,
+            an internal battery provides its power.
+        - key: cache-size
+          type: <integer>
+          presence: optional
+          content: The maximum amount of disk space, in bytes, available to the parent
+            content cache.
+        - key: capabilities
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that describes the capabilities of the parent content
+            cache.
+          subkeys:
+          - key: im
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of imports and
+              uploads.
+          - key: ns
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of handling namespaces,
+              which is an aspect of personal caching.
+          - key: pc
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of caching personal
+              iCloud content.
+          - key: query-parameters
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of handling query
+              parameters in URLs.
+          - key: sc
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of caching shared
+              non-iCloud content.
+          - key: ur
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache is capable of prioritizing
+              imports and uploads.
+        - key: is-portable
+          type: <boolean>
+          presence: optional
+          default: false
+          content: If 'true', the parent content cache computer is portable; for example,
+            a laptop.
+        - key: local-network
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that describes the parent content cache's connection
+            to its local network.
+          subkeys:
+          - key: speed
+            type: <integer>
+            presence: optional
+            content: The transfer speed, in megabits per second, of the parent content
+              cache's connection to its local network.
+          - key: wired
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the parent content cache has a wired connection to
+              its local network. If 'false', it has a wireless connection; for example,
+              Wi-Fi.
+      - key: guid
+        type: <string>
+        presence: required
+        content: The unique identifier of the parent content cache.
+      - key: healthy
+        type: <boolean>
+        presence: required
+        content: If 'true,' the parent content cache is able to respond to requests
+          from this content cache.
+      - key: port
+        type: <integer>
+        presence: required
+        content: The IP port number the parent content cache listens to for requests.
+      - key: version
+        type: <string>
+        presence: required
+        content: The version number of the parent content cache software.
+  - key: Peers
+    type: <array>
+    presence: optional
+    content: An array of dictionaries that describes peer content caches.
+    subkeys:
+    - key: PeersItem
+      type: <dictionary>
+      presence: optional
+      subkeys:
+      - key: address
+        type: <string>
+        presence: required
+        content: The local IP address of the peer content cache.
+      - key: alert
+        type: <dictionary>
+        presence: optional
+        content: A dictionary that describes an alert related to the peer content
+          cache.
+        subkeys:
+        - key: className
+          type: <string>
+          presence: required
+          rangelist:
+          - AssetCachePeerCycleAlert
+          - AssetCacheUnfriendlyPeerAlert
+          content: The type of the alert.
+        - key: postDate
+          type: <date>
+          presence: required
+          content: The date of the alert.
+        - key: addresses
+          type: <array>
+          presence: optional
+          content: An array of local IP addresses of peer content caches.
+          subkeys:
+          - key: address
+            type: <string>
+            presence: required
+            content: Local IP address of a peer Content Cache.
+        - key: peerAddress
+          type: <string>
+          presence: optional
+          content: The local IP address of a peer content cache.
+      - key: details
+        type: <dictionary>
+        presence: required
+        content: A dictionary that contains additional details about the peer content
+          cache.
+        subkeys:
+        - key: ac-power
+          type: <boolean>
+          presence: optional
+          default: false
+          content: If 'true', the peer content cache power source is AC; otherwise,
+            an internal battery provides its power.
+        - key: cache-size
+          type: <integer>
+          presence: optional
+          content: The maximum amount of disk space, in bytes, available to the peer
+            content cache.
+        - key: capabilities
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that describes the capabilities of the peer content
+            cache.
+          subkeys:
+          - key: im
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of imports and uploads.
+          - key: ns
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of handling namespaces,
+              which is an aspect of personal caching.
+          - key: pc
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of caching personal
+              iCloud content.
+          - key: query-parameters
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of handling query
+              parameters in URLs.
+          - key: sc
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of caching shared
+              non-iCloud content.
+          - key: ur
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache is capable of prioritizing
+              imports and uploads.
+        - key: is-portable
+          type: <boolean>
+          presence: optional
+          default: false
+          content: If 'true', the peer content cache computer is portable; for example,
+            a laptop.
+        - key: local-network
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that describes the peer content cache's connection
+            to its local network.
+          subkeys:
+          - key: speed
+            type: <integer>
+            presence: optional
+            content: The transfer speed, in megabits per second, of the peer content
+              cache's connection to its local network.
+          - key: wired
+            type: <boolean>
+            presence: optional
+            default: false
+            content: If 'true', the peer content cache has a wired connection to its
+              local network. If 'false', it has a wireless connection; for example,
+              Wi-Fi.
+      - key: friendly
+        type: <boolean>
+        presence: required
+        content: If 'true', the peer content cache is able to respond to requests
+          from the content cache.
+      - key: guid
+        type: <string>
+        presence: required
+        content: The unique identifier of the peer content cache.
+      - key: healthy
+        type: <boolean>
+        presence: required
+        content: If 'true', the peer content cache is able to respond to requests
+          from the content cache.
+      - key: port
+        type: <integer>
+        presence: required
+        content: The IP port number the peer content cache listens to for requests.
+      - key: version
+        type: <string>
+        presence: required
+        content: The version number of the peer content cache software.
+  - key: PersonalCacheFree
+    type: <integer>
+    presence: optional
+    content: The amount of disk space, in bytes, available to the content cache for
+      personal iCloud content.
+  - key: PersonalCacheLimit
+    type: <integer>
+    presence: optional
+    content: The maximum amount of disk space, in bytes, available to the content
+      cache for personal iCloud content. A value of '0' indicates an unlimited amount.
+  - key: PersonalCacheUsed
+    type: <integer>
+    presence: optional
+    content: The amount of disk space, in bytes, available to the content cache for
+      personal iCloud content.
+  - key: Port
+    type: <integer>
+    presence: optional
+    content: The IP port number the content cache listens to for requests from clients,
+      peers, and children.
+  - key: PrivateAddresses
+    type: <array>
+    presence: optional
+    content: An array of the content cache's local IP addresses.
+    subkeys:
+    - key: PrivateAddressesItem
+      type: <string>
+      presence: required
+      content: Local IP address at which the Content Cache listens for requests from
+        clients, peers, and children.
+  - key: PublicAddress
+    type: <string>
+    presence: optional
+    content: The public IP address of the content cache.
+  - key: RegistrationError
+    type: <string>
+    presence: optional
+    content: If present, the reason the content cache failed to register itself with
+      Apple.
+  - key: RegistrationResponseCode
+    type: <integer>
+    presence: optional
+    content: If present, the HTTP response code the content cache received when it
+      failed to register itself with Apple.
+  - key: RegistrationStarted
+    type: <date>
+    presence: optional
+    content: The date when the content cache began registering itself with Apple.
+      This value is only available during registration attempts.
+  - key: RegistrationStatus
+    type: <integer>
+    presence: optional
+    rangelist:
+    - -1
+    - 0
+    - 1
+    content: |-
+      The status of the content cache's registration with Apple, which is one of the following values:
+      * '-1:' Failed
+      * ' 0:' Pending
+      * ' 1:' Succeeded
+  - key: RestrictedMedia
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', a restriction prevents caching of certain content types.
+  - key: ServerGUID
+    type: <string>
+    presence: optional
+    content: The unique identifier of the content cache.
+  - key: StartupStatus
+    type: <string>
+    presence: optional
+    rangelist:
+    - FAILED
+    - MIGRATING_DATA
+    - OK
+    - PENDING
+    content: The status of the content cache's registration with Apple.
+  - key: TetheratorStatus
+    type: <integer>
+    presence: optional
+    rangelist:
+    - -1
+    - 0
+    - 1
+    content: |-
+      The status of tethered caching, which is content caching with a shared internet connection, which is one of the following values:
+      * '-1:' Unknown
+      * ' 0:' Disabled
+      * ' 1:' Enabled
+  - key: TotalBytesAreSince
+    type: <date>
+    presence: optional
+    content: The start date to use when collecting data for the other 'TotalBytes'
+      values.
+  - key: TotalBytesDropped
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache downloaded, but
+      couldn't add to its cache, since the 'TotalBytesAreSince' date.
+  - key: TotalBytesImported
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache received since the
+      'TotalBytesAreSince' date.
+  - key: TotalBytesReturnedToChildren
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache served to its child
+      content cache since the 'TotalBytesAreSince' date.
+  - key: TotalBytesReturnedToClients
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache served to client
+      iOS, macOS, and tvOS devices since the 'TotalBytesAreSince' date.
+  - key: TotalBytesReturnedToPeers
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache served to peer content
+      caches since the 'TotalBytesAreSince' date.
+  - key: TotalBytesStoredFromOrigin
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache saved from the internet
+      since the 'TotalBytesAreSince' date.
+  - key: TotalBytesStoredFromParents
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache saved from parent
+      content caches since the 'TotalBytesAreSince' date.
+  - key: TotalBytesStoredFromPeers
+    type: <integer>
+    presence: optional
+    content: The amount of data, in bytes, that the content cache saved from peer
+      content caches since the 'TotalBytesAreSince' date.

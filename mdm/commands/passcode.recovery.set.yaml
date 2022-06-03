@@ -1,0 +1,26 @@
+title: Set Recovery Lock Command
+description: Sets or clears the recovery lock password (AppleSilicon devices only)
+payload:
+  requesttype: SetRecoveryLock
+  supportedOS:
+    macOS:
+      introduced: '11.5'
+      accessrights: DeviceLockAndRemovePasscode
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Sets or clears the recovery lock password (AppleSilicon devices only).
+    Requires the "Device lock and passcode removal right".
+payloadkeys:
+- key: CurrentPassword
+  type: <string>
+  presence: optional
+  content: If the device has a Recovery Lock password set, the system requires the
+    current password.
+- key: NewPassword
+  type: <string>
+  presence: required
+  content: The new password for Recovery Lock. Set as an empty string to clear the
+    Recovery Lock password.

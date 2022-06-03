@@ -1,0 +1,194 @@
+title: App Lock
+description: App Lock (Supervised Only)
+payload:
+  payloadtype: com.apple.app.lock
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '10.2'
+      supervised: true
+      allowmanualinstall: true
+payloadkeys:
+- key: App
+  title: App
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains information about the app.
+  subkeys:
+  - key: Identifier
+    title: Identifier
+    type: <string>
+    presence: required
+    content: The app's bundle identifier.
+  - key: Options
+    title: Options
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of options that the user cannot change.
+    subkeys:
+    - key: DisableTouch
+      title: Disable Touch
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', disables the touch screen. In tvOS, it disables the touch
+        surface on the Apple TV Remote.
+    - key: DisableDeviceRotation
+      title: Disable Device Rotation
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', disables device rotation sensing.
+    - key: DisableVolumeButtons
+      title: Disable Volume Buttons
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', disables the volume buttons.
+    - key: DisableRingerSwitch
+      title: Disable Ringer Switch
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', disables the ringer switch. When disabled, the ringer behavior
+        depends on what position the switch was in when it was first disabled.
+    - key: DisableSleepWakeButton
+      title: Disable Sleep Wake Button
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', disables the sleep/wake button.
+    - key: DisableAutoLock
+      title: Disable Auto Lock
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the device doesn't automatically go to sleep after an idle
+        period.
+    - key: EnableVoiceOver
+      title: Enable Voice Over
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables VoiceOver.
+    - key: EnableZoom
+      title: Enable Zoom
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables Zoom.
+    - key: EnableInvertColors
+      title: Enable Invert Colors
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables Invert Colors.
+    - key: EnableAssistiveTouch
+      title: Enable Assistive Touch
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables AssistiveTouch.
+    - key: EnableSpeakSelection
+      title: Enable Speak Selection
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables Speak Selection.
+    - key: EnableMonoAudio
+      title: Enable Mono Audio
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables Mono Audio.
+    - key: EnableVoiceControl
+      title: Enable Voice Control
+      supportedOS:
+        iOS:
+          introduced: '13.0'
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables Voice Control.
+  - key: UserEnabledOptions
+    title: User Enabled Options
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+    type: <dictionary>
+    presence: optional
+    content: A dictionary of user-editable options.
+    subkeys:
+    - key: VoiceControl
+      title: Voice Control
+      supportedOS:
+        iOS:
+          introduced: '13.0'
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', allows the user to toggle Voice Control.
+    - key: VoiceOver
+      title: Voice Over
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', allows the user to toggle VoiceOver.
+    - key: Zoom
+      title: Zoom
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', allows the user to toggle Zoom.
+    - key: InvertColors
+      title: Invert Colors
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', allows the user to toggle Invert Colors.
+    - key: AssistiveTouch
+      title: Assistive Touch
+      supportedOS:
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', allows the user to toggle AssistiveTouch.

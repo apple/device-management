@@ -1,0 +1,84 @@
+title: Declaration Items Response
+description: The set of available declarations on the server.
+payload:
+  requesttype: DeclarationItemsResponse
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: Declarations
+  title: Manifest Declaration Items
+  type: <dictionary>
+  presence: required
+  content: The set of available declarations on the server.
+  subkeys:
+  - key: Activations
+    title: Activations
+    type: <array>
+    presence: required
+    content: The list of available activation declarations on the server.
+    subkeytype: DeclarationItem
+    subkeys:
+    - key: _Activations
+      title: Manifest Declaration
+      type: <dictionary>
+      content: Information about an available declaration on the server.
+      subkeytype: DeclarationItem
+      subkeys: &id001
+      - key: Identifier
+        title: Declaration Identifier
+        type: <string>
+        presence: required
+        content: The declaration's identifier.
+      - key: ServerToken
+        title: Declaration Server Token
+        type: <string>
+        presence: required
+        content: |-
+          The 'ServerToken' value of the declaration.
+          The client uses this to determine if the actual payload is different from the one on the client. Servers must compute the token over the entire declaration content to ensure the value always changes whenever there's any change to the content.
+  - key: Configurations
+    title: Configurations
+    type: <array>
+    presence: required
+    content: The list of available configuration declarations on the server.
+    subkeytype: DeclarationItem
+    subkeys:
+    - key: _Configurations
+      title: Manifest Declaration
+      type: <dictionary>
+      content: Information about an available declaration on the server.
+      subkeytype: DeclarationItem
+      subkeys: *id001
+  - key: Assets
+    title: Assets
+    type: <array>
+    presence: required
+    content: The list of available asset declarations on the server.
+    subkeytype: DeclarationItem
+    subkeys:
+    - key: _Assets
+      title: Manifest Declaration
+      type: <dictionary>
+      content: Information about an available declaration on the server.
+      subkeytype: DeclarationItem
+      subkeys: *id001
+  - key: Management
+    title: Management
+    type: <array>
+    presence: required
+    content: The list of available management declarations on the server.
+    subkeytype: DeclarationItem
+    subkeys:
+    - key: _Management
+      title: Manifest Declaration
+      type: <dictionary>
+      content: Information about an available declaration on the server.
+      subkeytype: DeclarationItem
+      subkeys: *id001
+- key: DeclarationsToken
+  title: Declarations Token
+  type: <string>
+  presence: required
+  content: The current value of the declarations token. Clients use this to detect
+    when declarations change so they can refetch the token.

@@ -1,0 +1,48 @@
+title: Invite To Program Command
+description: This command allows a server to invite a user to join a program.
+payload:
+  requesttype: InviteToProgram
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.9'
+      accessrights: None
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows a server to invite a user to join a program. This command
+    issues the invitation, but does not allow the server to monitor whether the user
+    has joined the program. This command is supported in the user channel. This command
+    will yield a NotNow status until the user exits Setup Assistant.
+payloadkeys:
+- key: ProgramID
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.cloudvpp
+  content: The program's identifier, which can only be 'com.apple.cloudvpp'.
+- key: InvitationURL
+  type: <string>
+  presence: required
+  content: The Volume Purchase Program (VPP) invitation URL.
+responsekeys:
+- key: InvitationResult
+  type: <string>
+  presence: required
+  rangelist:
+  - Acknowledged
+  - InvalidProgramID
+  - InvalidInvitationURL
+  content: The result of the command.

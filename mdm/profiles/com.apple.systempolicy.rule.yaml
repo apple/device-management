@@ -1,0 +1,50 @@
+title: System Policy Rule
+description: ''
+payload:
+  payloadtype: com.apple.systempolicy.rule
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: This payload allows control over Gatekeeper's system policy rules. The
+    keys and functionality are tightly related to the spctl command line tool. For
+    more information, see the manual page for spctl.
+payloadkeys:
+- key: Requirement
+  type: <string>
+  presence: optional
+  content: The policy requirement. This key must follow the syntax described in Code
+    Signing Requirement Language <https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/RequirementLang/RequirementLang.html#//apple_ref/doc/uid/TP40005929-CH5>.
+- key: Comment
+  type: <string>
+  presence: optional
+  content: This string appears in the System Policy UI. If it's missing, 'PayloadDisplayName'
+    or 'PayloadDescription' is entered into this field before the rule is added to
+    the System Policy database.
+- key: Priority
+  type: <real>
+  presence: optional
+  content: The rule's priority.
+- key: Expiration
+  type: <date>
+  presence: optional
+  content: The expiration date for rules being processed.
+- key: OperationType
+  type: <string>
+  presence: optional
+  rangelist:
+  - operation:execute
+  - operation:install
+  - operation:lsopen
+  default: operation:execute
+  content: The type of operation.
+- key: LeafCertificate
+  type: <data>
+  presence: optional
+  content: The single leaf certificate for the app that is in the allow list.

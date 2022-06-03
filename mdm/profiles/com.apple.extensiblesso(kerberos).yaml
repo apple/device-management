@@ -1,0 +1,356 @@
+title: Extensible Single Sign-On (Kerberos)
+description: Configures an app extension to handle Kerberos SSO.
+payload:
+  payloadtype: com.apple.extensiblesso
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: false
+      allowmanualinstall: false
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: allowed
+  content: Configures the included Kerberos extension that performs SSO on behalf
+    of specified hosts. User channel support was added in macOS 11.0.
+payloadkeys:
+- key: ExtensionIdentifier
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.AppSSOKerberos.KerberosExtension
+  content: This value must be  'com.apple.AppSSOKerberos.KerberosExtension' for this
+    extension.
+- key: TeamIdentifier
+  type: <string>
+  presence: required
+  rangelist:
+  - apple
+  content: This value must be 'apple' for the Kerberos extension.
+- key: Type
+  type: <string>
+  presence: required
+  rangelist:
+  - Credential
+  content: This value must be 'Credential' for the Kerberos extension.
+- key: Realm
+  type: <string>
+  presence: required
+  content: The Kerberos realm, which should be properly capitalized. If in an Active
+    Directory forest, this is the realm where the user logs in.
+- key: ExtensionData
+  type: <dictionary>
+  presence: optional
+  content: This is the dictionary used by the Apple built-in Kerberos extension.
+  subkeys:
+  - key: cacheName
+    supportedOS:
+      iOS:
+        deprecated: '15.0'
+      macOS:
+        deprecated: '12.0'
+    type: <string>
+    presence: optional
+    content: The GSS name of the Kerberos cache to use. Rarely set by an administrator.
+  - key: principalName
+    type: <string>
+    presence: optional
+    content: The principal (aka username) to use. You do not need to include the realm.
+  - key: siteCode
+    type: <string>
+    presence: optional
+    content: The name of the Active Directory site the Kerberos extension should use.
+      Most administrators will never need to modify this value, as the Kerberos extension
+      can normally find the site automatically.
+  - key: certificateUUID
+    type: <string>
+    presence: optional
+    content: The PayloadUUID of a PKINIT certificate.
+  - key: useSiteAutoDiscovery
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'false', the Kerberos extension doesn't automatically use LDAP and
+      DNS to determine its AD site name.
+  - key: credentialBundleIdACL
+    type: <array>
+    presence: optional
+    content: A list of bundle IDs allowed to access the ticket-granting ticket (TGT).
+    subkeys:
+    - key: credentialBundleIdACLItem
+      type: <string>
+      presence: optional
+      content: Bundle IDs allowed to access the TGT.  These values are case sensitive.
+  - key: includeManagedAppsInBundleIdACL
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '12.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the Kerberos extension allows only managed apps to access
+      and use the credential. This is in addition to the 'credentialBundleIDACL',
+      if it is specified. Available in iOS 14 and later, and macOS 12 and later.
+  - key: includeKerberosAppsInBundleIdACL
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '12.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If 'true', the Kerberos extension allows the standard kerberos utilities including 'TicketViewer' and 'klist' to access and use the credential. This is in addition to 'includeManagedAppsInBundleIdACL' or the 'credentialBundleIdACL', if it is specified.
+      Available in macOS 12 and later.
+  - key: domainRealmMapping
+    type: <dictionary>
+    presence: optional
+    content: A custom domain-realm mapping for Kerberos. This is used when the DNS
+      name of hosts do not match the realm name. Most administrators will not need
+      to customize this.
+    subkeys:
+    - key: Realm
+      type: <array>
+      presence: optional
+      content: The key should be the name of the realm, and the value is an array
+        of DNS suffixes that map to the realm.
+      subkeys:
+      - key: RealmItem
+        type: <string>
+        presence: optional
+        content: Domains to map to the realm
+  - key: isDefaultRealm
+    type: <boolean>
+    presence: optional
+    default: false
+    content: This property specifies it is the default realm if there is more than
+      one Kerberos extension configuration.
+  - key: customUsernameLabel
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    content: The custom user name label used in the Kerberos extension instead of
+      “Username”. For example, “Company ID”. Available in macOS 11 and later.
+  - key: helpText
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    content: The text to be displayed to the user at the bottom of the Kerberos login
+      window. It can be used to display help information or disclaimer text. Available
+      in iOS 14 and later and macOS 11 and later.
+  - key: allowPasswordChange
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'false', disables password changes. Available in macOS 10.15 and later.
+  - key: allowAutomaticLogin
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'false', passwords are not allowed to be saved to the keychain.
+  - key: requireUserPresence
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', requires the user to provide Touch ID, Face ID or their passcode
+      to access the keychain entry.
+  - key: pwExpireOverride
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        deprecated: '12.0'
+    type: <integer>
+    presence: optional
+    content: The number of days that passwords can be used on this domain. For most
+      domains, this can be calculated automatically. Available in macOS 10.15 and
+      later.
+  - key: pwNotificationDays
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    default: 15
+    content: The number of days prior to password expiration when a notification of
+      password expiration will be sent to the user. Available in macOS 10.15 and later.
+  - key: pwReqLength
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    content: The minimum length of passwords on the domain.Available in macOS 10.15
+      and later.
+  - key: pwReqComplexity
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', passwords must meet Active Directory's definition of 'complex'.Available
+      in macOS 10.15 and later.
+  - key: pwReqMinAge
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    content: The minimum age of passwords before they can be changed on this domain.
+      Available in macOS 10.15 and later.
+  - key: pwReqHistory
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    content: The number of prior passwords that cannot be re-used on this domain.Available
+      in macOS 10.15 and later.
+  - key: pwReqText
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: The text version of the domain's password requirements. Only for use
+      if 'pwReqComplexity' or 'pwReqLength' aren't specified. Available in macOS 10.15
+      and later.
+  - key: pwChangeURL
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: This URL will launch in the user's default web browser when they initiate
+      a password change. Available in macOS 10.15 and later.
+  - key: syncLocalPassword
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'false', disables password sync. Note that this will not work if the
+      user is logged in with a mobile account. Available in macOS 10.15 and later.
+  - key: replicationTime
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+        deprecated: '12.0'
+    type: <integer>
+    presence: optional
+    default: 900
+    content: The time, in seconds, required to replicate changes in the Active Directory
+      domain. The Kerberos extension will use this when checking password age after
+      a change. Available in macOS 11 and later.
+  - key: delayUserSetup
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', doesn't prompt the user to setup the Kerberos extension until
+      either the administrator enables it with the 'app-sso' tool or a Kerberos challenge
+      is received. Available in macOS 11 and later.
+  - key: monitorCredentialsCache
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+    type: <boolean>
+    presence: optional
+    default: true
+    content: |-
+      If 'false', the credential is requested on the next matching Kerberos challenge or network state change.
+      If the credential is expired or missing, a new one will be created. Available in macOS 11 and later.
+  - key: requireTLSForLDAP
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: Require that LDAP connections use TLS. Available in macOS 11 and later.
+  - key: credentialUseMode
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    rangelist:
+    - always
+    - whenNotSpecified
+    - kerberosDefault
+    default: always
+    content: |-
+      This setting affects how the Kerberos Extension credential is used by other processes. Use of the following:
+      * 'always -' The extension credential will always be used if the SPN matches the Kerberos Extension 'Hosts' array. The credential will not be used if the calling app is not in the 'credentialBundleIDACL'.
+      * 'whenNotSpecified -' The credential will only be used when another credential has not been specified by the caller and the SPN matches the Kerberos Extensions 'Hosts' array. The credential will not be used if the calling app is not in the 'credentialBundleIDACL'.
+      * 'kerberosDefault - 'The default Kerberos processes for selecting credentials is used which normally uses the default Kerberos credential. This is the same as turning off this capability.
+      Available in macOS 11 and later.
+  - key: preferredKDCs
+    supportedOS:
+      iOS:
+        introduced: '15.0'
+      macOS:
+        introduced: '12.0'
+    type: <array>
+    presence: optional
+    content: |-
+      The ordered list of perferred Key Distribution Centers (KDCs) to use for Kerberos traffic. Use this if the servers are not discoverable via DNS. If the servers are specified, then they are used for both connectivity checks and attempted first for Kerberos traffic. If the servers do not respond, then the device falls back to DNS discovery. Each entry is formatted the same as it would be in a 'krb5.conf' file. Examples of entries are:
+      * 'adserver1.example.com'
+      * 'tcp/adserver1.example.com:88'
+      * 'kkdcp://kerberosproxy.example.com:443/kkdcp'
+    subkeys:
+    - key: preferredKDC
+      type: <string>
+      presence: required
+      content: A host or domain name in the format of [protocol/]hostname[:port][/path]
+- key: Hosts
+  type: <array>
+  presence: optional
+  content: |-
+    One or more host or domain names for which the app extension performs SSO. Host or domain names are matched case-insensitively, and all the host/domain names of all installed Extensible SSO payloads must be unique.
+    Hosts that begin with a “.” are wildcard suffixes and will match all subdomains, otherwise the host must be an exact match.
+  subkeys:
+  - key: hostname
+    type: <string>
+    presence: required
+    content: A host or domain name. Values that begin with a "." will be used as domain
+      names.

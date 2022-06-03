@@ -1,0 +1,2027 @@
+title: Device Information Command
+description: This command allows the server to query for specific device information.
+  It's supported in the user channel.
+payload:
+  requesttype: DeviceInformation
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: Special Case
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      accessrights: Special Case
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.0'
+      accessrights: Special Case
+      supervised: false
+  content: This command allows the server to query for specific device information.
+    It's supported in the user channel.
+payloadkeys:
+- key: Queries
+  type: <array>
+  presence: required
+  content: An array of query dictionaries to get information about a device.
+  subkeys:
+  - key: QueriesItem
+    type: <string>
+    subkeys:
+    - key: UDID
+      supportedOS:
+        iOS:
+          accessrights: n/a
+          userenrollment:
+            mode: forbidden
+        macOS:
+          accessrights: n/a
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          accessrights: n/a
+      type: <string>
+      content: The key to get the unique identifier of the device.
+    - key: ProvisioningUDID
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.3'
+          accessrights: n/a
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The device identifier for provisioning profiles. This value differs
+        from the UDID for Apple silicon. Available in macOS 11.3 and later.
+    - key: OrganizationInfo
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: n/a
+        macOS:
+          introduced: '10.11'
+        tvOS:
+          introduced: '9.0'
+          accessrights: n/a
+      type: <string>
+      content: The key to get the contents of SettingsCommand.Command.Settings.OrganizationInfo.OrganizationInfo.
+    - key: MDMOptions
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: n/a
+        macOS:
+          introduced: '11.0'
+        tvOS:
+          introduced: '9.0'
+          accessrights: n/a
+      type: <string>
+      content: The key to get the contents of SettingsCommand.Command.Settings.MDMOptions.MDMOptions.
+    - key: LastCloudBackupDate
+      supportedOS:
+        iOS:
+          introduced: '8.0'
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the date of the most recent iCloud backup. This value
+        is available in iOS 8 and later.
+    - key: AwaitingConfiguration
+      supportedOS:
+        iOS:
+          introduced: '9.0'
+          accessrights: n/a
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '10.11'
+          accessrights: n/a
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: '10.2'
+          accessrights: n/a
+      type: <string>
+      content: The key to determine if the device is waiting for a DeviceConfiguredCommand
+        to continue through Setup Assistant.
+    - key: iTunesStoreAccountIsActive
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowAppInstallation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '10.9'
+          accessrights: AllowAppInstallation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: '9.0'
+          accessrights: AllowAppInstallation
+      type: <string>
+      content: The key to determine if an iTunes Store account is active. This value
+        requires the App Installation access right.
+    - key: iTunesStoreAccountHash
+      supportedOS:
+        iOS:
+          introduced: '8.0'
+          accessrights: AllowAppInstallation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '10.10'
+          accessrights: AllowAppInstallation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: '9.0'
+          accessrights: AllowAppInstallation
+      type: <string>
+      content: The key to get a hash of the logged-in iTunes Store account. Also see
+        GetVppUserRequest. This value requires the App Installation access right.
+    - key: DeviceName
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the device name. This value requires the Device Information
+        access right.
+    - key: OSVersion
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the operating system version. This value requires the
+        Device Information access right.
+    - key: BuildVersion
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the operating system version. This value requires the
+        Device Information access right.
+    - key: ModelName
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the model name; for example, iPhone. This value requires
+        the Device Information access right.
+    - key: Model
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the model. This value requires the Device Information
+        access right.
+    - key: IsAppleSilicon
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.0'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: |-
+        If 'true', the device is a Mac with Apple silicon (for example, an Apple M1 chip).
+        Available in macOS 12 and later.
+    - key: ProductName
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the product name, such as iPad8,12. This value requires
+        the Device Information access right.
+    - key: SerialNumber
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformatio
+          userenrollment:
+            mode: forbidden
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the serial number. This value requires the Device Information
+        access right.
+    - key: DeviceCapacity
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the device's total capacity. This value requires the
+        Device Information access right, and is available in iOS 4 and later, and
+        macOS 10.7 and later.
+    - key: AvailableDeviceCapacity
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the available capacity. This value requires the Device
+        Information access right, and is available in iOS 4 and later, and macOS 10.7
+        and later.
+    - key: IMEI
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the International Mobile Equipment Identity (IMEI) number.
+        This value requires the Device Information access right, and is available
+        in iOS 4 and later.
+    - key: MEID
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the mobile equipment ID (MEID). This value requires
+        the Device Information access right, and is available in iOS 4 and later.
+    - key: ModemFirmwareVersion
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the modem firmware version. This value requires the
+        Device Information access right, and is available in iOS 4 and later.
+    - key: CellularTechnology
+      supportedOS:
+        iOS:
+          introduced: 4.2.6
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the cellular technology type. This value requires the
+        Device Information access right, and is available in iOS 4.2.6 and later.
+    - key: BatteryLevel
+      supportedOS:
+        iOS:
+          introduced: '5.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the battery level. This value requires the Device Information
+        access right, and is available in iOS 5 and later.
+    - key: IsSupervised
+      supportedOS:
+        iOS:
+          introduced: '6.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: '10.15'
+        tvOS:
+          introduced: '9.0'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to determine if the device is a supervised device. This value
+        requires the Device Information access right, and is available in iOS 6 and
+        later, macOS 10.15 and later, and tvOS 9 and later.
+    - key: IsMultiUser
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device is in ephemeral multiuser mode.
+        This value requires the Device Information access right, and is available
+        in iOS 9.3 and later.
+    - key: IsDeviceLocatorServiceEnabled
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if a device locator service, such as Find My,
+        is in an enabled state on the device. This value requires the Device Information
+        access right, and is available in iOS 7 and later.
+    - key: IsActivationLockEnabled
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '10.15'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if Activation Lock is in an enabled state on the
+        device. This value requires the Device Information access right, and is available
+        in iOS 7 and later, and macOS 10.9 and later.
+    - key: IsActivationLockSupported
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.15'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device supports Activation Lock. Also see
+        'IsActivationLockManageable' in SecurityInfoResponse.SecurityInfo.ManagementStatus.
+        This value is available in macOS 10.9 and later.
+    - key: IsDoNotDisturbInEffect
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device is in Do Not Disturb (DND) mode.
+        This value requires the Device Information access right, and is available
+        in iOS 7 and later.
+    - key: DeviceID
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: '6.0'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the device ID. This value requires the Device Information
+        access right, and is available in tvOS 6 and later.
+    - key: EASDeviceIdentifier
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the device identifier for Exchange ActiveSync (EAS).
+        This value requires the Device Information access right, and is available
+        in iOS 7 and later.
+    - key: IsCloudBackupEnabled
+      supportedOS:
+        iOS:
+          introduced: '7.1'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if iCloud Backup is in an enabled state on the
+        device. This value requires the Device Information access right, and is available
+        in iOS 7.1 and later.
+    - key: ActiveManagedUsers
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.11'
+          accessrights: AllowQueryDeviceInformation
+          userchannel: false
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get an array of directory GUIDs for logged-in managed users.
+        This value requires the Device Information access right, and is available
+        in macOS 10.11 and later.
+    - key: OSUpdateSettings
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.11'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the contents of DeviceInformationResponse.QueryResponses.OSUpdateSettings.
+        This value requires the Device Information access right, and is available
+        in macOS 10.11 and later.
+    - key: LocalHostName
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.11'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the local hostname from Bonjour. This value is available
+        in macOS 10.11 and later.
+    - key: HostName
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.11'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the hostname. This value is available in macOS 10.11
+        and later.
+    - key: AutoSetupAdminAccounts
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.11'
+          accessrights: AllowQueryDeviceInformation
+          requiresdep: true
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the contents of DeviceInformationResponse.QueryResponses.AutoSetupAdminAccountsItem,
+        which Setup Assistant automatically creates during enrollment. This value
+        requires the Device Information access right, and is available in macOS 10.11
+        and later.
+    - key: SystemIntegrityProtectionEnabled
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '10.12'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if System Integrity Protection is in an enabled
+        state on the device. This value requires the Device Information access right,
+        and is available in macOS 10.12 and later.
+    - key: SupportsLOMDevice
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device can receive 'PowerON', 'PowerOFF',
+        and 'Reset' commands from a lights-out management (LOM) controller. This query
+        is available in macOS 11 and later.
+    - key: IsMDMLostModeEnabled
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if Managed Lost Mode is in an enabled state on
+        the device. This value requires the Device Information access right, and is
+        available in iOS 9.3 and later.
+    - key: MaximumResidentUsers
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+          supervised: true
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the maximum number of users that can use this Shared
+        iPad device. Beginning with iOS 13.4, the value that returns is always '32'.
+        This value requires the Device Information access right, and is available
+        in iOS 9.3 and later.
+    - key: EstimatedResidentUsers
+      supportedOS:
+        iOS:
+          introduced: '14.0'
+          accessrights: AllowQueryDeviceInformation
+          supervised: true
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the estimated number of users that can use this Shared
+        iPad device, according to the available space of the device and each user's
+        quota. This value requires the Device Information access right, and is available
+        in iOS 14 and later.
+    - key: QuotaSize
+      supportedOS:
+        iOS:
+          introduced: '13.4'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the quota size for each user on this Shared iPad device.
+        This value requires the Device Information access right, and is available
+        in iOS 13.4 and later.
+    - key: ResidentUsers
+      supportedOS:
+        iOS:
+          introduced: '13.4'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the number of users currently on this Shared iPad device.
+        This value requires the Device Information access right, and is available
+        in iOS 13.4 and later.
+    - key: UserSessionTimeout
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The timeout interval for the user session. '0' means no timeout.
+    - key: TemporarySessionTimeout
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The timeout interval for the temporary session. '0' means no timeout.
+    - key: TemporarySessionOnly
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: If 'true', the device only allows temporary sessions.
+    - key: PushToken
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+          sharedipad:
+            devicechannel: false
+            userchannel: true
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '10.12'
+          userchannel: true
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the push token for the current user-channel connection.
+        The MDM server ignores this query for the device channel. This value requires
+        the Device Information access right, and is available in iOS 9.3 and later,
+        and macOS 10.12 and later.
+    - key: DiagnosticSubmissionEnabled
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the diagnostic submission setting is in an
+        enabled state on the device. This value requires the Device Information access
+        right, and is available in iOS 9.3 and later.
+    - key: AppAnalyticsEnabled
+      supportedOS:
+        iOS:
+          introduced: '9.3'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device is sharing app analytics. This value
+        requires the Device Information access right, and is available in iOS 4 and
+        later, and macOS 10.7 and later.
+    - key: TimeZone
+      supportedOS:
+        iOS:
+          introduced: '14.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: '14.0'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The key to get the current Internet Assigned Numbers Authority (IANA)
+        time zone database name. This value requires the Device Information access
+        right, and is available in iOS 14 and later, and tvOS 14 and later.
+    - key: ICCID
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the integrated circuit card (ICC) identifier for the
+        installed SIM card. This value requires the Network Information access right,
+        and is available in iOS 4 and later.
+    - key: BluetoothMAC
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          accessrights: AllowQueryNetworkInformation
+      type: <string>
+      content: The key to get the Bluetooth media access control (MAC) address. This
+        value requires the Network Information access right.
+    - key: WiFiMAC
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          accessrights: AllowQueryNetworkInformation
+      type: <string>
+      content: The key to get the Wi-Fi MAC address. This value requires the Network
+        Information access right.
+    - key: EthernetMAC
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the primary Ethernet MAC address. This value requires
+        the Network Information access right, and is available in macOS 10.7 and later.
+    - key: CurrentCarrierNetwork
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the name of the current carrier network. This value
+        requires the Network Information access right, and is available in iOS 4 and
+        later.
+    - key: SIMCarrierNetwork
+      supportedOS:
+        iOS:
+          removed: '5.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: Apple no longer supports this query. Use 'SubscriberCarrierNetwork'
+        instead.
+    - key: SubscriberCarrierNetwork
+      supportedOS:
+        iOS:
+          introduced: '5.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the name of the home carrier network. This value requires
+        the Network Information access right, and is available in iOS 5 and later.
+    - key: CarrierSettingsVersion
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the version of the carrier settings. This value requires
+        the Network Information access right, and is available in iOS 4 and later.
+    - key: PhoneNumber
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the raw phone number, without punctuation, and including
+        the country code. This value requires the Network Information access right,
+        and is available in iOS 7 and later.
+    - key: DataRoamingEnabled
+      supportedOS:
+        iOS:
+          introduced: '5.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if data roaming is in an enabled state on the
+        device. This value requires the Network Information access right, and is available
+        in iOS 5 and later.
+    - key: VoiceRoamingEnabled
+      supportedOS:
+        iOS:
+          introduced: '5.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if voice roaming, which isn't available for all
+        carriers, is in an enabled state on the device. This value requires the Network
+        Information access right, and is available in iOS 5 and later.
+    - key: PersonalHotspotEnabled
+      supportedOS:
+        iOS:
+          introduced: '7.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if Personal Hotspot, which isn't available for
+        all carriers, is in an enabled state on the device. This value requires the
+        Network Information access right, and is available in iOS 7 and later.
+    - key: IsNetworkTethered
+      supportedOS:
+        iOS:
+          introduced: '10.3'
+          accessrights: AllowQueryNetworkInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device is network-tethered. This value
+        requires the Network Information access right, and is available in iOS 10.3
+        and later.
+    - key: IsRoaming
+      supportedOS:
+        iOS:
+          introduced: '4.2'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the device is roaming. This value requires
+        the Network Information access right, and is available in iOS 4.2 and later.
+    - key: SubscriberMCC
+      supportedOS:
+        iOS:
+          introduced: 4.2.6
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the home mobile country code. This value requires the
+        Network Information access right, and is available in iOS 4.2.6 and later.
+    - key: SubscriberMNC
+      supportedOS:
+        iOS:
+          introduced: 4.2.6
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the home mobile network code. This value requires the
+        Network Information access right, and is available in iOS 4.2.6 and later.
+    - key: CurrentMCC
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the current mobile country code (MCC). This value requires
+        the Network Information access right, and is available in iOS 4 and later.
+    - key: CurrentMNC
+      supportedOS:
+        iOS:
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the current mobile network code (MNC). This value requires
+        the Network Information access right, and is available in iOS 4 and later.
+    - key: ServiceSubscriptions
+      supportedOS:
+        iOS:
+          introduced: '12.0'
+          accessrights: AllowQueryNetworkInformation
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to get the contents of DeviceInformationResponse.QueryResponses.ServiceSubscriptionProperty.
+        This value requires the Network Information access right.
+    - key: PINRequiredForEraseDevice
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the EraseDeviceCommand requires a PIN. This
+        value is available in macOS 11 and later.
+    - key: PINRequiredForDeviceLock
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+          accessrights: AllowQueryDeviceInformation
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine if the DeviceLockCommand requires a PIN. This
+        value is available in macOS 11 and later.
+    - key: SupportsiOSAppInstalls
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key to determine whether the macOS device supports iOS/iPadOS app
+        installs. This query is available in macOS 11 and later.
+    - key: SoftwareUpdateDeviceID
+      supportedOS:
+        iOS:
+          introduced: '15.0'
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: '12.0'
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: The key that represents the device identifier you use to look up available
+        OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5 and
+        later.
+responsekeys:
+- key: QueryResponses
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains information about the device.
+  subkeys:
+  - key: UDID
+    type: <string>
+    content: The unique identifier of the device.
+  - key: ProvisioningUDID
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.3'
+        accessrights: n/a
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The device identifier used in provisioning profiles. This value differs
+      from the UDID on Apple Silicon Macs. Available in macOS 11.3 and later.
+  - key: OrganizationInfo
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: '9.0'
+    type: <dictionary>
+    content: The contents of SettingsCommand.Command.Settings.OrganizationInfo.OrganizationInfo.
+    subkeys:
+    - key: OrganizationName
+      type: <string>
+      presence: required
+      content: A string that describes the organization operating the MDM server.
+        This value is available in iOS 7 and later, macOS 10.11 and later, and tvOS
+        9 and later.
+    - key: OrganizationAddress
+      type: <string>
+      presence: optional
+      content: The organization's address. Use the LF character ('&#10') to insert
+        line breaks. This value is available in iOS 7 and later, macOS 10.11 and later,
+        and tvOS 9 and later.
+    - key: OrganizationPhone
+      type: <string>
+      presence: optional
+      content: The organization's phone number. This value is available in iOS 7 and
+        later, macOS 10.11 and later, and tvOS 9 and later.
+    - key: OrganizationEmail
+      type: <string>
+      presence: optional
+      content: The orgnization's support email address. This value is available in
+        iOS 7 and later, macOS 10.11 and later, and tvOS 9 and later.
+    - key: OrganizationMagic
+      type: <string>
+      presence: optional
+      content: A unique identifier for the various services a single organization
+        manages. This value is available in iOS 7 and later, macOS 10.11 and later,
+        and tvOS 9 and later.
+  - key: MDMOptions
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: '11.0'
+      tvOS:
+        introduced: '9.0'
+    type: <dictionary>
+    content: The contents of SettingsCommand.Command.Settings.MDMOptions.MDMOptions.
+    subkeys:
+    - key: ActivationLockAllowedWhileSupervised
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', a supervised device registers itself with Activation Lock
+        when the user enables Find My. Unsupervised devices ignore this value. This
+        value is available in iOS 7 and later, macOS 11 and later, and tvOS 9 and
+        later.
+    - key: BootstrapTokenAllowed
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the server supports Bootstrap Token commands. This value
+        is available in macOS 11 and later.
+    - key: PromptUserToAllowBootstrapTokenForAuthentication
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the device can accept a Bootstrap Token from the MDM server
+        instead of prompting for user authentication prior to installation. This only
+        applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo
+        response. This value is available for Apple silicon devices in macOS 11 and
+        later.
+  - key: LastCloudBackupDate
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <date>
+    content: The date of the last iCloud backup. This query is available in iOS 8
+      and later.
+  - key: AwaitingConfiguration
+    supportedOS:
+      iOS:
+        introduced: '9.0'
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: '10.2'
+    type: <boolean>
+    content: If 'true', the device is still waiting for a DeviceConfiguredCommand
+      to continue through Setup Assistant.
+  - key: iTunesStoreAccountIsActive
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: '10.9'
+      tvOS:
+        introduced: '9.0'
+    type: <boolean>
+    content: If 'true', the device has an active iTunes Store account. This value
+      requires the App Installation access right.
+  - key: iTunesStoreAccountHash
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+      macOS:
+        introduced: '10.10'
+      tvOS:
+        introduced: '9.0'
+    type: <string>
+    content: A hash of the logged-in iTunes Store account. Also see GetVppUserRequest.
+      This value requires the App Installation access right.
+  - key: DeviceName
+    type: <string>
+    content: The device name. This value requires the Device Information access right.
+  - key: OSVersion
+    type: <string>
+    content: The operating system version. This value requires the Device Information
+      access right.
+  - key: BuildVersion
+    type: <string>
+    content: The operating system version. This value requires the Device Information
+      access right.
+  - key: ModelName
+    type: <string>
+    content: The model name, for example, iPhone. This value requires the Device Information
+      access right.
+  - key: Model
+    type: <string>
+    content: The model. This value requires the Device Information access right.
+  - key: IsAppleSilicon
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '12.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the macOS device uses an AppleSilicon chip.
+  - key: ProductName
+    type: <string>
+    content: The product name, such as iPad8,12. This value requires the Device Information
+      access right.
+  - key: SerialNumber
+    type: <string>
+    content: The serial number. This value requires the Device Information access
+      right.
+  - key: DeviceCapacity
+    supportedOS:
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: The total capacity in floating-point base-10 gigabytes (GB) on iOS and
+      macOS 12 or later. The capacity is in base-2 gibibytes (GiB) on macOS 11 and
+      earlier. This value requires the Device Information access right, and is available
+      in iOS 4 and later, and macOS 10.7 and later.
+  - key: AvailableDeviceCapacity
+    supportedOS:
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: The available capacity in floating-point base-10 gigabytes (GB) on iOS
+      and macOS 12 or later. The capacity is in base-2 gibibytes (GiB) on macOS 11
+      and earlier. This value requires the Device Information access right, and is
+      available in iOS 4 and later, and macOS 10.7 and later.
+  - key: IMEI
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The International Mobile Equipment Identity (IMEI) number. This value
+      requires the Device Information access right, and is available in iOS 4 and
+      later.
+  - key: MEID
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The mobile equipment identifier (MEID) number. This value requires the
+      Device Information access right, and is available in iOS 4.0 and later.
+  - key: ModemFirmwareVersion
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The modem firmware version. This value requires the Device Information
+      access right, and is available in iOS 4.0 and later.
+  - key: CellularTechnology
+    supportedOS:
+      iOS:
+        introduced: 4.2.6
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <integer>
+    rangelist:
+    - 0
+    - 1
+    - 2
+    - 3
+    content: |-
+      The cellular technology type, which is one of the following values:
+      * '0: 'None
+      * '1: 'GSM
+      * '2: 'CDMA
+      * '3: 'Both
+      This value requires the Device Information access right, and is available in iOS 4.2.6 and later.
+  - key: BatteryLevel
+    supportedOS:
+      iOS:
+        introduced: '5.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: The battery level, between '0.0' and '1.0', or '-1.0' if MDM can't determine
+      the battery level. This value requires the Device Information access right,
+      and is available in iOS 5 and later.
+  - key: IsSupervised
+    supportedOS:
+      iOS:
+        introduced: '6.0'
+      macOS:
+        introduced: '10.15'
+      tvOS:
+        introduced: '9.0'
+    type: <boolean>
+    content: If 'true', it's a supervised device. This value requires the Device Information
+      access right, and is available in iOS 6 and later, macOS 10.15 and later, and
+      tvOS 9 and later.
+  - key: IsMultiUser
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device is in ephemeral multiuser mode. This value requires
+      the Device Information access right, and is available in iOS 9.3 and later.
+  - key: IsDeviceLocatorServiceEnabled
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled a device locator service, such as Find
+      My. This value requires the Device Information access right, and is available
+      in iOS 7 and later.
+  - key: IsActivationLockEnabled
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: '10.9'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled Activation Lock. This value requires
+      the Device Information access right, and is available in iOS 7 and later, and
+      macOS 10.9 and later.
+  - key: IsActivationLockSupported
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.9'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device supports Activation Lock. Also see IsActivationLockManageable
+      in SecurityInfoResponse.SecurityInfo.ManagementStatus. This value is available
+      in macOS 10.9 and later.
+  - key: IsDoNotDisturbInEffect
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device is in Do Not Disturb (DND) mode. This value is
+      'true' even if DND is only in effect for a locked device. This value requires
+      the Device Information access right, and is available in iOS 7 and later.
+  - key: SupportsLOMDevice
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device can receive 'PowerON', 'PowerOFF', and 'Reset'
+      commands from a lights-out management (LOM) controller. This query is available
+      in macOS 11 and later.
+  - key: DeviceID
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '6.0'
+    type: <string>
+    content: The device identifier. This value requires the Device Information access
+      right, and is available in tvOS 6 and later.
+  - key: EASDeviceIdentifier
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The device identifier for Exchange Active Sync (EAS). This value requires
+      the Device Information access right, and is available in iOS 7 and later.
+  - key: IsCloudBackupEnabled
+    supportedOS:
+      iOS:
+        introduced: '7.1'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled iCloud backup. This value requires
+      the Device Information access right, and is available in iOS 7.1 and later.
+  - key: ActiveManagedUsers
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: n/a
+    type: <array>
+    content: An array of the directory GUIDs of the logged-in managed users. If one
+      of these users is currently logged in to the console, the 'CurrentConsoleManagedUser'
+      key returns the GUID of that user. This value requires the Device Information
+      access right, and is available in macOS 10.11 and later.
+    subkeys:
+    - key: ActiveManagedUsersItems
+      type: <string>
+  - key: OSUpdateSettings
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    content: The contents of DeviceInformationResponse.QueryResponses.OSUpdateSettings.
+      This value requires the Device Information access right, and is available in
+      macOS 10.11 and later.
+    subkeys:
+    - key: CatalogURL
+      type: <string>
+      content: The URL to the software update catalog the client is using. This value
+        is available in macOS 10.11 and later.
+    - key: IsDefaultCatalog
+      type: <boolean>
+      content: If 'true', 'CatalogURL' is the default catalog. This value is available
+        in macOS 10.11 and later.
+    - key: PreviousScanDate
+      type: <date>
+      content: The date of the last software update scan. This value is available
+        in macOS 10.11 and later.
+    - key: PreviousScanResult
+      type: <string>
+      content: The result code of last software update scan; '”0”' = success. This
+        value is available in macOS 10.11 and later.
+    - key: PerformPeriodicCheck
+      type: <boolean>
+      content: If 'true', start a new scan. This value is available in macOS 10.11
+        and later.
+    - key: AutomaticCheckEnabled
+      type: <boolean>
+      content: The preference to automatically check for app updates. This value is
+        available in macOS 10.11 and later.
+    - key: BackgroundDownloadEnabled
+      type: <boolean>
+      content: The preference to download app updates in the background. This value
+        is available in macOS 10.11 and later.
+    - key: AutomaticAppInstallationEnabled
+      type: <boolean>
+      content: The preference to automatically install app updates. This value is
+        available in macOS 10.11 and later.
+    - key: AutomaticOSInstallationEnabled
+      type: <boolean>
+      content: The preference to automatically install operating system updates. This
+        value is available in macOS 10.11 and later.
+    - key: AutomaticSecurityUpdatesEnabled
+      type: <boolean>
+      content: The preference to automatically install system data files and security
+        updates. This value is available in macOS 10.11 and later.
+  - key: LocalHostName
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The local host name from Bonjour. This value is available in macOS 10.11
+      and later.
+  - key: HostName
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The host name. This value is available in macOS 10.11 and later.
+  - key: AutoSetupAdminAccounts
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+      tvOS:
+        introduced: n/a
+    type: <array>
+    content: The contents of DeviceInformationResponse.QueryResponses.AutoSetupAdminAccountsItem,
+      which Setup Assistant automatically created during DEP enrollment. This value
+      requires the Device Information access right, and is available in macOS 10.11
+      and later.
+    subkeys:
+    - key: AutoSetupAdminAccountsItem
+      type: <dictionary>
+      subkeys:
+      - key: GUID
+        type: <string>
+        content: The 'GeneratedUID' of the administrator account. This value is available
+          in macOS 10.11 and later.
+      - key: shortName
+        type: <string>
+        content: The short name of the administrator account. This value is available
+          in macOS 10.11 and later.
+  - key: SystemIntegrityProtectionEnabled
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.12'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled System Integrity Protection. This value
+      requires the Device Information access right, and is available in macOS 10.12
+      and later.
+  - key: IsMDMLostModeEnabled
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled Managed Lost Mode. This value requires
+      the Device Information access right, and is available in iOS 9.3 and later.
+  - key: MaximumResidentUsers
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <integer>
+    content: The maximum number of users that can use this shared iPad device. Starting
+      with iOS 13.4, the value that returns is always '32'. This value requires the
+      Device Information access right, and is available in iOS 9.3 and later.
+  - key: EstimatedResidentUsers
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <integer>
+    content: The estimated number of users that can use this shared iPad device, according
+      to the space available on the device and each user's quota. This value requires
+      the Device Information access right, and is available in iOS 14 and later.
+  - key: QuotaSize
+    supportedOS:
+      iOS:
+        introduced: '13.4'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <integer>
+    content: The quota size in megabytes for each user on this shared iPad device.
+      This value requires the Device Information access right, and is available in
+      iOS 13.4 and later.
+  - key: ResidentUsers
+    supportedOS:
+      iOS:
+        introduced: '13.4'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <integer>
+    content: The number of users currently on this shared iPad device. This value
+      requires the Device Information access right, and is available in iOS 13.4 and
+      later.
+  - key: UserSessionTimeout
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: The timeout interval for the user session. '0' means no timeout.
+  - key: TemporarySessionTimeout
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: The timeout interval for the temporary session. '0' means no timeout.
+  - key: TemporarySessionOnly
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device only allows temporary sessions.
+  - key: PushToken
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: '10.12'
+      tvOS:
+        introduced: n/a
+    type: <data>
+    content: The push token for the user-channel connection, in the same format as
+      in TokenUpdateRequest. MDM ignores this query for the device channel. This value
+      requires the Device Information access right, and is available in iOS 9.3 and
+      later, and macOS 1012 and later.
+  - key: DiagnosticSubmissionEnabled
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled diagnostic submission. This value requires
+      the Device Information access right, and is available in iOS 9.3 and later.
+  - key: AppAnalyticsEnabled
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device is sharing app analytics. This value requires the
+      Device Information access right, and is available in iOS 9.3 and later.
+  - key: TimeZone
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '14.0'
+    type: <string>
+    content: The current Internet Assigned Numbers Authority (IANA) time zone database
+      name. This value requires the Device Information access right, and is available
+      in iOS 14 and later, and tvOS 14 and later.
+  - key: ICCID
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The integrated circuit card (ICC) identifier for the installed SIM card.
+      This value requires the Network Information access right, and is available in
+      iOS 4 and later.
+  - key: BluetoothMAC
+    type: <string>
+    content: The Bluetooth media access control (MAC) address. This value requires
+      the Network Information access right.
+  - key: WiFiMAC
+    type: <string>
+    content: The Wi-Fi MAC address. This value requires the Network Information access
+      right.
+  - key: EthernetMAC
+    supportedOS:
+      iOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The primary Ethernet MAC address. This value requires the Network Information
+      access right, and is available in macOS 10.7 and later.
+  - key: CurrentCarrierNetwork
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The name of the current carrier network. This value requires the Network
+      Information access right, and is available in iOS 4 and later.
+  - key: SIMCarrierNetwork
+    supportedOS:
+      iOS:
+        removed: '5.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: Apple no longer supports this query. Use 'SubscriberCarrierNetwork' instead.
+  - key: SubscriberCarrierNetwork
+    supportedOS:
+      iOS:
+        introduced: '5.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The name of the home carrier network. This value requires the Network
+      Information access right, and is available in iOS 5 and later.
+  - key: CarrierSettingsVersion
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The version of the carrier settings. This value requires the Network
+      Information access right, and is available in iOS 4 and later.
+  - key: PhoneNumber
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The raw phone number without punctuation and including the country code.
+      This value requires the Network Information access right, and is available in
+      iOS 7.0 and later.
+  - key: DataRoamingEnabled
+    supportedOS:
+      iOS:
+        introduced: '5.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled data roaming. This value requires the
+      Network Information access right, and is available in iOS 5 and later.
+  - key: VoiceRoamingEnabled
+    supportedOS:
+      iOS:
+        introduced: '5.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device has enabled voice roaming, which isn't available
+      for all carriers. This value requires the Network Information access right,
+      and is available in iOS 5 and later.
+  - key: PersonalHotspotEnabled
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true,' the device has enabled Personal Hotspot, which isn't available
+      for all carriers. This value requires the Network Information access right,
+      and is available in iOS 7.0 and later.
+  - key: IsNetworkTethered
+    supportedOS:
+      iOS:
+        introduced: '10.3'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device is network-tethered. This value requires the Network
+      Information access right, and is available in iOS 10.3 and later.
+  - key: IsRoaming
+    supportedOS:
+      iOS:
+        introduced: '4.2'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device is roaming. This value requires the Network Information
+      access right, and is available in iOS 4.2 and later.
+  - key: SIMMCC
+    supportedOS:
+      iOS:
+        removed: 4.2.6
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: Apple no longer supports this query. Use 'SubscriberMCC' instead.
+  - key: SIMMNC
+    supportedOS:
+      iOS:
+        removed: 4.2.6
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: Apple no longer supports this query. Use 'SubscriberMNC' instead.
+  - key: SubscriberMCC
+    supportedOS:
+      iOS:
+        introduced: 4.2.6
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The home Mobile Country Code (MCC). This value requires the Network Information
+      access right, and is available in iOS 4.2.6 and later.
+  - key: SubscriberMNC
+    supportedOS:
+      iOS:
+        introduced: 4.2.6
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The key to get the home Mobile Network Code (MNC). This value requires
+      the Network Information access right, and is available in iOS 4.2.6 and later.
+  - key: CurrentMCC
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The current mobile country code (MCC). This value requires the Network
+      Information access right, and is available in iOS 4 and later.
+  - key: CurrentMNC
+    supportedOS:
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The current mobile network code (MNC). This value requires the Network
+      Information access right, and is available in iOS 4 and later.
+  - key: ServiceSubscriptions
+    supportedOS:
+      iOS:
+        introduced: '12.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <array>
+    content: The contents of DeviceInformationResponse.QueryResponses.ServiceSubscriptionProperty.
+      This value requires the Network Information access right.
+    subkeys:
+    - key: ServiceSubscriptionProperty
+      type: <dictionary>
+      content: Properties of this Service Subscription. See below.
+      subkeys:
+      - key: CarrierSettingsVersion
+        type: <string>
+        content: The version of the carrier settings. This value is available in iOS
+          12 and later.
+      - key: CurrentCarrierNetwork
+        type: <string>
+        content: The name of the current carrier network. This value is available
+          in iOS 12 and later.
+      - key: CurrentMCC
+        type: <string>
+        content: The current mobile country code (MCC). This value is available in
+          iOS 12 and later.
+      - key: CurrentMNC
+        type: <string>
+        content: The current mobile network code (MNC). This value is available in
+          iOS 12 and later.
+      - key: ICCID
+        type: <string>
+        content: The integrated circuit card identifier (ICCID) value. This value
+          is available in iOS 12 and later.
+      - key: EID
+        supportedOS:
+          iOS:
+            introduced: '14.0'
+          macOS:
+            introduced: n/a
+          tvOS:
+            introduced: n/a
+        type: <string>
+        content: The eSIM identifier. This value is available in iOS 14 and later.
+      - key: IMEI
+        type: <string>
+        content: The device International Mobile Equipment Identity (IMEI) number.
+          This value is available in iOS 12 and later.
+      - key: IsDataPreferred
+        type: <boolean>
+        content: If 'true', this subscription is the preference for data. This value
+          is available in iOS 12 and later.
+      - key: IsRoaming
+        type: <boolean>
+        content: If 'true', the phone is roaming. This value is available in iOS 12
+          and later.
+      - key: IsVoicePreferred
+        type: <boolean>
+        content: If 'true', this subscription is the preference for voice. This value
+          is available in iOS 12 and later.
+      - key: Label
+        type: <string>
+        content: The label of this subscription. This value is available in iOS 12
+          and later.
+      - key: LabelID
+        type: <string>
+        content: The unique identifier for this subscription. This value is available
+          in iOS 12 and later.
+      - key: MEID
+        type: <string>
+        content: The device Mobile Equipment Identifier (MEID) number. This query
+          is available in iOS 12 and later.
+      - key: PhoneNumber
+        type: <string>
+        content: The raw phone number without punctuation and including country code.
+          This value is available in iOS 12 and later.
+      - key: Slot
+        type: <string>
+        content: The description of the slot that contains the SIM representing this
+          subscription. This value is available in iOS 12 and later.
+  - key: PINRequiredForEraseDevice
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the EraseDeviceCommand requires a PIN. This value is available
+      in macOS 11 and later.
+  - key: PINRequiredForDeviceLock
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the DeviceLockCommand requires a PIN. This value is available
+      in macOS 11 and later.
+  - key: SupportsiOSAppInstalls
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '11.0'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: If 'true', the device supports iOS/iPadOS app installs via MDM. This
+      query is available in macOS 11 and later.
+  - key: SoftwareUpdateDeviceID
+    supportedOS:
+      iOS:
+        introduced: '15.0'
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: '12.0'
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: The key representing the device identifier to be used when looking up
+      available OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5
+      and later.

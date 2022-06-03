@@ -1,0 +1,64 @@
+title: APN
+description: ''
+payload:
+  payloadtype: com.apple.apn.managed
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      deprecated: '7.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Not supported in macOS.
+    This technically does install on watchOS but we are removing the supportedOS dictionary. The cellular payload should be used instead.
+    Only applies to the preferred data SIM.
+    Deprecated. Use Cellular instead.
+payloadkeys:
+- key: DefaultsData
+  type: <dictionary>
+  presence: required
+  content: The list of access point names (APNs).
+  subkeys:
+  - key: apns
+    type: <array>
+    presence: required
+    content: An array of APN dictionaries (`APN.DefaultsData.Apns`).
+    subkeys:
+    - key: apnsItem
+      type: <dictionary>
+      subkeys:
+      - key: apn
+        type: <string>
+        presence: required
+        content: This string specifies the Access Point Name.
+      - key: username
+        type: <string>
+        presence: optional
+        content: This string specifies the user name for this APN. If it is missing,
+          the device prompts for it during profile installation.
+      - key: password
+        type: <data>
+        presence: optional
+        content: This data represents the password for the user for this APN. For
+          obfuscation purposes, the password is encoded. If it is missing from the
+          payload, the device prompts for the password during profile installation.
+      - key: proxy
+        type: <string>
+        presence: optional
+        content: The IP address or URL of the APN proxy.
+      - key: proxyPort
+        type: <integer>
+        presence: optional
+        content: The port number of the APN proxy.
+- key: DefaultsDomainName
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.managedCarrier
+  content: The domain name.

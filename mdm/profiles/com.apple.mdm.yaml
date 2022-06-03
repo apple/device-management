@@ -1,0 +1,246 @@
+title: MDM
+description: Use this section to define settings for mobile device management.
+payload:
+  payloadtype: com.apple.mdm
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.0'
+      supervised: false
+      allowmanualinstall: true
+payloadkeys:
+- key: IdentityCertificateUUID
+  title: Identity Certificate UUID
+  type: <string>
+  presence: required
+  format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  content: The UUID of the certificate payload for the device's identity. It may also
+    point to a SCEP payload.
+- key: Topic
+  title: Topic
+  type: <string>
+  presence: required
+  content: The topic that MDM listens to for push notifications. The certificate that
+    the server uses to send push notifications must have the same topic in its subject.
+    The topic must begin with the 'com.apple.mgmt.' prefix.
+- key: ServerURL
+  title: Server URL
+  type: <string>
+  presence: required
+  format: ^https://.*$
+  content: The URL that the device contacts to retrieve device management instructions.
+    The URL must begin with the 'https://' URL scheme, and may contain a port number
+    (':1234', for example).
+- key: CheckInURL
+  title: Check In URL
+  type: <string>
+  presence: optional
+  format: ^https://.*$
+  content: The URL that the device should use to check in during installation. The
+    URL must begin with the 'https://' URL scheme and may contain a port number (':1234',
+    for example). If this URL isn't given, 'ServerURL' is used for both purposes.
+- key: SignMessage
+  title: Sign Message
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', each message coming from the device carries the additional 'Mdm-Signature'
+    HTTP header.
+- key: AccessRights
+  title: Access Rights
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: ignored
+    macOS:
+      userenrollment:
+        mode: ignored
+  type: <integer>
+  presence: optional
+  content: |-
+    Logical OR of the following bit flags:
+    '1': Allow inspection of installed configuration profiles.
+    '2': Allow installation and removal of configuration profiles.
+    '4': Allow device lock and passcode removal.
+    '8': Allow device erase.
+    '16': Allow query of device information (device capacity, serial number).
+    '32': Allow query of network information (phone/SIM numbers, MAC addresses).
+    '64': Allow inspection of installed provisioning profiles.
+    '128': Allow installation and removal of provisioning profiles.
+    '256': Allow inspection of installed applications.
+    '512': Allow restriction-related queries.
+    '1024': Allow security-related queries.
+    '2048': Allow manipulation of settings.
+    '4096': Allow app management.
+    The value can't be '0'. If '2' is specified, '1' must also be specified. If '128' is specified, '64' must also be specified.
+    If the 'ManagedAppleID' is included, then 'AccessRights' are ignored.
+- key: UseDevelopmentAPNS
+  title: Use Development APNS
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', the device uses the development APNS servers. Otherwise, the device uses the production servers.
+    Note that this property must be set to 'false' if your Apple Push Notification Service certificate was issued by the Apple Push Certificate Portal ('https://identity.apple.com/pushcert'). That portal only issues certificates for the production push environment.
+- key: ManagedAppleID
+  title: Managed Apple ID
+  supportedOS:
+    iOS:
+      introduced: '13.1'
+      userenrollment:
+        mode: required
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The Managed Apple ID of the user. Available in iOS 13.1 and later, and
+    macOS 10.15 and later.
+- key: AssignedManagedAppleID
+  title: Assigned Managed Apple ID
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    The Managed Apple ID pre-assigned to the authenticated user. This is only used with the BYOD enrollment flow.
+    Available in iOS 15 and later.
+- key: EnrollmentMode
+  title: Enrollment Mode
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  rangelist:
+  - BYOD
+  content: |-
+    The enrollment mode the server indicates must be used when enrolling. This must be present for BYOD enrollments.
+    Available in iOS 15 and later.
+- key: ServerURLPinningCertificateUUIDs
+  supportedOS:
+    iOS:
+      introduced: '13.4'
+    macOS:
+      introduced: '10.13'
+    tvOS:
+      introduced: '13.4'
+  type: <array>
+  presence: optional
+  content: An array of strings, each containing the UUID of a certificate to be used
+    when evaluating trust to the '.../connect/' URLs of MDM servers.
+  subkeys:
+  - key: ServerURLPinningCertificateUUIDsItem
+    type: <string>
+    presence: required
+    content: A certificate payload UUID.
+- key: CheckInURLPinningCertificateUUIDs
+  supportedOS:
+    iOS:
+      introduced: '13.4'
+    macOS:
+      introduced: '10.13'
+    tvOS:
+      introduced: '13.4'
+  type: <array>
+  presence: optional
+  content: An array of strings, each containing the payload UUID of a certificate
+    to be used when evaluating trust to the '.../checkin/' URLs of MDM servers.
+  subkeys:
+  - key: CheckInURLPinningCertificateUUIDsItem
+    type: <string>
+    presence: required
+    content: A certificate payload UUID.
+- key: PinningRevocationCheckRequired
+  supportedOS:
+    iOS:
+      introduced: '13.4'
+    macOS:
+      introduced: '10.13'
+    tvOS:
+      introduced: '13.4'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', fails the connection attempt unless a verified positive response is obtained during certificate revocation checks.
+    If 'false', revocation checks are done on a best-attempt basis, where failure to reach the server isn't considered fatal.
+- key: ServerCapabilities
+  type: <array>
+  presence: optional
+  content: |-
+    A unique array of strings indicating server capabilities. If the server manages macOS devices or a Shared iPad, this field is mandatory and must contain the value 'com.apple.mdm.per-user-connections', which indicates that the server supports both device and user connections.
+    Starting with macOS 11, it is also recommended that macOS device enrollment profiles contain the value 'com.apple.mdm.bootstraptoken' to ensure the Bootstrap Token is created and escrowed with the MDM server at enrollment time.
+  subkeys:
+  - key: ServerCapabilitiesItems
+    type: <string>
+    rangelist:
+    - com.apple.mdm.per-user-connections
+    - com.apple.mdm.bootstraptoken
+- key: CheckOutWhenRemoved
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the device attempts to send a CheckOut <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/2-MDM_Check_In_Protocol/MDM_Check_In_Protocol..html#//apple_ref/doc/uid/TP40017387-CH4-SW7>
+    message to the 'CheckInURL' when the profile is removed.
+- key: RequiredAppIDForMDM
+  supportedOS:
+    iOS:
+      introduced: '15.1'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <integer>
+  presence: optional
+  content: |-
+    This property specifies an iTunes Store ID for an app the system can install with the InstallApplicationCommand, without any approval from the user. The MDM vendor or managing organization generally provides this app, which enhances the management experience for the user. The device shows the user details about this app in the account-driven enrollment process prior to installing the MDM profile. Use this property with account-driven MDM enrollments that normally require user approval for app installs through MDM.
+    Only account-driven user enrollments support this property and other enrollment types ignore it.
+    Available in iOS 15.1 and later.
+- key: PromptUserToAllowBootstrapTokenForAuthentication
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', warns the user that they need to reboot into RecoveryOS and allow the MDM to use the Bootstrap Token for authentication for certain sensitive operations such as enabling kernel extensions or installing some types of software updates. If the MDM doesn't need to perform these operations, it can leave this key set to 'false', and the user won't be notified.
+    The SettingsCommand.Command.Settings.MDMOptions.MDMOptions command overrides this default value.
+    This setting only applies to devices that have 'BootstrapTokenRequiredForSoftwareUpdate' or 'BootstrapTokenRequiredForKernelExtensionApproval' set to 'true' in their SecurityInfoResponse.SecurityInfo.
+    DEP-enrolled devices are automatically allowed to use the Bootstrap Token for authentication.
+    Available in macOS 11 and later.

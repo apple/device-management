@@ -1,0 +1,63 @@
+title: OS Update Status Command
+description: Queries the device for the status of software updates.
+payload:
+  requesttype: OSUpdateStatus
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowAppInstallation
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.11.5
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.0'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      supervised: true
+      requiresdep: false
+  content: Queries the device for the status of software updates.
+responsekeys:
+- key: OSUpdateStatus
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes the statuses of software updates.
+  subkeys:
+  - key: OSUpdateStatusItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: ProductKey
+      type: <string>
+      presence: required
+      content: The product key that represents the update.
+    - key: IsDownloaded
+      type: <boolean>
+      presence: required
+      content: If 'true', the update has finished downloading.
+    - key: DownloadPercentComplete
+      type: <real>
+      presence: required
+      content: A floating-point number between '0.0' and '1.0' that indicates the
+        download progress as a percentage.
+    - key: Status
+      type: <string>
+      presence: required
+      content: |-
+        The status of the update, which is one of the following values:
+        * 'Idle': The update is idle.
+        * 'Downloading': The software update is downloading.
+        * 'Installing': The software update is installing.

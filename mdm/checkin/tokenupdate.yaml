@@ -1,0 +1,164 @@
+title: Token Update
+description: Check-in protocol token update request keys.
+payload:
+  requesttype: TokenUpdate
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      supervised: false
+  content: Check-in protocol token update request and response.
+payloadkeys:
+- key: NotOnConsole
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.11'
+      devicechannel: false
+  type: <boolean>
+  presence: required
+  content: If true, the device is not on console.
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - TokenUpdate
+  content: The message type, which must have a value of 'TokenUpdate'.
+- key: Topic
+  type: <string>
+  presence: required
+  content: The topic the device subscribes to.
+- key: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID.
+- key: EnrollmentID
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      userenrollment:
+        mode: required
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the device. Available in macOS 10.15
+    and iOS 13.0 and later.
+- key: EnrollmentUserID
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+      devicechannel: false
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the user. Available in macOS 10.15 and
+    iOS 13.0 and later.
+- key: UserShortName
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    On Shared iPad: This is the Managed Apple ID of the user on Shared iPad. It indicates that the token is for the user channel.
+    On macOS, this is the short name of the user.
+- key: UserID
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    On macOS: This is the ID of the user.
+    On Shared iPad: This is always 'FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF' to indicate that no authentication will occur.
+- key: UserLongName
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The full name of the user.
+- key: Token
+  type: <data>
+  presence: required
+  content: The Push token for the device.
+- key: PushMagic
+  type: <string>
+  presence: required
+  content: The magic string that has to be included in the push notification message.
+- key: UnlockToken
+  supportedOS:
+    iOS:
+      accessrights: AllowPasscodeRemovalAndLock
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+  type: <data>
+  presence: optional
+  content: The data that can be used to unlock the device. If provided, the server
+    should remember this data and send it with when trying to Clear the Passcode.
+- key: AwaitingConfiguration
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+    macOS:
+      introduced: '10.11'
+      userchannel: false
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the device is awaiting a Release Device from Await Configuration
+    MDM command before proceeding through Setup Assistant.

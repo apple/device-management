@@ -1,0 +1,29 @@
+title: Identity Preference
+description: ''
+payload:
+  payloadtype: com.apple.security.identitypreference
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: Defines an Identity Preference item in the user's keychain that references
+    a identity payload included in the same profile. Can only appear in a user profile
+    (not a device profile). See also "com.apple.security.certificatepreference" for
+    setting up certificate preferences.
+payloadkeys:
+- key: Name
+  type: <string>
+  presence: required
+  content: The email address (in RFC 822 format), DNS host name, or other name that
+    uniquely identifies a service requiring this identity.
+- key: PayloadCertificateUUID
+  type: <string>
+  presence: required
+  content: The UUID of the certificate payload within the same profile to use for
+    the identity credential.

@@ -1,0 +1,2685 @@
+title: Restrictions
+description: Use this section to define restrictions settings
+payload:
+  payloadtype: com.apple.applicationaccess
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.1'
+      supervised: false
+      allowmanualinstall: true
+payloadkeys:
+- key: allowAccountModification
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If  'false', disables account modification. Requires a supervised device.
+    Available in iOS 7 and later.
+- key: allowActivityContinuation
+  title: Allow Handoff
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables activity continuation. Available in iOS 8 and later,
+    and macOS 10.15 and later.
+- key: allowAddingGameCenterFriends
+  title: Allow Adding Game Center Friends
+  supportedOS:
+    iOS:
+      introduced: 4.2.1
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits adding friends to Game Center. As of iOS 13, requires
+    a supervised device. Available in iOS 4.2.1 and later, and macOS 10.13 and later.
+- key: allowAirDrop
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables AirDrop. Requires a supervised device. Available in
+    iOS 7 and later, and macOS 10.13 and later.
+- key: allowAirPlayIncomingRequests
+  title: Allow incoming AirPlay requests
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '10.2'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables incoming AirPlay requests. Requires a supervised device.
+    Available in tvOS 10.2 and later.
+- key: allowAirPrint
+  title: Allow AirPrint
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables AirPrint.  Requires a supervised device. Available
+    in iOS 11 and later.
+- key: allowAirPrintCredentialsStorage
+  title: Allow storage of AirPrint credentials in Keychain
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables keychain storage of user name and password for AirPrint.
+    Requires a supervised device. Available in iOS 11 and later.
+- key: allowAirPrintiBeaconDiscovery
+  title: Allow discovery of AirPrint printers using iBeacons
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iBeacon discovery of AirPrint printers, which prevents
+    spurious AirPrint Bluetooth beacons from phishing for network traffic. Requires
+    a supervised device. Available in iOS 11 and later.
+- key: allowAppCellularDataModification
+  title: Allow Modifying Cellular Data Usage for Apps Settings
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables changing settings for cellular data usage for apps.
+    Requires a supervised device. Available in iOS 7 and later.
+- key: allowAppClips
+  title: Allow App Clips
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents a user from adding any App Clips, and removes any
+    existing App Clips on the device. Requires a supervised device. Available in iOS
+    14.0 and later.
+- key: allowAppInstallation
+  title: Allow App Installation from Apple Configurator and iTunes
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the App Store, and its icon is removed from the Home
+    screen. Users are unable to install or update their apps. In iOS 10 and later,
+    MDM commands can override this restriction. As of iOS 13, this restriction requires
+    a supervised device. Available in iOS 4 and later.
+- key: allowApplePersonalizedAdvertising
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '12.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', limits Apple personalized advertising. Available in iOS 14
+    and later.
+- key: allowAppRemoval
+  title: Allow App Removal
+  supportedOS:
+    iOS:
+      introduced: 4.2.1
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables removal of apps from an iOS device. Requires a supervised
+    device. Available in iOS 4.2.1 and later.
+- key: allowAssistant
+  title: Allow Siri
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Siri. Available in iOS 5 and later. Also available
+    for user enrollment.
+- key: allowAssistantUserGeneratedContent
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents Siri from querying user-generated content from the
+    web. Requires a supervised device. Available in iOS 7 and later.
+- key: allowAssistantWhileLocked
+  title: Allow Siri While Locked
+  supportedOS:
+    iOS:
+      introduced: '5.1'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Siri when the device is locked. This restriction is
+    ignored if the device doesn't have a passcode set. Available in iOS 5.1 and later.
+    Also available for user enrollment.
+- key: allowAutoCorrection
+  title: Allow Auto Correction
+  supportedOS:
+    iOS:
+      introduced: 8.1.3
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables keyboard autocorrection. Requires a supervised device.
+    Available in iOS 8.1.3 and later.
+- key: allowAutomaticAppDownloads
+  title: Allow Automatic App Downloads
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents automatic downloading of apps purchased on other devices.
+    This setting doesn't affect updates to existing apps. Requires a supervised device.
+    Available in iOS 9 and later.
+- key: allowAutoUnlock
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disallows auto unlock. Available in macOS 10.12 and later,
+    and iOS 14.5 and later.
+- key: allowBluetoothModification
+  title: Allow modifying Bluetooth settings
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents modification of Bluetooth settings. Requires a supervised
+    device. Available in iOS 11 and later.
+- key: allowBookstore
+  title: Allow Bookstore
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', removes the Book Store tab from the Books app. Requires a supervised
+    device. Available in iOS 6 and later.
+- key: allowBookstoreErotica
+  title: Allow Bookstore Erotica
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.3'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', the user can't download Apple Books media that is tagged as
+    erotica. Available in iOS 6 and later, and tvOS 11.3 and later.
+- key: allowCamera
+  title: Allow Camera Use
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the camera, and its icon is removed from the Home
+    screen. Users are unable to take photographs. This restriction is deprecated on
+    unsupervised devices  and will be supervised only in a future release.  Available
+    in iOS 4 and later, and macOS 10.11 and later.
+- key: allowCellularPlanModification
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', users can't change any settings related to their cellular plan.
+    Requires a supervised device. Available in iOS 11 and later.
+- key: allowChat
+  title: Allow use of iMessage
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the use of the iMessage with supervised devices. If
+    the device supports text messaging, the user can still send and receive text messages.
+    Requires a supervised device. Available in iOS 5 and later.
+- key: allowCloudAddressBook
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Address Book services. Available in macOS 10.12
+    and later.
+- key: allowCloudBackup
+  title: Allow iCloud Backup
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      supervised: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables backing up the device to iCloud.  This restriction
+    is deprecated on unsupervised devices  and will be supervised only in a future
+    release. Available in iOS 5 and later.
+- key: allowCloudBookmarks
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Bookmark sync. Available in macOS 10.12 and
+    later.
+- key: allowCloudCalendar
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Calendar services. Available in macOS 10.12
+    and later.
+- key: allowCloudDesktopAndDocuments
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.12.4
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables cloud desktop and document services. Available in
+    macOS 10.12.4 and later.
+- key: allowCloudDocumentSync
+  title: Allow iCloud Document Sync
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables document and key-value syncing to iCloud.  As of iOS
+    13, this restriction requires a supervised device. Available in iOS 5 and later,
+    and macOS 10.11 and later.
+- key: allowCloudKeychainSync
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud keychain synchronization. This restriction
+    is deprecated on unsupervised devices  and will be supervised only in a future
+    release. Available in iOS 7 and later and macOS 10.12 and later.
+- key: allowCloudMail
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Mail services. Available in macOS 10.12 and
+    later.
+- key: allowCloudNotes
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Notes services. Available in macOS 10.12 and
+    later.
+- key: allowCloudPhotoLibrary
+  title: Allow iCloud Photo Library
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Photo Library. Any photos not fully downloaded
+    from iCloud Photo Library to the device are removed from local storage. Available
+    in iOS 9 and later, and macOS 10.12 and later.
+- key: allowCloudPrivateRelay
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '12.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Private Relay. For iOS devices, this restriction
+    requires a supervised device. Available in macOS 12 and later, and iOS 15 and
+    later.
+- key: allowCloudReminders
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iCloud Reminder services. Available in macOS 10.12
+    and later.
+- key: allowContentCaching
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables content caching. As of 10.13.4 this is included in
+    the content caching payload. Available in macOS 10.13 and later.
+- key: allowContinuousPathKeyboard
+  title: Allow Continuous Path Keyboard
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables QuickPath keyboard. Requires a supervised device.
+    Available in iOS 13 and later.
+- key: allowDefinitionLookup
+  title: Allow Define
+  supportedOS:
+    iOS:
+      introduced: 8.1.3
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables definition lookup. Requires a supervised device on
+    iOS. Available in iOS 8.1.3 and later and macOS 10.11 and later.
+- key: allowDeviceNameModification
+  title: Allow Modifying Device Name
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.0'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents the user from changing the device name. Requires a
+    supervised device. Available in iOS 9 and later, and tvOS 11.0 and later.
+- key: allowDeviceSleep
+  title: Allow Device Sleep
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '13.0'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents device from automatically sleeping. Requires a supervised
+    device. Available in tvOS 13 and later.
+- key: allowDiagnosticSubmission
+  title: Allow diagnostic submission
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+    macOS:
+      introduced: '10.13'
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents the device from automatically submitting diagnostic
+    reports to Apple. Available in iOS 6 and later, and macOS 10.13 and later. Also
+    available for user enrollment.
+- key: allowDiagnosticSubmissionModification
+  title: Allow modifying diagnostics settings
+  supportedOS:
+    iOS:
+      introduced: 9.3.2
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables changing the diagnostic submission and app analytics
+    settings in the Diagnostics & Usage UI in Settings. Requires a supervised device.
+    Available in iOS 9.3.2 and later.
+- key: allowDictation
+  title: Allow dictation
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disallows dictation input. Requires a supervised device. Available
+    in iOS 10.3 and later, and macOS 10.13 and later.
+- key: allowEnablingRestrictions
+  title: Allow Configuring Restrictions or ScreenTime
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', disables the 'Enable Restrictions' option in the Restrictions UI in Settings.
+    In iOS 12 or later, if 'false', disables the 'Enable ScreenTime' option in the ScreenTime UI in Settings and disables ScreenTime if already enabled. Requires a supervised device. Available in iOS 8 and later.
+- key: allowEnterpriseAppTrust
+  title: Allow Trusting Enterprise Apps
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', removes the Trust Enterprise Developer button in Settings >
+    General > Profiles & Device Management, preventing apps from being provisioned
+    by universal provisioning profiles. This restriction applies to free developer
+    accounts. However, it doesn't apply to enterprise app developers who are trusted
+    because their apps were pushed through MDM. It also doesn't revoke previously
+    granted trust. Available in iOS 9 and later.
+- key: allowEnterpriseBookBackup
+  title: Allow Enterprise Books Backup
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables backup of Enterprise books. Available in iOS 8 and
+    later. Also available for user enrollment.
+- key: allowEnterpriseBookMetadataSync
+  title: Allow Enterprise Books Notes and Highlights Sync
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables sync of Enterprise books, notes, and highlights. Available
+    in iOS 8 and later. Also available for user enrollment.
+- key: allowEraseContentAndSettings
+  title: Allow Erase All Content and Settings
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '12.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the Erase All Content And Settings option in the Reset
+    UI. Requires a supervised device. Available in iOS 8 and later, and macOS 12 and
+    later.
+- key: allowESIMModification
+  title: Allow eSIM Modification
+  supportedOS:
+    iOS:
+      introduced: '12.1'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables modifications to carrier plan related settings (only
+    available on select carriers). Requires a supervised device. Available in iOS
+    11 and later.
+- key: allowExplicitContent
+  title: Allow Explicit Content
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.3'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', hides explicit music or video content purchased from the iTunes
+    Store. Explicit content is marked as such by content providers, such as record
+    labels, when sold through the iTunes Store.  As of iOS 13, requires a supervised
+    device. Available in iOS 4 and later, and tvOS 11.3 and later.
+- key: allowFilesNetworkDriveAccess
+  supportedOS:
+    iOS:
+      introduced: '13.1'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents connecting to network drives in the Files app. Requires
+    a supervised device. Available in iOS 13.1 and later.
+- key: allowFilesUSBDriveAccess
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents connecting to any connected USB devices in the Files
+    app. Requires a supervised device. Available in iOS 13.1 and later.
+- key: allowFindMyDevice
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Find My Device in the Find My app. Requires a supervised
+    device. Available in iOS 13 and later.
+- key: allowFindMyFriends
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Find My Friends in the Find My app. Requires a supervised
+    device. Available in iOS 13 and later.
+- key: allowFindMyFriendsModification
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables changes to Find My Friends. Requires a supervised
+    device. Available in iOS 7 and later.
+- key: allowFingerprintForUnlock
+  title: Allow Touch ID to Unlock Device
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.12.4
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents Touch ID or Face ID from unlocking a device. Available
+    in iOS 7 and later, and macOS 10.12.4 and later.
+- key: allowFingerprintModification
+  title: Allow Modifying Touch ID Fingerprints
+  supportedOS:
+    iOS:
+      introduced: '8.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents the user from modifying Touch ID or Face ID. Requires
+    a supervised device. Available in iOS 8.3 and later.
+- key: allowGameCenter
+  title: Allow Game Center
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Game Center, and its icon is removed from the Home
+    screen. Requires a supervised device. Available in iOS 6 and later, and macOS
+    10.13 and later.
+- key: allowGlobalBackgroundFetchWhenRoaming
+  title: Allow Automatic Sync While Roaming
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables global background fetch activity when an iOS phone
+    is roaming. Available in iOS 4 and later.
+- key: allowHostPairing
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables host pairing with the exception of the supervision
+    host. If no supervision host certificate has been configured, all pairing is disabled.
+    Host pairing lets the administrator control if an iOS device can pair with a host
+    Mac or PC. Requires a supervised device. Available in iOS 7 and later.
+- key: allowInAppPurchases
+  title: Allow In App Purchases
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits in-app purchasing. Available in iOS 4 and later.
+- key: allowiTunes
+  title: Allow use of iTunes
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', disables the iTunes Music Store, and its icon is removed from the Home screen. Users cannot preview, purchase, or download content.
+    As of iOS 13, requires a supervised device. Available in iOS 4 and later.
+- key: allowiTunesFileSharing
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables iTunes file sharing services. Available in macOS 10.13
+    and later.
+- key: allowKeyboardShortcuts
+  title: Allow Keyboard Shortcuts
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables keyboard shortcuts. Requires a supervised device.
+    Available in iOS 9 and later.
+- key: allowListedAppBundleIDs
+  title: Allow Listed Apps
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '15.0'
+      supervised: true
+  type: <array>
+  presence: optional
+  content: If present, this property allows only bundle IDs listed in the array to
+    be shown or launchable. Include the value 'com.apple.webapp' to allow all webclips.
+    Requires a supervised device. Available in iOS 9.3 and later, and tvOS 11.0 and
+    later.
+  subkeys:
+  - key: appAllowlistedBundleID
+    title: Allow Listed App
+    type: <string>
+- key: allowLockScreenControlCenter
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents Control Center from appearing on the Lock screen.
+    Available in iOS 7 and later. Also available for user enrollment.
+- key: allowLockScreenNotificationsView
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the Notifications history view on the lock screen,
+    so users can't view past notifications. However, they can still see notifications
+    when they arrive. Available in iOS 7 and later. Also available for user enrollment.
+- key: allowLockScreenTodayView
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the Today view in Notification Center on the lock
+    screen. Available in iOS 7 and later. Also available for user enrollment.
+- key: allowManagedAppsCloudSync
+  title: Allow iCloud Sync for Managed Apps
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents managed apps from using iCloud sync. Available in
+    iOS 8 and later. Also available for user enrollment.
+- key: allowManagedToWriteUnmanagedContacts
+  title: Allow managed apps to write to managed contacts accounts
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', managed apps can write contacts to unmanaged contacts accounts.
+    If 'allowOpenFromManagedToUnmanaged' is 'true', this restriction has no effect.
+    If this restriction is set to 'true', you must install the payload through MDM.
+    Available in iOS 12 and later.
+- key: allowMultiplayerGaming
+  title: Allow Multiplayer Gaming
+  supportedOS:
+    iOS:
+      introduced: '4.1'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits multiplayer gaming. Requires a supervised device.
+    Available in iOS 4.1 and later, and macOS 10.13 and later.
+- key: allowMusicService
+  title: Allow Apple Music
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.12'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the Music service, and the Music app reverts to classic
+    mode. Requires a supervised device. Available in iOS 9.3 and later, and macOS
+    10.12 and later.
+- key: allowNews
+  title: Allow use of News
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables News. Requires a supervised device. Available in iOS
+    9 and later.
+- key: allowNFC
+  supportedOS:
+    iOS:
+      introduced: '14.2'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables NFC. Requires a supervised device. Available in iOS
+    14.2 and later.
+- key: allowNotificationsModification
+  title: Allow Modifying Notifications Settings
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables modification of notification settings. Requires a
+    supervised device. Available in iOS 9.3 and later.
+- key: allowOpenFromManagedToUnmanaged
+  title: Enable allow open from managed to unmanaged
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', documents in managed apps and accounts only open in other managed
+    apps and accounts. Available in iOS 7 and later. Also available for user enrollment.
+- key: allowOpenFromUnmanagedToManaged
+  title: Enable allow open from unmanaged to managed
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', documents in unmanaged apps and accounts only open in other
+    unmanaged apps and accounts. Available in iOS 7 and later. Also available for
+    user enrollment.
+- key: allowOTAPKIUpdates
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables over-the-air PKI updates. Setting this restriction
+    to 'false' doesn't disable CRL and OCSP checks.  Available in iOS 7 and later.
+- key: allowPairedWatch
+  title: Allow Pairing With Apple Watch
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables pairing with an Apple Watch. Any currently paired
+    Apple Watch is unpaired and the watch's content is erased. Requires a supervised
+    device. Available in iOS 9 and later.
+- key: allowPassbookWhileLocked
+  title: Allow Wallet While Locked
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', hides Passbook notifications from the lock screen. Available
+    in iOS 6 and later.
+- key: allowPasscodeModification
+  title: Allow Modifying Passcode
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', prevents the device passcode from being added, changed, or removed.
+    This restriction is ignored by Shared iPads. Requires a supervised device. Available in iOS 9 and later, and macOS 10.13 and later.
+- key: allowPasswordAutoFill
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.14'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', disables the AutoFill Passwords feature in iOS (with Keychain and third-party password managers) and the user isn't prompted to use a saved password in Safari or in apps.
+    This restriction also disables Automatic Strong Passwords, and strong passwords are no longer suggested to users.
+    It does not prevent AutoFill for contact info and credit cards in Safari.
+    Requires a supervised device. Available in iOS 12 and later, and macOS 10.14 and later.
+- key: allowPasswordProximityRequests
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.14'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.0'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables requesting passwords from nearby devices. Requires
+    a supervised device. Available in iOS 12 and later, macOS 10.14 and later, and
+    tvOS 12 and later.
+- key: allowPasswordSharing
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.14'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables sharing passwords with the Airdrop Passwords feature.
+    Requires a supervised device. Available in iOS 12 and later, and macOS 10.14 and
+    later.
+- key: allowPersonalHotspotModification
+  title: Allow modifying Personal Hotspot settings
+  supportedOS:
+    iOS:
+      introduced: '12.2'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables modifications of the personal hotspot setting. Requires
+    a supervised device. Available in iOS 12.2 and later.
+- key: allowPhotoStream
+  title: Allow Photo Stream
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Photo Stream. Available in iOS 5 and later.
+- key: allowPodcasts
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables podcasts. Requires a supervised device. Available
+    in iOS 8 and later.
+- key: allowPredictiveKeyboard
+  title: Allow Predictive Keyboard
+  supportedOS:
+    iOS:
+      introduced: 8.1.3
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables predictive keyboards. Requires a supervised device.
+    Available in iOS 8.1.3 and later.
+- key: allowProximitySetupToNewDevice
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the prompt to set up new devices that are nearby.
+    Requires a supervised device. Available in iOS 11 and later.
+- key: allowRadioService
+  title: Allow iTunes Radio
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Apple Music Radio. Requires a supervised device. Available
+    in iOS 9.3 and later.
+- key: allowRemoteAppPairing
+  title: Allow pairing with Remote app
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '10.2'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables pairing Apple TV for use with the Remote app or Control
+    Center widget. Requires a supervised device. Available in tvOS 10.2 and later.
+- key: allowRemoteScreenObservation
+  title: Allow Remote Screen Observation
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+    macOS:
+      introduced: 10.14.4
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables remote screen observation by the Classroom app. Nest
+    this key beneath 'allowScreenShot' as a subrestriction. If 'allowScreenShot' is
+    set to 'false', the Classroom app doesn't observe remote screens. Required a supervised
+    device until iOS 13 and macOS 10.15. Available in iOS 12 and later, and macOS
+    10.14.4 and later.
+- key: allowSafari
+  title: Allow use of Safari
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the Safari web browser app, and its icon is removed
+    from the Home screen. This setting also prevents users from opening web clips.
+    As of iOS 13, requires a supervised device. Available in iOS 4 and later.
+- key: allowScreenShot
+  title: Allow Screenshots and Screen Recording
+  supportedOS:
+    iOS:
+      introduced: '3.1'
+    macOS:
+      introduced: 10.14.4
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables saving a screenshot of the display and capturing a
+    screen recording. It also disables the Classroom app from observing remote screens.
+    Available in iOS 4 and later, and macOS 10.14.4 and later. Also available for
+    user enrollment.
+- key: allowSharedDeviceTemporarySession
+  supportedOS:
+    iOS:
+      introduced: '13.4'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', temporary sessions are not available on Shared iPad. Available
+    in iOS 13.4 and later.
+- key: allowSharedStream
+  title: Allow Shared Stream
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Shared Photo Stream. Available in iOS 6 and later.
+- key: allowSpellCheck
+  title: Allow Spell Check
+  supportedOS:
+    iOS:
+      introduced: 8.1.3
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables keyboard spell-check. Requires a supervised device.
+    Available in iOS 8.1.3 and later.
+- key: allowSpotlightInternetResults
+  title: Allow Siri Suggestions
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Spotlight Internet search results in Siri Suggestions.
+    Available in iOS 8 and later, and macOS 10.11 and later.
+- key: allowSystemAppRemoval
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the removal of system apps from the device. Requires
+    a supervised device. Available in iOS 11 and later.
+- key: allowUIAppInstallation
+  title: Allow App Installation from App Store
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', disables the App Store, and its icon is removed from the Home screen. However, users may continue to use host apps (iTunes, Configurator) to install or update their apps.
+    In iOS 10 and later, MDM commands can override this restriction. Requires a supervised device. Available in iOS 9 and later.
+- key: allowUIConfigurationProfileInstallation
+  title: Allow UI Configuration Profile Installation
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits the user from installing configuration profiles and
+    certificates interactively. Requires a supervised device. Available in iOS 6 and
+    later.
+- key: allowUnmanagedToReadManagedContacts
+  title: Allow unmanaged apps to read managed contacts accounts
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      allowmanualinstall: false
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', unmanaged apps can read from managed contacts accounts. If 'allowOpenFromManagedToUnmanaged'
+    is 'true', this restriction has no effect. If this restriction is set to 'true',
+    you must install the payload through MDM. Available in iOS 12 and later. Also
+    available for user enrollment.
+- key: allowUnpairedExternalBootToRecovery
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows devices to be booted into recovery by an unpaired device.
+    Requires a supervised device. Available in iOS 14.5 and later.
+- key: allowUntrustedTLSPrompt
+  title: Allow user to accept untrusted TLS certificates
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', automatically rejects untrusted HTTPS certificates without
+    prompting the user. Available in iOS 5 and later.
+- key: allowUSBRestrictedMode
+  supportedOS:
+    iOS:
+      introduced: 11.4.1
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', allows the device to always connect to USB accessories while
+    locked. Requires a supervised device. Available in iOS 11.4.1 and later.
+- key: allowVideoConferencing
+  title: Allow Video Conferencing
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', hides the FaceTime app. As of iOS 13, requires a supervised
+    device. Available in iOS 4 and later.
+- key: allowVoiceDialing
+  title: Allow Voice Dialing While Device is Locked
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables voice dialing if the device is locked with a passcode.
+    Available in iOS 4 and later.
+- key: allowVPNCreation
+  title: Allow Adding VPN Configurations (Supervised devices only)
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the creation of VPN configurations. Requires a supervised
+    device. Available in iOS 11 and later.
+- key: allowWallpaperModification
+  title: Allow Modifying Wallpaper
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents wallpaper from being changed. Requires a supervised
+    device. Available in iOS 9 and later, and macOS 10.13 and later.
+- key: autonomousSingleAppModePermittedAppIDs
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: If present, allows apps identified by the bundle IDs listed in the array
+    to autonomously enter Single App Mode. Requires a supervised device. Available
+    in iOS 7 and later.
+  subkeys:
+  - key: appAutonomousSingleAppModePermittedID
+    title: Apps allow list for Autonomous Single App Mode
+    type: <string>
+- key: blacklistedAppBundleIDs
+  title: Blacklisted Apps
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      deprecated: '15.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.0'
+      deprecated: '15.0'
+      supervised: true
+  type: <array>
+  presence: optional
+  content: Use blockedAppBundleIDs instead.
+  subkeys:
+  - key: appBlacklistedBundleID
+    title: Blacklisted App
+    type: <string>
+- key: blockedAppBundleIDs
+  title: Blocked Apps
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '15.0'
+      supervised: true
+  type: <array>
+  presence: optional
+  content: If present, prevents bundle IDs listed in the array from being shown or
+    launchable. Include the value 'com.apple.webapp' to restrict all webclips. Requires
+    a supervised device. Available in iOS 9.3 and later, and tvOS 11.0 and later.
+  subkeys:
+  - key: appBlockedBundleID
+    title: Blocked App
+    type: <string>
+- key: enforcedFingerprintTimeout
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '12.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <integer>
+  presence: optional
+  default: 172800
+  content: The value, in seconds, after which the fingerprint unlock will require
+    a password to authenticate. The default value is 48 hours.
+- key: enforcedSoftwareUpdateDelay
+  supportedOS:
+    iOS:
+      introduced: '11.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.13.4
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.2'
+      supervised: true
+  type: <integer>
+  presence: optional
+  range:
+    min: 1
+    max: 90
+  default: 30
+  content: |-
+    Sets how many days to delay a software update on the device. With this restriction in place, the user doesn't see a software update until the specified number of days after the software update release date. This value is used by  'forceDelayedAppSoftwareUpdates' and 'forceDelayedSoftwareUpdates'.
+    Requires a supervised device in iOS and tvOS.
+    Available in iOS 11.3 and later, macOS 10.13.4 and later, and tvOS 12.2 and later.
+- key: enforcedSoftwareUpdateMajorOSDeferredInstallDelay
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.3'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <integer>
+  presence: optional
+  range:
+    min: 1
+    max: 90
+  default: 30
+  content: |-
+    This restriction allows the admin to set how many days to delay a major software upgrade on the device. When this restriction is in place the user sees a software upgrade only after the specified delay after the release of the software upgrade. This value controls the delay for 'forceDelayedMajorSoftwareUpdates'.
+    Available in macOS 11.3 and later.
+- key: enforcedSoftwareUpdateMinorOSDeferredInstallDelay
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.3'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <integer>
+  presence: optional
+  range:
+    min: 1
+    max: 90
+  default: 30
+  content: |-
+    This restriction allows the admin to set how many days to delay a minor OS software update on the device. When this restriction is in place the user see a software update only after the specified delay after the release of the software update. This value controls the delay for 'forceDelayedSoftwareUpdates'.
+    Available in macOS 11.3 and later.
+- key: enforcedSoftwareUpdateNonOSDeferredInstallDelay
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.3'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <integer>
+  presence: optional
+  range:
+    min: 1
+    max: 90
+  default: 30
+  content: |-
+    This restriction allows the admin to set how many days to delay an app software update on the device. When this restriction is in place the user sees a non-OS software update only after the specified delay after the release of the software. This value controls the delay for 'forceDelayedAppSoftwareUpdates'.
+    Available in macOS 11.3 and later.
+- key: forceAirDropUnmanaged
+  title: Treat AirDrop as Unmanaged Destination
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', causes AirDrop to be considered an unmanaged drop target. Available
+    in iOS 9 and later. Also available for user enrollment.
+- key: forceAirPlayIncomingRequestsPairingPassword
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '6.2'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', forces all devices sending AirPlay requests to this device to
+    use a pairing password. Available in Apple TV Software 6.2 and later. This key
+    isn't supported in tvOS 10.2 and later. Use the AirPlay Security Payload instead.
+- key: forceAirPlayOutgoingRequestsPairingPassword
+  supportedOS:
+    iOS:
+      introduced: '7.1'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', forces all devices receiving AirPlay requests from this device
+    to use a pairing password. Available in iOS 7.1 and later. Also available for
+    user enrollment.
+- key: forceAirPrintTrustedTLSRequirement
+  title: Disallow AirPrint to destinations with untrusted certificates
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', requires trusted certificates for TLS printing communication.
+    Requires a supervised device. Available in iOS 11 and later.
+- key: forceAssistantProfanityFilter
+  title: Enable Siri Profanity Filter
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', forces the use of the profanity filter assistant. Requires a
+    supervised device. Available in iOS 11 and later.
+- key: forceAuthenticationBeforeAutoFill
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the user must authenticate before passwords or credit card information
+    can be autofilled in Safari and Apps. If this restriction isn't enforced, the
+    user can toggle this feature in Settings. Only supported on devices with Face
+    ID or Touch ID. Requires a supervised device. Available in iOS 11 and later.
+- key: forceAutomaticDateAndTime
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '12.2'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables the Set Automatically feature in Date & Time and can't
+    be disabled by the user.  The device's time zone is updated only when the device
+    can determine its location using a cellular connection or Wi-Fi with location
+    services enabled. Requires a supervised device. Available in iOS 12 and later,
+    and tvOS 12.2 and later.
+- key: forceClassroomAutomaticallyJoinClasses
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.14.4
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', automatically gives permission to the teacher's requests without
+    prompting the student. Requires a supervised device. Available in iOS 11 and later,
+    and macOS 10.14.4 and later.
+- key: forceClassroomRequestPermissionToLeaveClasses
+  supportedOS:
+    iOS:
+      introduced: '11.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.14.4
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', a student enrolled in an unmanaged course through Classroom
+    requests permission from the teacher when attempting to leave the course. Requires
+    a supervised device. Available in iOS 11.3 and later, and macOS 10.14.4 and later.
+- key: forceClassroomUnpromptedAppAndDeviceLock
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.14.4
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows the teacher to lock apps or the device without prompting
+    the student. Requires a supervised device. Available in iOS 11 and later, and
+    macOS 10.14.4 and later.
+- key: forceClassroomUnpromptedScreenObservation
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: 10.14.4
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true' and 'ScreenObservationPermissionModificationAllowed' is also
+    'true' in the Education payload, a student enrolled in a managed course via the
+    Classroom app automatically gives permission to that course teacher's requests
+    to observe the student's screen without prompting the student. Requires a supervised
+    device. Available in iOS 11 and later, and macOS 10.14.4 and later.
+- key: forceDelayedAppSoftwareUpdates
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', delays user visibility of non-OS Software Updates. Requires a supervised device.
+    Visibility of Operating System updates is controlled through 'forceDelayedSoftwareUpdates'.
+    The delay is 30 days unless 'enforcedSoftwareUpdateDelay' is set to another value.
+    Available in macOS 11 and later.
+- key: forceDelayedMajorSoftwareUpdates
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.3'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If set to true, delays user visibility of major upgrades to OS Software.
+    Available in macOS 11.3 and later.
+- key: forceDelayedSoftwareUpdates
+  supportedOS:
+    iOS:
+      introduced: '11.3'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.2'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', delays user visibility of software updates. In macOS, seed build updates are allowed, without delay. Requires a supervised device in iOS and tvOS.
+    The delay is 30 days unless 'enforcedSoftwareUpdateDelay' is set to another value.
+    Available in iOS 11.3 and later, macOS 10.13 and later, and tvOS 12.2 and later.
+- key: forceEncryptedBackup
+  title: Force Encrypted Backups
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', encrypts all backups. Available in iOS 4 and later. Also available
+    for user enrollment.
+- key: forceITunesStorePasswordEntry
+  title: Require iTunes password for all purchases
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', forces the user to enter their iTunes password for each transaction.
+    Available in iOS 6 and later.
+- key: forceLimitAdTracking
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', limits ad tracking. Available in iOS 7 and later.
+- key: forceOnDeviceOnlyDictation
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables connections to Siri servers for the purposes of dictation.
+    Available in iOS 14.5 and later. Also available for user enrollment.
+- key: forceOnDeviceOnlyTranslation
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the device won't connect to Siri servers for the purposes of
+    translation. Available in iOS 15 and later. Also available for user enrollment.
+- key: forceWatchWristDetection
+  title: Force Apple Watch Wrist Detection
+  supportedOS:
+    iOS:
+      introduced: '8.2'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', forces a paired Apple Watch to use Wrist Detection. Available
+    in iOS 8.2 and later. Also available for user enrollment.
+- key: forceWiFiPowerOn
+  title: Disallow Wi-Fi from being turned off
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prevents Wi-Fi from being turned off in Settings or Control
+    Center, even by entering or leaving Airplane Mode. It doesn't prevent selecting
+    which Wi-Fi network to use. Requires a supervised device. Available in iOS 13.0
+    and later.
+- key: forceWiFiToAllowedNetworksOnly
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', limits device to only join Wi-Fi networks set-up via configuration
+    profile. Requires a supervised device. Available in iOS 14.5 and later.
+- key: forceWiFiWhitelisting
+  title: Only join Wi-Fi networks installed by profiles
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+      deprecated: '14.5'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Use 'forceWiFiToAllowedNetworksOnly' instead.
+- key: ratingApps
+  title: Apps Ranking Number
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.3'
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 1000
+  default: 1000
+  content: |-
+    The maximum level of app content allowed on the device. Available in iOS 4 and later, and tvOS 11.3 and later.
+    Possible values (with the US description of the rating level):
+    * 1000: All
+    * 600: 17+
+    * 300: 12+
+    * 200: 9+
+    * 100: 4+
+    * 0: None
+- key: ratingMovies
+  title: Movies Ranking Number
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.3'
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 1000
+  default: 1000
+  content: |-
+    The maximum level of movie content allowed on the device. Available in iOS 4 and later, and tvOS 11.3 and later.
+    Possible values (with the US description of the rating level):
+    * 1000: All
+    * 500: NC-17
+    * 400: R
+    * 300: PG-13
+    * 200: PG
+    * 100: G
+    * 0: None
+- key: ratingRegion
+  title: Region Code
+  type: <string>
+  presence: optional
+  rangelist:
+  - us
+  - au
+  - ca
+  - de
+  - fr
+  - ie
+  - jp
+  - nz
+  - gb
+  content: The two-letter key that profile tools use to display the proper ratings
+    for the given region. This data isn't recognized or reported by the client.
+- key: ratingTVShows
+  title: TV Shows Ranking Number
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.3'
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 1000
+  default: 1000
+  content: |-
+    The maximum level of TV content allowed on the device. Available in iOS 4 and later, and tvOS 11.3 and later.
+
+    Possible values (with the US description of the rating level):
+
+    * 1000: All
+    * 600: TV-MA
+    * 500: TV-14
+    * 400: TV-PG
+    * 300: TV-G
+    * 200: TV-Y7
+    * 100: TV-Y
+    * 0: None
+- key: requireManagedPasteboard
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', copy and paste functionality respects the 'allowOpenFromManagedToUnmanaged'
+    and 'allowOpenFromUnmanagedToManaged' restrictions. Also available for user enrollment.
+- key: safariAcceptCookies
+  title: Accept Cookies in Safari
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <real>
+  presence: optional
+  rangelist:
+  - 0.0
+  - 1.0
+  - 1.5
+  - 2.0
+  default: 2.0
+  content: |-
+    This value defines the conditions under which the device accepts cookies. The user-facing settings changed in iOS 11, although the possible values remain the same. Available in iOS 4 and later.
+    '0': Prevent Cross-Site Tracking and Block All Cookies are enabled and the user canʼt disable either setting.
+    '1' or '1.5': Prevent Cross-Site Tracking is enabled and the user canʼt disable it. Block All Cookies is not enabled, although the user can enable it.
+    '2': Prevent Cross-Site Tracking is enabled and Block All Cookies is not enabled. The user can toggle either setting.
+- key: safariAllowAutoFill
+  title: Allow AutoFill in Safari
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If 'false', disables Safari AutoFill for passwords, contact info, and credit cards and also prevents the Keychain from being used for AutoFill. Though third-party password managers are allowed and apps can use AutoFill.
+    As of iOS 13, requires a supervised device. Available in iOS 4 and later, and macOS 10.13 and later.
+- key: safariAllowJavaScript
+  title: Allow JavaScript
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', Safari doesn't execute JavaScript. Available in iOS 4 and later.
+- key: safariAllowPopups
+  title: Allow Pop-ups
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', Safari doesn't allow pop-up windows. Available in iOS 4 and
+    later.
+- key: safariForceFraudWarning
+  title: Enable Fraud Warning
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Safari fraud warning. Available in iOS 4 and later.
+    Also available for user enrollment.
+- key: whitelistedAppBundleIDs
+  title: Whitelisted Apps
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      deprecated: '15.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.0'
+      deprecated: '15.0'
+      supervised: true
+  type: <array>
+  presence: optional
+  content: Use 'allowListedAppBundleIDs' instead.
+  subkeys:
+  - key: appWhitelistedBundleID
+    title: Whitelisted App
+    type: <string>

@@ -1,0 +1,77 @@
+title: Home Screen Layout
+description: ''
+payload:
+  payloadtype: com.apple.homescreenlayout
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '11.0'
+      supervised: true
+      allowmanualinstall: true
+  content: The payload defines a layout of apps, folders, & web clips for the Home
+    screen.
+payloadkeys:
+- key: Dock
+  type: <array>
+  presence: optional
+  content: An array of dictionaries, each of which must conform to the icon dictionary
+    format. If this key isn't present, the user's dock is empty.
+  subkeytype: IconItem
+  subkeys: &id001
+  - key: IconItem
+    type: <dictionary>
+    subkeys:
+    - key: Type
+      type: <string>
+      presence: required
+      rangelist:
+      - App
+      - Folder
+      - WebClip
+      content: The type of the dock item.
+    - key: DisplayName
+      type: <string>
+      presence: optional
+      content: The human-readable string shown to the user. This setting is valid
+        only if the type is 'Folder'.
+    - key: BundleID
+      type: <string>
+      presence: optional
+      content: The bundle identifier of the app. This setting is required if the type
+        is 'Application'.
+    - key: Pages
+      type: <array>
+      presence: optional
+      content: An array of arrays of dictionaries, each conforming to the icon dictionary
+        format. This setting is valid only if the type is 'Folder'.
+      subkeytype: PagesItem
+      subkeys: &id002
+      - key: PagesItem
+        type: <array>
+        subkeytype: IconItem
+        subkeys: *id001
+    - key: URL
+      supportedOS:
+        iOS:
+          introduced: '11.3'
+      type: <string>
+      presence: optional
+      content: |-
+        The URL of the existing web clip for this item. This setting is required if 'type' is 'WebClip'. If more than one web clip exists with the same URL, the behavior is undefined.
+        Specifying a web clip in this payload doesn't create the web clip. Use the WebClip payload to create a web clip.
+- key: Pages
+  type: <array>
+  presence: required
+  content: An array of arrays of dictionaries, each of which must conform to the icon
+    dictionary format.
+  subkeytype: PagesItem
+  subkeys: *id002

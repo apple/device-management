@@ -1,0 +1,52 @@
+title: Subscribed Calendars
+description: Use this section to define settings for subscribed calendar account.
+payload:
+  payloadtype: com.apple.subscribedcalendar.account
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+payloadkeys:
+- key: SubCalAccountDescription
+  title: Description
+  type: <string>
+  presence: optional
+  content: The description of the account.
+- key: SubCalAccountHostName
+  title: URL
+  type: <string>
+  presence: required
+  content: The server's address.
+- key: SubCalAccountUsername
+  title: Username
+  type: <string>
+  presence: optional
+  content: The user's user name.
+- key: SubCalAccountPassword
+  title: Password
+  type: <string>
+  presence: optional
+  content: The user's password.
+- key: SubCalAccountUseSSL
+  title: Use SSL
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables SSL.
+- key: VPNUUID
+  title: VPNUUID
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+  type: <string>
+  presence: optional
+  content: |-
+    The VPNUUID of the per-app VPN the account uses for network communication.
+    Available in iOS 14 and later.

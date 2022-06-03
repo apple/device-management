@@ -1,0 +1,95 @@
+title: FDE FileVault
+description: ''
+payload:
+  payloadtype: com.apple.MCX.FileVault2
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: The FileVault payload only works on macOS to enable or disable FileVault.
+    Starting with macOS 10.15, this payload requires UAMDM to enable FileVault.
+payloadkeys:
+- key: Enable
+  type: <string>
+  presence: required
+  rangelist:
+  - 'On'
+  - 'Off'
+  content: If 'true', enables FileVault.
+- key: Defer
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', defers enabling FileVault until the designated user logs out.
+    For details, see 'fdesetup(8)'. The person enabling FileVault must be either a
+    local user or a mobile account user.
+- key: UserEntersMissingInfo
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables a prompt for missing user name or password fields.
+- key: UseRecoveryKey
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', creates a personal recovery key and displays it to the user.
+- key: ShowRecoveryKey
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents display of the personal recovery key to the user after
+    FileVault is enabled.
+- key: OutputPath
+  type: <string>
+  presence: optional
+  content: The path to the location where the recovery key and computer information
+    property list are stored.
+- key: Certificate
+  type: <data>
+  presence: optional
+  content: The DER-encoded certificate data if 'UseRecoveryKey' is enabled.
+- key: PayloadCertificateUUID
+  type: <string>
+  presence: optional
+  content: The UUID of the payload within the same profile containing the asymmetric
+    recovery key certificate payload.
+- key: Username
+  type: <string>
+  presence: optional
+  content: The user name of the Open Directory user to be added to FileVault.
+- key: Password
+  type: <string>
+  presence: optional
+  content: The password of the Open Directory user to be added to FileVault. Use the
+    'UserEntersMissingInfo' key if you want to prompt for this information.
+- key: UseKeychain
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true' and no certificate information is provided in this payload, the
+    keychain created at '/Library/Keychains/FileVaultMaster.keychain' is used when
+    the institutional recovery key is added.
+- key: DeferForceAtUserLoginMaxBypassAttempts
+  type: <integer>
+  presence: optional
+  range:
+    min: -1
+    max: 9999
+  content: The maximum number of times users can bypass enabling FileVault before
+    being required to enable it to log in. If the value is '0', the user will be required
+    to enabled FileVault the next time they attempt to log in. Setting this key to
+    '–1' disables the feature.
+- key: DeferDontAskAtUserLogout
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prevents requests for enabling FileVault at user logout time.

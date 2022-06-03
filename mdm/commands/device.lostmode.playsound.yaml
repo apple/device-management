@@ -1,0 +1,21 @@
+title: Play Lost Mode Sound Command
+description: This command allows the server to tell the device to play a sound if
+  it is in MDM Lost Mode. The sound will play until the device is either removed from
+  Lost Mode or a user disables the sound from the device.
+payload:
+  requesttype: PlayLostModeSound
+  supportedOS:
+    iOS:
+      introduced: '10.3'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to tell the device to play a sound if it
+    is in MDM Lost Mode. The sound will play until the device is either removed from
+    Lost Mode or a user disables the sound from the device.

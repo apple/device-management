@@ -1,0 +1,28 @@
+title: 'Media Management: Disc Burning'
+description: ''
+payload:
+  payloadtype: com.apple.DiscRecording
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: BurnSupport
+  type: <string>
+  presence: required
+  rangelist:
+  - 'off'
+  - authenticate
+  - 'on'
+  content: |-
+    If 'off', disables disc burning.
+
+    If 'on', allows normal default operation. Setting this key to 'on' doesn't enable disc burn support if it has already been disabled by other mechanisms or preferences. It also must be enabled with the Finder profile.
+
+    If 'authenticate', requires authentication.

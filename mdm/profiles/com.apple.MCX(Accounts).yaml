@@ -1,0 +1,32 @@
+title: Accounts
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: EnableGuestAccount
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables the guest account.
+- key: DisableGuestAccount
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables the guest account. This property has no effect if 'EnableGuestAccount'
+    is 'true'.

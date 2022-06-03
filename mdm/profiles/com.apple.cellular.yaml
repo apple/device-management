@@ -1,0 +1,183 @@
+title: Cellular
+description: Use this section to define custom APNs for cellular data access.
+payload:
+  payloadtype: com.apple.cellular
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    watchOS:
+      introduced: '3.2'
+      allowmanualinstall: true
+  content: |-
+    This payload cannot be installed if an APN payload is already installed.
+    This payload only applies to the preferred data SIM. There is no way to have a cellular payload affect a different SIM.
+    This payload replaces the com.apple.managedCarrier payload. The latter payload is supported, but deprecated.
+payloadkeys:
+- key: AttachAPN
+  title: AttachAPN
+  type: <dictionary>
+  presence: optional
+  content: A configuration dictionary.
+  subkeys:
+  - key: Name
+    title: Name
+    type: <string>
+    presence: required
+    content: The name for this configuration.
+  - key: AuthenticationType
+    title: Authentication type
+    type: <string>
+    presence: optional
+    rangelist:
+    - CHAP
+    - PAP
+    default: PAP
+    content: The authentication type.
+  - key: Username
+    title: User name
+    type: <string>
+    presence: optional
+    content: The user name for the APN.
+  - key: Password
+    title: Password
+    type: <string>
+    presence: optional
+    content: The password for the APN.
+  - key: AllowedProtocolMask
+    title: Supported IP Versions
+    supportedOS:
+      iOS:
+        introduced: '10.3'
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 1
+    - 2
+    - 3
+    content: |-
+      The supported Internet Protocol versions. Possible values are:
+      1 = IPv4
+      2 = IPv6
+      3 = Both
+- key: APNs
+  title: APNs
+  type: <array>
+  presence: optional
+  content: An array of access point dictionaries.
+  subkeys:
+  - key: APNsItem
+    type: <dictionary>
+    subkeys:
+    - key: Name
+      title: Name
+      type: <string>
+      presence: required
+      content: The name for this configuration.
+    - key: AuthenticationType
+      title: Authentication type
+      type: <string>
+      presence: optional
+      rangelist:
+      - CHAP
+      - PAP
+      default: PAP
+      content: The authentication type for logging in.
+    - key: Username
+      title: User name
+      type: <string>
+      presence: optional
+      content: The user name for the APN.
+    - key: Password
+      title: Password
+      type: <string>
+      presence: optional
+      content: The user's password for the APN.
+    - key: ProxyServer
+      title: Proxy server
+      supportedOS:
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      content: The proxy server's address.
+    - key: ProxyPort
+      title: Proxy port
+      type: <integer>
+      presence: optional
+      content: The proxy server's port number.
+    - key: DefaultProtocolMask
+      supportedOS:
+        iOS:
+          introduced: '10.3'
+          deprecated: '11.0'
+      type: <integer>
+      presence: optional
+      rangelist:
+      - 1
+      - 2
+      - 3
+      content: |-
+        Deprecated. The default Internet Protocol versions. Possible values are:
+        * '1': IPv4
+        * '2': IPv6
+        * '3': Both
+        Available in iOS 10.3 but no longer used in iOS 11 and later.
+    - key: AllowedProtocolMask
+      title: Supported IP Versions
+      supportedOS:
+        iOS:
+          introduced: '10.3'
+      type: <integer>
+      presence: optional
+      rangelist:
+      - 1
+      - 2
+      - 3
+      content: |-
+        The supported Internet Protocol versions. Possible values are:
+        * '1': IPv4
+        * '2': IPv6
+        * '3': Both
+        Available in iOS 10.3 and later.
+    - key: AllowedProtocolMaskInRoaming
+      title: Supported Roaming IP Versions
+      supportedOS:
+        iOS:
+          introduced: '10.3'
+      type: <integer>
+      presence: optional
+      rangelist:
+      - 1
+      - 2
+      - 3
+      content: |-
+        The supported Internet Protocol versions while roaming. Possible values are:
+        * '1': IPv4
+        * '2': IPv6
+        * '3': Both
+        Available in iOS 10.3 and later.
+    - key: AllowedProtocolMaskInDomesticRoaming
+      title: Supported Roaming IP Versions
+      supportedOS:
+        iOS:
+          introduced: '10.3'
+      type: <integer>
+      presence: optional
+      rangelist:
+      - 1
+      - 2
+      - 3
+      content: |-
+        The supported Internet Protocol versions while roaming domestically. Possible values are:
+        * '1': IPv4
+        * '2': IPv6
+        * '3': Both
+        Available in iOS 10.3 and later.

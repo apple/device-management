@@ -1,0 +1,59 @@
+title: Time Machine
+payload:
+  payloadtype: com.apple.MCX.TimeMachine
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: AutoBackup
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', performs automatic backups at regular intervals.
+- key: BackupAllVolumes
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If true, backs up only the startup volume by default.
+- key: BackupDestURL
+  type: <string>
+  presence: required
+  content: The URL of the backup destination.
+- key: BackupSizeMB
+  type: <integer>
+  presence: optional
+  default: 0
+  content: The backup size limit, in megabytes. Set to 0 for unlimited.
+- key: BackupSkipSys
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips system files and folders by default.
+- key: MobileBackups
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', create local backup snapshots when not connected to the network.
+- key: BasePaths
+  type: <array>
+  presence: optional
+  content: The list of paths to back up besides the startup volume.
+  subkeys:
+  - key: BasePathItem
+    type: <string>
+    presence: required
+- key: SkipPaths
+  type: <array>
+  presence: optional
+  content: The path to skip from start volume.
+  subkeys:
+  - key: SkipPathItem
+    type: <string>
+    presence: required

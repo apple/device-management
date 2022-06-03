@@ -1,0 +1,187 @@
+title: DNS Settings
+description: Use this section to configure DNS settings.
+payload:
+  payloadtype: com.apple.dnsSettings.managed
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '11.0'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: DNSSettings
+  title: DNS Settings
+  type: <dictionary>
+  presence: required
+  content: A dictionary that defines a configuration for an encrypted DNS server.
+  subkeys:
+  - key: DNSProtocol
+    title: DNS Protocol
+    type: <string>
+    presence: required
+    rangelist:
+    - HTTPS
+    - TLS
+    content: The encrypted transport protocol used to communicate with the DNS server.
+  - key: ServerURL
+    title: Server URL
+    type: <string>
+    presence: optional
+    content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484.
+      This URL must use the 'https://' scheme, and the hostname or address in the
+      URL will be used to validate the server certificate. If no 'ServerAddresses'
+      are provided, the hostname or address in the URL will be used to determine the
+      server addresses. This key must be present only if the 'DNSProtocol' is 'HTTPS'.
+  - key: ServerName
+    title: Server Name
+    type: <string>
+    presence: optional
+    content: The hostname of a DNS-over-TLS server used to validate the server certificate,
+      as defined in RFC 7858. If no 'ServerAddresses' are provided, the hostname will
+      be used to determine the server addresses. This key must be present only if
+      the DNSProtocol is 'TLS'.
+  - key: ServerAddresses
+    title: DNS Server Addresses
+    type: <array>
+    presence: optional
+    content: An unordered list of DNS server IP address strings. These IP addresses
+      can be a mixture of IPv4 and IPv6 addresses.
+    subkeys:
+    - key: ServerAddressesElement
+      title: Server Address Element
+      type: <string>
+  - key: SupplementalMatchDomains
+    title: Supplemental Match Domains
+    type: <array>
+    presence: optional
+    content: |-
+      A list of domain strings used to determine which DNS queries will use the DNS server. If this array is not provided, all domains will use the DNS server.
+      A single wildcard '*' prefix is supported, but is not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but do not match against 'mydomain-example.com'.
+    subkeys:
+    - key: SupplementalMatchDomainsElement
+      title: Supplemental Match Domains Element
+      type: <string>
+- key: OnDemandRules
+  title: On Demand Rules
+  type: <array>
+  presence: optional
+  content: An array of rules defining the DNS settings. If rules are not present,
+    the system always applies the DNS settings. These rules are identical to the 'OnDemandRules'
+    array in VPN payloads.
+  subkeytype: OnDemandRulesElement
+  subkeys:
+  - key: OnDemandRulesElement
+    title: On Demand Rules Element
+    type: <dictionary>
+    subkeys:
+    - key: Action
+      title: On Demand Action
+      type: <string>
+      presence: required
+      rangelist:
+      - Connect
+      - Disconnect
+      - EvaluateConnection
+      content: |-
+        The action to take if this dictionary matches the current network. Possible values are:
+        * 'Connect': Apply DNS Settings when the dictionary matches.
+        * 'Disconnect': Do not apply DNS Settings when the dictionary matches.
+        * 'EvaluateConnection': Apply DNS Settings with per-domain exceptions when the dictionary matches.
+    - key: ActionParameters
+      title: Action Parameters
+      type: <dictionary>
+      presence: optional
+      content: |-
+        A dictionary that provides per-connection rules.
+        This array is used only for settings where the 'Action' value is'EvaluateConnection'.
+      subkeys:
+      - key: Domains
+        title: Domains
+        type: <array>
+        presence: required
+        content: The domains for which this evaluation applies.
+        subkeys:
+        - key: DomainsElement
+          title: Domains Element
+          type: <string>
+      - key: DomainAction
+        title: Domain Action
+        type: <string>
+        presence: required
+        rangelist:
+        - NeverConnect
+        - ConnectIfNeeded
+        content: |-
+          The DNS settings behavior for the specified domains. Allowed values are:
+          * 'NeverConnect': Do not use the DNS Settings for the specified domains.
+          * 'ConnectIfNeeded': Allow using the DNS Settings for the specified domains.
+    - key: DNSDomainMatch
+      title: DNS Domain Match
+      type: <array>
+      presence: optional
+      content: |-
+        An array of domain names. This rule matches if any of the domain names in the specified list matches any domain in the device's search domains list.
+        A single wildcard '*' prefix is supported, but is not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but do not match against 'mydomain-example.com'.
+      subkeys:
+      - key: DNSDomainMatchElement
+        title: DNS Domain Match Element
+        type: <string>
+    - key: DNSServerAddressMatch
+      title: DNS Server Address Match
+      type: <array>
+      presence: optional
+      content: |-
+        An array of IP addresses. This rule matches if any of the network's specified DNS servers match any entry in the array.
+        Matching with a single wildcard is supported. For example, 17.* matches any DNS server in the 17.0.0.0/8 subnet.
+      subkeys:
+      - key: DNSServerAddressMatchElement
+        title: DNS Server Address Match Element
+        type: <string>
+    - key: InterfaceTypeMatch
+      title: Interface Type Match
+      type: <string>
+      presence: optional
+      rangelist:
+      - Ethernet
+      - WiFi
+      - Cellular
+      content: An interface type. If specified, this rule matches only if the primary
+        network interface hardware matches the specified type.
+    - key: SSIDMatch
+      title: SSID Match
+      type: <array>
+      presence: optional
+      content: |-
+        An array of SSIDs to match against the current network. If the network is not a Wi-Fi network or if the SSID does not appear in this array, the match fails.
+        Omit this key and the corresponding array to match against any SSID.
+      subkeys:
+      - key: SSIDMatchElement
+        title: SSID Match Element
+        type: <string>
+    - key: URLStringProbe
+      title: URL String Probe
+      type: <string>
+      presence: optional
+      content: A URL to probe. If this URL is successfully fetched (returning a 200
+        HTTP status code) without redirection, this rule matches.
+- key: ProhibitDisablement
+  title: Prohibit Disablement
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prohibits users from disabling DNS settings. This key is only
+    available on supervised devices.

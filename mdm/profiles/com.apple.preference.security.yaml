@@ -1,0 +1,29 @@
+title: Security Preferences
+payload:
+  payloadtype: com.apple.preference.security
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: dontAllowPasswordResetUI
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables user changes to the password.
+- key: dontAllowLockMessageUI
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables user changes to the lock message.
+- key: dontAllowFireWallUI
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables user changes to the firewall settings.

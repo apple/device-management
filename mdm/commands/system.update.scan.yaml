@@ -1,0 +1,27 @@
+title: Schedule OS Update Scan Command
+description: Requests that the device perform a background scan for OS updates.
+payload:
+  requesttype: ScheduleOSUpdateScan
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Requests that the device perform a background scan for OS updates.
+payloadkeys:
+- key: Force
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', force a scan to start immediately. Otherwise, the scan starts
+    at a system-determined time.
+responsekeys:
+- key: ScanInitiated
+  type: <boolean>
+  presence: required
+  content: If 'true', the scan started successfully.

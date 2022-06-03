@@ -1,0 +1,775 @@
+title: Settings Command
+description: This command allows the server to set settings on the device.
+payload:
+  requesttype: Settings
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      accessrights: AllowSettings
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.9'
+      accessrights: AllowSettings
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.0'
+      accessrights: AllowSettings
+      supervised: false
+  content: This command allows the server to set settings on the device. These settings
+    take effect on a one-time basis. The user may still be able to change the settings
+    at a later time. This command requires the ApplySettings right.
+payloadkeys:
+- key: Settings
+  type: <array>
+  presence: required
+  content: An array of dictionaries that contains the settings.
+  subkeys:
+  - key: Wallpaper
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains wallpaper settings. This setting doesn't support
+      User Enrollment, and is available in iOS 8 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - Wallpaper
+      content: A string that identifies this setting.
+    - key: Image
+      type: <data>
+      presence: required
+      content: A Base64-encoded image in either PNG or JPG format to use for wallpaper.
+    - key: Where
+      type: <integer>
+      presence: required
+      rangelist:
+      - 1
+      - 2
+      - 3
+      content: |-
+        A number that indicates where to use the wallpaper, which is one of the following values:
+        * '1': Lock screen
+        * '2': Home screen
+        * '3': Lock and Home screens
+  - key: DataRoaming
+    supportedOS:
+      iOS:
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains data roaming settings. This setting requires
+      the Network Information access right, doesn't support User Enrollment, and is
+      available in iOS 5 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - DataRoaming
+      content: A string that identifies this setting.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enable data roaming, which also enables voice roaming. If
+        'false', disable data roaming.
+  - key: VoiceRoaming
+    supportedOS:
+      iOS:
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains voice roaming settings. This setting requires
+      the Network Information access right, doesn't support User Enrollment, and is
+      available in iOS 5 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - VoiceRoaming
+      content: A string that identifies this setting.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enable voice roaming. If 'false', disable voice roaming,
+        which also disables data roaming. The setting is only available for certain
+        carriers.
+  - key: PersonalHotspot
+    supportedOS:
+      iOS:
+        accessrights: AllowQueryNetworkInformation
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains Personal Hotspot settings. This setting requires
+      the Network Information access right, doesn't support User Enrollment, and is
+      available in iOS 5 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - PersonalHotspot
+      content: A string that identifies this setting.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enable Personal Hotspot. If 'false', disable Personal Hotspot.
+  - key: Bluetooth
+    supportedOS:
+      iOS:
+        introduced: '11.3'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: 10.13.4
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains Bluetooth settings. This setting requires
+      the Network Information access right, doesn't support User Enrollment, is only
+      available on supervised devices, and is available in iOS 11.3 and later, and
+      macOS 10.13.4 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - Bluetooth
+      content: A string that identifies this setting.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enable the Bluetooth setting. If 'false', disable the Bluetooth
+        setting.
+  - key: ApplicationConfiguration
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+        accessrights: AllowAppInstallation
+      macOS:
+        introduced: '10.15'
+        accessrights: AllowAppInstallation
+        userchannel: false
+      tvOS:
+        introduced: '10.2'
+        accessrights: AllowAppInstallation
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains the configurations to apply to the app. Omit
+      this setting to remove existing configurations. This setting requires the App
+      Management access right, supports User Enrollment, and is available in iOS 7
+      and later, macOS 10.15 and later, and tvOS 10.2 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - ApplicationConfiguration
+      content: A string that identifies this setting.
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The bundle identifier of the managed app.
+    - key: Configuration
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains the configurations to apply to the app.
+        Omit this setting to remove existing configurations.
+      subkeys:
+      - key: ANY
+        type: <any>
+        presence: optional
+        content: A dictionary that contains configurations.
+  - key: ApplicationAttributes
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+        accessrights: AllowAppInstallation
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '10.2'
+        accessrights: AllowAppInstallation
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains the attributes to apply to the app. Omit this
+      setting to remove existing attributes. This setting supports User Enrollment,
+      is available in iOS 7 and later, and tvOS 10.2 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - ApplicationAttributes
+      content: A string that identifies this setting.
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The bundle identifier of the app.
+    - key: Attributes
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains the attributes to apply to the app. Omit
+        this setting to remove existing attributes. This setting is available in iOS
+        7 and later, and tvOS 10.2 and later.
+      subkeys:
+      - key: VPNUUID
+        type: <string>
+        presence: optional
+        content: A per-app VPN unique identifier for this app. This value is available
+          in iOS 7 and later, and tvOS 10.2 and later.
+      - key: AssociatedDomains
+        supportedOS:
+          iOS:
+            introduced: '13.0'
+          tvOS:
+            introduced: n/a
+        type: <array>
+        presence: optional
+        content: An array that contains the associated domains to add to this app.
+          This setting is available in iOS 7 and later, and tvOS 10.2 and later.
+        subkeys:
+        - key: AssociatedDomain
+          type: <string>
+      - key: AssociatedDomainsEnableDirectDownloads
+        supportedOS:
+          iOS:
+            introduced: '14.0'
+          tvOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: true
+        content: If 'true', perform claimed site association verification directly
+          at the domain, instead of on Apple's servers. Only set this to 'true' for
+          domains that can't access the internet. This value is available in iOS 14
+          and later.
+      - key: Removable
+        supportedOS:
+          iOS:
+            introduced: '14.0'
+          tvOS:
+            introduced: '14.0'
+        type: <boolean>
+        presence: optional
+        default: true
+        content: If 'false', this app isn't removable while it's managed. This value
+          is available in iOS 14 and later, and tvOS 14 and later.
+  - key: DeviceName
+    supportedOS:
+      iOS:
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: '10.10'
+        userenrollment:
+          mode: forbidden
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains device name settings. This setting doesn't
+      support User Enrollment, and is only available on supervised devices. Available
+      on iOS 5 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - DeviceName
+      content: A string that identifies this setting.
+    - key: DeviceName
+      type: <string>
+      presence: required
+      content: The device's name.
+  - key: HostName
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '10.11'
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains hostname settings. This setting doesn't support
+      User Enrollment, and is available in macOS 10.11 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - HostName
+      content: The string that defines this setting type.
+    - key: HostName
+      type: <string>
+      presence: required
+      content: The hostname for the device.
+  - key: OrganizationInfo
+    supportedOS:
+      macOS:
+        introduced: '10.9'
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains settings about the organization operating
+      the MDM server. This setting supports User Enrollment. Available in iOS 5 and
+      later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - OrganizationInfo
+      content: The string that defines this setting type.
+    - key: OrganizationInfo
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains information about the organization operating
+        the MDM server. Omit this setting to remove existing information.
+      subkeys:
+      - key: OrganizationName
+        type: <string>
+        presence: required
+        content: A string that describes the organization operating the MDM server
+          for display to the user during certain operations, such as purchasing or
+          installing apps.
+      - key: OrganizationShortName
+        supportedOS:
+          iOS:
+            introduced: '13.0'
+          macOS:
+            introduced: '10.15'
+          tvOS:
+            introduced: '13.0'
+        type: <string>
+        presence: optional
+        content: A shorter version of 'OrganizationName', preferably a single word
+          or abbreviation, suitable for display to the user in places where a very
+          short name is necessary.
+      - key: OrganizationAddress
+        type: <string>
+        presence: optional
+        content: The organization's address. Use the LF character ('&#10') to insert
+          line breaks.
+      - key: OrganizationPhone
+        type: <string>
+        presence: optional
+        content: The organization's phone number.
+      - key: OrganizationEmail
+        type: <string>
+        presence: optional
+        content: The orgnization's support email address.
+      - key: OrganizationMagic
+        type: <string>
+        presence: optional
+        content: A unique identifier for the various services a single organization
+          manages.
+  - key: MDMOptions
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: '10.15'
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains settings related to the MDM protocol. This
+      setting doesn't support User Enrollment, and is available in iOS 7 and later,
+      and macOS 10.15 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - MDMOptions
+      content: The string that defines this setting type.
+    - key: MDMOptions
+      type: <dictionary>
+      presence: required
+      content: A dictionary of MDM options.
+      subkeys:
+      - key: ActivationLockAllowedWhileSupervised
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If 'true', a supervised device registers itself with Activation Lock
+          when the user enables Find My. This setting is available for supervised
+          devices in iOS 7 and later, and macOS 10.15 and later.
+      - key: BootstrapTokenAllowed
+        supportedOS:
+          iOS:
+            introduced: n/a
+          macOS:
+            introduced: '10.15'
+            deprecated: '11.0'
+            userenrollment:
+              mode: forbidden
+          tvOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If 'true', the server supports the Bootstrap Token commands.
+      - key: PromptUserToAllowBootstrapTokenForAuthentication
+        supportedOS:
+          iOS:
+            introduced: n/a
+          macOS:
+            introduced: '11.0'
+          tvOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If 'true', warn the user that they need to reboot into RecoveryOS
+          and allow the MDM server to use the Bootstrap Token for authentication for
+          certain sensitive operations; for example, enabling kernel extensions or
+          installing certain types of software updates. Set this value to 'false'
+          if your MDM server doesn't need to perform these operations. The value provided
+          here overrides the value specified in MDM, and only applies when 'BootstrapTokenAllowedForAuthentication'
+          is 'true' in the SecurityInfoResponse.SecurityInfo response. This value
+          is available for Apple silicon in macOS 11 and later.
+  - key: MaximumResidentUsers
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+        deprecated: '13.4'
+        sharedipad:
+          mode: required
+          devicechannel: true
+          userchannel: false
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains settings for maximum resident users. Apple
+      deprecated this setting in iOS 13.4. Use 'SharedDeviceConfiguration' instead.
+      This setting doesn't support User Enrollment, and is only available for Shared
+      iPad.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - MaximumResidentUsers
+      content: A string that identifies this setting.
+    - key: MaximumResidentUsers
+      type: <integer>
+      presence: required
+      content: |-
+        The maximum number of users that can use the device. If this value is greater than the value for the maximum possible number of users that the device suports, the MDM server uses that value instead.
+        This setting requires that the device is in the 'AwaitingConfiguration' phase before it receives the DeviceConfigured <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html#//apple_ref/doc/uid/TP40017387-CH3-SW301> message.
+        When a device reaches the maximum number of resident users and a new user tries to sign in, the MDM server removes a synchronized user to make space for the new user. If there are no synchronized users, the new user sign-in fails. A synchronized user is a user that has completed syncing their data.
+  - key: SharedDeviceConfiguration
+    supportedOS:
+      iOS:
+        introduced: '13.4'
+        sharedipad:
+          mode: required
+          devicechannel: true
+          userchannel: false
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains shared device configuration settings. This
+      setting doesn't support User Enrollment, and is available in iOS 13.4 and later
+      for Shared iPad.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - SharedDeviceConfiguration
+      content: A string that identifies this setting.
+    - key: QuotaSize
+      type: <integer>
+      presence: optional
+      content: The quota size, in megabytes (MB), for each user on the shared device,
+        or if the quota size is too small, the minimum quota size.
+    - key: ResidentUsers
+      type: <integer>
+      presence: optional
+      content: The expected number of users. If this value is greater than the value
+        for the maximum possible number of users that the device supports, the MDM
+        server uses that value instead.
+    - key: UserSessionTimeout
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+      type: <integer>
+      presence: optional
+      content: |-
+        The timeout, in seconds, for the user session. The user session  logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        Available in iOS 14.5 and later.
+    - key: TemporarySessionTimeout
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+      type: <integer>
+      presence: optional
+      content: |-
+        The timeout, in seconds, for the temporary session. The temporary session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        Available in iOS 14.5 and later.
+    - key: TemporarySessionOnly
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+      type: <boolean>
+      presence: optional
+      default: false
+      content: |-
+        If 'true', the user only sees the Guest Welcome pane and can only log in as a guest user.
+        If 'false', the user can sign in with a managed Apple ID (the existing behavior).
+        Available in iOS 14.5 and later.
+  - key: DiagnosticSubmission
+    supportedOS:
+      iOS:
+        introduced: '9.3'
+        sharedipad:
+          mode: required
+          devicechannel: true
+          userchannel: false
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains diagnostic submission settings. This setting
+      doesn't support User Enrollment, and is only available for Shared iPad. Available
+      in iOS 9.3 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - DiagnosticSubmission
+      content: The string that defines this setting type.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enables diagnostic submission. If 'false', disables diagnostic
+        submission.
+  - key: AppAnalytics
+    supportedOS:
+      iOS:
+        introduced: 9.3.2
+        sharedipad:
+          mode: required
+          devicechannel: true
+          userchannel: false
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains settings for sharing app analytics. This setting
+      doesn't support User Enrollment, and is only available for Shared iPad. Available
+      in iOS 9.3.2 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - AppAnalytics
+      content: A string that identifies this setting.
+    - key: Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', enable sharing app analytics with app developers. If 'false',
+        disable sharing app analytics.
+  - key: PasscodeLockGracePeriod
+    supportedOS:
+      iOS:
+        introduced: 9.3.2
+        sharedipad:
+          mode: required
+          devicechannel: true
+          userchannel: false
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains password lock grace period settings. This
+      setting doesn't support User Enrollment, and is only available for Shared iPad.
+      Available in iOS 9.3.2 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - PasscodeLockGracePeriod
+      content: A string that identifies this setting.
+    - key: PasscodeLockGracePeriod
+      type: <integer>
+      presence: required
+      content: |-
+        The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
+        If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
+  - key: TimeZone
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '14.0'
+        supervised: true
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains time zone settings. This setting is only available
+      on supervised devices and doesn't support User Enrollment. Available in iOS
+      14 and later, and tvOS 14 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - TimeZone
+      content: A string that identifies this setting.
+    - key: TimeZone
+      type: <string>
+      presence: required
+      content: |-
+        The Internet Assigned Numbers Authority (IANA) time zone database name.
+        If the 'forceAutomaticDateAndTime' restriction is set in Restrictions, this setting fails with an error. Otherwise, setting this value disables automatic time zone logic. The user is still be able to change the timezone; for example, by turning automatic date and time back on. The intention is to allow setting the timezone when automatic determination isn't be available, such as when Location Services are off.
+  - key: SoftwareUpdateSettings
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains software update settings. This setting doesn't
+      support User Enrollment, and is available in iOS 14.5 and later.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - SoftwareUpdateSettings
+      content: A string that represents the type of updates that should appear in
+        the Software Update pane in Settings. Supervised only.
+    - key: RecommendationCadence
+      type: <integer>
+      presence: required
+      rangelist:
+      - 0
+      - 1
+      - 2
+      content: |-
+        This value defines how the system presents software updates to the user. When there's more than one available update for the user, the system behaves as follows:
+        * '0': Presents both options to the user.
+        * '1': Presents the lower numbered (oldest) software update version.
+        * '2': Presents only the highest numbered (most recent) release available for the device.
+        This value has no effect when there's only one available update; the system shows the single available update to the user regardless of the value of this setting.
+        Available in iOS 14.5 and later.
+responsekeys:
+- key: Settings
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that describes the results of configuring settings.
+  subkeys:
+  - key: Status
+    type: <string>
+    presence: required
+    content: |-
+      The status of the setting, which is one of the following values:
+      * 'Acknowledged': The device processed the command successfully.
+      * 'Error': An error occurred. See the 'ErrorChain' for more details.
+  - key: ErrorChain
+    type: <array>
+    presence: optional
+    content: An array of dictionaries that describes any errors that occurred.
+    subkeys:
+    - key: ErrorChainItem
+      type: <dictionary>
+      subkeys:
+      - key: ANY
+        type: <any>
+        presence: required
+        content: A dictionary that contains additional details about the error.
+  - key: Identifier
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '10.2'
+    type: <string>
+    presence: optional
+    content: The app identifier to which this error applies.

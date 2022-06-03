@@ -1,0 +1,90 @@
+title: Global HTTP Proxy
+description: Global HTTP Proxy (Supervised devices only)
+payload:
+  payloadtype: com.apple.proxy.http.global
+  supportedOS:
+    iOS:
+      introduced: '6.0'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '6.0'
+      supervised: true
+      allowmanualinstall: true
+  content: PEM-encoded cer
+payloadkeys:
+- key: ProxyType
+  title: Proxy Type
+  type: <string>
+  presence: optional
+  rangelist:
+  - Manual
+  - Auto
+  default: Manual
+  content: The proxy type. For a manual proxy type, the profile contains the proxy
+    server address, including its port, and optionally a user name and password. For
+    an auto proxy type, you can enter a PAC URL.
+- key: ProxyServer
+  title: Proxy Server
+  type: <string>
+  subtype: hostname
+  presence: required
+  content: The proxy server's network address.
+- key: ProxyServerPort
+  title: Proxy Server Port
+  type: <integer>
+  presence: required
+  content: The proxy server's port number.
+- key: ProxyUsername
+  title: Proxy Username
+  type: <string>
+  presence: optional
+  content: The user name used to authenticate to the proxy server.
+- key: ProxyPassword
+  title: Proxy Password
+  type: <string>
+  presence: optional
+  content: The password used to authenticate to the proxy server.
+- key: ProxyPACURL
+  title: Proxy PAC URL
+  type: <string>
+  presence: optional
+  content: The URL of the PAC file that defines the proxy configuration. Starting
+    in iOS 13 and macOS 10.15, only URLs that begin with 'http://' or 'https://' are
+    allowed.
+- key: ProxyPACFallbackAllowed
+  title: Proxy PAC Fallback Allowed
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows connecting directly to the destination if the proxy autoconfiguration
+    (PAC) file is unreachable.
+- key: ProxyCaptiveLoginAllowed
+  title: Proxy Bypass Allowed
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows the device to bypass the proxy server to display the
+    login page for captive networks.

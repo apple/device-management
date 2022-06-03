@@ -1,0 +1,21 @@
+title: File Provider
+description: ''
+payload:
+  payloadtype: com.apple.fileproviderd
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: AllowManagedFileProvidersToRequestAttribution
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables file providers access to the path of the requesting
+    process.

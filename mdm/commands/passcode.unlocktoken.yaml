@@ -1,0 +1,22 @@
+title: Request Unlock Token Command
+description: This command requests an UnlockToken from the device.
+payload:
+  requesttype: RequestUnlockToken
+  supportedOS:
+    iOS:
+      introduced: '5.0'
+      deprecated: 6.1.6
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+  content: This command requests an UnlockToken from the device. Pass this token to
+    the ClearPasscode command to unlock the device.
+responsekeys:
+- key: UnlockToken
+  type: <data>
+  presence: required
+  content: The unlock token. Erasing the user partition invalidates this token.

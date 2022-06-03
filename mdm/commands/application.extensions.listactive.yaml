@@ -1,0 +1,73 @@
+title: Application:List Active NSExtensions
+description: Returns information about the active NSExtensions for a particular user.
+payload:
+  requesttype: ActiveNSExtensions
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+      accessrights: QueryInstalledApps
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Returns information about the active NSExtensions for a particular user.
+    NSExtensions are installed and enabled at the user level. There is no concept of "device" NSExtensions.
+    Requires "Query Installed Apps" right; supported on user channel only.
+payloadkeys:
+- key: FilterExtensionPoints
+  type: <array>
+  presence: optional
+  content: An array of extension points. If you choose to provide this value, the
+    response only includes the app extensions for the extension points you specify.
+  subkeys:
+  - key: FilterExtensionPointsItem
+    type: <string>
+responsekeys:
+- key: Extensions
+  type: <array>
+  presence: required
+  content: An array of dictionaries that contains information about active extensions
+    on the device.
+  subkeys:
+  - key: ExtensionsItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The identifier of the extension.
+    - key: ExtensionPoint
+      type: <string>
+      presence: required
+      content: The NSExtensionPointIdentifier for the extension.
+    - key: DisplayName
+      type: <string>
+      presence: required
+      content: The extension's display name.
+    - key: ContainerDisplayName
+      type: <string>
+      presence: optional
+      content: The display name of the container.
+    - key: ContainerIdentifier
+      type: <string>
+      presence: optional
+      content: The identifier of the container.
+    - key: Path
+      type: <string>
+      presence: required
+      content: The path to the extension.
+    - key: Version
+      type: <string>
+      presence: required
+      content: The version of the extension.
+    - key: UserElection
+      type: <string>
+      presence: required
+      rangelist:
+      - Default
+      - Use
+      - Ignore
+      content: The user-selected state of the extension, which a user sets in the
+        Extensions preference pane in System Preferences.

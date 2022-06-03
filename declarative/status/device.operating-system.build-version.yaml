@@ -1,0 +1,14 @@
+title: Status Device Operating System Build Version
+description: The device's operating system build version.
+payload:
+  statusitemtype: device.operating-system.build-version
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: device.operating-system.build-version
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: A string that identifies the operating system's build version on the device,
+    such as '18F132'.

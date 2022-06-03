@@ -1,0 +1,36 @@
+title: Remove Profile Command
+description: This command allows the server to remove a profile. This command requires
+  the Profile Installation and Removal Right. It's supported in the user channel.
+payload:
+  requesttype: RemoveProfile
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowInstallationRemoval
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      accessrights: AllowInstallationRemoval
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.0'
+      accessrights: AllowInstallationRemoval
+      supervised: false
+  content: This command allows the server to remove a profile. This command requires
+    the Profile Installation and Removal Right. It's supported in the user channel.
+payloadkeys:
+- key: Identifier
+  type: <string>
+  presence: required
+  content: The identifier of the profile to remove.

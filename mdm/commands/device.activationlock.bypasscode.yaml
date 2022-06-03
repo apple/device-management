@@ -1,0 +1,30 @@
+title: Activation Lock Bypass Code Command
+description: Retrievies the Activation Lock bypass code from the device.
+payload:
+  requesttype: ActivationLockBypassCode
+  supportedOS:
+    iOS:
+      introduced: '7.1'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Retrieves the Activation Lock bypass code from the device. This bypass
+    code is only available for 15 days after supervision.
+responsekeys:
+- key: ActivationLockBypassCode
+  type: <string>
+  presence: required
+  content: The Activation Lock bypass code if it's available.

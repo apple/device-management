@@ -1,0 +1,14 @@
+title: Remote Desktop Disable Command
+description: Disable Remote Desktop on the device.
+payload:
+  requesttype: DisableRemoteDesktop
+  supportedOS:
+    macOS:
+      introduced: 10.14.4
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Disable Remote Desktop.

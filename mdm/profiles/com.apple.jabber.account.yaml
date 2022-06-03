@@ -1,0 +1,61 @@
+title: Jabber Account
+description: Use this section to define settings for configuration access to Jabber
+  servers.
+payload:
+  payloadtype: com.apple.jabber.account
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      deprecated: '10.14'
+      removed: '10.14'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: A Jabber payload creates a Jabber account on the device.
+payloadkeys:
+- key: JabberAccountDescription
+  title: Account Description
+  type: <string>
+  presence: optional
+  content: The description of the account.
+- key: JabberHostName
+  title: Account Hostname
+  type: <string>
+  presence: required
+  content: The server's address.
+- key: JabberUserName
+  title: Account Username
+  type: <string>
+  presence: optional
+  content: The user's user name.
+- key: JabberPassword
+  title: Account Password
+  type: <string>
+  presence: optional
+  content: The user's password.
+- key: JabberUseSSL
+  title: Use SSL
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables SSL.
+- key: JabberPort
+  title: Port Number
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 65535
+  default: 5222
+  content: The server's port.
+- key: JabberAuthentication
+  title: Jabber Authentification
+  type: <string>
+  presence: required
+  rangelist:
+  - JabberAuthPassword
+  content: The authentication method for the account.

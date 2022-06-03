@@ -1,0 +1,28 @@
+title: Desktop
+description: ''
+payload:
+  payloadtype: com.apple.desktop
+  supportedOS:
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: locked
+  supportedOS:
+    macOS:
+      deprecated: '10.13'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks the desktop picture. Replaced with allowWallpaperModification
+    in macOS 10.13.
+- key: override-picture-path
+  type: <string>
+  presence: optional
+  content: The path to the desktop picture. If set, this picture is always locked.

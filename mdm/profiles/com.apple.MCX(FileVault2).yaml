@@ -1,0 +1,34 @@
+title: FDE FileVault Options
+description: ''
+payload:
+  payloadtype: com.apple.MCX
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: The FileVault accounts payload sets up options for enabling FileVault.
+payloadkeys:
+- key: dontAllowFDEDisable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to 'true' to prevent FileVault from being disabled.
+- key: dontAllowFDEEnable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to 'true' to prevent FileVault from being enabled.
+- key: DestroyFVKeyOnStandby
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to 'true' to prevent storing the FileVault key across restarts.

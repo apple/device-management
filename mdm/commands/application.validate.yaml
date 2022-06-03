@@ -1,0 +1,32 @@
+title: Validate Applications Command
+description: This commands allows the server to force validation of the free developer
+  and universal provisioning profiles associated with an enterprise app.
+payload:
+  requesttype: ValidateApplications
+  supportedOS:
+    iOS:
+      introduced: '9.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: This command allows the server to query for installed 3rd party applications.
+payloadkeys:
+- key: Identifiers
+  type: <array>
+  presence: optional
+  content: The bundle identifiers of the enterprise apps to include for validation
+    of associated provisioning profiles, if you choose to provide them. Otherwise,
+    validation occurs for the provisioning profiles for the installed managed apps.
+  subkeys:
+  - key: IdentifiersItem
+    type: <string>

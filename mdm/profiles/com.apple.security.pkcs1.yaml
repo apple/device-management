@@ -1,0 +1,43 @@
+title: 'Certificate (PKCS #1)'
+description: Use this section to define settings for a pkcs1 certificate.
+payload:
+  payloadtype: com.apple.security.pkcs1
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '5.0'
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '3.0'
+      allowmanualinstall: true
+  content: DER-encoded certificate without private key. May contain root certificates.
+payloadkeys:
+- key: PayloadCertificateFileName
+  title: Payload Certificate Filename
+  type: <string>
+  presence: optional
+  content: The file name of the enclosed certificate.
+- key: PayloadContent
+  title: Payload Certificate Filename
+  type: <data>
+  presence: required
+  content: The binary representation of the payload, encoded in Base64.

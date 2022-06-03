@@ -1,0 +1,137 @@
+title: Setup Assistant
+description: ''
+payload:
+  payloadtype: com.apple.SetupAssistant.managed
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.12'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: On macOS, this payload can specify Setup Assistant options for either the
+    system or particular users.
+payloadkeys:
+- key: SkipCloudSetup
+  supportedOS:
+    iOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the Apple ID setup window.
+- key: SkipSiriSetup
+  supportedOS:
+    iOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the Siri setup window.
+- key: SkipPrivacySetup
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.13.4
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the Privacy consent window.
+- key: SkipiCloudStorageSetup
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.13.4
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the iCloud Storage window.
+- key: SkipTrueTone
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.13.6
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the True Tone Display window.
+- key: SkipAppearance
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', skips the Choose Your Look window.
+- key: SkipTouchIDSetup
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If true, skips the Touch ID setup window.
+- key: SkipScreenTime
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If true, skips the Screen Time window.
+- key: SkipAccessibility
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Skips Accessibility window
+- key: SkipSetupItems
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: |-
+    An array strings describing setup items to skip. SkipKeys provides a list of valid strings and their meanings.
+    Available in iOS 14 and later.
+  subkeys:
+  - key: SkipSetupItems
+    type: <string>
+- key: SkipUnlockWithWatch
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '12.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Skips Unlock With Apple Watch window

@@ -1,0 +1,154 @@
+title: Profile List Command
+description: This command allows the MDM server to query for the profiles installed
+  on the device. This command requires the Inspect Profile Manifest right. It's supported
+  on the user channel.
+payload:
+  requesttype: ProfileList
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowInspection
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      accessrights: AllowInspection
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '6.0'
+      accessrights: AllowInspection
+      supervised: false
+  content: This command allows the MDM server to query for the profiles installed
+    on the device. This command requires the Inspect Profile Manifest right. It's
+    supported on the user channel.
+payloadkeys:
+- key: ManagedOnly
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+    macOS:
+      introduced: '10.15'
+    tvOS:
+      introduced: '13.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', only include profiles that MDM has installed. For user enrollments,
+    the device ignores this key and always limits the results to managed profiles.
+    This value is available in iOS 13 and later, macOS 10.5 and later, and tvOS 13
+    and later.
+responsekeys:
+- key: ProfileList
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes each installed profile.
+  subkeys:
+  - key: ProfileListItem
+    type: <dictionary>
+    subkeys:
+    - key: PayloadUUID
+      type: <string>
+      presence: required
+      content: The unique identifier for the profile.
+    - key: PayloadIdentifier
+      type: <string>
+      presence: required
+      content: The reverse-DNS-style identifier of the profile; for example, 'com.example.myprofile'.
+    - key: PayloadVersion
+      type: <integer>
+      presence: optional
+      content: The version of the configuration profile as a whole, not of the individual
+        profiles within it. The value should be '1'.
+    - key: PayloadDisplayName
+      type: <string>
+      presence: optional
+      content: The human-readable name of the profile.
+    - key: PayloadOrganization
+      type: <string>
+      presence: optional
+      content: The human-readable name of the organization that provided the profile.
+    - key: PayloadDescription
+      type: <string>
+      presence: optional
+      content: The description of the profile.
+    - key: PayloadRemovalDisallowed
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the user can't delete the profile unless it has a removal
+        password and the user provides it. The framework ignores this field on unsupervised
+        devices.
+    - key: HasRemovalPasscode
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the profile has a passcode for removal.
+    - key: IsEncrypted
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', it's an encrypted profile.
+    - key: SignerCertificates
+      type: <array>
+      presence: optional
+      content: An array that contains the certificate for signing the profile, followed
+        by any intermediate certificates, in DER-encoded X.509 format.
+      subkeys:
+      - key: CertificateItem
+        type: <data>
+        content: DER-encoded X.509 certificate
+    - key: IsManaged
+      supportedOS:
+        macOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the current MDM service installed the profile. MDM doesn't
+        return this value for supervised devices, and can remove or replace all profiles
+        on supervised devices.
+    - key: PayloadContent
+      type: <array>
+      presence: optional
+      content: An array of payload content items. This value isn't present if 'IsEncrypted'
+        is 'true'.
+      subkeys:
+      - key: PayloadContentItem
+        type: <dictionary>
+        subkeys:
+        - key: PayloadType
+          type: <string>
+          presence: required
+          content: The type of payload for the profile. The only supported value is
+            'Configuration'.
+        - key: PayloadVersion
+          type: <integer>
+          presence: required
+          content: The version of the configuration profile as a whole, not of the
+            individual profiles within it. The value should be '1'.
+        - key: PayloadIdentifier
+          type: <string>
+          presence: required
+          content: The reverse-DNS-style identifier of the profile; for example, 'com.example.myprofile'.
+        - key: PayloadDisplayName
+          type: <string>
+          presence: optional
+          content: The human-readable name of the profile.
+        - key: PayloadDescription
+          type: <string>
+          presence: optional
+          content: The description of the profile.
+        - key: PayloadOrganization
+          type: <string>
+          presence: optional
+          content: The human-readable name of the organization that provided the profile.

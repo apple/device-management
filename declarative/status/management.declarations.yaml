@@ -1,0 +1,128 @@
+title: Status Management Declarations
+description: State of declarations processed by the client.
+payload:
+  statusitemtype: management.declarations
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: management.declarations
+  title: Status item value.
+  type: <dictionary>
+  presence: required
+  content: A collection of the client's processed declarations.
+  subkeytype: Declarations
+  subkeys:
+  - key: activations
+    title: Activations
+    type: <array>
+    presence: required
+    content: An array of declarations that represent the client's processed activation
+      types.
+    subkeytype: Declaration
+    subkeys:
+    - key: _activations
+      title: Status Declaration Item
+      type: <dictionary>
+      content: Status for a declaration processed by the client.
+      subkeytype: Declaration
+      subkeys: &id001
+      - key: identifier
+        title: Identifier
+        type: <string>
+        presence: required
+        content: The 'identifier' of the declaration this status report refers to.
+      - key: server-token
+        title: Server-Token
+        type: <string>
+        presence: required
+        content: The 'ServerToken' of the declaration this status report refers to.
+      - key: active
+        title: Declaration's Active State
+        type: <boolean>
+        presence: required
+        content: If 'true', the declaration is active on the device.
+      - key: valid
+        title: Declaration's Valid State
+        type: <string>
+        presence: required
+        rangelist:
+        - unknown
+        - invalid
+        - valid
+        content: This string defines the validity of the declaration. If it's 'invalid',
+          the 'reasons' property contains more details.
+      - key: reasons
+        title: Status Reasons
+        type: <array>
+        presence: optional
+        content: The details of any client errors.
+        subkeytype: StatusReason
+        subkeys:
+        - key: _reasons
+          title: Status Reason
+          type: <dictionary>
+          content: Information about a status error.
+          subkeytype: StatusReason
+          subkeys:
+          - key: code
+            title: Error Code
+            type: <string>
+            presence: required
+            content: The error code for this error.
+          - key: description
+            title: Error Description
+            type: <string>
+            presence: optional
+            content: The description for this error.
+          - key: details
+            title: Error Details
+            type: <dictionary>
+            presence: optional
+            content: A dictionary that contains further details about this error.
+            subkeys:
+            - key: ANY
+              type: <any>
+              presence: optional
+              content: Additional keys may be present.
+  - key: configurations
+    title: Configurations
+    type: <array>
+    presence: required
+    content: An array of declarations that represent the client's processed configuration
+      types.
+    subkeytype: Declaration
+    subkeys:
+    - key: _configurations
+      title: Status Declaration Item
+      type: <dictionary>
+      content: Status for a declaration processed by the client.
+      subkeytype: Declaration
+      subkeys: *id001
+  - key: assets
+    title: Assets
+    type: <array>
+    presence: required
+    content: An array of declarations that represent the client's processed assets.
+    subkeytype: Declaration
+    subkeys:
+    - key: _assets
+      title: Status Declaration Item
+      type: <dictionary>
+      content: Status for a declaration processed by the client.
+      subkeytype: Declaration
+      subkeys: *id001
+  - key: management
+    title: Management
+    type: <array>
+    presence: required
+    content: An array of declarations that represent the client's processed declaration
+      types.
+    subkeytype: Declaration
+    subkeys:
+    - key: _management
+      title: Status Declaration Item
+      type: <dictionary>
+      content: Status for a declaration processed by the client.
+      subkeytype: Declaration
+      subkeys: *id001

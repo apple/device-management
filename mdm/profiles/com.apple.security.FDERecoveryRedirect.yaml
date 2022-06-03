@@ -1,0 +1,34 @@
+title: FDE Recovery Key Redirection
+description: ''
+payload:
+  payloadtype: com.apple.security.FDERecoveryRedirect
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      deprecated: '10.13'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    *** This payload will be ignored on macOS 10.13 and later. See "com.apple.security.FDERecoveryKeyEscrow" payload. ***
+    Old notes:
+    Once installed, this payload will cause any FDE (Full Disk Encryption) recovery keys to be redirected to the specified URL instead of being sent to Apple. This will require sites to implement their own HTTPS server that will receive the recovery keys via a POST request. Details of the data sent to the server will be provided in a different document.
+    Notes:
+    * The payload must exist in a "system" scoped profile.
+    * It will be an error to install more than one payload of this type per machine.
+payloadkeys:
+- key: RedirectURL
+  type: <string>
+  presence: required
+  content: The URL to which FDE recovery keys should be sent instead of to Apple.
+    The URL must begin with https://.
+- key: EncryptCertPayloadUUID
+  type: <string>
+  presence: required
+  content: The UUID of a payload within the same profile that contains a certificate
+    used to encrypt the recovery key when it's sent to the redirected URL. The referenced
+    payload must be of type `com.apple.security.pkcs1`.

@@ -1,0 +1,132 @@
+title: Accessibility
+payload:
+  payloadtype: com.apple.universalaccess
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: closeViewFarPoint
+  type: <integer>
+  presence: optional
+  content: The minimum zoom level in the Zoom options.
+- key: closeViewHotkeysEnabled
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Use keyboard shortcuts' in the Zoom options.
+- key: closeViewNearPoint
+  type: <integer>
+  presence: optional
+  content: The maximum zoom level in the Zoom options.
+- key: closeViewScrollWheelToggle
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Use scroll gesture' in the Zoom options.
+- key: closeViewShowPreview
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+      deprecated: '10.15'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Show preview rectangle' in the Zoom options. Only available
+    in macOS 10.15 and earlier.
+- key: closeViewSmoothImages
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Smooth images' in the Zoom options.
+- key: contrast
+  type: <integer>
+  presence: optional
+  content: The contrast value in the Display options.
+- key: flashScreen
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Flash the screen' in the Audio options.
+- key: grayscale
+  supportedOS:
+    macOS:
+      deprecated: '11.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', enables 'Use grayscale' in the Display options.
+    This option is deprecated in macOS 11.
+- key: mouseDriver
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Mouse Keys in the Mouse & Trackpad options.
+- key: mouseDriverCursorSize
+  type: <integer>
+  presence: optional
+  content: The size of the cursor.
+- key: mouseDriverIgnoreTrackpad
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', ignores the built-in trackpad.
+- key: mouseDriverInitialDelay
+  type: <integer>
+  presence: optional
+  content: The initial delay before moving the mouse with Mouse Keys.
+- key: mouseDriverMaxSpeed
+  type: <integer>
+  presence: optional
+  content: The maximum speed for the cursor when using Mouse Keys.
+- key: slowKey
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Slow Keys' in the Keyboard options.
+- key: slowKeyBeepOn
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'click key sounds' for Slow Keys.
+- key: slowKeyDelay
+  type: <integer>
+  presence: optional
+  content: The acceptance delay, in milliseconds, for Slow Keys.
+- key: stereoAsMono
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', plays stereo audio as mono.
+- key: stickyKey
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Sticky Keys in the Keyboard options.
+- key: stickyKeyBeepOnModifier
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables the beep when a modifier key is set for Sticky Keys.
+- key: stickyKeyShowWindow
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Display pressed keys on screen' for Sticky Keys.
+- key: voiceOverOnOffKey
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Voice Over.
+- key: whiteOnBlack
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables Invert Colors in Display Accommodations.

@@ -1,0 +1,74 @@
+title: Firewall
+description: ''
+payload:
+  payloadtype: com.apple.security.firewall
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Manages the Application Firewall settings (e.g. Security pref pane -> Firewall).
+    Notes:
+    * The payload must exist in a "system" scoped profile.
+    * If more than one profile contains this payload, the most restrictive union of settings will be used.
+    * Per Firewall team's request, the "Automatically allow signed downloaded software" and "Automatically allow built-in software" options are not supported but both will be forced ON when this payload is present.
+payloadkeys:
+- key: EnableFirewall
+  type: <boolean>
+  presence: required
+  content: If 'true', enables the firewall.
+- key: BlockAllIncoming
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables blocking of all incoming connections.
+- key: EnableStealthMode
+  type: <boolean>
+  presence: optional
+  content: If 'true', enables stealth mode.
+- key: Applications
+  type: <array>
+  presence: optional
+  content: The list of apps with connections controlled by the firewall.
+  subkeys:
+  - key: ApplicationsItem
+    title: Applications
+    type: <dictionary>
+    subkeys:
+    - key: BundleID
+      title: Application Identifier
+      type: <string>
+      presence: required
+      content: The bundle identifier for an app.
+    - key: Allowed
+      title: Allow connections
+      type: <boolean>
+      presence: required
+      content: If true, allows connections for the app.
+- key: EnableLogging
+  supportedOS:
+    macOS:
+      introduced: '12.0'
+  type: <boolean>
+  presence: optional
+  content: |-
+    If 'true', enables logging.
+    Available in macOS 12 and later.
+- key: LoggingOption
+  supportedOS:
+    macOS:
+      introduced: '12.0'
+  type: <string>
+  presence: optional
+  rangelist:
+  - throttled
+  - brief
+  - detail
+  content: |-
+    This string specifies the type of logging.
+    Available in macOS 12 and later.

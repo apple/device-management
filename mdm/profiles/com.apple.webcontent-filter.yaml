@@ -1,0 +1,283 @@
+title: Web Content Filter
+description: Use this section to define managed email and web domains.
+payload:
+  payloadtype: com.apple.webcontent-filter
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: true
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: FilterType
+  title: FilterType
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+  type: <string>
+  presence: optional
+  rangelist:
+  - BuiltIn
+  - Plugin
+  default: BuiltIn
+  content: The type of filter, built-in or plug-in. In macOS, the system supports
+    only the plug-in value.
+- key: AutoFilterEnabled
+  title: Web filter enabled
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', automatic filtering is in an enabled state. This function evaluates
+    each web page as it loads and attempts to identify and block content not suitable
+    for children. The search algorithm is complex and may vary from release to release,
+    but it's basically looking for adult language.
+- key: PermittedURLs
+  title: PermittedURLs
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: An array or URLs that are accessible whether or not the automatic filter
+    allows access. The system uses this array only when 'AutoFilterEnabled' is 'true'.
+    Otherwise, it ignores this field.
+  subkeys:
+  - key: PermittedURLItems
+    title: Permitted url items
+    type: <string>
+- key: BlacklistedURLs
+  title: BlacklistedURLs
+  supportedOS:
+    iOS:
+      deprecated: '14.5'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: Use 'DenyListURLs' instead.
+  subkeys:
+  - key: BlacklistedURLItems
+    title: Blacklisted url items
+    type: <string>
+- key: DenyListURLs
+  title: DenyListURLs
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: An array of URLs that are inaccessible. Limit the number of these URLs
+    to about 500.
+  subkeys:
+  - key: DenyListURLItems
+    title: Denylisted url items
+    type: <string>
+- key: WhitelistedBookmarks
+  title: White list
+  supportedOS:
+    iOS:
+      deprecated: '14.5'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: Use 'AllowListBookmarks' instead.
+  subkeys:
+  - key: WhitelistedBookmarksItem
+    title: Identifier
+    type: <dictionary>
+    subkeys:
+    - key: URL
+      title: URL
+      type: <string>
+      presence: required
+      content: The URL of the bookmark in the allow list.
+    - key: Title
+      title: Title
+      type: <string>
+      presence: required
+      content: The title of the bookmark.
+- key: AllowListBookmarks
+  title: Allow list
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+    macOS:
+      introduced: n/a
+  type: <array>
+  presence: optional
+  content: An array of dictionaries defining the pages that the user can visit.
+  subkeys:
+  - key: AllowListBookmarksItem
+    title: Identifier
+    type: <dictionary>
+    subkeys:
+    - key: URL
+      title: URL
+      type: <string>
+      presence: required
+      content: The URL of the bookmark in the allow list.
+    - key: Title
+      title: Title
+      type: <string>
+      presence: required
+      content: The title of the bookmark.
+- key: UserDefinedName
+  title: UserDefinedName
+  type: <string>
+  presence: optional
+  content: The display name for this filtering configuration.
+- key: PluginBundleID
+  title: PluginBundleID
+  type: <string>
+  presence: optional
+  content: The bundle ID of the plug-in that provides filtering service.
+- key: ServerAddress
+  title: ServerAddress
+  type: <string>
+  presence: optional
+  content: The server address, which may be the IP address, hostname, or URL.
+- key: UserName
+  title: Username
+  type: <string>
+  presence: optional
+  content: The user name for the service.
+- key: Password
+  title: Password
+  type: <string>
+  presence: optional
+  content: The password for the service.
+- key: PayloadCertificateUUID
+  title: Certificate UUID
+  type: <string>
+  presence: optional
+  format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  content: The UUID of the certificate payload within the same profile that the system
+    uses to authenticate the user.
+- key: Organization
+  title: Organization
+  type: <string>
+  presence: optional
+  content: The organization string that passes to the third-party plug-in.
+- key: VendorConfig
+  type: <dictionary>
+  presence: optional
+  content: The custom dictionary that the filtering service plug-in needs.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: required
+    content: The custom key/value pairs for the filtering service.
+- key: FilterBrowsers
+  title: FilterBrowsers
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables the filtering of WebKit traffic.
+- key: FilterSockets
+  title: FilterSockets
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables the filtering of socket traffic.
+- key: FilterDataProviderDesignatedRequirement
+  title: Filter Data Provider Designated Requirement
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  content: |-
+    The designated requirement string that the system embeds in the code signature of the filter data provider system extension. This string identifies the filter data provider when the filter starts running. This field is a requirement if 'FilterSockets' is 'true'.
+    Available in macOS 10.15 and later.
+- key: FilterDataProviderBundleIdentifier
+  title: Filter Data Provider Bundle Identifier
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  content: |-
+    The bundle identifier string of the filter data provider system extension. This string identifies the filter data provider when the filter starts running. This field is a requirement if 'FilterSockets' is 'true'.
+    Available in macOS 10.15 and later.
+- key: FilterPackets
+  title: Filter Network Packets
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If this value is 'true', the property enables the filtering of network packets.
+    Either 'FilterPackets' or 'FilterSockets' must be 'true' for the filter to have an effect.
+    You can use this when 'FilterType' is 'Plugin'.
+    Available in macOS 10.15 and later.
+- key: FilterPacketProviderDesignatedRequirement
+  title: Filter Packet Provider Designated Requirement
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  content: |-
+    The designated requirement string that the system embeds in the code signature of the filter packet provider system extension. This string identifies the filter packet provider when the filter starts running. This field is a requirement if 'FilterPackets' is 'true'.
+    Available in macOS 10.15 and later.
+- key: FilterPacketProviderBundleIdentifier
+  title: Filter Packet Provider Bundle Identifier
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  content: |-
+    The bundle identifier string of the filter packet provider system extension. This string identifies the filter packet provider when the filter starts running. This field is a requirement if 'FilterPackets' is 'true'.
+    Available in macOS 10.15 and later.
+- key: FilterGrade
+  title: Filter Grade
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  rangelist:
+  - firewall
+  - inspector
+  default: firewall
+  content: |-
+    This value is for deriving the relative order of content filters. Filters with a grade of 'firewall' see network traffic before filters with a grade of 'inspector'. The system doesn't define the order of filters within a grade.
+    Available in macOS 10.15 and later.

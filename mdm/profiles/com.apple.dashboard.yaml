@@ -1,0 +1,39 @@
+title: 'Parental Controls: Dashboard Widget Restrictions'
+description: ''
+payload:
+  payloadtype: com.apple.dashboard
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      deprecated: '10.15'
+      removed: '10.15'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Widget restrictions.
+payloadkeys:
+- key: whiteListEnabled
+  type: <boolean>
+  presence: required
+  content: If 'true', enables the widget allow list.
+- key: WhiteList
+  type: <array>
+  presence: required
+  content: An array of widget item dictionaries that are allowed.
+  subkeys:
+  - key: WhiteListItem
+    type: <dictionary>
+    subkeys:
+    - key: Type
+      type: <string>
+      presence: required
+      content: The type of allow list item. Set to 'bundleID' to use a widget's bundle
+        ID as its main ID.
+    - key: ID
+      type: <string>
+      presence: required
+      content: The bundle ID of a widget.

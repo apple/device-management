@@ -1,0 +1,119 @@
+title: Extensible Single Sign-On
+description: Configures an app extension to handle SSO.
+payload:
+  payloadtype: com.apple.extensiblesso
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      supervised: false
+      allowmanualinstall: false
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: allowed
+  content: Configures an app extension that performs SSO on behalf of certain URLs.
+    User channel support was added in macOS 11.0.
+payloadkeys:
+- key: ExtensionIdentifier
+  type: <string>
+  presence: required
+  content: The bundle identifier of the app extension that performs SSO for the specified
+    URLs.
+- key: TeamIdentifier
+  supportedOS:
+    iOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    The team identifier of the app extension.
+    This key is required on macOS and ignored elsewhere.
+- key: Type
+  type: <string>
+  presence: required
+  rangelist:
+  - Credential
+  - Redirect
+  content: The type of SSO.
+- key: Realm
+  type: <string>
+  presence: optional
+  content: |-
+    The realm name for 'Credential' payloads. Use proper capitalization for this value.
+    This key is ignored for 'Redirect' payloads.
+- key: ExtensionData
+  type: <dictionary>
+  presence: optional
+  content: A dictionary of arbitrary data passed through to the app extension.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: optional
+    content: Keys and values to be passed to the app extension.
+- key: URLs
+  type: <array>
+  presence: optional
+  content: |-
+    An array of URL prefixes of identity providers where the app extension performs SSO.
+    Required for 'Redirect' payloads. Ignored for 'Credential' payloads.
+    The URLs must begin with 'http://' or 'https://', the scheme and host name are matched case-insensitively, query parameters and URL fragments are not allowed, and the URLs of all installed Extensible SSO payloads must be unique.
+  subkeys:
+  - key: URL
+    type: <string>
+    presence: required
+    content: An http or https URL prefix.
+- key: Hosts
+  type: <array>
+  presence: optional
+  content: |-
+    An array of host names or domain names that apps can authenticate through the app extension.
+    Required for 'Credential' payloads. Ignored for 'Redirect' payloads.
+    Host or domain names are matched case-insensitively, and all the host/domain names of all installed Extensible SSO payloads must be unique.
+    Hosts that begin with a “.” are wildcard suffixes and match all subdomains; otherwise the host must be an exact match.
+  subkeys:
+  - key: hostname
+    type: <string>
+    presence: required
+    content: A host or domain name, with or without a leading dot.
+- key: ScreenLockedBehavior
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: '12.0'
+  type: <string>
+  presence: optional
+  rangelist:
+  - Cancel
+  - DoNotHandle
+  default: Cancel
+  content: |-
+    If set to 'Cancel', the system cancels authentication requests when the screen is locked. If set to 'DoNotHandle', the request continues without SSO instead. This does not apply to requests where 'userInterfaceEnabled' is set to 'false' or background NSURLSession requests.
+    Available in iOS 15 and later and macOS 12 and later.
+- key: DeniedBundleIdentifiers
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+    macOS:
+      introduced: '12.0'
+  type: <array>
+  presence: optional
+  content: |-
+    An array of bundle identifiers of apps that don't use SSO provided by this extension.
+    Available in iOS 15 and later and macOS 12 and later.
+  subkeys:
+  - key: bundleIdentifier
+    type: <string>
+    presence: required
+    content: The bundle identifier of the app.

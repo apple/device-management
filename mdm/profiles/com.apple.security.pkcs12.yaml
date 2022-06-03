@@ -1,0 +1,79 @@
+title: 'Certificate (PKCS #12)'
+description: Use this section to define settings for a pkcs12 certificate.
+payload:
+  payloadtype: com.apple.security.pkcs12
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '5.0'
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '3.0'
+      allowmanualinstall: true
+  content: Password-protected identity certificate. Only one certificate may be included.
+payloadkeys:
+- key: PayloadCertificateFileName
+  title: Payload Certificate Filename
+  type: <string>
+  presence: optional
+  content: The file name of the enclosed certificate.
+- key: PayloadContent
+  title: Payload Certificate Filename
+  type: <data>
+  presence: required
+  content: The binary representation of the payload, encoded in Base64.
+- key: Password
+  title: Password
+  type: <string>
+  presence: optional
+  content: |-
+    This is the password to the identity.
+    Security Caution: Because the password string is stored in the clear (unencrypted) in the profile, you should encrypt the entire profile.
+- key: AllowAllAppsAccess
+  title: Allow All Apps Access
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.10'
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', allows apps access to the private key.
+- key: KeyIsExtractable
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.15'
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, does not tag the private key data as extractable in the keychain.

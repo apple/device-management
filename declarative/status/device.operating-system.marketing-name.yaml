@@ -1,0 +1,14 @@
+title: Status Device Operating System Marketing Name
+description: The device's operating system marketing name.
+payload:
+  statusitemtype: device.operating-system.marketing-name
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: device.operating-system.marketing-name
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: A string that identifies the operating system's marketing name in use on
+    the device, such as 'Catalina'.

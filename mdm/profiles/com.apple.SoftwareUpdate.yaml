@@ -1,0 +1,100 @@
+title: Software Update
+description: Software Update Managed Settings
+payload:
+  payloadtype: com.apple.SoftwareUpdate
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Software update catalog options.
+payloadkeys:
+- key: CatalogURL
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      deprecated: '11.0'
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The URL of the software update catalog. This property is not supported
+    in macOS 11 and later.
+- key: AllowPreReleaseInstallation
+  title: Allow Pre-Release Update Installation
+  supportedOS:
+    macOS:
+      introduced: '10.9'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', prerelease software can be installed on this computer.
+- key: restrict-software-update-require-admin-to-install
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', restrict app installations to admin users. This key has the
+    same function as the  'restrict-store-require-admin-to-install' key in the 'com.apple.appstore'
+    payload.
+- key: AutomaticallyInstallMacOSUpdates
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', restricts the 'Install macOS Updates' option and prevents the
+    user from changing the option.
+- key: AutomaticallyInstallAppUpdates
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', deselects the 'Install app updates from the App Store' option
+    and prevents the user from changing the option.
+- key: AutomaticCheckEnabled
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', deselects the 'Check for updates' option and prevents the user
+    from changing the option.
+- key: AutomaticDownload
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', deselects the 'Download new updates when available from the
+    App Store' option and prevents the user from changing the option.
+- key: CriticalUpdateInstall
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables the automatic installation of critical updates and
+    prevents the user from changing the 'Install system data files and security updates'
+    option.
+- key: ConfigDataInstall
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', restricts the automatic installation of configuration data.

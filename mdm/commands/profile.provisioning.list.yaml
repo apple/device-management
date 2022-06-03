@@ -1,0 +1,69 @@
+title: Provisioning Profile List Command
+description: This command allows the server to retrieve the list of installed provisioning
+  profiles on the device. This command requires the Inspect Provisioning Profiles
+  right. On macOS, this command is for iOS and iPadOS style provisioning profiles
+  only.
+payload:
+  requesttype: ProvisioningProfileList
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      accessrights: AllowProvisioningInspection
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '11.0'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowProvisioningInspection
+      supervised: false
+  content: This command allows the server to retrieve the list of installed provisioning
+    profiles on the device. This command requires the Inspect Provisioning Profiles
+    right. On macOS, this command is for iOS and iPadOS style provisioning profiles
+    only.
+payloadkeys:
+- key: ManagedOnly
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '13.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', only include profiles that MDM has installed. For user enrollments,
+    the device ignores this key and always limits the results to managed profiles.
+    This value is available in iOS 13 and later, and tvOS 13 and later.
+responsekeys:
+- key: ProvisioningProfileList
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes each installed profile.
+  subkeys:
+  - key: ProvisioningProfileListItem
+    type: <dictionary>
+    subkeys:
+    - key: Name
+      type: <string>
+      presence: required
+      content: The display name of the provisioning profile.
+    - key: UUID
+      type: <string>
+      presence: required
+      content: The unique identifier for the provisioning profile.
+    - key: ExpiryDate
+      type: <date>
+      presence: optional
+      content: The expiry date of the provisioning profile.

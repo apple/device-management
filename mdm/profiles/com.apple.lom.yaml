@@ -1,0 +1,49 @@
+title: Lights Out Management (LOM)
+description: Configures a computer to send or receive "PowerON". "PowerOFF", "Reset"
+  requests.
+payload:
+  payloadtype: com.apple.lom
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+  content: Configures a computer to send or receive "PowerON". "PowerOFF", "Reset"
+    requests.
+payloadkeys:
+- key: DeviceCertificateUUID
+  title: Device Certificate payload UUID
+  type: <string>
+  presence: optional
+  content: The UUID certificate for the device. This key indicates the device can
+    receive 'PowerON', 'PowerOFF', and 'Reset' requests from a LOM controller.
+- key: ControllerCertificateUUID
+  title: Controller Certificate payload UUID
+  type: <string>
+  presence: optional
+  content: The UUID certificate for the LOM controller. This key configures the device
+    to accept the LOMDeviceRequestCommand from MDM and then send it to the target
+    device.
+- key: DeviceCACertificateUUIDs
+  title: CA certificate payload UUIDs
+  type: <array>
+  presence: optional
+  content: Array of payload UUIDs containing CA certificates that controllers use
+    to evaluate trust of device certificates.
+  subkeys:
+  - key: DeviceCACertificateUUIDsItem
+    type: <string>
+- key: ControllerCACertificateUUIDs
+  title: CA certificate payload UUIDs
+  type: <array>
+  presence: optional
+  content: Array of payload UUIDs containing CA certificates that devices use to evaluate
+    trust of controller certificates.
+  subkeys:
+  - key: ControllerCACertificateUUIDsItem
+    type: <string>

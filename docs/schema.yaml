@@ -1,0 +1,227 @@
+title: YAML MDM and Declarative Device Management Schema
+type: object
+additionalProperties: false
+required:
+- title
+properties:
+  title:
+    type: string
+    description: Title for this schema object.
+  description:
+    type: string
+    description: Description of this schema object.
+  payload:
+    type: object
+    description: Overall properties of the payload.
+    additionalProperties: false
+    properties:
+      payloadtype:
+        type: string
+        description: Type of the profile payload.
+      requesttype:
+        type: string
+        description: Type of the MDM command.
+      declarationtype:
+        type: string
+        description: Type of the declaration payload.
+      statusitemtype:
+        type: string
+        description: Type of the status payload.
+      credentialtype:
+        type: string
+        description: Type of the credential asset data.
+      supportedOS: &supportedOS
+        type: object
+        description: Identifies the range of supported OS versions that support the entire payload.
+        additionalProperties: false
+        properties:
+          iOS: &supportedOSItem
+            type: object
+            description: Supported range on this OS.
+            additionalProperties: false
+            properties:
+              introduced:
+                type: string
+                description: OS version where feature was introduced.
+              deprecated:
+                type: string
+                description: OS version where feature was deprecated.
+              removed:
+                type: string
+                description: OS version where feature was removed.
+              accessrights:
+                type: string
+                description: The MDM protocol access rights required on the device to execute the command.
+              devicechannel:
+                type: boolean
+                description: Indicates whether the command is supported on the device channel. If this key is present it overrides the the `devicechannel` key in the top-level payload !!(payload) key.
+              userchannel:
+                type: boolean
+                description: indicates whether the command is supported on the user channel. If this key is present it overrides the the `userchannel` key in the top-level payload !!(payload) key.
+              supervised:
+                type: boolean
+                description: Indicates whether the command can only be executed on supervised devices. If this key is present it overrides the the `supervised` key in the top-level payload !!(payload) key.
+              requiresdep:
+                type: boolean
+                description: If True, the command can only be executed on devices provisioned in DEP.
+              userapprovedmdm:
+                type: boolean
+                description: If True, the command can only be executed on devices with user approved MDM enrollment.
+              allowmanualinstall:
+                type: boolean
+                description: If True, the profile can be installed manually by a user on the device.
+              sharedipad:
+                type: object
+                description: Additional behavior specific to shared iPad devices.
+                additionalProperties: false
+                properties:
+                  mode:
+                    type: string
+                    description: Indicates whether a payload or payload key can used with or without shared iPad in effect.
+                      If set to 'allowed', then the payload or payload key can be used both with or without shared iPad in effect.
+                      If set to 'required', then the payload or payload key can only be used if shared iPad is in effect.
+                      If set to 'forbidden', then the payload or payload key cannot be used if shared iPad is in effect.
+                      If set to 'ignored', then the payload or payload key can be used, but is ignored if shared iPad is in effect.
+                    enum:
+                    - allowed
+                    - required
+                    - forbidden
+                    - ignored
+                    default: allowed
+                  devicechannel:
+                    type: boolean
+                    description: Defines if the payload can be installed on the device MDM channel.
+                  userchannel:
+                    type: boolean
+                    description: Defines if the payload can be installed on the user MDM channel.
+              userenrollment:
+                type: object
+                description: Additional behavior when user enrollment is in effect.
+                  If this key is not present, then the corresponding payload or payload key can be used both with or without user enrollment in effect,
+                  without any changes to normal behavior.
+                additionalProperties: false
+                properties:
+                  mode:
+                    type: string
+                    description: Indicates how a payload or payload key can only be used if user enrollment is in effect.
+                      If set to 'allowed', then the payload or payload key can be used both with or without user enrollment in effect.
+                      If set to 'required', then the payload or payload key can only be used if user enrollment is in effect.
+                      If set to 'forbidden', then the payload or payload key cannot be used if user enrollment is in effect.
+                      If set to 'ignored', then the payload or payload key can be used, but is ignored if user enrollment is in effect.
+                    enum:
+                    - allowed
+                    - required
+                    - forbidden
+                    - ignored
+                    default: allowed
+                  behavior:
+                    type: string
+                    description: Describes any special behavior for the payload or payload key if user enrollment is in effect.
+          macOS: *supportedOSItem
+          tvOS: *supportedOSItem
+          watchOS: *supportedOSItem
+      content:
+        type: string
+        description: Description of the payload.
+  payloadkeys: &payloadKeys
+    type: array
+    title: payloadkeys
+    description: An array of payload keys.
+    minitems: 1
+    items:
+      type: object
+      title: payloadkey
+      description: A single payload key.
+      additionalProperties: false
+      required:
+      - key
+      - type
+      properties:
+        key:
+          type: string
+          description: The name of the key.
+        title:
+          type: string
+          description: The title of the key.
+        supportedOS: *supportedOS
+        type:
+          type: string
+          description: The type of key. The value `<any>` may be used to indicate that any of the standard values can be used without any expectation that the value will be validated.
+          enum:
+          - <string>
+          - <integer>
+          - <real>
+          - <boolean>
+          - <date>
+          - <data>
+          - <array>
+          - <dictionary>
+          - <any>
+        subtype:
+          type: string
+          description: Indicates the expected format of the string value of the key, supporting additional validation of the value.
+          enum:
+          - url
+          - hostname
+          - email
+        presence:
+          type: string
+          description: Whether the key is required or optional.
+          enum:
+          - required
+          - optional
+        rangelist:
+          type: array
+          description: List of allowed values for this key.
+          items:
+            type:
+            - string
+            - integer
+            - number
+        range:
+          type: object
+          description: Bounds for the value of this key.
+          additionalProperties: false
+          properties:
+            min:
+              type:
+              - integer
+              - number
+              description: Lower bound.
+            max:
+              type:
+              - integer
+              - number
+              description: Upper bound.
+        default:
+            type:
+            - string
+            - integer
+            - number
+            description: The default value (if any) for the key.
+        format:
+          type: string
+          description: The format for the value expressed as a regular expression.
+        repetition:
+          type: object
+          description: Cardinality for this value.
+          additionalProperties: false
+          required:
+          - min
+          - max
+          properties:
+            min:
+              type: integer
+              description: Lower bound.
+            max:
+              type: integer
+              description: Upper bound.
+        content:
+          type: string
+          description: Description of the payload key.
+        subkeytype:
+          type: string
+          description: A name that uniquely represents the structured subkey object. This is used when structured subkeys are referenced multiple times.
+        subkeys: *payloadKeys
+
+  responsekeys: *payloadKeys

@@ -1,0 +1,22 @@
+title: Unlock User Account Command
+description: This command allows the server to unlock a local user account.
+payload:
+  requesttype: UnlockUserAccount
+  supportedOS:
+    macOS:
+      introduced: '10.13'
+      accessrights: DeviceLockAndRemovePasscode
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to unlock a local user account that has
+    been locked due to too many failed password attempts. Requires "Device lock and
+    passcode removal right".
+payloadkeys:
+- key: UserName
+  type: <string>
+  presence: required
+  content: The user name of the local account, which can be any local account on the
+    system, not just a managed user account.

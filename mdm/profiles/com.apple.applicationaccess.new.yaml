@@ -1,0 +1,91 @@
+title: 'Parental Controls: Application Restrictions'
+description: ''
+payload:
+  payloadtype: com.apple.applicationaccess.new
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: |-
+    Parental controls application restrictions.
+    Order of evaluation:
+    (1) Certain system applications and utilities are always allowed to run
+    (2) The "whiteList" is searched to see if a matching entry is found by bundleID. If a match is found, the "appID" and "detachedSignature"
+    (if present) are used to verify the signature of the application being launched. If the signature is valid and matches the designated
+    requirement (in the "appID" key), the application is allowed to launch.
+    (3) (deprecated) If the path to the binary being launched matches (or is in a subdirectory) of a path in "pathBlackList", the binary is denied.
+    (4) (deprecated) If the path to the binary being launched matches (or is a subdirectory) of a path in "pathWhiteList", the binary is allowed to launch.
+    (5) The binary is denied permission to launch.
+payloadkeys:
+- key: familyControlsEnabled
+  type: <boolean>
+  presence: required
+  content: If 'true', enables app access restrictions.
+- key: whiteList
+  type: <array>
+  presence: optional
+  content: The allow list of app item dictionaries.
+  subkeytype: ApplicationItem
+  subkeys: &id001
+  - key: whiteListItem
+    type: <dictionary>
+    subkeys:
+    - key: bundleID
+      type: <string>
+      presence: required
+      content: The bundle ID of the app.
+    - key: appID
+      type: <data>
+      presence: required
+      content: The identifier of the app.
+    - key: detachedSignature
+      type: <data>
+      presence: optional
+      content: The signature for an unsigned binary.
+    - key: disabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', this app is not added to the allow list.
+    - key: subApps
+      type: <array>
+      presence: optional
+      content: An array of nested helper applications.
+      subkeytype: ApplicationItem
+      subkeys: *id001
+    - key: displayName
+      type: <string>
+      presence: optional
+      content: The name used for display purposes.
+- key: pathBlackList
+  supportedOS:
+    macOS:
+      deprecated: '10.15'
+  type: <array>
+  presence: optional
+  content: The paths to apps in the deny list. This property is deprecated in macOS
+    10.15 and later.
+  subkeys:
+  - key: pathBlackListItem
+    type: <string>
+    presence: required
+    content: A path.
+- key: pathWhiteList
+  supportedOS:
+    macOS:
+      deprecated: '10.15'
+  type: <array>
+  presence: optional
+  content: The paths to apps in the allow list. This property is deprecated in macOS
+    10.15 and later.
+  subkeys:
+  - key: pathWhiteListItem
+    type: <string>
+    presence: required
+    content: A path.

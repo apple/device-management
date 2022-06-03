@@ -1,0 +1,198 @@
+title: Available OS Updates Command
+description: Queries the device for a list of available OS updates. On OS X, a ScheduleOSUpdateScan
+  must be performed to update the results returned by this query.
+payload:
+  requesttype: AvailableOSUpdates
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowAppInstallation
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.0'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      supervised: true
+      requiresdep: false
+  content: Queries the device for a list of available OS updates. On OS X, a ScheduleOSUpdateScan
+    must be performed to update the results returned by this query.
+responsekeys:
+- key: AvailableOSUpdates
+  type: <array>
+  presence: required
+  content: An array of dictionaries that contains only the most recent available updates
+    in iOS and tvOS, and possibly multiple available updates in macOS. Follow the
+    instructions in the Managed Apps and Updates section of the Apple Software Lookup
+    Service to find a complete catalog of iOS and tvOS updates.
+  subkeys:
+  - key: AvailableOSUpdatesItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: ProductKey
+      type: <string>
+      presence: required
+      content: The product key that represents the update.
+    - key: HumanReadableName
+      type: <string>
+      presence: required
+      content: The human-readable name of the update in the current user's current
+        locale.
+    - key: HumanReadableNameLocale
+      supportedOS:
+        iOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      presence: required
+      content: The locale, in IOS639-1 Alpha-2 code format, of the 'HumanReadableName'
+        value. This value is available in macOS 10.11 and later.
+    - key: MetadataURL
+      supportedOS:
+        iOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      presence: required
+      content: A URL where the MDM server can request additional localized names for
+        this update. This value is available in macOS 10.11 and later.
+    - key: ProductName
+      supportedOS:
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: required
+      content: The product name; for example, iOS.  This value is available in iOS
+        9.0 and later, and tvOS 12.0 and later.
+    - key: Version
+      type: <string>
+      presence: required
+      content: The version of the update.
+    - key: Build
+      type: <string>
+      presence: required
+      content: The build number of the update.
+    - key: DownloadSize
+      supportedOS:
+        macOS:
+          introduced: '10.12'
+      type: <integer>
+      presence: required
+      content: The storage size necessary to download the software update. Prior to
+        macOS 10.14, this only includes major operating-system updates. In macOS 10.14
+        and later, this also includes minor updates.
+    - key: InstallSize
+      supportedOS:
+        macOS:
+          introduced: n/a
+      type: <integer>
+      presence: required
+      content: The storage size necessary to install the update. This value is available
+        in iOS 9.0 and later, and tvOS 12.0 and later.
+    - key: AppIdentifiersToClose
+      supportedOS:
+        iOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <array>
+      presence: required
+      content: An array that contains app identifiers of apps to close so you can
+        install the update. This value is available in macOS 10.11 and later.
+      subkeys:
+      - key: AppIdentifiersToCloseItem
+        type: <string>
+    - key: IsCritical
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', this is a critical update.
+    - key: IsConfigDataUpdate
+      supportedOS:
+        iOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', this is an update to a configuration file. This value is
+        available in macOS 10.11 and later.
+    - key: IsFirmwareUpdate
+      supportedOS:
+        iOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', this is an update to firmware. This value is available in
+        macOS 10.11 and later.
+    - key: IsMajorOSUpdate
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: 10.11.4
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', this is a major update; for example, 10.15.x to 11. This
+        value is available in macOS 10.11 and later.
+    - key: RestartRequired
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the device restarts after installing the update.
+    - key: AllowsInstallLater
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', download the software update and install it later.
+    - key: DeferredUntil
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: 10.12.4
+        tvOS:
+          introduced: n/a
+      type: <date>
+      presence: optional
+      content: If present, the date when you want the update to install. This value
+        is available in macOS 10.12.4 and later.
+    - key: RequiresBootstrapToken
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '11.0'
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the device can accept a Bootstrap Token from the MDM server
+        instead of prompting for user authentication prior to installation. This only
+        applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo
+        response. This value is available for Apple silicon in macOS 11 and later.

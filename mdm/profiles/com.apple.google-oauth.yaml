@@ -1,0 +1,82 @@
+title: Google Account
+description: Use this section to configure Google accounts. The user will be prompted
+  to sign in afterward.
+payload:
+  payloadtype: com.apple.google-oauth
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+  content: A Google account payload sets up a Google email address as well as any
+    other Google services the user enables after authentication. Google accounts must
+    be installed via MDM or by Apple Configurator 2 (if the device is supervised).
+    The payload never contains credentials and the user will be prompted to enter
+    their credentials shortly after the payload successfully installs. On Shared iPads,
+    this payload can only be installed on the MDM user channel.
+payloadkeys:
+- key: AccountDescription
+  title: Account Description
+  type: <string>
+  presence: optional
+  content: A user-visible description of the Google account, shown in the Mail and
+    Settings apps.
+- key: AccountName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The user's full name for the Google account. This name appears in sent
+    messages.
+- key: EmailAddress
+  title: Email Address
+  type: <string>
+  presence: required
+  content: The full Google email address for the account.
+- key: CommunicationServiceRules
+  title: Communication Service Rules
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+  type: <dictionary>
+  presence: optional
+  content: The communication service handler rules for this account.
+  subkeys:
+  - key: DefaultServiceHandlers
+    title: Default Service Handlers
+    supportedOS:
+      iOS:
+        introduced: '10.0'
+      macOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary defining which app to use for audio calls made from this
+      account.
+    subkeys:
+    - key: AudioCall
+      title: App for audio calls
+      supportedOS:
+        iOS:
+          introduced: '10.0'
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      content: A string containing the bundle identifier for the default application
+        that handles audio calls made to contacts from this account.
+- key: VPNUUID
+  title: VPNUUID
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+  type: <string>
+  presence: optional
+  content: |-
+    The VPNUUID of the per-app VPN the account uses for network communication.
+    Available in iOS 14 and later.

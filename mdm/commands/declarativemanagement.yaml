@@ -1,0 +1,23 @@
+title: Declarative Management Command
+description: This command allows the server to turn on the Declarative Management
+  engine on the device (the first time it is used), or to trigger a Declarative Management
+  synchronization operation.
+payload:
+  requesttype: DeclarativeManagement
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: required
+  content: This command allows the server to turn on the Declarative Management engine
+    on the device (the first time it is used), or to trigger a Declarative Management
+    synchronization operation.
+payloadkeys:
+- key: Data
+  type: <data>
+  presence: optional
+  content: The base64-encoded Declarative Management JSON request using a TokensResponse.

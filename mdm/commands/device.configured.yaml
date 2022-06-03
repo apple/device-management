@@ -1,0 +1,31 @@
+title: Device Configured Command
+description: Informs the device that it can continue past DEP enrollment. Only works
+  on devices in DEP that have their cloud configuration set to await configuration.
+payload:
+  requesttype: DeviceConfigured
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: None
+      supervised: true
+      requiresdep: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      requiresdep: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '10.2'
+      accessrights: None
+      supervised: true
+  content: Informs the device that it can continue past DEP enrollment. Only works
+    on devices in DEP that have their cloud configuration set to await configuration.

@@ -1,0 +1,40 @@
+title: LOM Setup Request Command
+description: Queries the device for LOM setup information such as IP addresses, protocol
+  version, etc.
+payload:
+  requesttype: LOMSetupRequest
+  supportedOS:
+    macOS:
+      introduced: '11.0'
+      accessrights: DeviceLockAndRemovePasscode
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Queries the device for LOM setup information such as IP addresses, protocol
+    version, etc. The MDM server must send this command prior to sending the LOMDeviceRequest
+    command.
+responsekeys:
+- key: PrimaryIPv6AddressList
+  type: <array>
+  presence: required
+  content: An array that contains the IPv6 addresses for primary LOM-compatible Ethernet
+    interfaces for the device.
+  subkeys:
+  - key: PrimaryIPv6AddressListItem
+    type: <string>
+    presence: required
+- key: SecondaryIPv6AddressList
+  type: <array>
+  presence: required
+  content: An array that contains the IPv6 addresses for secondary LOM-compatible
+    Ethernet interfaces for the device.
+  subkeys:
+  - key: SecondaryIPv6AddressListItem
+    type: <string>
+    presence: required
+- key: LOMProtocolVersion
+  type: <integer>
+  presence: required
+  content: The LOM protocol version that the device supports.

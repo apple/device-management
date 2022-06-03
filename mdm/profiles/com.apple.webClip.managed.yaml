@@ -1,0 +1,97 @@
+title: Web Clip
+description: Use this section to define web clips
+payload:
+  payloadtype: com.apple.webClip.managed
+  supportedOS:
+    iOS:
+      introduced: '4.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.7'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+payloadkeys:
+- key: Precomposed
+  title: Precomposed Icon
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', prevents SpringBoard from adding 'shine' to the icon.
+- key: FullScreen
+  title: Full Screen
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', launches the web clip as a full-screen web app.
+- key: URL
+  title: URL
+  type: <string>
+  subtype: url
+  presence: required
+  content: The URL that the web clip should open when clicked. If the URL doesn't
+    begin with 'HTTP' or 'HTTPS', it doesn't work.
+- key: Icon
+  title: Icon
+  type: <data>
+  presence: optional
+  content: |-
+    The PNG icon to be shown on the Home screen.
+    For best results, provide a square image that's no larger than 400 x 400 pixels and less than 1 MB when uncompressed. The graphics file is automatically scaled and cropped to fit, if necessary, and converted to PNG format. Web clip icons are 144 x 144 pixels for iPad devices with a Retina display, and 114 x 114 pixels for iPhone devices. To prevent the device from adding a shine to the image, set 'Precomposed' to 'true'.
+    If this property isn't specified, a white square is shown.
+- key: IsRemovable
+  title: Removable
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables removing the web clip.
+- key: Label
+  title: Label
+  type: <string>
+  presence: required
+  content: The name of the web clip as displayed on the Home screen.
+- key: IgnoreManifestScope
+  title: Ignore Web Clip manifest scope
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', a full screen web clip can navigate to an external web site without showing Safari UI. Otherwise, Safari UI appears when navigating away from the web clip's URL.
+    This key has no effect when 'FullScreen' is 'false'.
+- key: TargetApplicationBundleIdentifier
+  title: Target Application Bundle Identifier
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The application bundle identifier that specifies the application which
+    opens the URL. To use this property, the profile must be installed through an
+    MDM.

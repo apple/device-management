@@ -1,0 +1,38 @@
+title: Declarative Management
+description: Declarative Management request keys.
+payload:
+  requesttype: DeclarativeManagement
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: required
+  content: Check-in protocol declarative management request and response.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - DeclarativeManagement
+  content: The message type, which must have a value of 'DeclarativeManagement'.
+- key: EnrollmentID
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the device.
+- key: Endpoint
+  type: <string>
+  presence: required
+  content: |-
+    The type of operation the declaration is requesting. This key must be one of these values:
+    * 'tokens': For fetching synchronization tokens from the server
+    * 'declaration-items': For fetching the declaration manifest from the server
+    * 'status': For sending a status report to the server
+    * 'declaration/…/…': For fetching a specific declaration from the server. Include the declaration type and identifier separated by forward slashes ('/)'.
+- key: Data
+  type: <data>
+  presence: optional
+  content: A Base64-encoded JSON object using the SynchronizationTokens schema.

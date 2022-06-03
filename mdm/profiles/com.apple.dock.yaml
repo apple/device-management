@@ -1,0 +1,282 @@
+title: Dock
+description: ''
+payload:
+  payloadtype: com.apple.dock
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: tilesize
+  type: <integer>
+  presence: optional
+  range:
+    min: 16
+    max: 128
+  content: The tile size. Values must be in the range from 16 to 128.
+- key: size-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks the size slider.
+- key: magnification
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables magnification.
+- key: magnify-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks magnification.
+- key: largesize
+  type: <integer>
+  presence: optional
+  range:
+    min: 16
+    max: 128
+  content: The size of the largest magnification.
+- key: magsize-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks the magnification slider.
+- key: orientation
+  type: <string>
+  presence: optional
+  rangelist:
+  - bottom
+  - left
+  - right
+  content: The orientation of the dock.
+- key: position-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks the position.
+- key: mineffect
+  type: <string>
+  presence: optional
+  rangelist:
+  - genie
+  - scale
+  content: The minimize effect.
+- key: mineffect-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks 'Minimize windows using.'
+- key: windowtabbing
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  rangelist:
+  - manual
+  - always
+  - fullscreen
+  content: Set the 'Prefer tabs when opening documents' to the provided value.
+- key: windowtabbing-immutable
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables 'Prefer tabs when opening documents' checkbox.
+- key: dblclickbehavior
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <string>
+  presence: optional
+  rangelist:
+  - minimize
+  - maximize
+  - none
+  content: The behavior when the window's title bar is double-clicked.
+- key: dblclickbehavior-immutable
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks 'Double-click a window's title bar.'
+- key: minimize-to-application
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Minimize windows into application icon.'
+- key: minintoapp-immutable
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables the 'Minimize windows into application icon' checkbox.
+- key: launchanim
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Animate opening applications.'
+- key: launchanim-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks 'Animate opening applications.'
+- key: autohide
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Automatically hide and show the dock.'
+- key: autohide-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks 'Automatically hide.'
+- key: show-process-indicators
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If true, shows the process indicator.
+- key: showindicators-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', locks 'Show indicators.'
+- key: show-recents
+  supportedOS:
+    macOS:
+      introduced: '10.14'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', enables 'Show recent items.'
+- key: showrecents-immutable
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables 'Show recent applications' checkbox.
+- key: contents-immutable
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables changes to the dock.
+- key: MCXDockSpecialFolders
+  type: <array>
+  presence: optional
+  content: |-
+    One or more special folders that may be created at user login time and placed in the dock.
+
+    The 'My Applications' item is only used for Simple Finder environments. The 'Original Network Home' item is only used for mobile account users.
+  subkeys:
+  - key: MCXDockSpecialFoldersItems
+    type: <string>
+    rangelist:
+    - AddDockMCXMyApplicationsFolder
+    - AddDockMCXDocumentsFolder
+    - AddDockMCXSharedFolder
+    - AddDockMCXOriginalNetworkHomeFolder
+- key: AllowDockFixupOverride
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', use the file in '/Library/Preferences/com.apple.dockfixup.plist'
+    when a new user or migrated user logs in. This option has no effect for existing
+    users. Available in macOS 10.12 and later. Only available on the device channel.
+- key: static-only
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', uses the 'static-apps' and 'static-others' dictionaries for
+    the dock and ignores any items in the 'persistent-apps' and 'persistent-others'
+    dictionaries. If 'false', the contents are merged with the static items listed
+    first.
+- key: static-others
+  type: <array>
+  presence: optional
+  content: An array of items located on the Documents side of the Dock and cannot
+    be removed from that location.
+  subkeytype: StaticItem
+  subkeys: &id001
+  - key: StaticItem
+    type: <dictionary>
+    subkeys:
+    - key: tile-data
+      type: <dictionary>
+      presence: required
+      content: The information about the dock item.
+      subkeys:
+      - key: label
+        type: <string>
+        presence: required
+        content: The label of the dock item.
+      - key: url
+        type: <string>
+        presence: optional
+        content: The URL string.
+      - key: file-type
+        type: <integer>
+        presence: required
+        rangelist:
+        - 0
+        - 1
+        - 3
+        content: |-
+          The type of tile:
+          * '0': URL
+          * '1': File
+          * '3': Directory
+      - key: file-data
+        type: <dictionary>
+        presence: optional
+        content: The data in a file. For Apple use only.
+        subkeys:
+        - key: ANY
+          type: <any>
+          presence: optional
+          content: For Apple use only.
+    - key: tile-type
+      type: <string>
+      presence: required
+      rangelist:
+      - file-tile
+      - directory-tile
+      - url-tile
+      content: The type of tile.
+- key: static-apps
+  type: <array>
+  presence: optional
+  content: An array of items located on the Applications side of the Dock and cannot
+    be removed from that location.
+  subkeytype: StaticItem
+  subkeys: *id001
+- key: persistent-apps
+  type: <array>
+  presence: optional
+  content: An array of items located on the Applications side of the Dock that can
+    be removed from the dock.
+  subkeytype: StaticItem
+  subkeys: *id001
+- key: persistent-others
+  type: <array>
+  presence: optional
+  content: An array of items located on the Documents side of the Dock that can be
+    removed from the dock.
+  subkeytype: StaticItem
+  subkeys: *id001

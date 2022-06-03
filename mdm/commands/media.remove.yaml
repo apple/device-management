@@ -1,0 +1,34 @@
+title: Remove Media Command
+description: This command allows an MDM server to remove managed media. This command
+  returns Acknowledged even if the item is not found.
+payload:
+  requesttype: RemoveMedia
+  supportedOS:
+    iOS:
+      introduced: '8.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+  content: This command allows an MDM server to remove managed media. This command
+    returns Acknowledged even if the item is not found.
+payloadkeys:
+- key: MediaType
+  type: <string>
+  presence: required
+  rangelist:
+  - Book
+  content: The media type, which can only be 'Book'.
+- key: iTunesStoreID
+  type: <string>
+  presence: optional
+  content: The book's iTunes Store identifier.
+- key: PersistentID
+  type: <string>
+  presence: optional
+  content: The book's persistent identifier in reverse-DNS form; for example, 'com.acme.manuals.training'.

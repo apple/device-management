@@ -1,0 +1,32 @@
+title: Set Bootstrap Token
+description: Check-in protocol set bootstrap token data.
+payload:
+  requesttype: SetBootstrapToken
+  supportedOS:
+    macOS:
+      introduced: '10.15'
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: Check-in protocol set bootstrap token data request and response.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - SetBootstrapToken
+  content: The message type, which must have a value of 'SetBootstrapToken'.
+- key: BootstrapToken
+  type: <data>
+  presence: optional
+  content: The device's bootstrap token data. If this field is missing or zero length,
+    the bootstrap token should be removed for this device.
+- key: AwaitingConfiguration
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the device is awaiting a DeviceConfigured MDM command before
+    proceeding through Setup Assistant.

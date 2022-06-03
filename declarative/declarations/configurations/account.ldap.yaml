@@ -1,0 +1,69 @@
+title: Account:LDAP
+description: Use this configuration to define settings for access to LDAP servers.
+payload:
+  declarationtype: com.apple.configuration.account.ldap
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+  content: An LDAP configuration defines an LDAP directory account for a user.
+payloadkeys:
+- key: VisibleName
+  title: Account Name
+  type: <string>
+  presence: optional
+  content: The name that apps show to the user for this LDAP account. If not present,
+    the system generates a suitable default.
+- key: HostName
+  title: Server Host Name
+  type: <string>
+  presence: required
+  content: The hostname of the LDAP server (or IP address).
+- key: Port
+  title: Server Port
+  type: <integer>
+  presence: optional
+  content: The port number of the LDAP server (or IP address).
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the credentials for
+    this account. The corresponding asset must be of type UserNameAndPasswordCredentials.
+- key: SearchSettings
+  title: Search Settings
+  type: <array>
+  presence: optional
+  content: The array of nodes to start LDAP searches from. There must be at least
+    one node for this account to be useful. macOS only searches one node and ignores
+    other items in the array.
+  subkeys:
+  - key: SearchSettingsItem
+    title: An LDAP Search Setting
+    type: <dictionary>
+    subkeys:
+    - key: VisibleDescription
+      title: Visible Description
+      type: <string>
+      presence: optional
+      content: The description of this search setting in the Contacts and Settings
+        apps. If not present, the apps display no name.
+    - key: SearchBase
+      title: Search Base
+      type: <string>
+      presence: required
+      content: The path to the node where a search starts. For example, 'ou=people,o=example
+        corp'.
+    - key: Scope
+      title: Scope
+      type: <string>
+      presence: optional
+      rangelist:
+      - Base
+      - OneLevel
+      - Subtree
+      default: Subtree
+      content: |-
+        The type of recursion to use in the saerch.
+        * 'Base': Only the 'SearchBase' node.
+        * 'OneLevel': The 'SearchBase' node and its immediate children.
+        * 'Subtree': The 'SearchBase' node and all its chidren, regardless of depth.

@@ -1,0 +1,43 @@
+title: Managed Preferences
+description: ''
+payload:
+  payloadtype: com.apple.ManagedClient.preferences
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: PreferenceDomain
+  type: <dictionary>
+  presence: required
+  content: The dictionary containing app preference domains.
+  subkeys:
+  - key: Forced
+    type: <array>
+    presence: required
+    content: The dictionary of forced settings.
+    subkeys: &id001
+    - key: Settings
+      type: <dictionary>
+      presence: required
+      subkeys:
+      - key: mcx_preference_settings
+        type: <dictionary>
+        presence: required
+        content: The dictionary of settings.
+        subkeys:
+        - key: ANY
+          type: <any>
+          presence: optional
+          content: The setting/value pairs.
+  - key: Set-Once
+    type: <array>
+    presence: required
+    content: The dictonary of one-time settings.
+    subkeys: *id001

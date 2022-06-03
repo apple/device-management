@@ -1,0 +1,115 @@
+title: AirPlay
+description: AirPlay settings
+payload:
+  payloadtype: com.apple.airplay
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.10'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+  content: macOS supports more than one payload, iOS does not. Supported on the user
+    channel for macOS only.
+payloadkeys:
+- key: AllowList
+  title: AllowList
+  supportedOS:
+    iOS:
+      introduced: '14.5'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '11.3'
+      userenrollment:
+        mode: ignored
+  type: <array>
+  presence: optional
+  content: If present, only AirPlay destinations in this list are available to the
+    device. This allow list applies to supervised devices.
+  subkeys: &id001
+  - key: AllowListItem
+    title: AllowList Content Item
+    supportedOS:
+      iOS:
+        introduced: '7.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: '10.10'
+        userenrollment:
+          mode: ignored
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: DeviceID
+      title: Device ID
+      type: <string>
+      presence: required
+      format: ^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$
+      content: The device ID of the AirPlay destination in the format 'xx:xx:xx:xx:xx:xx'.
+        This field isn't case-sensitive.
+- key: Passwords
+  title: Passwords
+  type: <array>
+  presence: optional
+  content: |-
+    If present, sets passwords for known AirPlay destinations.
+    Using multiple entries for the same destination, whether within the same payload or across multiple installed payloads, is an error and results in undefined behavior.
+  subkeys:
+  - key: PasswordsItem
+    title: Password Content Item
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: DeviceName
+      title: Device Name
+      supportedOS:
+        macOS:
+          introduced: n/a
+      type: <string>
+      presence: required
+      content: The name of the AirPlay destination; used in iOS.
+    - key: Password
+      title: Password
+      type: <string>
+      presence: required
+      content: The password for the AirPlay destination.
+    - key: DeviceID
+      supportedOS:
+        iOS:
+          introduced: n/a
+      type: <string>
+      presence: required
+      content: The device ID of the AirPlay destination; used in macOS.
+- key: Whitelist
+  title: Whitelist
+  supportedOS:
+    iOS:
+      deprecated: '14.5'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      deprecated: '11.3'
+      userenrollment:
+        mode: ignored
+  type: <array>
+  presence: optional
+  content: Use 'AllowList' instead. As of macOS 11.3 and iOS 14.5 this key is deprecated.
+  subkeys: *id001

@@ -1,0 +1,168 @@
+title: Schedule OS Update Command
+description: This command allows the server to schedule an OS update.
+payload:
+  requesttype: ScheduleOSUpdate
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+      accessrights: AllowAppInstallation
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.11'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '12.0'
+      accessrights: AllowAppInstallation
+      devicechannel: true
+      supervised: true
+      requiresdep: false
+  content: This command allows the server to schedule an OS update.
+payloadkeys:
+- key: Updates
+  type: <array>
+  presence: required
+  content: An array of dictionaries specifying the updates to download or install.
+    If this value is missing, the device applies the default behavior for handling
+    updates.
+  subkeys:
+  - key: UpdatesItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: ProductKey
+      type: <string>
+      presence: optional
+      content: The product key that represents the update.
+    - key: ProductVersion
+      supportedOS:
+        iOS:
+          introduced: '11.3'
+        macOS:
+          introduced: '12.0'
+        tvOS:
+          introduced: '12.2'
+      type: <string>
+      presence: optional
+      content: The version of the update, which the system requires if 'ProductKey'
+        isn't present. This value is available in iOS 11.3 and later, macOS 12 and
+        later, and tvOS 12.2 and later.
+    - key: InstallAction
+      type: <string>
+      presence: required
+      rangelist:
+      - Default
+      - DownloadOnly
+      - InstallASAP
+      - NotifyOnly
+      - InstallLater
+      - InstallForceRestart
+      content: |-
+        The install action, which is one of the following values:
+        * 'Default': Download or install the update, depending on the current state. You can check the 'UpdateResults' dictionary to review scheduled updates. This value is available in iOS 9 and later, macOS 10.11 and later, and tvOS 12 and later.
+        * 'DownloadOnly': Download the software update without installing it. This value is available in iOS 9 and later, macOS 11 and later, and tvOS 12 and later.
+        * 'InstallASAP': In iOS and tvOS, install a previously downloaded software update. In macOS, download the software update and trigger the restart countdown notification. This value is available in iOS 9 and later, macOS 10.11 and later, and tvOS 12 and later.
+        * 'NotifyOnly': Download the software update and notify the user through the App Store. This value is available in macOS 10.11 and later.
+        * 'InstallLater': Download the software update and install it at a later time. This value is available in macOS 10.11 and later.
+        * 'InstallForceRestart': Perform the 'Default' action, and then force a restart if the update requires it. This value is available in macOS 11 and later.
+        'InstallForceRestart' may result in data loss.
+    - key: MaxUserDeferrals
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.0'
+        tvOS:
+          introduced: n/a
+      type: <integer>
+      presence: optional
+      content: |-
+        The maximum number of times the system allows the user to postpone an update before it's installed. The system prompts the user once a day.
+        This key is only supported when 'InstallAction' is 'InstallLater' and only supported for minor OS updates (for example, macOS 12.x to 12.y).
+responsekeys:
+- key: UpdateResults
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes the results of processing operating-system
+    updates.
+  subkeys:
+  - key: UpdateResultsItem
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: ProductKey
+      type: <string>
+      presence: required
+      content: The product key that represents the update.
+    - key: InstallAction
+      type: <string>
+      presence: required
+      rangelist:
+      - Error
+      - DownloadOnly
+      - InstallASAP
+      - NotifyOnly
+      - InstallLater
+      - InstallForceRestart
+      content: |-
+        The install action that the device scheduled, which is one of the following values:
+        * 'Error': An error occurred during scheduling.
+        * 'DownloadOnly': Download the software update without installing it.
+        * 'InstallASAP': Install a previously downloaded software update.
+        * 'NotifyOnly': Download the software update and notify the user through the App Store. This value is available in macOS 10.11 and later.
+        * 'InstallLater': Download the software update and install it at a later time. This value is available in macOS 10.11 and later.
+        * 'InstallForceRestart': Perform the 'Default' action, and then force a restart if the update requires it. This value is available in macOS 11 and later.
+    - key: Status
+      type: <string>
+      presence: required
+      rangelist:
+      - Idle
+      - Downloading
+      - DownloadFailed
+      - DownloadRequiresComputer
+      - DownloadInsufficientSpace
+      - DownloadInsufficientPower
+      - DownloadInsufficientNetwork
+      - Installing
+      - InstallInsufficientSpace
+      - InstallInsufficientPower
+      - InstallPhoneCallInProgress
+      - InstallFailed
+      content: |-
+        The status of the update, which is one of the following values:
+        * 'Idle': The update is idle.
+        * 'Downloading': The software update is downloading.
+        * 'DownloadFailed': The download failed.
+        * 'DownloadRequiresComputer': Tether the device to download this update. This value is only available in iOS.
+        * 'DownloadInsufficientSpace': There isn't enough space to download the update.
+        * 'DownloadInsufficientPower': There isn't enough power to download the update.
+        * 'DownloadInsufficientNetwork': The network capacity is insufficient to download the update.
+        * 'Installing': The software update is installing.
+        * 'InstallInsufficientSpace': There isn't enough space to install the update.
+        * 'InstallInsufficientPower': There isn't enough power to install the update.
+        * 'InstallPhoneCallInProgress': Installation couldn't occur because a phone call is in progress.
+        * 'InstallFailed': Installation failed due to an unspecified reason.
+    - key: ErrorChain
+      type: <array>
+      presence: optional
+      content: A dictionary that describes an error chain.
+      subkeys:
+      - key: ErrorChainItem
+        type: <dictionary>
+        subkeys:
+        - key: ANY
+          type: <any>
+          presence: required
+          content: The error details.

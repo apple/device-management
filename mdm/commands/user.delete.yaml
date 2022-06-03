@@ -1,0 +1,55 @@
+title: Delete User Command
+description: This command allows the server to delete a user that has an active account
+  on the device.
+payload:
+  requesttype: DeleteUser
+  supportedOS:
+    iOS:
+      introduced: '9.3'
+      accessrights: None
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: required
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.13'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command allows the server to delete a user that has an active account
+    on the device.
+payloadkeys:
+- key: UserName
+  type: <string>
+  presence: required
+  content: The user name of the account to delete.
+- key: ForceDeletion
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the system deletes the account even if the user has data that's
+    pending sync to the cloud. This value is available on iOS 9.3 and later.
+- key: DeleteAllUsers
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the system attempts to delete all users from the device. If
+    'ForceDeletion' is 'false', the system generates an error instead and doesn't
+    delete users who have data that's pending sync. This value is available in iOS
+    14 and later.

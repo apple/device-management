@@ -1,0 +1,25 @@
+title: Stop Mirroring Command
+description: This command stops AirPlay mirroring.
+payload:
+  requesttype: StopMirroring
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '10.10'
+      accessrights: None
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+  content: This command stops AirPlay mirroring.

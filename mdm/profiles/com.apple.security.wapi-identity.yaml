@@ -1,0 +1,9 @@
+title: WAPI Identity Certificate
+description: ''
+payload:
+  payloadtype: com.apple.security.wapi-identity
+payloadkeys:
+- key: PEMData
+  type: <data>
+  presence: required
+  content: Certificate data in PEM format.

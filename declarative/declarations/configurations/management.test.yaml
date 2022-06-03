@@ -1,0 +1,24 @@
+title: Management:Test
+description: A configuration used for testing only
+payload:
+  declarationtype: com.apple.configuration.management.test
+  supportedOS:
+    iOS:
+      introduced: '15.0'
+payloadkeys:
+- key: Echo
+  title: Status Echo
+  type: <string>
+  presence: required
+  content: The string to echo back in a status response reason.
+- key: ReturnStatus
+  title: Status to Return
+  type: <string>
+  presence: optional
+  rangelist:
+  - Installed
+  - Failed
+  - PendingClient
+  default: Installed
+  content: The status the system reports back when the device implements the configuration.
+    Use this to override the normal 'success' result.

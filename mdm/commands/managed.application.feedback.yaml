@@ -1,0 +1,66 @@
+title: App Feedback Command
+description: This command queries the device for application feedback information.
+  This command requires the App Management right.
+payload:
+  requesttype: ManagedApplicationFeedback
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '11.0'
+      accessrights: AllowAppInstallation
+      devicechannel: false
+      userchannel: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '10.2'
+      accessrights: AllowAppInstallation
+      supervised: false
+  content: This command queries the device for application feedback information. This
+    command requires the App Management right.
+payloadkeys:
+- key: Identifiers
+  type: <array>
+  presence: required
+  content: The bundle identifiers of the managed apps.
+  subkeys:
+  - key: IdentifiersItem
+    type: <string>
+- key: DeleteFeedback
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', delete the app's feedback dictionary after the server reads
+    it.
+responsekeys:
+- key: ManagedApplicationFeedback
+  type: <array>
+  presence: required
+  content: An array of managed app feedback items.
+  subkeys:
+  - key: ManagedApplicationFeedbackItem
+    type: <dictionary>
+    subkeys:
+    - key: Identifier
+      type: <string>
+      presence: required
+      content: The app's bundle identifier.
+    - key: Feedback
+      type: <dictionary>
+      presence: optional
+      content: The app's feedback.
+      subkeys:
+      - key: ANY
+        type: <any>
+        presence: optional
+        content: The app's feedback items.

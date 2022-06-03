@@ -1,0 +1,22 @@
+title: System Policy Managed
+description: ''
+payload:
+  payloadtype: com.apple.systempolicy.managed
+  supportedOS:
+    macOS:
+      introduced: '10.8'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: Provides a way of disabling the Finder's contextual menu that allows bypass
+    of System Policy restrictions.
+payloadkeys:
+- key: DisableOverride
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', disables the Finder's contextual menu item.

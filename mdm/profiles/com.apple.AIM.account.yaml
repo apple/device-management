@@ -1,0 +1,62 @@
+title: AIM Account
+description: Use this section to define settings for configuration access to AIM servers.
+payload:
+  payloadtype: com.apple.AIM.account
+  supportedOS:
+    macOS:
+      introduced: '10.7'
+      deprecated: '10.13'
+      removed: '10.14'
+      devicechannel: false
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+  content: An AIM payload creates an AIM account on the device.
+payloadkeys:
+- key: AIMAccountDescription
+  title: Account Description
+  type: <string>
+  presence: optional
+  content: The description of the account.
+- key: AIMHostName
+  title: Account Hostname
+  type: <string>
+  presence: required
+  rangelist:
+  - slogin.oscar.aol.com
+  content: The server address.
+- key: AIMUserName
+  title: Account Username
+  type: <string>
+  presence: optional
+  content: The user's login name.
+- key: AIMPassword
+  title: Account Password
+  type: <string>
+  presence: optional
+  content: The user's password.
+- key: AIMUseSSL
+  title: Use SSL
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'true', enables SSL.
+- key: AIMPort
+  title: Port Number
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 65535
+  default: 5190
+  content: The connection port for the server.
+- key: AIMAuthentication
+  title: AIM Authentification
+  type: <string>
+  presence: required
+  rangelist:
+  - AIMAuthPassword
+  content: The authentication method for the account.
