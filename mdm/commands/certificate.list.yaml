@@ -1,7 +1,11 @@
 title: Certificate List Command
 description: This command allows the server to retrieve the list of installed certificates
   on the device. The command requires that the server has the Inspect Profile Manifest
-  privilege.
+  privilege. For userenrollment, this request will limit to certificates pushed via
+  MDM. Starting with iOS 15.4, the CertificateList command will return a Not Now response
+  prior to the first time a passcode-protected device is unlocked after boot. Between
+  iOS 15.0 and iOS 15.4, devices in that state did not respond with Not Now, but some
+  identity certificates may not have been reported in the response.
 payload:
   requesttype: CertificateList
   supportedOS:
@@ -30,7 +34,7 @@ payload:
       supervised: false
   content: |-
     This command allows the server to retrieve the list of installed certificates on the device. The command requires that the server has the Inspect Profile Manifest privilege.
-    For userenrollment, this request will limit to certificates pushed via MDM
+    For userenrollment, this request will limit to certificates pushed via MDM.
 payloadkeys:
 - key: ManagedOnly
   supportedOS:

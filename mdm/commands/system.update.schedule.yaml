@@ -91,6 +91,23 @@ payloadkeys:
       content: |-
         The maximum number of times the system allows the user to postpone an update before it's installed. The system prompts the user once a day.
         This key is only supported when 'InstallAction' is 'InstallLater' and only supported for minor OS updates (for example, macOS 12.x to 12.y).
+    - key: Priority
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.3'
+        tvOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      rangelist:
+      - Low
+      - High
+      default: Low
+      content: |-
+        The scheduling priority for downloading and preparing the requested update. This is only supported for minor OS updates (macOS 12.x to 12.y).
+        Available in macOS 12.3 and later. Prior versions of macOS used a priority of 'Low'.
 responsekeys:
 - key: UpdateResults
   type: <array>

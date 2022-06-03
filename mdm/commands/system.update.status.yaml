@@ -61,3 +61,59 @@ responsekeys:
         * 'Idle': The update is idle.
         * 'Downloading': The software update is downloading.
         * 'Installing': The software update is installing.
+    - key: MaxDeferrals
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.3'
+        tvOS:
+          introduced: n/a
+      type: <integer>
+      presence: optional
+      content: |-
+        The number of times a user can defer this OS update.
+        Available in macOS 12.3 and later.
+    - key: DeferralsRemaining
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.3'
+        tvOS:
+          introduced: n/a
+      type: <integer>
+      presence: optional
+      content: |-
+        The number of remaining user deferrals for this OS update.
+        Available in macOS 12.3 and later.
+    - key: NextScheduledInstall
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.3'
+        tvOS:
+          introduced: n/a
+      type: <date>
+      presence: optional
+      content: |-
+        The date of the next attempt at installing this OS update.
+        Available in macOS 12.3 and later.
+    - key: PastNotifications
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '12.3'
+        tvOS:
+          introduced: n/a
+      type: <array>
+      presence: optional
+      content: |-
+        The dates/times when the OS notified the user about installing this OS update.
+        Available in macOS 12.3 and later.
+      subkeys:
+      - key: PastNotificationDate
+        title: Past Notification Date
+        type: <date>

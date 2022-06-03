@@ -72,3 +72,21 @@ payloadkeys:
   content: |-
     This string specifies the type of logging.
     Available in macOS 12 and later.
+- key: AllowSigned
+  supportedOS:
+    macOS:
+      introduced: '12.3'
+  type: <boolean>
+  presence: optional
+  content: |-
+    If 'true', allows built-in software to receive incoming connections.
+    Available in macOS 12.3 and later.
+- key: AllowSignedApp
+  supportedOS:
+    macOS:
+      introduced: '12.3'
+  type: <boolean>
+  presence: optional
+  content: |-
+    If 'true', allows downloaded signed software to receive incoming connections.
+    Available in macOS 12.3 and later.

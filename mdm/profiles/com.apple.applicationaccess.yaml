@@ -104,7 +104,9 @@ payloadkeys:
     iOS:
       introduced: n/a
     macOS:
-      introduced: n/a
+      introduced: '12.3'
+      userenrollment:
+        mode: forbidden
     tvOS:
       introduced: '10.2'
       supervised: true
@@ -333,6 +335,20 @@ payloadkeys:
   content: If 'false', prevents automatic downloading of apps purchased on other devices.
     This setting doesn't affect updates to existing apps. Requires a supervised device.
     Available in iOS 9 and later.
+- key: allowAutomaticScreenSaver
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '15.4'
+      supervised: true
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Apple TV's automatic screen saver. Available in tvOS
+    15.4 and later.
 - key: allowAutoUnlock
   supportedOS:
     iOS:

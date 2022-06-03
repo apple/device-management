@@ -18,7 +18,7 @@ payloadkeys:
   rangelist:
   - Installed
   - Failed
-  - PendingClient
+  - Unlocked
   default: Installed
   content: The status the system reports back when the device implements the configuration.
     Use this to override the normal 'success' result.
