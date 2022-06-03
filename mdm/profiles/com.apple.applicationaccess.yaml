@@ -1215,6 +1215,22 @@ payloadkeys:
   default: true
   content: If 'false', disables the Today view in Notification Center on the lock
     screen. Available in iOS 7 and later. Also available for user enrollment.
+- key: allowMailPrivacyProtection
+  supportedOS:
+    iOS:
+      introduced: '15.2'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Mail Privacy Protection on the device. Available in
+    iOS 15.2 and later.
 - key: allowManagedAppsCloudSync
   title: Allow iCloud Sync for Managed Apps
   supportedOS:
