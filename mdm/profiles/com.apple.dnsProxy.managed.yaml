@@ -57,6 +57,6 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The DNS Proxy UUID is a globally-unique identifier for this DNS proxy configuration.
-    Managed apps with the same DNSProxyUUID in their app attributes can have their
-    DNS lookups traffic processed by the proxy.
+  content: A globally-unique identifier for this DNS proxy configuration. Managed
+    apps with the same 'DNSProxyUUID' in their app attributes have their DNS lookups
+    traffic processed by the proxy.

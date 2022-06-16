@@ -18,4 +18,6 @@ payloadkeys:
   title: Status item value.
   type: <string>
   presence: required
-  content: Status value.
+  content: The device's UDID. This value is always available on the device channel.
+    This value is only available on user channels whose organization matches that
+    of the device channel.

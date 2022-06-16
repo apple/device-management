@@ -257,4 +257,4 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If true, the app is an App Clip.
+      content: If 'true', the app is an App Clip. Available in iOS 16 and later.

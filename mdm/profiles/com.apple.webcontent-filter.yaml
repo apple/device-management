@@ -293,6 +293,6 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The content filter UUID is a globally-unique identifier for this content
-    filter configuration. Managed apps with the same ContentFilterUUID in their app
-    attributes can have their network traffic processed by the content filter.
+  content: A globally-unique identifier for this content filter configuration. Managed
+    apps with the same 'ContentFilterUUID' in their app attributes have their network
+    traffic processed by the content filter.

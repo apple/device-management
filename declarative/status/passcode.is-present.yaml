@@ -14,4 +14,8 @@ payloadkeys:
   title: Status item value.
   type: <boolean>
   presence: required
-  content: Status value.
+  content: If 'true', a passcode is present on the device. If 'false', a passcode
+    isn't present on the device. When a passcode is present, the specific attributes
+    of the passcode (length, number of complex characters, etc), isn't reported. Instead,
+    use the 'passcode.is-compliant' status item to verify that the passcode complies
+    with all passcode policies set on the device.

@@ -20,7 +20,7 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: Status value.
+  content: The status value of the account.
   subkeytype: Account
   subkeys:
   - key: status_value
@@ -30,14 +30,13 @@ payloadkeys:
       title: Unique identifier of the account.
       type: <string>
       presence: required
-      content: The unique identifier of the account. This can be used as a "primary
-        key" to access a specific account.
+      content: The unique identifier for the account.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
       presence: optional
       content: The identifier of the declaration that installed the account. Only
-        present if the account was installed by a declaration.
+        present if a declaration installed the account.
     - key: visible-name
       title: Account name
       type: <string>
@@ -62,10 +61,10 @@ payloadkeys:
       title: Are calendars enabled
       type: <boolean>
       presence: optional
-      content: Indicates if calendars and events for the account are being displayed
-        in Calendar.app.
+      content: If 'true', the Calendar app is displaying calendars and events for
+        the account.
     - key: are-reminders-enabled
       title: Are reminders enabled
       type: <boolean>
       presence: optional
-      content: Indicates if reminders for the account are being displayed in Reminders.app.
+      content: If 'true', the Reminders app is displaying reminders for the account.

@@ -685,8 +685,9 @@ payloadkeys:
         tvOS:
           introduced: n/a
       type: <string>
-      content: A list of domains which will be suggested at Shared iPad login screen.
-        At most 3 domains can be displayed at the same time.
+      content: |-
+        The list of domains that the device suggests on the Shared iPad login screen.
+        Available in iOS 16 and later.
     - key: OnlineAuthenticationGracePeriod
       supportedOS:
         iOS:
@@ -697,9 +698,9 @@ payloadkeys:
         tvOS:
           introduced: n/a
       type: <string>
-      content: Grace period for Shared iPad online authentication (in days). '0' means
-        online authentication is required during every login. If not set, Shared iPad
-        will only do local authentication when possible (to optimize performance).
+      content: |-
+        The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
+        Available in iOS 16 and later.
     - key: PushToken
       supportedOS:
         iOS:
@@ -1090,8 +1091,8 @@ payloadkeys:
           introduced: n/a
       type: <string>
       content: The key that represents the device identifier you use to look up available
-        OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5 and
-        later.
+        OS updates through <https://gdmf.apple.com/v2/pmv>. Available in iOS 15 and
+        later, and macOS 12 and later.
     - key: AccessibilitySettings
       supportedOS:
         iOS:
@@ -1104,7 +1105,9 @@ payloadkeys:
         tvOS:
           introduced: n/a
       type: <string>
-      content: Returns the current state of settable accessibility settings.
+      content: |-
+        The key to get the current state of settable accessibility settings.
+        Available in iOS 16 and later.
     - key: DevicePropertiesAttestation
       supportedOS:
         iOS:
@@ -1117,7 +1120,9 @@ payloadkeys:
         tvOS:
           introduced: '16.0'
       type: <string>
-      content: Requests an attestation of the device's properties.
+      content: |-
+        The key to get an attestation of the device's properties.
+        Available in iOS 16 and later and tvOS 16 and later.
 - key: DeviceAttestationNonce
   supportedOS:
     iOS:
@@ -1756,7 +1761,9 @@ responsekeys:
       tvOS:
         introduced: n/a
     type: <array>
-    content: A list of domains which will be suggested at Shared iPad login screen.
+    content: |-
+      The list of domains that the device suggests on the Shared iPad login screen.
+      Available in iOS 16 and later.
     subkeys:
     - key: AppleID domain
       type: <string>
@@ -1769,8 +1776,9 @@ responsekeys:
       tvOS:
         introduced: n/a
     type: <real>
-    content: Grace period for Shared iPad online authentication (in days). '0' means
-      online authentication is required during every login.
+    content: |-
+      The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
+      Available in iOS 16 and later.
   - key: PushToken
     supportedOS:
       iOS:
@@ -2171,20 +2179,22 @@ responsekeys:
       tvOS:
         introduced: n/a
     type: <dictionary>
-    content: Current values of settable accessibility settings
+    content: |-
+      The the current state of settable accessibility settings.
+      Available in iOS 16 and later.
     subkeys:
     - key: BoldTextEnabled
       type: <boolean>
-      content: Indicates whether bold text is on or off.
+      content: If 'true', device has enabled bold text.
     - key: IncreaseContrastEnabled
       type: <boolean>
-      content: Indicates whether increase contrast is on or off.
+      content: If 'true', device has enabled increase contrast.
     - key: ReduceMotionEnabled
       type: <boolean>
-      content: Indicates whether reduce motion is on or off.
+      content: If 'true', device has enabled reduced motion.
     - key: ReduceTransparencyEnabled
       type: <boolean>
-      content: Indicates whether reduce transparency is on or off.
+      content: If 'true', device has enabled reduced transparency.
     - key: TextSize
       type: <integer>
       rangelist:
@@ -2201,19 +2211,17 @@ responsekeys:
       - 9
       - 10
       - 11
-      content: Indicates the current value for the accessibility text size that will
-        be used by apps supporting dynamic text. 0 is the smallest value, and 11 is
-        the largest available. -1 indicates that the current size is unknown or has
-        not been explicitly set.
+      content: The accessibility text size apps that support dynamic text use. 0 is
+        the smallest value, and 11 is the largest available.
     - key: TouchAccommodationsEnabled
       type: <boolean>
-      content: Indicates whether touch accommodations are on or off.
+      content: If 'true', device has enabled touch accommodations.
     - key: VoiceOverEnabled
       type: <boolean>
-      content: Indicates whether voice over is on or off.
+      content: If 'true', device has enabled voiceover.
     - key: ZoomEnabled
       type: <boolean>
-      content: Indicates whether zoom is on or off.
+      content: If 'true', device has enabled zoom.
   - key: DevicePropertiesAttestation
     supportedOS:
       iOS:
@@ -2226,15 +2234,9 @@ responsekeys:
       tvOS:
         introduced: '16.0'
     type: <array>
-    content: Array of certificates in DER form that forms a certificate chain. The
-      chain is rooted with the Apple CA 'Apple Enterprise Attestation Root CA'. The
-      first array item is the leaf certificate. The leaf certificate contains custom
-      OIDs describing a device. 1.2.840.113635.100.8.9.1 serial number, 1.2.840.113635.100.8.9.2
-      UDID, 1.2.840.113635.100.8.10.2 sepOS version (the version of the OS running
-      on the Secure Enclave), 1.2.840.113635.100.8.11.1 nonce. Serial number and UDID
-      are omitted if the enrollment is a user enrollment. Note that the nonce may
-      not match the DeviceAttestationNonce in the request because a cached attestation
-      was returned.
+    content: |-
+      The key to get an attestation of the device's properties.
+      Available in iOS 16 and later and tvOS 16 and later.
     subkeys:
     - key: AttestationCertificate
       type: <data>

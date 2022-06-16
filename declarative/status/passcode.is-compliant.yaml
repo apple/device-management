@@ -14,4 +14,7 @@ payloadkeys:
   title: Status item value.
   type: <boolean>
   presence: required
-  content: Status value.
+  content: If 'true', the passcode is in compliance with all passcode policies set
+    on the device. If 'false', the passcode isn't in compliance with one or more passcode
+    policies set on the device. When there are no passcode policies on the device,
+    this value 'true'.

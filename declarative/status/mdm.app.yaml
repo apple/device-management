@@ -6,7 +6,7 @@ payload:
     iOS:
       introduced: '16.0'
     macOS:
-      introduced: '13.0'
+      introduced: n/a
     tvOS:
       introduced: '16.0'
 payloadkeys:
@@ -14,7 +14,7 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: Status value.
+  content: The list of apps.
   subkeytype: App
   subkeys:
   - key: status_value
@@ -24,7 +24,7 @@ payloadkeys:
       title: Unique identifier of the app.
       type: <string>
       presence: required
-      content: The unique identifier of the app. This will be the app's bundle id.
+      content: The app's bundle id, which is unique.
     - key: name
       title: App name
       type: <string>
@@ -34,13 +34,12 @@ payloadkeys:
       title: External version id
       type: <string>
       presence: optional
-      content: |-
-        The application’s external version ID. This can also be retrieved from the store from the
-        "contentMetadataLookupUrl" from the VPPServiceConfigSrv endpoint. In the response from
-        uclient-api.itunes.apple.com URL, there's a key named "externalId" at the path
-        results.<adamId>.offers[0].version.externalId. If the current external version identifier
-        of an app on the store does not match the external version identifier reported by the device,
-        there may be an app update available for the device.
+      content: The application's external version ID. Use Service Config to get the
+        'contentMetadataLookupUrl' endpoint. In the response from that URL, find a
+        key named 'externalId' at the path 'results.<adamId>.offers[0].version.externalId'.
+        If the current external version identifier of an app on the store doesn't
+        match the external version identifier reported by the device, there may be
+        an app update available for the device.
     - key: version
       title: Version
       type: <string>
@@ -76,4 +75,4 @@ payloadkeys:
       - update-rejected
       - management-rejected
       - failed
-      content: The status of the app reported by the MDM ManagedApplicationList command.
+      content: The status of the app reported by ManagedApplicationListCommand.

@@ -614,7 +614,7 @@ payloadkeys:
       type: <integer>
       presence: optional
       content: |-
-        The timeout, in seconds, for the user session. The user session  logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        The timeout, in seconds, for the user session. The user session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
         Available in iOS 14.5 and later.
     - key: TemporarySessionTimeout
       supportedOS:
@@ -642,11 +642,9 @@ payloadkeys:
           introduced: '16.0'
       type: <array>
       presence: optional
-      content: Allow admins to specify a list of domains which will be displayed at
-        Shared iPad login screen. User will be able to pick a domain from keyboard
-        to complete their Managed Apple ID. At most 3 domains are allowed. If more
-        than 3 domains are provided, only 3 of them will be displayed and they will
-        be picked randomly.
+      content: |-
+        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID.
+        If this list contains more than 3 domains, the system picks 3 at random for display.Available in iOS 16 and later.
       subkeys:
       - key: AppleID domain
         type: <string>
@@ -656,12 +654,10 @@ payloadkeys:
           introduced: '16.0'
       type: <integer>
       presence: optional
-      content: Allow admins to specify a grace period (in days) for Shared iPad online
-        authentication. Starting from iOS 16, the Shared iPad will only verify the
-        user's passcode locally during login for users that already exist on the device.
-        However, an online authentication (against Apple's identity server) is required
-        after the number of days specified by this setting. Setting this value to
-        0 will enforce online authentication everytime.
+      content: |-
+        A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user's passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple's identity server) after the number of days specified by this setting.
+        Setting this value to 0 enforces online authentication every time.
+        Available in iOS 16 and later.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -854,28 +850,28 @@ payloadkeys:
       presence: required
       rangelist:
       - AccessibilitySettings
-      content: Sets various accessibility settings. Only keys with explicity provided
-        values will be set.
+      content: Sets various accessibility settings. The system allows only keys with
+        explicitly provided values.
     - key: BoldTextEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns bold text on or off.
+      content: If 'true', enables bold text.
     - key: IncreaseContrastEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns increase contrast on or off.
+      content: If 'true', enables increase contrast.
     - key: ReduceMotionEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns reduce motion on or off.
+      content: If 'true', enables reduced motion.
     - key: ReduceTransparencyEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns reduce transparency on or off.
+      content: If 'true', enables reduced transparency.
     - key: TextSize
       type: <integer>
       presence: optional
@@ -893,23 +889,23 @@ payloadkeys:
       - 10
       - 11
       default: 4
-      content: Sets the accessibility text size that will be used by apps supporting
-        dynamic text. 0 is the smallest value, and 11 is the largest available.
+      content: The accessibility text size apps that support dynamic text use. 0 is
+        the smallest value, and 11 is the largest available.
     - key: TouchAccommodationsEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns touch accommodations on or off.
+      content: If true, enables touch accommodations.
     - key: VoiceOverEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns voice over on or off.
+      content: If true, enables voiceover.
     - key: ZoomEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: Turns zoom on or off.
+      content: If true, enables zoom.
 responsekeys:
 - key: Settings
   type: <dictionary>

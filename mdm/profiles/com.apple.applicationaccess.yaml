@@ -114,7 +114,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', disables incoming AirPlay requests. Requires a supervised device.
-    Available in tvOS 10.2 and later.
+    Available in macOS 12.3 and later, and tvOS 10.2 and later.
 - key: allowAirPrint
   title: Allow AirPrint
   supportedOS:
@@ -435,7 +435,7 @@ payloadkeys:
   default: true
   content: If 'false', disables the camera, and its icon is removed from the Home
     screen. Users are unable to take photographs. This restriction is deprecated on
-    unsupervised devices  and will be supervised only in a future release.  Available
+    unsupervised devices and will be supervised only in a future release.  Available
     in iOS 4 and later, and macOS 10.11 and later.
 - key: allowCellularPlanModification
   supportedOS:
@@ -501,8 +501,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables backing up the device to iCloud.  This restriction
-    is deprecated on unsupervised devices  and will be supervised only in a future
+  content: If 'false', disables backing up the device to iCloud. This restriction
+    is deprecated on unsupervised devices and will be supervised only in a future
     release. Available in iOS 5 and later.
 - key: allowCloudBookmarks
   supportedOS:
@@ -568,7 +568,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables document and key-value syncing to iCloud.  As of iOS
+  content: If 'false', disables document and key-value syncing to iCloud. As of iOS
     13, this restriction requires a supervised device. Available in iOS 5 and later,
     and macOS 10.11 and later.
 - key: allowCloudKeychainSync
@@ -588,7 +588,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', disables iCloud keychain synchronization. This restriction
-    is deprecated on unsupervised devices  and will be supervised only in a future
+    is deprecated on unsupervised devices and will be supervised only in a future
     release. Available in iOS 7 and later and macOS 10.12 and later.
 - key: allowCloudMail
   supportedOS:
@@ -825,8 +825,8 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', disables the 'Enable Restrictions' option in the Restrictions UI in Settings.
-    In iOS 12 or later, if 'false', disables the 'Enable ScreenTime' option in the ScreenTime UI in Settings and disables ScreenTime if already enabled. Requires a supervised device. Available in iOS 8 and later.
+    If 'false', disables the “Enable Restrictions” option in the Restrictions UI in Settings.
+    In iOS 12 or later, if 'false', disables the “Enable ScreenTime” option in the ScreenTime UI in Settings and disables ScreenTime if already enabled. Requires a supervised device. Available in iOS 8 and later.
 - key: allowEnterpriseAppTrust
   title: Allow Trusting Enterprise Apps
   supportedOS:
@@ -930,7 +930,7 @@ payloadkeys:
   default: true
   content: If 'false', hides explicit music or video content purchased from the iTunes
     Store. Explicit content is marked as such by content providers, such as record
-    labels, when sold through the iTunes Store.  As of iOS 13, requires a supervised
+    labels, when sold through the iTunes Store. As of iOS 13, requires a supervised
     device. Available in iOS 4 and later, and tvOS 11.3 and later.
 - key: allowFilesNetworkDriveAccess
   supportedOS:
@@ -1488,7 +1488,7 @@ payloadkeys:
   content: |-
     If 'false', disables the AutoFill Passwords feature in iOS (with Keychain and third-party password managers) and the user isn't prompted to use a saved password in Safari or in apps.
     This restriction also disables Automatic Strong Passwords, and strong passwords are no longer suggested to users.
-    It does not prevent AutoFill for contact info and credit cards in Safari.
+    It doesn't prevent AutoFill for contact info and credit cards in Safari.
     Requires a supervised device. Available in iOS 12 and later, and macOS 10.14 and later.
 - key: allowPasswordProximityRequests
   supportedOS:
@@ -1707,7 +1707,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', temporary sessions are not available on Shared iPad. Available
+  content: If 'false', temporary sessions aren't available on Shared iPad. Available
     in iOS 13.4 and later.
 - key: allowSharedStream
   title: Allow Shared Stream
@@ -1812,7 +1812,7 @@ payloadkeys:
   default: true
   content: If 'false', prohibits the user from installing configuration profiles and
     certificates interactively. Requires a supervised device. Available in iOS 6 and
-    later.
+    later and macOS 13 and later.
 - key: allowUniversalControl
   title: Allow Universal Control
   supportedOS:
@@ -1827,7 +1827,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, Universal Control is disabled.
+  content: If 'false', disables Universal Control. Available in macOS 13 and later.
 - key: allowUnmanagedToReadManagedContacts
   title: Allow unmanaged apps to read managed contacts accounts
   supportedOS:
@@ -1893,8 +1893,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', allows the device to always connect to USB accessories while
-    locked. Requires a supervised device. Available in iOS 11.4.1 and later.
+  content: |-
+    If 'false', allows the device to always connect to USB accessories while locked. On macOS, allows new USB accessories to connect without authorization.
+    Requires a supervised device. Available in iOS 11.4.1 and later and macOS 13 and later.
 - key: allowVideoConferencing
   title: Allow Video Conferencing
   supportedOS:
@@ -2064,7 +2065,7 @@ payloadkeys:
     max: 90
   default: 30
   content: |-
-    Sets how many days to delay a software update on the device. With this restriction in place, the user doesn't see a software update until the specified number of days after the software update release date. This value is used by  'forceDelayedAppSoftwareUpdates' and 'forceDelayedSoftwareUpdates'.
+    Sets how many days to delay a software update on the device. With this restriction in place, the user doesn't see a software update until the specified number of days after the software update release date. This value is used by 'forceDelayedAppSoftwareUpdates' and 'forceDelayedSoftwareUpdates'.
     Requires a supervised device in iOS and tvOS.
     Available in iOS 11.3 and later, macOS 10.13.4 and later, and tvOS 12.2 and later.
 - key: enforcedSoftwareUpdateMajorOSDeferredInstallDelay
@@ -2420,7 +2421,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', limits ad tracking. Available in iOS 7 and later.
+  content: |-
+    If 'true', limits ad tracking. Additionally, it disables app tracking and the Allow Apps To Request To Track setting.
+    Available in iOS 7 and later.
 - key: forceOnDeviceOnlyDictation
   supportedOS:
     iOS:

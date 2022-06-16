@@ -59,7 +59,9 @@ responsekeys:
             introduced: n/a
         type: <string>
         presence: optional
-        content: Content Filter UUID assigned to this app.
+        content: |-
+          The content Filter UUID assigned to this app.
+          Available in iOS 16 and later.
       - key: DNSProxyUUID
         supportedOS:
           iOS:
@@ -68,7 +70,9 @@ responsekeys:
             introduced: n/a
         type: <string>
         presence: optional
-        content: DNS Proxy UUID assigned to this app.
+        content: |-
+          The DNS Proxy UUID assigned to this app.
+          Available in iOS 16 and later.
       - key: AssociatedDomains
         supportedOS:
           iOS:

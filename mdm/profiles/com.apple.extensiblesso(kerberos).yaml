@@ -351,8 +351,9 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: Require that this configuration use a TGT from Platform SSO instead of
-      requesting a new one.
+    content: |-
+      If 'true', requires this configuration uses a TGT from Platform SSO instead of requesting a new one.
+      Available in macOS 13 and later.
   - key: allowPlatformSSOAuthFallback
     supportedOS:
       iOS:
@@ -362,7 +363,9 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: true
-    content: Allow the user to manually sign in the when 'usePlatformSSOTGT' is 'true'.
+    content: |-
+      If 'true' and 'usePlatformSSOTGT' is 'true', allows the user to manually sign in.
+      Available in macOS 13 and later.
   - key: performKerberosOnly
     supportedOS:
       iOS:
@@ -372,10 +375,9 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If set to 'true', then the Kerberos Extension will handle Kerberos requests
-      only.  It will not check for password expiration, show the password expiration
-      in the menu extra, check for external password changes, perform password sync,
-      or retrieve the home directory.
+    content: |-
+      If 'true', the Kerberos Extension handles Kerberos requests only. It doesn't check for password expiration, show the password expiration in the menu, check for external password changes, perform password sync, or retrieve the home directory.
+      Available in macOS 13 and later.
 - key: Hosts
   type: <array>
   presence: optional
