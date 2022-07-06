@@ -9,6 +9,8 @@ payload:
         mode: allowed
         devicechannel: false
         userchannel: true
+      userenrollment:
+        mode: allowed
     macOS:
       introduced: n/a
     tvOS:

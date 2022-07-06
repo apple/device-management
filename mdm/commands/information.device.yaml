@@ -2118,6 +2118,17 @@ responsekeys:
         type: <string>
         content: The description of the slot that contains the SIM representing this
           subscription. This value is available in iOS 12 and later.
+      - key: SubscriberCarrierNetwork
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          macOS:
+            introduced: n/a
+          tvOS:
+            introduced: n/a
+        type: <string>
+        content: The name of the home carrier network. This value is available in
+          iOS 16 and later.
   - key: PINRequiredForEraseDevice
     supportedOS:
       iOS:
