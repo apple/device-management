@@ -42,14 +42,14 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The UUID of an identity certificate payload within the same profile to use for  performing client authentication with other devices.
+    The UUID of an identity certificate payload within the same profile to use for performing client authentication with other devices. This property supports PKCS12 certificates.
     This key is required to configure Classroom. It does not impact the configuration of the Shared iPad login screen.
 - key: LeaderPayloadCertificateAnchorUUID
   type: <array>
   presence: optional
   content: |-
     The array of UUIDs referring to certificate payloads within the same profile that are used to authorize leader peer certificate identities. This array must contain all certificates needed to validate the entire chain of trust. Leader certificates must have the common name prefix leader (case insensitive).
-    Note: Identity payloads aren't supported.
+    Note: This property doesn't support identity payloads or PKCS12 certificates.
     This key is required when configuring a student device for Classroom, and is ignored when configuring an instructor device. It does not impact the configuration of the Shared iPad login screen.
   subkeys:
   - key: LeaderPayloadCertificateAnchorUUIDItem
@@ -61,7 +61,7 @@ payloadkeys:
   presence: optional
   content: |-
     The array of UUIDs referring to certificate payloads within the same profile that are used to authorize group member peer certificate identities. This array must contain all certificates needed to validate the entire chain of trust. Member certificates must have the common name prefix member (case insensitive).
-    Note: Identity payloads aren't supported.
+    Note: This property doesn't support identity payloads or PKCS12 certificates.
     This key is required when configuring an instructor device for Classroom, and is ignored when configuring a student device. It does not impact the configuration of the Shared iPad login screen.
   subkeys:
   - key: MemberPayloadCertificateAnchorUUIDItem

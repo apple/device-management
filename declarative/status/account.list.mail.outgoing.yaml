@@ -1,0 +1,60 @@
+title: Status Account List Mail Outgoing
+description: The client's outgoing mail accounts.
+payload:
+  statusitemtype: account.list.mail.outgoing
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+    macOS:
+      introduced: '13.0'
+      devicechannel: false
+      userchannel: true
+    tvOS:
+      introduced: n/a
+payloadkeys:
+- key: account.list.mail.outgoing
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: Account
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the account.
+      type: <string>
+      presence: required
+      content: The unique identifier of the account. This can be used as a "primary
+        key" to access a specific account.
+    - key: declaration-identifier
+      title: Identifier of the declaration that installed the account.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that installed the account. Only
+        present if the account was installed by a declaration.
+    - key: visible-name
+      title: Account name
+      type: <string>
+      presence: optional
+      content: The name of the account.
+    - key: hostname
+      title: Account hostname
+      type: <string>
+      presence: optional
+      content: The server host name of the account.
+    - key: port
+      title: Server Port
+      type: <integer>
+      presence: optional
+      content: The server port for the account.
+    - key: username
+      title: Account username
+      type: <string>
+      presence: optional
+      content: The user name of the account.

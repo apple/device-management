@@ -5,6 +5,20 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '13.0'
+      devicechannel: false
+      userchannel: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: n/a
   content: A Google configuration defines a Google account for a user. The user will
     be prompted to enter their credentials shortly after the configuration successfully
     installs.

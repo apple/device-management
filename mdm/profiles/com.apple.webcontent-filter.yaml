@@ -5,14 +5,14 @@ payload:
   supportedOS:
     iOS:
       introduced: '7.0'
-      supervised: true
+      supervised: false
       allowmanualinstall: true
       sharedipad:
         mode: allowed
         devicechannel: true
         userchannel: false
       userenrollment:
-        mode: forbidden
+        mode: allowed
     macOS:
       introduced: '10.15'
       devicechannel: true
@@ -22,6 +22,9 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+  content: As of iOS 16.0, this can be installed on Device Enrollments and User Enrollments
+    if ContentFilterUUID is specified. Previously it could only be installed on supervised
+    devices.
 payloadkeys:
 - key: FilterType
   title: FilterType
@@ -281,3 +284,15 @@ payloadkeys:
   content: |-
     This value is for deriving the relative order of content filters. Filters with a grade of 'firewall' see network traffic before filters with a grade of 'inspector'. The system doesn't define the order of filters within a grade.
     Available in macOS 10.15 and later.
+- key: ContentFilterUUID
+  title: Content Filter UUID
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: A globally-unique identifier for this content filter configuration. Managed
+    apps with the same 'ContentFilterUUID' in their app attributes have their network
+    traffic processed by the content filter.

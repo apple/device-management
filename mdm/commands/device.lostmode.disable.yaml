@@ -1,4 +1,4 @@
-title: Disable MDM Lost Mode Location
+title: Disable MDM Lost Mode Command
 description: This command allows the server to take the device out of MDM lost mode.
 payload:
   requesttype: DisableLostMode

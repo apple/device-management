@@ -1,0 +1,29 @@
+title: Status Test Dictionary Value
+description: A test status item dictionary.
+payload:
+  statusitemtype: test.dictionary-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.dictionary-value
+  title: Status item value.
+  type: <dictionary>
+  presence: required
+  content: Status value.
+  subkeytype: Dictionary
+  subkeys:
+  - key: key1
+    title: First Key Value
+    type: <string>
+    presence: required
+    content: The value of the first sub-key.
+  - key: key2
+    title: Second Key Value
+    type: <string>
+    presence: optional
+    content: The value of the second sub-key.

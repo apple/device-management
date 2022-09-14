@@ -1,0 +1,17 @@
+title: Status Test Integer Value
+description: A test status item integer.
+payload:
+  statusitemtype: test.integer-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.integer-value
+  title: Status item value.
+  type: <integer>
+  presence: required
+  content: Status value.

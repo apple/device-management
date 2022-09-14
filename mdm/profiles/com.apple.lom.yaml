@@ -21,7 +21,10 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The UUID certificate for the device. This key indicates the device can
-    receive 'PowerON', 'PowerOFF', and 'Reset' requests from a LOM controller.
+    receive 'PowerON', 'PowerOFF', and 'Reset' requests from a LOM controller. This
+    certificate must contain the Key Usage attributes of Digital Signature, Key Encipherment
+    and Data Encipherment. As well as the Extended Key Usage attributes of Server
+    Authentication and Client Authentication.
 - key: ControllerCertificateUUID
   title: Controller Certificate payload UUID
   type: <string>
@@ -42,8 +45,9 @@ payloadkeys:
   title: CA certificate payload UUIDs
   type: <array>
   presence: optional
-  content: Array of payload UUIDs containing CA certificates that devices use to evaluate
-    trust of controller certificates.
+  content: |-
+    Array of payload UUIDs containing CA certificates that devices use to evaluate trust of controller certificates.
+    This key configures the device to accept the LOMDeviceRequestCommand from MDM and then send it to the target device. This certificate must contain the Key Usage attributes of Digital Signature, Key Encipherment and Data Encipherment. As well as the Extended Key Usage attributes of Server Authentication and Client Authentication.
   subkeys:
   - key: ControllerCACertificateUUIDsItem
     type: <string>

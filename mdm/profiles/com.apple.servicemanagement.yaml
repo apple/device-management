@@ -1,0 +1,52 @@
+title: Service Management - Managed Login Items
+description: Control the user experience for ServiceManagement login items (including
+  launchd agents and daemons) in Login Items Settings.
+payload:
+  payloadtype: com.apple.servicemanagement
+  supportedOS:
+    macOS:
+      introduced: '13.0'
+      devicechannel: true
+      userchannel: false
+      requiresdep: false
+      userapprovedmdm: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+  content: This payload defines rules for tagging login items as managed, which will
+    auto-enable and auto-allow matched items.
+payloadkeys:
+- key: Rules
+  title: Rules
+  type: <array>
+  presence: required
+  content: An array of rule dictionaries.
+  subkeys:
+  - key: Rule
+    title: Rule
+    type: <dictionary>
+    presence: required
+    content: A specification for matching one or more login items.
+    subkeys:
+    - key: RuleType
+      title: Rule Type
+      type: <string>
+      presence: required
+      rangelist:
+      - BundleIdentifier
+      - BundleIdentifierPrefix
+      - Label
+      - LabelPrefix
+      - TeamIdentifier
+      content: The type of comparision to make.
+    - key: RuleValue
+      title: Rule Value
+      type: <string>
+      presence: required
+      content: The value to compare with each login item's value, to determine a match
+        to this rule.
+    - key: Comment
+      title: Comment
+      type: <string>
+      presence: optional
+      content: An optional description of the rule.

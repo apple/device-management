@@ -6,6 +6,10 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
 payloadkeys:
 - key: Name
   title: Organization Name

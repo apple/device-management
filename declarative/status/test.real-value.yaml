@@ -1,0 +1,17 @@
+title: Status Test Real Value
+description: A test status item real.
+payload:
+  statusitemtype: test.real-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.real-value
+  title: Status item value.
+  type: <real>
+  presence: required
+  content: Status value.

@@ -1,0 +1,21 @@
+title: Status Passcode Is Present
+description: Whether a passcode is present ot not.
+payload:
+  statusitemtype: passcode.is-present
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+payloadkeys:
+- key: passcode.is-present
+  title: Status item value.
+  type: <boolean>
+  presence: required
+  content: If 'true', a passcode is present on the device. If 'false', a passcode
+    isn't present on the device. When a passcode is present, the specific attributes
+    of the passcode (length, number of complex characters, etc), isn't reported. Instead,
+    use the 'passcode.is-compliant' status item to verify that the passcode complies
+    with all passcode policies set on the device.

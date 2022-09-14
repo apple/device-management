@@ -5,6 +5,20 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '13.0'
+      devicechannel: false
+      userchannel: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: n/a
   content: A CalDAV configuration defines a CalDAV calendar and reminders account
     for a user.
 payloadkeys:

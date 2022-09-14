@@ -8,10 +8,9 @@ This release corresponds to the following OS versions
 
 | OS      | Version |
 |---------|---------|
-| iOS     | 15.4    |
-| macOS   | 12.3    |
-| tvOS    | 15.4    |
-| watchOS |  8.5    |
+| iOS     | 16.0    |
+| tvOS    | 16.0    |
+| watchOS |  9.0    |
 
 ## What's Available
 

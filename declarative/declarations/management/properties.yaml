@@ -1,0 +1,17 @@
+title: Management:Properties
+description: Use this declaration to set properties on the device.
+payload:
+  declarationtype: com.apple.management.properties
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: ANY
+  title: Property
+  type: <any>
+  presence: optional
+  content: Each entry represents a property key/value.

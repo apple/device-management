@@ -99,7 +99,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    An array with entries that must each specify a domain that triggers this VPN. The domains must also be part of the 'apple-app-site-association' file, as described in Supporting Associated Domains.
+    An array with entries that must each specify a domain that triggers this VPN. The domains must also be part of the 'apple-app-site-association' file, as described in Supporting associated domains.
     Available in iOS 14 and later, and macOS 11 and later.
   subkeys:
   - key: AssociatedDomainsItem

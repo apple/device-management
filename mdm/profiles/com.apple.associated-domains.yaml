@@ -37,7 +37,7 @@ payloadkeys:
       presence: required
       content: |-
         The domains to be associated with the app. Each string is in the form of ''service:domain''. Domains should be fully qualified hostnames, like 'www.example.com'.
-        See Supporting Associated Domains for more information.
+        See Supporting associated domains for more information.
       subkeys:
       - key: AssociatedDomain
         type: <string>

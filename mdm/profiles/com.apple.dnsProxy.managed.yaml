@@ -12,7 +12,7 @@ payload:
         devicechannel: true
         userchannel: false
       userenrollment:
-        mode: forbidden
+        mode: allowed
     macOS:
       introduced: '10.15'
       devicechannel: true
@@ -22,8 +22,9 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
-  content: As of iOS 15.0 this payload can now be installed on unsupervised devices
-    via MDM and can now only be installed via MDM.
+  content: As of iOS 15.0 this payload can be installed on unsupervised devices via
+    MDM and can only be installed via MDM. As of iOS 16.0, this can be installed on
+    User Enrollments via MDM if DNSProxyUUID is specified.
 payloadkeys:
 - key: AppBundleIdentifier
   title: App Bundle Identifier
@@ -47,3 +48,15 @@ payloadkeys:
     type: <any>
     presence: optional
     content: Key/value pairs.
+- key: DNSProxyUUID
+  title: DNS Proxy UUID
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: A globally-unique identifier for this DNS proxy configuration. Managed
+    apps with the same 'DNSProxyUUID' in their app attributes have their DNS lookups
+    traffic processed by the proxy.

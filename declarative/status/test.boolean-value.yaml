@@ -1,0 +1,17 @@
+title: Status Test Boolean Value
+description: A test status item boolean.
+payload:
+  statusitemtype: test.boolean-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.boolean-value
+  title: Status item value.
+  type: <boolean>
+  presence: required
+  content: Status value.

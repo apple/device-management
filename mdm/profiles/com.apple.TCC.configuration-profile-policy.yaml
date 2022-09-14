@@ -119,14 +119,14 @@ payloadkeys:
   - key: Camera
     type: <array>
     presence: optional
-    content: A system camera. Access to the camera cannot be given in a profile; it
+    content: A system camera. Access to the camera can't be given in a profile; it
       can only be denied.
     subkeytype: Identity
     subkeys: *id001
   - key: Microphone
     type: <array>
     presence: optional
-    content: A system microphone. Access to the microphone cannot be given in a profile;
+    content: A system microphone. Access to the microphone can't be given in a profile;
       it can only be denied.
     subkeytype: Identity
     subkeys: *id001
@@ -191,7 +191,7 @@ payloadkeys:
     presence: optional
     content: Allows the application to use CoreGraphics and HID APIs to listen to
       (receive) CGEvents and HID events from all processes. Access to these events
-      cannot be given in a profile; it can only be denied.
+      can't be given in a profile; it can only be denied.
     subkeytype: Identity
     subkeys: *id001
   - key: ScreenCapture
@@ -201,7 +201,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Allows the application to capture (read) the contents of the system display.
-      Access to the contents cannot be given in a profile; it can only be denied.
+      Access to the contents can't be given in a profile; it can only be denied.
     subkeytype: Identity
     subkeys: *id001
   - key: SpeechRecognition
@@ -257,5 +257,15 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Allows the application to access files on removable volumes.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAppBundles
+    supportedOS:
+      macOS:
+        introduced: '13.0'
+    type: <array>
+    presence: optional
+    content: Allows the application to update or delete other apps. Available in macOS
+      13 and later.
     subkeytype: Identity
     subkeys: *id001

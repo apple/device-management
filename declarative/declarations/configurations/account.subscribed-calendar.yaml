@@ -5,6 +5,16 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
   content: A subscribed calendar configuration defines a subscribed calendar for a
     user.
 payloadkeys:

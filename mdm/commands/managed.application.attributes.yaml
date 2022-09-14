@@ -51,6 +51,28 @@ responsekeys:
         type: <string>
         presence: optional
         content: A per-app VPN unique identifier for this app.
+      - key: ContentFilterUUID
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          tvOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: |-
+          The content Filter UUID assigned to this app.
+          Available in iOS 16 and later.
+      - key: DNSProxyUUID
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          tvOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: |-
+          The DNS Proxy UUID assigned to this app.
+          Available in iOS 16 and later.
       - key: AssociatedDomains
         supportedOS:
           iOS:
@@ -72,7 +94,7 @@ responsekeys:
             introduced: n/a
         type: <boolean>
         presence: optional
-        default: true
+        default: false
         content: If 'true', perform claimed site association verification directly
           at the domain instead of on Apple's servers. Only set this to 'true' for
           domains that can't access the internet. This value is available in iOS 14

@@ -1,0 +1,17 @@
+title: Status Test String Value
+description: A test status item string.
+payload:
+  statusitemtype: test.string-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.string-value
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

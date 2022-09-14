@@ -43,7 +43,8 @@ payloadkeys:
     - key: appID
       type: <data>
       presence: required
-      content: The identifier of the app.
+      content: The identifier of the app. Obtain this value from the Security framework
+        using SecCodeCopyDesignatedRequirement.
     - key: detachedSignature
       type: <data>
       presence: optional
@@ -52,7 +53,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', this app is not added to the allow list.
+      content: If 'true', this app isn't added to the allow list.
     - key: subApps
       type: <array>
       presence: optional

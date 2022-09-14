@@ -5,6 +5,20 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '13.0'
+      devicechannel: true
+      userchannel: true
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '16.0'
 payloadkeys:
 - key: Echo
   title: Status Echo

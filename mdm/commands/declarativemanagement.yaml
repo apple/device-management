@@ -10,9 +10,23 @@ payload:
       supervised: false
       requiresdep: false
       sharedipad:
-        mode: forbidden
+        mode: allowed
+        devicechannel: true
+        userchannel: true
       userenrollment:
-        mode: required
+        mode: allowed
+    macOS:
+      introduced: '13.0'
+      devicechannel: true
+      userchannel: true
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '16.0'
+      supervised: false
+      requiresdep: false
   content: This command allows the server to turn on the Declarative Management engine
     on the device (the first time it is used), or to trigger a Declarative Management
     synchronization operation.

@@ -1,0 +1,17 @@
+title: Status Test Error Value
+description: A test status item for errors.
+payload:
+  statusitemtype: test.error-value
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: test.error-value
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

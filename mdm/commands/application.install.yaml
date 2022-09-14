@@ -1,6 +1,12 @@
 title: Install Application Command
 description: This command allows the server to install an application on a device.
-  If the app is already being managed, this command will update the app.
+  If the app is already being managed, this command will update the app. Prior to
+  iOS 16.0 and tvOS 16.0, this command would return NotNow when Setup Assistant was
+  running. Starting in iOS 16.0 and tvOS 16.0, the command may be sent to supervised
+  devices during Setup Assistant. However, you should only attempt to install device-based
+  VPP apps or enterprise apps while in the awaiting configuration state, as the device
+  will likely not yet have an App Store account configured, and thus commands that
+  depend on one will fail.
 payload:
   requesttype: InstallApplication
   supportedOS:
@@ -118,6 +124,24 @@ payloadkeys:
     presence: optional
     content: A per-app VPN unique identifier for this app. This value is available
       in iOS 7 and later, and tvOS 10.2 and later.
+  - key: ContentFilterUUID
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+      tvOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: Content Filter UUID assigned to this app.
+  - key: DNSProxyUUID
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+      tvOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: DNS Proxy UUID assigned to this app.
   - key: AssociatedDomains
     supportedOS:
       iOS:
@@ -139,7 +163,7 @@ payloadkeys:
         introduced: n/a
     type: <boolean>
     presence: optional
-    default: true
+    default: false
     content: If 'true', perform claimed site association verification directly at
       the domain instead of on Apple's servers. Only set this to 'true' for domains
       that can't access the internet. This value is available in iOS 14 and later.

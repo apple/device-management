@@ -1,0 +1,58 @@
+title: Status Account List Subscribed Calendar
+description: The client's subscribed calendar accounts.
+payload:
+  statusitemtype: account.list.subscribed-calendar
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+payloadkeys:
+- key: account.list.subscribed-calendar
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: Account
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the account.
+      type: <string>
+      presence: required
+      content: The unique identifier of the account. This can be used as a "primary
+        key" to access a specific account.
+    - key: declaration-identifier
+      title: Identifier of the declaration that installed the account.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that installed the account. Only
+        present if the account was installed by a declaration.
+    - key: visible-name
+      title: Account name
+      type: <string>
+      presence: optional
+      content: The name of the account.
+    - key: calendar-url
+      title: Account calendar URL
+      type: <string>
+      presence: optional
+      content: The URL of the subscribed calendar.
+    - key: username
+      title: Account username
+      type: <string>
+      presence: optional
+      content: The user name of the account.
+    - key: is-enabled
+      title: Is the calendar enabled
+      type: <boolean>
+      presence: optional
+      content: Indicates if the calendar is being displayed in Calendar.app.

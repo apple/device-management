@@ -5,6 +5,10 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.0'
 payloadkeys:
 - key: management.declarations
   title: Status item value.

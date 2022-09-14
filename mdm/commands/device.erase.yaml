@@ -100,6 +100,9 @@ payloadkeys:
     If EACS preflight fails, the device responds with an 'Acknowledged' status and then attempts to erase itself.
     If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
 
+    'Always':
+    The system doesn't attempt EACS. T2 and later devices always obliterate.
+
     'Default':
     If EACS preflight fails, the device responds to the server with an 'Error' status and then attempts to erase itself.
     If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.

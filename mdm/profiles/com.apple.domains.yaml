@@ -29,8 +29,8 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    An array of domains. Email addresses that lack a suffix matching any of these strings are considered out of domain and marked in Mail.
-    This is the only field supported on macOS.
+    An array of domains. The system considers email addresses that lack a suffix matching any of these strings out of domain and marked in Mail.
+    Available in iOS 8 and later and macOS 10.10 and later.
   subkeys:
   - key: EmailDomainsItem
     type: <string>
@@ -43,8 +43,9 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of domains. URLs matching the patterns listed here are considered
-    managed.
+  content: |-
+    An array of domains. The system considers URLs matching the patterns listed in this property managed.
+    Available in iOS 9.3 and later.
   subkeys:
   - key: WebDomainsItem
     type: <string>

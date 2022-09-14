@@ -82,6 +82,7 @@ payloadkeys:
     - HasUpdateAvailable
     - Identifier
     - Installing
+    - IsAppClip
     - IsValidated
     - Name
     - ShortVersion
@@ -245,3 +246,15 @@ responsekeys:
       presence: optional
       default: false
       content: If 'true', the user canceled the download.
+    - key: IsAppClip
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the app is an App Clip. Available in iOS 16 and later.

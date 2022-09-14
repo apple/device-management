@@ -1,0 +1,78 @@
+title: Status MDM App
+description: The client's MDM installed apps.
+payload:
+  statusitemtype: mdm.app
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: mdm.app
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: The list of apps.
+  subkeytype: App
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the app.
+      type: <string>
+      presence: required
+      content: The app's bundle id, which is unique.
+    - key: name
+      title: App name
+      type: <string>
+      presence: optional
+      content: The name of the app.
+    - key: external-version-id
+      title: External version id
+      type: <string>
+      presence: optional
+      content: The application's external version ID. Use Service Config to get the
+        'contentMetadataLookupUrl' endpoint. In the response from that URL, find a
+        key named 'externalId' at the path 'results.<adamId>.offers[0].version.externalId'.
+        If the current external version identifier of an app on the store doesn't
+        match the external version identifier reported by the device, there may be
+        an app update available for the device.
+    - key: version
+      title: Version
+      type: <string>
+      presence: optional
+      content: The version of the app.
+    - key: short-version
+      title: Short version
+      type: <string>
+      presence: optional
+      content: The short version of the app.
+    - key: state
+      title: Managed application list status
+      type: <string>
+      presence: optional
+      rangelist:
+      - queued
+      - needs-redemption
+      - redeeming
+      - prompting
+      - prompting-for-login
+      - validating-purchase
+      - prompting-for-update
+      - prompting-for-update-login
+      - prompting-for-management
+      - validating-update
+      - updating
+      - installing
+      - managed
+      - managed-but-uninstalled
+      - unknown
+      - user-installed-app
+      - user-rejected
+      - update-rejected
+      - management-rejected
+      - failed
+      content: The status of the app reported by ManagedApplicationListCommand.

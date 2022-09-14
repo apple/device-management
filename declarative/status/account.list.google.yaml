@@ -1,0 +1,71 @@
+title: Status Account List Google
+description: The client's Google accounts.
+payload:
+  statusitemtype: account.list.google
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+    macOS:
+      introduced: '13.0'
+      devicechannel: false
+      userchannel: true
+    tvOS:
+      introduced: n/a
+payloadkeys:
+- key: account.list.google
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: Account
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the account.
+      type: <string>
+      presence: required
+      content: The unique identifier of the account. This can be used as a "primary
+        key" to access a specific account.
+    - key: declaration-identifier
+      title: Identifier of the declaration that installed the account.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that installed the account. Only
+        present if the account was installed by a declaration.
+    - key: visible-name
+      title: Account name
+      type: <string>
+      presence: optional
+      content: The name of the account.
+    - key: username
+      title: Account username
+      type: <string>
+      presence: optional
+      content: The user name of the account.
+    - key: is-mail-enabled
+      title: Is mail enabled
+      type: <boolean>
+      presence: optional
+      content: Indicates if mail for this account are being displayed in Mail.app.
+    - key: are-calendars-enabled
+      title: Are calendars enabled
+      type: <boolean>
+      presence: optional
+      content: Indicates if calendars and events for the account are being displayed
+        in Calendar.app.
+    - key: are-contacts-enabled
+      title: Are contacts enabled
+      type: <boolean>
+      presence: optional
+      content: Indicates if contacts for the account are being displayed in Contacts.app.
+    - key: are-notes-enabled
+      title: Are notes enabled
+      type: <boolean>
+      presence: optional
+      content: Indicates if notes for this account are being displayed in Notes.app.

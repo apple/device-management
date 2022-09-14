@@ -4,6 +4,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.7'
+      deprecated: '13.0'
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -12,13 +13,15 @@ payload:
       userenrollment:
         mode: forbidden
   content: |-
-    Hide and show individual System Preference panes.
+    Hide and show individual System Preferences panes.
     The following preference pane items are no longer supported on macOS 10.14:
     • com.apple.preferences.appstore
     The following preference pane items are no longer supported on macOS 10.15:
     • com.apple.preference.ink
     • com.apple.preferences.icloud
     • com.apple.preferences.parentalcontrols
+    This payload is deprecated as of macOS 13. When new restrictions become available to control functionality exposed through System Settings, those restrictions should be used instead of disabling the entire preference pane. This allows for user transparency even when the user's control has been disabled by a restriction.
+    macOS 13 introduces a new DisabledSystemSettings key for controlling macOS 13 and newer System Settings extensions. However, note that System Settings extensions within the Privacy & Security section cannot be disabled. If DisabledSystemSettings is not provided, the system will attempt to honor the EnabledPreferencePanes and DisabledPreferencePanes by mapping the old preference pane value to one or more new settings extension values whose content was wholly contained in the old preference pane value.
 payloadkeys:
 - key: EnabledPreferencePanes
   type: <array>
@@ -76,3 +79,65 @@ payloadkeys:
   presence: optional
   content: The list of disabled System Preferences panes.
   subkeys: *id001
+- key: DisabledSystemSettings
+  supportedOS:
+    macOS:
+      introduced: '13.0'
+  type: <array>
+  presence: optional
+  content: System settings extension IDs for items that will be disabled. All other
+    items will be enabled. When DisabledSystemSettings is specified, DisabledPreferencePanes
+    and EnabledPreferencePanes are ignored. Note that a given System Settings extension
+    may supply more than one section in System Settings; disabling such an extension
+    will disable all sections it supplies.
+  devpubs-override: The list of disabled System Settings extensions.
+  subkeys:
+  - key: SettingsExtensions
+    type: <string>
+    presence: optional
+    rangelist:
+    - com.apple.Accessibility-Settings.extension
+    - com.apple.AirDrop-Handoff-Settings.extension
+    - com.apple.Battery-Settings.extension
+    - com.apple.BluetoothSettings
+    - com.apple.CD-DVD-Settings.extension
+    - com.apple.ClassKit-Settings.extension
+    - com.apple.Classroom-Settings.extension
+    - com.apple.ControlCenter-Settings.extension
+    - com.apple.Date-Time-Settings.extension
+    - com.apple.Desktop-Settings.extension
+    - com.apple.Displays-Settings.extension
+    - com.apple.ExtensionsPreferences
+    - com.apple.Family-Settings.extension
+    - com.apple.Focus-Settings.extension
+    - com.apple.Game-Center-Settings.extension
+    - com.apple.Game-Controller-Settings.extension
+    - com.apple.HeadphoneSettings
+    - com.apple.Internet-Accounts-Settings.extension
+    - com.apple.Keyboard-Settings.extension
+    - com.apple.Localization-Settings.extension
+    - com.apple.Lock-Screen-Settings.extension
+    - com.apple.LoginItems-Settings.extension
+    - com.apple.Mouse-Settings.extension
+    - com.apple.Network-Settings.extension
+    - com.apple.NetworkExtensionSettingsUI.NESettingsUIExtension
+    - com.apple.Notifications-Settings.extension
+    - com.apple.Passwords-Settings.extension
+    - com.apple.Print-Scan-Settings.extension
+    - com.apple.Screen-Time-Settings.extension
+    - com.apple.ScreenSaver-Settings.extension
+    - com.apple.Sharing-Settings.extension
+    - com.apple.Siri-Settings.extension
+    - com.apple.Software-Update-Settings.extension
+    - com.apple.Sound-Settings.extension
+    - com.apple.Startup-Disk-Settings.extension
+    - com.apple.Time-Machine-Settings.extension
+    - com.apple.Touch-ID-Settings.extension
+    - com.apple.Trackpad-Settings.extension
+    - com.apple.Transfer-Reset-Settings.extension
+    - com.apple.Users-Groups-Settings.extension
+    - com.apple.WalletSettingsExtension
+    - com.apple.Wallpaper-Settings.extension
+    - com.apple.settings.Storage
+    - com.apple.systempreferences.AppleIDSettings
+    - com.apple.wifi-settings-extension

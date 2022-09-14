@@ -1,0 +1,21 @@
+title: Status Device Serial Number
+description: The device's serial number.
+payload:
+  statusitemtype: device.identifier.serial-number
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '13.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '16.0'
+payloadkeys:
+- key: device.identifier.serial-number
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

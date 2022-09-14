@@ -38,7 +38,8 @@ payloadkeys:
     - key: DeviceDNSName
       type: <string>
       presence: required
-      content: The DNS name of the device. This should match the 'dNSName' in SCEP.PayloadContent.SubjectAltName.
+      content: The DNS name of the device. This should match the 'dNSName' in SCEP.PayloadContent.SubjectAltName
+        or an equivalent in a PKCS12 identity.
     - key: PrimaryIPv6AddressList
       type: <array>
       presence: required

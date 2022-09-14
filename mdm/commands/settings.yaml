@@ -11,7 +11,7 @@ payload:
       sharedipad:
         mode: allowed
         devicechannel: true
-        userchannel: false
+        userchannel: true
       userenrollment:
         mode: allowed
     macOS:
@@ -40,6 +40,10 @@ payloadkeys:
       iOS:
         introduced: '8.0'
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -76,6 +80,10 @@ payloadkeys:
   - key: DataRoaming
     supportedOS:
       iOS:
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -102,6 +110,11 @@ payloadkeys:
   - key: VoiceRoaming
     supportedOS:
       iOS:
+        deprecated: '16.0'
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -130,6 +143,10 @@ payloadkeys:
     supportedOS:
       iOS:
         accessrights: AllowQueryNetworkInformation
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -157,6 +174,10 @@ payloadkeys:
       iOS:
         introduced: '11.3'
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -188,6 +209,10 @@ payloadkeys:
       iOS:
         introduced: '7.0'
         accessrights: AllowAppInstallation
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
       macOS:
         introduced: '10.15'
         accessrights: AllowAppInstallation
@@ -227,6 +252,10 @@ payloadkeys:
       iOS:
         introduced: '7.0'
         accessrights: AllowAppInstallation
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
       macOS:
         introduced: n/a
       tvOS:
@@ -260,6 +289,24 @@ payloadkeys:
         presence: optional
         content: A per-app VPN unique identifier for this app. This value is available
           in iOS 7 and later, and tvOS 10.2 and later.
+      - key: ContentFilterUUID
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          tvOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: Content Filter UUID assigned to this app.
+      - key: DNSProxyUUID
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          tvOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: DNS Proxy UUID assigned to this app.
       - key: AssociatedDomains
         supportedOS:
           iOS:
@@ -281,7 +328,7 @@ payloadkeys:
             introduced: n/a
         type: <boolean>
         presence: optional
-        default: true
+        default: false
         content: If 'true', perform claimed site association verification directly
           at the domain, instead of on Apple's servers. Only set this to 'true' for
           domains that can't access the internet. This value is available in iOS 14
@@ -301,6 +348,10 @@ payloadkeys:
     supportedOS:
       iOS:
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -350,6 +401,11 @@ payloadkeys:
       content: The hostname for the device.
   - key: OrganizationInfo
     supportedOS:
+      iOS:
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
       macOS:
         introduced: '10.9'
     type: <dictionary>
@@ -411,6 +467,10 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: '7.0'
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
       macOS:
         introduced: '10.15'
         userenrollment:
@@ -554,7 +614,7 @@ payloadkeys:
       type: <integer>
       presence: optional
       content: |-
-        The timeout, in seconds, for the user session. The user session  logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        The timeout, in seconds, for the user session. The user session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
         Available in iOS 14.5 and later.
     - key: TemporarySessionTimeout
       supportedOS:
@@ -576,6 +636,28 @@ payloadkeys:
         If 'true', the user only sees the Guest Welcome pane and can only log in as a guest user.
         If 'false', the user can sign in with a managed Apple ID (the existing behavior).
         Available in iOS 14.5 and later.
+    - key: ManagedAppleIDDefaultDomains
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+      type: <array>
+      presence: optional
+      content: |-
+        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID.
+        If this list contains more than 3 domains, the system picks 3 at random for display.Available in iOS 16 and later.
+      subkeys:
+      - key: AppleID domain
+        type: <string>
+    - key: OnlineAuthenticationGracePeriod
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+      type: <integer>
+      presence: optional
+      content: |-
+        A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user's passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple's identity server) after the number of days specified by this setting.
+        Setting this value to 0 enforces online authentication every time.
+        Available in iOS 16 and later.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -675,6 +757,10 @@ payloadkeys:
       iOS:
         introduced: '14.0'
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -705,6 +791,10 @@ payloadkeys:
       iOS:
         introduced: '14.5'
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: true
+          userchannel: false
         userenrollment:
           mode: forbidden
       macOS:
@@ -737,6 +827,85 @@ payloadkeys:
         * '2': Presents only the highest numbered (most recent) release available for the device.
         This value has no effect when there's only one available update; the system shows the single available update to the user regardless of the value of this setting.
         Available in iOS 14.5 and later.
+  - key: AccessibilitySettings
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+        supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: false
+          userchannel: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - AccessibilitySettings
+      content: Sets various accessibility settings. The system allows only keys with
+        explicitly provided values.
+    - key: BoldTextEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables bold text.
+    - key: IncreaseContrastEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables increase contrast.
+    - key: ReduceMotionEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables reduced motion.
+    - key: ReduceTransparencyEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', enables reduced transparency.
+    - key: TextSize
+      type: <integer>
+      presence: optional
+      rangelist:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      default: 4
+      content: The accessibility text size apps that support dynamic text use. 0 is
+        the smallest value, and 11 is the largest available.
+    - key: TouchAccommodationsEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, enables touch accommodations.
+    - key: VoiceOverEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, enables voiceover.
+    - key: ZoomEnabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, enables zoom.
 responsekeys:
 - key: Settings
   type: <dictionary>

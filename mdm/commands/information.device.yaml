@@ -278,6 +278,7 @@ payloadkeys:
     - key: IMEI
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
@@ -292,6 +293,7 @@ payloadkeys:
     - key: MEID
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
@@ -383,11 +385,13 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: '7.0'
+          deprecated: '16.0'
           accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
         macOS:
           introduced: '10.15'
+          deprecated: '13.0'
           accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
@@ -671,6 +675,32 @@ payloadkeys:
           introduced: n/a
       type: <string>
       content: If 'true', the device only allows temporary sessions.
+    - key: ManagedAppleIDDefaultDomains
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: |-
+        The list of domains that the device suggests on the Shared iPad login screen.
+        Available in iOS 16 and later.
+    - key: OnlineAuthenticationGracePeriod
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: |-
+        The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
+        Available in iOS 16 and later.
     - key: PushToken
       supportedOS:
         iOS:
@@ -734,6 +764,7 @@ payloadkeys:
     - key: ICCID
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -791,6 +822,7 @@ payloadkeys:
     - key: CurrentCarrierNetwork
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -820,6 +852,7 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: '5.0'
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -833,6 +866,7 @@ payloadkeys:
     - key: CarrierSettingsVersion
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -846,6 +880,7 @@ payloadkeys:
     - key: PhoneNumber
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -876,6 +911,7 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: '5.0'
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -933,6 +969,7 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: 4.2.6
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -947,6 +984,7 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: 4.2.6
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -960,6 +998,7 @@ payloadkeys:
     - key: CurrentMCC
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -973,6 +1012,7 @@ payloadkeys:
     - key: CurrentMNC
       supportedOS:
         iOS:
+          deprecated: '16.0'
           accessrights: AllowQueryNetworkInformation
           userenrollment:
             mode: forbidden
@@ -1051,8 +1091,60 @@ payloadkeys:
           introduced: n/a
       type: <string>
       content: The key that represents the device identifier you use to look up available
-        OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5 and
-        later.
+        OS updates through <https://gdmf.apple.com/v2/pmv>. Available in iOS 15 and
+        later, and macOS 12 and later.
+    - key: AccessibilitySettings
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+          supervised: true
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: |-
+        The key to get the current state of settable accessibility settings.
+        Available in iOS 16 and later.
+    - key: DevicePropertiesAttestation
+      supportedOS:
+        iOS:
+          introduced: '16.0'
+          supervised: false
+          userenrollment:
+            mode: allowed
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: '16.0'
+      type: <string>
+      content: |-
+        The key to get an attestation of the device's properties.
+        Available in iOS 16 and later and tvOS 16 and later.
+- key: DeviceAttestationNonce
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      supervised: false
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '16.0'
+  type: <data>
+  presence: optional
+  content: Up to 32 bytes of data. If this is specified, Queries must contain DevicePropertiesAttestation.
+    The nonce appears in the resulting attestation to ensure it was recently generated.
+    To request a new attestation, provide a new nonce. The most recently generated
+    attestation is cached on the device. Requests for new attestations are rate limited.
+    If it has been fewer than 7 days since an attestation was generated, the device
+    returns the cached attestation rather than generating a new one. If DeviceAttestationNonce
+    is omitted or if the value matches the cached attestation, the cached attestation
+    is returned. Otherwise a new attestation containing the new nonce is requested
+    and returned.
 responsekeys:
 - key: QueryResponses
   type: <dictionary>
@@ -1263,6 +1355,8 @@ responsekeys:
       available in iOS 4 and later, and macOS 10.7 and later.
   - key: IMEI
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1273,6 +1367,8 @@ responsekeys:
       later.
   - key: MEID
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1361,8 +1457,10 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: '7.0'
+        deprecated: '16.0'
       macOS:
         introduced: '10.9'
+        deprecated: '13.0'
       tvOS:
         introduced: n/a
     type: <boolean>
@@ -1654,6 +1752,33 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If 'true', the device only allows temporary sessions.
+  - key: ManagedAppleIDDefaultDomains
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <array>
+    content: |-
+      The list of domains that the device suggests on the Shared iPad login screen.
+      Available in iOS 16 and later.
+    subkeys:
+    - key: AppleID domain
+      type: <string>
+  - key: OnlineAuthenticationGracePeriod
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <real>
+    content: |-
+      The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
+      Available in iOS 16 and later.
   - key: PushToken
     supportedOS:
       iOS:
@@ -1703,6 +1828,8 @@ responsekeys:
       in iOS 14 and later, and tvOS 14 and later.
   - key: ICCID
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1730,6 +1857,8 @@ responsekeys:
       access right, and is available in macOS 10.7 and later.
   - key: CurrentCarrierNetwork
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1751,6 +1880,7 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: '5.0'
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1760,6 +1890,8 @@ responsekeys:
       Information access right, and is available in iOS 5 and later.
   - key: CarrierSettingsVersion
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1769,6 +1901,8 @@ responsekeys:
       Information access right, and is available in iOS 4 and later.
   - key: PhoneNumber
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1792,6 +1926,7 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: '5.0'
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1827,6 +1962,7 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: '4.2'
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1858,6 +1994,7 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: 4.2.6
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1869,6 +2006,7 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: 4.2.6
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1878,6 +2016,8 @@ responsekeys:
       the Network Information access right, and is available in iOS 4.2.6 and later.
   - key: CurrentMCC
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1887,6 +2027,8 @@ responsekeys:
       Information access right, and is available in iOS 4 and later.
   - key: CurrentMNC
     supportedOS:
+      iOS:
+        deprecated: '16.0'
       macOS:
         introduced: n/a
       tvOS:
@@ -1976,6 +2118,17 @@ responsekeys:
         type: <string>
         content: The description of the slot that contains the SIM representing this
           subscription. This value is available in iOS 12 and later.
+      - key: SubscriberCarrierNetwork
+        supportedOS:
+          iOS:
+            introduced: '16.0'
+          macOS:
+            introduced: n/a
+          tvOS:
+            introduced: n/a
+        type: <string>
+        content: The name of the home carrier network. This value is available in
+          iOS 16 and later.
   - key: PINRequiredForEraseDevice
     supportedOS:
       iOS:
@@ -2025,3 +2178,76 @@ responsekeys:
     content: The key representing the device identifier to be used when looking up
       available OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5
       and later.
+  - key: AccessibilitySettings
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    content: |-
+      The the current state of settable accessibility settings.
+      Available in iOS 16 and later.
+    subkeys:
+    - key: BoldTextEnabled
+      type: <boolean>
+      content: If 'true', device has enabled bold text.
+    - key: IncreaseContrastEnabled
+      type: <boolean>
+      content: If 'true', device has enabled increase contrast.
+    - key: ReduceMotionEnabled
+      type: <boolean>
+      content: If 'true', device has enabled reduced motion.
+    - key: ReduceTransparencyEnabled
+      type: <boolean>
+      content: If 'true', device has enabled reduced transparency.
+    - key: TextSize
+      type: <integer>
+      rangelist:
+      - -1
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      content: The accessibility text size apps that support dynamic text use. 0 is
+        the smallest value, and 11 is the largest available.
+    - key: TouchAccommodationsEnabled
+      type: <boolean>
+      content: If 'true', device has enabled touch accommodations.
+    - key: VoiceOverEnabled
+      type: <boolean>
+      content: If 'true', device has enabled voiceover.
+    - key: ZoomEnabled
+      type: <boolean>
+      content: If 'true', device has enabled zoom.
+  - key: DevicePropertiesAttestation
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+        supervised: false
+        userenrollment:
+          mode: allowed
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: '16.0'
+    type: <array>
+    content: |-
+      The key to get an attestation of the device's properties.
+      Available in iOS 16 and later and tvOS 16 and later.
+    subkeys:
+    - key: AttestationCertificate
+      type: <data>

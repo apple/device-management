@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.7'
+      deprecated: '11.0'
       devicechannel: true
       userchannel: true
       requiresdep: false

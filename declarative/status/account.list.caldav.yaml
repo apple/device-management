@@ -1,0 +1,70 @@
+title: Status Account List CalDAV
+description: The client's CalDAV accounts.
+payload:
+  statusitemtype: account.list.caldav
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+    macOS:
+      introduced: '13.0'
+      devicechannel: false
+      userchannel: true
+    tvOS:
+      introduced: n/a
+payloadkeys:
+- key: account.list.caldav
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: The status value of the account.
+  subkeytype: Account
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the account.
+      type: <string>
+      presence: required
+      content: The unique identifier for the account.
+    - key: declaration-identifier
+      title: Identifier of the declaration that installed the account.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that installed the account. Only
+        present if a declaration installed the account.
+    - key: visible-name
+      title: Account name
+      type: <string>
+      presence: optional
+      content: The name of the account.
+    - key: hostname
+      title: Account hostname
+      type: <string>
+      presence: optional
+      content: The server host name for the account.
+    - key: port
+      title: Server Port
+      type: <integer>
+      presence: optional
+      content: The server port for the account.
+    - key: username
+      title: Account username
+      type: <string>
+      presence: optional
+      content: The user name for the account.
+    - key: are-calendars-enabled
+      title: Are calendars enabled
+      type: <boolean>
+      presence: optional
+      content: If 'true', the Calendar app is displaying calendars and events for
+        the account.
+    - key: are-reminders-enabled
+      title: Are reminders enabled
+      type: <boolean>
+      presence: optional
+      content: If 'true', the Reminders app is displaying reminders for the account.
