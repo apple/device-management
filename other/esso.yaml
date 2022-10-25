@@ -1,0 +1,51 @@
+title: Enrollment SSO Document
+description: The JSON object returned from the MDM server's Enrollment SSO endpoint.
+payload:
+  payloadtype: ESSO
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+payloadkeys:
+- key: iTunesStoreID
+  title: iTunes Store ID
+  type: <integer>
+  presence: optional
+  content: The iTunes Store ID of the app to download prior to enrollment, to support
+    Enrollment SSO during enrollment. Using developer mode ignores this key.
+- key: AppIDs
+  title: Developer App IDs
+  type: <array>
+  presence: optional
+  content: An array of App IDs that specify apps that Enrollment SSO developer mode
+    can use. In Enrollment SSO documents delivered through the developer endpoint,
+    this key must be present and contain at least one value. In Enrollment SSO documents
+    delivered by the standard Enrollment SSO endpoint, this key must not be present.
+  subkeys:
+  - key: AppID
+    title: App ID
+    type: <string>
+- key: AssociatedDomains
+  title: Associated Domains
+  type: <array>
+  presence: optional
+  content: An array of associated domains that the device uses with the Enrollment
+    SSO extension.
+  subkeys:
+  - key: AssociatedDomain
+    title: Associated Domain
+    type: <string>
+- key: AssociatedDomainsEnableDirectDownloads
+  title: Associated Domains Enable Direct Downloads
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true,' allows the domain to directly verify site association, instead
+    of at Apple's servers. Use this verification only with domains that are inaccessible
+    on the public Internet.
+- key: ConfigurationProfile
+  title: Configuration Profile
+  type: <data>
+  presence: required
+  content: The profile containing an ExtensibleSingleSignOn payload that specifies
+    the SSO extension in the downloaded app prior to enrollment. This profile may
+    contain certificate payloads.

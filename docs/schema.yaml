@@ -117,6 +117,10 @@ properties:
                   behavior:
                     type: string
                     description: Describes any special behavior for the payload or payload key if user enrollment is in effect.
+              always-skippable:
+                type: boolean
+                description: If true, indicates that the skip key's corresponding Setup pane is always skipped. If false, indicates
+                  that the skip key's corresponding Setup pane may be shown, depending on exactly when during the setup flow it occurs.
           macOS: *supportedOSItem
           tvOS: *supportedOSItem
           watchOS: *supportedOSItem

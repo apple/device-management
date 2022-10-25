@@ -1,0 +1,464 @@
+title: SkipKeys
+description: The definition of all the available skip keys
+payload:
+  payloadtype: SkipKeys
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      always-skippable: true
+    macOS:
+      introduced: '10.9'
+      always-skippable: true
+    tvOS:
+      introduced: '10.2'
+      always-skippable: true
+payloadkeys:
+- key: Accessibility
+  title: Skip Accessibility pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '11.0'
+      always-skippable: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Accessibility pane, only if the Mac is connected to Ethernet
+    and the cloud config is downloaded. Availability: macOS 11+.'
+- key: Android
+  title: Prevents migration from Android device
+  supportedOS:
+    iOS:
+      introduced: '9.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'If the Restore pane is not skipped, removes the Move from Android option
+    in the Restore pane on iOS. Availability: iOS 9+.'
+- key: Appearance
+  title: Skip Choose your Look setup pane
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+    macOS:
+      introduced: '10.14'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Choose Your Look screen. Availability: iOS 13+ and macOS 10.14+.'
+- key: AppleID
+  title: Disables signing in to Apple ID and iCloud
+  type: <string>
+  presence: optional
+  content: 'Skips Apple ID setup. Availability: iOS 7.0+, tvOS 10.2+, and macOS 10.9+.'
+- key: AppStore
+  title: Skips AppStore information pane
+  supportedOS:
+    iOS:
+      introduced: '14.3'
+    macOS:
+      introduced: '11.1'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the App Store pane. Availability: iOS 14.3+ and macOS 11.1+.'
+- key: Biometric
+  title: Skips Touch ID/Face ID setup
+  supportedOS:
+    iOS:
+      introduced: '8.1'
+    macOS:
+      introduced: 10.12.4
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips biometric setup. Availability: iOS 8.1+ and macOS 10.12.4+.'
+- key: DeviceToDeviceMigration
+  title: Skip Device To Device Migration pane
+  supportedOS:
+    iOS:
+      introduced: '12.4'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips Device to Device Migration pane. Availability: iOS 13+.'
+- key: Diagnostics
+  title: Disables automatically sending diagnostic information
+  type: <string>
+  presence: optional
+  content: 'Skips the App Analytics pane. Availability: iOS 7+, tvOS 10.2+, and macOS
+    10.9+.'
+- key: DisplayTone
+  title: Disables True Tone
+  supportedOS:
+    iOS:
+      introduced: 9.3.2
+      deprecated: '15.0'
+    macOS:
+      introduced: 10.13.6
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips DisplayTone setup. Availability: iOS 9.3.2+ and macOS 10.13.6+.'
+- key: FileVault
+  title: Skip configuration of FileVault
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '10.10'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Disables FileVault Setup Assistant screen in macOS. Availability: macOS
+    10.10+.'
+- key: HomeButtonSensitivity
+  title: Skips Home Button sensitivity setup
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+      deprecated: '15.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Meet the New Home Button screen on iPhone 7, iPhone 7 Plus,
+    iPhone 8, iPhone 8 Plus and iPhone SE. Availability: iOS 10+.'
+- key: iCloudDiagnostics
+  title: Skip iCloud Analytics pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.12.4
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips iCloud Analytics screen. Availability: macOS 10.12.4+.'
+- key: iCloudStorage
+  title: Skip iCloud Documents and Desktop pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: 10.13.4
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips iCloud Documents and Desktop screen in macOS. Availability: macOS
+    10.13.4+.'
+- key: iMessageAndFaceTime
+  title: Skip iMessage and FaceTime set up pane
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the iMessage and FaceTime screen in iOS. Availability: iOS 12+.'
+- key: Location
+  title: Disables Location Services
+  supportedOS:
+    macOS:
+      introduced: '10.11'
+  type: <string>
+  presence: optional
+  content: 'Disables Location Services. Availability: iOS 7+ and macOS 10.11+.'
+- key: MessagingActivationUsingPhoneNumber
+  title: Disables iMessage activation using a phone number in select regions
+  supportedOS:
+    iOS:
+      introduced: '10.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the iMessage pane. Availability: iOS 10+.'
+- key: OnBoarding
+  title: Skip on-boarding informational panes
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+      deprecated: '14.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips on-boarding informational screens for user education (Go Home, Cover
+    Sheet, Multitasking & Control Center, for example) in iOS. Availability: iOS 11
+    - 13.6.'
+- key: Passcode
+  title: Skips prompting the user to set a passcode
+  supportedOS:
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Hides and disables the passcode pane. Availability: iOS 7+.'
+- key: Payment
+  title: Skips Apple Pay setup
+  supportedOS:
+    iOS:
+      introduced: '8.1'
+    macOS:
+      introduced: 10.12.4
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips Apple Pay setup. Availability: iOS 8.1+ and macOS 10.12.4+.'
+- key: Privacy
+  title: Skip Privacy pane
+  supportedOS:
+    iOS:
+      introduced: '11.3'
+    macOS:
+      introduced: 10.13.4
+    tvOS:
+      introduced: '11.3'
+  type: <string>
+  presence: optional
+  content: 'Skips the privacy pane. Availability: iOS 11.13+, tvOS 11.13+, and macOS
+    10.13.4+.'
+- key: Restore
+  title: Disables restoring from backup
+  supportedOS:
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Disables restoring from backup. Availability: iOS 7+ and macOS 10.9+.'
+- key: RestoreCompleted
+  title: Skips Restore Completed pane
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Restore Completed pane. Availability: iOS 14+.'
+- key: ScreenSaver
+  title: Skips screen saver setup
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the tvOS screen about using aerial screensavers in ATV. Availability:
+    tvOS 10.2+.'
+- key: Safety
+  title: Skips Safety pane
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Safety pane will be skipped.
+- key: ScreenTime
+  title: Skip Screen Time pane
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+    macOS:
+      introduced: '10.15'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Screen Time pane. Availability: iOS 12+ and macOS 10.15+.'
+- key: SIMSetup
+  title: Skip SIM-related setup
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the add cellular plan pane. Availability: iOS 12+.'
+- key: Siri
+  title: Disables Siri
+  supportedOS:
+    macOS:
+      introduced: '10.12'
+  type: <string>
+  presence: optional
+  content: 'Disables Siri. Availability: iOS 7+, tvOS 10.2+, and macOS 10.12+.'
+- key: SoftwareUpdate
+  title: Skip automatic software update configuration pane
+  supportedOS:
+    iOS:
+      introduced: '12.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the mandatory software update screen in iOS. Availability: iOS 12+.'
+- key: TapToSetup
+  title: Skips simplified tap setup
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      always-skippable: false
+  type: <string>
+  presence: optional
+  content: 'Skips the Tap To Set Up option in AppleTV about using an iOS device to
+    set up your AppleTV. Availability: tvOS 10.2+.'
+- key: TermsOfAddress
+  title: Skips Terms of Address
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+      always-skippable: false
+    macOS:
+      introduced: '13.0'
+      always-skippable: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Terms of Address pane. Availability: iOS 16+, and macOS 13+.'
+- key: TOS
+  title: Skips Terms and Conditions
+  type: <string>
+  presence: optional
+  content: 'Skips Terms and Conditions. Availability: iOS 7+, tvOS 10.2+, and macOS
+    10.9+.'
+- key: TVHomeScreenSync
+  title: Skip TV Home Screen
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.0'
+  type: <string>
+  presence: optional
+  content: 'Skips TV home screen layout sync screen. Availability: tvOS 11+.'
+- key: TVProviderSignIn
+  title: Skip TV provider sign in
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.0'
+  type: <string>
+  presence: optional
+  content: 'Skips the TV provider sign in screen. Availability: tvOS 11+.'
+- key: TVRoom
+  title: Skip Where is this Apple TV pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '11.4'
+  type: <string>
+  presence: optional
+  content: 'Skips the “Where is this Apple TV?” screen in tvOS. Availability: tvOS
+    11.4+.'
+- key: UnlockWithWatch
+  title: Skips Unlock with Apple Watch pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '12.0'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips Unlock Your Mac with your Apple Watch pane. Availability: macOS
+    12+.'
+- key: UpdateCompleted
+  title: Skips Software Update Complete pane
+  supportedOS:
+    iOS:
+      introduced: '14.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Software Update Complete pane. Availability: iOS 14+.'
+- key: WatchMigration
+  title: Skip watch migration
+  supportedOS:
+    iOS:
+      introduced: '11.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the screen for watch migration. Availability: iOS 11+.'
+- key: Welcome
+  title: Skip Get Started pane
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips the Get Started pane. Availability: iOS 13+.'
+- key: Zoom
+  title: Skips setting zoom configuration
+  supportedOS:
+    iOS:
+      introduced: '8.3'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: 'Skips zoom setup. Availability: iOS 8.3+.'

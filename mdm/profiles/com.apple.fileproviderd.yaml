@@ -11,7 +11,7 @@ payload:
       userapprovedmdm: true
       allowmanualinstall: false
       userenrollment:
-        mode: forbidden
+        mode: allowed
 payloadkeys:
 - key: AllowManagedFileProvidersToRequestAttribution
   type: <boolean>

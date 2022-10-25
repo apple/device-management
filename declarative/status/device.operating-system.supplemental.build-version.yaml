@@ -1,0 +1,17 @@
+title: Status Device Operating System Supplemental Build Version
+description: The device's operating system supplemental build version.
+payload:
+  statusitemtype: device.operating-system.supplemental.build-version
+  supportedOS:
+    iOS:
+      introduced: '16.1'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.1'
+payloadkeys:
+- key: device.operating-system.supplemental.build-version
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

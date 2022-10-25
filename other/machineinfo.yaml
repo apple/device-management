@@ -1,0 +1,88 @@
+title: MachineInfo
+description: The definition of MachineInfo payload sent by a client when fetching
+  an MDM enrollment profile
+payload:
+  payloadtype: MachineInfo
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+    macOS:
+      introduced: '10.9'
+    tvOS:
+      introduced: '10.2'
+payloadkeys:
+- key: UDID
+  title: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID.
+- key: SERIAL
+  title: Serial Number
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's serial number.
+- key: PRODUCT
+  title: Product
+  type: <string>
+  presence: required
+  content: The device's product type, e.g. iPhone5,1.
+- key: VERSION
+  title: OS Version
+  type: <string>
+  presence: required
+  content: The OS version installed on the device, e.g. 7A182.
+- key: IMEI
+  title: IMEI
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The device's IMEI (if available).
+- key: MEID
+  title: MEID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: optional
+  content: The device's MEID (if available).
+- key: LANGUAGE
+  title: Language
+  type: <string>
+  presence: optional
+  content: The user's currently-selected language, e.g. en.

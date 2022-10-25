@@ -55,6 +55,7 @@ The `supportedOS` object is used in the `payload` object to indicate overall sup
 | allowmanualinstall | boolean | If True, the profile can be installed manually by a user on the device |
 | sharedipad         | object  | Additional behavior specific to shared iPad devices |
 | userenrollment     | object  | Additional behavior when user enrollment is in effect |
+| always-skippable   | boolean | If True, indicates that the skip key's corresponding Setup pane is always skipped. If False, indicates that the skip key's corresponding Setup pane may be shown, depending on exactly when during the setup flow it occurs. This is only used in skipkeys.yaml. |
 
 ### Shared iPad Object
 

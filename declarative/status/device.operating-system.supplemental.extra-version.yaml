@@ -1,0 +1,17 @@
+title: Status Device Operating System Supplemental Extra Version
+description: The device's operating system rapid security response version.
+payload:
+  statusitemtype: device.operating-system.supplemental.extra-version
+  supportedOS:
+    iOS:
+      introduced: '16.1'
+    macOS:
+      introduced: '13.0'
+    tvOS:
+      introduced: '16.1'
+payloadkeys:
+- key: device.operating-system.supplemental.extra-version
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

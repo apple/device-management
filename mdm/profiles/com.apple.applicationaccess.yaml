@@ -375,14 +375,16 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
-      introduced: n/a
+      introduced: '13.0'
+      userenrollment:
+        mode: forbidden
     tvOS:
       introduced: n/a
   type: <boolean>
   presence: optional
   default: true
   content: If 'false', prevents modification of Bluetooth settings. Requires a supervised
-    device. Available in iOS 11 and later.
+    device. Available in iOS 11 and later, and macOS 13.0 and later.
 - key: allowBookstore
   title: Allow Bookstore
   supportedOS:
@@ -636,9 +638,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables iCloud Photo Library. Any photos not fully downloaded
-    from iCloud Photo Library to the device are removed from local storage. Available
-    in iOS 9 and later, and macOS 10.12 and later.
+  content: If 'false', disables iCloud Photo Library, including iCloud Shared Photo
+    Library. Any photos not fully downloaded from iCloud Photo Library to the device
+    are removed from local storage. Available in iOS 9 and later, and macOS 10.12
+    and later.
 - key: allowCloudPrivateRelay
   supportedOS:
     iOS:

@@ -8,9 +8,10 @@ This release corresponds to the following OS versions
 
 | OS      | Version |
 |---------|---------|
-| iOS     | 16.0    |
-| tvOS    | 16.0    |
-| watchOS |  9.0    |
+| iOS     | 16.1    |
+| macOS   | 13.0    |
+| tvOS    | 16.1    |
+| watchOS |  9.1    |
 
 ## What's Available
 
@@ -23,6 +24,8 @@ The following schema items are available:
 * Declarative device management declarations - `declarative/declarations`
 * Declarative device management status items - `declarative/status`
 * Declarative device management protocol - `declarative/protocol`
+
+* Other device management data formats
 
 ## YAML Schema Definition
 

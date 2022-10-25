@@ -179,6 +179,20 @@ payloadkeys:
       type: <string>
       content: The key to get the operating system version. This value requires the
         Device Information access right.
+    - key: SupplementalOSVersionExtra
+      supportedOS:
+        iOS:
+          introduced: '16.1'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: '13.0'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: '16.1'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The OS update rapid security response version letter if a rapid security
+        response update is installed. Requires Device Information right.
     - key: BuildVersion
       supportedOS:
         iOS:
@@ -190,6 +204,22 @@ payloadkeys:
       type: <string>
       content: The key to get the operating system version. This value requires the
         Device Information access right.
+    - key: SupplementalBuildVersion
+      supportedOS:
+        iOS:
+          introduced: '16.1'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: '13.0'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: '16.1'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The build version associated with the currently installed rapid security
+        response. If there is no installed rapid security response, this value will
+        be identical to the value reported through BuildVersion. Requires Device Information
+        right.
     - key: ModelName
       supportedOS:
         iOS:
@@ -1306,10 +1336,16 @@ responsekeys:
     type: <string>
     content: The operating system version. This value requires the Device Information
       access right.
+  - key: SupplementalOSVersionExtra
+    type: <string>
+    content: The OS update rapid security response version letter.
   - key: BuildVersion
     type: <string>
     content: The operating system version. This value requires the Device Information
       access right.
+  - key: SupplementalBuildVersion
+    type: <string>
+    content: The supplemental OS build version.
   - key: ModelName
     type: <string>
     content: The model name, for example, iPhone. This value requires the Device Information

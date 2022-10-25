@@ -1,0 +1,172 @@
+title: ManifestURL
+description: The definition of the ManifestURL that specifies where package is to
+  be downloaded from and provides hashes to verify the integrity of the package
+payload:
+  payloadtype: ManifestURL
+  supportedOS:
+    iOS:
+      introduced: '7.0'
+      sharedipad:
+        mode: allowed
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '10.9'
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: '10.2'
+payloadkeys:
+- key: items
+  title: The manifest items
+  type: <array>
+  presence: required
+  content: An array of dictionaries representing what the manifest will install
+  subkeys:
+  - key: items-item
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: assets
+      title: An asset
+      type: <array>
+      presence: required
+      content: An array of dictionaries
+      subkeys:
+      - key: assets-item
+        type: <dictionary>
+        presence: required
+        subkeys:
+        - key: kind
+          title: The asset kind
+          type: <string>
+          presence: required
+          rangelist:
+          - asset-pack-manifest
+          - display-image
+          - full-size-image
+          content: The asset-item kind
+        - key: md5-size
+          title: md5 chunk size
+          type: <integer>
+          presence: optional
+          content: The md5 chunk size
+        - key: md5s
+          title: md5 hashes
+          type: <array>
+          presence: optional
+          content: An array of <string>
+          subkeys:
+          - key: md5s-item
+            title: md5 hash
+            type: <string>
+            presence: required
+        - key: sha256-size
+          title: sha256 chunk size
+          type: <integer>
+          presence: optional
+          content: sha256 hash size
+        - key: sha256s
+          title: If there are multiple sha256 hashes provide a chunk size
+          type: <array>
+          presence: optional
+          content: An array of sha256 hashes
+          subkeys:
+          - key: sha256s-item
+            title: sha256 hash
+            type: <string>
+            presence: required
+        - key: url
+          title: The asset URL
+          type: <string>
+          presence: required
+          content: URL must be HTTPs and support ATP security (internal only URL must
+            not be a URL hosted from the same device installing the manifest.)
+        - key: needs-shine
+          title: Icon treatment
+          supportedOS:
+            iOS:
+              removed: '0'
+            macOS:
+              removed: '0'
+            tvOS:
+              removed: '0'
+          type: <boolean>
+          presence: optional
+          default: false
+          content: removed
+    - key: metadata
+      title: Application metadata
+      type: <dictionary>
+      presence: required
+      content: Metadata related to the application being installed
+      subkeys:
+      - key: bundle-identifier
+        title: Bundle identifier for app being installed.
+        type: <string>
+        presence: required
+        content: Must be a string with a length greater than one character. (internal
+          only can not be the bundle identifier of a system application. Must be a
+          profile validated application if the bundle identifer matches that of an
+          existing application)
+      - key: bundle-version
+        title: The bundle version
+        type: <string>
+        presence: optional
+        content: The bundle version of the application
+      - key: kind
+        title: The kind
+        type: <string>
+        presence: required
+        rangelist:
+        - software
+        content: If an application must be software
+      - key: sizeInBytes
+        title: Size in bytes
+        supportedOS:
+          iOS:
+            removed: '0'
+          macOS:
+            removed: '0'
+          tvOS:
+            removed: '0'
+        type: <integer>
+        presence: optional
+        content: removed
+      - key: subtitle
+        title: The application subtitle
+        type: <string>
+        presence: optional
+        content: The application subtitle maps to the application developer name
+      - key: title
+        title: The title
+        type: <string>
+        presence: required
+        content: Must be a string with length greater than one character.
+      - key: items
+        title: The items
+        supportedOS:
+          iOS:
+            removed: '0'
+          macOS:
+            removed: '0'
+          tvOS:
+            removed: '0'
+        type: <array>
+        presence: optional
+        content: Removed
+        subkeys:
+        - key: metadata-items-item
+          type: <dictionary>
+          presence: optional
+          subkeys:
+          - key: bundle-identifier
+            title: removed
+            type: <string>
+            presence: optional
+            content: removed
+          - key: bundle-version
+            title: removed
+            type: <string>
+            presence: optional
+            content: removed
