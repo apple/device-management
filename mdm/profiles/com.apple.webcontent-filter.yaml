@@ -197,14 +197,16 @@ payloadkeys:
       introduced: n/a
   type: <boolean>
   presence: optional
-  default: true
-  content: If 'true', enables the filtering of WebKit traffic.
+  default: false
+  content: If 'true', enables the filtering of WebKit traffic. Either 'FilterBrowsers'
+    or 'FilterSockets' must be 'true'.
 - key: FilterSockets
   title: FilterSockets
   type: <boolean>
   presence: optional
-  default: true
-  content: If 'true', enables the filtering of socket traffic.
+  default: false
+  content: If 'true', enables the filtering of socket traffic. Either 'FilterBrowsers'
+    or 'FilterSockets' must be 'true'.
 - key: FilterDataProviderDesignatedRequirement
   title: Filter Data Provider Designated Requirement
   supportedOS:
@@ -238,11 +240,11 @@ payloadkeys:
       introduced: '10.15'
   type: <boolean>
   presence: optional
-  default: true
+  default: false
   content: |-
     If this value is 'true', the property enables the filtering of network packets.
-    Either 'FilterPackets' or 'FilterSockets' must be 'true' for the filter to have an effect.
-    You can use this when 'FilterType' is 'Plugin'.
+    Either 'FilterPackets' or 'FilterSockets' must be 'true'.
+    You can only use this when 'FilterType' is 'Plugin'.
     Available in macOS 10.15 and later.
 - key: FilterPacketProviderDesignatedRequirement
   title: Filter Packet Provider Designated Requirement

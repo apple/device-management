@@ -77,7 +77,7 @@ payloadkeys:
       - Subtree
       default: Subtree
       content: |-
-        The type of recursion to use in the saerch.
+        The type of recursion to use in the search.
         * 'Base': Only the 'SearchBase' node.
         * 'OneLevel': The 'SearchBase' node and its immediate children.
-        * 'Subtree': The 'SearchBase' node and all its chidren, regardless of depth.
+        * 'Subtree': The 'SearchBase' node and all its children, regardless of depth.

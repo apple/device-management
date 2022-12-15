@@ -333,7 +333,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      The ordered list of perferred Key Distribution Centers (KDCs) to use for Kerberos traffic. Use this if the servers are not discoverable via DNS. If the servers are specified, then they are used for both connectivity checks and attempted first for Kerberos traffic. If the servers do not respond, then the device falls back to DNS discovery. Each entry is formatted the same as it would be in a 'krb5.conf' file. Examples of entries are:
+      The ordered list of preferred Key Distribution Centers (KDCs) to use for Kerberos traffic. Use this if the servers are not discoverable via DNS. If the servers are specified, then they are used for both connectivity checks and attempted first for Kerberos traffic. If the servers do not respond, then the device falls back to DNS discovery. Each entry is formatted the same as it would be in a 'krb5.conf' file. Examples of entries are:
       * 'adserver1.example.com'
       * 'tcp/adserver1.example.com:88'
       * 'kkdcp://kerberosproxy.example.com:443/kkdcp'

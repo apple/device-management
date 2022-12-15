@@ -44,7 +44,7 @@ payloadkeys:
 - key: URL
   title: URL
   type: <string>
-  subtype: url
+  subtype: <url>
   presence: required
   content: The URL that the web clip should open when clicked. If the URL doesn't
     begin with 'HTTP' or 'HTTPS', it doesn't work.

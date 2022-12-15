@@ -38,7 +38,7 @@ payloadkeys:
       - Label
       - LabelPrefix
       - TeamIdentifier
-      content: The type of comparision to make.
+      content: The type of comparison to make.
     - key: RuleValue
       title: Rule Value
       type: <string>
@@ -50,3 +50,9 @@ payloadkeys:
       type: <string>
       presence: optional
       content: An optional description of the rule.
+    - key: TeamIdentifier
+      title: Team Identifier
+      type: <string>
+      presence: optional
+      content: An additional constraint to limit the scope of the rule that is tested
+        after matching the RuleType/RuleValue.

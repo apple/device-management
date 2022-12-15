@@ -149,19 +149,3 @@ payloadkeys:
     type: <string>
     presence: required
     content: An SMB domain.
-- key: VPN
-  title: VPN
-  type: <dictionary>
-  presence: optional
-  content: A dictionary with additional VPN settings.
-  subkeys:
-  - key: ProviderType
-    type: <string>
-    presence: optional
-    rangelist:
-    - packet-tunnel
-    - app-proxy
-    default: app-proxy
-    content: The type of VPN service. If it is 'app-proxy', the service will tunnel
-      traffic at the application level. If it is 'packet-tunnel', the service will
-      tunnel traffic at the IP layer.

@@ -120,8 +120,8 @@ payloadkeys:
     presence: optional
     content: The URL that this account uses for signing in with OAuth. The system
       ignores this value unless 'Enabled' is 'true'. The system doesn't use autodiscovery
-      when a declaraction contains this URL, so the declaration must also contain
-      a 'HostName'.
+      when a declaration contains this URL, so the declaration must also contain a
+      'HostName'.
   - key: TokenRequestURL
     supportedOS:
       macOS:

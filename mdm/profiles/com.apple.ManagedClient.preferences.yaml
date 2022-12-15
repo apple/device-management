@@ -39,5 +39,5 @@ payloadkeys:
   - key: Set-Once
     type: <array>
     presence: required
-    content: The dictonary of one-time settings.
+    content: The dictionary of one-time settings.
     subkeys: *id001

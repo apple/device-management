@@ -43,7 +43,7 @@ payloadkeys:
 - key: ProxyServer
   title: Proxy Server
   type: <string>
-  subtype: hostname
+  subtype: <hostname>
   presence: required
   content: The proxy server's network address.
 - key: ProxyServerPort

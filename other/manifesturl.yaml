@@ -107,7 +107,7 @@ payloadkeys:
         presence: required
         content: Must be a string with a length greater than one character. (internal
           only can not be the bundle identifier of a system application. Must be a
-          profile validated application if the bundle identifer matches that of an
+          profile validated application if the bundle identifier matches that of an
           existing application)
       - key: bundle-version
         title: The bundle version

@@ -68,3 +68,22 @@ payloadkeys:
   subkeys:
   - key: SafariPasswordAutoFillDomainsItem
     type: <string>
+- key: CrossSiteTrackingPreventionRelaxedDomains
+  title: Cross-Site Tracking Prevention RelaxedDomains
+  supportedOS:
+    iOS:
+      introduced: '16.2'
+      supervised: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '13.1'
+      allowmanualinstall: false
+  type: <array>
+  presence: optional
+  content: An array of up to 10 strings. URLs matching the patterns listed here will
+    have relaxed enforcement of cross-site tracking prevention.
+  subkeys:
+  - key: CrossSiteTrackingPreventionRelaxedDomainItem
+    type: <string>

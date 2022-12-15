@@ -51,7 +51,7 @@ payloadkeys:
   - key: ANY
     type: <array>
     presence: optional
-    content: The kernal extension data.
+    content: The kernel extension data.
     subkeys:
     - key: AllowedKernelExtensionsItems
       type: <string>

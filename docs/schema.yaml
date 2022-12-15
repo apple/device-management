@@ -165,9 +165,9 @@ properties:
           type: string
           description: Indicates the expected format of the string value of the key, supporting additional validation of the value.
           enum:
-          - url
-          - hostname
-          - email
+          - <url>
+          - <hostname>
+          - <email>
         presence:
           type: string
           description: Whether the key is required or optional.

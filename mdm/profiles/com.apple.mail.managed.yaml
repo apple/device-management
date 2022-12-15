@@ -51,7 +51,7 @@ payloadkeys:
     the payload, the device prompts for this string during interactive profile installation
     in Settings or System Preferences.
 - key: IncomingMailServerAuthentication
-  title: Incoming Mail Server Authentification
+  title: Incoming Mail Server Authentication
   type: <string>
   presence: required
   rangelist:

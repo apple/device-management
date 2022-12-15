@@ -457,7 +457,7 @@ payloadkeys:
       - key: OrganizationEmail
         type: <string>
         presence: optional
-        content: The orgnization's support email address.
+        content: The organization's support email address.
       - key: OrganizationMagic
         type: <string>
         presence: optional
@@ -567,7 +567,7 @@ payloadkeys:
       type: <integer>
       presence: required
       content: |-
-        The maximum number of users that can use the device. If this value is greater than the value for the maximum possible number of users that the device suports, the MDM server uses that value instead.
+        The maximum number of users that can use the device. If this value is greater than the value for the maximum possible number of users that the device supports, the MDM server uses that value instead.
         This setting requires that the device is in the 'AwaitingConfiguration' phase before it receives the DeviceConfigured <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html#//apple_ref/doc/uid/TP40017387-CH3-SW301> message.
         When a device reaches the maximum number of resident users and a new user tries to sign in, the MDM server removes a synchronized user to make space for the new user. If there are no synchronized users, the new user sign-in fails. A synchronized user is a user that has completed syncing their data.
   - key: SharedDeviceConfiguration
@@ -658,6 +658,16 @@ payloadkeys:
         A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user's passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple's identity server) after the number of days specified by this setting.
         Setting this value to 0 enforces online authentication every time.
         Available in iOS 16 and later.
+    - key: SkipLanguageAndLocaleSetupForNewUsers
+      supportedOS:
+        iOS:
+          introduced: '16.2'
+      type: <boolean>
+      presence: optional
+      default: false
+      content: Whether the language & locale pane will be skipped for new users of
+        Shared iPad. If 'true', system language & locale will be picked automatically
+        for the new user.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -835,7 +845,6 @@ payloadkeys:
         sharedipad:
           mode: allowed
           devicechannel: false
-          userchannel: true
         userenrollment:
           mode: forbidden
       macOS:

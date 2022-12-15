@@ -739,6 +739,36 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The password used for authentication.
+  - key: OnDemandEnabled
+    title: Enable VPN On Demand
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 0
+    content: If 1, VPN is brought up on demand.
+  - key: OnDemandUserOverrideDisabled
+    title: Prevent users from toggling VPN On Demand
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 0
+    content: If 1, the Connect On Demand toggle in Settings is disabled for this configuration.
+  - key: OnDemandRules
+    title: On Demand Rules
+    type: <array>
+    presence: optional
+    content: Determines when and how an OnDemand VPN should be used.
+    subkeytype: OnDemandRulesElement
+    subkeys: *id004
   - key: DeadPeerDetectionRate
     title: Dead Peer Detection Rate
     type: <string>

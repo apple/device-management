@@ -112,7 +112,7 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', prevents the computer from sleeping as long as Content Caching is on (System Preferences > Sharing > Content Caching is on). Customers who want Content Caching to be as available as musch as possible should turn this setting on.
+    If 'true', prevents the computer from sleeping as long as Content Caching is on (System Preferences > Sharing > Content Caching is on). Customers who want Content Caching to be as available as much as possible should turn this setting on.
     Available in macOS 10.15 and later.
 - key: ListenRanges
   supportedOS:

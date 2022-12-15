@@ -32,6 +32,14 @@ payloadkeys:
       presence: required
       content: The unique identifier of the account. This can be used as a "primary
         key" to access a specific account.
+    - key: _removed
+      title: Indicates removal of the account.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: To indicate removal of an account, this key's value is set to true,
+        and only this key and the "identifier" key will be present in the status item
+        object.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>

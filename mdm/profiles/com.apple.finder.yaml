@@ -47,7 +47,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, extneral hard drives will not appear on the desktop.
+  content: If set to false, external hard drives will not appear on the desktop.
 - key: ShowHardDrivesOnDesktop
   type: <boolean>
   presence: optional

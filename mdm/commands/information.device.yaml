@@ -269,7 +269,7 @@ payloadkeys:
     - key: SerialNumber
       supportedOS:
         iOS:
-          accessrights: AllowQueryDeviceInformatio
+          accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
         macOS:
@@ -731,6 +731,18 @@ payloadkeys:
       content: |-
         The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
         Available in iOS 16 and later.
+    - key: SkipLanguageAndLocaleSetupForNewUsers
+      supportedOS:
+        iOS:
+          introduced: '16.2'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: Whether the language & locale pane will be skipped for new users of
+        Shared iPad
     - key: PushToken
       supportedOS:
         iOS:
@@ -738,12 +750,10 @@ payloadkeys:
           accessrights: AllowQueryDeviceInformation
           sharedipad:
             devicechannel: false
-            userchannel: true
           userenrollment:
             mode: forbidden
         macOS:
           introduced: '10.12'
-          userchannel: true
         tvOS:
           introduced: n/a
       type: <string>
@@ -1123,11 +1133,28 @@ payloadkeys:
       content: The key that represents the device identifier you use to look up available
         OS updates through <https://gdmf.apple.com/v2/pmv>. Available in iOS 15 and
         later, and macOS 12 and later.
+    - key: SoftwareUpdateSettings
+      supportedOS:
+        iOS:
+          introduced: '14.5'
+          userenrollment:
+            mode: forbidden
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: Returns the device settings that control which updates appear in the
+        Software Update pane in Settings. OS updates through <https://gdmf.apple.com/v2/pmv>.
+        Available in iOS 14.5 and later.
     - key: AccessibilitySettings
       supportedOS:
         iOS:
           introduced: '16.0'
           supervised: true
+          sharedipad:
+            mode: allowed
+            devicechannel: false
           userenrollment:
             mode: forbidden
         macOS:
@@ -1229,7 +1256,7 @@ responsekeys:
     - key: OrganizationEmail
       type: <string>
       presence: optional
-      content: The orgnization's support email address. This value is available in
+      content: The organization's support email address. This value is available in
         iOS 7 and later, macOS 10.11 and later, and tvOS 9 and later.
     - key: OrganizationMagic
       type: <string>
@@ -1766,7 +1793,7 @@ responsekeys:
         introduced: n/a
       tvOS:
         introduced: n/a
-    type: <real>
+    type: <integer>
     content: The timeout interval for the user session. '0' means no timeout.
   - key: TemporarySessionTimeout
     supportedOS:
@@ -1776,7 +1803,7 @@ responsekeys:
         introduced: n/a
       tvOS:
         introduced: n/a
-    type: <real>
+    type: <integer>
     content: The timeout interval for the temporary session. '0' means no timeout.
   - key: TemporarySessionOnly
     supportedOS:
@@ -1811,10 +1838,21 @@ responsekeys:
         introduced: n/a
       tvOS:
         introduced: n/a
-    type: <real>
+    type: <integer>
     content: |-
       The grace period for Shared iPad online authentication (in days). 0 means the device requires online authentication for every login.
       Available in iOS 16 and later.
+  - key: SkipLanguageAndLocaleSetupForNewUsers
+    supportedOS:
+      iOS:
+        introduced: '16.2'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: Whether the language & locale pane will be skipped for new users of Shared
+      iPad
   - key: PushToken
     supportedOS:
       iOS:
@@ -2214,11 +2252,33 @@ responsekeys:
     content: The key representing the device identifier to be used when looking up
       available OS updates via <https://gdmf.apple.com/v2/pmv>. Available in iOS 14.5
       and later.
+  - key: SoftwareUpdateSettings
+    supportedOS:
+      iOS:
+        introduced: '14.5'
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <dictionary>
+    content: Properties that control which updates appear in the Software Update pane
+      in Settings.
+    subkeys:
+    - key: RecommendationsCadence
+      type: <integer>
+      content: Which software updates are presented to the user. 0 (the default) allows
+        all updates, 1 allows only older updates. 2 allows only newer updates. No
+        effect if only a single update would be offered to the user for this device.
   - key: AccessibilitySettings
     supportedOS:
       iOS:
         introduced: '16.0'
         supervised: true
+        sharedipad:
+          mode: allowed
+          devicechannel: false
         userenrollment:
           mode: forbidden
       macOS:

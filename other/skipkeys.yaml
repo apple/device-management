@@ -401,19 +401,6 @@ payloadkeys:
   presence: optional
   content: 'Skips the “Where is this Apple TV?” screen in tvOS. Availability: tvOS
     11.4+.'
-- key: UnlockWithWatch
-  title: Skips Unlock with Apple Watch pane
-  supportedOS:
-    iOS:
-      introduced: n/a
-    macOS:
-      introduced: '12.0'
-    tvOS:
-      introduced: n/a
-  type: <string>
-  presence: optional
-  content: 'Skips Unlock Your Mac with your Apple Watch pane. Availability: macOS
-    12+.'
 - key: UpdateCompleted
   title: Skips Software Update Complete pane
   supportedOS:

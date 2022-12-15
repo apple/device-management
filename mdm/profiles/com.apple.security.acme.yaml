@@ -14,6 +14,15 @@ payload:
         userchannel: false
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: '13.1'
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     tvOS:
       introduced: '16.0'
       supervised: false
@@ -68,6 +77,7 @@ payloadkeys:
     If 'false', the private key isn't bound to the device.
     If 'true', the private key is bound to the device. The Secure Enclave generates the key pair, and the private key is cryptographically entangled with a system key. This prevents the system from exporting the private key.
     If 'true', 'KeyType' must be 'ECSECPrimeRandom' and 'KeySize' must be 256 or 384.
+    On macOS, this key is required but must have a value of 'false'.
 - key: Subject
   title: Subject
   type: <array>
@@ -148,3 +158,26 @@ payloadkeys:
   content: |-
     If 'true', the device provides attestations describing the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
     When 'Attest' is 'true', 'HardwareBound' must also be 'true'.
+    On macOS, this key, if present, must have a value of 'false'.
+- key: KeyIsExtractable
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: Whether the private key of the identity obtained via SCEP should be tagged
+    as "non-extractable" in the keychain.
+- key: AllowAllAppsAccess
+  title: Allow All Apps Access
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If true, all apps have access to the private key.

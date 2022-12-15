@@ -24,6 +24,18 @@ payloadkeys:
   content: If 'true', requires the user to set a passcode without any requirements
     about the length or quality of the passcode. The presence of any other keys implicitly
     requires a passcode, and overrides this key's value.
+- key: RequireAlphanumericPasscode
+  title: Require Alphanumeric Passcode
+  supportedOS:
+    iOS:
+      introduced: '16.2'
+    macOS:
+      introduced: '13.1'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, the passcode must consist of at least one alphabetic characters
+    ("abcd"), and at least one number.
 - key: RequireComplexPasscode
   title: Require Complex Passcode
   type: <boolean>
@@ -31,7 +43,7 @@ payloadkeys:
   default: false
   content: If 'true', requires a complex passcode. A complex passcode is one that
     doesn't contain repeated characters or increasing/decreasing characters (such
-    as 123 or CBA), and must contain at least one nonnumeric/nonalphabetic character.
+    as 123 or CBA).
 - key: MinimumLength
   title: Minimum Passcode Length
   type: <integer>
@@ -41,6 +53,21 @@ payloadkeys:
     max: 16
   default: 0
   content: The minimum number of characters a passcode can contain.
+- key: MinimumComplexCharacters
+  title: Minimum Complex Characters
+  supportedOS:
+    iOS:
+      introduced: '16.2'
+    macOS:
+      introduced: '13.1'
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 4
+  default: 1
+  content: Specifies the minimum number of complex characters that must be present.
+    Only used when RequireComplexPasscode is true.
 - key: MaximumFailedAttempts
   title: Maximum Number of Failed Attempts
   type: <integer>
@@ -52,6 +79,18 @@ payloadkeys:
   content: |-
     The number of failed passcode attempts that the system allows the user before iOS erases the device or macOS locks the device. If you don't change this setting, after six failed attempts, the device imposes a time delay before the user can enter a passcode again. The time delay increases with each failed attempt.
     After the final failed attempt, the system securely erases all data and settings from the iOS device. A macOS device locks after the final attempt. The passcode time delay begins after the sixth attempt, so if this value is six or lower, the system has no time delay and triggers the erase or lock as soon as the user exceeds the limit.
+- key: FailedAttemptsResetInMinutes
+  title: Failed Attempts Reset
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '13.1'
+  type: <integer>
+  presence: optional
+  content: The number of minutes before the login will be reset after the maximum
+    number of failed attempts has been reached. The MaximumFailedAttempts key must
+    be set for this to take effect.
 - key: MaximumGracePeriodInMinutes
   title: Maximum Grace Period
   type: <integer>
@@ -69,6 +108,21 @@ payloadkeys:
   content: |-
     The maximum period that a user can select, during which the device can be idle before the system automatically locks it. When the device reaches this limit, the device locks and the user must enter the passcode to unlock it. In the absence of this key, the user can select any period.
     macOS translates this to screensaver settings.
+- key: MaximumPasscodeAgeInDays
+  title: Maximum Passcode Age
+  supportedOS:
+    iOS:
+      introduced: '16.2'
+    macOS:
+      introduced: '13.1'
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 730
+  content: Specifies the maximum number of days for which the passcode can remain
+    unchanged. After this number of days, the user is forced to change the passcode
+    before the device is unlocked.
 - key: PasscodeReuseLimit
   title: Passcode Reuse Limit
   type: <integer>
@@ -76,7 +130,21 @@ payloadkeys:
   range:
     min: 1
     max: 50
-  content: The number of historical passcode entries the system checks when vaildating
+  content: The number of historical passcode entries the system checks when validating
     a new passcode. The device refuses a new passcode if it matches a previously used
     passcode within the specified passcode history range. In the absence of this key,
     the system performs no historical check.
+- key: ChangeAtNextAuth
+  title: Change At Next Auth
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '13.1'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, forces a password reset to occur the next time the user
+    tries to authenticate. If this key is set in a configuration in the system scope
+    (device channel), the setting takes effect for all users, and admin authentications
+    may fail until the admin user password is also reset.

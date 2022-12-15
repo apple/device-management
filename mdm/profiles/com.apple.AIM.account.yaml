@@ -54,7 +54,7 @@ payloadkeys:
   default: 5190
   content: The connection port for the server.
 - key: AIMAuthentication
-  title: AIM Authentification
+  title: AIM Authentication
   type: <string>
   presence: required
   rangelist:

@@ -53,7 +53,7 @@ payloadkeys:
   default: 5222
   content: The server's port.
 - key: JabberAuthentication
-  title: Jabber Authentification
+  title: Jabber Authentication
   type: <string>
   presence: required
   rangelist:

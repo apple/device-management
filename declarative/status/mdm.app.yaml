@@ -25,6 +25,14 @@ payloadkeys:
       type: <string>
       presence: required
       content: The app's bundle id, which is unique.
+    - key: _removed
+      title: Indicates removal of the app.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: To indicate removal of an app, this key's value is set to true, and
+        only this key and the "identifier" key will be present in the status item
+        object.
     - key: name
       title: App name
       type: <string>
