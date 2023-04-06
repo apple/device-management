@@ -14,4 +14,5 @@ payloadkeys:
   title: Status item value.
   type: <string>
   presence: required
-  content: Status value.
+  content: Identifies the operating system's rapid security response version in use
+    on the device (for example, 'a').

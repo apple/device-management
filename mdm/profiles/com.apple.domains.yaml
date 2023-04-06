@@ -82,8 +82,9 @@ payloadkeys:
       allowmanualinstall: false
   type: <array>
   presence: optional
-  content: An array of up to 10 strings. URLs matching the patterns listed here will
-    have relaxed enforcement of cross-site tracking prevention.
+  content: |-
+    An array of up to 10 strings. URLs matching the patterns listed here have relaxed enforcement of cross-site tracking prevention.
+    Available in iOS 16.2 and later and macOS 13.1 and later.
   subkeys:
   - key: CrossSiteTrackingPreventionRelaxedDomainItem
     type: <string>

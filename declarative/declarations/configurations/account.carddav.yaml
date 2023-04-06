@@ -47,4 +47,4 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
-    this account. The corresponding asset must be of type UserNameAndPasswordCredentials.
+    this account. The corresponding asset must be of type CredentialUserNameAndPassword.

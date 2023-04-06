@@ -158,7 +158,7 @@ payloadkeys:
   content: |-
     If 'true', the device provides attestations describing the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
     When 'Attest' is 'true', 'HardwareBound' must also be 'true'.
-    On macOS, this key, if present, must have a value of 'false'.
+    On macOS, if this key is present, it must have a value of 'false'.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
@@ -168,8 +168,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: Whether the private key of the identity obtained via SCEP should be tagged
-    as "non-extractable" in the keychain.
+  content: If true, the private key of the identity obtained via SCEP should be tagged
+    as “non-extractable” in the keychain.
 - key: AllowAllAppsAccess
   title: Allow All Apps Access
   supportedOS:
@@ -180,4 +180,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If true, all apps have access to the private key.
+  content: If 'true', all apps have access to the private key.

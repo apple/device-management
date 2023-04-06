@@ -17,7 +17,6 @@ payload:
     Notes:
     * The payload must exist in a "system" scoped profile.
     * If more than one profile contains this payload, the most restrictive union of settings will be used.
-    * Per Firewall team's request, the "Automatically allow signed downloaded software" and "Automatically allow built-in software" options are not supported but both will be forced ON when this payload is present.
 payloadkeys:
 - key: EnableFirewall
   type: <boolean>

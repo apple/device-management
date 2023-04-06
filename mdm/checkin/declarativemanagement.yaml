@@ -33,10 +33,6 @@ payloadkeys:
   rangelist:
   - DeclarativeManagement
   content: The message type, which must have a value of 'DeclarativeManagement'.
-- key: EnrollmentID
-  type: <string>
-  presence: required
-  content: The per-enrollment identifier for the device.
 - key: Endpoint
   type: <string>
   presence: required
@@ -50,3 +46,79 @@ payloadkeys:
   type: <data>
   presence: optional
   content: A Base64-encoded JSON object using the SynchronizationTokens schema.
+- key: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID.
+- key: EnrollmentID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: required
+    macOS:
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The per-enrollment identifier for the device.
+- key: EnrollmentUserID
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      devicechannel: false
+      userenrollment:
+        mode: required
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: A per-enrollment identifier that identifies the user for user enrollments.
+- key: UserShortName
+  supportedOS:
+    iOS:
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: On Shared iPad, this value returns the Managed Apple ID of the user. When
+    present indicates that the token is for the user channel. On macOS, this value
+    always returns the short name of the user.
+- key: UserID
+  supportedOS:
+    iOS:
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: On macOS, this value always returns the ID of the user. On Shared iPad,
+    this value is always set to FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF to indicate that
+    no authentication will occur.
+- key: UserLongName
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      devicechannel: false
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: required
+  content: The full name of the user.

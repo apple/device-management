@@ -60,6 +60,7 @@ responsekeys:
       type: <string>
       presence: required
       rangelist:
+      - Queued
       - NeedsRedemption
       - Redeeming
       - Prompting
@@ -81,6 +82,7 @@ responsekeys:
       - Failed
       content: |-
         The status of the managed app, which is one of the following values:
+        * 'Queued': The app is scheduled for installation.
         * 'NeedsRedemption': The app needs a redemption code to complete installation.
         * 'Redeeming': The device is redeeming the redemption code for the app.
         * 'Prompting': The app installation is prompting the user.

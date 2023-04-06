@@ -116,7 +116,8 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The Managed Apple ID of the user. Available in iOS 13.1 and later, and
-    macOS 10.15 and later.
+    macOS 10.15 and later. This is only used with the profile-based BYOD enrollment
+    flow.
 - key: AssignedManagedAppleID
   title: Assigned Managed Apple ID
   supportedOS:
@@ -128,9 +129,8 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The Managed Apple ID pre-assigned to the authenticated user. This is only used with the BYOD enrollment flow.
-    Available in iOS 15 and later.
+  content: The Managed Apple ID pre-assigned to the authenticated user. This is only
+    used with the account-based BYOD enrollment flow. Available in iOS 15 and later.
 - key: EnrollmentMode
   title: Enrollment Mode
   supportedOS:
@@ -144,9 +144,9 @@ payloadkeys:
   presence: optional
   rangelist:
   - BYOD
-  content: |-
-    The enrollment mode the server indicates must be used when enrolling. This must be present for BYOD enrollments.
-    Available in iOS 15 and later.
+  content: The enrollment mode the server indicates must be used when enrolling. This
+    must be present for account-based BYOD enrollments, but must not be present for
+    profile-based BYOD enrollments. Available in iOS 15 and later.
 - key: ServerURLPinningCertificateUUIDs
   supportedOS:
     iOS:

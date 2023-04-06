@@ -242,6 +242,20 @@ payloadkeys:
       type: <string>
       content: The key to get the model. This value requires the Device Information
         access right.
+    - key: ModelNumber
+      supportedOS:
+        iOS:
+          introduced: '16.4'
+          accessrights: AllowQueryDeviceInformation
+        macOS:
+          introduced: '13.3'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: '16.4'
+          accessrights: AllowQueryDeviceInformation
+      type: <string>
+      content: The device's hardware model number, including region info, e.g. "MK1A3LL/A".
+        Requires Device Information right. Requires Apple silicon on macOS.
     - key: IsAppleSilicon
       supportedOS:
         iOS:
@@ -365,12 +379,24 @@ payloadkeys:
           introduced: '5.0'
           accessrights: AllowQueryDeviceInformation
         macOS:
-          introduced: n/a
+          introduced: '13.3'
+          accessrights: AllowQueryDeviceInformation
         tvOS:
           introduced: n/a
       type: <string>
       content: The key to get the battery level. This value requires the Device Information
         access right, and is available in iOS 5 and later.
+    - key: HasBattery
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '13.3'
+          accessrights: AllowQueryDeviceInformation
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: Whether the device has an internal battery.
     - key: IsSupervised
       supportedOS:
         iOS:
@@ -1180,6 +1206,21 @@ payloadkeys:
       content: |-
         The key to get an attestation of the device's properties.
         Available in iOS 16 and later and tvOS 16 and later.
+    - key: EACSPreflight
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '13.3'
+          accessrights: AllowQueryDeviceInformation
+          userchannel: false
+          userenrollment:
+            mode: forbidden
+        tvOS:
+          introduced: n/a
+      type: <string>
+      content: Determines whether the device could perform an EraseDevice using Erase
+        All Content and Settings.
 - key: DeviceAttestationNonce
   supportedOS:
     iOS:
@@ -1380,6 +1421,17 @@ responsekeys:
   - key: Model
     type: <string>
     content: The model. This value requires the Device Information access right.
+  - key: ModelNumber
+    supportedOS:
+      iOS:
+        introduced: '16.4'
+      macOS:
+        introduced: '13.3'
+      tvOS:
+        introduced: '16.4'
+    type: <string>
+    content: The device's hardware model number, including region info, e.g. "MK1A3LL/A".
+      Requires Device Information right. Requires Apple silicon on macOS.
   - key: IsAppleSilicon
     supportedOS:
       iOS:
@@ -1474,13 +1526,23 @@ responsekeys:
       iOS:
         introduced: '5.0'
       macOS:
-        introduced: n/a
+        introduced: '13.3'
       tvOS:
         introduced: n/a
     type: <real>
     content: The battery level, between '0.0' and '1.0', or '-1.0' if MDM can't determine
       the battery level. This value requires the Device Information access right,
       and is available in iOS 5 and later.
+  - key: HasBattery
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '13.3'
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    content: Whether the device has an internal battery.
   - key: IsSupervised
     supportedOS:
       iOS:
@@ -1648,7 +1710,7 @@ responsekeys:
       type: <boolean>
       content: If 'true', start a new scan. This value is available in macOS 10.11
         and later.
-    - key: AutomaticCheckEnabled
+    - key: AutoCheckEnabled
       type: <boolean>
       content: The preference to automatically check for app updates. This value is
         available in macOS 10.11 and later.
@@ -2268,9 +2330,12 @@ responsekeys:
     subkeys:
     - key: RecommendationsCadence
       type: <integer>
-      content: Which software updates are presented to the user. 0 (the default) allows
-        all updates, 1 allows only older updates. 2 allows only newer updates. No
-        effect if only a single update would be offered to the user for this device.
+      content: |-
+        Which software updates to present to the user.
+        * '0' (the default) allows all updates.
+        * '1' allows only older updates.
+        * '2' allows only newer updates.
+        No effect if the device qualifies for only a single update.
   - key: AccessibilitySettings
     supportedOS:
       iOS:
@@ -2318,8 +2383,9 @@ responsekeys:
       - 9
       - 10
       - 11
-      content: The accessibility text size apps that support dynamic text use. 0 is
-        the smallest value, and 11 is the largest available.
+      content: |-
+        The accessibility text size apps that support dynamic text use. 0 is the smallest value, and 11 is the largest available.
+        '-1' indicates that the current size is unknown or hasn't been explicitly set.
     - key: TouchAccommodationsEnabled
       type: <boolean>
       content: If 'true', device has enabled touch accommodations.
@@ -2347,3 +2413,21 @@ responsekeys:
     subkeys:
     - key: AttestationCertificate
       type: <data>
+  - key: EACSPreflight
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '13.3'
+        userenrollment:
+          mode: forbidden
+      tvOS:
+        introduced: n/a
+    type: <string>
+    content: |-
+      Determines whether the device could perform an EraseDevice using Erase All Content and Settings.
+      Responses can include:
+        "success" -> device supports EACS and everything looks OK
+        "not supported" -> device is too old to support EACS (does not contain T2 or AppleSilicon)
+        "unknown failure" -> something went wrong for which we don't have a better error message
+        (other string) -> reason why EACS cannot be performed at the current time (e.g. "System is not sealed")

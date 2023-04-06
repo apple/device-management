@@ -87,9 +87,14 @@ payloadkeys:
   default: Any
   content: |-
     The encryption type for the network.
-
-    WPA specifies WPA only; WPA2 applies to both encryption types.
-    Available in iOS 4.0 and later, and in all versions of macOS. The 'None' value is available in iOS 5.0 and later, and the 'WPA2' value is available in iOS 8.0 and later.
+    If set to anything except 'None', the payload may contain the following three keys: 'Password', 'PayloadCertificateUUID', or 'EAPClientConfiguration'.
+    As of iOS 16, tvOS 16, watchOS 9, and macOS 13:
+    * 'WPA' allows joining WPA or WPA2 networks
+    * 'WPA2' allows joining WPA2 or WPA3 networks
+    * 'WPA3' allows joining WPA3 networks only
+    * 'Any' allows joining WPA, WPA2, WPA3, and WEP networks.
+    Prior to iOS 16, tvOS 16, and watchOS 9, specifying 'WPA', 'WPA2', and 'WPA3' were equivalent and would allow joining any WPA network.
+    Prior to macOS 13, the encryption type, if specified explicitly, needed to match the encryption type of the network exactly.
 - key: Password
   title: Password
   type: <string>

@@ -237,7 +237,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', limits Apple personalized advertising. Available in iOS 14
-    and later.
+    and later and macOS 12 and later.
 - key: allowAppRemoval
   title: Allow App Removal
   supportedOS:
@@ -571,8 +571,8 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', disables document and key-value syncing to iCloud. As of iOS
-    13, this restriction requires a supervised device. Available in iOS 5 and later,
-    and macOS 10.11 and later.
+    13, this restriction requires a supervised device and shared iPads don't support
+    it. Available in iOS 5 and later, and macOS 10.11 and later.
 - key: allowCloudKeychainSync
   supportedOS:
     iOS:
@@ -1251,8 +1251,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables Mail Privacy Protection on the device. Available in
-    iOS 15.2 and later.
+  content: If 'false', disables Mail Privacy Protection on the device. Requires a
+    supervised device. Available in iOS 15.2 and later.
 - key: allowManagedAppsCloudSync
   title: Allow iCloud Sync for Managed Apps
   supportedOS:
@@ -1648,7 +1648,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, rapid security responses can't be installed.
+  content: If 'false', prohibits installation of rapid security responses.
 - key: allowRapidSecurityResponseRemoval
   title: Allow Rapid Security Response Removal
   supportedOS:
@@ -1666,7 +1666,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, rapid security responses can't be removed.
+  content: If 'false', prohibits removal of rapid security responses.
 - key: allowRemoteAppPairing
   title: Allow pairing with Remote app
   supportedOS:
@@ -1936,7 +1936,8 @@ payloadkeys:
   default: true
   content: |-
     If 'false', allows the device to always connect to USB accessories while locked. On macOS, allows new USB accessories to connect without authorization.
-    This value is ignored if Lockdown mode is enabled. Requires a supervised device. Available in iOS 11.4.1 and later and macOS 13 and later.
+    If the system has Lockdown mode enabled, the system ignores this value.
+    Requires a supervised device. Available in iOS 11.4.1 and later and macOS 13 and later.
 - key: allowVideoConferencing
   title: Allow Video Conferencing
   supportedOS:
@@ -2063,9 +2064,9 @@ payloadkeys:
       supervised: true
   type: <array>
   presence: optional
-  content: If present, prevents bundle IDs listed in the array from being shown or
-    launchable. Include the value 'com.apple.webapp' to restrict all webclips. Requires
-    a supervised device. Available in iOS 9.3 and later, and tvOS 11.0 and later.
+  content: |-
+    If present, prevents bundle IDs listed in the array from being shown or launchable. Include the value 'com.apple.webapp' to restrict all webclips. Note that denying system apps may disable other functionality. For example, denying the App Store app may prevent users from accepting the terms and conditions for user-based VPP.
+    Requires a supervised device. Available in iOS 9.3 and later, and tvOS 11.0 and later.
   subkeys:
   - key: appBlockedBundleID
     title: Blocked App
@@ -2083,8 +2084,9 @@ payloadkeys:
   type: <integer>
   presence: optional
   default: 172800
-  content: The value, in seconds, after which the fingerprint unlock will require
-    a password to authenticate. The default value is 48 hours.
+  content: |-
+    The value, in seconds, after which the fingerprint unlock requires a password to authenticate. The default value is 48 hours.
+    Available in macOS 12 and later.
 - key: enforcedSoftwareUpdateDelay
   supportedOS:
     iOS:

@@ -62,7 +62,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows apps access to the private key.
+  content: If 'true', allows apps access to the private key. Available in macOS 10.10
+    and later.
 - key: KeyIsExtractable
   supportedOS:
     iOS:

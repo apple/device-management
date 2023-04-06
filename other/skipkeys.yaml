@@ -286,7 +286,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: If the key is included in the SkipSetup array the Safety pane will be skipped.
+  content: 'Skips the Safety pane. Availability: iOS 16+.'
 - key: ScreenTime
   title: Skip Screen Time pane
   supportedOS:

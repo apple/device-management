@@ -79,8 +79,8 @@ payloadkeys:
   title: On Demand Rules
   type: <array>
   presence: optional
-  content: An array of rules defining the DNS settings. If rules are not present,
-    the system always applies the DNS settings. These rules are identical to the 'OnDemandRules'
+  content: An array of rules defining the DNS settings. If rules aren't present, the
+    system always applies the DNS settings. These rules are identical to the 'OnDemandRules'
     array in VPN payloads.
   subkeytype: OnDemandRulesElement
   subkeys:

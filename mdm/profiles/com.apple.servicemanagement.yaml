@@ -20,7 +20,7 @@ payloadkeys:
   title: Rules
   type: <array>
   presence: required
-  content: An array of rule dictionaries.
+  content: An array of service management rules.
   subkeys:
   - key: Rule
     title: Rule
@@ -43,8 +43,8 @@ payloadkeys:
       title: Rule Value
       type: <string>
       presence: required
-      content: The value to compare with each login item's value, to determine a match
-        to this rule.
+      content: The value to compare with each login item's value, to determine if
+        this rule is a match.
     - key: Comment
       title: Comment
       type: <string>
@@ -54,5 +54,5 @@ payloadkeys:
       title: Team Identifier
       type: <string>
       presence: optional
-      content: An additional constraint to limit the scope of the rule that is tested
-        after matching the RuleType/RuleValue.
+      content: An additional constraint to limit the scope of the rule that the system
+        tests after matching the 'RuleType' and 'RuleValue'.

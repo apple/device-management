@@ -178,6 +178,21 @@ payloadkeys:
     default: true
     content: If 'false', this app isn't removable while it's a managed app. This value
       is available in iOS 14 and later, and tvOS 14 and later.
+  - key: TapToPayScreenLock
+    supportedOS:
+      iOS:
+        introduced: '16.4'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: Enabling this setting will require Tap to Pay on iPhone users to use
+      Face ID or a passcode to unlock their device after every transaction that requires
+      a customer’s card PIN. Disabling this setting will allow users to configure
+      this setting on their device based on personal preference.
 - key: ChangeManagementState
   supportedOS:
     iOS:
