@@ -11,7 +11,7 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
-  content: Sets or clears the recovery lock password (AppleSilicon devices only).
+  content: Sets or clears the recovery lock password (Apple Silicon devices only).
     Requires the "Device lock and passcode removal right".
 payloadkeys:
 - key: CurrentPassword

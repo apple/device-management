@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.13'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -32,4 +33,4 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If true, hide this item in the Users & Groups login items list.
+      content: If 'true', hide this item in the Users & Groups login items list.

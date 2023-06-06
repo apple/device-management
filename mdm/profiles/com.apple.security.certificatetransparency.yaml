@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: 12.1.1
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: 10.14.2
+      multiple: true
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -24,10 +26,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: 12.1.1
+      multiple: true
       supervised: false
       allowmanualinstall: true
     watchOS:
       introduced: 5.1.1
+      multiple: true
       supervised: false
       allowmanualinstall: true
   content: Policies that affect system-wide certificate transparency enforcement.

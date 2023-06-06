@@ -1,0 +1,86 @@
+title: Status Security Certificate List
+description: The client's managed certificates.
+payload:
+  statusitemtype: security.certificate.list
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: security.certificate.list
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: Certificate
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the certificate.
+      type: <string>
+      presence: required
+      content: The unique identifier of the certificate. This is used as the "primary
+        key" for each list item.
+    - key: _removed
+      title: Indicates removal of the certificate.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: To indicate removal of a certificate, this key's value is set to true,
+        and only this key and the "identifier" key will be present in the status item
+        object.
+    - key: declaration-identifier
+      title: Asset declaration identifier.
+      type: <string>
+      presence: optional
+      content: The identifier of the asset declaration that installed the certificate.
+        Only present if the certificate was installed by a declaration.
+    - key: subject-summary
+      title: Subject summary
+      type: <string>
+      presence: required
+      content: The summary of the certificate's subject.
+    - key: is-identity
+      title: Is Identity
+      type: <boolean>
+      presence: required
+      content: If "true", the certificate is an identity certificate.
+    - key: data
+      title: Certificate Data
+      type: <data>
+      presence: required
+      content: The certificate data in DER-encoded X.509 format.

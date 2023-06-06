@@ -1,0 +1,44 @@
+title: Status Software Update Install State
+description: The software update install state.
+payload:
+  statusitemtype: softwareupdate.install-state
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: softwareupdate.install-state
+  title: The software update install state.
+  type: <string>
+  presence: required
+  rangelist:
+  - none
+  - waiting
+  - downloading
+  - prepared
+  - installing
+  - failed
+  content: |-
+    The software update install status:
+    * none - there is no software update pending, and any previous software update succeeded
+    * waiting - a software update is waiting to start
+    * downloading - the data for a software update is being downloaded
+    * prepared - the software update has been prepared and is ready for installation
+    * installing - the software update is being installed
+    * failed - the software update failed

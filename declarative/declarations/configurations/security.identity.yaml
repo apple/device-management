@@ -1,0 +1,70 @@
+title: Security:Identity
+description: Use this configuration to install an identity on the device.
+payload:
+  declarationtype: com.apple.configuration.security.identity
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: CredentialAssetReference
+  title: Credential asset reference
+  type: <string>
+  presence: required
+  content: Specifies the identifier of an asset declaration containing the identity
+    to be installed.
+- key: AllowAllAppsAccess
+  title: Allow all apps access
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to "true", apps have access to the private key.
+- key: KeyIsExtractable
+  title: Key is extractable
+  supportedOS:
+    iOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If set to "true", the private key will be marked as extractable in the
+    keychain.

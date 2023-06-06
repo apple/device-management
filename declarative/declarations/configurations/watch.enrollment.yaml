@@ -1,0 +1,42 @@
+title: Watch:Enrollment
+description: Specifies an MDMv1 Apple Watch enrollment profile
+payload:
+  declarationtype: com.apple.configuration.watch.enrollment
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: EnrollmentProfileURL
+  title: Watch Enrollment Profile's URL.
+  type: <string>
+  presence: required
+  content: The URL of the profile that the Apple Watch will download and install if
+    the user opts in to management during the pairing process. This must be an "https"
+    URL. The pairing iPhone must be supervised for this device enrollment to succeed.
+    The profile must contain an MDM payload or it will be ignored and Apple Watch
+    will not be enrolled. Apple Watch will attempt to install each payload contained
+    in the profile.
+- key: AnchorCertificateAssetReferences
+  title: Anchor Certificate Asset References.
+  type: <array>
+  presence: optional
+  content: Specifies an array of identifiers of asset declarations containing anchor
+    certificates to be used when evaluating the trust of the enrollment profile server.
+    The corresponding assets must be of type "com.apple.asset.credential.certificate".
+  subkeys:
+  - key: AnchorCertificateAssetReferenceItem
+    type: <string>
+    content: Specifies the identifier of an asset declaration containing the anchor
+      certificate to be used.

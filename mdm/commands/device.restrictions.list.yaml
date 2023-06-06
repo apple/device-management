@@ -20,6 +20,10 @@ payload:
       introduced: '6.1'
       accessrights: AllowQueryRestrictions
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryRestrictions
+      supervised: false
   content: This command allows the server to determine what restrictions are being
     enforced on the device, and the total sum of all restrictions. This command requires
     the Restrictions Query access right. This technically does work on macOS but it

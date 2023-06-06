@@ -29,6 +29,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowInstallationRemoval
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowInstallationRemoval
+      supervised: false
   content: This command allows the host to install a configuration profile. The profile
     may be encrypted using any installed identity certificate. The profile may also
     be signed. This command requires the Profile Installation and Removal right. It's

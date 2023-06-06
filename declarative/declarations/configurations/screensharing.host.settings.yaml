@@ -1,0 +1,58 @@
+title: Screen Sharing:Host Settings
+description: Use this configuration to define Screen Sharing host settings and restrictions.
+payload:
+  declarationtype: com.apple.configuration.screensharing.host.settings
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: MaximumVirtualDisplays
+  title: Maximum number of Virtual Displays
+  type: <integer>
+  presence: optional
+  range:
+    min: 0
+    max: 2
+  content: Sets the maximum number of Virtual Displays to make available to clients.
+- key: PortBase
+  title: UDP Port base
+  type: <integer>
+  presence: optional
+  range:
+    min: 1024
+    max: 65535
+  content: |-
+    Specifies the initial UDP port number for connecting to the host. Screen Sharing needs multiple connections
+    so additional connections will increment this base port number by 1 for each needed connection. This does not
+    change the port number used to initially establish a connection with a host, which is always TCP port 5900.
+- key: PreventCopyFilesFromHost
+  title: Prevent copying files from host
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to true to prevent users from copying files from the Screen Sharing
+    host.
+- key: PreventCopyFilesToHost
+  title: Prevent copying files to host
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to true to prevent users from copying files to the Screen Sharing host.
+- key: PreventHighPerformanceConnections
+  title: Prevent High Performance connections
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to true to prevent clients from establishing High Performance connections
+    to the host.

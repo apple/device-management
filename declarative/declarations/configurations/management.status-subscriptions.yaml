@@ -6,20 +6,35 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: true
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: true
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: StatusItems
   title: Status Items

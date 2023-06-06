@@ -28,6 +28,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowInspection
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowInspection
+      supervised: false
   content: This command allows the MDM server to query for the profiles installed
     on the device. This command requires the Inspect Profile Manifest right. It's
     supported on the user channel.

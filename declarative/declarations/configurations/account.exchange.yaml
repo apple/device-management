@@ -6,19 +6,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: This payload configures an Exchange ActiveSync account on an iOS device.
 payloadkeys:
@@ -50,7 +57,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The identifier of an asset declaration that contains the user identity
-    for this account. The corresponding asset must be of type UserIdentity.
+    for this account. The corresponding asset must be of type 'UserIdentity'.
 - key: HostName
   title: Server Host Name
   type: <string>
@@ -136,7 +143,94 @@ payloadkeys:
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with an Exchange server. The corresponding asset
+    must be of type 'CredentialUserNameAndPassword'.
+- key: AuthenticationIdentityAssetReference
+  title: Authentication Identity Asset Reference
+  type: <string>
+  presence: optional
+  content: The identifier of an asset declaration that contains the credentials for
+    this account to authenticate with an Exchange server. The corresponding asset
     must be of type CredentialUserNameAndPassword.
+- key: SMIME
+  title: S/MIME Settings
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Settings for S/MIME.
+  subkeys:
+  - key: Signing
+    title: S/MIME Signing Settings
+    type: <dictionary>
+    presence: optional
+    content: Settings for S/MIME signing.
+    subkeys:
+    - key: Enabled
+      title: Signing Enabled
+      type: <boolean>
+      presence: required
+      content: It true, S/MIME signing is enabled.
+    - key: IdentityAssetReference
+      title: S/MIME Signing Identity Asset Reference
+      type: <string>
+      presence: optional
+      content: Specifies the identifier of an asset declaration containing the identity
+        required for S/MIME signing of messages sent from this account.
+    - key: UserOverrideable
+      title: Signing User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, the user can turn S/MIME signing on or off in Settings.
+    - key: IdentityUserOverrideable
+      title: Signing Identity User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, the user can turn select an S/MIME signing identity in Settings.
+  - key: Encryption
+    title: S/MIME Encryption Settings
+    type: <dictionary>
+    presence: optional
+    content: Settings for S/MIME encryption.
+    subkeys:
+    - key: Enabled
+      title: Encryption By Default Enabled
+      type: <boolean>
+      presence: required
+      content: It true, S/MIME encryption by default is enabled. Cannot be overridden
+        by the user if the "PerMessageSwitchEnabled" key is set to false.
+    - key: IdentityAssetReference
+      title: S/MIME Encryption Identity Asset Reference
+      type: <string>
+      presence: optional
+      content: Specifies the identifier of an asset declaration containing the identity
+        required for S/MIME encryption. The public certificate is attached to outgoing
+        mail to allow encrypted mail to be sent to this user. When the user sends
+        encrypted mail, the public certificate is used to encrypt the copy of the
+        mail in their Sent mailbox.
+    - key: UserOverrideable
+      title: Encryption By Default User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, the user can turn S/MIME encryption by default on or off in
+        Settings.
+    - key: IdentityUserOverrideable
+      title: Encryption Identity User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, the user can turn select an S/MIME signing identity in Settings.
+    - key: PerMessageSwitchEnabled
+      title: Per Message Switch Enabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, enables the per-message encryption switch in the compose view.
 - key: MailServiceActive
   supportedOS:
     macOS:

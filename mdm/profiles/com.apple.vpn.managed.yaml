@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -22,6 +24,11 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: '17.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
 payloadkeys:
 - key: VPNType
   title: Type
@@ -30,13 +37,12 @@ payloadkeys:
   rangelist:
   - VPN
   - L2TP
-  - PPTP
   - IPSec
   - IKEv2
   - AlwaysOn
-  content: |-
-    The type of the VPN, which defines which settings are appropriate for this VPN payload.
-    If the type is 'VPN', then 'VPNSubType' is required.
+  - TransparentProxy
+  content: The type of the VPN, which defines which settings are appropriate for this
+    VPN payload. If the type is 'VPN' or 'TransparentProxy' then 'VPNSubType' is required.
 - key: VPNSubType
   title: VPN Subtype
   type: <string>
@@ -164,6 +170,8 @@ payloadkeys:
         introduced: '14.0'
       macOS:
         introduced: '10.15'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
@@ -201,6 +209,8 @@ payloadkeys:
         introduced: '14.2'
       macOS:
         introduced: '10.15'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
@@ -215,17 +225,17 @@ payloadkeys:
         introduced: '16.4'
       macOS:
         introduced: '13.3'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then internet-routable network traffic
-      for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual Voicemail, etc.)
-      is excluded from the tunnel. Note that some cellular carriers route cellular
-      services traffic directly to the carrier network, bypassing the internet.  Such
-      cellular services traffic is always excluded from the tunnel.
+    content: |-
+      If 'true' and 'IncludeAllNetworks' is 'true', then the system excludes internet-routable network traffic for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual Voicemail, etc.) from the tunnel. Note that some cellular carriers route cellular services traffic directly to the carrier network, bypassing the internet. Such cellular services traffic is always excluded from the tunnel.
+      Available in iOS 16.4 and later, and macOS 13.3 and later.
   - key: ExcludeAPNs
     title: Exclude APNs
     supportedOS:
@@ -233,14 +243,17 @@ payloadkeys:
         introduced: '16.4'
       macOS:
         introduced: '13.3'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then network traffic for the Apple
-      Push Notification service (APNs) is excluded from the tunnel.
+    content: |-
+      If 'true' and 'IncludeAllNetworks' is 'true', then the system excludes network traffic for the Apple Push Notification service (APNs) from the tunnel.
+      Available in iOS 16.4 and later, and macOS 13.3 and later.
   - key: OnDemandEnabled
     title: Enable VPN On Demand
     type: <integer>
@@ -430,6 +443,9 @@ payloadkeys:
           200 HTTP status code) without redirection, this rule matches.
 - key: IPv4
   title: IPv4 Settings
+  supportedOS:
+    tvOS:
+      introduced: n/a
   type: <dictionary>
   presence: optional
   content: The dictionary containing IPv4 settings.
@@ -445,6 +461,9 @@ payloadkeys:
     content: If 'true', all network traffic is sent over VPN.
 - key: PPP
   title: PPP
+  supportedOS:
+    tvOS:
+      introduced: n/a
   type: <dictionary>
   presence: optional
   content: The dictionary used when 'VPNType' is set to 'L2TP' or 'PTPP'.
@@ -556,6 +575,9 @@ payloadkeys:
     content: The length of time to wait before disconnecting an on demand connection
 - key: IPSec
   title: IPSec Settings
+  supportedOS:
+    tvOS:
+      introduced: n/a
   type: <dictionary>
   presence: optional
   content: The dictionary containing IPSec settings.
@@ -700,6 +722,9 @@ payloadkeys:
     subkeys: *id004
 - key: IKEv2
   title: IKEv2
+  supportedOS:
+    watchOS:
+      introduced: '10.0'
   type: <dictionary>
   presence: optional
   content: The dictionary used when 'VPNType' is set to 'IKEv2.'
@@ -740,7 +765,7 @@ payloadkeys:
     - ECDSA256
     - ECDSA384
     - ECDSA521
-    - Ed25519
+    - RSA-PSS
     default: RSA
     content: This key specifies the type of 'PayloadCertificateUUID' used for IKEv2
       machine authentication. If this key is included, the 'ServerCertificateIssuerCommonName'
@@ -786,7 +811,9 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If 1, VPN is brought up on demand.
+    content: |-
+      If 'true', enables VPN On Demand.
+      Available in iOS 14 and later, and macOS 10.15 and later.
   - key: OnDemandUserOverrideDisabled
     title: Prevent users from toggling VPN On Demand
     supportedOS:
@@ -800,16 +827,21 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If 1, the Connect On Demand toggle in Settings is disabled for this configuration.
+    content: |-
+      If 'true', the Connect On Demand toggle in Settings is disabled for this configuration.
+      Available in iOS 14 and later.
   - key: OnDemandRules
     title: On Demand Rules
     type: <array>
     presence: optional
-    content: Determines when and how an OnDemand VPN should be used.
+    content: An array of dictionaries defining On Demand Rules.
     subkeytype: OnDemandRulesElement
     subkeys: *id004
   - key: DeadPeerDetectionRate
     title: Dead Peer Detection Rate
+    supportedOS:
+      watchOS:
+        introduced: n/a
     type: <string>
     presence: optional
     rangelist:
@@ -967,6 +999,8 @@ payloadkeys:
         introduced: '13.0'
       macOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
@@ -977,7 +1011,7 @@ payloadkeys:
       If true, enables a tunnel over cellular data to carry traffic that is eligible for WiFi Assist and also requires VPN.
       Enabling fallback requires that the server support multiple tunnels for a single user.
   - key: MTU
-    title: Maximum Tranmission Unit
+    title: Maximum Transmission Unit
     supportedOS:
       iOS:
         introduced: '14.0'
@@ -999,6 +1033,8 @@ payloadkeys:
         introduced: '14.0'
       macOS:
         introduced: '10.15'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
@@ -1006,12 +1042,8 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If 1, then all network traffic will be routed through the VPN, with some exclusions. Several of the exclusions can be controlled with the ExcludeLocalNetworks, ExcludeCellularServices, and ExcludeAPNs properties. See the documentation for those properties.  The following traffic is always excluded from the tunnel.
-
-      * Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
-      * Traffic necessary for connecting to captive networks.
-      * Certain cellular services traffic that is not routable over the internet and is instead directly routed to the cellular network. See the ExcludeCellularServices property for more details.
-      * Network communication with a companion device such as a watchOS device.
+      If 'true', routes all traffic through the VPN.
+      Available in iOS 14 and later, and macOS 10.15 and later.
   - key: EnforceRoutes
     title: Enforce Routes
     supportedOS:
@@ -1025,9 +1057,10 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If 1, then all the VPN's non-default routes will take precedence over
-      any locally-defined routes. If IncludeAllNetworks is 1, the value of EnforceRoutes
-      is ignored.
+    content: |-
+      If 'true', all the VPN's non-default routes take precedence over any locally defined routes.
+      If 'IncludeAllNetworks' is 'true', the value of 'EnforceRoutes' is ignored.
+      Available in iOS 14.2 and later, and macOS 11 and later.
   - key: ExcludeLocalNetworks
     title: Exclude Local Networks
     supportedOS:
@@ -1035,14 +1068,16 @@ payloadkeys:
         introduced: '14.2'
       macOS:
         introduced: '10.15'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
     - 0
     - 1
-    content: If 1 and either IncludeAllNetworks or EnforceRoutes are 1, then local
-      network traffic will be routed outside of the VPN. The default for this value
-      is 0 on macOS and 1 on iOS.
+    content: |-
+      If 'true' and 'IncludeAllNetworks' is 'true', routes all local network traffic outside the VPN.
+      Available in iOS 14.2 and later, and macOS 10.15 and later.
   - key: ExcludeCellularServices
     title: Exclude Cellular Services
     supportedOS:
@@ -1050,17 +1085,17 @@ payloadkeys:
         introduced: '16.4'
       macOS:
         introduced: '13.3'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then internet-routable network traffic
-      for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual Voicemail, etc.)
-      is excluded from the tunnel. Note that some cellular carriers route cellular
-      services traffic directly to the carrier network, bypassing the internet.  Such
-      cellular services traffic is always excluded from the tunnel.
+    content: |-
+      If 'true' and 'IncludeAllNetworks' is 'true', then the system excludes internet-routable network traffic for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual Voicemail, etc.) from the tunnel. Note that some cellular carriers route cellular services traffic directly to the carrier network, bypassing the internet. Such cellular services traffic is always excluded from the tunnel.
+      Available in iOS 16.4 and later, and macOS 13.3 and later.
   - key: ExcludeAPNs
     title: Exclude APNs
     supportedOS:
@@ -1068,14 +1103,17 @@ payloadkeys:
         introduced: '16.4'
       macOS:
         introduced: '13.3'
+      tvOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     rangelist:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then network traffic for the Apple
-      Push Notification service (APNs) is excluded from the tunnel.
+    content: |-
+      If 'true' and 'IncludeAllNetworks' is 'true', then the system excludes network traffic for the Apple Push Notification service (APNs) from the tunnel.
+      Available in iOS 16.4 and later, and macOS 13.3 and later.
   - key: IKESecurityAssociationParameters
     title: IKESecurityAssociationParameters
     type: <dictionary>
@@ -1127,6 +1165,7 @@ payloadkeys:
       - 20
       - 21
       - 31
+      - 32
       default: 14
       content: The Diffie-Hellman group. For AlwaysOn VPN, minimum allowed Diffie
         Hellman Group is 14 in iOS 14.2 and later.
@@ -1148,10 +1187,54 @@ payloadkeys:
     subkeys: *id005
 - key: DNS
   title: DNS
+  supportedOS:
+    watchOS:
+      introduced: '10.0'
   type: <dictionary>
   presence: optional
   content: A dictionary used for all VPN types.
   subkeys:
+  - key: DNSProtocol
+    title: DNS Protocol
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: required
+    rangelist:
+    - Cleartext
+    - HTTPS
+    - TLS
+    content: The transport protocol used to communicate with the DNS server.
+  - key: ServerURL
+    title: Server URL
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484.
+      This URL must use the https:// scheme, and the hostname or address in the URL
+      will be used to validate the server certificate. If no ServerAddresses are provided,
+      the hostname or address in the URL will be used to determine the server addresses.
+      This key must be present only if the DNSProtocol is HTTPS.
+  - key: ServerName
+    title: Server Name
+    supportedOS:
+      iOS:
+        introduced: '14.0'
+      macOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    content: The hostname of a DNS-over-TLS server used to validate the server certificate,
+      as defined in RFC 7858. If no ServerAddresses are provided, the hostname will
+      be used to determine the server addresses. This key must be present only if
+      the DNSProtocol is TLS.
   - key: ServerAddresses
     title: DNS Server Addresses
     supportedOS:
@@ -1225,8 +1308,23 @@ payloadkeys:
     default: 0
     content: If 'false', append the domains in the 'SupplementalMatchDomains' list
       to the resolver's list of search domains.
+  - key: PayloadCertificateUUID
+    title: DNS Certificate UUID
+    supportedOS:
+      iOS:
+        introduced: '16.0'
+      macOS:
+        introduced: '13.0'
+    type: <string>
+    presence: optional
+    format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+    content: UUID pointing to an identity certificate payload. This identity will
+      be used to authenticate the user to the DNS resolver.
 - key: Proxies
   title: Proxies
+  supportedOS:
+    watchOS:
+      introduced: '10.0'
   type: <dictionary>
   presence: optional
   content: The dictionary used to configure 'Proxies' for use with 'VPN'.
@@ -1322,6 +1420,8 @@ payloadkeys:
     iOS:
       introduced: '8.0'
     macOS:
+      introduced: n/a
+    tvOS:
       introduced: n/a
   type: <dictionary>
   presence: optional
@@ -1462,3 +1562,28 @@ payloadkeys:
         presence: required
         content: The bundle identifier for the app that is allowed on the captive
           network.
+- key: TransparentProxy
+  title: TransparentProxy
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Dictionary used when VPNType is set to TransparentProxy. The keys in this
+    dictionary are the same as the keys in the VPN dictionary with the addition of
+    the fields shown below.
+  subkeys:
+  - key: Order
+    title: Order
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '14.0'
+    type: <integer>
+    presence: optional
+    content: A positive integer.

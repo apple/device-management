@@ -26,6 +26,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowSettings
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowSettings
+      supervised: false
   content: This command allows the server to set settings on the device. These settings
     take effect on a one-time basis. The user may still be able to change the settings
     at a later time. This command requires the ApplySettings right.
@@ -49,6 +53,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -90,6 +96,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains data roaming settings. This setting requires
@@ -120,6 +128,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -152,6 +162,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -186,6 +198,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains Bluetooth settings. This setting requires
@@ -219,6 +233,8 @@ payloadkeys:
         userchannel: false
       tvOS:
         introduced: '10.2'
+        accessrights: AllowAppInstallation
+      watchOS:
         accessrights: AllowAppInstallation
     type: <dictionary>
     presence: optional
@@ -261,6 +277,8 @@ payloadkeys:
       tvOS:
         introduced: '10.2'
         accessrights: AllowAppInstallation
+      watchOS:
+        accessrights: AllowAppInstallation
     type: <dictionary>
     presence: optional
     content: A dictionary that contains the attributes to apply to the app. Omit this
@@ -295,6 +313,8 @@ payloadkeys:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: Content Filter UUID assigned to this app.
@@ -304,9 +324,22 @@ payloadkeys:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: DNS Proxy UUID assigned to this app.
+      - key: RelayUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: Relay UUID assigned to this app.
       - key: AssociatedDomains
         supportedOS:
           iOS:
@@ -352,6 +385,8 @@ payloadkeys:
             introduced: n/a
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <boolean>
         presence: optional
         default: false
@@ -359,6 +394,20 @@ payloadkeys:
           use Face ID or a passcode to unlock their device after every transaction
           that requires a customer’s card PIN. Disabling this setting will allow users
           to configure this setting on their device based on personal preference.
+      - key: CellularSliceUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          macOS:
+            introduced: n/a
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: Currently only the Data network name (DNN) is supported as the enterprise
+          slice identifier, which must be encoded as "DNN:carrier provided DNN name".
   - key: DeviceName
     supportedOS:
       iOS:
@@ -373,6 +422,8 @@ payloadkeys:
         introduced: '10.10'
         userenrollment:
           mode: forbidden
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains device name settings. This setting doesn't
@@ -398,6 +449,8 @@ payloadkeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -492,6 +545,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings related to the MDM protocol. This
@@ -565,6 +620,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for maximum resident users. Apple
@@ -598,6 +655,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -680,9 +739,25 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: Whether the language & locale pane will be skipped for new users of
-        Shared iPad. If 'true', system language & locale will be picked automatically
-        for the new user.
+      content: |-
+        If 'true', the system picks the system language and locale automatically for the new Shared iPad user.
+        Available in iOS 16.2 and later.
+    - key: AwaitUserConfiguration
+      supportedOS:
+        iOS:
+          introduced: '17.0'
+      type: <dictionary>
+      presence: optional
+      content: |-
+        If enabled, the Shared iPad device enters Setup Assistant after the user triggers a login. The MDM server has a chance to configure the device and user. After configuration, a UserConfiguredCommand needs be sent to the user channel to unblock the login. This feature requires the device to have network access during the login process.
+        Available in iOS 17 and later.
+      subkeys:
+      - key: Enabled
+        type: <boolean>
+        presence: required
+        content: If 'true', the device stops at a Setup Assistant pane after user
+          login. The user won't be able to use the device until a UserConfiguredCommand
+          command is received.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -696,6 +771,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -728,6 +805,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for sharing app analytics. This setting
@@ -758,6 +837,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -793,6 +874,8 @@ payloadkeys:
       tvOS:
         introduced: '14.0'
         supervised: true
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains time zone settings. This setting is only available
@@ -825,6 +908,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -866,6 +951,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        supervised: true
     type: <dictionary>
     presence: optional
     content: A dictionary that contains accessibility settings. Available in iOS 16
@@ -884,6 +971,9 @@ payloadkeys:
       default: false
       content: If 'true', enables bold text.
     - key: IncreaseContrastEnabled
+      supportedOS:
+        watchOS:
+          introduced: n/a
       type: <boolean>
       presence: optional
       default: false
@@ -932,6 +1022,14 @@ payloadkeys:
       presence: optional
       default: false
       content: If true, enables zoom.
+    - key: GrayscaleEnabled
+      supportedOS:
+        iOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If true, enables grayscale display.
 responsekeys:
 - key: Settings
   type: <dictionary>

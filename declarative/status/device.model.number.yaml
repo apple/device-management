@@ -1,0 +1,46 @@
+title: Status Device Model Number
+description: The device's hardware number.
+payload:
+  statusitemtype: device.model.number
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: device.model.number
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: Status value.

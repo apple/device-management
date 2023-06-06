@@ -1,0 +1,51 @@
+title: Status Software Update Failure Reason
+description: The software update failure reason state.
+payload:
+  statusitemtype: softwareupdate.failure-reason
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: softwareupdate.failure-reason
+  title: The software update failure reason state.
+  type: <dictionary>
+  presence: required
+  content: The software update failure reason state.
+  subkeytype: Dictionary
+  subkeys:
+  - key: count
+    title: The software update failure count.
+    type: <integer>
+    presence: required
+    content: The number of times the current software update has failed. If there
+      are no failures, or no pending software update, this will be set to zero.
+  - key: reason
+    title: The reason for the software update failure.
+    type: <string>
+    presence: optional
+    content: If present, this describes the reason for last software update failure.
+      If there are no failures, or no pending software update, this will not be present.
+  - key: timestamp
+    title: The timestamp of the software update failure.
+    type: <string>
+    presence: optional
+    content: If present, this is the RFC 3339 timestamp of the last software update
+      failure. If there are no failures, or no pending software update, this will
+      not be present.

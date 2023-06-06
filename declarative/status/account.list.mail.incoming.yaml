@@ -5,15 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
 payloadkeys:
 - key: account.list.mail.incoming

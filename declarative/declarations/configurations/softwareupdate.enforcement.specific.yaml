@@ -1,0 +1,56 @@
+title: Software Update:Enforcement:Specific
+description: A software update enforcement policy for a specific OS release
+payload:
+  declarationtype: com.apple.configuration.softwareupdate.enforcement.specific
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: TargetOSVersion
+  title: Target OS Version
+  type: <string>
+  presence: required
+  content: The target OS version that the device is required to update to by the appropriate
+    time. This is the OS version number (e.g., "16.1"). A supplemental version identifier
+    can be included (e.g., "16.1 (a)").
+- key: TargetBuildVersion
+  title: Target Build Version
+  type: <string>
+  presence: optional
+  content: The target build version that the device is required to update to by the
+    appropriate time. This is the build version (e.g., "20A242). The build version
+    is used for testing during seeding periods. A supplemental version identifier
+    can be included (e.g., "20A242a"). If the build version is not consistent with
+    the target OS version specified in the 'TargetOSVersion' key, the target OS version
+    will take precedence.
+- key: TargetLocalDateTime
+  title: Target Local Date Time
+  type: <string>
+  presence: required
+  content: The local date time value when the software update will be force installed.
+    This value must use the `yyyy-mm-ddThh:mm:ss` format derived from RFC3339 (https://www.rfc-editor.org/rfc/rfc3339.txt),
+    but must not include a time zone offset. If the user does not trigger the software
+    update before this time, the device will force install it.
+- key: DetailsURL
+  title: Details URL
+  type: <string>
+  presence: optional
+  content: The URL of a web page that shows details, provided by the organization,
+    about the enforced update.

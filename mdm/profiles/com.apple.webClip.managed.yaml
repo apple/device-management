@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: false
       userchannel: true
       requiresdep: false
@@ -83,6 +85,7 @@ payloadkeys:
   content: |-
     If 'true', a full screen web clip can navigate to an external web site without showing Safari UI. Otherwise, Safari UI appears when navigating away from the web clip's URL.
     This key has no effect when 'FullScreen' is 'false'.
+    Available in iOS 14 and later.
 - key: TargetApplicationBundleIdentifier
   title: Target Application Bundle Identifier
   supportedOS:
@@ -92,6 +95,6 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The application bundle identifier that specifies the application which
-    opens the URL. To use this property, the profile must be installed through an
-    MDM.
+  content: |-
+    The application bundle identifier that specifies the application which opens the URL. To use this property, the profile must be installed through an MDM.
+    Available in iOS 14 and later.

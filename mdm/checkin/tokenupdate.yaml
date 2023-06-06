@@ -23,6 +23,9 @@ payload:
     tvOS:
       introduced: '10.2'
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      supervised: false
   content: Check-in protocol token update request and response.
 payloadkeys:
 - key: NotOnConsole
@@ -32,9 +35,11 @@ payloadkeys:
     macOS:
       introduced: '10.11'
       devicechannel: false
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: required
-  content: If true, the device is not on console.
+  content: If 'true', the device is not on console.
 - key: MessageType
   type: <string>
   presence: required
@@ -68,6 +73,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The per-enrollment identifier for the device. Available in macOS 10.15
@@ -83,6 +90,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The per-enrollment identifier for the user. Available in macOS 10.15 and
@@ -96,6 +105,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: optional
@@ -112,6 +123,8 @@ payloadkeys:
       devicechannel: false
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: |-
@@ -124,6 +137,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: required
@@ -146,6 +161,8 @@ payloadkeys:
         mode: forbidden
     macOS:
       introduced: n/a
+    watchOS:
+      accessrights: AllowPasscodeRemovalAndLock
   type: <data>
   presence: optional
   content: The data that can be used to unlock the device. If provided, the server
@@ -157,8 +174,11 @@ payloadkeys:
     macOS:
       introduced: '10.11'
       userchannel: false
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the device is awaiting a Release Device from Await Configuration
-    MDM command before proceeding through Setup Assistant.
+  content: |-
+    If 'true' from the device channel, the device is awaiting a Release Device from Await Configuration MDM command before proceeding through Setup Assistant.
+    If 'true' from the user channel (Shared iPad only), the device is awaiting a UserConfiguredCommand MDM command before proceeding through Setup Assistant.

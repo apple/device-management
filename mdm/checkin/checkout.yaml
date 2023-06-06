@@ -23,6 +23,9 @@ payload:
     tvOS:
       introduced: '10.2'
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      supervised: false
   content: Check-in protocol check out request and response.
 payloadkeys:
 - key: MessageType
@@ -54,6 +57,8 @@ payloadkeys:
       userenrollment:
         mode: required
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: required

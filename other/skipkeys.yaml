@@ -12,6 +12,8 @@ payload:
     tvOS:
       introduced: '10.2'
       always-skippable: true
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Accessibility
   title: Skip Accessibility pane
@@ -107,6 +109,7 @@ payloadkeys:
       deprecated: '15.0'
     macOS:
       introduced: 10.13.6
+      deprecated: '12.0'
     tvOS:
       introduced: n/a
   type: <string>
@@ -176,6 +179,20 @@ payloadkeys:
   type: <string>
   presence: optional
   content: 'Skips the iMessage and FaceTime screen in iOS. Availability: iOS 12+.'
+- key: IntendedUser
+  title: Skip Intended User setup pane
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: |-
+    Skips the Intended User pane (the one that allows picking between self or children).
+    Availability: iOS 17+.
 - key: Location
   title: Disables Location Services
   supportedOS:
@@ -357,7 +374,9 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: 'Skips the Terms of Address pane. Availability: iOS 16+, and macOS 13+.'
+  content: 'Skips the Terms of Address pane. This key isn''t always skippable because
+    this pane appears before the device retrieves the Cloud Configuration from the
+    server. Availability: iOS 16+, and macOS 13+.'
 - key: TOS
   title: Skips Terms and Conditions
   type: <string>
@@ -442,6 +461,7 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '8.3'
+      deprecated: '17.0'
     macOS:
       introduced: n/a
     tvOS:

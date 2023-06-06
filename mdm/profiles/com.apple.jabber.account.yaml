@@ -8,6 +8,7 @@ payload:
       introduced: '10.7'
       deprecated: '10.14'
       removed: '10.14'
+      multiple: true
       devicechannel: false
       userchannel: true
       requiresdep: false

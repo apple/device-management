@@ -6,6 +6,7 @@ payload:
     macOS:
       introduced: '10.9'
       deprecated: '10.13'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -18,9 +19,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', suppresses profanity.
+  content: If 'false', suppresses profanity. Use 'forceAssistantProfanityFilter' in
+    Restrictions instead.
 - key: Ironwood Allowed
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables dictation.
+  content: If 'false', disables dictation. Use 'allowDictation' in Restrictions instead.

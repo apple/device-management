@@ -1,0 +1,44 @@
+title: Status Software Update Pending Version
+description: The pending software update version.
+payload:
+  statusitemtype: softwareupdate.pending-version
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: softwareupdate.pending-version
+  title: Pending software update version.
+  type: <dictionary>
+  presence: required
+  content: Pending software update version.
+  subkeytype: Dictionary
+  subkeys:
+  - key: os-version
+    title: The OS version
+    type: <string>
+    presence: required
+    content: The OS version of the pending software update, including any rapid security
+      response version. If no update is pending, this string will be empty.
+  - key: build-version
+    title: The build version
+    type: <string>
+    presence: required
+    content: The build version of the pending software update, including any rapid
+      security response version. If no update is pending, this string will be empty.

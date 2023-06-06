@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '6.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     macOS:
       introduced: '10.9'
+      multiple: false
       devicechannel: true
       userchannel: false
       supervised: true
@@ -25,6 +27,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '6.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
   content: PEM-encoded cer

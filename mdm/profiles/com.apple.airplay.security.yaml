@@ -5,6 +5,7 @@ payload:
   supportedOS:
     tvOS:
       introduced: '11.0'
+      multiple: false
       supervised: false
       allowmanualinstall: true
   content: Manages the AirPlay Security settings on Apple TV (Settings > AirPlay >

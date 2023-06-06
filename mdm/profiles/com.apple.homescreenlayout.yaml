@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '9.3'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '11.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
   content: The payload defines a layout of apps, folders, & web clips for the Home

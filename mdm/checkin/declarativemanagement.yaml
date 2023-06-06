@@ -25,6 +25,10 @@ payload:
       introduced: '16.0'
       supervised: false
       requiresdep: false
+    watchOS:
+      introduced: '10.0'
+      supervised: false
+      requiresdep: false
   content: Check-in protocol declarative management request and response.
 payloadkeys:
 - key: MessageType
@@ -67,6 +71,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The per-enrollment identifier for the device.
@@ -80,6 +86,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: A per-enrollment identifier that identifies the user for user enrollments.
@@ -91,6 +99,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: optional
@@ -106,6 +116,8 @@ payloadkeys:
       devicechannel: false
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: On macOS, this value always returns the ID of the user. On Shared iPad,
@@ -118,6 +130,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: required

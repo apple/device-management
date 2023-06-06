@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '9.3'
+      multiple: false
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.14'
+      multiple: false
       devicechannel: false
       userchannel: true
       requiresdep: false

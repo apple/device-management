@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '6.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '10.2'
+      multiple: false
       supervised: true
       allowmanualinstall: true
 payloadkeys:

@@ -5,15 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
-      introduced: n/a
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: A subscribed calendar configuration defines a subscribed calendar for a
     user.
@@ -35,4 +46,4 @@ payloadkeys:
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with a calendar server. The corresponding asset must
-    be of type CredentialUserNameAndPassword.
+    be of type 'CredentialUserNameAndPassword'.

@@ -5,10 +5,27 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: passcode.is-compliant
   title: Status item value.

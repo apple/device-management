@@ -1,0 +1,55 @@
+title: Error Code Software Update Required
+description: Error response for software update required.
+payload:
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  content: |-
+    The schema for a JSON or property list XML document returned in an MDM server's 403 response body. The response headers
+    must include a "Content-Type" header indicating whether JSON or XML is being returned.
+
+    This response is returned when a device is enrolling with an MDM server during Setup Assistant, and the MDM server
+    requires the device to perform a software update before enrollment is allowed and setup can proceed.
+payloadkeys:
+- key: code
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.softwareupdate.required
+  content: Indicates that a software update is required before enrollment and setup
+    can proceed.
+- key: description
+  type: <string>
+  presence: optional
+  content: The description of the error. This will only be used by the client for
+    logging purposes and will not be displayed to the user.
+- key: message
+  type: <string>
+  presence: optional
+  content: A description of the error suitable for displaying to the user. If needed,
+    the client will make a best-effort attempt to display the message, but may not
+    be able to, due to local conditions.
+- key: details
+  type: <dictionary>
+  presence: required
+  content: A dictionary of additional data specific to the error code.
+  subkeys:
+  - key: OSVersion
+    type: <string>
+    presence: required
+    content: The OS version that the device is required to update to (e.g., "16.1").
+      A supplemental version identifier can be included (e.g., "16.1 (a)").
+  - key: BuildVersion
+    type: <string>
+    presence: optional
+    content: The build version that the device is required to update to  (e.g., "20A242).
+      The build version is used for testing during seeding periods. A supplemental
+      version identifier can be included (e.g., "20A242a"). If the build version is
+      not consistent with the OS version specified in the 'OSVersion' key, the OS
+      version will take precedence.

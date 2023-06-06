@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '7.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.9'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -22,14 +24,22 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    watchOS:
+      introduced: '10.0'
+      multiple: true
+      supervised: true
+      allowmanualinstall: false
   content: The fields in this payload are the same as the VPN payload, with the addition
-    of the fields shown below.
+    of the fields shown below. On watchOS, only the IKEv2 VPN type is supported.
 payloadkeys:
 - key: VPNUUID
   type: <string>
   presence: required
   content: A globally unique identifier for this VPN configuration.
 - key: SafariDomains
+  supportedOS:
+    watchOS:
+      introduced: n/a
   type: <array>
   presence: optional
   content: An array with entries that must each specify a domain that triggers the
@@ -46,6 +56,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    watchOS:
+      introduced: n/a
   type: <array>
   presence: optional
   content: |-
@@ -63,6 +75,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    watchOS:
+      introduced: n/a
   type: <array>
   presence: optional
   content: |-
@@ -80,6 +94,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    watchOS:
+      introduced: n/a
   type: <array>
   presence: optional
   content: |-
@@ -123,11 +139,8 @@ payloadkeys:
     presence: required
     content: A domain.
 - key: OnDemandMatchAppEnabled
-  type: <integer>
+  type: <boolean>
   presence: optional
-  rangelist:
-  - 0
-  - 1
   content: If 'true', automatically connects the VPN when associated apps for this
     per-app VPN service initiate network communication. Otherwise, the user must initiate
     the connection manually before those apps can initiate network communication.
@@ -138,6 +151,8 @@ payloadkeys:
     iOS:
       introduced: '13.0'
     macOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <array>
   presence: optional

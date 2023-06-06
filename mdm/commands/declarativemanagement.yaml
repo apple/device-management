@@ -27,6 +27,9 @@ payload:
       introduced: '16.0'
       supervised: false
       requiresdep: false
+    watchOS:
+      introduced: '10.0'
+      supervised: false
   content: This command allows the server to turn on the Declarative Management engine
     on the device (the first time it is used), or to trigger a Declarative Management
     synchronization operation.

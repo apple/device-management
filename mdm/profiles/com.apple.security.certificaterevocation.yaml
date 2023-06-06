@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '14.2'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:

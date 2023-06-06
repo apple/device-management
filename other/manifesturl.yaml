@@ -16,6 +16,8 @@ payload:
         mode: allowed
     tvOS:
       introduced: '10.2'
+    watchOS:
+      introduced: '10.0'
 payloadkeys:
 - key: items
   title: The manifest items
@@ -91,6 +93,8 @@ payloadkeys:
               removed: '0'
             tvOS:
               removed: '0'
+            watchOS:
+              introduced: n/a
           type: <boolean>
           presence: optional
           default: false
@@ -130,6 +134,8 @@ payloadkeys:
             removed: '0'
           tvOS:
             removed: '0'
+          watchOS:
+            introduced: n/a
         type: <integer>
         presence: optional
         content: removed
@@ -152,6 +158,8 @@ payloadkeys:
             removed: '0'
           tvOS:
             removed: '0'
+          watchOS:
+            introduced: n/a
         type: <array>
         presence: optional
         content: Removed

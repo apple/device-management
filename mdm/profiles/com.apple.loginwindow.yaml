@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -144,7 +145,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'True', shows the Input Menu in the login window.
+  content: If 'true', shows the Input Menu in the login window.
 - key: DisableFDEAutoLogin
   supportedOS:
     macOS:
@@ -152,4 +153,22 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If t'rue', disables the automatic login option when using FileVault.
+  content: If 'true', disables the automatic login option when using FileVault.
+- key: AutologinUsername
+  supportedOS:
+    macOS:
+      introduced: '14.0'
+      allowmanualinstall: false
+  type: <string>
+  presence: optional
+  content: Sets up auto login with the specified short user name.
+- key: AutologinPassword
+  supportedOS:
+    macOS:
+      introduced: '14.0'
+      allowmanualinstall: false
+  type: <string>
+  presence: optional
+  content: Optional user password when setting up auto login.  If this key does not
+    exist, and a user name was specified, auto login will be set up the next time
+    the specified user logs in to the client.

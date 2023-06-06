@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '14.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     macOS:
       introduced: '11.0'
+      multiple: true
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -185,3 +187,15 @@ payloadkeys:
   default: false
   content: If 'true', prohibits users from disabling DNS settings. This key is only
     available on supervised devices.
+- key: PayloadCertificateUUID
+  title: Certificate UUID
+  supportedOS:
+    iOS:
+      introduced: '16.0'
+    macOS:
+      introduced: '13.0'
+  type: <string>
+  presence: optional
+  format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+  content: UUID pointing to an identity certificate payload. This identity will be
+    used to authenticate the user to the DNS resolver.

@@ -19,6 +19,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: Queries managed application attributes. Attributes can be set on managed
     apps. These attributes can be changed over time.
 payloadkeys:
@@ -57,6 +61,8 @@ responsekeys:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: |-
@@ -68,11 +74,24 @@ responsekeys:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: |-
           The DNS Proxy UUID assigned to this app.
           Available in iOS 16 and later.
+      - key: RelayUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: Relay UUID assigned to this app.
       - key: AssociatedDomains
         supportedOS:
           iOS:

@@ -5,19 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: A CardDAV configuration defines a CardDAV contacts account for a user.
 payloadkeys:
@@ -47,4 +54,4 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
-    this account. The corresponding asset must be of type CredentialUserNameAndPassword.
+    this account. The corresponding asset must be of type 'CredentialUserNameAndPassword'.

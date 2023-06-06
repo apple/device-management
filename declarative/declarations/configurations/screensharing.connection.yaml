@@ -1,0 +1,66 @@
+title: Screen Sharing:Connection
+description: Use this configuration to define a connection to a Screen Sharing host.
+payload:
+  declarationtype: com.apple.configuration.screensharing.connection
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: ConnectionUUID
+  title: Unique Identifier
+  type: <string>
+  presence: required
+  content: A string which uniquely identifies this connection. This is used to include
+    a connection in a connection group.
+- key: DisplayName
+  title: The name of the connection.
+  type: <string>
+  presence: required
+  content: The name of the connection.
+- key: HostName
+  title: Host Name
+  type: <string>
+  presence: required
+  content: The host name or IP address of the Mac that will host the screen sharing
+    connection.
+- key: Port
+  title: TCP Port
+  type: <integer>
+  presence: optional
+  content: Specifies the TCP port number on the host used to initiate the connection.
+- key: DisplayConfiguration
+  title: Display Configuration
+  type: <dictionary>
+  presence: required
+  content: The display configuration to use for this connection.
+  subkeys:
+  - key: DisplayType
+    type: <string>
+    presence: required
+    rangelist:
+    - Virtual1
+    - Virtual2
+    content: |-
+      The type of display type to use for the connection.
+      * Virtual1 — create one virtual display.
+      * Virtual2 — create two virtual displays.
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  presence: optional
+  content: Specifies the identifier of an asset declaration containing the credentials
+    required for this connection to authenticate with the Screen Sharing server. The
+    corresponding asset must be of type "com.apple.asset.credential.userpassword".

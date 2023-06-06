@@ -1,0 +1,50 @@
+title: Security:Passkey:Attestation
+description: Configures the device to allow WebAuthn enterprise attestation for certain
+  passkeys.
+payload:
+  declarationtype: com.apple.configuration.security.passkey.attestation
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: AttestationIdentityAssetReference
+  title: Attestation identity asset reference.
+  type: <string>
+  presence: required
+  content: Specifies the identifier of an asset declaration containing the identity
+    to be installed and used for passkey attestation.
+- key: AttestationIdentityKeyIsExtractable
+  title: Attestation identity key is extractable
+  supportedOS:
+    iOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If set to "true", the private key for the attestation identity will be
+    marked as extractable in the keychain.
+- key: RelyingParties
+  title: Relying parties
+  type: <array>
+  presence: required
+  content: Relying parties to allow enterprise attestation.
+  subkeys:
+  - key: RelyingParty
+    title: Relying party
+    type: <string>

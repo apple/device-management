@@ -1,0 +1,52 @@
+title: Declarations
+description: Declarations
+payload:
+  payloadtype: com.apple.declarations
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '14.0'
+      multiple: true
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '17.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '10.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+  content: This profile applies a set of declarations to the device via the Settings
+    app. This allows manual installations of declarations in cases where an MDM enrollment
+    is not present. This profile can only be manually installed, and cannot be installed
+    via an MDM server.
+payloadkeys:
+- key: Declarations
+  title: Declarations
+  type: <array>
+  presence: required
+  content: |-
+    The set of declarations to apply. The items in this array are <data> (base64-encoded) representations
+    of the declaration JSON data.
+  subkeys:
+  - key: DeclarationsItem
+    title: Declarations Content Item
+    type: <data>
+    presence: required
+    content: An item in the declarations list

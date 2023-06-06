@@ -1,0 +1,74 @@
+title: Cellular Private Network
+description: Cellular Private Network Settings and Device Configuration
+payload:
+  payloadtype: com.apple.cellularprivatenetwork.managed
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      multiple: false
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: allowed
+  content: Payload can be used to provide device info on private network deployments
+    including geographical location, preference over wifi, and network deployment
+    type.
+payloadkeys:
+- key: Geofences
+  type: <array>
+  presence: optional
+  content: List of up to 1000 geofences for private networks. Geofencing is only used
+    on iPhones.
+  subkeys:
+  - key: GeofenceItem
+    type: <dictionary>
+    subkeys:
+    - key: Longitude
+      type: <real>
+      presence: required
+      range:
+        min: -180.0
+        max: 180.0
+      content: Signed decimal value of longitude from -180 to 180
+    - key: Latitude
+      type: <real>
+      presence: required
+      range:
+        min: -90.0
+        max: 90.0
+      content: Signed decimal value of latitude from -90 to 90
+    - key: Radius
+      type: <real>
+      presence: required
+      range:
+        min: 100.0
+        max: 6500.0
+      content: Specifies the radius of the geofence in meters. Should be set slightly
+        greater than the private cellular network coverage area. Supported values
+        100 to 6500
+    - key: GeofenceId
+      type: <string>
+      presence: required
+      content: ID of geofence, must be unique amongst list
+- key: DataSetName
+  type: <string>
+  presence: required
+  content: Name for private network configuration dataset
+- key: VersionNumber
+  type: <string>
+  presence: required
+  content: The version number of this dataset. Used to track updates
+- key: CellularDataPreferred
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to true if this private network should be preferred over wifi
+- key: EnableNRStandalone
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Set to true if this private network is NR Standalone

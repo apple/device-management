@@ -5,10 +5,35 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: management.client-capabilities
   title: Status item value.

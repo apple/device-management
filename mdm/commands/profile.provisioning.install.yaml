@@ -29,6 +29,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowProvisioningInstallationRemoval
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowProvisioningInstallationRemoval
+      supervised: false
   content: This command allows the server to install a provisioning profile. No error
     occurs if the provisioning profile is already installed. This command requires
     the Provisioning Profile Installation and Removal right.  On macOS, this command

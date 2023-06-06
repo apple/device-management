@@ -5,6 +5,7 @@ payload:
     macOS:
       introduced: '10.7'
       deprecated: '13.0'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -85,12 +86,11 @@ payloadkeys:
       introduced: '13.0'
   type: <array>
   presence: optional
-  content: System settings extension IDs for items that will be disabled. All other
-    items will be enabled. When DisabledSystemSettings is specified, DisabledPreferencePanes
-    and EnabledPreferencePanes are ignored. Note that a given System Settings extension
+  content: The list of disabled System Settings extensions. All other items will be
+    enabled. When DisabledSystemSettings is specified, DisabledPreferencePanes and
+    EnabledPreferencePanes are ignored. Note that a given System Settings extension
     may supply more than one section in System Settings; disabling such an extension
     will disable all sections it supplies.
-  devpubs-override: The list of disabled System Settings extensions.
   subkeys:
   - key: SettingsExtensions
     type: <string>

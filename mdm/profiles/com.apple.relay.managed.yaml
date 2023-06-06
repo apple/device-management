@@ -1,0 +1,115 @@
+title: Relay
+description: Use this section to define settings for network relays.
+payload:
+  payloadtype: com.apple.relay.managed
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '14.0'
+      multiple: true
+      devicechannel: true
+      userchannel: true
+      requiresdep: false
+      userapprovedmdm: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+payloadkeys:
+- key: Relays
+  title: Relays
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes one or more relay servers that
+    can be chained together.
+  subkeys:
+  - key: Relay
+    title: Network Relay
+    type: <dictionary>
+    subkeys:
+    - key: HTTP3RelayURL
+      title: HTTP/3 Relay URL
+      type: <string>
+      presence: optional
+      content: The URL or URI template (such as defined in RFC 9298) of a relay server
+        that is reachable using HTTP/3 and supports proxying TCP and UDP using the
+        CONNECT method. Each relay must have at least one URL, for either HTTP/3 or
+        HTTP/2, and may support both.
+    - key: HTTP2RelayURL
+      title: HTTP/2 Relay URL
+      type: <string>
+      presence: optional
+      content: The URL or URI template (such as defined in RFC 9298) of a relay server
+        that is reachable using HTTP/2 and supports proxying TCP and UDP using the
+        CONNECT method. Each relay must have at least one URL, for either HTTP/3 or
+        HTTP/2, and may support both.
+    - key: AdditionalHTTPHeaderFields
+      title: Additional HTTP Header Fields
+      type: <dictionary>
+      presence: optional
+      content: A dictionary of custom HTTP header keys and values to add to each request
+        to the relay. The dictionary key name represents the HTTP header field name
+        to use, and the dictionary value is the string to use as the HTTP header field
+        value.
+      subkeys:
+      - key: ANY
+        type: <string>
+        presence: required
+        content: The HTTP header field value for the corresponding header field name.
+    - key: PayloadCertificateUUID
+      title: Certificate UUID
+      type: <string>
+      presence: optional
+      format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
+      content: UUID pointing to an identity certificate payload. This identity will
+        be used to authenticate the user to the relay server.
+    - key: RawPublicKeys
+      title: Raw Public Keys
+      type: <array>
+      presence: optional
+      content: An array of raw public keys used to authenticate the server during
+        a TLS handshake. The server must use one of the keys in the handshake in order
+        to authenticate. If no keys are specified, default TLS trust evaluation is
+        used.
+      subkeys:
+      - key: RawPublicKeysElement
+        title: Raw Public Key Element
+        type: <data>
+- key: MatchDomains
+  title: Match Domains
+  type: <array>
+  presence: optional
+  content: A list of domain strings used to determine which connection should be routed
+    through the servers contained in Relays. Any connection that matches the domain
+    exactly or is a subdomain of the listed domain will use the relay servers, unless
+    they match an excluded domain. If no domains are listed, traffic to all domains,
+    except those matching an excluded domain, will be routed to the relay servers.
+  subkeys:
+  - key: MatchDomainsElement
+    title: Match Domains Element
+    type: <string>
+- key: ExcludedDomains
+  title: Excluded Domains
+  type: <array>
+  presence: optional
+  content: A list of domain strings that should not be routed through the servers
+    contained in Relays. Any connection that matches the domain exactly or is a subdomain
+    of the listed domain will not use the relay server.
+  subkeys:
+  - key: ExcludedDomainsElement
+    title: Excluded Domains Element
+    type: <string>
+- key: RelayUUID
+  type: <string>
+  presence: optional
+  content: A globally-unique identifier for this relay configuration. This UUID is
+    used to route managed apps through the servers contained in Relays.

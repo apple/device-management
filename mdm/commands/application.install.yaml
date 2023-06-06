@@ -33,6 +33,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: This command allows the server to install an application on a device. If
     the app is already being managed, this command will update the app. macOS change
     - 10.9 user channel for VPP, 10.10 device channel, 10.11 both.
@@ -130,18 +134,37 @@ payloadkeys:
         introduced: '16.0'
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <string>
     presence: optional
-    content: Content Filter UUID assigned to this app.
+    content: |-
+      Content Filter UUID assigned to this app.
+      Available in iOS 16.0 and later.
   - key: DNSProxyUUID
     supportedOS:
       iOS:
         introduced: '16.0'
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <string>
     presence: optional
-    content: DNS Proxy UUID assigned to this app.
+    content: |-
+      DNS Proxy UUID assigned to this app.
+      Available in iOS 16.0 and later.
+  - key: RelayUUID
+    supportedOS:
+      iOS:
+        introduced: '17.0'
+      tvOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: Relay UUID assigned to this app.
   - key: AssociatedDomains
     supportedOS:
       iOS:
@@ -186,13 +209,28 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: false
-    content: Enabling this setting will require Tap to Pay on iPhone users to use
-      Face ID or a passcode to unlock their device after every transaction that requires
-      a customer’s card PIN. Disabling this setting will allow users to configure
-      this setting on their device based on personal preference.
+    content: |-
+      Enabling this setting requires Tap to Pay on iPhone users to use Face ID or a passcode to unlock their device after every transaction that requires a customer's card PIN. Disabling this setting allows users to configure this setting on their device based on personal preference.
+      Available in iOS 16.4 and later.
+  - key: CellularSliceUUID
+    supportedOS:
+      iOS:
+        introduced: '17.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: Currently only the Data network name (DNN) is supported as the enterprise
+      slice identifier, which must be encoded as "DNN:carrier provided DNN name".
 - key: ChangeManagementState
   supportedOS:
     iOS:
@@ -210,7 +248,7 @@ payloadkeys:
   content: |-
     The change management state. The only supported state is:
     * 'Managed': Take management of the app if the user installed it already. This also requires that you pass 'true' for 'InstallAsManaged'.
-    This value doesn't work with the User Enrollment feature introduced in iOS 13.
+    This value doesn't work with Profile Based User Enrollment, Account Driven User Enrollment and Account Driven Device Enrollment.
     Available in iOS 9 and later, macOS 11 and later, and tvOS 10.2 and later.
 - key: InstallAsManaged
   supportedOS:
@@ -222,14 +260,16 @@ payloadkeys:
         mode: forbidden
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', install the app as a managed app. For manifest-based installation,
-    if this value is 'true', but the package doesn't meet the criteria for management,
-    the installation fails. Reinstall a managed app with this value set to 'false'
-    to change the app to an unmanaged app. This value is available in macOS 11 and
-    later.
+  content: |-
+    If 'true', install the app as a managed app.
+    For manifest-based installs, if this value is 'true', the system only considers the '.app' bundles installed into '/Applications 'as managed (macOS 11 through 13 required the 'pkg' to contain a single '.app' bundle).
+    Reinstall a managed app with this value set to 'false' to change the app to an unmanaged app.
+    This value is available in macOS 11 and later.
 - key: iOSApp
   supportedOS:
     iOS:
@@ -237,6 +277,8 @@ payloadkeys:
     macOS:
       introduced: '11.0'
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <boolean>
   presence: optional
@@ -251,6 +293,26 @@ responsekeys:
 - key: State
   type: <string>
   presence: optional
+  rangelist:
+  - Queued
+  - NeedsRedemption
+  - Redeeming
+  - Prompting
+  - PromptingForLogin
+  - ValidatingPurchase
+  - Installing
+  - Managed
+  - ManagedButUninstalled
+  - UserInstalledApp
+  - UserRejectedFailed
+  - PromptingForUpdate
+  - PromptingForUpdateLogin
+  - ValidatingUpdate
+  - Updating
+  - UpdateRejected
+  - PromptingForManagement
+  - ManagementRejected
+  - Unknown
   content: The app's installation state, if the user accepted the request. If this
     value is 'NeedsRedemption', the server must send a redemption code to complete
     the app installation.

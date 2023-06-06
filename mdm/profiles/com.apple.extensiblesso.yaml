@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '13.0'
+      multiple: true
       supervised: false
       allowmanualinstall: false
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.15'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -123,6 +125,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '13.0'
+      deprecated: '14.0'
   type: <string>
   presence: optional
   rangelist:
@@ -140,5 +143,132 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The token this device uses for registration with Platform SSO. Use it for silent registration with the Identity Provider. Requires that 'AuthenticationMethod' isn't empty.
+    The token this device uses for registration with Platform SSO. Use it for silent registration with the Identity Provider. Requires that 'PlatformSSO' 'AuthenticationMethod' isn't empty.
     Available in macOS 13 and later.
+- key: PlatformSSO
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+  type: <dictionary>
+  presence: optional
+  content: This is the dictionary used to configure PlatformSSO.
+  subkeys:
+  - key: AuthenticationMethod
+    type: <string>
+    presence: optional
+    rangelist:
+    - Password
+    - UserSecureEnclaveKey
+    - SmartCard
+    content: The Platform SSO authentication method to be used with the extension.
+      Requires that the SSO Extension also support the method.
+  - key: UseSharedDeviceKeys
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If set to true, Platform SSO will use the same signing and encryption
+      keys for all users.
+  - key: AccountDisplayName
+    type: <string>
+    presence: optional
+    content: The display name for the account in notifications and authentication
+      requests.
+  - key: LoginFrequency
+    type: <integer>
+    presence: optional
+    range:
+      min: 3600
+    default: 64800
+    content: The frequency where a full login is required instead of a refresh. Default
+      is 18 hours. Must be > 1 hour.
+  - key: EnableCreateUserAtLogin
+    type: <boolean>
+    presence: optional
+    default: false
+    content: Enables creating new users at the login window with either Passwords
+      or SmartCards. Requires 'UseSharedDeviceKeys' is true.
+  - key: EnableAuthorization
+    type: <boolean>
+    presence: optional
+    default: false
+    content: Enables using identity provider accounts at authorization prompts. Requires
+      'UseSharedDeviceKeys' is true. The account will be assigned groups using the
+      'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
+  - key: TokenToUserMapping
+    type: <dictionary>
+    presence: optional
+    content: The attribute mapping used when creating new users or for authorization.
+    subkeys:
+    - key: AccountName
+      type: <string>
+      presence: optional
+      content: The claim name to use for the user's account name.
+    - key: FullName
+      type: <string>
+      presence: optional
+      content: The claim name to use for the user's full name.
+  - key: NewUserAuthorizationMode
+    type: <string>
+    presence: optional
+    rangelist:
+    - Standard
+    - Admin
+    - Groups
+    content: |-
+      This setting affects the permissions for accounts created at login by Platform SSO. It is only used when the account is created. Use of the following:
+      * Standard
+          The account will be a standard user.
+      * Admin
+          The account will be added to the local administrators group.
+      * Groups
+          The account will be assigned groups using the 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
+  - key: UserAuthorizationMode
+    type: <string>
+    presence: optional
+    rangelist:
+    - Standard
+    - Admin
+    - Groups
+    content: |-
+      This setting affects the permissions after authentication by Platform SSO. It is applied each time user authenticates. Use of the following:
+      * Standard
+          The account will be a standard user. It will be removed from the 'admin' group.
+      * Admin
+          The account will be added to the local administrators group.
+      * Groups
+          The account will be assigned groups using the 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
+  - key: AdministratorGroups
+    type: <array>
+    presence: optional
+    content: The list of groups that are used for administrator access. Membership
+      will be requested during authentication.
+    subkeys:
+    - key: Group
+      type: <string>
+      presence: optional
+      content: The group name.
+  - key: AdditionalGroups
+    type: <array>
+    presence: optional
+    content: The list of groups that are created and do not have administrator access.
+    subkeys:
+    - key: Group
+      type: <string>
+      presence: optional
+      content: The group name.
+  - key: AuthorizationGroups
+    type: <dictionary>
+    presence: optional
+    content: The pairing of Authorization Rights to group names. The Authorization
+      Right will be updated to use the group when used.
+    subkeys:
+    - key: Authorization Right
+      type: <string>
+      presence: required
+      content: The Authorization Right to update.
+    - key: Group
+      type: <string>
+      presence: required
+      content: The group to use for the Authorization Right.

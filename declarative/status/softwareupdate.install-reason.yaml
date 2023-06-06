@@ -1,0 +1,68 @@
+title: Status Software Update Install Reason
+description: The software update install reason state.
+payload:
+  statusitemtype: softwareupdate.install-reason
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: softwareupdate.install-reason
+  title: The software update install reason state.
+  type: <dictionary>
+  presence: required
+  content: The software update install reason state.
+  subkeytype: Dictionary
+  subkeys:
+  - key: reason
+    title: The software update install reason state.
+    type: <array>
+    presence: required
+    content: A list of reasons for the pending software update. An empty list implies
+      no software update is pending.
+    subkeys:
+    - key: softwareupdate-reason
+      title: The software update install reason.
+      type: <string>
+      presence: required
+      rangelist:
+      - system-settings
+      - install-tonight
+      - auto-update
+      - notification
+      - setup-assistant
+      - command-line
+      - mdm
+      - declaration
+      content: |-
+        The software update install reason state:
+          * system-settings - software update was triggered via Settings.app
+          * install-tonight - software update was triggered via install tonight action
+          * auto-update - software update was triggered via an automatic update
+          * notification - software update was triggered via user notification action
+          * setup-assistant - software update was triggered via Setup Assistant
+          * command-line - software update was triggered via `softwareupdate` command line tool
+          * mdm - software update was triggered via an MDM command
+          * declaration - software update was triggered via a declarative device management configuration
+  - key: declaration-id
+    title: The identifier of the declaration causing the software update to occur.
+    type: <string>
+    presence: optional
+    content: The identifier of the declaration causing the software update to occur.
+      This key is only present if the "reason" array contains the "declaration" value.

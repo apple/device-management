@@ -27,6 +27,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowDeviceErase
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowDeviceErase
+      supervised: false
   content: This command allows the server to remotely erase the device. This command
     requires the Device Erase right.
 payloadkeys:
@@ -53,6 +57,8 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
@@ -67,6 +73,8 @@ payloadkeys:
       introduced: '10.8'
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The six-character PIN for Find My. This value is available in macOS 10.8
@@ -78,6 +86,8 @@ payloadkeys:
     macOS:
       introduced: '12.0'
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: optional
@@ -106,3 +116,34 @@ payloadkeys:
     'Default':
     If EACS preflight fails, the device responds to the server with an 'Error' status and then attempts to erase itself.
     If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
+- key: ReturnToService
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: The configuration settings for Return to Service.
+  subkeys:
+  - key: Enabled
+    title: Use Return to Service
+    type: <boolean>
+    presence: required
+    content: If 'true', the device tries to re-enroll itself automatically after erasure.
+      The user needs to deactivate all activation locks for this feature to work correctly.
+  - key: WiFiProfileData
+    type: <data>
+    presence: optional
+    content: The WiFi profile that installed after erasure, when using Return to Service.
+      This is required when the device doesn't have ethernet access.
+  - key: MDMProfileData
+    type: <data>
+    presence: optional
+    content: |-
+      The MDM profile installed after erasure, when using Return to Service. This key is required for all unsupervised devices, as well as supervised devices that weren't enrolled with ADE. If provided, the device uses this profile directly instead of fetching it from the server. For ADE enrolled devices, this key isn't necessary unless the cloud configuration profile of the device contains the 'configuration-web-url' key.
+      The cloud configuration is still downloaded from Apple's servers when the profile contains this key, so the supervision identity, MDM removability and other settings from the cloud configuration still applies. However, the device doesn't use the URL specified in the cloud configuration to fetch the MDM profile.

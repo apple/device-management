@@ -1,5 +1,5 @@
 title: Activation Lock Bypass Code Command
-description: Retrievies the Activation Lock bypass code from the device.
+description: Retrieves the Activation Lock bypass code from the device.
 payload:
   requesttype: ActivationLockBypassCode
   supportedOS:

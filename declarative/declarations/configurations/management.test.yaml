@@ -5,26 +5,57 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: true
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: true
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: Echo
   title: Status Echo
   type: <string>
   presence: required
   content: The string to echo back in a status response reason.
+- key: EchoDataAssetReference
+  title: Status Echo from Asset
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: '17.0'
+  type: <string>
+  presence: optional
+  content: String read from a data asset to echo back in status response reason description.
 - key: ReturnStatus
   title: Status to Return
   type: <string>

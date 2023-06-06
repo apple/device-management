@@ -1,0 +1,47 @@
+title: Security:Certificate
+description: Use this configuration to add a certificate to the device.
+payload:
+  declarationtype: com.apple.configuration.security.certificate
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: CredentialAssetReference
+  title: Credential asset reference
+  type: <string>
+  presence: required
+  content: Specifies the identifier of an asset declaration containing the certificate
+    to be installed.

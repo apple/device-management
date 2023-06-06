@@ -19,7 +19,13 @@ payloadkeys:
   presence: required
   content: The password to verify.
 responsekeys:
-- key: PasswordVerified
-  type: <boolean>
+- key: VerifyFirmwarePassword
+  type: <dictionary>
   presence: required
-  content: If 'true', the provided password matches the firmware password on the device.
+  content: Command result.
+  subkeys:
+  - key: PasswordVerified
+    type: <boolean>
+    presence: required
+    content: If 'true', the provided password matches the firmware password on the
+      device.

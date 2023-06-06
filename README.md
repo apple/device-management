@@ -8,10 +8,10 @@ This release corresponds to the following OS versions
 
 | OS      | Version |
 |---------|---------|
-| iOS     | 16.4    |
-| macOS   | 13.3    |
-| tvOS    | 16.4    |
-| watchOS |  9.4    |
+| iOS     | 17.0    |
+| macOS   | 14.0    |
+| tvOS    | 17.0    |
+| watchOS | 10.0    |
 
 ## What's Available
 
@@ -20,6 +20,7 @@ The following schema items are available:
 * MDM commands - `mdm/commands`
 * MDM check-in requests - `mdm/checkin`
 * MDM profiles - `mdm/profiles`
+* MDM errors - `mdm/errors`
 
 * Declarative device management declarations - `declarative/declarations`
 * Declarative device management status items - `declarative/status`

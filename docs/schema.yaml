@@ -52,15 +52,18 @@ properties:
               accessrights:
                 type: string
                 description: The MDM protocol access rights required on the device to execute the command.
+              multiple:
+                type: boolean
+                description: Indicates whether multiple copies of the payload can be installed
               devicechannel:
                 type: boolean
-                description: Indicates whether the command is supported on the device channel. If this key is present it overrides the the `devicechannel` key in the top-level payload !!(payload) key.
+                description: Indicates whether the command or profile is supported on the device channel. If this key is present it overrides the the `devicechannel` key in the top-level payload !!(payload) key.
               userchannel:
                 type: boolean
-                description: indicates whether the command is supported on the user channel. If this key is present it overrides the the `userchannel` key in the top-level payload !!(payload) key.
+                description: indicates whether the command or profile is supported on the user channel. If this key is present it overrides the the `userchannel` key in the top-level payload !!(payload) key.
               supervised:
                 type: boolean
-                description: Indicates whether the command can only be executed on supervised devices. If this key is present it overrides the the `supervised` key in the top-level payload !!(payload) key.
+                description: Indicates whether the command or profile can only be executed on supervised devices. If this key is present it overrides the the `supervised` key in the top-level payload !!(payload) key.
               requiresdep:
                 type: boolean
                 description: If True, the command can only be executed on devices provisioned in DEP.
@@ -70,6 +73,23 @@ properties:
               allowmanualinstall:
                 type: boolean
                 description: If True, the profile can be installed manually by a user on the device.
+              allowed-enrollments:
+                type: array
+                description: Array of allowed enrollment types.
+                items:
+                  type: string
+                  enum:
+                  - device
+                  - user
+                  - local
+              allowed-scopes:
+                type: array
+                description: Array of allowed scopes.
+                items:
+                  type: string
+                  enum:
+                  - system
+                  - user
               sharedipad:
                 type: object
                 description: Additional behavior specific to shared iPad devices.
@@ -94,6 +114,15 @@ properties:
                   userchannel:
                     type: boolean
                     description: Defines if the payload can be installed on the user MDM channel.
+                  allowed-scopes:
+                    type: array
+                    description: Array of allowed scopes.
+                    items:
+                      type: string
+                      enum:
+                      - system
+                      - user
+                      - local
               userenrollment:
                 type: object
                 description: Additional behavior when user enrollment is in effect.
@@ -124,6 +153,16 @@ properties:
           macOS: *supportedOSItem
           tvOS: *supportedOSItem
           watchOS: *supportedOSItem
+      apply:
+        type: string
+        description: Indicates how multiple configurations of the same type are applied.
+          If set to 'single', then only one configuration will be applied.
+          If set to 'multiple', then each configuration is applied separately.
+          If set to 'combined', then all configurations are combined into a single effective configuration.
+        enum:
+        - single
+        - multiple
+        - combined
       content:
         type: string
         description: Description of the payload.
@@ -168,6 +207,11 @@ properties:
           - <url>
           - <hostname>
           - <email>
+        assettypes:
+          type: array
+          description: Indicates the set of allowed asset types.
+          items:
+            type: string
         presence:
           type: string
           description: Whether the key is required or optional.
@@ -220,6 +264,31 @@ properties:
             max:
               type: integer
               description: Upper bound.
+        combinetype:
+          type: string
+          description: |-
+            For a configuration that will be combined, indicates how this key is combined with ones from other configurations.
+              * boolean-or - multiple <boolean> values are combined using a logical OR operation
+              * boolean-and - multiple <boolean> values are combined using a logical AND operation
+              * number-min - multiple <integer> or <real> values are combined by using the smallest value
+              * number-max - multiple <integer> or <real> values are combined by using the largest value
+              * enum-lowest - multiple <string> values with a rangelist are combined by using the value whose position is lowest in the range list
+              * enum-highest - multiple <string> values with a rangelist are combined by using the value whose position is highest in the range list
+              * first - multiple values are combined by using the first value that is processed
+              * array-append - multiple <array> values are combined by concatenating the values in each array into a new array
+              * set-union - multiple <array> values are combined by returning the unique union of all values in each array
+              * set-intersection - multiple <array> values are combined by returning the unique intersection of all values in each array
+          enum:
+          - boolean-or
+          - boolean-and
+          - number-min
+          - number-max
+          - enum-lowest
+          - enum-highest
+          - first
+          - array-append
+          - set-union
+          - set-intersection
         content:
           type: string
           description: Description of the payload key.
