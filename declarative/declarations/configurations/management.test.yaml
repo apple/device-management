@@ -54,6 +54,8 @@ payloadkeys:
     tvOS:
       introduced: '17.0'
   type: <string>
+  assettypes:
+  - com.apple.asset.data
   presence: optional
   content: String read from a data asset to echo back in status response reason description.
 - key: ReturnStatus

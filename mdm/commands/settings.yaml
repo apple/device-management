@@ -758,6 +758,31 @@ payloadkeys:
         content: If 'true', the device stops at a Setup Assistant pane after user
           login. The user won't be able to use the device until a UserConfiguredCommand
           command is received.
+    - key: PasscodePolicy
+      supportedOS:
+        iOS:
+          introduced: '17.0'
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains passcode related policies.
+      subkeys:
+      - key: PasscodeLockGracePeriod
+        type: <integer>
+        presence: optional
+        content: Sets the user preference for the amount of time (in seconds) the
+          screen must be locked before unlock attempts will require the device passcode.
+          This should ideally be set when no passcode is set on device. If a passcode
+          is on device, only more restrictive values than the currently enforced passcode
+          lock grace period will take effect; any changes to a less restrictive value
+          will not take effect until the user logs out. This setting will not take
+          effect if TemporarySessionOnly is set to true (since there is no passcode
+          for the temporary session). This setting can only be applied on Shared iPads.
+      - key: AutoLockTime
+        type: <integer>
+        presence: optional
+        content: Sets the user preference for the amount of time (in seconds) before
+          a device goes to sleep after being idle. The mininum value for this setting
+          is 120 seconds. This setting can only be applied on Shared iPad.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -828,6 +853,7 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: 9.3.2
+        deprecated: '17.0'
         sharedipad:
           mode: required
           devicechannel: true

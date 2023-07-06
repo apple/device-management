@@ -42,6 +42,10 @@ payloadkeys:
 - key: CredentialAssetReference
   title: Credential asset reference
   type: <string>
+  assettypes:
+  - com.apple.asset.credential.identity
+  - com.apple.asset.credential.scep
+  - com.apple.asset.credential.acme
   presence: required
   content: Specifies the identifier of an asset declaration containing the identity
     to be installed.

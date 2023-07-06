@@ -53,8 +53,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables account modification. iOS requires a supervised device.
-    Available in iOS 7 and later, and macOS 14.0 and later.
+  content: |-
+    If  'false', disables account modification. Requires a supervised device.
+    Available in iOS 7 and later, macOS 14 and later, and watchOS 10 and later.
 - key: allowActivityContinuation
   title: Allow Handoff
   supportedOS:
@@ -253,7 +254,7 @@ payloadkeys:
   content: If 'false', disables the App Store, and its icon is removed from the Home
     screen. Users are unable to install or update their apps. In iOS 10 and later,
     MDM commands can override this restriction. As of iOS 13, this restriction requires
-    a supervised device. Available in iOS 4 and later.
+    a supervised device. Available in iOS 4 and later and watchOS 10 and later.
 - key: allowApplePersonalizedAdvertising
   supportedOS:
     iOS:
@@ -291,7 +292,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', disables removal of apps from an iOS device. Requires a supervised
-    device. Available in iOS 4.2.1 and later.
+    device. Available in iOS 4.2.1 and later and watchOS 10 and later.
 - key: allowARDRemoteManagementModification
   title: Allow modifying Remote Management Sharing setting
   supportedOS:
@@ -346,7 +347,8 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', prevents Siri from querying user-generated content from the
-    web. Requires a supervised device. Available in iOS 7 and later.
+    web. Requires a supervised device. Available in iOS 7 and later and watchOS 10
+    and later.
 - key: allowAssistantWhileLocked
   title: Allow Siri While Locked
   supportedOS:
@@ -400,7 +402,7 @@ payloadkeys:
   default: true
   content: If 'false', prevents automatic downloading of apps purchased on other devices.
     This setting doesn't affect updates to existing apps. Requires a supervised device.
-    Available in iOS 9 and later.
+    Available in iOS 9 and later and watchOS 10 and later.
 - key: allowAutomaticScreenSaver
   supportedOS:
     iOS:
@@ -2277,7 +2279,7 @@ payloadkeys:
   default: true
   content: |-
     If 'false', disables the App Store, and its icon is removed from the Home screen. However, users may continue to use host apps (iTunes, Configurator) to install or update their apps.
-    In iOS 10 and later, MDM commands can override this restriction. Requires a supervised device. Available in iOS 9 and later.
+    In iOS 10 and later, MDM commands can override this restriction. Requires a supervised device. Available in iOS 9 and later and watchOS 10 and later.
 - key: allowUIConfigurationProfileInstallation
   title: Allow UI Configuration Profile Installation
   supportedOS:

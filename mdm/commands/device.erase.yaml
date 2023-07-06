@@ -128,7 +128,8 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The configuration settings for Return to Service.
+  content: The configuration settings for Return to Service. This value is available
+    in iOS 17 and later.
   subkeys:
   - key: Enabled
     title: Use Return to Service

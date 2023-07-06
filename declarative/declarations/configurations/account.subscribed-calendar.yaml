@@ -43,6 +43,8 @@ payloadkeys:
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.credential.userpassword
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with a calendar server. The corresponding asset must

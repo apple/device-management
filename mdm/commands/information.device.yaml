@@ -742,6 +742,11 @@ payloadkeys:
           introduced: '9.3'
           accessrights: AllowQueryDeviceInformation
           supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
           userenrollment:
             mode: forbidden
         macOS:
@@ -761,6 +766,11 @@ payloadkeys:
           introduced: '14.0'
           accessrights: AllowQueryDeviceInformation
           supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
           userenrollment:
             mode: forbidden
         macOS:
@@ -779,6 +789,14 @@ payloadkeys:
         iOS:
           introduced: '13.4'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -794,6 +812,14 @@ payloadkeys:
         iOS:
           introduced: '13.4'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -809,6 +835,14 @@ payloadkeys:
         iOS:
           introduced: '14.5'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -822,6 +856,14 @@ payloadkeys:
         iOS:
           introduced: '14.5'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -835,6 +877,14 @@ payloadkeys:
         iOS:
           introduced: '14.5'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -848,6 +898,14 @@ payloadkeys:
         iOS:
           introduced: '16.0'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -863,6 +921,14 @@ payloadkeys:
         iOS:
           introduced: '16.0'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -878,6 +944,14 @@ payloadkeys:
         iOS:
           introduced: '16.2'
           accessrights: AllowQueryDeviceInformation
+          supervised: true
+          requiresdep: true
+          sharedipad:
+            mode: required
+            devicechannel: true
+            userchannel: false
+          userenrollment:
+            mode: forbidden
         macOS:
           introduced: n/a
         tvOS:
@@ -1937,7 +2011,7 @@ responsekeys:
       type: <boolean>
       content: If 'true', start a new scan. This value is available in macOS 10.11
         and later.
-    - key: AutomaticCheckEnabled
+    - key: AutoCheckEnabled
       type: <boolean>
       content: The preference to automatically check for app updates. This value is
         available in macOS 10.11 and later.

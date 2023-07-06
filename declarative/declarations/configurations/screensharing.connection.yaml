@@ -60,6 +60,8 @@ payloadkeys:
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.credential.userpassword
   presence: optional
   content: Specifies the identifier of an asset declaration containing the credentials
     required for this connection to authenticate with the Screen Sharing server. The

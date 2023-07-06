@@ -39,6 +39,8 @@ payloadkeys:
 - key: UserIdentityAssetReference
   title: User Identity Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.useridentity
   presence: required
   content: The identifier of an asset declaration that contains the user identity
     for this Google account. The corresponding asset must be of type 'UserIdentity'.

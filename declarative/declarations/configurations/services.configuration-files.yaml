@@ -34,6 +34,8 @@ payloadkeys:
 - key: DataAssetReference
   title: Data Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.data
   presence: required
   content: Specifies the identifier of an asset declaration containing a reference
     to the files to be used for the system service configuration. The corresponding

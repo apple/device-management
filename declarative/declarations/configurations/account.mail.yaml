@@ -37,6 +37,8 @@ payloadkeys:
 - key: UserIdentityAssetReference
   title: User Identity Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.useridentity
   presence: optional
   content: The identifier of an asset declaration that contains the user identity
     for this account. The corresponding asset must be of type 'UserIdentity'.
@@ -78,6 +80,8 @@ payloadkeys:
   - key: AuthenticationCredentialsAssetReference
     title: Authentication Credentials Asset Reference
     type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
       The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
@@ -118,6 +122,8 @@ payloadkeys:
   - key: AuthenticationCredentialsAssetReference
     title: Authentication Credentials Asset Reference
     type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
       The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
@@ -147,6 +153,10 @@ payloadkeys:
     - key: IdentityAssetReference
       title: S/MIME Signing Identity Asset Reference
       type: <string>
+      assettypes:
+      - com.apple.asset.credential.acme
+      - com.apple.asset.credential.identity
+      - com.apple.asset.credential.scep
       presence: optional
       content: Specifies the identifier of an asset declaration containing the identity
         required for S/MIME signing of messages sent from this account.
@@ -177,6 +187,10 @@ payloadkeys:
     - key: IdentityAssetReference
       title: S/MIME Encryption Identity Asset Reference
       type: <string>
+      assettypes:
+      - com.apple.asset.credential.acme
+      - com.apple.asset.credential.identity
+      - com.apple.asset.credential.scep
       presence: optional
       content: Specifies the identifier of an asset declaration containing the identity
         required for S/MIME encryption. The public certificate is attached to outgoing

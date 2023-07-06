@@ -31,6 +31,8 @@ payloadkeys:
 - key: AnchorCertificateAssetReferences
   title: Anchor Certificate Asset References.
   type: <array>
+  assettypes:
+  - com.apple.asset.credential.certificate
   presence: optional
   content: Specifies an array of identifiers of asset declarations containing anchor
     certificates to be used when evaluating the trust of the enrollment profile server.
