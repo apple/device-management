@@ -1,0 +1,40 @@
+title: Status Device Battery Health
+description: The health of the battery.
+payload:
+  statusitemtype: device.power.battery-health
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: device.power.battery-health
+  title: Status item value.
+  type: <string>
+  presence: required
+  rangelist:
+  - non-genuine
+  - normal
+  - service-recommended
+  - unknown
+  - unsupported
+  content: |-
+    The battery health status:
+    * non-genuine - the battery is not a genuine Apple battery
+    * normal - the battery is operating normally
+    * service-recommended - battery service is recommended
+    * unknown - battery health information could not be determined
+    * unsupported - battery health reporting is not supported on the device
+    Only supported on iPhones. iPads will return "unsupported".

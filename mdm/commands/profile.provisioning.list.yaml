@@ -29,6 +29,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowProvisioningInspection
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowProvisioningInspection
+      supervised: false
   content: This command allows the server to retrieve the list of installed provisioning
     profiles on the device. This command requires the Inspect Provisioning Profiles
     right. On macOS, this command is for iOS and iPadOS style provisioning profiles

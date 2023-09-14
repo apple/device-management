@@ -5,16 +5,31 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: forbidden
-      userenrollment:
-        mode: allowed
+        allowed-scopes: []
     macOS:
       introduced: '13.0'
-      userenrollment:
-        mode: forbidden
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: RequirePasscode
   title: Require Passcode on Device
@@ -31,18 +46,20 @@ payloadkeys:
       introduced: '16.2'
     macOS:
       introduced: '13.1'
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
-  content: If set to true, the passcode must consist of at least one alphabetic characters
-    ("abcd"), and at least one number.
+  content: If 'true', the passcode needs to consist of at least one alphabetic character
+    and at least one number.
 - key: RequireComplexPasscode
   title: Require Complex Passcode
   type: <boolean>
   presence: optional
   default: false
   content: If 'true', requires a complex passcode. A complex passcode is one that
-    doesn't contain repeated characters or increasing/decreasing characters (such
+    doesn't contain repeated characters or increasing or decreasing characters (such
     as 123 or CBA).
 - key: MinimumLength
   title: Minimum Passcode Length
@@ -60,14 +77,17 @@ payloadkeys:
       introduced: '16.2'
     macOS:
       introduced: '13.1'
+    watchOS:
+      introduced: n/a
   type: <integer>
   presence: optional
   range:
     min: 0
     max: 4
-  default: 1
-  content: Specifies the minimum number of complex characters that must be present.
-    Only used when RequireComplexPasscode is true.
+  default: 0
+  content: Specifies the minimum number of complex characters in the password. A complex
+    character is a character other than a number or a letter, such as '&', '%', '$',
+    and '#'.
 - key: MaximumFailedAttempts
   title: Maximum Number of Failed Attempts
   type: <integer>
@@ -86,11 +106,13 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '13.1'
+    watchOS:
+      introduced: n/a
   type: <integer>
   presence: optional
-  content: The number of minutes before the login will be reset after the maximum
-    number of failed attempts has been reached. The MaximumFailedAttempts key must
-    be set for this to take effect.
+  content: The number of minutes before the login is reset after the maximum number
+    of failed attempts. Also set the 'MaximumFailedAttempts' key for this to take
+    effect.
 - key: MaximumGracePeriodInMinutes
   title: Maximum Grace Period
   type: <integer>
@@ -120,9 +142,9 @@ payloadkeys:
   range:
     min: 0
     max: 730
-  content: Specifies the maximum number of days for which the passcode can remain
-    unchanged. After this number of days, the user is forced to change the passcode
-    before the device is unlocked.
+  content: Specifies the maximum number of days that the passcode can remain unchanged.
+    After this number of days, the system forces the user to change the passcode before
+    it unlocks the device.
 - key: PasscodeReuseLimit
   title: Passcode Reuse Limit
   type: <integer>
@@ -141,10 +163,46 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '13.1'
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
-  content: If set to true, forces a password reset to occur the next time the user
-    tries to authenticate. If this key is set in a configuration in the system scope
-    (device channel), the setting takes effect for all users, and admin authentications
-    may fail until the admin user password is also reset.
+  content: If 'true', the system forces a password reset the next time the user tries
+    to authenticate. If you set this key in a configuration in the system scope (device
+    channel), the setting takes effect for all users, and admin authentication may
+    fail until the admin user password is also reset.
+- key: CustomRegex
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+    watchOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Specifies a regular expression, and its description, to enforce password
+    compliance. Use the simpler passcode settings whenever possible, and rely on regular
+    expression matching only when necessary. Mistakes in regular expressions can lead
+    to frustrating user experiences, such as unsatisfiable passcode policies, or policy
+    descriptions that don't match the enforced policy.
+  subkeys:
+  - key: Regex
+    type: <string>
+    presence: required
+    content: A regular expression string to match against the password to determine
+      whether it complies with a policy. The regular expression uses the ICU syntax.
+      The string can't exceed 2048 characters in length.
+  - key: Description
+    type: <dictionary>
+    presence: optional
+    content: A dictionary with supported OS language IDs for the keys (such as 'en-US'),
+      and values that represent a localized description of the policy that the regular
+      expression enforces. Use the special 'default' key for languages that the dictionary
+      doesn't contain.
+    subkeys:
+    - key: ANY
+      type: <string>
+      presence: optional
+      content: A localized description.

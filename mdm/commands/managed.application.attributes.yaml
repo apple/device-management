@@ -19,6 +19,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: Queries managed application attributes. Attributes can be set on managed
     apps. These attributes can be changed over time.
 payloadkeys:
@@ -48,6 +52,9 @@ responsekeys:
       content: The app's attributes.
       subkeys:
       - key: VPNUUID
+        supportedOS:
+          tvOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: A per-app VPN unique identifier for this app.
@@ -56,6 +63,8 @@ responsekeys:
           iOS:
             introduced: '16.0'
           tvOS:
+            introduced: n/a
+          watchOS:
             introduced: n/a
         type: <string>
         presence: optional
@@ -68,11 +77,24 @@ responsekeys:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
         content: |-
           The DNS Proxy UUID assigned to this app.
           Available in iOS 16 and later.
+      - key: RelayUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: The relay UUID for this app.
       - key: AssociatedDomains
         supportedOS:
           iOS:
@@ -110,3 +132,33 @@ responsekeys:
         default: true
         content: If 'false', this app isn't removable while it's a managed app. This
           value is available in iOS 14 and later.
+      - key: TapToPayScreenLock
+        supportedOS:
+          iOS:
+            introduced: '16.4'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: false
+        content: Enabling this setting will require Tap to Pay on iPhone users to
+          use Face ID or a passcode to unlock their device after every transaction
+          that requires a customer’s card PIN. Disabling this setting will allow users
+          to configure this setting on their device based on personal preference.
+      - key: CellularSliceUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: Either data network name (DNN) or traffic category can be set as
+          the enterprise slice identifier. For DNN, the value must be encoded as "DNN:name”,
+          where "name" is the carrier provided DNN name. For app category, the value
+          must be encoded as "AppCategory:category", where "category" is a carrier
+          provided string like "Enterprise1".

@@ -4,6 +4,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.9'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -46,8 +47,11 @@ payloadkeys:
   default: false
   content: If 'true', enables 'Smooth images' in the Zoom options.
 - key: contrast
-  type: <integer>
+  type: <real>
   presence: optional
+  range:
+    min: 0.0
+    max: 1.0
   content: The contrast value in the Display options.
 - key: flashScreen
   type: <boolean>

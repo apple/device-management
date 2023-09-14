@@ -43,11 +43,12 @@ responsekeys:
       The error conditions the content cache detected in the 'PeerFilterRanges' in the installed 'com.apple.AssetCache.managed' payload.
       To display these alerts on the device, set 'DisplayAlerts' to 'true' in the installed ContentCaching profile.
     subkeys:
-    - key: Index into the PeerFilterRanges in the installed com.apple.AssetCache.managed
-        payload
+    - key: ANY index
       type: <dictionary>
       presence: required
       content: A dictionary that describes the alerts for the peer filter ranges.
+        The key name is  the index into the PeerFilterRanges array in the installed
+        com.apple.AssetCache.managed payload.
       subkeys:
       - key: className
         type: <string>

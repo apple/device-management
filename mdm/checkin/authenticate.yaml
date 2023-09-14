@@ -23,6 +23,9 @@ payload:
     tvOS:
       introduced: '10.2'
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      supervised: false
   content: Check-in protocol authenticate request and response.
 payloadkeys:
 - key: DeviceName
@@ -30,6 +33,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: required
@@ -40,6 +45,8 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The device's model name.
@@ -48,6 +55,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <string>
   presence: required
@@ -85,6 +94,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The per-enrollment identifier for the device. Available in macOS 10.15
@@ -94,6 +105,9 @@ payloadkeys:
     iOS:
       introduced: '9.0'
       accessrights: AllowQueryDeviceInformation
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
   content: The device's OS version.
@@ -102,6 +116,9 @@ payloadkeys:
     iOS:
       introduced: '9.0'
       accessrights: AllowQueryDeviceInformation
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
   content: The device's build version.
@@ -109,6 +126,9 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+    watchOS:
+      introduced: '10.0'
       accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
@@ -124,6 +144,9 @@ payloadkeys:
       accessrights: AllowQueryDeviceInformation
       userenrollment:
         mode: forbidden
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
   content: The device's serial number.
@@ -138,6 +161,9 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
   content: The device's IMEI (International Mobile Station Equipment Identity).
@@ -152,6 +178,9 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
   content: The device's MEID (Mobile Equipment Identifier).

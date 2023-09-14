@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.9'
+      multiple: false
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -93,3 +94,15 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', prevents requests for enabling FileVault at user logout time.
+- key: ForceEnableInSetupAssistant
+  supportedOS:
+    macOS:
+      introduced: '14.0'
+      requiresdep: true
+      allowmanualinstall: false
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If 'true', and this payload is installed after enrolling with MDM in Setup Assistant, it requests Setup Assistant to enable FileVault at setup time.
+    To use this, enable the Await Device Configured DEP configuration option, send this profile with this key set, before sending the DeviceConfigured command. An admin SecureToken user is required, otherwise the FileVault pane does not appear.

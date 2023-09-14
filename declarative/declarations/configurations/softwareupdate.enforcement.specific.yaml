@@ -1,0 +1,55 @@
+title: Software Update:Enforcement:Specific
+description: A software update enforcement policy for a specific OS release
+payload:
+  declarationtype: com.apple.configuration.softwareupdate.enforcement.specific
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: TargetOSVersion
+  title: Target OS Version
+  type: <string>
+  presence: required
+  content: The target OS version to update the device to by the appropriate time.
+    This is the OS version number, for example, '16.1'. It may also include a supplemental
+    version identifier, for example, '16.1.1'.
+- key: TargetBuildVersion
+  title: Target Build Version
+  type: <string>
+  presence: optional
+  content: The target build version to update the device to by the appropriate time,
+    for example, '20A242'. The system uses the build version for testing during seeding
+    periods. The build version can include a supplemental version identifier, for
+    example, '20A242a'. If the build version isn't consistent with the target OS version
+    specified in the 'TargetOSVersion' key, the target OS version takes precedence.
+- key: TargetLocalDateTime
+  title: Target Local Date Time
+  type: <string>
+  presence: required
+  content: The local date time value that specifies when to force install the software
+    update. Use the format 'yyyy-mm-ddThh:mm:ss', which is derived from RFC3339 but
+    doesn't include a time zone offset. If the user doesn't trigger the software update
+    before this time, the device force installs it.
+- key: DetailsURL
+  title: Details URL
+  type: <string>
+  presence: optional
+  content: The URL of a web page that shows details that the organization provides
+    about the enforced update.

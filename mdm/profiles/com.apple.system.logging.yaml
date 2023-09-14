@@ -3,8 +3,11 @@ description: ''
 payload:
   payloadtype: com.apple.system.logging
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.12'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -12,6 +15,10 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Processes
   supportedOS:

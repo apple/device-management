@@ -5,10 +5,27 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: n/a
     tvOS:
       introduced: n/a
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: passcode.is-present
   title: Status item value.
@@ -16,6 +33,6 @@ payloadkeys:
   presence: required
   content: If 'true', a passcode is present on the device. If 'false', a passcode
     isn't present on the device. When a passcode is present, the specific attributes
-    of the passcode (length, number of complex characters, etc), isn't reported. Instead,
-    use the 'passcode.is-compliant' status item to verify that the passcode complies
-    with all passcode policies set on the device.
+    of the passcode, such as length or number of complex characters, aren't reported.
+    Instead, use the 'passcode.is-compliant' status item to verify that the passcode
+    complies with all passcode policies set on the device.

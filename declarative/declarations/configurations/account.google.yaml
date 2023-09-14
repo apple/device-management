@@ -5,19 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: A Google configuration defines a Google account for a user. The user will
     be prompted to enter their credentials shortly after the configuration successfully
@@ -32,8 +39,10 @@ payloadkeys:
 - key: UserIdentityAssetReference
   title: User Identity Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.useridentity
   presence: required
   content: The identifier of an asset declaration that contains the user identity
-    for this Google account. The corresponding asset must be of type UserIdentity.
-    The asset must contain an 'EmailAddress' key that specifies the full Google email
+    for this Google account. Set the corresponding asset type to 'UserIdentity' and
+    ensure that it contains an 'EmailAddress' key that specifies the full Google email
     address for the account.

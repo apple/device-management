@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '11.3'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '11.3'
+      multiple: false
       supervised: true
       allowmanualinstall: true
 payloadkeys:
@@ -49,7 +51,7 @@ payloadkeys:
       type: <string>
       presence: required
       content: The MAC address of an Apple TV device that this iOS device is permitted
-        to control. Use the format xx:xx:xx:xx:xx:xx. The field isn't case sensitive.
+        to control. Use the format 'xx:xx:xx:xx:xx:xx'. The field isn't case sensitive.
     - key: TVDeviceName
       supportedOS:
         iOS:

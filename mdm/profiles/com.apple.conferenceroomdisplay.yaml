@@ -6,6 +6,7 @@ payload:
   supportedOS:
     tvOS:
       introduced: '10.2'
+      multiple: false
       supervised: true
       allowmanualinstall: true
   content: Configures an Apple TV to enter Conference Room Display mode, and restrictions

@@ -1,0 +1,160 @@
+title: Get Token
+description: Check-in protocol get token data.
+payload:
+  requesttype: GetToken
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      supervised: false
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: true
+      userenrollment:
+        mode: allowed
+    macOS:
+      introduced: '14.0'
+      devicechannel: true
+      userchannel: true
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  content: Check-in protocol get token data request and response.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - GetToken
+  content: A string that specifies this is a get-token request.
+- key: TokenServiceType
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.maid
+  - com.apple.watch.pairing
+  content: A string that specifies the service for the requested token.
+- key: TokenParameters
+  type: <dictionary>
+  presence: optional
+  content: Parameters that the system uses to generate the token.
+  subkeys:
+  - key: SecurityToken
+    title: Security Token
+    supportedOS:
+      iOS:
+        sharedipad:
+          mode: forbidden
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: A security token to generate the server token. Required by the 'com.apple.watch.pairing'
+      service type.
+  - key: PhoneUDID
+    title: Phone Identifier
+    supportedOS:
+      iOS:
+        sharedipad:
+          mode: forbidden
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: The identifier of the phone paired to the watch. Required by the 'com.apple.watch.pairing'
+      service type.
+  - key: WatchUDID
+    title: Watch Identifier
+    supportedOS:
+      iOS:
+        sharedipad:
+          mode: forbidden
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: The identifier of the watch paired to the phone. Required by the 'com.apple.watch.pairing'
+      service type.
+- key: UDID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: forbidden
+    macOS:
+      userenrollment:
+        mode: forbidden
+  type: <string>
+  presence: required
+  content: The device's UDID.
+- key: EnrollmentID
+  supportedOS:
+    iOS:
+      userenrollment:
+        mode: required
+    macOS:
+      userenrollment:
+        mode: required
+  type: <string>
+  presence: required
+  content: A per-enrollment identifier that identifies the device for user enrollments.
+- key: EnrollmentUserID
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      devicechannel: false
+      userenrollment:
+        mode: required
+  type: <string>
+  presence: required
+  content: A per-enrollment identifier that identifies the user for user enrollments.
+- key: UserShortName
+  supportedOS:
+    iOS:
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+  type: <string>
+  presence: optional
+  content: On Shared iPad, this value returns the Managed Apple ID of the user. When
+    present, it indicates that the token is for the user channel. In macOS, this value
+    returns the short name of the user.
+- key: UserID
+  supportedOS:
+    iOS:
+      sharedipad:
+        mode: required
+    macOS:
+      devicechannel: false
+  type: <string>
+  presence: optional
+  content: In macOS, this value returns the ID of the user. On Shared iPad, this value
+    is 'FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF' to indicate that no authentication occurs.
+- key: UserLongName
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      devicechannel: false
+  type: <string>
+  presence: required
+  content: The full name of the user.
+responsekeys:
+- key: TokenData
+  type: <data>
+  presence: required
+  content: The token represented as data. If the token is a string value, this will
+    be the UTF-8 encoded string data.

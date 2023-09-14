@@ -26,6 +26,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowSettings
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowSettings
+      supervised: false
   content: This command allows the server to set settings on the device. These settings
     take effect on a one-time basis. The user may still be able to change the settings
     at a later time. This command requires the ApplySettings right.
@@ -49,6 +53,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -90,6 +96,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains data roaming settings. This setting requires
@@ -120,6 +128,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -152,6 +162,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -186,6 +198,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains Bluetooth settings. This setting requires
@@ -219,6 +233,8 @@ payloadkeys:
         userchannel: false
       tvOS:
         introduced: '10.2'
+        accessrights: AllowAppInstallation
+      watchOS:
         accessrights: AllowAppInstallation
     type: <dictionary>
     presence: optional
@@ -261,6 +277,8 @@ payloadkeys:
       tvOS:
         introduced: '10.2'
         accessrights: AllowAppInstallation
+      watchOS:
+        accessrights: AllowAppInstallation
     type: <dictionary>
     presence: optional
     content: A dictionary that contains the attributes to apply to the app. Omit this
@@ -285,28 +303,46 @@ payloadkeys:
         7 and later, and tvOS 10.2 and later.
       subkeys:
       - key: VPNUUID
+        supportedOS:
+          tvOS:
+            introduced: n/a
         type: <string>
         presence: optional
-        content: A per-app VPN unique identifier for this app. This value is available
-          in iOS 7 and later, and tvOS 10.2 and later.
+        content: A per-app VPN unique identifier for this app. Available in iOS 7
+          and later.
       - key: ContentFilterUUID
         supportedOS:
           iOS:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
-        content: Content Filter UUID assigned to this app.
+        content: The content filter UUID for this app. Available in iOS 16 and later.
       - key: DNSProxyUUID
         supportedOS:
           iOS:
             introduced: '16.0'
           tvOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <string>
         presence: optional
-        content: DNS Proxy UUID assigned to this app.
+        content: The DNS proxy UUID for this app. Available in iOS 16 and later.
+      - key: RelayUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: The relay UUID for this app. Available in iOS 17 and later.
       - key: AssociatedDomains
         supportedOS:
           iOS:
@@ -316,7 +352,7 @@ payloadkeys:
         type: <array>
         presence: optional
         content: An array that contains the associated domains to add to this app.
-          This setting is available in iOS 7 and later, and tvOS 10.2 and later.
+          Available in iOS 7 and later.
         subkeys:
         - key: AssociatedDomain
           type: <string>
@@ -331,8 +367,7 @@ payloadkeys:
         default: false
         content: If 'true', perform claimed site association verification directly
           at the domain, instead of on Apple's servers. Only set this to 'true' for
-          domains that can't access the internet. This value is available in iOS 14
-          and later.
+          domains that can't access the internet. Available in iOS 14 and later.
       - key: Removable
         supportedOS:
           iOS:
@@ -342,23 +377,35 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: true
-        content: If 'false', this app isn't removable while it's managed. This value
-          is available in iOS 14 and later, and tvOS 14 and later.
+        content: If 'false', this app isn't removable while it's managed. Available
+          in iOS 14 and later, and tvOS 14 and later.
       - key: TapToPayScreenLock
         supportedOS:
           iOS:
             introduced: '16.4'
-          macOS:
-            introduced: n/a
           tvOS:
+            introduced: n/a
+          watchOS:
             introduced: n/a
         type: <boolean>
         presence: optional
         default: false
-        content: Enabling this setting will require Tap to Pay on iPhone users to
-          use Face ID or a passcode to unlock their device after every transaction
-          that requires a customer’s card PIN. Disabling this setting will allow users
-          to configure this setting on their device based on personal preference.
+        content: |-
+          If true, the system require Tap to Pay on iPhone users to use Face ID or a passcode to unlock their device after every transaction that requires a customer's card PIN. If 'false', the user can configure this setting on their device.
+          Available in iOS 16.4 and later.
+      - key: CellularSliceUUID
+        supportedOS:
+          iOS:
+            introduced: '17.0'
+          tvOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        content: |-
+          The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier provided string like “Enterprise1”'.'
+          Available in iOS 17 and later.
   - key: DeviceName
     supportedOS:
       iOS:
@@ -373,6 +420,8 @@ payloadkeys:
         introduced: '10.10'
         userenrollment:
           mode: forbidden
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains device name settings. This setting doesn't
@@ -398,6 +447,8 @@ payloadkeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -492,6 +543,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings related to the MDM protocol. This
@@ -565,6 +618,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for maximum resident users. Apple
@@ -598,6 +653,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -680,9 +737,65 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: Whether the language & locale pane will be skipped for new users of
-        Shared iPad. If 'true', system language & locale will be picked automatically
-        for the new user.
+      content: |-
+        If 'true', the system picks the system language and locale automatically for the new Shared iPad user.
+        Available in iOS 16.2 and later.
+    - key: AwaitUserConfiguration
+      supportedOS:
+        iOS:
+          introduced: '17.0'
+      type: <dictionary>
+      presence: optional
+      content: |-
+        If enabled, the Shared iPad device enters Setup Assistant after the user triggers a login. The MDM server has a chance to configure the device and user. After configuration, a UserConfiguredCommand needs be sent to the user channel to unblock the login. This feature requires the device to have network access during the login process.
+        Available in iOS 17 and later.
+      subkeys:
+      - key: Enabled
+        type: <boolean>
+        presence: required
+        content: If 'true', the device stops at a Setup Assistant pane after user
+          login. The user won't be able to use the device until a UserConfiguredCommand
+          command is received.
+    - key: PasscodePolicy
+      supportedOS:
+        iOS:
+          introduced: '17.0'
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains passcode related policies.
+      subkeys:
+      - key: PasscodeLockGracePeriod
+        type: <integer>
+        presence: optional
+        rangelist:
+        - 0
+        - 60
+        - 300
+        - 900
+        - 3600
+        - 14400
+        content: Sets the user preference for the amount of time (in seconds) the
+          screen must be locked before unlock attempts will require the device passcode.
+          This should ideally be set when no passcode is set on device. If a passcode
+          is on device, only more restrictive values than the currently enforced passcode
+          lock grace period will take effect; any changes to a less restrictive value
+          will not take effect until the user logs out. This setting will not take
+          effect if TemporarySessionOnly is set to true (since there is no passcode
+          for the temporary session). This setting can only be applied on Shared iPads.
+        devpubs-override: The number of seconds before a locked screen requires the
+          user to enter the device passcode to unlock it. The minimum value is '0'
+          seconds and the maximum value is '14400' seconds. If a device has a passcode,
+          a change to a larger value doesn't take effect until the user logs out or
+          removes the passcode. For this reason, it's better to set this value before
+          the user sets a passcode. If the value set is less than one of the known
+          values the next lowest value will be used. For example a value of 299 will
+          result in an effective setting of 60.
+      - key: AutoLockTime
+        type: <integer>
+        presence: optional
+        content: Sets the user preference for the amount of time (in seconds) before
+          a device goes to sleep after being idle. The mininum value for this setting
+          is 120 seconds. This setting can only be applied on Shared iPad.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -696,6 +809,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -728,6 +843,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for sharing app analytics. This setting
@@ -749,6 +866,7 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: 9.3.2
+        deprecated: '17.0'
         sharedipad:
           mode: required
           devicechannel: true
@@ -758,6 +876,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -774,9 +894,21 @@ payloadkeys:
     - key: PasscodeLockGracePeriod
       type: <integer>
       presence: required
-      content: |-
-        The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
-        If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
+      rangelist:
+      - 0
+      - 60
+      - 300
+      - 900
+      - 3600
+      - 14400
+      content: The number of seconds before a locked screen requires the user to enter
+        the device passcode to unlock it. The minimum value is '0' seconds and the
+        maximum value is '14400' seconds. If a device has a passcode, a change to
+        a larger value doesn't take effect until the user logs out or removes the
+        passcode. For this reason, it's better to set this value before the user sets
+        a passcode. If the value set is less than one of the known values the next
+        lowest value will be used. For example a value of 299 will result in an effective
+        setting of 60.
   - key: TimeZone
     supportedOS:
       iOS:
@@ -793,6 +925,8 @@ payloadkeys:
       tvOS:
         introduced: '14.0'
         supervised: true
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     presence: optional
     content: A dictionary that contains time zone settings. This setting is only available
@@ -825,6 +959,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     presence: optional
@@ -866,6 +1002,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      watchOS:
+        supervised: true
     type: <dictionary>
     presence: optional
     content: A dictionary that contains accessibility settings. Available in iOS 16
@@ -882,22 +1020,25 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables bold text.
+      content: If 'true', the system enables bold text.
     - key: IncreaseContrastEnabled
+      supportedOS:
+        watchOS:
+          introduced: n/a
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables increase contrast.
+      content: If 'true', the system enables increase contrast.
     - key: ReduceMotionEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables reduced motion.
+      content: If 'true', the system enables reduced motion.
     - key: ReduceTransparencyEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables reduced transparency.
+      content: If 'true', the system enables reduced transparency.
     - key: TextSize
       type: <integer>
       presence: optional
@@ -915,23 +1056,31 @@ payloadkeys:
       - 10
       - 11
       default: 4
-      content: The accessibility text size apps that support dynamic text use. 0 is
-        the smallest value, and 11 is the largest available.
+      content: The accessibility text size apps that support dynamic text use. '0'
+        is the smallest value, and '11' is the largest available.
     - key: TouchAccommodationsEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If true, enables touch accommodations.
+      content: If 'true', the system enables touch accommodations.
     - key: VoiceOverEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If true, enables voiceover.
+      content: If 'true', the system enables voiceover.
     - key: ZoomEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If true, enables zoom.
+      content: If 'true', the system enables zoom.
+    - key: GrayscaleEnabled
+      supportedOS:
+        iOS:
+          introduced: n/a
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the system enables grayscale display.
 responsekeys:
 - key: Settings
   type: <dictionary>

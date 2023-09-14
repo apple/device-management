@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '14.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     macOS:
       introduced: '10.12'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -32,7 +34,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the Apple ID setup window.
+  content: If 'true', the system skips the Apple ID setup window.
 - key: SkipSiriSetup
   supportedOS:
     iOS:
@@ -40,7 +42,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the Siri setup window.
+  content: If 'true', the system skips the Siri setup window.
 - key: SkipPrivacySetup
   supportedOS:
     iOS:
@@ -50,7 +52,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the Privacy consent window.
+  content: If 'true', the system skips the Privacy consent window.
 - key: SkipiCloudStorageSetup
   supportedOS:
     iOS:
@@ -60,7 +62,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the iCloud Storage window.
+  content: If 'true', the system skips the iCloud Storage window.
 - key: SkipTrueTone
   supportedOS:
     iOS:
@@ -70,7 +72,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the True Tone Display window.
+  content: If 'true', the system skips the True Tone Display window.
 - key: SkipAppearance
   supportedOS:
     iOS:
@@ -80,7 +82,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips the Choose Your Look window.
+  content: If 'true', the system skips the Choose Your Look window.
 - key: SkipTouchIDSetup
   supportedOS:
     iOS:
@@ -90,7 +92,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If true, skips the Touch ID setup window.
+  content: If 'true', the system skips the Touch ID setup window.
 - key: SkipScreenTime
   supportedOS:
     iOS:
@@ -100,7 +102,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If true, skips the Screen Time window.
+  content: If 'true', the system skips the Screen Time window.
 - key: SkipAccessibility
   supportedOS:
     iOS:
@@ -110,7 +112,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: Skips Accessibility window
+  content: If 'true', the system skips the Accessibility window.
 - key: SkipSetupItems
   supportedOS:
     iOS:
@@ -134,4 +136,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: Skips Unlock With Apple Watch window
+  content: If 'true', the system skips the Unlock With Apple Watch window.

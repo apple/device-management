@@ -5,25 +5,44 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: true
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: true
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: ProfileURL
   title: Profile's URL.
   type: <string>
   presence: required
   content: |-
-    The URL of the profile to download and install. This must be an 'https://' URL.
+    The URL of the profile to download and install, which needs to start with 'https://', and must be hosted by the MDM server. The system silently ignores any account or passcode payloads in the profile. Use their declarative configurations instead.
     If a user enrollment triggers this configuration, the system silently ignores any MDM 1 payloads in macOS where the User Enrollment Mode setting is 'forbidden'. In iOS and tvOS, the system rejects the entire profile.

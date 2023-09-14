@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '7.0'
+      multiple: false
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: forbidden
     watchOS:
       introduced: '3.2'
+      multiple: false
       allowmanualinstall: true
   content: |-
     This payload cannot be installed if an APN payload is already installed.

@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -24,10 +26,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: '5.1'
+      multiple: true
       supervised: false
       allowmanualinstall: true
     watchOS:
       introduced: '3.2'
+      multiple: true
       allowmanualinstall: true
 payloadkeys:
 - key: AutoJoin
@@ -152,23 +156,15 @@ payloadkeys:
     presence: optional
     content: The user's password. If you don't specify a value, the system prompts
       the user during login.
-  - key: OneTimePassword
-    supportedOS:
-      iOS:
-        introduced: '8.0'
-    type: <boolean>
-    presence: optional
-    default: false
-    content: If 'true', the user receives a prompt for a password each time they connect
-      to the network.
   - key: PayloadCertificateAnchorUUID
     title: Certificate Anchor UUID
     type: <array>
     presence: optional
-    content: An array of the UUID of a certificate payload to trust for authentication.
-      Use this key to prevent the device from asking the user whether to trust the
-      listed certificates. Dynamic trust (the certificate dialogue) is in a disabled
-      state if you specify this property without also enabling  'TLSAllowTrustExceptions'.
+    content: An array of the UUID of a certificate payloads in the same profile to
+      trust for authentication. Use this key to prevent the device from asking the
+      user whether to trust the listed certificates. Dynamic trust (the certificate
+      dialogue) is in a disabled state if you specify this property without also enabling
+      'TLSAllowTrustExceptions'.
     subkeys:
     - key: CertificateAnchorUUID
       title: Individual Certificate Anchor UUID
@@ -192,7 +188,7 @@ payloadkeys:
     presence: optional
     content: |-
       The list of accepted server certificate common names. If a server presents a certificate that isn't in this list, the system doesn't trust it.
-      If you specify this property, the system disables dynamic trust (the certificate dialog) unless you also specify 'TLSAllowTrustExceptions'  with the value 'true'.
+      If you specify this property, the system disables dynamic trust (the certificate dialog) unless you also specify 'TLSAllowTrustExceptions' with the value 'true'.
       If necessary, use wildcards to specify the name, such as 'wpa.*.example.com'.
     subkeys:
     - key: TLSTrustedServerName
@@ -246,6 +242,7 @@ payloadkeys:
     - '1.0'
     - '1.1'
     - '1.2'
+    - '1.3'
     default: '1.0'
     content: The minimum TLS version for EAP authentication.
   - key: TLSMaximumVersion
@@ -262,6 +259,7 @@ payloadkeys:
     - '1.0'
     - '1.1'
     - '1.2'
+    - '1.3'
     default: '1.2'
     content: The maximum TLS version for EAP authentication.
   - key: OuterIdentity
@@ -287,7 +285,7 @@ payloadkeys:
     content: |-
       If 'true', allows PAC provisioning.
 
-      This value is only applicable if 'EAPFASTUsePAC' is 'true'. This value must be 'true' for EAP-FAST PAC usage to succeed because there is no other way to provision a PAC.
+      This value is only applicable if 'EAPFASTUsePAC' is 'true'. This value must be 'true' for EAP-FAST PAC usage to succeed because there's no other way to provision a PAC.
   - key: EAPFASTProvisionPACAnonymously
     title: Provision PAC Anonymously
     type: <boolean>
@@ -321,9 +319,16 @@ payloadkeys:
     default: false
     content: |-
       If 'true', the system mode connection tries to use the Open Directory credentials.
-      If using this property, you can't use  'SystemModeCredentialsSource'.
+      If using this property, you can't use 'SystemModeCredentialsSource'.
   - key: OneTimeUserPassword
     title: Per-Connection Password
+    supportedOS:
+      iOS:
+        introduced: '8.0'
+      macOS:
+        introduced: '10.8'
+      tvOS:
+        introduced: '7.0'
     type: <boolean>
     presence: optional
     default: false
@@ -465,7 +470,7 @@ payloadkeys:
       iOS:
         introduced: '14.5'
       macOS:
-        introduced: n/a
+        introduced: '14.0'
     type: <array>
     presence: optional
     content: An array of app bundle identifiers that defines the allow list for L2
@@ -481,6 +486,8 @@ payloadkeys:
     supportedOS:
       iOS:
         deprecated: '14.5'
+      macOS:
+        deprecated: '14.0'
     type: <array>
     presence: optional
     content: Use 'QoSMarkingAllowListAppIdentifiers' instead.
@@ -628,5 +635,6 @@ payloadkeys:
   default: false
   content: |-
     If 'true,' disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
+    If 'false', then the system enables MAC address randomization.
     This value is only locked when the profile is installed by MDM. If the profile is manually installed, the value is set but the user can change it.
     Available in iOS 14 and later, and watchOS 7 and later.

@@ -1,0 +1,66 @@
+title: Screen Sharing:Connection
+description: Use this configuration to define a connection to a Screen Sharing host.
+payload:
+  declarationtype: com.apple.configuration.screensharing.connection
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: ConnectionUUID
+  title: Unique Identifier
+  type: <string>
+  presence: required
+  content: A unique identifier for this connection when it's in a connection group.
+- key: DisplayName
+  title: The name of the connection.
+  type: <string>
+  presence: required
+  content: The name of the connection.
+- key: HostName
+  title: Host Name
+  type: <string>
+  presence: required
+  content: The host name or IP address of the Mac that hosts the screen-sharing connection.
+- key: Port
+  title: TCP Port
+  type: <integer>
+  presence: optional
+  content: Specifies the TCP port number on the host to initiate the connection.
+- key: DisplayConfiguration
+  title: Display Configuration
+  type: <dictionary>
+  presence: required
+  content: The display configuration for this connection.
+  subkeys:
+  - key: DisplayType
+    type: <string>
+    presence: required
+    rangelist:
+    - Virtual1
+    - Virtual2
+    content: |-
+      The type of display for the connection, which has these allowed values:
+      * 'Virtual1': Create one virtual display.
+      * 'Virtual2': Create two virtual displays.
+- key: AuthenticationCredentialsAssetReference
+  title: Authentication Credentials Asset Reference
+  type: <string>
+  assettypes:
+  - com.apple.asset.credential.userpassword
+  presence: optional
+  content: Specifies the identifier of an asset declaration that contains the required
+    credentials for this connection to authenticate with the screen-sharing server.
+    Set the corresponding asset type to 'com.apple.asset.credential.userpassword'.

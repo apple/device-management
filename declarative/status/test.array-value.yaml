@@ -5,16 +5,45 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: test.array-value
   title: Status item value.
   type: <array>
   presence: required
-  content: Status value.
+  content: The test status item array value.
   subkeytype: Array
   subkeys:
   - key: status_value

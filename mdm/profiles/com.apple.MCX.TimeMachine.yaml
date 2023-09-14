@@ -4,6 +4,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.7'
+      multiple: false
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -21,7 +22,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If true, backs up only the startup volume by default.
+  content: If 'true', backs up only the startup volume by default.
 - key: BackupDestURL
   type: <string>
   presence: required

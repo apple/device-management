@@ -206,7 +206,7 @@ responsekeys:
           introduced: '16.2'
       type: <boolean>
       presence: required
-      content: If true, this update is a Rapid Security Response.
+      content: If 'true', this update is a Rapid Security Response.
     - key: SupplementalBuildVersion
       supportedOS:
         iOS:
@@ -217,8 +217,8 @@ responsekeys:
           introduced: '16.2'
       type: <string>
       presence: optional
-      content: The build version associated with the Rapid Security Response update,
-        e.g. 13A999. This is always the same as 'build'.
+      content: The build version for the Rapid Security Response update, for example,
+        '13A999', which is the same as 'Build'.
     - key: SupplementalOSVersionExtra
       supportedOS:
         iOS:
@@ -229,5 +229,5 @@ responsekeys:
           introduced: '16.2'
       type: <string>
       presence: optional
-      content: The Rapid Security Response OS version suffix, e.g. '(a)'. Only present
-        if this is a Rapid Security Response update.
+      content: The Rapid Security Response OS version suffix, for example, '(a)'.
+        Only present if this is a Rapid Security Response update.

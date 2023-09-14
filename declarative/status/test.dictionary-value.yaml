@@ -5,16 +5,45 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: test.dictionary-value
   title: Status item value.
   type: <dictionary>
   presence: required
-  content: Status value.
+  content: The test status dictionary value.
   subkeytype: Dictionary
   subkeys:
   - key: key1

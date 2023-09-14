@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.14'
+      multiple: true
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -46,7 +47,7 @@ payloadkeys:
       - key: CodeRequirement
         type: <string>
         presence: required
-        content: Obtained via the command ''codesign –display -r -''.
+        content: Obtained via the command ''codesign -display -r -''.
       - key: StaticCode
         type: <boolean>
         presence: optional
@@ -267,5 +268,14 @@ payloadkeys:
     presence: optional
     content: Allows the application to update or delete other apps. Available in macOS
       13 and later.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAppData
+    supportedOS:
+      macOS:
+        introduced: '14.0'
+    type: <array>
+    presence: optional
+    content: Allows the application to access data of other apps.
     subkeytype: Identity
     subkeys: *id001

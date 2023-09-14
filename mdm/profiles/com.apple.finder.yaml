@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: '10.7'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -17,7 +18,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Finder's burn support.
+  content: If 'true', the system disables the Finder's burn support.
 - key: InterfaceLevel
   supportedOS:
     macOS:
@@ -27,44 +28,44 @@ payloadkeys:
   rangelist:
   - Simple
   - Full
-  content: If Finder should operate in Simple or Full mode.
+  content: Specifies whether Finder should operate in Simple or Full mode.
 - key: ProhibitConnectTo
   type: <boolean>
   presence: optional
   default: false
-  content: If set to true, Connect to Server will be disabled.
+  content: If 'true', the system disables Connect to Server.
 - key: ProhibitEject
   type: <boolean>
   presence: optional
   default: false
-  content: If set to true, Eject will be disabled.
+  content: If 'true', the system disables Eject.
 - key: ProhibitGoToFolder
   type: <boolean>
   presence: optional
   default: false
-  content: If set to true, Go To Folder will be disabled.
+  content: If 'true', the system disables Go to Folder.
 - key: ShowExternalHardDrivesOnDesktop
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, external hard drives will not appear on the desktop.
+  content: If 'false', external hard drives don't appear on the Desktop.
 - key: ShowHardDrivesOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If set to false, internal hard drives will not appear on the desktop.
+  content: If 'false', internal hard drives don't appear on the Desktop.
 - key: ShowMountedServersOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If set to false, mounted file servers will not appear on the desktop.
+  content: If 'false', mounted file servers don't appear on the Desktop.
 - key: ShowRemovableMediaOnDesktop
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, removable media will not appear on the desktop.
+  content: If 'false', removable media items don't appear on the Desktop.
 - key: WarnOnEmptyTrash
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, user will not be warned before emptying the trash.
+  content: If 'false', the user isn't warned before emptying the trash.

@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: false
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: false
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -24,10 +26,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: '5.0'
+      multiple: false
       supervised: false
       allowmanualinstall: true
     watchOS:
       introduced: '1.0'
+      multiple: false
       allowmanualinstall: true
 payloadkeys:
 - key: PayloadIdentifier
@@ -101,10 +105,6 @@ payloadkeys:
 - key: PayloadRemovalDisallowed
   supportedOS:
     iOS:
-      supervised: true
-      userenrollment:
-        mode: forbidden
-    macOS:
       supervised: true
       userenrollment:
         mode: forbidden

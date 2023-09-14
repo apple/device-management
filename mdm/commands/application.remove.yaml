@@ -25,6 +25,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: This command allows a server to remove a managed app.
 payloadkeys:
 - key: Identifier

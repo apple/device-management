@@ -28,6 +28,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: This command allows the server to query the status of managed apps. Certain
     statuses are transient. Once they are reported to the server, the entries for
     the apps are removed from the next query. macOS supports this command on the user
@@ -50,7 +54,7 @@ responsekeys:
   content: A dictionary that contains status information about each managed app.
   subkeytype: ManagedApplicationListItem
   subkeys:
-  - key: <app identifier>
+  - key: ANY app identifier
     type: <dictionary>
     presence: required
     content: The bundle identifier of the managed app.

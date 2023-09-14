@@ -5,19 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: A CardDAV configuration defines a CardDAV contacts account for a user.
 payloadkeys:
@@ -31,7 +38,7 @@ payloadkeys:
   title: Server Host Name
   type: <string>
   presence: required
-  content: The hostname of the CardDAV server (or IP address).
+  content: The hostname or IP address of the CardDAV server.
 - key: Port
   title: Server Port
   type: <integer>
@@ -45,6 +52,8 @@ payloadkeys:
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.credential.userpassword
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
-    this account. The corresponding asset must be of type CredentialUserNameAndPassword.
+    this account. Set the corresponding asset type to 'CredentialUserNameAndPassword'.

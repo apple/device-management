@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: false
       userchannel: true
       requiresdep: false
@@ -207,6 +209,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '10.0'
+    macOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
@@ -231,6 +235,8 @@ payloadkeys:
     iOS:
       introduced: '8.0'
       deprecated: '10.0'
+    macOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
@@ -287,6 +293,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '12.0'
+    macOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false

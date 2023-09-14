@@ -27,6 +27,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowInstallationRemoval
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowInstallationRemoval
+      supervised: false
   content: This command allows the server to remove a profile. This command requires
     the Profile Installation and Removal Right. It's supported in the user channel.
 payloadkeys:

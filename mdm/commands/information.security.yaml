@@ -27,6 +27,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowQuerySecurity
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowQuerySecurity
+      supervised: false
   content: This command queries the device for security-related information. Queries
     are available if the MDM host has the Security Query right.
 responsekeys:
@@ -80,8 +84,6 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: 9.3.2
-        sharedipad:
-          mode: required
         userenrollment:
           mode: forbidden
       macOS:
@@ -94,8 +96,6 @@ responsekeys:
     supportedOS:
       iOS:
         introduced: 9.3.2
-        sharedipad:
-          mode: required
         userenrollment:
           mode: forbidden
       macOS:
@@ -105,6 +105,23 @@ responsekeys:
       the device passcode to unlock it. If a device has a passcode, changing 'PasscodeLockGracePeriod'
       to a larger value doesn't take effect until the user logs out or removes the
       passcode. This value is only available for Shared iPad.
+  - key: AutoLockTime
+    supportedOS:
+      iOS:
+        introduced: '17.0'
+        sharedipad:
+          mode: required
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <integer>
+    content: The number of seconds before a device goes to sleep after being idle.
+      This value is only available for Shared iPad.
   - key: FDE_Enabled
     supportedOS:
       iOS:
@@ -113,6 +130,8 @@ responsekeys:
         introduced: '10.9'
         userchannel: false
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <boolean>
     content: If 'true', the device has enabled FileVault full disk encryption (FDE).
@@ -128,6 +147,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: If 'true', FileVault FDE has a personal recovery key. This value is available
       in macOS 10.9 and later.
@@ -142,6 +163,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: If 'true', FileVault FDE has an institutional recovery key. This value
       is available in macOS 10.9 and later.
@@ -155,6 +178,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <data>
     content: If the FileVault personal recovery key has enabled escrow with a recovery
@@ -171,6 +196,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <string>
     content: If the FileVault personal recovery key has enabled escrow with a recovery
@@ -189,6 +216,8 @@ responsekeys:
         userchannel: false
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: If 'true', System Integrity Protection (SIP) is active on the device.
       This value is available in macOS 10.12 and later.
@@ -200,6 +229,8 @@ responsekeys:
         introduced: '10.12'
         userchannel: false
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     content: A dictionary that contains the firewall settings. This value is available
@@ -260,6 +291,8 @@ responsekeys:
         userchannel: false
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <dictionary>
     content: A dictionary that contains the status of the EFI firmware password. This
       value is available in macOS 10.13 and later.
@@ -292,6 +325,8 @@ responsekeys:
           introduced: n/a
         tvOS:
           introduced: n/a
+        watchOS:
+          introduced: n/a
       type: <boolean>
       content: If 'true', the device enrolled in MDM through the Device Enrollment
         Program (DEP). This value is available in macOS 10.13.2 and later.
@@ -300,6 +335,8 @@ responsekeys:
         iOS:
           introduced: n/a
         tvOS:
+          introduced: n/a
+        watchOS:
           introduced: n/a
       type: <boolean>
       content: If 'true', the enrollment was user-approved. If 'false', the device
@@ -320,6 +357,8 @@ responsekeys:
           introduced: '10.15'
         tvOS:
           introduced: n/a
+        watchOS:
+          introduced: n/a
       type: <boolean>
       content: If 'true', the type of enrollment allows the MDM to manage Activation
         Lock for this device. This value is available in macOS 10.15 and later.
@@ -331,6 +370,8 @@ responsekeys:
         introduced: '10.15'
         userchannel: false
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <dictionary>
     content: A dictionary that contains the device's Secure Boot settings. This value
@@ -386,6 +427,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: If 'true', Remote Desktop is active on the device. This value is available
       in macOS 10.14.4 and later.
@@ -397,6 +440,8 @@ responsekeys:
         introduced: '11.0'
         userchannel: false
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <boolean>
     content: If 'true', the system booted using an Authenticated Root Volume. This
@@ -411,6 +456,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <string>
     rangelist:
@@ -431,6 +478,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: |-
       If 'true', the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to installation. This only applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo response.
@@ -446,6 +495,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      watchOS:
+        introduced: n/a
     type: <boolean>
     content: |-
       If 'true', the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to enabling kernel extensions. This includes enabling kexts through the 'com.apple.syspolicy.kernel-extension-policy' payload or triggering the 'RestartDevice' command with 'RebuildKernelCache' set to 'true'. This only applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo response.
@@ -460,6 +511,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      watchOS:
         introduced: n/a
     type: <boolean>
     content: If 'true', a password is required to enter recovery (see SetRecoveryLockCommand).

@@ -28,6 +28,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowInspection
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowInspection
+      supervised: false
   content: This command allows the MDM server to query for the profiles installed
     on the device. This command requires the Inspect Profile Manifest right. It's
     supported on the user channel.
@@ -129,26 +133,35 @@ responsekeys:
         - key: PayloadType
           type: <string>
           presence: required
-          content: The type of payload for the profile. The only supported value is
-            'Configuration'.
+          content: The payload type, which each payload domain’s reference page specifies.
         - key: PayloadVersion
           type: <integer>
           presence: required
-          content: The version of the configuration profile as a whole, not of the
-            individual profiles within it. The value should be '1'.
+          content: The version of the configuration payload. The value should be '1'.
         - key: PayloadIdentifier
           type: <string>
           presence: required
-          content: The reverse-DNS-style identifier of the profile; for example, 'com.example.myprofile'.
+          content: The reverse-DNS-style identifier of the payload; for example, 'com.example.myprofile.payload1'.
+        - key: PayloadUUID
+          supportedOS:
+            iOS:
+              introduced: '17.0'
+            macOS:
+              introduced: '14.0'
+            tvOS:
+              introduced: '17.0'
+          type: <string>
+          presence: required
+          content: The unique identifier for the profile.
         - key: PayloadDisplayName
           type: <string>
           presence: optional
-          content: The human-readable name of the profile.
+          content: The human-readable name of the payload.
         - key: PayloadDescription
           type: <string>
           presence: optional
-          content: The description of the profile.
+          content: The description of the payload.
         - key: PayloadOrganization
           type: <string>
           presence: optional
-          content: The human-readable name of the organization that provided the profile.
+          content: The human-readable name of the organization that provided the payload.

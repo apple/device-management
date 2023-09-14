@@ -5,6 +5,7 @@ payload:
   supportedOS:
     macOS:
       introduced: 10.12.4
+      multiple: false
       devicechannel: true
       userchannel: false
       requiresdep: false

@@ -25,7 +25,8 @@ payload:
   content: This command allows a server to invite a user to join a program. This command
     issues the invitation, but does not allow the server to monitor whether the user
     has joined the program. This command is supported in the user channel. This command
-    will yield a NotNow status until the user exits Setup Assistant.
+    will yield a NotNow status until the user exits Setup Assistant. This command
+    does not work with Account Driven Device Enrollment.
 payloadkeys:
 - key: ProgramID
   type: <string>

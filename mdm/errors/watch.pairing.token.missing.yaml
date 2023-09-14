@@ -1,0 +1,48 @@
+title: Error Code Pairing Token Missing
+description: Error response for missing pairing token.
+payload:
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: '10.0'
+  content: |-
+    The schema for a JSON or property list XML document returned in an MDM server's 403 response body. The response headers
+    must include a "Content-Type" header indicating whether JSON or XML is being returned.
+
+    This response is returned when an Apple Watch is attempting to enroll in MDM and the watch did not include a pairing token
+    in the machine info request sent to the server to initiate enrollment. After receiving this response, the watch will fetch
+    a pairing token from the phone's MDM server via a request to the phone. The watch will then repeat the enrollment request
+    with the pairing token included.
+payloadkeys:
+- key: code
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.watch.pairing.token.missing
+  content: Indicates that pairing token required to enroll a watch is missing.
+- key: description
+  type: <string>
+  presence: optional
+  content: The description of the error. This will only be used by the client for
+    logging purposes and will not be displayed to the user.
+- key: message
+  type: <string>
+  presence: optional
+  content: A description of the error suitable for displaying to the user. If needed,
+    the client will make a best-effort attempt to display the message, but may not
+    be able to, due to local conditions.
+- key: details
+  type: <dictionary>
+  presence: required
+  content: A dictionary of additional data specific to the error code.
+  subkeys:
+  - key: security-token
+    type: <string>
+    presence: required
+    content: The security token to pass to the phone's MDM server to use to form the
+      pairing token. This should be a random UUID string.

@@ -5,19 +5,26 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
-      userenrollment:
-        mode: allowed
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
-      userenrollment:
-        mode: allowed
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   content: An email configuration defines an email account for a user.
 payloadkeys:
@@ -30,9 +37,11 @@ payloadkeys:
 - key: UserIdentityAssetReference
   title: User Identity Asset Reference
   type: <string>
+  assettypes:
+  - com.apple.asset.useridentity
   presence: optional
   content: The identifier of an asset declaration that contains the user identity
-    for this account. The corresponding asset must be of type UserIdentity.
+    for this account. Set the corresponding asset type to 'UserIdentity'.
 - key: IncomingServer
   title: Incoming Server Settings
   type: <dictionary>
@@ -71,9 +80,11 @@ payloadkeys:
   - key: AuthenticationCredentialsAssetReference
     title: Authentication Credentials Asset Reference
     type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
-      The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type CredentialUserNameAndPassword.
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
       If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.
   - key: IMAPPathPrefix
     title: IMAP Path Prefix
@@ -111,7 +122,98 @@ payloadkeys:
   - key: AuthenticationCredentialsAssetReference
     title: Authentication Credentials Asset Reference
     type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
-      The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type CredentialUserNameAndPassword.
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
       If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.
+- key: SMIME
+  title: S/MIME Settings
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Settings for S/MIME.
+  subkeys:
+  - key: Signing
+    title: S/MIME Signing Settings
+    type: <dictionary>
+    presence: optional
+    content: Settings for S/MIME signing.
+    subkeys:
+    - key: Enabled
+      title: Signing Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', the system enables S/MIME signing.
+    - key: IdentityAssetReference
+      title: S/MIME Signing Identity Asset Reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.credential.acme
+      - com.apple.asset.credential.identity
+      - com.apple.asset.credential.scep
+      presence: optional
+      content: Specifies the identifier of an asset declaration containing the identity
+        required for S/MIME signing of messages sent from this account.
+    - key: UserOverrideable
+      title: Signing User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the user can turn S/MIME signing on or off in Settings.
+    - key: IdentityUserOverrideable
+      title: Signing Identity User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the user can select an S/MIME signing identity in Settings.
+  - key: Encryption
+    title: S/MIME Encryption Settings
+    type: <dictionary>
+    presence: optional
+    content: Settings for S/MIME encryption.
+    subkeys:
+    - key: Enabled
+      title: Encryption By Default Enabled
+      type: <boolean>
+      presence: required
+      content: If 'true', the system enables S/MIME encryption by default, which the
+        user can't override if 'PerMessageSwitchEnabled' is 'false'.
+    - key: IdentityAssetReference
+      title: S/MIME Encryption Identity Asset Reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.credential.acme
+      - com.apple.asset.credential.identity
+      - com.apple.asset.credential.scep
+      presence: optional
+      content: Specifies the identifier of an asset declaration containing the identity
+        required for S/MIME encryption. The system attaches the public certificate
+        to outgoing mail to allow the user to receive encrypted mail. When the user
+        sends encrypted mail, the system uses the public certificate to encrypt the
+        copy of the mail in their Sent mailbox.
+    - key: UserOverrideable
+      title: Encryption By Default User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the user can set the default value for S/MIME encryption
+        to on or off in Settings.
+    - key: IdentityUserOverrideable
+      title: Encryption Identity User Overrideable
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the user can select an S/MIME signing identity in Settings.
+    - key: PerMessageSwitchEnabled
+      title: Per Message Switch Enabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the system enables the per-message encryption switch in
+        the compose view.

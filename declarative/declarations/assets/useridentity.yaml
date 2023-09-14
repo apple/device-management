@@ -1,4 +1,4 @@
-title: User Identity
+title: Asset:User Identity
 description: User identity data.
 payload:
   declarationtype: com.apple.asset.useridentity
@@ -9,6 +9,8 @@ payload:
       introduced: '13.0'
     tvOS:
       introduced: '16.0'
+    watchOS:
+      introduced: '10.0'
 payloadkeys:
 - key: FullName
   title: Full Name
@@ -19,4 +21,4 @@ payloadkeys:
   title: Email Address
   type: <string>
   presence: optional
-  content: The user's email address.
+  content: The email address of the user.

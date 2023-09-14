@@ -1,0 +1,110 @@
+title: Status Services Background Task
+description: The client's background task details.
+payload:
+  statusitemtype: services.background-task
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: services.background-task
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: The background task.
+  subkeytype: Background Task
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Identifier
+      type: <string>
+      presence: required
+      content: The background task UUID which the system uses as the primary key.
+    - key: _removed
+      title: Indicates removal of a background task.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If 'true', the background task is removed and the status item object
+        only contains this key and the 'identifier' key.
+    - key: code-signature
+      title: Code signature
+      type: <string>
+      presence: optional
+      content: For types other than 'agent' or 'daemon', this is the code signature
+        designated requirement of the item, if available.
+    - key: uid
+      title: Numeric user identifier
+      type: <integer>
+      presence: required
+      content: The numeric user identifier of the owner of the background task.
+    - key: path
+      title: Path
+      type: <string>
+      presence: required
+      content: For an 'agent' or 'daemon', the path to the 'launchd' 'plist' file.
+        For other types, the path to the app or the document.
+    - key: state
+      title: Background task state
+      type: <string>
+      presence: required
+      rangelist:
+      - not-registered
+      - enabled
+      - requires-approval
+      - not-found
+      content: The SMAppServiceStatus enumeration.
+    - key: type
+      title: Background task type
+      type: <string>
+      presence: required
+      rangelist:
+      - daemon
+      - agent
+      - login-item
+      - app
+      - user-item
+      content: The daemon, agent, or SFL login item type.
+    - key: launchd
+      title: Launchd background task
+      type: <dictionary>
+      presence: optional
+      content: Details about a 'launchd'-based background task, which is only present
+        when the type is 'daemon' or 'agent'.
+      subkeys:
+      - key: label
+        title: Label
+        type: <string>
+        presence: required
+        content: The label of the 'launchd'-based background task.
+      - key: program
+        title: Program
+        type: <string>
+        presence: required
+        content: The program that the 'launchd' 'plist' file specifies.
+      - key: program-arguments
+        title: Program arguments
+        type: <array>
+        presence: optional
+        content: The program arguments that the 'launchd' 'plist' file specifies.
+        subkeys:
+        - key: program-arguments-item
+          title: Program argument
+          type: <string>
+      - key: checksum
+        title: The hash value of the launchd plist.
+        type: <string>
+        presence: required
+        content: The hash value of the 'launchd' 'plist' file.

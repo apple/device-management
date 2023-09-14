@@ -5,17 +5,40 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
-      userenrollment:
-        mode: forbidden
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
-      userenrollment:
-        mode: forbidden
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: device.identifier.serial-number
   title: Status item value.
   type: <string>
   presence: required
-  content: Status value.
+  content: The device's serial number.

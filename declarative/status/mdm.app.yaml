@@ -5,10 +5,29 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: n/a
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: mdm.app
   title: Status item value.
@@ -30,9 +49,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: To indicate removal of an app, this key's value is set to true, and
-        only this key and the "identifier" key will be present in the status item
-        object.
+      content: If 'true', the app is removed and the status item object only contains
+        this key and the 'identifier' key.
     - key: name
       title: App name
       type: <string>

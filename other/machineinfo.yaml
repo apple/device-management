@@ -10,6 +10,8 @@ payload:
       introduced: '10.9'
     tvOS:
       introduced: '10.2'
+    watchOS:
+      introduced: '10.0'
 payloadkeys:
 - key: UDID
   title: UDID
@@ -47,10 +49,46 @@ payloadkeys:
   presence: required
   content: The device's product type, e.g. iPhone5,1.
 - key: VERSION
-  title: OS Version
+  title: Build Version
   type: <string>
   presence: required
-  content: The OS version installed on the device, e.g. 7A182.
+  content: The build version installed on the device, e.g. 7A182.
+- key: OS_VERSION
+  title: OS Version
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: '17.0'
+  type: <string>
+  presence: required
+  content: The OS version installed on the device, e.g. 17.0.
+- key: SUPPLEMENTAL_BUILD_VERSION
+  title: Supplemental Build Version
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: '17.0'
+  type: <string>
+  presence: optional
+  content: The device's operating system supplemental build version (if available).
+- key: SUPPLEMENTAL_OS_VERSION_EXTRA
+  title: Supplemental OS Version Extra
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: '17.0'
+  type: <string>
+  presence: optional
+  content: The device's operating system supplemental OS version extra (if available).
 - key: IMEI
   title: IMEI
   supportedOS:
@@ -86,3 +124,31 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The user's currently-selected language, e.g. en.
+- key: MDM_CAN_REQUEST_SOFTWARE_UPDATE
+  title: MDM Can Request Software Update
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to "true", indicates that the device can be triggered by the server
+    to do a required software update.
+- key: PAIRING_TOKEN
+  title: Watch Enrollment Pairing Token
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <data>
+  presence: optional
+  content: The pairing token to validate when a watch is enrolling.

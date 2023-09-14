@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '6.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:
@@ -15,9 +16,9 @@ payload:
         mode: forbidden
     macOS:
       introduced: '10.9'
+      multiple: false
       devicechannel: true
       userchannel: false
-      supervised: true
       requiresdep: false
       userapprovedmdm: false
       allowmanualinstall: true
@@ -25,6 +26,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '6.0'
+      multiple: false
       supervised: true
       allowmanualinstall: true
   content: PEM-encoded cer
@@ -44,30 +46,37 @@ payloadkeys:
   title: Proxy Server
   type: <string>
   subtype: <hostname>
-  presence: required
-  content: The proxy server's network address.
+  presence: optional
+  content: The proxy server's network address. This is required if the ProxyType is
+    set to Manual, and is ignored if the ProxyType is set to Automatic.
 - key: ProxyServerPort
   title: Proxy Server Port
   type: <integer>
-  presence: required
-  content: The proxy server's port number.
+  presence: optional
+  content: The proxy server's port number. This is required if the ProxyType is set
+    to Manual, and is ignored if the ProxyType is set to Automatic.
 - key: ProxyUsername
   title: Proxy Username
   type: <string>
   presence: optional
-  content: The user name used to authenticate to the proxy server.
+  content: The user name used to authenticate to the proxy server. This setting is
+    only used if the ProxyType is set to Manual, and is ignored if the ProxyType is
+    set to Automatic.
 - key: ProxyPassword
   title: Proxy Password
   type: <string>
   presence: optional
-  content: The password used to authenticate to the proxy server.
+  content: The password used to authenticate to the proxy server. This setting is
+    only used if the ProxyType is set to Manual, and is ignored if the ProxyType is
+    set to Automatic.
 - key: ProxyPACURL
   title: Proxy PAC URL
   type: <string>
   presence: optional
   content: The URL of the PAC file that defines the proxy configuration. Starting
     in iOS 13 and macOS 10.15, only URLs that begin with 'http://' or 'https://' are
-    allowed.
+    allowed. This setting is only used if the ProxyType is set to Automatic, and is
+    ignored if the ProxyType is set to Manual.
 - key: ProxyPACFallbackAllowed
   title: Proxy PAC Fallback Allowed
   supportedOS:

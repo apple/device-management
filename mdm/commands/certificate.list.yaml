@@ -32,6 +32,10 @@ payload:
       introduced: '6.0'
       accessrights: AllowInspection
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowInspection
+      supervised: false
   content: |-
     This command allows the server to retrieve the list of installed certificates on the device. The command requires that the server has the Inspect Profile Manifest privilege.
     For userenrollment, this request will limit to certificates pushed via MDM.

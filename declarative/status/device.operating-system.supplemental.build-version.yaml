@@ -5,14 +5,43 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.1'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.1'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: device.operating-system.supplemental.build-version
   title: Status item value.
   type: <string>
   presence: required
-  content: Identifies the operating system's build and rapid security response versions
-    in use on the device (for example, '20A123a', or '20B27c').
+  content: The operating system's build and rapid security response versions in use
+    on the device, for example, '20A123a' or '20B27c'.

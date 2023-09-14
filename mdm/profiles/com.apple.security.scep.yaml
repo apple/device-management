@@ -6,6 +6,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -16,6 +17,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -25,6 +27,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: '6.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+    watchOS:
+      introduced: '3.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
 payloadkeys:
@@ -106,10 +114,8 @@ payloadkeys:
     default: 0
     content: |-
       A bitmask indicating the use of the key.
-
       * 1: Signing
       * 4: Encryption
-
       Some certificate authorities, such as Windows CA, support only encryption or signing, but not both at the same time.
   - key: CAFingerprint
     title: Fingerprint

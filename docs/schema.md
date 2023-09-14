@@ -13,6 +13,7 @@ The definition of the schema used here is in the `schema.yaml` file. That file c
 | payload      | object | Information about the object as a whole |
 | payloadkeys  | array  | A list of YAML objects representing the command request |
 | responsekeys | array  | A list of YAML objects representing the command response |
+| reasons      | array  | A list of YAML objects representing declarative device management status reason codes |
 
 ### Payload Object
 
@@ -24,6 +25,7 @@ The definition of the schema used here is in the `schema.yaml` file. That file c
 | statusitemtype  | string | Type of the status payload |
 | credentialtype  | string | Type of the credential asset data |
 | supportedOS     | object | Identifies the range of supported OS versions that support the entire payload |
+| apply           | string | Indicates how multiple configurations of the same type are applied |
 | content         | string | Description of the payload |
 
 ### supportedOS Object
@@ -41,29 +43,33 @@ The `supportedOS` object is used in the `payload` object to indicate overall sup
 
 ### iOS, macOS, tvOS, watchOS Objects
 
-| Name               | Type    | Description |
-|--------------------|---------|-------------|
-| introduced         | string  | OS version where feature was introduced |
-| deprecated         | string  | OS version where feature was deprecated |
-| removed            | string  | OS version where feature was removed |
-| accessrights       | string  | The MDM protocol access rights required on the device to execute the command |
-| devicechannel      | boolean | Indicates whether the command is supported on the device channel |
-| userchannel        | boolean | indicates whether the command is supported on the user channel |
-| supervised         | boolean | Indicates whether the command can only be executed on supervised devices |
-| requiresdep        | boolean | If True, the command can only be executed on devices provisioned in DEP |
-| userapprovedmdm    | boolean | If True, the command can only be executed on devices with user approved MDM enrollment |
-| allowmanualinstall | boolean | If True, the profile can be installed manually by a user on the device |
-| sharedipad         | object  | Additional behavior specific to shared iPad devices |
-| userenrollment     | object  | Additional behavior when user enrollment is in effect |
-| always-skippable   | boolean | If True, indicates that the skip key's corresponding Setup pane is always skipped. If False, indicates that the skip key's corresponding Setup pane may be shown, depending on exactly when during the setup flow it occurs. This is only used in skipkeys.yaml. |
+| Name                | Type    | Description |
+|---------------------|---------|-------------|
+| introduced          | string  | OS version where feature was introduced |
+| deprecated          | string  | OS version where feature was deprecated |
+| removed             | string  | OS version where feature was removed |
+| accessrights        | string  | The MDM protocol access rights required on the device to execute the command |
+| multiple            | boolean | Indicates whether multiple copies of the payload can be installed |
+| devicechannel       | boolean | Indicates whether the command or profile is supported on the device channel |
+| userchannel         | boolean | indicates whether the command or profile is supported on the user channel |
+| supervised          | boolean | Indicates whether the command or profile can only be executed on supervised devices |
+| requiresdep         | boolean | If True, the command can only be executed on devices provisioned in DEP |
+| userapprovedmdm     | boolean | If True, the command can only be executed on devices with user-approved MDM enrollment |
+| allowmanualinstall  | boolean | If True, the profile can be installed manually by a user on the device |
+| sharedipad          | object  | Additional behavior specific to shared iPad devices |
+| userenrollment      | object  | Additional behavior when user enrollment is in effect |
+| always-skippable    | boolean | If True, indicates that the skip key's corresponding Setup pane is always skipped. If False, indicates that the skip key's corresponding Setup pane may be shown, depending on exactly when during the setup flow it occurs. This is only used in skipkeys.yaml. |
+| allowed-enrollments | string  | Array of allowed enrollment types for declarative device management |
+| allowed-scopes      | string  | Array of allowed enrollment scopes for declarative device management |
 
 ### Shared iPad Object
 
-| Name          | Type    | Description |
-|---------------|---------|-------------|
-| mode          | string  | Indicates whether a payload or payload key can used with shared iPad |
-| devicechannel | boolean | Defines if the payload can be installed on the device MDM channel |
-| userchannel   | boolean | Defines if the payload can be installed on the user MDM channel |
+| Name           | Type    | Description |
+|----------------|---------|-------------|
+| mode           | string  | Indicates whether a payload or payload key can used with shared iPad |
+| devicechannel  | boolean | Defines if the payload can be installed on the device MDM channel |
+| userchannel    | boolean | Defines if the payload can be installed on the user MDM channel |
+| allowed-scopes | string  | Array of allowed enrollment scopes for declarative device management |
 
 __Notes__
 
@@ -89,12 +95,14 @@ The `mode` can have one of four values: `allowed`, `required`, `forbidden`, and 
 | supportedOS | object | Identifies the range of supported OS versions that support the key |
 | type        | string | The type of key |
 | subtype     | string | Indicates the expected format of the string value of the key |
+| assettypes  | string | Indicates the set of allowed asset types |
 | presence    | string | Whether the key is required or optional |
 | rangelist   | array  | List of allowed values for this key |
 | range       | object | Bounds for the value of this key |
 | default     | scalar | The default value for the key |
 | format      | string | The format for the value expressed as a regular expression |
 | repetition  | object | Cardinality for this value |
+| combinetype | string | Indicates how this key is combined with ones from other configurations |
 | content     | string | Description of the payload key |
 | subkeytype  | string | A name that uniquely represents the structured subkey object |
 | subkeys     | array  | An array of payload keys |

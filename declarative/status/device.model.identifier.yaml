@@ -5,17 +5,46 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: device.model.identifier
   title: Status item value.
   type: <string>
   presence: required
-  content: A two-part string that uniquely identifies the device's model. The first
-    part describes device's model family, and the second part describes the model's
-    version. The model's version is a comma-separated number where the first part
-    of the number is the version, and the second part is a variant, such as 'MacBookPro15,1'
-    or 'iPhone13,2'.
+  content: A two-part string that specifies the device's model. The first part specifies
+    device's model family, and the second part specifies the model's version. The
+    model's version is a comma-separated number where the first part of the number
+    is the version, and the second part is a variant, such as 'MacBookPro15,1' or
+    'iPhone13,2'.

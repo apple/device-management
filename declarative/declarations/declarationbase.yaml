@@ -9,6 +9,8 @@ payload:
       introduced: '13.0'
     tvOS:
       introduced: '16.0'
+    watchOS:
+      introduced: '10.0'
 payloadkeys:
 - key: Type
   type: <string>
@@ -27,3 +29,212 @@ payloadkeys:
   type: <dictionary>
   presence: required
   content: The payload describing this declaration.
+reasons:
+- value: Error.ActivationFailed
+  description: A configuration or asset cannot be activated due to an activation that
+    failed.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the declaration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the declaration.
+- value: Error.AssetCannotBeDeserialized
+  description: The asset data does not conform to the expected data type.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.AssetCannotBeDownloaded
+  description: The asset data cannot be downloaded.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.AssetCannotBeVerified
+  description: The downloaded asset data cannot be verified.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.ConfigurationCannotBeApplied
+  description: The configuration cannot be applied to the device.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.ConfigurationCannotBeDeserialized
+  description: The configuration is not valid.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.ConfigurationFailed
+  description: An asset cannot be activated due to a configuration that failed.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the declaration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the declaration.
+- value: Error.ConfigurationIsInvalid
+  description: The configuration is not valid for applying to the device.
+  details:
+  - key: Error
+    type: <string>
+    description: Description of the underlying NSError.
+- value: Error.ConfigurationNotSupported
+  description: The configuration is not supported for this platform, scope, or enrollment
+    type.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the configuration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the configuration.
+- value: Error.InvalidPayload
+  description: A declaration is not fully loaded.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the declaration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the declaration.
+- value: Error.MissingAssets
+  description: A configuration being activated references assets that are not present.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the configuration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the configuration.
+  - key: AssetIdentifiers
+    type: <array>
+    description: Array of strings containing each missing asset `Identifier` value.
+- value: Error.MissingConfigurations
+  description: An activation being activated references configurations that are not
+    present.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation.
+  - key: ConfigurationIdentifiers
+    type: <array>
+    description: Array of strings containing each missing configuration `Identifier`
+      value.
+- value: Error.MissingState
+  description: A declaration is missing internal state information.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the declaration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the declaration.
+- value: Error.PredicateFailed
+  description: A predicate evaluation failed.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation whose predicate failed.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation whose predicate failed.
+  - key: Predicate
+    type: <string>
+    description: The predicate description of the predicate that failed.
+  - key: Domain
+    type: <string>
+    description: Underlying NSError's domain.
+  - key: Code
+    type: <string>
+    description: Underlying NSError's code.
+- value: Error.UnableToEvaluatePredicate
+  description: A predicate cannot be evaluated.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation whose predicate failed to evaluate.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation whose predicate failed to evaluate.
+  - key: Predicate
+    type: <string>
+    description: The predicate description of the predicate that failed to evaluate.
+- value: Error.UnableToParsePredicate
+  description: A predicate expression cannot be parsed.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation whose predicate failed to parse.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation whose predicate failed to parse.
+  - key: Predicate
+    type: <string>
+    description: The predicate description of the predicate that failed to parse.
+- value: Error.UnableToParsePredicateWithCustomOperator
+  description: A predicate expression with a custom operator cannot be parsed.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation whose predicate failed to parse.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation whose predicate failed to parse.
+  - key: Predicate
+    type: <string>
+    description: The predicate description of the predicate that failed to parse.
+- value: Error.Unknown
+  description: An unrecognized NSError was generated.
+  details:
+  - key: Domain
+    type: <string>
+    description: NSError's domain.
+  - key: Code
+    type: <string>
+    description: NSError's code.
+- value: Error.UnknownPayloadKeys
+  description: A declaration contains unknown payloads keys.
+  details:
+  - key: UnknownPayloadKeys
+    type: <array>
+    description: Array of strings containing each unknown key-path.
+- value: Info.NotReferencedByActivation
+  description: A configuration is not referenced in any activation.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the configuration.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the configuration.
+- value: Info.NotReferencedByConfiguration
+  description: An asset is not referenced in any configuration.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the asset.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the asset.
+- value: Info.Predicate
+  description: A predicate evaluated to false.
+  details:
+  - key: Identifier
+    type: <string>
+    description: The `Identifier` of the activation whose predicate is false.
+  - key: ServerToken
+    type: <string>
+    description: The `ServerToken` of the activation whose predicate is false.
+  - key: Predicate
+    type: <string>
+    description: The predicate description of the predicate that is false.

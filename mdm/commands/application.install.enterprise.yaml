@@ -59,8 +59,8 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', install the app as a managed app. For manifest-based installation, if this value is 'true', but the package doesn't meet the criteria for management, the installation fails. Reinstall a managed app with this value set to 'false' to change the app to an unmanaged app.
-    To satisfy the criteria for management, the pkg must contain a single, signed application installed into '/Applications'.
+    If 'true', install the app as a managed app.
+    For manifest-based installs, if 'true' the system considers only the .app bundles installed into '/Applications' as managed (macOS 11 through 13 required the pkg to contain a single .app bundle). Reinstalling a managed app without this flag causes it to become unmanaged.
     This value is available in macOS 11 and later.
 - key: ManagementFlags
   supportedOS:

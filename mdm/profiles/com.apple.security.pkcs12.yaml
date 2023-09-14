@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '4.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.7'
+      multiple: true
       devicechannel: true
       userchannel: true
       requiresdep: false
@@ -24,10 +26,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: '5.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
     watchOS:
       introduced: '3.0'
+      multiple: true
       allowmanualinstall: true
   content: Password-protected identity certificate. Only one certificate may be included.
 payloadkeys:
@@ -77,4 +81,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If false, does not tag the private key data as extractable in the keychain.
+  content: If 'false', does not tag the private key data as extractable in the keychain.

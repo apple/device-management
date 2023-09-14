@@ -6,6 +6,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '9.3'
+      multiple: false
       supervised: true
       allowmanualinstall: true
       sharedipad:

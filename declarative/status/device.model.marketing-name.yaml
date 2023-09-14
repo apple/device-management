@@ -5,14 +5,44 @@ payload:
   supportedOS:
     iOS:
       introduced: '15.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
     macOS:
       introduced: '13.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '10.0'
+      allowed-enrollments:
+      - device
+      - local
+      allowed-scopes:
+      - system
 payloadkeys:
 - key: device.model.marketing-name
   title: Status item value.
   type: <string>
   presence: required
-  content: A string that identifies the device's marketing name, such as 'iPhone 12'.
-    This value may not always be available.
+  content: The device's marketing name, such as 'iPhone 12'. This value may not always
+    be available. Alternatively, use 'device.model.configuration-code' to look up
+    the marketing name through the web API.

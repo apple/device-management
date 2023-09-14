@@ -1,0 +1,20 @@
+title: User Configured Command
+description: Informs the device that it can continue past Setup Assistant and finish
+  login. Only works on Shared iPads that have the AwaitUserConfiguration feature enabled.
+payload:
+  requesttype: UserConfigured
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+      accessrights: None
+      supervised: true
+      requiresdep: true
+      sharedipad:
+        mode: allowed
+        devicechannel: false
+        userchannel: true
+      userenrollment:
+        mode: forbidden
+  content: Informs the device that it can continue past Setup Assistant and finish
+    login. Only works on Shared iPads that have the AwaitUserConfiguration feature
+    enabled.

@@ -13,6 +13,10 @@ payload:
         mode: forbidden
       userenrollment:
         mode: forbidden
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowPasscodeRemovalAndLock
+      supervised: false
   content: This command allows the server to clear the passcode on the device. This
     command requires the Device Lock and Passcode Removal right.
 payloadkeys:

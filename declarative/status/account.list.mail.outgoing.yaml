@@ -5,22 +5,33 @@ payload:
   supportedOS:
     iOS:
       introduced: '16.0'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
       sharedipad:
-        mode: allowed
-        devicechannel: false
-        userchannel: true
+        allowed-scopes:
+        - user
     macOS:
       introduced: '13.0'
-      devicechannel: false
-      userchannel: true
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - user
     tvOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
 payloadkeys:
 - key: account.list.mail.outgoing
   title: Status item value.
   type: <array>
   presence: required
-  content: Status value.
+  content: A list of status values for the outgoing mail accounts.
   subkeytype: Account
   subkeys:
   - key: status_value
@@ -30,22 +41,20 @@ payloadkeys:
       title: Unique identifier of the account.
       type: <string>
       presence: required
-      content: The unique identifier of the account. This can be used as a "primary
-        key" to access a specific account.
+      content: The unique identifier for the account.
     - key: _removed
       title: Indicates removal of the account.
       type: <boolean>
       presence: optional
       default: false
-      content: To indicate removal of an account, this key's value is set to true,
-        and only this key and the "identifier" key will be present in the status item
-        object.
+      content: If 'true', the account is removed and the status item object only contains
+        this key and the 'identifier' key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
       presence: optional
       content: The identifier of the declaration that installed the account. Only
-        present if the account was installed by a declaration.
+        present if a declaration installed the account.
     - key: visible-name
       title: Account name
       type: <string>
@@ -55,7 +64,7 @@ payloadkeys:
       title: Account hostname
       type: <string>
       presence: optional
-      content: The server host name of the account.
+      content: The server host name for the account.
     - key: port
       title: Server Port
       type: <integer>
@@ -65,4 +74,4 @@ payloadkeys:
       title: Account username
       type: <string>
       presence: optional
-      content: The user name of the account.
+      content: The user name for the account.

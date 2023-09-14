@@ -91,20 +91,20 @@ payloadkeys:
       title: fullName
       type: <string>
       presence: optional
-      content: The full name of the user. This defaults to shortName if not specified.
+      content: The full name of the user, which defaults to 'shortName' if not specified.
     - key: passwordHash
       title: passwordHash
       type: <data>
       presence: optional
-      content: Contains the pre-created salted PBKDF2 SHA512 password hash for the
-        account.
+      content: Data that contains the pre-created salted PBKDF2 SHA512 password hash
+        for the account.
     - key: hidden
       title: hidden
       type: <boolean>
       presence: optional
       default: false
-      content: If true, this sets the account attribute to make the account hidden
-        to loginwindow and Users&Groups. OD attribute dsAttrTypeNative:IsHidden.
+      content: If 'true', this sets the account attribute to make the account hidden
+        in the login window and Users & Groups.
 - key: ManagedLocalUserShortName
   supportedOS:
     macOS:

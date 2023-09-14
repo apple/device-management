@@ -35,6 +35,8 @@ responsekeys:
   type: <array>
   presence: required
   content: An array of dictionaries that describes the statuses of software updates.
+    If an activated declaration of configuration.softwareupdate.enforcement.specific
+    is present on a Mac, OSUpdateStatus will only return non OS update statuses.
   subkeys:
   - key: OSUpdateStatusItem
     type: <dictionary>

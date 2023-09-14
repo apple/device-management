@@ -5,6 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '7.0'
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -15,6 +16,7 @@ payload:
         mode: allowed
     macOS:
       introduced: '10.15'
+      multiple: true
       devicechannel: true
       userchannel: false
       requiresdep: false
@@ -22,9 +24,9 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
-  content: As of iOS 16.0, this can be installed on Device Enrollments and User Enrollments
-    if ContentFilterUUID is specified. Previously it could only be installed on supervised
-    devices.
+  content: As of iOS 16.0, this can be installed on unsupervised devices and user
+    enrollments if ContentFilterUUID is specified. Previously it could only be installed
+    on supervised devices.
 payloadkeys:
 - key: FilterType
   title: FilterType
@@ -297,4 +299,5 @@ payloadkeys:
   presence: optional
   content: A globally-unique identifier for this content filter configuration. Managed
     apps with the same 'ContentFilterUUID' in their app attributes have their network
-    traffic processed by the content filter.
+    traffic processed by the content filter. This key must be present for unsupervised
+    devices and user enrollments.

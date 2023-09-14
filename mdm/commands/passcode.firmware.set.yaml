@@ -31,7 +31,12 @@ payloadkeys:
   default: false
   content: If 'true', enable ROMs.
 responsekeys:
-- key: PasswordChanged
-  type: <boolean>
+- key: SetFirmwarePassword
+  type: <dictionary>
   presence: required
-  content: If 'true', the password change succeeded.
+  content: Command result.
+  subkeys:
+  - key: PasswordChanged
+    type: <boolean>
+    presence: required
+    content: If 'true', the password change succeeded.

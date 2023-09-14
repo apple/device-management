@@ -30,6 +30,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    watchOS:
+      introduced: '10.0'
+      accessrights: AllowAppInstallation
+      supervised: false
   content: This command queries the device for the current configuration of managed
     applications. This command requires the App Management right.
 payloadkeys:
