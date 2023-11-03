@@ -35,7 +35,8 @@ responsekeys:
   type: <array>
   presence: required
   content: An array of dictionaries that describes the statuses of software updates.
-    If an activated declaration of configuration.softwareupdate.enforcement.specific
+    The array is empty if there are no software updates currently in progress. If
+    an activated declaration of configuration.softwareupdate.enforcement.specific
     is present on a Mac, OSUpdateStatus will only return non OS update statuses.
   subkeys:
   - key: OSUpdateStatusItem
@@ -61,7 +62,7 @@ responsekeys:
       content: |-
         The status of the update, which is one of the following values:
         * 'Idle': The update is idle.
-        * 'Downloading': The software update is downloading.
+        * 'Downloading': The software update is downloading and subsequently preparing.
         * 'Installing': The software update is installing.
     - key: MaxDeferrals
       supportedOS:

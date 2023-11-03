@@ -40,7 +40,9 @@ payloadkeys:
 - key: Identifiers
   type: <array>
   presence: required
-  content: The bundle identifiers of the managed apps.
+  content: |-
+    The bundle identifiers of the managed apps.
+    For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -56,7 +58,9 @@ responsekeys:
     - key: Identifier
       type: <string>
       presence: required
-      content: The app's bundle identifier.
+      content: |-
+        The app's bundle identifier.
+        For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
     - key: Configuration
       type: <dictionary>
       presence: optional

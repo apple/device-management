@@ -1,0 +1,58 @@
+title: Status Screen Sharing Connection Group Unresolved Connections
+description: Information about connection groups which have member connection references
+  which could not be resolved.
+payload:
+  statusitemtype: screensharing.connection.group.unresolved-connection
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.1'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: screensharing.connection.group.unresolved-connection
+  title: Connection Groups status
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: UnresolvedGroup
+  subkeys:
+  - key: unresolved_group
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the connection group.
+      type: <string>
+      presence: required
+      content: The unique identifier (i.e., ConnectionGroupUUID) of the connection
+        group.
+    - key: _removed
+      title: Indicates removal of the unresolved connection group.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: To indicate removal of an unresolved connection group, this key's value
+        is set to true, and only this key and the "identifier" key will be present
+        in the status item object.
+    - key: unresolved_connections
+      title: Unique identifiers of unresolved connections.
+      type: <array>
+      presence: optional
+      content: An array of ConnectionUUID values (as specifed by the 'Members' key
+        in the group's declaration) which were not resolved.
+      subkeys:
+      - key: ConnectionUUID
+        title: Connection Unique Identifier
+        type: <string>
+        content: The unique identifier (i.e., ConnectionUUID) of a connection which
+          could not be resolved.

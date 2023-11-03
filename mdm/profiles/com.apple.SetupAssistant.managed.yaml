@@ -137,3 +137,13 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', the system skips the Unlock With Apple Watch window.
+- key: SkipWallpaper
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.1'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If 'true', the system skips the Wallpaper selection window.

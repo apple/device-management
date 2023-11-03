@@ -126,15 +126,15 @@ payloadkeys:
   title: Skips Enable Lockdown Mode
   supportedOS:
     iOS:
-      introduced: n/a
+      introduced: '17.1'
     macOS:
       introduced: '14.0'
     tvOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: If the key is included in the SkipSetup array the Lockdown Mode pane will
-    be skipped if an Apple ID/iCloud account is set up.
+  content: The key to skip the Lockdown Mode pane if an Apple ID is set up. Available
+    in macOS 14 and later, and iOS 17.1 and later.
 - key: FileVault
   title: Skip configuration of FileVault
   supportedOS:
@@ -454,6 +454,19 @@ payloadkeys:
   presence: optional
   content: The key to skip the Software Update Complete pane. This field is available
     in iOS 14 and later.
+- key: Wallpaper
+  title: Skips Wallpaper selection
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '14.1'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Wallpaper pane will be
+    skipped.
 - key: WatchMigration
   title: Skip watch migration
   supportedOS:

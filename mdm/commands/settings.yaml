@@ -59,7 +59,9 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains wallpaper settings. This setting doesn't support
-      User Enrollment, and is available in iOS 8 and later.
+      User Enrollment, and is available in iOS 8 and later. Starting from iOS 16.0
+      & iPadOS 17.0, when the wallpaper is set for the first time, both location will
+      be updated. After that either location can be set separately.
     subkeys:
     - key: Item
       type: <string>
@@ -252,7 +254,9 @@ payloadkeys:
     - key: Identifier
       type: <string>
       presence: required
-      content: The bundle identifier of the managed app.
+      content: |-
+        The bundle identifier of the managed app.
+        For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
     - key: Configuration
       type: <dictionary>
       presence: optional
@@ -294,7 +298,9 @@ payloadkeys:
     - key: Identifier
       type: <string>
       presence: required
-      content: The bundle identifier of the app.
+      content: |-
+        The bundle identifier of the app.
+        For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
     - key: Attributes
       type: <dictionary>
       presence: optional
@@ -716,7 +722,7 @@ payloadkeys:
       presence: optional
       content: |-
         A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID.
-        If this list contains more than 3 domains, the system picks 3 at random for display.Available in iOS 16 and later.
+        If this list contains more than 3 domains, the system picks 3 at random for display. Available in iOS 16 and later.
       subkeys:
       - key: AppleID domain
         type: <string>
@@ -794,7 +800,7 @@ payloadkeys:
         type: <integer>
         presence: optional
         content: Sets the user preference for the amount of time (in seconds) before
-          a device goes to sleep after being idle. The mininum value for this setting
+          a device goes to sleep after being idle. The minimum value for this setting
           is 120 seconds. This setting can only be applied on Shared iPad.
   - key: DiagnosticSubmission
     supportedOS:
@@ -1116,4 +1122,6 @@ responsekeys:
         introduced: '10.2'
     type: <string>
     presence: optional
-    content: The app identifier to which this error applies.
+    content: |-
+      The app identifier to which this error applies.
+      For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.

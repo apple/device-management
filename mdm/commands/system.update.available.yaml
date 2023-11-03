@@ -72,14 +72,16 @@ responsekeys:
       type: <string>
       presence: required
       content: A URL where the MDM server can request additional localized names for
-        this update. This value is available in macOS 10.11 and later.
+        this update. This key isn't present for certain updates, such as mobile software
+        updates (MSUs) or major OS updates. This value is available in macOS 10.11
+        and later.
     - key: ProductName
       supportedOS:
         macOS:
           introduced: n/a
       type: <string>
       presence: required
-      content: The product name; for example, iOS.  This value is available in iOS
+      content: The product name; for example, iOS. This value is available in iOS
         9.0 and later, and tvOS 12.0 and later.
     - key: Version
       type: <string>

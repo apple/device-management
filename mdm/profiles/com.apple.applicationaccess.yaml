@@ -53,8 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If  'false', disables account modification. Requires a supervised device.
+  content: If  'false', disables account modification. Requires a supervised device.
     Available in iOS 7 and later, macOS 14 and later, and watchOS 10 and later.
 - key: allowActivityContinuation
   title: Allow Handoff
@@ -309,9 +308,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying the Remote Management Sharing setting in System Settings.
-    Available in macOS 14 and later.
+  content: If 'false', prevents modifying the Remote Management Sharing setting in
+    System Settings. Available in macOS 14 and later.
 - key: allowAssistant
   title: Allow Siri
   supportedOS:
@@ -476,9 +474,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying Bluetooth setting in System Settings.
-    Available in macOS 14 and later.
+  content: If 'false', prevents modifying Bluetooth setting in System Settings. Available
+    in macOS 14 and later.
 - key: allowBookstore
   title: Allow Bookstore
   supportedOS:
@@ -515,7 +512,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the user can't download Apple Books media that is tagged as
+  content: If 'false', the user can't download Apple Books media that's tagged as
     erotica. Available in iOS 6 and later, and tvOS 11.3 and later. This restriction
     will require supervision in a future release.
 - key: allowCamera
@@ -708,9 +705,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', disallows iCloud Freeform services.
-    Available in macOS 14 and later.
+  content: If 'false', disallows iCloud Freeform services. Available in macOS 14 and
+    later.
 - key: allowCloudKeychainSync
   supportedOS:
     iOS:
@@ -905,9 +901,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents the user from changing the device name. Requires a supervised device.
-    Available in iOS 9 and later, macOS 14 and later, and tvOS 11.0 and later.
+  content: If 'false', prevents the user from changing the device name. Requires a
+    supervised device. Available in iOS 9 and later, macOS 14 and later, and tvOS
+    11.0 and later.
 - key: allowDeviceSleep
   title: Allow Device Sleep
   supportedOS:
@@ -1135,8 +1131,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying File Sharing setting in System Settings.
+  content: If 'false', prevents modifying File Sharing setting in System Settings.
     Available in macOS 14 and later.
 - key: allowFilesNetworkDriveAccess
   supportedOS:
@@ -1369,8 +1364,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying Internet Sharing setting in System Settings.
+  content: If 'false', prevents modifying Internet Sharing setting in System Settings.
     Available in macOS 14 and later.
 - key: allowiPhoneWidgetsOnMac
   title: Allow iPhone widget on Mac
@@ -1391,9 +1385,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', disallows iPhone widgets on a Mac that has signed in the same AppleID for iCloud. Supervised only.
-    Available on iOS 17 and later.
+  content: If 'false', disallows iPhone widgets on a Mac that has signed in the same
+    Apple ID for iCloud. Supervised only. Available on iOS 17 and later.
 - key: allowiTunes
   title: Allow use of iTunes
   supportedOS:
@@ -1491,9 +1484,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents creating new users in System Settings.
-    Available in macOS 14 and later.
+  content: If 'false', prevents creating new users in System Settings. Available in
+    macOS 14 and later.
 - key: allowLockScreenControlCenter
   supportedOS:
     iOS:
@@ -1904,7 +1896,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables Photo Stream. Available in iOS 5 and later.
+  content: If 'false', disables Photo Stream. Available in iOS 5 and later. This restriction
+    is deprecated and will be removed in a future release.
 - key: allowPodcasts
   supportedOS:
     iOS:
@@ -1958,8 +1951,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying Printer Sharing setting in System Settings.
+  content: If 'false', prevents modifying Printer Sharing setting in System Settings.
     Available in macOS 14 and later.
 - key: allowProximitySetupToNewDevice
   supportedOS:
@@ -2017,7 +2009,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prohibits installation of rapid security responses.
+  content: If 'false', prohibits installation of rapid security responses. Available
+    in iOS 16 and later and macOS 13 and later.
 - key: allowRapidSecurityResponseRemoval
   title: Allow Rapid Security Response Removal
   supportedOS:
@@ -2037,7 +2030,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prohibits removal of rapid security responses.
+  content: If 'false', prohibits removal of rapid security responses. Available in
+    iOS 16 and later and macOS 13 and later.
 - key: allowRemoteAppleEventsModification
   title: Allow modifying Remote Apple Events Sharing setting
   supportedOS:
@@ -2054,9 +2048,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modifying Remote Apple Events Sharing setting in System Settings.
-    Available in macOS 14 and later.
+  content: If 'false', prevents modifying Remote Apple Events Sharing setting in System
+    Settings. Available in macOS 14 and later.
 - key: allowRemoteAppPairing
   title: Allow pairing with Remote app
   supportedOS:
@@ -2221,8 +2214,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modification of Startup Disk setting in System Settings.
+  content: If 'false', prevents modification of Startup Disk setting in System Settings.
     Available in macOS 14 and later.
 - key: allowSystemAppRemoval
   supportedOS:
@@ -2258,8 +2250,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If 'false', prevents modification of Time Machine settings in System Settings.
+  content: If 'false', prevents modification of Time Machine settings in System Settings.
     Available in macOS 14 and later.
 - key: allowUIAppInstallation
   title: Allow App Installation from App Store
@@ -2434,7 +2425,8 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', disables voice dialing if the device is locked with a passcode.
-    Available in iOS 4 and later.
+    Available in iOS 4 and later. This restriction is deprecated and will be removed
+    in a future release.
 - key: allowVPNCreation
   title: Allow Adding VPN Configurations (Supervised devices only)
   supportedOS:
@@ -2516,7 +2508,7 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: Use blockedAppBundleIDs instead.
+  content: Use 'blockedAppBundleIDs' instead.
   subkeys:
   - key: appBlacklistedBundleID
     title: Blacklisted App
@@ -2560,9 +2552,8 @@ payloadkeys:
   type: <integer>
   presence: optional
   default: 172800
-  content: |-
-    The value, in seconds, after which the fingerprint unlock requires a password to authenticate. The default value is 48 hours.
-    Available in macOS 12 and later.
+  content: The value, in seconds, after which the fingerprint unlock requires a password
+    to authenticate. The default value is 48 hours. Available in macOS 12 and later.
 - key: enforcedSoftwareUpdateDelay
   supportedOS:
     iOS:
@@ -2587,8 +2578,7 @@ payloadkeys:
   default: 30
   content: |-
     Sets how many days to delay a software update on the device. With this restriction in place, the user doesn't see a software update until the specified number of days after the software update release date. This value is used by 'forceDelayedAppSoftwareUpdates' and 'forceDelayedSoftwareUpdates'.
-    Requires a supervised device in iOS and tvOS.
-    Available in iOS 11.3 and later, macOS 10.13.4 and later, and tvOS 12.2 and later.
+    Requires a supervised device in iOS and tvOS. Available in iOS 11.3 and later, macOS 10.13.4 and later, and tvOS 12.2 and later.
 - key: enforcedSoftwareUpdateMajorOSDeferredInstallDelay
   supportedOS:
     iOS:
@@ -2607,8 +2597,10 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: |-
-    This restriction allows the admin to set how many days to delay a major software upgrade on the device. When this restriction is in place the user sees a software upgrade only after the specified delay after the release of the software upgrade. This value controls the delay for 'forceDelayedMajorSoftwareUpdates'.
+  content: This restriction allows the admin to set how many days to delay a major
+    software upgrade on the device. When this restriction is in place the user sees
+    a software upgrade only after the specified delay after the release of the software
+    upgrade. This value controls the delay for 'forceDelayedMajorSoftwareUpdates'.
     Available in macOS 11.3 and later.
 - key: enforcedSoftwareUpdateMinorOSDeferredInstallDelay
   supportedOS:
@@ -2628,9 +2620,11 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: |-
-    This restriction allows the admin to set how many days to delay a minor OS software update on the device. When this restriction is in place the user see a software update only after the specified delay after the release of the software update. This value controls the delay for 'forceDelayedSoftwareUpdates'.
-    Available in macOS 11.3 and later.
+  content: This restriction allows the admin to set how many days to delay a minor
+    OS software update on the device. When this restriction is in place the user see
+    a software update only after the specified delay after the release of the software
+    update. This value controls the delay for 'forceDelayedSoftwareUpdates'. Available
+    in macOS 11.3 and later.
 - key: enforcedSoftwareUpdateNonOSDeferredInstallDelay
   supportedOS:
     iOS:
@@ -2649,8 +2643,10 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: |-
-    This restriction allows the admin to set how many days to delay an app software update on the device. When this restriction is in place the user sees a non-OS software update only after the specified delay after the release of the software. This value controls the delay for 'forceDelayedAppSoftwareUpdates'.
+  content: This restriction allows the admin to set how many days to delay an app
+    software update on the device. When this restriction is in place the user sees
+    a non-OS software update only after the specified delay after the release of the
+    software. This value controls the delay for 'forceDelayedAppSoftwareUpdates'.
     Available in macOS 11.3 and later.
 - key: forceAirDropUnmanaged
   title: Treat AirDrop as Unmanaged Destination
@@ -2907,9 +2903,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If set to true, delays user visibility of major upgrades to OS Software.
-    Available in macOS 11.3 and later.
+  content: If 'true', delays user visibility of major upgrades to OS Software. Available
+    in macOS 11.3 and later.
 - key: forceDelayedSoftwareUpdates
   supportedOS:
     iOS:
@@ -2967,7 +2962,8 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', forces the user to enter their iTunes password for each transaction.
-    Available in iOS 6 and later.
+    Available in iOS 6 and later. This restriction is deprecated and will be removed
+    in a future release.
 - key: forceLimitAdTracking
   supportedOS:
     iOS:
@@ -2983,9 +2979,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', limits ad tracking. Additionally, it disables app tracking and the Allow Apps To Request To Track setting.
-    Available in iOS 7 and later.
+  content: If 'true', limits ad tracking. Additionally, it disables app tracking and
+    the Allow Apps To Request To Track setting. Available in iOS 7 and later.
 - key: forceOnDeviceOnlyDictation
   supportedOS:
     iOS:
@@ -3064,7 +3059,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', limits device to only join Wi-Fi networks set-up via configuration
+  content: If 'true', limits device to only join Wi-Fi networks set up through a configuration
     profile. Requires a supervised device. Available in iOS 14.5 and later.
 - key: forceWiFiWhitelisting
   title: Only join Wi-Fi networks installed by profiles
@@ -3106,6 +3101,7 @@ payloadkeys:
   default: 1000
   content: |-
     The maximum level of app content allowed on the device. Available in iOS 4 and later, and tvOS 11.3 and later.
+    Pre-installed (1st party) apps ignore this restriction.
     Possible values (with the US description of the rating level):
     * 1000: All
     * 600: 17+
@@ -3184,9 +3180,7 @@ payloadkeys:
   default: 1000
   content: |-
     The maximum level of TV content allowed on the device. Available in iOS 4 and later, and tvOS 11.3 and later.
-
-    Possible values (with the US description of the rating level):
-
+    Possible values (with the US description of the rating level)
     * 1000: All
     * 600: TV-MA
     * 500: TV-14

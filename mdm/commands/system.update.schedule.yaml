@@ -57,8 +57,9 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The version of the update, which the system requires if 'ProductKey'
-        isn't present. This value is available in iOS 11.3 and later, macOS 12 and
-        later, and tvOS 12.2 and later.
+        isn't present. Rapid Security Response updates are not able to be installed
+        using this command. This value is available in iOS 11.3 and later, macOS 12
+        and later, and tvOS 12.2 and later.
     - key: InstallAction
       type: <string>
       presence: required

@@ -8,10 +8,10 @@ This release corresponds to the following OS versions
 
 | OS      | Version |
 |---------|---------|
-| iOS     | 17.0    |
-| macOS   | 14.0    |
-| tvOS    | 17.0    |
-| watchOS | 10.0    |
+| iOS     | 17.1    |
+| macOS   | 14.1    |
+| tvOS    | 17.1    |
+| watchOS | 10.1    |
 
 ## What's Available
 

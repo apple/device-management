@@ -44,7 +44,7 @@ payloadkeys:
   content: |-
     The type of the VPN, which defines which settings are appropriate for this VPN payload.
     If the type is 'VPN' or 'TransparentProxy', then the system requires a value for 'VPNSubType'.
-    'TransparentProxy' is only available in macOS. 'L2TP' and 'IPSec' aren't available in tvOS. 'AlwaysOn' is only available on iOS and Apple Watch pairing isn't supported with 'AlwaysOn'. For a previously paired Apple Watch, all phone-watch communications cease when 'AlwaysOn' is enabled.
+    'TransparentProxy' is only available in macOS. 'L2TP' and 'IPSec' aren't available in tvOS. 'AlwaysOn' is only available on iOS and Apple Watch pairing isn't supported with 'AlwaysOn'. For a previously paired Apple Watch, all phone-watch communications cease when 'AlwaysOn' is enabled. Not available in watchOS.
 - key: VPNSubType
   title: VPN Subtype
   type: <string>
@@ -175,7 +175,7 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If 1, then all network traffic will be routed through the VPN, with some exclusions. Several of the exclusions can be controlled with the ExcludeLocalNetworks, ExcludeCellularServices, and ExcludeAPNs properties. See the documentation for those properties.  The following traffic is always excluded from the tunnel.
+      If '1', routes all traffic through the VPN, with some exclusions. Several of the exclusions can be controlled with the ExcludeLocalNetworks, ExcludeCellularServices, and ExcludeAPNs properties. See the documentation for those properties.  The following traffic is always excluded from the tunnel. Not available in watchOS.
 
       * Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
       * Traffic necessary for connecting to captive networks.

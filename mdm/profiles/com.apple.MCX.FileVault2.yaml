@@ -22,14 +22,18 @@ payloadkeys:
   rangelist:
   - 'On'
   - 'Off'
-  content: If 'true', enables FileVault.
+  content: Set to 'On' to enable FileVault and set to 'Off' to disable FileVault.
+    Payloads set to 'On' sent through MDM need to either include full authentication
+    information in the payload or have the 'Defer' option set to 'true'. When 'Defer'
+    is 'true', the system prompts for the authentication information when the user
+    enables FileVault.
 - key: Defer
   type: <boolean>
   presence: optional
   default: false
   content: If 'true', defers enabling FileVault until the designated user logs out.
-    For details, see 'fdesetup(8)'. The person enabling FileVault must be either a
-    local user or a mobile account user.
+    For details, see 'fdesetup(8)'. Only a local user or a mobile account user can
+    enable FileVault.
 - key: UserEntersMissingInfo
   type: <boolean>
   presence: optional
@@ -45,16 +49,16 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', prevents display of the personal recovery key to the user after
-    FileVault is enabled.
+    the system enables FileVault.
 - key: OutputPath
   type: <string>
   presence: optional
-  content: The path to the location where the recovery key and computer information
-    property list are stored.
+  content: The path to the location of the recovery key and computer information property
+    list.
 - key: Certificate
   type: <data>
   presence: optional
-  content: The DER-encoded certificate data if 'UseRecoveryKey' is enabled.
+  content: The DER-encoded certificate data if 'UseRecoveryKey' is 'true'.
 - key: PayloadCertificateUUID
   type: <string>
   presence: optional
@@ -63,19 +67,19 @@ payloadkeys:
 - key: Username
   type: <string>
   presence: optional
-  content: The user name of the Open Directory user to be added to FileVault.
+  content: The user name of the Open Directory user to add to FileVault.
 - key: Password
   type: <string>
   presence: optional
-  content: The password of the Open Directory user to be added to FileVault. Use the
-    'UserEntersMissingInfo' key if you want to prompt for this information.
+  content: The password of the Open Directory user to add to FileVault. Use the 'UserEntersMissingInfo'
+    key to prompt for this information.
 - key: UseKeychain
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true' and no certificate information is provided in this payload, the
-    keychain created at '/Library/Keychains/FileVaultMaster.keychain' is used when
-    the institutional recovery key is added.
+  content: If 'true' and you don't include certificate information in this payload,
+    the system uses the keychain created at '/Library/Keychains/FileVaultMaster.keychain'
+    when it adds the institutional recovery key.
 - key: DeferForceAtUserLoginMaxBypassAttempts
   type: <integer>
   presence: optional
@@ -83,9 +87,9 @@ payloadkeys:
     min: -1
     max: 9999
   content: The maximum number of times users can bypass enabling FileVault before
-    being required to enable it to log in. If the value is '0', the user will be required
-    to enabled FileVault the next time they attempt to log in. Setting this key to
-    '–1' disables the feature.
+    the system requires the user to enable it to log in. If the value is '0', the
+    system requires the user to enable FileVault the next time they attempt to log
+    in. Set this key to '–1' to disable this feature.
 - key: DeferDontAskAtUserLogout
   supportedOS:
     macOS:
@@ -93,7 +97,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents requests for enabling FileVault at user logout time.
+  content: If 'true', prevents requests to enable FileVault at user logout time.
 - key: ForceEnableInSetupAssistant
   supportedOS:
     macOS:
@@ -104,5 +108,5 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', and this payload is installed after enrolling with MDM in Setup Assistant, it requests Setup Assistant to enable FileVault at setup time.
-    To use this, enable the Await Device Configured DEP configuration option, send this profile with this key set, before sending the DeviceConfigured command. An admin SecureToken user is required, otherwise the FileVault pane does not appear.
+    If 'true', and installation of this payload occurs after enrolling with MDM in Setup Assistant, the system requests Setup Assistant to enable FileVault at setup time. In this case, the system also ignores all other keys in this payload, except for 'ShowRecoveryKey'.
+    To use this, enable the Await Device Configured DEP configuration option and send this profile with this key set, before sending the DeviceConfiguredCommand. An admin SecureToken user is required, otherwise the FileVault pane does not appear.

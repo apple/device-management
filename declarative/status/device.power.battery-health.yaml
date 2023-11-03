@@ -31,10 +31,10 @@ payloadkeys:
   - unknown
   - unsupported
   content: |-
-    The battery health status:
-    * non-genuine - the battery is not a genuine Apple battery
-    * normal - the battery is operating normally
-    * service-recommended - battery service is recommended
-    * unknown - battery health information could not be determined
-    * unsupported - battery health reporting is not supported on the device
-    Only supported on iPhones. iPads will return "unsupported".
+    The battery health status, which has the following values:
+    * 'non-genuine' - the battery isn't a genuine Apple battery.
+    * 'normal' - the battery is operating normally.
+    * 'service-recommended' - the system recommends battery service.
+    * 'unknown' - the system couldn't determine battery health information.
+    * 'unsupported' - the device doesn't support battery health reporting.
+    This field is available in iOS 17 and later on iPhone only. iPad returns 'unsupported'.
