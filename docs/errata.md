@@ -31,3 +31,7 @@ strings. This has not been corrected as the schema does not support polymorphic 
 ### profiles/com.apple.universalaccess.yaml
 
 The `contrast` key in the `com.apple.universalaccess` profile payload incorrectly listed its type as `integer`. The correct type is `real`.
+
+### profiles/com.apple.extensiblesso.yaml
+
+The `AuthorizationGroups` key was updated as the key values-pairs in the dictionary were incorrectly stated.

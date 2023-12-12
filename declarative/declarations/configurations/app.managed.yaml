@@ -1,0 +1,148 @@
+title: App:Managed
+description: Use this configuration to define settings for a managed app.
+payload:
+  declarationtype: com.apple.configuration.app.managed
+  supportedOS:
+    iOS:
+      introduced: '17.2'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  beta: true
+payloadkeys:
+- key: AppStoreID
+  title: App Store ID
+  type: <string>
+  presence: optional
+  content: Specifies the App Store ID of the managed app. One and only one of `AppStoreID`,
+    `BundleID`, or `ManifestURL` must be present.
+- key: BundleID
+  title: Bundle ID
+  type: <string>
+  presence: optional
+  content: Specifies the Bundle ID of the managed app. One and only one of `AppStoreID`,
+    `BundleID`, or `ManifestURL` must be present.
+- key: ManifestURL
+  title: Manifest URL
+  type: <string>
+  presence: optional
+  content: Specifies the URL of the manifest for the managed app. One and only one
+    of `AppStoreID`, `BundleID`, or `ManifestURL` must be present.
+- key: InstallBehavior
+  title: Install Behavior
+  type: <dictionary>
+  presence: optional
+  content: Describes how and when the app will be installed.
+  subkeys:
+  - key: Install
+    title: Install
+    type: <string>
+    presence: optional
+    rangelist:
+    - Optional
+    - Required
+    default: Optional
+    content: |-
+      Describes whether the app must remain on the device at all times, or if the user can freely install and remove it:
+      * Optional - the user can install and remove the app after the configuration is activated.
+      * Required - the app is installed when the configuration is activated. The user may not remove the app.
+      On supervised devices apps are installed automatically. Otherwise the device prompts the user to approve the install of the app.
+  - key: License
+    title: License
+    type: <dictionary>
+    presence: optional
+    content: Describes how the app is licensed.
+    subkeys:
+    - key: VPPType
+      title: VPP Type
+      type: <string>
+      presence: optional
+      rangelist:
+      - Device
+      - User
+      content: |-
+        Indicates what type of VPP license is used for the app when installed via the App Store:
+        * Device - the app has a VPP device license.
+        * User - the app has a VPP user license.
+        This key must be present when an App Store app is being installed.
+- key: IncludeInBackup
+  title: Include in Backup
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If `true`, backups will contain the app and its data. If `false`, backups
+    will not contain the app and its data.
+- key: Attributes
+  title: App Attributes
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: A dictionary of values associated with the app.
+  subkeys:
+  - key: AssociatedDomains
+    title: Associated Domains
+    type: <array>
+    presence: optional
+    content: An array of domain names to associate with the app.
+    subkeys:
+    - key: Domain
+      title: Domain
+      type: <string>
+      presence: required
+      content: A domain to be associated with the app.
+  - key: AssociatedDomainsEnableDirectDownloads
+    title: Associated Domains Enable Direct Downloads
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, direct downloads will be enabled for associated domains.
+  - key: CellularSliceUUID
+    title: Cellular Slice UUID
+    type: <string>
+    presence: optional
+    content: Either data network name (DNN) or traffic category can be set as the
+      enterprise slice identifier. For DNN, the value must be encoded as "DNN:name”,
+      where "name" is the carrier provided DNN name. For app category, the value must
+      be encoded as "AppCategory:category", where "category" is a carrier provided
+      string like "Enterprise1".
+  - key: ContentFilterUUID
+    title: Content Filter UUID
+    type: <string>
+    presence: optional
+    content: The UUID of the content filter to associate with the app.
+  - key: DNSProxyUUID
+    title: DNS Proxy UUID
+    type: <string>
+    presence: optional
+    content: The UUID of the DNS proxy to associate with the app.
+  - key: RelayUUID
+    title: Relay UUID
+    type: <string>
+    presence: optional
+    content: The UUID of the Relay to associated with the app.
+  - key: TapToPayScreenLock
+    title: Tap to Pay Screen Lock
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the device will automatically lock after every transaction
+      that requires a customer's card PIN. If `false`, the user of the device may
+      choose the behavior they prefer.
+  - key: VPNUUID
+    title: VPN UUID
+    type: <string>
+    presence: optional
+    content: The UUID of the VPN to associate with the app.

@@ -13,12 +13,16 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
-  content: Settings for time zone and server
+  content: Settings for time zone and server. If multiple profiles with this payload
+    are sent, the device's time server will be set to the value in the last payload
+    installed. Removing the payload will not change the settings back to the prior
+    settings.
 payloadkeys:
 - key: timeServer
   type: <string>
   presence: optional
-  content: The NTP server to connect to. Use commas to separate multiple time servers.
+  content: The NTP server to connect to. As of macOS 10.13 only one time server is
+    supported.
 - key: timeZone
   type: <string>
   presence: optional

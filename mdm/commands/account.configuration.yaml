@@ -71,7 +71,7 @@ payloadkeys:
   default: false
   content: |-
     If 'true', and you provide values for 'PrimaryAccountFullName' or 'PrimaryAccountUserName', Setup Assistant disables editing for the corresponding fields. 'DontAutoPopulatePrimaryAccountInfo' must also be 0 (or missing).
-    If the user's password is also available from authentication via ConfigurationURL, Setup Assistant automatically creates the primary account with that information and skips showing the user interface to view or edit these fields.
+    If the user's password is also available from authentication through ConfigurationURL, Setup Assistant automatically creates the primary account with that information and skips showing the user interface to view or edit these fields.
     This value is available in macOS 10.15 and later.
 - key: AutoSetupAdminAccounts
   type: <array>

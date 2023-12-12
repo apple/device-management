@@ -43,7 +43,10 @@ payload:
     request a matching certificate based upon the ClientIdentifier, Subject, SubjectAltName,
     UsageFlags, and ExtendedKeyUsage fields. The ACME server issues a certificate
     and the device installs it in the keychain. Other payloads can reference the resulting
-    client identity by the payload's PayloadUUID.
+    client identity by the payload's PayloadUUID. For details on the content of the
+    attestation provided to the ACME server, see the documentation of the DevicePropertiesAttestation
+    key in the DeviceInformation response. In the attestation certificate the value
+    of the nonce OID matches the nonce specified by the ACME server via the ACME protocol.
 payloadkeys:
 - key: DirectoryURL
   title: ACME directory URL
@@ -85,15 +88,15 @@ payloadkeys:
     If 'false', the private key isn't bound to the device.
     If 'true', the private key is bound to the device. The Secure Enclave generates the key pair, and the private key is cryptographically entangled with a system key. This prevents the system from exporting the private key.
     If 'true', 'KeyType' must be 'ECSECPrimeRandom' and 'KeySize' must be 256 or 384.
-    This key is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of 'false'.
+    This key is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of false.
 - key: Subject
   title: Subject
   type: <array>
   presence: required
   content: |-
     The device requests this subject for the certificate that the ACME server issues. The ACME server may override or ignore this field in the certificate it issues.
-    The representation of a X.500 name represented as an array of OID and value. For example, /C=US/O=Apple Inc./CN=foo/1.2.5.3=bar corresponds to:
-    [ [ [”C”, “US”] ], [ [”O”, “Apple Inc.”] ], ..., [ [ “1.2.5.3”, “bar” ] ] ]
+    The representation of a X.500 name represented as an array of OID and value. For example, '/C=US/O=Apple Inc./CN=foo/1.2.5.3=bar' corresponds to:
+    '[ [ [”C”, “US”] ], [ [”O”, “Apple Inc.”] ], ..., [ [ “1.2.5.3”, “bar” ] ] ]'
     Dotted numbers can represent OIDs , with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).
   subkeys:
   - key: ACMESubjectArrayInnerArray
@@ -152,7 +155,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    The value is an array of strings. Each string is an OID in dotted notation. For instance, [”1.3.6.1.5.5.7.3.2”, “1.3.6.1.5.5.7.3.4”] indicates client authentication and email protection.
+    The value is an array of strings. Each string is an OID in dotted notation. For instance, '[”1.3.6.1.5.5.7.3.2”, “1.3.6.1.5.5.7.3.4”]' indicates client authentication and email protection.
     The device requests this field for the certificate that the ACME server issues. The ACME server may override or ignore this field in the certificate it issues.
   subkeys:
   - key: OID
@@ -181,8 +184,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If true, the private key of the identity obtained via SCEP should be tagged
-    as “non-extractable” in the keychain.
+  content: If 'true', the private key of the identity obtained through Simple Certificate
+    Enrollment Protocol (SCEP) needs to be tagged as “non-extractable” in the keychain.
 - key: AllowAllAppsAccess
   title: Allow All Apps Access
   supportedOS:

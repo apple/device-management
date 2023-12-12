@@ -39,8 +39,8 @@ payloadkeys:
   - BuiltIn
   - Plugin
   default: BuiltIn
-  content: The type of filter, built-in or plug-in. In macOS, the system supports
-    only the plug-in value.
+  content: The type of filter, built-in or plug-in. In macOS, the system only supports
+    the plug-in value.
 - key: AutoFilterEnabled
   title: Web filter enabled
   supportedOS:
@@ -49,10 +49,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', automatic filtering is in an enabled state. This function evaluates
-    each web page as it loads and attempts to identify and block content not suitable
-    for children. The search algorithm is complex and may vary from release to release,
-    but it's basically looking for adult language.
+  content: If 'true', the system enables automatic filtering. Use when 'FilterType'
+    is 'BuiltIn'.
 - key: PermittedURLs
   title: PermittedURLs
   supportedOS:
@@ -61,8 +59,8 @@ payloadkeys:
   type: <array>
   presence: optional
   content: An array or URLs that are accessible whether or not the automatic filter
-    allows access. The system uses this array only when 'AutoFilterEnabled' is 'true'.
-    Otherwise, it ignores this field.
+    allows access. Use when 'FilterType' is 'BuiltIn'. Requires that 'AutoFilterEnabled'
+    is 'true'.
   subkeys:
   - key: PermittedURLItems
     title: Permitted url items
@@ -90,8 +88,8 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of URLs that are inaccessible. Limit the number of these URLs
-    to about 500.
+  content: An array of URLs that are inaccessible. Use when 'FilterType' is 'BuiltIn'.
+    Limit the number of these URLs to about 500.
   subkeys:
   - key: DenyListURLItems
     title: Denylisted url items
@@ -130,7 +128,8 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of dictionaries defining the pages that the user can visit.
+  content: An array of dictionaries that define the pages that the user can bookmark
+    or visit. Use when 'FilterType' is 'BuiltIn'.
   subkeys:
   - key: AllowListBookmarksItem
     title: Identifier
@@ -150,43 +149,50 @@ payloadkeys:
   title: UserDefinedName
   type: <string>
   presence: optional
-  content: The display name for this filtering configuration.
+  content: The display name for this filtering configuration. Required when 'FilterType'
+    is 'Plugin'.
 - key: PluginBundleID
   title: PluginBundleID
   type: <string>
   presence: optional
-  content: The bundle ID of the plug-in that provides filtering service.
+  content: The bundle ID of the plug-in that provides filtering service. Required
+    when 'FilterType' is 'Plugin'. Otherwise, it ignores this value. Consult your
+    filtering solution vendor to determine what to specify for this value. Required
+    when 'FilterType' is 'Plugin'.
 - key: ServerAddress
   title: ServerAddress
   type: <string>
   presence: optional
-  content: The server address, which may be the IP address, hostname, or URL.
+  content: The server address, which may be the IP address, hostname, or URL. Use
+    when 'FilterType' is 'Plugin'.
 - key: UserName
   title: Username
   type: <string>
   presence: optional
-  content: The user name for the service.
+  content: The user name for the service. Use when 'FilterType' is 'Plugin'.
 - key: Password
   title: Password
   type: <string>
   presence: optional
-  content: The password for the service.
+  content: The password for the service. Use when 'FilterType' is 'Plugin'.
 - key: PayloadCertificateUUID
   title: Certificate UUID
   type: <string>
   presence: optional
   format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
   content: The UUID of the certificate payload within the same profile that the system
-    uses to authenticate the user.
+    uses to authenticate the user. Use when 'FilterType' is 'Plugin'.
 - key: Organization
   title: Organization
   type: <string>
   presence: optional
-  content: The organization string that passes to the third-party plug-in.
+  content: The organization string to pass to the third-party plug-in. Use when 'FilterType'
+    is 'Plugin'.
 - key: VendorConfig
   type: <dictionary>
   presence: optional
-  content: The custom dictionary that the filtering service plug-in needs.
+  content: The custom dictionary that the filtering service plug-in needs. Use when
+    'FilterType' is 'Plugin'.
   subkeys:
   - key: ANY
     type: <any>
@@ -200,15 +206,17 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the filtering of WebKit traffic. Either 'FilterBrowsers'
-    or 'FilterSockets' must be 'true'.
+  content: |-
+    If 'true', the system enables filtering WebKit traffic. Use when 'FilterType' is 'Plugin'.
+    At least one of 'FilterBrowsers' or 'FilterSockets' needs to be 'true'.
 - key: FilterSockets
   title: FilterSockets
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the filtering of socket traffic. Either 'FilterBrowsers'
-    or 'FilterSockets' must be 'true'.
+  content: |-
+    If 'true', enables the filtering of socket traffic. Use when 'FilterType' is 'Plugin'.
+    At least one of 'FilterBrowsers' or 'FilterSockets' needs to be 'true'.
 - key: FilterDataProviderDesignatedRequirement
   title: Filter Data Provider Designated Requirement
   supportedOS:
@@ -218,9 +226,9 @@ payloadkeys:
       introduced: '10.15'
   type: <string>
   presence: optional
-  content: |-
-    The designated requirement string that the system embeds in the code signature of the filter data provider system extension. This string identifies the filter data provider when the filter starts running. This field is a requirement if 'FilterSockets' is 'true'.
-    Available in macOS 10.15 and later.
+  content: The designated requirement string that the system embeds in the code signature
+    of the filter data provider system extension. This string identifies the filter
+    data provider when the filter starts running. Required if 'FilterSockets' is 'true'.
 - key: FilterDataProviderBundleIdentifier
   title: Filter Data Provider Bundle Identifier
   supportedOS:
@@ -230,9 +238,9 @@ payloadkeys:
       introduced: '10.15'
   type: <string>
   presence: optional
-  content: |-
-    The bundle identifier string of the filter data provider system extension. This string identifies the filter data provider when the filter starts running. This field is a requirement if 'FilterSockets' is 'true'.
-    Available in macOS 10.15 and later.
+  content: The bundle identifier string of the filter data provider system extension.
+    This string identifies the filter data provider when the filter starts running.
+    Required if 'FilterSockets' is 'true'.
 - key: FilterPackets
   title: Filter Network Packets
   supportedOS:
@@ -244,10 +252,8 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If this value is 'true', the property enables the filtering of network packets.
-    Either 'FilterPackets' or 'FilterSockets' must be 'true'.
-    You can only use this when 'FilterType' is 'Plugin'.
-    Available in macOS 10.15 and later.
+    If 'true' and 'FilterType' is 'Plugin', the system enables filtering network packets. Use when 'FilterType' is 'Plugin'.
+    At least one of 'FilterPackets' or 'FilterSockets' needs to be 'true'.
 - key: FilterPacketProviderDesignatedRequirement
   title: Filter Packet Provider Designated Requirement
   supportedOS:
@@ -257,9 +263,10 @@ payloadkeys:
       introduced: '10.15'
   type: <string>
   presence: optional
-  content: |-
-    The designated requirement string that the system embeds in the code signature of the filter packet provider system extension. This string identifies the filter packet provider when the filter starts running. This field is a requirement if 'FilterPackets' is 'true'.
-    Available in macOS 10.15 and later.
+  content: The designated requirement string that the system embeds in the code signature
+    of the filter packet provider system extension. This string identifies the filter
+    packet provider when the filter starts running. Required if 'FilterPackets' is
+    'true'.
 - key: FilterPacketProviderBundleIdentifier
   title: Filter Packet Provider Bundle Identifier
   supportedOS:
@@ -269,9 +276,9 @@ payloadkeys:
       introduced: '10.15'
   type: <string>
   presence: optional
-  content: |-
-    The bundle identifier string of the filter packet provider system extension. This string identifies the filter packet provider when the filter starts running. This field is a requirement if 'FilterPackets' is 'true'.
-    Available in macOS 10.15 and later.
+  content: The bundle identifier string of the filter packet provider system extension.
+    This string identifies the filter packet provider when the filter starts running.
+    Required if 'FilterPackets' is 'true'.
 - key: FilterGrade
   title: Filter Grade
   supportedOS:
@@ -285,9 +292,10 @@ payloadkeys:
   - firewall
   - inspector
   default: firewall
-  content: |-
-    This value is for deriving the relative order of content filters. Filters with a grade of 'firewall' see network traffic before filters with a grade of 'inspector'. The system doesn't define the order of filters within a grade.
-    Available in macOS 10.15 and later.
+  content: The system uses this value to derive the relative order of content filters.
+    Filters with a grade of 'firewall' see network traffic before filters with a grade
+    of 'inspector'. However, the system doesn't define the order of filters within
+    a grade.
 - key: ContentFilterUUID
   title: Content Filter UUID
   supportedOS:
@@ -297,7 +305,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: A globally-unique identifier for this content filter configuration. Managed
-    apps with the same 'ContentFilterUUID' in their app attributes have their network
-    traffic processed by the content filter. This key must be present for unsupervised
-    devices and user enrollments.
+  content: A globally unique identifier for this content filter configuration. The
+    content filter processes network traffic for managed apps with the same 'ContentFilterUUID'
+    in their app attributes. Use when 'FilterType' is 'Plugin'. This key must be present
+    for unsupervised devices and user enrollments.

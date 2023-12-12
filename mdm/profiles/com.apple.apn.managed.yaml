@@ -37,18 +37,18 @@ payloadkeys:
       - key: apn
         type: <string>
         presence: required
-        content: This string specifies the Access Point Name.
+        content: The access point name.
       - key: username
         type: <string>
         presence: optional
-        content: This string specifies the user name for this APN. If it is missing,
-          the device prompts for it during profile installation.
+        content: The user name. If missing, the device prompts for it during profile
+          installation.
       - key: password
         type: <data>
         presence: optional
-        content: This data represents the password for the user for this APN. For
-          obfuscation purposes, the password is encoded. If it is missing from the
-          payload, the device prompts for the password during profile installation.
+        content: The password for the user. For obfuscation purposes, the system encodes
+          the password. If missing, the device prompts for the password during profile
+          installation.
       - key: proxy
         type: <string>
         presence: optional

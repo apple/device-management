@@ -1,0 +1,191 @@
+title: Status App Managed List
+description: The client's declarative managed apps.
+payload:
+  statusitemtype: app.managed.list
+  supportedOS:
+    iOS:
+      introduced: '17.2'
+      allowed-enrollments:
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  beta: true
+payloadkeys:
+- key: app.managed.list
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: Status value.
+  subkeytype: App
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the app.
+      type: <string>
+      presence: required
+      content: The unique identifier of the app. This will be the app's bundle id.
+    - key: _removed
+      title: Indicates removal of the app.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: To indicate removal of an app, this key's value is set to true, and
+        only this key and the "identifier" key will be present in the status item
+        object.
+    - key: declaration-identifier
+      title: Identifier of the declaration that controls the app.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that controls the app.
+    - key: name
+      title: App name
+      type: <string>
+      presence: optional
+      content: The name of the app.
+    - key: external-version-id
+      title: External version id
+      type: <integer>
+      presence: optional
+      content: The application's external version ID. This can also be retrieved from
+        the store from the "contentMetadataLookupUrl" from the VPPServiceConfigSrv
+        endpoint. In the response from uclient-api.itunes.apple.com URL, there's a
+        key named "externalId" at the path results.<adamId>.offers[0].version.externalId.
+        If the current external version identifier of an app on the store does not
+        match the external version identifier reported by the device, there may be
+        an app update available for the device.
+    - key: version
+      title: Version
+      type: <string>
+      presence: optional
+      content: The version of the app.
+    - key: short-version
+      title: Short version
+      type: <string>
+      presence: optional
+      content: The short version of the app.
+    - key: state
+      title: Managed application list status
+      type: <string>
+      presence: optional
+      rangelist:
+      - optional
+      - queued
+      - prompting-for-consent
+      - prompting-for-login
+      - prompting-for-management
+      - downloading
+      - installing
+      - managed
+      - managed-but-uninstalled
+      - failed
+      content: |-
+        The status of the app.
+        * optional - the app is optional and the user has to trigger its installation
+        * queued - installation of the app has started
+        * prompting-for-consent - a prompt is being shown to the user to proceed with app installation
+        * prompting-for-login - a prompt to sign in to the App Store is being shown to the user to allow installation
+        * prompting-for-management - a prompt is being shown to the user to allow changing the installed app to a managed app
+        * downloading - an update is being downloaded
+        * installing - the app is being installed
+        * managed - the app is installed and managed
+        * managed-but-uninstalled - the app is managed, but has been removed by the user. If installed again, it will be managed
+        * failed - the app installation has failed
+    - key: update-state
+      title: Managed application update status
+      type: <string>
+      presence: optional
+      rangelist:
+      - available
+      - prompting-for-update
+      - prompting-for-update-login
+      - updating
+      - failed
+      content: |-
+        The update status of the app. This key is only present when the "state" key is set to "managed" and when there is an app update available.
+        * available - an update is available for the app
+        * prompting-for-update - a prompt is being shown to the user to proceed with app update
+        * prompting-for-update-login - a prompt to sign in to the App Store is being shown to the user to allow app update
+        * updating - the app is being updated
+        * failed - the app update has failed
+    - key: reasons
+      title: Status Reasons
+      type: <array>
+      presence: optional
+      content: Additional detail about app state, including errors.
+      subkeytype: StatusReason
+      subkeys:
+      - key: _reasons
+        title: Status Reason
+        type: <dictionary>
+        content: Information about a status error.
+        subkeytype: StatusReason
+        subkeys:
+        - key: code
+          title: Error Code
+          type: <string>
+          presence: required
+          content: The error code for this error.
+        - key: description
+          title: Error Description
+          type: <string>
+          presence: optional
+          content: The description of this error.
+        - key: details
+          title: Error Details
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that contains further details about this error.
+          subkeys:
+          - key: ANY
+            type: <any>
+            presence: optional
+            content: Additional keys may be present.
+reasons:
+- value: Error.UnmanagedAppAlreadyInstalled
+  description: An unmanaged app is already installed and cannot be managed.
+- value: Error.DuplicateConfiguredApp
+  description: The app is already being managed.
+- value: Error.UserRejected
+  description: The user rejected management of the app.
+- value: Error.AppStoreDisabled
+  description: The App Store is disabled.
+- value: Error.LicenseNotFound
+  description: A license for the app was not available.
+- value: Error.InvalidAppID
+  description: The app id could not be found.
+- value: Error.NotAnApp
+  description: The downloaded data is not a valid app.
+- value: Error.NotSupported
+  description: The app is not supported on this device.
+- value: Error.DownloadFailed
+  description: The app download failed.
+  details:
+  - key: Timestamp
+    type: <string>
+    description: The RFC 3339 timestamp of the last download failure.
+- value: Error.InstallFailed
+  description: The app install failed.
+  details:
+  - key: Timestamp
+    type: <string>
+    description: The RFC 3339 timestamp of the last install failure.
+- value: Info.UpdateAvailable
+  description: An update is available for the app.
+- value: Error.UpdateFailed
+  description: The app update failed.
+  details:
+  - key: Timestamp
+    type: <string>
+    description: The RFC 3339 timestamp of the last update failure.

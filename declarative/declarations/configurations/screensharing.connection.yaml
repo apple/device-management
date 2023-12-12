@@ -38,7 +38,7 @@ payloadkeys:
   title: TCP Port
   type: <integer>
   presence: optional
-  content: Specifies the TCP port number on the host to initiate the connection.
+  content: The TCP port number on the host to initiate the connection.
 - key: DisplayConfiguration
   title: Display Configuration
   type: <dictionary>
@@ -53,6 +53,7 @@ payloadkeys:
     - Virtual2
     content: |-
       The type of display for the connection, which has these allowed values:
+
       * 'Virtual1': Create one virtual display.
       * 'Virtual2': Create two virtual displays.
 - key: AuthenticationCredentialsAssetReference
@@ -61,6 +62,6 @@ payloadkeys:
   assettypes:
   - com.apple.asset.credential.userpassword
   presence: optional
-  content: Specifies the identifier of an asset declaration that contains the required
-    credentials for this connection to authenticate with the screen-sharing server.
-    Set the corresponding asset type to 'com.apple.asset.credential.userpassword'.
+  content: The identifier of an asset declaration that contains the required credentials
+    for this connection to authenticate with the screen-sharing server. Set the corresponding
+    asset type to 'com.apple.asset.credential.userpassword'.

@@ -243,7 +243,8 @@ payloadkeys:
     content: A dictionary that contains the configurations to apply to the app. Omit
       this setting to remove existing configurations. This setting requires the App
       Management access right, supports User Enrollment, and is available in iOS 7
-      and later, macOS 10.15 and later, and tvOS 10.2 and later.
+      and later, macOS 10.15 and later, and tvOS 10.2 and later. This setting will
+      fail for apps that are managed by Declarative Device Management.
     subkeys:
     - key: Item
       type: <string>
@@ -287,7 +288,8 @@ payloadkeys:
     presence: optional
     content: A dictionary that contains the attributes to apply to the app. Omit this
       setting to remove existing attributes. This setting supports User Enrollment,
-      is available in iOS 7 and later, and tvOS 10.2 and later.
+      is available in iOS 7 and later, and tvOS 10.2 and later. This setting will
+      fail for apps that are managed by Declarative Device Management.
     subkeys:
     - key: Item
       type: <string>
@@ -410,7 +412,7 @@ payloadkeys:
         type: <string>
         presence: optional
         content: |-
-          The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier provided string like “Enterprise1”'.'
+          The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier-provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier-provided string like “Enterprise1”'.'
           Available in iOS 17 and later.
   - key: DeviceName
     supportedOS:
@@ -760,15 +762,15 @@ payloadkeys:
         type: <boolean>
         presence: required
         content: If 'true', the device stops at a Setup Assistant pane after user
-          login. The user won't be able to use the device until a UserConfiguredCommand
-          command is received.
+          login. The user won't be able to use the device until the device receives
+          a UserConfiguredCommand command.
     - key: PasscodePolicy
       supportedOS:
         iOS:
           introduced: '17.0'
       type: <dictionary>
       presence: optional
-      content: A dictionary that contains passcode related policies.
+      content: A dictionary that contains passcode policies.
       subkeys:
       - key: PasscodeLockGracePeriod
         type: <integer>
@@ -780,28 +782,18 @@ payloadkeys:
         - 900
         - 3600
         - 14400
-        content: Sets the user preference for the amount of time (in seconds) the
-          screen must be locked before unlock attempts will require the device passcode.
-          This should ideally be set when no passcode is set on device. If a passcode
-          is on device, only more restrictive values than the currently enforced passcode
-          lock grace period will take effect; any changes to a less restrictive value
-          will not take effect until the user logs out. This setting will not take
-          effect if TemporarySessionOnly is set to true (since there is no passcode
-          for the temporary session). This setting can only be applied on Shared iPads.
-        devpubs-override: The number of seconds before a locked screen requires the
-          user to enter the device passcode to unlock it. The minimum value is '0'
-          seconds and the maximum value is '14400' seconds. If a device has a passcode,
-          a change to a larger value doesn't take effect until the user logs out or
-          removes the passcode. For this reason, it's better to set this value before
-          the user sets a passcode. If the value set is less than one of the known
-          values the next lowest value will be used. For example a value of 299 will
+        content: |-
+          The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
+          If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
+          If the value set is less than one of the known
+          values, the next lowest value will be used. For example a value of 299 will
           result in an effective setting of 60.
+          This setting won't take effect if 'TemporarySessionOnly' is 'true' because there's no passcode for a temporary session.
       - key: AutoLockTime
         type: <integer>
         presence: optional
-        content: Sets the user preference for the amount of time (in seconds) before
-          a device goes to sleep after being idle. The minimum value for this setting
-          is 120 seconds. This setting can only be applied on Shared iPad.
+        content: The number of seconds before a device goes to sleep after being idle.
+          The minimum value for this setting is '120' seconds.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -887,9 +879,9 @@ payloadkeys:
         introduced: n/a
     type: <dictionary>
     presence: optional
-    content: A dictionary that contains password lock grace period settings. This
-      setting doesn't support User Enrollment, and is only available for Shared iPad.
-      Available in iOS 9.3.2 and later.
+    content: |-
+      A dictionary that contains password lock grace period settings. This setting doesn't support User Enrollment, and is only available for Shared iPad. Available in iOS 9.3.2 and later.
+      This key is deprecated. Use 'PasscodeLockGracePeriod' in SettingsCommand.Command.Settings.SharedDeviceConfiguration.PasscodePolicy instead.
     subkeys:
     - key: Item
       type: <string>
@@ -907,14 +899,13 @@ payloadkeys:
       - 900
       - 3600
       - 14400
-      content: The number of seconds before a locked screen requires the user to enter
-        the device passcode to unlock it. The minimum value is '0' seconds and the
-        maximum value is '14400' seconds. If a device has a passcode, a change to
-        a larger value doesn't take effect until the user logs out or removes the
-        passcode. For this reason, it's better to set this value before the user sets
-        a passcode. If the value set is less than one of the known values the next
+      content: |-
+        The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
+        If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
+        If the value set is less than one of the known values, the next
         lowest value will be used. For example a value of 299 will result in an effective
         setting of 60.
+        This setting won't take effect if 'TemporarySessionOnly' is 'true' because there's no passcode for a temporary session.
   - key: TimeZone
     supportedOS:
       iOS:

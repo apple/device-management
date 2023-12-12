@@ -27,7 +27,8 @@ payload:
       accessrights: AllowAppInstallation
       supervised: false
   content: This command queries the device for application feedback information. This
-    command requires the App Management right.
+    command requires the App Management right. The response will not include apps
+    that are managed by Declarative Device Management.
 payloadkeys:
 - key: Identifiers
   type: <array>
@@ -41,7 +42,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', delete the app's feedback dictionary after the server reads
-    it.
+    it. Apps that are managed by Declarative Device Management will be ignored.
 responsekeys:
 - key: ManagedApplicationFeedback
   type: <array>

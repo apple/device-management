@@ -33,9 +33,9 @@ payloadkeys:
   assettypes:
   - com.apple.asset.credential.certificate
   presence: optional
-  content: Specifies an array of identifiers of asset declarations that contain anchor
-    certificates to use to evaluate the trust of the enrollment profile server. Set
-    the type of the corresponding assets to 'com.apple.asset.credential.certificate'.
+  content: An array of identifiers of asset declarations that contain anchor certificates
+    to use to evaluate the trust of the enrollment profile server. Set the type of
+    the corresponding assets to 'com.apple.asset.credential.certificate'.
   subkeys:
   - key: AnchorCertificateAssetReferenceItem
     type: <string>

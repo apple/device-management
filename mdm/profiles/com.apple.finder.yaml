@@ -48,24 +48,24 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', external hard drives don't appear on the Desktop.
+  content: If 'false', the system doesn't show external hard drives on the Desktop.
 - key: ShowHardDrivesOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If 'false', internal hard drives don't appear on the Desktop.
+  content: If 'false', the system doesn't show internal hard drives on the Desktop.
 - key: ShowMountedServersOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If 'false', mounted file servers don't appear on the Desktop.
+  content: If 'false', the system doesn't show mounted file servers on the Desktop.
 - key: ShowRemovableMediaOnDesktop
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', removable media items don't appear on the Desktop.
+  content: If 'false', the system doesn't show removable media items on the Desktop.
 - key: WarnOnEmptyTrash
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the user isn't warned before emptying the trash.
+  content: If 'false', the system doesn't warn the user before emptying the trash.

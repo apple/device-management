@@ -56,10 +56,9 @@ payloadkeys:
           introduced: '12.2'
       type: <string>
       presence: optional
-      content: The version of the update, which the system requires if 'ProductKey'
-        isn't present. Rapid Security Response updates are not able to be installed
-        using this command. This value is available in iOS 11.3 and later, macOS 12
-        and later, and tvOS 12.2 and later.
+      content: |-
+        The version of the update, which the system requires if 'ProductKey' isn't present. This value is available in iOS 11.3 and later, macOS 12 and later, and tvOS 12.2 and later.
+        This value isn't available for use with Rapid Security Response (RSR) updates.
     - key: InstallAction
       type: <string>
       presence: required
@@ -72,12 +71,15 @@ payloadkeys:
       - InstallForceRestart
       content: |-
         The install action, which is one of the following values:
+
         * 'Default': Download or install the update, depending on the current state. You can check the 'UpdateResults' dictionary to review scheduled updates. This value is available in iOS 9 and later, macOS 10.11 and later, and tvOS 12 and later.
         * 'DownloadOnly': Download the software update without installing it. This value is available in iOS 9 and later, macOS 11 and later, and tvOS 12 and later.
         * 'InstallASAP': In iOS and tvOS, install a previously downloaded software update. In macOS, download the software update and trigger the restart countdown notification. This value is available in iOS 9 and later, macOS 10.11 and later, and tvOS 12 and later.
         * 'NotifyOnly': Download the software update and notify the user through the App Store. This value is available in macOS 10.11 and later.
         * 'InstallLater': Download the software update and install it at a later time. This value is available in macOS 10.11 and later.
         * 'InstallForceRestart': Perform the 'Default' action, and then force a restart if the update requires it. This value is available in macOS 11 and later.
+
+
         'InstallForceRestart' may result in data loss.
     - key: MaxUserDeferrals
       supportedOS:

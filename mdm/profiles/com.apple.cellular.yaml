@@ -47,12 +47,12 @@ payloadkeys:
     title: User name
     type: <string>
     presence: optional
-    content: The user name for the APN.
+    content: The user name.
   - key: Password
     title: Password
     type: <string>
     presence: optional
-    content: The password for the APN.
+    content: The password for the user.
   - key: AllowedProtocolMask
     title: Supported IP Versions
     supportedOS:
@@ -65,15 +65,16 @@ payloadkeys:
     - 2
     - 3
     content: |-
-      The supported Internet Protocol versions. Possible values are:
-      1 = IPv4
-      2 = IPv6
-      3 = Both
+      The Internet Protocol versions that the system supports. Possible values are:
+
+      * '1': IPv4
+      * '2': IPv6
+      * '3': Both
 - key: APNs
   title: APNs
   type: <array>
   presence: optional
-  content: An array of access point dictionaries.
+  content: An array of access point name (APN) dictionaries.
   subkeys:
   - key: APNsItem
     type: <dictionary>
@@ -127,11 +128,11 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        Deprecated. The default Internet Protocol versions. Possible values are:
+        The default Internet Protocol versions. Available in iOS 10.3 but no longer used in iOS 11 and later. Possible values are:
+
         * '1': IPv4
         * '2': IPv6
         * '3': Both
-        Available in iOS 10.3 but no longer used in iOS 11 and later.
     - key: AllowedProtocolMask
       title: Supported IP Versions
       supportedOS:
@@ -144,11 +145,11 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The supported Internet Protocol versions. Possible values are:
+        The Internet Protocol versions that the system supports. Available in iOS 10.3 and later. Possible values are:
+
         * '1': IPv4
         * '2': IPv6
         * '3': Both
-        Available in iOS 10.3 and later.
     - key: AllowedProtocolMaskInRoaming
       title: Supported Roaming IP Versions
       supportedOS:
@@ -161,11 +162,11 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The supported Internet Protocol versions while roaming. Possible values are:
+        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Possible values are:
+
         * '1': IPv4
         * '2': IPv6
         * '3': Both
-        Available in iOS 10.3 and later.
     - key: AllowedProtocolMaskInDomesticRoaming
       title: Supported Roaming IP Versions
       supportedOS:
@@ -178,11 +179,11 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The supported Internet Protocol versions while roaming domestically. Possible values are:
+        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Possible values are:
+
         * '1': IPv4
         * '2': IPv6
         * '3': Both
-        Available in iOS 10.3 and later.
     - key: EnableXLAT464
       title: Enable XLAT464
       supportedOS:
@@ -193,5 +194,5 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables XLAT464. Available in iOS 16 and later and watchOS
-        9 and later.
+      content: If 'true', the system enables XLAT464. Available in iOS 16 and later
+        and watchOS 9 and later.

@@ -31,8 +31,8 @@ payloadkeys:
   - com.apple.asset.credential.scep
   - com.apple.asset.credential.acme
   presence: required
-  content: Specifies the identifier of an asset declaration that contains the identity
-    to install and use for passkey attestation.
+  content: The identifier of an asset declaration that contains the identity to install
+    and use for passkey attestation.
 - key: AttestationIdentityKeyIsExtractable
   title: Attestation identity key is extractable
   supportedOS:
@@ -47,7 +47,7 @@ payloadkeys:
   title: Relying parties
   type: <array>
   presence: required
-  content: Relying parties to allow enterprise attestation.
+  content: An array of the relying parties to allow enterprise attestation.
   subkeys:
   - key: RelyingParty
     title: Relying party

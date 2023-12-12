@@ -45,5 +45,5 @@ payloadkeys:
   assettypes:
   - com.apple.asset.credential.certificate
   presence: required
-  content: Specifies the identifier of an asset declaration that contains the certificate
-    to install.
+  content: The identifier of an asset declaration that contains the certificate to
+    install.

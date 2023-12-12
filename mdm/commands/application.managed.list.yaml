@@ -53,7 +53,8 @@ responsekeys:
 - key: ManagedApplicationList
   type: <dictionary>
   presence: required
-  content: A dictionary that contains status information about each managed app.
+  content: A dictionary that contains status information about each managed app. The
+    response will not include apps that are managed by Declarative Device Management.
   subkeytype: ManagedApplicationListItem
   subkeys:
   - key: ANY app identifier

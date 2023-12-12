@@ -49,6 +49,13 @@ payloadkeys:
   title: VPN Subtype
   type: <string>
   presence: optional
+  rangelist:
+  - com.cisco.anyconnect
+  - net.pulsesecure.PulseSecure.vpnplugin
+  - com.f5.F5-Edge-Client.vpnplugin
+  - com.sonicwall.SonicWALL-SSLVPN.vpnplugin
+  - com.arubanetworks.aruba-via.vpnplugin
+  - com.checkpoint.CheckPoint-VPN.vpnplugin
   content: |-
     An identifier for a vendor-specified configuration dictionary when the value for 'VPNType' is 'VPN'.
     If 'VPNType' is 'VPN', the system requires this field. If the configuration targets a VPN solution that uses a network extension provider, then this field contains the bundle identifier of the app that contains the provider. Contact the VPN solution vendor for the value of the identifier.
@@ -71,25 +78,26 @@ payloadkeys:
     title: Realm
     type: <string>
     presence: optional
-    content: The Kerberos realm name. This value needs to be properly capitalized.
-      Not available in watchOS.
+    content: The Kerberos realm name, which needs to be properly capitalized. Valid
+      only for Juniper SSL/Pulse Secure. Not available in watchOS.
   - key: Role
     title: Role
     type: <string>
     presence: optional
-    content: The role to select when connecting to the server. This key is valid only
-      for Juniper SSL. Not available in watchOS.
+    content: The role to select when connecting to the server. Valid only for Juniper
+      SSL and Pulse Secure. Not available in watchOS.
   - key: Group
     title: Group
     type: <string>
     presence: optional
-    content: The group to connect to on the head end. This key is only valid for Cisco
-      AnyConnect. Not available in watchOS.
+    content: The group to connect to on the head end. Valid for Cisco AnyConnect and
+      Cisco Legacy AnyConnect. Not available in watchOS.
   - key: LoginGroupOrDomain
     title: Login Group or Domain
     type: <string>
     presence: optional
-    content: The login group or domain. Not available in watchOS.
+    content: The login group or domain. Valid only for SonicWALL Mobile Connect. Not
+      available in watchOS.
 - key: VPN
   title: VPN
   type: <dictionary>
@@ -479,8 +487,8 @@ payloadkeys:
     title: Account Password
     type: <string>
     presence: optional
-    content: If 'TokenCard' is '1', use this password for authentication. This keyis
-      for use with L2TP and PPTP networks.
+    content: If 'TokenCard' is '1', use this password for authentication. This key
+      is for use with L2TP and PPTP networks.
   - key: TokenCard
     title: Use Token Card
     type: <integer>
@@ -1562,7 +1570,8 @@ payloadkeys:
   presence: optional
   content: The dictionary to use when 'VPNType' is 'TransparentProxy'. The keys in
     this dictionary are the same as the keys in the 'VPN' dictionary with the addition
-    of the fields shown in the VPN.TransparentProxy dictionary. Not available in watchOS.
+    of the fields shown in the VPN.TransparentProxy dictionary. Available in macOS
+    14 and later. Not available in watchOS.
   subkeys:
   - key: Order
     title: Order

@@ -47,8 +47,7 @@ payloadkeys:
   - com.apple.asset.credential.scep
   - com.apple.asset.credential.acme
   presence: required
-  content: Specifies the identifier of an asset declaration that contains the identity
-    to install.
+  content: The identifier of an asset declaration that contains the identity to install.
 - key: AllowAllAppsAccess
   title: Allow all apps access
   supportedOS:

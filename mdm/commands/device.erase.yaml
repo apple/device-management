@@ -102,19 +102,12 @@ payloadkeys:
     Upon receiving this command, the device performs preflight checks to determine if the device is in a state that allows EACS. The 'status' of the EraseDeviceResponse is either 'Acknowledged' or 'Error'.
     The following values define the device's fallback behavior:
 
-    'DoNotObliterate':
-    If EACS preflight fails, the device responds to the server with an 'Error' status and doesn't attempt to erase itself.
+    * 'DoNotObliterate': If EACS preflight fails, the device responds to the server with an 'Error' status and doesn't attempt to erase itself.
     If EACS preflight succeeds but EACS fails, then the device doesn't attempt to erase itself.
-
-    'ObliterateWithWarning':
-    If EACS preflight fails, the device responds with an 'Acknowledged' status and then attempts to erase itself.
+    * 'ObliterateWithWarning': If EACS preflight fails, the device responds with an 'Acknowledged' status and then attempts to erase itself.
     If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
-
-    'Always':
-    The system doesn't attempt EACS. T2 and later devices always obliterate.
-
-    'Default':
-    If EACS preflight fails, the device responds to the server with an 'Error' status and then attempts to erase itself.
+    * 'Always': The system doesn't attempt EACS. T2 and later devices always obliterate.
+    * 'Default': If EACS preflight fails, the device responds to the server with an 'Error' status and then attempts to erase itself.
     If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
 - key: ReturnToService
   supportedOS:

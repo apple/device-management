@@ -36,7 +36,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', requires the user to set a passcode without any requirements
+  content: If 'true', the system requires the user to set a passcode without any requirements
     about the length or quality of the passcode. The presence of any other keys implicitly
     requires a passcode, and overrides this key's value.
 - key: RequireAlphanumericPasscode
@@ -58,9 +58,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', requires a complex passcode. A complex passcode is one that
-    doesn't contain repeated characters or increasing or decreasing characters (such
-    as 123 or CBA).
+  content: If 'true', the system requires a complex passcode. A complex passcode is
+    one that doesn't contain repeated characters or increasing or decreasing characters
+    (such as 123 or CBA).
 - key: MinimumLength
   title: Minimum Passcode Length
   type: <integer>
@@ -117,9 +117,10 @@ payloadkeys:
   title: Maximum Grace Period
   type: <integer>
   presence: optional
-  content: |-
-    The maximum period that a user can select, during which the user can unlock the device without a passcode. A value of '0' means no grace period, and the device requires a passcode immediately. In the absence of this key, the user can select any period.
-    macOS translates this to screensaver settings.
+  content: The maximum period that a user can select, during which the user can unlock
+    the device without a passcode. A value of '0' means no grace period, and the device
+    requires a passcode immediately. In the absence of this key, the user can select
+    any period. In macOS, the system translates this to screensaver settings.
 - key: MaximumInactivityInMinutes
   title: Automatic Device Lock
   type: <integer>
@@ -127,9 +128,11 @@ payloadkeys:
   range:
     min: 0
     max: 15
-  content: |-
-    The maximum period that a user can select, during which the device can be idle before the system automatically locks it. When the device reaches this limit, the device locks and the user must enter the passcode to unlock it. In the absence of this key, the user can select any period.
-    macOS translates this to screensaver settings.
+  content: The maximum period that a user can select, during which the device can
+    be idle before the system automatically locks it. When the device reaches this
+    limit, the device locks and the user must enter the passcode to unlock it. In
+    the absence of this key, the user can select any period. In macOS, the system
+    translates this to screensaver settings.
 - key: MaximumPasscodeAgeInDays
   title: Maximum Passcode Age
   supportedOS:

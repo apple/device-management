@@ -28,7 +28,8 @@ payloadkeys:
   title: If Lost message
   supportedOS:
     iOS:
-      introduced: 9.3.1
+      introduced: '9.3'
+      deprecated: 9.3.1
   type: <string>
   presence: optional
   content: Deprecated. Use 'LockScreenFootnote' instead.

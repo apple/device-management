@@ -33,7 +33,8 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: The list of apps.
+  content: The list of apps. The response will not include apps that are managed by
+    Declarative Device Management.
   subkeytype: App
   subkeys:
   - key: status_value

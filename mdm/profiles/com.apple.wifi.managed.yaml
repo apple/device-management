@@ -53,8 +53,8 @@ payloadkeys:
       introduced: '7.0'
   type: <string>
   presence: optional
-  content: The SSID of the Wi-Fi network to be used. In iOS 7.0 and later, the SSID
-    is optional if a 'DomainName' value is provided.
+  content: The SSID of the Wi-Fi network to use. In iOS 7.0 and later, the SSID is
+    optional if a value exists for 'DomainName' value.
 - key: HIDDEN_NETWORK
   title: Hidden
   type: <boolean>
@@ -74,9 +74,11 @@ payloadkeys:
   - Manual
   - Auto
   default: None
-  content: |-
-    The proxy type, if any, to use. If you choose the manual proxy type, you need the proxy server address, including its port and optionally a user name and password into the proxy server. If you choose the auto proxy type, you can enter a proxy autoconfiguration (PAC) URL.
-    Available in iOS 5.0 and later, and on all versions of macOS.
+  content: The proxy type, if any, to use. If you choose the manual proxy type, you
+    need the proxy server address, including its port and optionally a user name and
+    password into the proxy server. If you choose the auto proxy type, you can enter
+    a proxy autoconfiguration (PAC) URL. Available in iOS 5.0 and later, and on all
+    versions of macOS.
 - key: EncryptionType
   title: Encryption Type
   type: <string>
@@ -96,7 +98,7 @@ payloadkeys:
     * 'WPA' allows joining WPA or WPA2 networks
     * 'WPA2' allows joining WPA2 or WPA3 networks
     * 'WPA3' allows joining WPA3 networks only
-    * 'Any' allows joining WPA, WPA2, WPA3, and WEP networks.
+    * 'Any' allows joining WPA, WPA2, WPA3, and WEP networks
     Prior to iOS 16, tvOS 16, and watchOS 9, specifying 'WPA', 'WPA2', and 'WPA3' were equivalent and would allow joining any WPA network.
     Prior to macOS 13, the encryption type, if specified explicitly, needed to match the encryption type of the network exactly.
 - key: Password
@@ -343,9 +345,9 @@ payloadkeys:
       introduced: '10.9'
   type: <string>
   presence: optional
-  content: |-
-    The operator name to display when connected to this network. Used only with Wi-Fi Hotspot 2.0 access points.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: The operator name to display when connected to this network. Used only
+    with Wi-Fi Hotspot 2.0 access points. Available in iOS 7.0 and later, and in macOS
+    10.9 and later.
 - key: DomainName
   title: Domain Name
   supportedOS:
@@ -355,9 +357,8 @@ payloadkeys:
       introduced: '10.9'
   type: <string>
   presence: optional
-  content: |-
-    The primary domain of the tunnel.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: The primary domain of the tunnel. Available in iOS 7.0 and later, and in
+    macOS 10.9 and later.
 - key: RoamingConsortiumOIs
   title: Roaming OIs
   supportedOS:
@@ -367,9 +368,9 @@ payloadkeys:
       introduced: '10.9'
   type: <array>
   presence: optional
-  content: |-
-    An array of Roaming Consortium Organization Identifiers used for Wi-Fi Hotspot 2.0 negotiation.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: An array of Roaming Consortium Organization Identifiers used for Wi-Fi
+    Hotspot 2.0 negotiation. Available in iOS 7.0 and later, and in macOS 10.9 and
+    later.
   subkeys:
   - key: RoamingConsortiumOI
     type: <string>
@@ -384,9 +385,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', allows connection to roaming service providers.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: If 'true', allows connection to roaming service providers. Available in
+    iOS 7.0 and later, and in macOS 10.9 and later.
 - key: IsHotspot
   title: Is Hotspot
   supportedOS:
@@ -397,9 +397,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', the device treats the network as a hotspot.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: If 'true', the device treats the network as a hotspot. Available in iOS
+    7.0 and later, and in macOS 10.9 and later.
 - key: HESSID
   supportedOS:
     iOS:
@@ -416,9 +415,8 @@ payloadkeys:
       introduced: '10.9'
   type: <array>
   presence: optional
-  content: |-
-    An array of Network Access Identifier Realm names used for Wi-Fi Hotspot 2.0 negotiation.
-    Available in iOS 7.0 and later, and in macOS 10.9 and later.
+  content: An array of Network Access Identifier Realm names used for Wi-Fi Hotspot
+    2.0 negotiation. Available in iOS 7.0 and later, and in macOS 10.9 and later.
   subkeys:
   - key: NAIRealmName
     type: <string>
@@ -431,9 +429,9 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: |-
-    An array of Mobile Country Code/Mobile Network Code (MCC/MNC) pairs used for Wi-Fi Hotspot 2.0 negotiation. Each string must contain exactly six digits.
-    Available in iOS 7.0 and later. This feature is not supported in macOS.
+  content: An array of Mobile Country Code/Mobile Network Code (MCC/MNC) pairs used
+    for Wi-Fi Hotspot 2.0 negotiation. Each string must contain exactly six digits.
+    Available in iOS 7.0 and later. This feature isn't supported in macOS.
   subkeys:
   - key: MCCAndMNC
     type: <string>
@@ -448,9 +446,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', Captive Network detection will be bypassed when the device connects to the network.
-    Available in iOS 10.0 and later.
+  content: If 'true', the system bypasses Captive Network detection when the device
+    connects to the network. Available in iOS 10.0 and later.
 - key: QoSMarkingPolicy
   title: QoS Marking Policy
   supportedOS:
@@ -460,9 +457,10 @@ payloadkeys:
       introduced: '10.13'
   type: <dictionary>
   presence: optional
-  content: |-
-    A dictionary that contains the list of apps that are allowed to benefit from L2 and L3 marking. When this dictionary isn't present, all apps are allowed to use L2 and L3 marking when the Wi-Fi network supports Cisco QoS fast lane.
-    Available in iOS 10.0 and later, and in macOS 10.13 and later.
+  content: A dictionary that contains the list of apps that the system allows to benefit
+    from L2 and L3 marking. When this dictionary isn't present, the system allows
+    all apps to use L2 and L3 marking when the Wi-Fi network supports Cisco QoS fast
+    lane. Available in iOS 10.0 and later, and in macOS 10.13 and later.
   subkeys:
   - key: QoSMarkingAllowListAppIdentifiers
     title: Allowlisted App Identifiers
@@ -521,7 +519,7 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of strings that contain the type of connection mode to be attached.
+  content: An array of strings that contain the type of connection mode to attach.
   subkeys:
   - key: SetupModesItem
     type: <string>
@@ -540,9 +538,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or EAP-FAST.
-    If 'false', allows for zero-factor authentication for EAP-TLS.
+  content: If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or
+    EAP-FAST. If 'false', allows for zero-factor authentication for EAP-TLS.
 - key: ProxyServer
   title: Proxy Server
   supportedOS:
@@ -636,5 +633,4 @@ payloadkeys:
   content: |-
     If 'true,' disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
     If 'false', then the system enables MAC address randomization.
-    This value is only locked when the profile is installed by MDM. If the profile is manually installed, the value is set but the user can change it.
-    Available in iOS 14 and later, and watchOS 7 and later.
+    This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it. Available in iOS 14 and later, and watchOS 7 and later.

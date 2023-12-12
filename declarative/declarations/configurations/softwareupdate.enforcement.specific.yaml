@@ -28,8 +28,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The target OS version to update the device to by the appropriate time.
-    This is the OS version number, for example, '16.1'. It may also include a supplemental
-    version identifier, for example, '16.1.1'.
+    This is the OS version number, for example, '16.1'.
 - key: TargetBuildVersion
   title: Target Build Version
   type: <string>

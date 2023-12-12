@@ -150,6 +150,9 @@ properties:
                 type: boolean
                 description: If true, indicates that the skip key's corresponding Setup pane is always skipped. If false, indicates
                   that the skip key's corresponding Setup pane may be shown, depending on exactly when during the setup flow it occurs.
+              beta:
+                type: boolean
+                description: Indicates that this payload should be considered a beta release for this OS. It may change in an incompatible way prior to final release.
           macOS: *supportedOSItem
           tvOS: *supportedOSItem
           watchOS: *supportedOSItem
@@ -163,6 +166,9 @@ properties:
         - single
         - multiple
         - combined
+      beta:
+        type: boolean
+        description: Indicates that this entire payload should be considered a beta release. It may change in an incompatible way prior to final release.
       content:
         type: string
         description: Description of the payload.

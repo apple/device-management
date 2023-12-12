@@ -165,11 +165,14 @@ payloadkeys:
     content: The Platform SSO authentication method to use with the extension. Requires
       that the SSO Extension also support the method.
   - key: UseSharedDeviceKeys
+    supportedOS:
+      macOS:
+        userchannel: false
     type: <boolean>
     presence: optional
     default: false
     content: If 'true', the system uses the same signing and encryption keys for all
-      users.
+      users. Only supported on the device channel.
   - key: AccountDisplayName
     type: <string>
     presence: optional
@@ -260,11 +263,8 @@ payloadkeys:
     content: The pairing of Authorization Rights to group names. The system updates
       the Authorization Right to use the group when used.
     subkeys:
-    - key: Authorization Right
+    - key: ANY
       type: <string>
-      presence: required
-      content: The Authorization Right to update.
-    - key: Group
-      type: <string>
-      presence: required
-      content: The group to use for the Authorization Right.
+      presence: optional
+      content: The key is an access right value, the value is the group to be associated
+        with that access right.

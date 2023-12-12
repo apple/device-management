@@ -49,9 +49,7 @@ payloadkeys:
   title: Password
   type: <string>
   presence: optional
-  content: |-
-    This is the password to the identity.
-    Security Caution: Because the password string is stored in the clear (unencrypted) in the profile, you should encrypt the entire profile.
+  content: The password to the identity.
 - key: AllowAllAppsAccess
   title: Allow All Apps Access
   supportedOS:
@@ -81,4 +79,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', does not tag the private key data as extractable in the keychain.
+  content: If 'false', doesn't tag the private key data as extractable in the keychain.

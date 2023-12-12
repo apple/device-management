@@ -24,7 +24,8 @@ payload:
       accessrights: AllowAppInstallation
       supervised: false
   content: Queries managed application attributes. Attributes can be set on managed
-    apps. These attributes can be changed over time.
+    apps. These attributes can be changed over time. The response will not include
+    apps that are managed by Declarative Device Management.
 payloadkeys:
 - key: Identifiers
   type: <array>

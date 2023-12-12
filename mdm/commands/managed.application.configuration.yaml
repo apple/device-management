@@ -35,7 +35,8 @@ payload:
       accessrights: AllowAppInstallation
       supervised: false
   content: This command queries the device for the current configuration of managed
-    applications. This command requires the App Management right.
+    applications. This command requires the App Management right. The response will
+    not include apps that are managed by Declarative Device Management.
 payloadkeys:
 - key: Identifiers
   type: <array>

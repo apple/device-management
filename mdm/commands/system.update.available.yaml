@@ -35,10 +35,9 @@ responsekeys:
 - key: AvailableOSUpdates
   type: <array>
   presence: required
-  content: An array of dictionaries that contains only the most recent available updates
-    in iOS and tvOS, and possibly multiple available updates in macOS. Follow the
-    instructions in the Managed Apps and Updates section of the Apple Software Lookup
-    Service to find a complete catalog of iOS and tvOS updates.
+  content: |-
+    An array of dictionaries that contains only the most recent available updates in iOS and tvOS, and possibly multiple available updates in macOS. Follow the instructions in the Managed Apps and Updates section of the Apple Software Lookup Service to find a complete catalog of iOS and tvOS updates.
+    In macOS 14 and later, 'AvailableOSUpdates' doesn't include InstallAssistant-based, full-replacement installers. It only contains over-the-air (OTA) updates. OTA updates can update or upgrade the OS and support all 'InstallAction' options.
   subkeys:
   - key: AvailableOSUpdatesItem
     type: <dictionary>

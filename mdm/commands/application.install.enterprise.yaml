@@ -21,7 +21,7 @@ payloadkeys:
   presence: optional
   content: A dictionary that specifies where to download the app. This value is backward-compatible
     with the manifest for the InstallApplicationCommand; however, it also allows you
-    to specify 'sha256s' and 'sha256'-size for SHA-256 hashes.
+    to specify 'sha256s' and 'sha256-size' for SHA-256 hashes.
   subkeys:
   - key: ANY
     type: <any>
@@ -32,7 +32,7 @@ payloadkeys:
 - key: ManifestURL
   type: <string>
   presence: optional
-  content: The URL of the app manifest, which must begin with 'https:'.
+  content: The URL of the app manifest, which needs to begin with 'https:'.
 - key: ManifestURLPinningCerts
   type: <array>
   presence: optional
@@ -59,9 +59,9 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', install the app as a managed app.
-    For manifest-based installs, if 'true' the system considers only the .app bundles installed into '/Applications' as managed (macOS 11 through 13 required the pkg to contain a single .app bundle). Reinstalling a managed app without this flag causes it to become unmanaged.
-    This value is available in macOS 11 and later.
+    If 'true', install the app as a managed app. Otherwise, the system installs the app as unmanaged. If you reinstall a manged app and omit this value or set it to 'false', the app becomes unmanaged.
+    For manifest-based installs, if 'true', the system only considers apps installed in '/Applications' as managed. In macOS 11 through 13, the system requires that the 'pkg' only contains a single signed app.
+    Available in macOS 11 and later.
 - key: ManagementFlags
   supportedOS:
     macOS:
@@ -73,9 +73,11 @@ payloadkeys:
   rangelist:
   - 1
   content: |-
-    The management flags. The only supported flag is:
-    * '1': Remove the app upon removal of the MDM profile. This also requires that you pass 'true' for 'InstallAsManaged'.
-    This value is available in macOS 11 and later.
+    The management flags. The possible values are:
+
+    * '1': If 'InstallAsManaged' is 'true', remove the app upon removal of the MDM profile.
+
+    Available in macOS 11 and later.
 - key: Configuration
   supportedOS:
     macOS:
@@ -83,12 +85,12 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: A dictionary that contains the initial configuration of the app, if you
-    choose to provide it. This value is available in macOS 11 and later.
+    choose to provide it. Available in macOS 11 and later.
   subkeys:
   - key: ANY
     type: <any>
     presence: optional
-    content: An app configuration key.
+    content: An app configuration.
 - key: ChangeManagementState
   supportedOS:
     macOS:
@@ -100,9 +102,11 @@ payloadkeys:
   rangelist:
   - Managed
   content: |-
-    The change management state. The only supported state is:
-    * 'Managed': Take management of the app if the user installed it already. This also requires that you pass 'true' for 'InstallAsManaged'.
-    This value is available in macOS 11 and later.
+    The change management state. This value doesn't work with the User Enrollment feature introduced in iOS 13. The only possible value is:
+
+    * 'Managed': Take management of the app if the user installed it already and 'InstallAsManaged' is 'true'.
+
+    Available in macOS 11 and later.
 - key: iOSApp
   supportedOS:
     iOS:

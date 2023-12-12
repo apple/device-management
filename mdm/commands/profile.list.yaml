@@ -133,15 +133,15 @@ responsekeys:
         - key: PayloadType
           type: <string>
           presence: required
-          content: The payload type, which each payload domain’s reference page specifies.
+          content: The type of payload, such as 'com.apple.wifi.managed'.
         - key: PayloadVersion
           type: <integer>
           presence: required
-          content: The version of the configuration payload. The value should be '1'.
+          content: The version of the payload. The value should be '1'.
         - key: PayloadIdentifier
           type: <string>
           presence: required
-          content: The reverse-DNS-style identifier of the payload; for example, 'com.example.myprofile.payload1'.
+          content: The reverse-DNS-style identifier of the payload, such as 'com.example.mypayload'.
         - key: PayloadUUID
           supportedOS:
             iOS:
@@ -152,7 +152,7 @@ responsekeys:
               introduced: '17.0'
           type: <string>
           presence: required
-          content: The unique identifier for the profile.
+          content: The unique identifier of the payload.
         - key: PayloadDisplayName
           type: <string>
           presence: optional
@@ -160,7 +160,7 @@ responsekeys:
         - key: PayloadDescription
           type: <string>
           presence: optional
-          content: The description of the payload.
+          content: A description of the payload.
         - key: PayloadOrganization
           type: <string>
           presence: optional

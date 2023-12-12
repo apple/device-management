@@ -38,7 +38,8 @@ payload:
       accessrights: AllowAppInstallation
       supervised: false
   content: This command allows the server to install an application on a device. If
-    the app is already being managed, this command will update the app. macOS change
+    the app is already being managed, this command will update the app. This command
+    will fail for apps that are managed by Declarative Device Management. macOS change
     - 10.9 user channel for VPP, 10.10 device channel, 10.11 both.
 payloadkeys:
 - key: iTunesStoreID
@@ -80,7 +81,7 @@ payloadkeys:
       introduced: '7.0'
   type: <string>
   presence: optional
-  content: The URL of the app manifest, which must begin with 'https:'.
+  content: The URL of the app manifest, which needs to begin with 'https:'.
 - key: ManagementFlags
   supportedOS:
     macOS:
@@ -94,10 +95,13 @@ payloadkeys:
   - 4
   - 5
   content: |-
-    The bitwise OR of the following management flags:
-    * '1': Remove app upon removal of MDM profile. This also requires that you pass 'true' for 'InstallAsManaged'.
+    A bitwise OR of the management flags. The possible values are:
+
+    * '1': If 'InstallAsManaged' is 'true', remove the app upon removal of the MDM profile.
     * '4': Prevent backup of app data.
-    This value is available in iOS 5 and later, macOS 11 and later, and tvOS 10.2 and later.
+    * '5': Both '1' and '4'.
+
+    Available in iOS 5 and later, macOS 11 and later, and tvOS 10.2 and later.
 - key: Configuration
   supportedOS:
     iOS:
@@ -107,8 +111,8 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: A dictionary that contains the initial configuration of the app, if you
-    choose to provide it. This value is available in iOS 7 and later, macOS 11 and
-    later, and tvOS 10.2 and later.
+    choose to provide it. Available in iOS 7 and later, macOS 11 and later, and tvOS
+    10.2 and later.
   subkeys:
   - key: ANY
     type: <any>
@@ -123,7 +127,7 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: A dictionary that contains the initial attributes of the app, if you choose
-    to provide it. This value is available in iOS 7 and later, and tvOS 10.2 and later.
+    to provide it. Available in iOS 7 and later, and tvOS 10.2 and later.
   subkeys:
   - key: VPNUUID
     supportedOS:
@@ -227,7 +231,7 @@ payloadkeys:
     type: <string>
     presence: optional
     content: |-
-      The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier provided string like “Enterprise1”.
+      The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier-provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier-provided string like “Enterprise1”.
       Available in iOS 17 and later.
 - key: ChangeManagementState
   supportedOS:
@@ -244,10 +248,11 @@ payloadkeys:
   rangelist:
   - Managed
   content: |-
-    The change management state. The only supported state is:
+    The change management state. The only possible value is:
+
     * 'Managed': Take management of the app if the user installed it already. This also requires that you pass 'true' for 'InstallAsManaged'.
-    This value doesn't work with Profile Based User Enrollment, Account Driven User Enrollment and Account Driven Device Enrollment.
-    Available in iOS 9 and later, macOS 11 and later, and tvOS 10.2 and later.
+
+    This value doesn't work with the User Enrollment feature introduced in iOS 13. Available in iOS 9 and later, macOS 11 and later, and tvOS 10.2 and later.
 - key: InstallAsManaged
   supportedOS:
     iOS:
@@ -264,10 +269,9 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', install the app as a managed app.
-    For manifest-based installs, if this value is 'true', the system only considers the '.app' bundles installed into '/Applications 'as managed (macOS 11 through 13 required the 'pkg' to contain a single '.app' bundle).
-    Reinstall a managed app with this value set to 'false' to change the app to an unmanaged app.
-    This value is available in macOS 11 and later.
+    If 'true', install the app as a managed app. Otherwise, the system installs the app as unmanaged. If you reinstall a manged app and omit this value or set it to 'false', the app becomes unmanaged.
+    For manifest-based installs, if 'true', the system only considers apps installed in '/Applications' as managed. In macOS 11 through 13, the system requires that the 'pkg' only contains a single signed app.
+    Available in macOS 11 and later.
 - key: iOSApp
   supportedOS:
     iOS:

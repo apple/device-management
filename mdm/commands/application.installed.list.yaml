@@ -40,9 +40,14 @@ payloadkeys:
       introduced: '10.15'
   type: <array>
   presence: optional
-  content: |-
-    An array of app identifiers. Provide this value to limit the response to only include these apps. This value is available in iOS 7 and later, macOS 10.15 and later, and tvOS 10.2 and later.
-    For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
+  content: An array of app identifiers. Provide this value to limit the response to
+    only include these apps. This value is available in iOS 7 and later, macOS 10.15
+    and later, and tvOS 10.2 and later. For a watchOS app, the identifier needs to
+    be the watch's bundle identifier, which differs from the main bundle identifier
+    for the iPhone to which the watch is paired. Obtain the watch's bundle identifier
+    for an app with a watch bundle, in the 'watchBundleId' key that's part of the
+    Content Metadata query. For more information on this query, see Getting App and
+    Book Information (Legacy).
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -55,8 +60,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', only get a list of managed apps. This value is available in
-    iOS 7 and later, macOS 10.15 and later, and tvOS 10.2 and later.
+  content: If 'true', only get a list of managed apps excluding ones that are managed
+    by Declarative Device Management. This value is available in iOS 7 and later,
+    macOS 10.15 and later, and tvOS 10.2 and later.
 - key: Items
   supportedOS:
     iOS:
@@ -67,11 +73,9 @@ payloadkeys:
       introduced: '14.0'
   type: <array>
   presence: optional
-  content: An array of strings representing keys in the InstalledApplicationListItem
-    dictionary. If provided, the response will contain only the keys listed here.
-    The "Identifier" key is always included. If not present, the response will contain
-    all keys. Always request just the set of keys that will actually be used, as some
-    key values can take significant time and power to calculate on the device.
+  content: |-
+    An array of strings that represent keys in InstalledApplicationListResponse.InstalledApplicationListItem. If present, the response only contains the keys listed here, except 'Identifier' is always included. If not present, the response contains all keys.
+    Only request the keys that you need, because some key values can take significant time and power to calculate on the device.
   subkeys:
   - key: ItemsItem
     type: <string>
@@ -265,3 +269,8 @@ responsekeys:
       presence: optional
       default: false
       content: If 'true', the app is an App Clip. Available in iOS 16 and later.
+    - key: Source
+      type: <string>
+      presence: optional
+      content: Source of the application. This value will be set to "Declarative Device
+        Management" when the app is managed by Declarative Device Management.

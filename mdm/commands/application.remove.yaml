@@ -29,7 +29,8 @@ payload:
       introduced: '10.0'
       accessrights: AllowAppInstallation
       supervised: false
-  content: This command allows a server to remove a managed app.
+  content: This command allows a server to remove a managed app. This command will
+    fail for apps that are managed by Declarative Device Management.
 payloadkeys:
 - key: Identifier
   type: <string>

@@ -78,7 +78,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If 'true', the user's passcode is compliant with requirements from profiles.
-      This key does not apply to User-Enrolled devices. This value is available in
+      This key doesn't apply to User-Enrolled devices. This value is available in
       iOS 4 and later, and tvOS 6 and later.
   - key: PasscodeLockGracePeriod
     supportedOS:
@@ -121,7 +121,7 @@ responsekeys:
         introduced: n/a
     type: <integer>
     content: The number of seconds before a device goes to sleep after being idle.
-      This value is only available for Shared iPad.
+      This value is only available on Shared iPad in iOS 17 and later.
   - key: FDE_Enabled
     supportedOS:
       iOS:

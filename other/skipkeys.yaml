@@ -28,7 +28,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The key to skip the Accessibility pane, when creating additional users.
-    This key is available in macOS 11 and later.
+    This key is not available in macOS.
 - key: Android
   title: Prevents migration from Android device
   supportedOS:

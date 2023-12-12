@@ -38,8 +38,8 @@ payloadkeys:
   type: <string>
   presence: required
   content: The reverse-DNS style identifier ('com.example.myprofile', for example)
-    that identifies the profile. This string is used to determine whether a new profile
-    should replace an existing one or should be added.
+    that identifies the profile. The system uses this string to determine whether
+    to replace an existing profile or add it as a new profile.
 - key: PayloadUUID
   type: <string>
   presence: required
@@ -56,9 +56,9 @@ payloadkeys:
   presence: required
   rangelist:
   - 1
-  content: The version number of the profile format. This number represents the version
-    of the configuration profile as a whole, not of the individual profiles within
-    it. The value should be 1.
+  content: The version number of the profile format, which needs to be '1'. This number
+    represents the version of the configuration profile as a whole, not of the individual
+    profiles within it.
 - key: IsEncrypted
   type: <boolean>
   presence: optional
@@ -85,22 +85,22 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The description of the profile, shown on the Detail screen for the profile.
-    This description should be detailed enough to help the user decide whether to
-    install the profile.
+    Make this description detailed enough to help the user decide whether to install
+    the profile.
 - key: PayloadDisplayName
   type: <string>
   presence: optional
-  content: The human-readable name for the profile. This value is displayed on the
-    Detail screen. It doesn't have to be unique.
+  content: The human-readable name for the profile, which doesn't need to be unique.
+    The system displays this value on the Detail screen.
 - key: HasRemovalPasscode
   type: <boolean>
   presence: optional
   default: false
-  content: Set to 'true' if there is a removal passcode.
+  content: Set to 'true' if there's a removal passcode.
 - key: PayloadOrganization
   type: <string>
   presence: optional
-  content: The human-readable string containing the name of the organization that
+  content: The human-readable string that contains the name of the organization that
     provided the profile.
 - key: PayloadRemovalDisallowed
   supportedOS:
@@ -116,9 +116,9 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If present and set to 'true', the user can't delete the profile (unless the profile has a removal password and the user provides it).
-    On macOS, as of 10.15, this key only affects removal of manually installed profiles. If set to 'true' and no profile removal payload is present, removing the profile requires admin auth.
-    On macOS versions prior to 10.15, this key would prevent admins from removing MDM installed profiles but as of macOS 10.15, users can never remove MDM profiles, not even the admin.
+    If present and set to 'true', the user can't delete the profile unless the profile has a removal password and the user provides it.
+    On macOS 10.15 and later, this key only affects removal of manually installed profiles. If set to 'true' and no profile removal payload is present, removing the profile requires admin auth.
+    On macOS versions prior to 10.15, this key prevents admins from removing MDM installed profiles. However, as of macOS 10.15, users can never remove MDM profiles, not even the admin.
     Requires a supervised device.
 - key: PayloadScope
   supportedOS:
@@ -129,27 +129,28 @@ payloadkeys:
   rangelist:
   - System
   - User
-  content: A string that defines whether the profile should be installed for the system
-    or the user. In many cases, it determines the location of certificate items, such
-    as keychains. Though it isn't possible to declare different payload scopes, payloads,
-    like VPN, may automatically install their items in both scopes, if needed.
+  content: A string that defines whether to install the profile for the system or
+    the user. In many cases, it determines the location of certificate items, such
+    as keychains. Though it's not possible to declare different payload scopes, payloads
+    like VPN can automatically install their items in both scopes, if needed.
 - key: RemovalDate
   type: <date>
   presence: optional
-  content: The date when the profile is automatically removed.
+  content: The date when the system automatically removes the profile.
 - key: DurationUntilRemoval
   type: <real>
   presence: optional
   content: The number of seconds until the profile is automatically removed. If the
-    'RemovalDate' key is present, whichever field yields the earliest date is used.
+    'RemovalDate' key is present, the system uses whichever field yields the earliest
+    date.
 - key: PayloadExpirationDate
   supportedOS:
     watchOS:
       introduced: n/a
   type: <date>
   presence: optional
-  content: The date when a profile is no longer valid and an update button is presented
-    to the user.
+  content: The date when a profile is no longer valid and the system presents an update
+    button to the user.
 - key: TargetDeviceType
   supportedOS:
     iOS:
@@ -172,24 +173,26 @@ payloadkeys:
   default: 0
   content: |-
     The type of platform of the target device. Specifying the platform type helps prevent unintended installations.
-    For interactive installations on iOS devices, specifying a target platform avoids the interstitial alerts that prompt the user to choose a profile target when multiple targets are eligible.
-    0 = Any/unspecified
-    1 = iPhone/iPad/iPod Touch
-    2 = Apple Watch
-    3 = HomePod
-    4 = Apple TV
-    5 = Mac
+    For interactive installations on iOS devices, specifying a target platform avoids interstitial alerts that prompt the user to choose a profile target when multiple targets are eligible.
+    Possible values include:
+
+    * '0': Any/unspecified
+    * '1': iPhone/iPad/iPod Touch
+    * '2': Apple Watch
+    * '3': HomePod
+    * '4': Apple TV
+    * '5': Mac
 - key: ConsentText
   type: <dictionary>
   presence: optional
   content: |-
-    A dictionary containing a key that consists of the IETF BCP 47 identifier for a language (for example, en or jp) and a value consisting of the agreement localized to that language. The agreement is displayed in a dialog, and the user must agree before installing the profile.
-
+    A dictionary that includes:
+    * A key that contains the IETF BCP 47 identifier for a language, such as en or jp
+    * A value that contains the agreement localized to language specified by the key
     The dictionary can also contain an optional key, 'default', with its value consisting of the unlocalized (usually in en) agreement.
-
-    The system chooses a localized version in the order of preference specified by the user (macOS) or based on the user's current language setting (iOS). If no exact match is found, the default localization is used. If there is no default localization, the en localization is used. If there is no en localization, the first available localization is used.
-
-    Provide a default value, if possible. No warning is displayed if the user's locale doesn't match any localization in the 'ConsentText' dictionary.
+    The system always displays the agreement in a dialog, and the user needs to agree before the system can install the profile.
+    The system chooses a localized version in the order of preference that the user specifies in macOS, or based on the user's current language setting in iOS. If there's no exact match, the system uses the default localization. If there's no default localization, the system uses the en localization. If there's no en localization, the system uses the first available localization.
+    Provide a default value, if possible. The system won't display a warning if the user's locale doesn't match any localization in the 'ConsentText' dictionary.
   subkeys:
   - key: ConsentTextItem
     type: <dictionary>

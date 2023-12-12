@@ -156,8 +156,8 @@ payloadkeys:
   - com.apple.asset.credential.identity
   - com.apple.asset.credential.scep
   presence: optional
-  content: Specifies the identifier of a credential asset declaration that contains
-    the identity that this account requires to authenticate with the Exchange server.
+  content: The identifier of a credential asset declaration that contains the identity
+    that this account requires to authenticate with the Exchange server.
 - key: SMIME
   title: S/MIME Settings
   supportedOS:
@@ -254,7 +254,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', activates the mail service for this account.
+  content: If 'true', the system activates the mail service for this account.
 - key: LockMailService
   supportedOS:
     macOS:
@@ -262,8 +262,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents the user from changing the status of the mail service
-    for this account.
+  content: If 'true', the system prevents the user from changing the status of the
+    mail service for this account.
 - key: ContactsServiceActive
   supportedOS:
     macOS:
@@ -279,8 +279,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents the user from changing the status of the address book
-    service for this account.
+  content: If 'true', the system prevents the user from changing the status of the
+    address book service for this account.
 - key: CalendarServiceActive
   supportedOS:
     macOS:
@@ -296,8 +296,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents the user from changing the status of the calendar service
-    for this account.
+  content: If 'true', the system prevents the user from changing the status of the
+    calendar service for this account.
 - key: RemindersServiceActive
   supportedOS:
     macOS:
@@ -305,7 +305,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', activates the reminders service for this account.
+  content: If 'true', the system activates the reminders service for this account.
 - key: LockRemindersService
   supportedOS:
     macOS:
@@ -313,8 +313,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents the user from changing the status of the reminders
-    service for this account.
+  content: If 'true', the system prevents the user from changing the status of the
+    reminders service for this account.
 - key: NotesServiceActive
   supportedOS:
     macOS:
@@ -322,7 +322,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', activates the notes service for this account.
+  content: If 'true', the system activates the notes service for this account.
 - key: LockNotesService
   supportedOS:
     macOS:
@@ -330,5 +330,5 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents the user from changing the status of the notes service
-    for this account.
+  content: If 'true', the system prevents the user from changing the status of the
+    notes service for this account.
