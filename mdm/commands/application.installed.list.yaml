@@ -26,6 +26,13 @@ payload:
       introduced: '10.2'
       accessrights: AllowQueryApplications
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowQueryApplications
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowQueryApplications
@@ -85,6 +92,7 @@ payloadkeys:
     - BetaApp
     - BundleSize
     - DeviceBasedVPP
+    - DistributorIdentifier
     - DynamicSize
     - ExternalVersionIdentifier
     - HasUpdateAvailable
@@ -123,6 +131,22 @@ responsekeys:
       content: |-
         The app's external version identifier, which you can use in the iTunes Search API to determine if an updated version of the app is available. Compare this value to the 'externalId' value in the 'contentMetadataLookupUrl' response from the 'VPPServiceConfigSrv' endpoint. If these values don't match, an updated version of the app may be available.
         A newer version of an app might not be available for installation on the device for a variety of reasons. A common reason is that the device's operating system version or hardware is incompatible with the available version of the app.
+    - key: DistributorIdentifier
+      supportedOS:
+        iOS:
+          introduced: '17.4'
+        macOS:
+          introduced: n/a
+        tvOS:
+          introduced: n/a
+        visionOS:
+          introduced: n/a
+        watchOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      content: The marketplace hosted application's distributor ID. This value is
+        available in iOS 17.4 and later.
     - key: Version
       type: <string>
       presence: optional
@@ -272,5 +296,5 @@ responsekeys:
     - key: Source
       type: <string>
       presence: optional
-      content: Source of the application. This value will be set to "Declarative Device
-        Management" when the app is managed by Declarative Device Management.
+      content: The source of the application. When the app is managed by Declarative
+        Device Management this value is 'Declarative Device Management'.

@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.MCX.FileVault2
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.9'
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: The FileVault payload only works on macOS to enable or disable FileVault.
     Starting with macOS 10.15, this payload requires UAMDM to enable FileVault.
 payloadkeys:
@@ -31,25 +39,27 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', defers enabling FileVault until the designated user logs out.
-    For details, see 'fdesetup(8)'. Only a local user or a mobile account user can
-    enable FileVault.
+  content: If 'true', the system defers enabling FileVault until the designated user
+    logs out. For details, see 'fdesetup(8)'. Only a local user or a mobile account
+    user can enable FileVault.
 - key: UserEntersMissingInfo
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables a prompt for missing user name or password fields.
+  content: If 'true', the system enables a prompt for missing user name or password
+    fields.
 - key: UseRecoveryKey
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', creates a personal recovery key and displays it to the user.
+  content: If 'true', the system creates a personal recovery key and displays it to
+    the user.
 - key: ShowRecoveryKey
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prevents display of the personal recovery key to the user after
-    the system enables FileVault.
+  content: If 'false', the system prevents display of the personal recovery key to
+    the user after the system enables FileVault.
 - key: OutputPath
   type: <string>
   presence: optional
@@ -97,7 +107,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents requests to enable FileVault at user logout time.
+  content: If 'true', the system prevents requests to enable FileVault at user logout
+    time.
 - key: ForceEnableInSetupAssistant
   supportedOS:
     macOS:

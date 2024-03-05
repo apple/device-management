@@ -29,6 +29,10 @@ payload:
       devicechannel: true
       supervised: true
       requiresdep: false
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command allows the server to schedule an OS update.
 payloadkeys:
 - key: Updates

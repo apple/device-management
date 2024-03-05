@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.2'
       allowed-enrollments:
+      - supervised
       - device
       - user
       allowed-scopes:
@@ -17,6 +18,8 @@ payload:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   beta: true
@@ -25,7 +28,8 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: Status value.
+  content: An array of dictionaries that describe the device's declarative managed
+    apps.
   subkeytype: App
   subkeys:
   - key: status_value
@@ -35,7 +39,7 @@ payloadkeys:
       title: Unique identifier of the app.
       type: <string>
       presence: required
-      content: The unique identifier of the app. This will be the app's bundle id.
+      content: The app's bundle id, which is unique.
     - key: _removed
       title: Indicates removal of the app.
       type: <boolean>
@@ -58,13 +62,9 @@ payloadkeys:
       title: External version id
       type: <integer>
       presence: optional
-      content: The application's external version ID. This can also be retrieved from
-        the store from the "contentMetadataLookupUrl" from the VPPServiceConfigSrv
-        endpoint. In the response from uclient-api.itunes.apple.com URL, there's a
-        key named "externalId" at the path results.<adamId>.offers[0].version.externalId.
-        If the current external version identifier of an app on the store does not
-        match the external version identifier reported by the device, there may be
-        an app update available for the device.
+      content: |-
+        The app's external version ID. You can also retrieve this value from the store through the contentMetadataLookupUrl <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/5-Web_Service_Protocol_VPP/webservice.html#//apple_ref/doc/uid/TP40017387-CH8-SW209> of VPPServiceConfigSrv <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/5-Web_Service_Protocol_VPP/webservice.html#//apple_ref/doc/uid/TP40017387-CH8-SW15>.
+        In the response from 'uclient-api.itunes.apple.com' URL, there's an 'externalId' at the path 'results.<adamId>.offers[0].version.externalId'. If the current external version identifier of an app on the store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
     - key: version
       title: Version
       type: <string>
@@ -91,17 +91,18 @@ payloadkeys:
       - managed-but-uninstalled
       - failed
       content: |-
-        The status of the app.
-        * optional - the app is optional and the user has to trigger its installation
-        * queued - installation of the app has started
-        * prompting-for-consent - a prompt is being shown to the user to proceed with app installation
-        * prompting-for-login - a prompt to sign in to the App Store is being shown to the user to allow installation
-        * prompting-for-management - a prompt is being shown to the user to allow changing the installed app to a managed app
-        * downloading - an update is being downloaded
-        * installing - the app is being installed
-        * managed - the app is installed and managed
-        * managed-but-uninstalled - the app is managed, but has been removed by the user. If installed again, it will be managed
-        * failed - the app installation has failed
+        The status of the app, which has the following possible values:
+
+        * 'optional': The app is optional and the user has to trigger its installation.
+        * 'queued': Installation of the app started.
+        * 'prompting-for-consent': The system is displaying a prompt to the user to proceed with app installation.
+        * 'prompting-for-login': The system is displaying an App Store sign-in prompt to the user to allow app installation.
+        * 'prompting-for-management': The system is displaying a prompt to the user to allow changing the installed app to a managed app.
+        * 'downloading': The system is downloading an app update.
+        * 'installing': The system is installing an app update.
+        * 'managed': The app is installed and managed.
+        * 'managed-but-uninstalled': The app is managed, but the user removed it. The app remains managed if the system installs it again.
+        * 'failed': An app update failed.
     - key: update-state
       title: Managed application update status
       type: <string>
@@ -113,17 +114,21 @@ payloadkeys:
       - updating
       - failed
       content: |-
-        The update status of the app. This key is only present when the "state" key is set to "managed" and when there is an app update available.
-        * available - an update is available for the app
-        * prompting-for-update - a prompt is being shown to the user to proceed with app update
-        * prompting-for-update-login - a prompt to sign in to the App Store is being shown to the user to allow app update
-        * updating - the app is being updated
-        * failed - the app update has failed
+        The update status of the app, which has the following possible values:
+
+        * 'available': An update is available for the app.
+        * 'prompting-for-update': The system is displaying a prompt to the user to proceed with app installation.
+        * 'prompting-for-update-login': The system is displaying an App Store sign-in prompt to the user to allow app installation.
+        * 'updating': The app is updating.
+        * 'failed': The app update failed.
+
+        This key is only present if 'state' is 'managed' and an update is available.
     - key: reasons
       title: Status Reasons
       type: <array>
       presence: optional
-      content: Additional detail about app state, including errors.
+      content: An array that contains additional details about the app state, including
+        errors.
       subkeytype: StatusReason
       subkeys:
       - key: _reasons
@@ -136,17 +141,17 @@ payloadkeys:
           title: Error Code
           type: <string>
           presence: required
-          content: The error code for this error.
+          content: A code for the state.
         - key: description
           title: Error Description
           type: <string>
           presence: optional
-          content: The description of this error.
+          content: A description of the state.
         - key: details
           title: Error Details
           type: <dictionary>
           presence: optional
-          content: A dictionary that contains further details about this error.
+          content: A dictionary that contains additional details about the state.
           subkeys:
           - key: ANY
             type: <any>

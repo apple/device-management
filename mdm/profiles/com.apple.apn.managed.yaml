@@ -15,6 +15,14 @@ payload:
         userchannel: false
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: |-
     Not supported in macOS.
     This technically does install on watchOS but we are removing the supportedOS dictionary. The cellular payload should be used instead.

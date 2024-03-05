@@ -8,6 +8,8 @@ payload:
       introduced: '14.0'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   content: |-

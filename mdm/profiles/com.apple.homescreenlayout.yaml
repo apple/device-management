@@ -14,11 +14,17 @@ payload:
         userchannel: true
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '11.0'
       multiple: false
       supervised: true
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: The payload defines a layout of apps, folders, & web clips for the Home
     screen.
 payloadkeys:

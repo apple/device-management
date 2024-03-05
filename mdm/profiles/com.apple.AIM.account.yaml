@@ -3,6 +3,8 @@ description: Use this section to define settings for configuration access to AIM
 payload:
   payloadtype: com.apple.AIM.account
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       deprecated: '10.13'
@@ -15,6 +17,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: An AIM payload creates an AIM account on the device.
 payloadkeys:
 - key: AIMAccountDescription

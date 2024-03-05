@@ -29,6 +29,13 @@ payload:
       multiple: false
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.1'
+      multiple: false
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       multiple: false
@@ -64,7 +71,7 @@ payloadkeys:
   format: ^https://.*$
   content: The URL that the device should use to check in during installation. The
     URL must begin with the 'https://' URL scheme and may contain a port number (':1234',
-    for example). If this URL isn't given, 'ServerURL' is used for both purposes.
+    for example). If not set, the system uses 'ServerURL'.
 - key: SignMessage
   title: Sign Message
   type: <boolean>
@@ -81,25 +88,29 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: ignored
+    visionOS:
+      userenrollment:
+        mode: ignored
   type: <integer>
   presence: optional
   content: |-
     Logical OR of the following bit flags:
-    '1': Allow inspection of installed configuration profiles.
-    '2': Allow installation and removal of configuration profiles.
-    '4': Allow device lock and passcode removal.
-    '8': Allow device erase.
-    '16': Allow query of device information (device capacity, serial number).
-    '32': Allow query of network information (phone/SIM numbers, MAC addresses).
-    '64': Allow inspection of installed provisioning profiles.
-    '128': Allow installation and removal of provisioning profiles.
-    '256': Allow inspection of installed applications.
-    '512': Allow restriction-related queries.
-    '1024': Allow security-related queries.
-    '2048': Allow manipulation of settings.
-    '4096': Allow app management.
-    The value can't be '0'. If '2' is specified, '1' must also be specified. If '128' is specified, '64' must also be specified.
-    If the 'ManagedAppleID' is included, then 'AccessRights' are ignored.
+
+    * '1': Allow inspection of installed configuration profiles.
+    * '2': Allow installation and removal of configuration profiles.
+    * '4': Allow device lock and passcode removal.
+    * '8': Allow device erase.
+    * '16': Allow query of device information (device capacity, serial number).
+    * '32': Allow query of network information (phone/SIM numbers, MAC addresses).
+    * '64': Allow inspection of installed provisioning profiles.
+    * '128': Allow installation and removal of provisioning profiles.
+    * '256': Allow inspection of installed applications.
+    * '512': Allow restriction-related queries.
+    * '1024': Allow security-related queries.
+    * '2048': Allow manipulation of settings.
+    * '4096': Allow app management.
+
+    Don't set to '0'. Specify '1' if you specify '2'. Specify '64' if you specify '128'. Ignored if you set a value for 'ManagedAppleID'.
 - key: UseDevelopmentAPNS
   title: Use Development APNS
   type: <boolean>
@@ -107,7 +118,7 @@ payloadkeys:
   default: false
   content: |-
     If 'true', the device uses the development APNS servers. Otherwise, the device uses the production servers.
-    Note that this property must be set to 'false' if your Apple Push Notification Service certificate was issued by the Apple Push Certificate Portal ('https://identity.apple.com/pushcert'). That portal only issues certificates for the production push environment.
+    Set to 'false' if your Apple Push Notification Service certificate was issued by the Apple Push Certificate Portal ('https://identity.apple.com/pushcert'). That portal only issues certificates for the production push environment.
 - key: ManagedAppleID
   title: Managed Apple ID
   supportedOS:
@@ -123,15 +134,16 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The Managed Apple ID of the user. Available in iOS 13.1 and later, and
-    macOS 10.15 and later. This is only used with the profile-driven BYOD enrollment
-    flow, and must not be present in the BYOD and ADDE account-driven enrollment flows.
-    As of iOS 17 and macOS 14, profile-driven user enrollments are deprecated and
-    will be removed in a future release.
+  content: The Managed Apple ID of the user. Required for profile-driven user enrollment.
+    Don't set for account-driven enrollment. Available in iOS 13.1 and later, and
+    macOS 10.15 and later. As of iOS 17 and macOS 14, profile-driven user enrollment
+    is deprecated and will be removed in a future release.
 - key: AssignedManagedAppleID
   title: Assigned Managed Apple ID
   supportedOS:
@@ -145,9 +157,9 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The Managed Apple ID pre-assigned to the authenticated user. This is required
-    for the BYOD and ADDE account-driven enrollment flows, and must not be present
-    in other enrollment flows. Available in iOS 15 and macOS 14, and later.
+  content: The Managed Apple ID pre-assigned to the authenticated user. The system
+    only uses this value with account-driven enrollment. Don't set this value for
+    profile-driven user enrollment. Available in iOS 15 and later.
 - key: EnrollmentMode
   title: Enrollment Mode
   supportedOS:
@@ -164,10 +176,9 @@ payloadkeys:
   rangelist:
   - BYOD
   - ADDE
-  content: The enrollment mode the server indicates must be used when enrolling. This
-    key must be present for BYOD and ADDE account-driven enrollments, and must not
-    be present in the profile-driven user enrollment flow. Available in iOS 15 and
-    macOS 14, and later.
+  content: The enrollment mode the server indicates to use when enrolling. Required
+    for account-driven enrollment. Don't set for profile-driven user enrollment. Available
+    in iOS 15 and macOS 14, and later.
 - key: ServerURLPinningCertificateUUIDs
   supportedOS:
     iOS:
@@ -178,8 +189,8 @@ payloadkeys:
       introduced: '13.4'
   type: <array>
   presence: optional
-  content: An array of strings, each containing the UUID of a certificate to be used
-    when evaluating trust to the '.../connect/' URLs of MDM servers.
+  content: An array of strings, each containing the UUID of a certificate to use when
+    evaluating trust to the '.../connect/' URLs of MDM servers.
   subkeys:
   - key: ServerURLPinningCertificateUUIDsItem
     type: <string>
@@ -196,7 +207,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: An array of strings, each containing the payload UUID of a certificate
-    to be used when evaluating trust to the '.../checkin/' URLs of MDM servers.
+    to use when evaluating trust to the '.../checkin/' URLs of MDM servers.
   subkeys:
   - key: CheckInURLPinningCertificateUUIDsItem
     type: <string>
@@ -214,14 +225,14 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', fails the connection attempt unless a verified positive response is obtained during certificate revocation checks.
-    If 'false', revocation checks are done on a best-attempt basis, where failure to reach the server isn't considered fatal.
+    If 'true', the system fails the connection attempt unless it obtains a verified positive response during certificate revocation checks.
+    If 'false', the system performs revocation checks on a best-attempt basis, where failure to reach the server isn't considered fatal.
 - key: ServerCapabilities
   type: <array>
   presence: optional
   content: |-
     A unique array of strings indicating server capabilities. If the server manages macOS devices or a Shared iPad, this field is mandatory and must contain the value 'com.apple.mdm.per-user-connections', which indicates that the server supports both device and user connections.
-    Starting with macOS 11, it is also recommended that macOS device enrollment profiles contain the value 'com.apple.mdm.bootstraptoken' to ensure the Bootstrap Token is created and escrowed with the MDM server at enrollment time.
+    Starting with macOS 11, it's also recommended that macOS device enrollment profiles contain the value 'com.apple.mdm.bootstraptoken' to ensure the Bootstrap Token is created and escrowed with the MDM server at enrollment time.
     If the server supports the "GetToken" CheckIn message type, then this key must be present and must include "com.apple.mdm.token" as one of its values.
   subkeys:
   - key: ServerCapabilitiesItems
@@ -249,8 +260,8 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: |-
-    This property specifies an iTunes Store ID for an app the system can install with the InstallApplicationCommand, without any approval from the user. The MDM vendor or managing organization generally provides this app, which enhances the management experience for the user. The device shows the user details about this app in the account-driven enrollment process prior to installing the MDM profile. Use this property with account-driven MDM enrollments that normally require user approval for app installs through MDM.
-    Only account-driven user enrollments support this property and other enrollment types ignore it.
+    This property specifies an iTunes Store ID for an app the system can install with the InstallApplicationCommand, without any approval from the user. The MDM vendor or managing organization generally provides this app, which enhances the management experience for the user. The device shows the user details about this app in the account-driven enrollment process prior to installing the MDM profile. Use this property with account-driven MDM enrollment that normally requires user approval for app installs through MDM.
+    Only account-driven enrollment supports this property and other enrollment types ignore it.
     Available in iOS 15.1 and later.
 - key: PromptUserToAllowBootstrapTokenForAuthentication
   supportedOS:
@@ -260,13 +271,15 @@ payloadkeys:
       introduced: '11.0'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
   presence: optional
   default: false
   content: |-
-    If 'true', warns the user that they need to reboot into RecoveryOS and allow the MDM to use the Bootstrap Token for authentication for certain sensitive operations such as enabling kernel extensions or installing some types of software updates. If the MDM doesn't need to perform these operations, it can leave this key set to 'false', and the user won't be notified.
+    If 'true', the system warns the user that they need to reboot into RecoveryOS and allow the MDM to use the Bootstrap Token for authentication for certain sensitive operations such as enabling kernel extensions or installing some types of software updates. If the MDM doesn't need to perform these operations, it can leave this key set to 'false', and the user isn't notified.
     The SettingsCommand.Command.Settings.MDMOptions.MDMOptions command overrides this default value.
     This setting only applies to devices that have 'BootstrapTokenRequiredForSoftwareUpdate' or 'BootstrapTokenRequiredForKernelExtensionApproval' set to 'true' in their SecurityInfoResponse.SecurityInfo.
     DEP-enrolled devices are automatically allowed to use the Bootstrap Token for authentication.

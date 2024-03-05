@@ -29,6 +29,10 @@ payload:
       multiple: false
       supervised: true
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: PEM-encoded cer
 payloadkeys:
 - key: ProxyType

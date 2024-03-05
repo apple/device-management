@@ -29,6 +29,10 @@ payload:
       devicechannel: true
       supervised: true
       requiresdep: false
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Queries the device for a list of available OS updates. On OS X, a ScheduleOSUpdateScan
     must be performed to update the results returned by this query.
 responsekeys:

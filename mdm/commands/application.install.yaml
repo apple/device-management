@@ -33,6 +33,13 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowAppInstallation
@@ -212,6 +219,8 @@ payloadkeys:
         introduced: '16.4'
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -225,6 +234,8 @@ payloadkeys:
       iOS:
         introduced: '17.0'
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -241,6 +252,9 @@ payloadkeys:
         mode: forbidden
     macOS:
       introduced: '11.0'
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <string>
@@ -263,6 +277,8 @@ payloadkeys:
         mode: forbidden
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -279,6 +295,8 @@ payloadkeys:
     macOS:
       introduced: '11.0'
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a

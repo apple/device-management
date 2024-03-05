@@ -14,11 +14,17 @@ payload:
         userchannel: false
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '10.2'
       multiple: false
       supervised: true
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: App
   title: App
@@ -38,15 +44,15 @@ payloadkeys:
         introduced: '7.0'
     type: <dictionary>
     presence: optional
-    content: A dictionary of options that the user cannot change.
+    content: A dictionary of options that the user can't change.
     subkeys:
     - key: DisableTouch
       title: Disable Touch
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', disables the touch screen. In tvOS, it disables the touch
-        surface on the Apple TV Remote.
+      content: If 'true', the system disables the touch screen. In tvOS, it disables
+        the touch surface on the Apple TV Remote.
     - key: DisableDeviceRotation
       title: Disable Device Rotation
       supportedOS:
@@ -55,7 +61,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', disables device rotation sensing.
+      content: If 'true', the system disables device rotation sensing.
     - key: DisableVolumeButtons
       title: Disable Volume Buttons
       supportedOS:
@@ -64,7 +70,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', disables the volume buttons.
+      content: If 'true', the system disables the volume buttons.
     - key: DisableRingerSwitch
       title: Disable Ringer Switch
       supportedOS:
@@ -73,8 +79,9 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', disables the ringer switch. When disabled, the ringer behavior
-        depends on what position the switch was in when it was first disabled.
+      content: If 'true', the system disables the ringer switch. When disabled, the
+        ringer behavior depends on what position the switch was in when it was first
+        disabled.
     - key: DisableSleepWakeButton
       title: Disable Sleep Wake Button
       supportedOS:
@@ -83,7 +90,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', disables the sleep/wake button.
+      content: If 'true', the system disables the sleep/wake button.
     - key: DisableAutoLock
       title: Disable Auto Lock
       type: <boolean>
@@ -96,19 +103,19 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables VoiceOver.
+      content: If 'true', the system enables VoiceOver.
     - key: EnableZoom
       title: Enable Zoom
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables Zoom.
+      content: If 'true', the system enables Zoom.
     - key: EnableInvertColors
       title: Enable Invert Colors
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables Invert Colors.
+      content: If 'true', the system enables Invert Colors.
     - key: EnableAssistiveTouch
       title: Enable Assistive Touch
       supportedOS:
@@ -117,7 +124,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables AssistiveTouch.
+      content: If 'true', the system enables AssistiveTouch.
     - key: EnableSpeakSelection
       title: Enable Speak Selection
       supportedOS:
@@ -126,7 +133,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables Speak Selection.
+      content: If 'true', the system enables Speak Selection.
     - key: EnableMonoAudio
       title: Enable Mono Audio
       supportedOS:
@@ -135,7 +142,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables Mono Audio.
+      content: If 'true', the system enables Mono Audio.
     - key: EnableVoiceControl
       title: Enable Voice Control
       supportedOS:
@@ -146,7 +153,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', enables Voice Control.
+      content: If 'true', the system enables Voice Control.
   - key: UserEnabledOptions
     title: User Enabled Options
     supportedOS:
@@ -166,25 +173,25 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', allows the user to toggle Voice Control.
+      content: If 'true', the system allows the user to toggle Voice Control.
     - key: VoiceOver
       title: Voice Over
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', allows the user to toggle VoiceOver.
+      content: If 'true', the system allows the user to toggle VoiceOver.
     - key: Zoom
       title: Zoom
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', allows the user to toggle Zoom.
+      content: If 'true', the system allows the user to toggle Zoom.
     - key: InvertColors
       title: Invert Colors
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', allows the user to toggle Invert Colors.
+      content: If 'true', the system allows the user to toggle Invert Colors.
     - key: AssistiveTouch
       title: Assistive Touch
       supportedOS:
@@ -193,4 +200,4 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', allows the user to toggle AssistiveTouch.
+      content: If 'true', the system allows the user to toggle AssistiveTouch.

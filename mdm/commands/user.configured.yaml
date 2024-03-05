@@ -15,6 +15,14 @@ payload:
         userchannel: true
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Informs the device that it can continue past Setup Assistant and finish
     login. Only works on Shared iPads that have the AwaitUserConfiguration feature
     enabled.

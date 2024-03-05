@@ -4,6 +4,8 @@ description: Use this section to define settings for configuration access to Jab
 payload:
   payloadtype: com.apple.jabber.account
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       deprecated: '10.14'
@@ -16,6 +18,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: A Jabber payload creates a Jabber account on the device.
 payloadkeys:
 - key: JabberAccountDescription

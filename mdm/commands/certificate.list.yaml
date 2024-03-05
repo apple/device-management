@@ -32,6 +32,13 @@ payload:
       introduced: '6.0'
       accessrights: AllowInspection
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowInspection
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowInspection

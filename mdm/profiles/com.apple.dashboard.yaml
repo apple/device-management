@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.dashboard
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       deprecated: '10.15'
@@ -15,6 +17,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Widget restrictions.
 payloadkeys:
 - key: whiteListEnabled

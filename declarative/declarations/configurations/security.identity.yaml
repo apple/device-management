@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -18,7 +19,7 @@ payload:
     macOS:
       introduced: '14.0'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       - local
       allowed-scopes:
@@ -27,17 +28,27 @@ payload:
     tvOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
+      - local
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
       - local
       allowed-scopes:
       - system
     watchOS:
       introduced: '10.0'
       allowed-enrollments:
-      - device
+      - supervised
       - local
       allowed-scopes:
       - system
+  apply: multiple
 payloadkeys:
 - key: CredentialAssetReference
   title: Credential asset reference
@@ -55,6 +66,10 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
@@ -65,6 +80,10 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
       introduced: n/a
   type: <boolean>
   presence: optional

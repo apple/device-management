@@ -26,6 +26,13 @@ payload:
         mode: allowed
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       multiple: true
@@ -58,6 +65,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <array>
@@ -77,6 +86,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <array>
@@ -96,6 +107,8 @@ payloadkeys:
       deprecated: '13.4'
     macOS:
       introduced: '10.15'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <array>

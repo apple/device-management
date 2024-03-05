@@ -15,10 +15,21 @@ payload:
         userchannel: false
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
   content: This command allows the server to query for installed 3rd party applications.
 payloadkeys:
 - key: Identifiers

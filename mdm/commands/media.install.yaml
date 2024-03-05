@@ -23,6 +23,12 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command allows the server to install a book on a device. If the book
     is already being managed, this command will update the book.
 payloadkeys:

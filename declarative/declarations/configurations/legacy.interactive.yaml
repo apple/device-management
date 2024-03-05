@@ -7,6 +7,7 @@ payload:
     iOS:
       introduced: '15.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       allowed-scopes:
@@ -16,7 +17,7 @@ payload:
     macOS:
       introduced: '13.0'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       allowed-scopes:
       - system
@@ -24,11 +25,20 @@ payload:
     tvOS:
       introduced: '16.0'
       allowed-enrollments:
+      - supervised
       - device
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
       allowed-scopes:
       - system
     watchOS:
       introduced: n/a
+  apply: multiple
 payloadkeys:
 - key: ProfileURL
   title: Profile's URL.

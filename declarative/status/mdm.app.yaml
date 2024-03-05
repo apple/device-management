@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '16.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       allowed-scopes:
@@ -19,13 +20,21 @@ payload:
     tvOS:
       introduced: '16.0'
       allowed-enrollments:
+      - supervised
       - device
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
       allowed-scopes:
       - system
     watchOS:
       introduced: '10.0'
       allowed-enrollments:
-      - device
+      - supervised
       allowed-scopes:
       - system
 payloadkeys:
@@ -50,8 +59,9 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the app is removed and the status item object only contains
-        this key and the 'identifier' key.
+      content: To indicate removal of an app, this key's value is set to true, and
+        only this key and the "identifier" key will be present in the status item
+        object.
     - key: name
       title: App name
       type: <string>
@@ -102,4 +112,4 @@ payloadkeys:
       - update-rejected
       - management-rejected
       - failed
-      content: The status of the app reported by ManagedApplicationListCommand.
+      content: The status of the app that ManagedApplicationListCommand reports.

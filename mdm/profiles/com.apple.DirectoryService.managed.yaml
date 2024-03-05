@@ -3,6 +3,8 @@ description: Directory Service
 payload:
   payloadtype: com.apple.DirectoryService.managed
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.8'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: In macOS 10.9 and later, a configuration profile can be used to configure
     macOS to join an Active Directory (AD) domain. Advanced AD options available via
     Directory Utility or the dsconfigad command line tool can also be set using a
@@ -47,7 +55,7 @@ payloadkeys:
   title: ADOrganizationalUnit
   type: <string>
   presence: optional
-  content: The organizational unit where the joining computer object is added.
+  content: The organizational unit to add the joining computer object to.
 - key: ADMountStyle
   title: ADMountStyle
   type: <string>
@@ -61,13 +69,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADCreateMobileAccountAtLogin' key.
+  content: If 'true', the system enables the 'ADCreateMobileAccountAtLogin' key.
 - key: ADCreateMobileAccountAtLogin
   title: ADCreateMobileAccountAtLogin
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', creates a mobile account at login.
+  content: If 'true', the system creates a mobile account at login.
 - key: ADWarnUserBeforeCreatingMAFlag
   title: ADWarnUserBeforeCreatingMAFlag
   supportedOS:
@@ -76,13 +84,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADWarnUserBeforeCreatingMA' key.
+  content: If 'true', the system enables the 'ADWarnUserBeforeCreatingMA' key.
 - key: ADWarnUserBeforeCreatingMA
   title: ADWarnUserBeforeCreatingMA
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the warning before creating the mobile account.
+  content: If 'true', the system enables the warning before creating the mobile account.
 - key: ADForceHomeLocalFlag
   title: ADForceHomeLocalFlag
   supportedOS:
@@ -91,13 +99,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADForceHomeLocal' key.
+  content: If 'true', the system enables the 'ADForceHomeLocal' key.
 - key: ADForceHomeLocal
   title: ADForceHomeLocal
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', forces a local home directory.
+  content: If 'true', the system forces a local home directory.
 - key: ADUseWindowsUNCPathFlag
   title: ADUseWindowsUNCPathFlag
   supportedOS:
@@ -106,14 +114,14 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADUseWindowsUNCPath' key.
+  content: If 'true', the system enables the 'ADUseWindowsUNCPath' key.
 - key: ADUseWindowsUNCPath
   title: ADUseWindowsUNCPath
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', uses the UNC path from Active Directory to derive the network
-    home location.
+  content: If 'true', the system uses the UNC path from Active Directory to derive
+    the network home location.
 - key: ADAllowMultiDomainAuthFlag
   title: ADAllowMultiDomainAuthFlag
   supportedOS:
@@ -122,19 +130,19 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADAllowMultiDomainAuth' key.
+  content: If 'true', the system enables the 'ADAllowMultiDomainAuth' key.
 - key: ADAllowMultiDomainAuth
   title: ADAllowMultiDomainAuth
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows authentication from any domain in the namespace.
+  content: If 'true', the system allows authentication from any domain in the namespace.
 - key: ADDefaultUserShellFlag
   title: ADDefaultUserShellFlag
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADDefaultUserShell' key.
+  content: If 'true', the system enables the 'ADDefaultUserShell' key.
 - key: ADDefaultUserShell
   title: ADDefaultUserShell
   type: <string>
@@ -145,7 +153,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADMapUIDAttribute' key.
+  content: If 'true', the system enables the 'ADMapUIDAttribute' key.
 - key: ADMapUIDAttribute
   title: ADMapUIDAttribute
   type: <string>
@@ -156,7 +164,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADMapGIDAttribute' key.
+  content: If 'true', the system enables the 'ADMapGIDAttribute' key.
 - key: ADMapGIDAttribute
   title: ADMapGIDAttribute
   type: <string>
@@ -167,7 +175,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADMapGGIDAttributeFlag' key.
+  content: If 'true', the system enables the 'ADMapGGIDAttributeFlag' key.
 - key: ADMapGGIDAttribute
   title: ADMapGGIDAttribute
   type: <string>
@@ -178,7 +186,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADPreferredDCServer' key.
+  content: If 'true', the system enables the 'ADPreferredDCServer' key.
 - key: ADPreferredDCServer
   title: ADPreferredDCServer
   type: <string>
@@ -189,12 +197,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADDomainAdminGroupList' key.
+  content: If 'true', the system enables the 'ADDomainAdminGroupList' key.
 - key: ADDomainAdminGroupList
   title: ADDomainAdminGroupList
   type: <array>
   presence: optional
-  content: The list of Active Directory groups that are granted admin access.
+  content: The list of Active Directory groups with admin access.
   subkeys:
   - key: ADDomainAdminGroupListItem
     type: <string>
@@ -203,7 +211,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADNamespace' key.
+  content: If 'true', the system enables the 'ADNamespace' key.
 - key: ADNamespace
   title: ADNamespace
   type: <string>
@@ -217,7 +225,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADPacketSign' key.
+  content: If 'true', the system enables the 'ADPacketSign' key.
 - key: ADPacketSign
   title: ADPacketSign
   type: <string>
@@ -228,7 +236,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADPacketEncrypt' key.
+  content: If 'true', the system enables the 'ADPacketEncrypt' key.
 - key: ADPacketEncrypt
   title: ADPacketEncrypt
   type: <string>
@@ -239,7 +247,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the 'ADRestrictDDNS' key.
+  content: If 'true', the system enables the 'ADRestrictDDNS' key.
 - key: ADRestrictDDNS
   title: ADRestrictDDNS
   supportedOS:
@@ -247,8 +255,8 @@ payloadkeys:
       introduced: '10.8'
   type: <array>
   presence: optional
-  content: An array of strings representing the interfaces that are allowed for dynamic
-    DNS updates (for example, en0, en1, and so on).
+  content: An array of strings that represent the interfaces allowed for dynamic DNS
+    updates, such as en0 and en1.
   subkeys:
   - key: ADRestrictDDNSItem
     type: <string>
@@ -257,10 +265,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If true, enables the 'ADTrustChangePassIntervalDays 'key.
+  content: If 'true', the system enables the 'ADTrustChangePassIntervalDays 'key.
 - key: ADTrustChangePassIntervalDays
   title: ADTrustChangePassIntervalDays
   type: <integer>
   presence: optional
   content: The number of days before requiring a change of the computer trust account
-    password. '0' disables the feature.
+    password. Set to '0' to disable the feature.

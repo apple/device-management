@@ -79,6 +79,7 @@ properties:
                 items:
                   type: string
                   enum:
+                  - supervised
                   - device
                   - user
                   - local
@@ -155,6 +156,7 @@ properties:
                 description: Indicates that this payload should be considered a beta release for this OS. It may change in an incompatible way prior to final release.
           macOS: *supportedOSItem
           tvOS: *supportedOSItem
+          visionOS: *supportedOSItem
           watchOS: *supportedOSItem
       apply:
         type: string
@@ -279,8 +281,8 @@ properties:
               * boolean-and - multiple <boolean> values are combined using a logical AND operation
               * number-min - multiple <integer> or <real> values are combined by using the smallest value
               * number-max - multiple <integer> or <real> values are combined by using the largest value
-              * enum-lowest - multiple <string> values with a rangelist are combined by using the value whose position is lowest in the range list
-              * enum-highest - multiple <string> values with a rangelist are combined by using the value whose position is highest in the range list
+              * enum-first - multiple <string> values with a rangelist are combined by using the value whose position is first in the range list
+              * enum-last - multiple <string> values with a rangelist are combined by using the value whose position is last in the range list
               * first - multiple values are combined by using the first value that is processed
               * array-append - multiple <array> values are combined by concatenating the values in each array into a new array
               * set-union - multiple <array> values are combined by returning the unique union of all values in each array
@@ -290,8 +292,8 @@ properties:
           - boolean-and
           - number-min
           - number-max
-          - enum-lowest
-          - enum-highest
+          - enum-first
+          - enum-last
           - first
           - array-append
           - set-union

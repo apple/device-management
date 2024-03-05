@@ -23,6 +23,12 @@ payload:
         mode: allowed
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: n/a
   content: Check-in protocol get token data request and response.
@@ -55,6 +61,8 @@ payloadkeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <string>
     presence: optional
     content: A security token to generate the server token. Required by the 'com.apple.watch.pairing'
@@ -68,6 +76,8 @@ payloadkeys:
         userenrollment:
           mode: forbidden
       macOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <string>
     presence: optional
@@ -83,6 +93,8 @@ payloadkeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <string>
     presence: optional
     content: The identifier of the watch paired to the phone. Required by the 'com.apple.watch.pairing'
@@ -93,6 +105,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <string>
@@ -106,6 +121,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: required
+    visionOS:
+      userenrollment:
+        mode: required
   type: <string>
   presence: required
   content: A per-enrollment identifier that identifies the device for user enrollments.
@@ -117,6 +135,8 @@ payloadkeys:
       devicechannel: false
       userenrollment:
         mode: required
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: A per-enrollment identifier that identifies the user for user enrollments.
@@ -127,6 +147,8 @@ payloadkeys:
         mode: required
     macOS:
       devicechannel: false
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: On Shared iPad, this value returns the Managed Apple ID of the user. When
@@ -139,6 +161,8 @@ payloadkeys:
         mode: required
     macOS:
       devicechannel: false
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: In macOS, this value returns the ID of the user. On Shared iPad, this value
@@ -149,6 +173,8 @@ payloadkeys:
       introduced: n/a
     macOS:
       devicechannel: false
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: required
   content: The full name of the user.

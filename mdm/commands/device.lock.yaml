@@ -23,6 +23,10 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: '10.0'
       accessrights: AllowPasscodeRemovalAndLock

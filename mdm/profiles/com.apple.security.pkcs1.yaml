@@ -29,6 +29,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '3.0'
       multiple: true

@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.security.FDERecoveryKeyEscrow
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.13'
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: |-
     If FileVault is enabled after this payload is installed on the system, the FileVault PRK will be encrypted with the specified certificate, wrapped with a CMS envelope and stored at:
     /var/db/FileVaultPRK.dat
@@ -27,18 +35,17 @@ payloadkeys:
 - key: Location
   type: <string>
   presence: required
-  content: The description of the location where the recovery key will be escrowed.
-    This text will be inserted into the message the user sees when enabling FileVault.
+  content: The description of the location where the system escrows the recovery key.
+    The system inserts this text into the message the user sees when it enables FileVault.
 - key: EncryptCertPayloadUUID
   type: <string>
   presence: required
   content: The UUID of a payload within the same profile that contains the certificate
-    that will be used to encrypt the recovery key. The referenced payload must be
-    of type 'com.apple.security.pkcs1'.
+    that the system uses to encrypt the recovery key. The referenced payload must
+    be of type 'com.apple.security.pkcs1'.
 - key: DeviceKey
   type: <string>
   presence: optional
   content: |-
     The string that's included in help text if the user appears to have forgotten the password. Site admins can use this key to look up the escrowed key for the particular computer.
-
-    This key replaces the 'RecordNumber' key used in the previous escrow mechanism. If the key is missing, the device serial number is used instead.
+    This key replaces the 'RecordNumber' key used in the previous escrow mechanism. If the key is missing, the system uses the device serial number instead.

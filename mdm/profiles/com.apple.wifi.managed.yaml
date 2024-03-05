@@ -29,6 +29,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '3.2'
       multiple: true
@@ -65,6 +72,9 @@ payloadkeys:
   title: Proxy Type
   supportedOS:
     iOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <string>
@@ -124,14 +134,15 @@ payloadkeys:
     type: <array>
     presence: required
     content: |-
-      The system accepts the following EAP types:
-      13 = TLS
-      17 = LEAP
-      18 = EAP-SIM
-      21 = TTLS
-      23 = EAP-AKA
-      25 = PEAP
-      43 = EAP-FAST
+      The EAP types that the system accepts. Allowed values:
+
+      * 13: TLS
+      * 17: LEAP
+      * 18: EAP-SIM
+      * 21: TTLS
+      * 23: EAP-AKA
+      * 25: PEAP
+      * 43: EAP-FAST
 
       For EAP-TLS authentication without a network payload, install the necessary identity certificates and have your users select EAP-TLS mode in the 802.1X credentials dialog that appears when they connect to the network. For other EAP types, a network payload is necessary and must specify the correct settings for the network.
     subkeys:
@@ -201,6 +212,8 @@ payloadkeys:
     supportedOS:
       iOS:
         removed: '8.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: true
@@ -486,6 +499,8 @@ payloadkeys:
         deprecated: '14.5'
       macOS:
         deprecated: '14.0'
+      visionOS:
+        introduced: n/a
     type: <array>
     presence: optional
     content: Use 'QoSMarkingAllowListAppIdentifiers' instead.
@@ -514,6 +529,8 @@ payloadkeys:
     macOS:
       introduced: '10.7'
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -549,6 +566,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: optional
   content: The proxy server's network address.
@@ -559,6 +579,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <integer>
@@ -576,6 +599,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: optional
   content: The user name used to authenticate to the proxy server.
@@ -583,6 +609,9 @@ payloadkeys:
   title: Proxy Password
   supportedOS:
     iOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <string>
@@ -597,6 +626,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: optional
   content: The URL of the PAC file that defines the proxy configuration.
@@ -607,6 +639,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <boolean>
@@ -625,6 +660,9 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '7.0'
   type: <boolean>

@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.MCX
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: false
@@ -13,36 +15,43 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Sets up mobile account options for network based user accounts.
 payloadkeys:
 - key: com.apple.cachedaccounts.CreateAtLogin
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', creates the mobile account at login time.
+  content: If 'true', the system creates the mobile account at login time.
 - key: com.apple.cachedaccounts.WarnOnCreate
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', asks the user if the mobile account should be created and allow
-    the user to not create it.
+  content: If 'true', the system asks the user whether to create the mobile account
+    and it allows the user to not create it.
 - key: cachedaccounts.WarnOnCreate.allowNever
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows the user to stop the prompts about mobile account creation
-    every time the user logs in. This key is only valid if 'com.apple.cachedaccounts.WarnOnCreate'
-    is set to 'true'.
+  content: If 'true', the system allows the user to stop the prompts about mobile
+    account creation every time the user logs in. This key is only valid if 'com.apple.cachedaccounts.WarnOnCreate'
+    is 'true'.
 - key: cachedaccounts.expiry.delete.disusedSeconds
   type: <integer>
   presence: optional
   default: -1
-  content: |-
-    The minimum number of seconds a mobile account can exist before an automatic attempt is made to remove the mobile account.
-    Set to '0' to try to remove it at next login or logout time. Set to '-1' to never try to remove the mobile account.
+  content: The minimum number of seconds a mobile account can exist before the system
+    makes an automatic attempt to remove the mobile account. Set to '0' to attempt
+    removing it at the next login or logout. Set to '-1' to never attempt removing
+    the mobile account.
 - key: cachedaccounts.askForSecureTokenAuthBypass
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', bypasses the secure token authorization dialog. This dialog
-    only appears on APFS volumes.
+  content: If 'true', the system bypasses the secure token authorization dialog. This
+    dialog only appears on APFS volumes.

@@ -4,6 +4,8 @@ description: Use this section to define settings for Associated Domains to be us
 payload:
   payloadtype: com.apple.associated-domains
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.15'
       multiple: true
@@ -14,6 +16,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Configures Associated Domains to be used with features such as Extensible
     AppSSO, universal links and Password AutoFill. Settings are per-user. The effective
     settings for a user will be the union of payloads installed for the device and
@@ -36,8 +44,8 @@ payloadkeys:
     - key: AssociatedDomains
       type: <array>
       presence: required
-      content: |-
-        The domains to be associated with the app. Each string is in the form of ''service:domain''. Domains should be fully qualified hostnames, like 'www.example.com'.
+      content: The domains to associate with the app. Each string is in the form of
+        ''service:domain''. Use fully qualified hostnames, such as 'www.example.com'.
         See Supporting associated domains for more information.
       subkeys:
       - key: AssociatedDomain
@@ -50,6 +58,6 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', data for this domain should be downloaded directly instead
-        of through a CDN. The entitlement value for this domain must be set to 'service:domain?mode=managed'
-        or this value will be ignored. Available in macOS 11 and later.
+      content: If 'true', the system enables direct download of data for this domain
+        instead of through a CDN. Set the entitlement value for this domain to 'service:domain?mode=managed';
+        otherwise, the system ignores this value. Available in macOS 11 and later.

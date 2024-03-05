@@ -30,6 +30,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '3.0'
       multiple: true
@@ -66,7 +73,6 @@ payloadkeys:
     content: |-
       The representation of an X.500 name as an array of OID and value.
       For example, '/C=US/O=Apple Inc./CN=foo/1.2.5.3=bar' translates to '[ [ [“C”, “US”] ], [ [“O”, “Apple Inc.'] ], …, [ [ “1.2.5.3”, “bar” ] ] ]'.
-
       OIDs can be represented as dotted numbers, with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).
     subkeys:
     - key: SCEPSubjectArrayInnerArray
@@ -113,9 +119,11 @@ payloadkeys:
     presence: optional
     default: 0
     content: |-
-      A bitmask indicating the use of the key.
+      A bitmask indicating the use of the key. Possible values:
+
       * 1: Signing
       * 4: Encryption
+
       Some certificate authorities, such as Windows CA, support only encryption or signing, but not both at the same time.
   - key: CAFingerprint
     title: Fingerprint
@@ -180,7 +188,7 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: true
-    content: If 'false', disables exporting the private key from the keychain.
+    content: If 'false', the system disables exporting the private key from the keychain.
   - key: AllowAllAppsAccess
     title: Allow All Apps Access
     supportedOS:

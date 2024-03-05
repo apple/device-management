@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.ShareKitHelper
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.9'
       deprecated: '10.12'
@@ -14,6 +16,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: macOS only. Specifies which ShareKit plugin can be accessed on client.
     Both allow and disallow lists can be specified.
 payloadkeys:

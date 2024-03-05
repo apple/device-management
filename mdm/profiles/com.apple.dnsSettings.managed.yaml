@@ -24,6 +24,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: DNSSettings
   title: DNS Settings
@@ -44,18 +55,18 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484.
-      This URL must use the 'https://' scheme, and the hostname or address in the
-      URL will be used to validate the server certificate. If no 'ServerAddresses'
-      are provided, the hostname or address in the URL will be used to determine the
-      server addresses. This key must be present only if the 'DNSProtocol' is 'HTTPS'.
+      This URL needs to use the 'https://' scheme, and the system uses the hostname
+      or address in the URL to validate the server certificate. If no 'ServerAddresses'
+      are provided, the system uses the hostname or address in the URL to determine
+      the server addresses. Required if 'DNSProtocol' is 'HTTPS'.
   - key: ServerName
     title: Server Name
     type: <string>
     presence: optional
     content: The hostname of a DNS-over-TLS server used to validate the server certificate,
-      as defined in RFC 7858. If no 'ServerAddresses' are provided, the hostname will
-      be used to determine the server addresses. This key must be present only if
-      the DNSProtocol is 'TLS'.
+      as defined in RFC 7858. If no 'ServerAddresses' are provided, the system uses
+      the hostname to determine the server addresses. This key must be present only
+      if the DNSProtocol is 'TLS'.
   - key: ServerAddresses
     title: DNS Server Addresses
     type: <array>
@@ -71,8 +82,8 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      A list of domain strings used to determine which DNS queries will use the DNS server. If this array is not provided, all domains will use the DNS server.
-      A single wildcard '*' prefix is supported, but is not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but do not match against 'mydomain-example.com'.
+      A list of domain strings used to determine which DNS queries use the DNS server. If not set, all domains use the DNS server.
+      The system supports a single wildcard ('*') prefix, but it's not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but don't match against 'mydomain-example.com'.
     subkeys:
     - key: SupplementalMatchDomainsElement
       title: Supplemental Match Domains Element
@@ -81,8 +92,8 @@ payloadkeys:
   title: On Demand Rules
   type: <array>
   presence: optional
-  content: An array of rules defining the DNS settings. If rules aren't present, the
-    system always applies the DNS settings. These rules are identical to the 'OnDemandRules'
+  content: An array of rules that define the DNS settings. If not set, the system
+    always applies the DNS settings. These rules are identical to the 'OnDemandRules'
     array in VPN payloads.
   subkeytype: OnDemandRulesElement
   subkeys:
@@ -99,45 +110,54 @@ payloadkeys:
       - Disconnect
       - EvaluateConnection
       content: |-
-        The action to take if this dictionary matches the current network. Possible values are:
+        The action to take if this dictionary matches the current network. Allowed values:
+
         * 'Connect': Apply DNS Settings when the dictionary matches.
-        * 'Disconnect': Do not apply DNS Settings when the dictionary matches.
+        * 'Disconnect': Don't apply DNS Settings when the dictionary matches.
         * 'EvaluateConnection': Apply DNS Settings with per-domain exceptions when the dictionary matches.
     - key: ActionParameters
       title: Action Parameters
-      type: <dictionary>
+      type: <array>
       presence: optional
-      content: |-
-        A dictionary that provides per-connection rules.
-        This array is used only for settings where the 'Action' value is'EvaluateConnection'.
+      content: An array of dictionaries that provides per-connection rules. The system
+        uses this array only for settings where the 'Action' value is'EvaluateConnection'.
       subkeys:
-      - key: Domains
-        title: Domains
-        type: <array>
-        presence: required
-        content: The domains for which this evaluation applies.
-        subkeys:
-        - key: DomainsElement
-          title: Domains Element
-          type: <string>
-      - key: DomainAction
-        title: Domain Action
-        type: <string>
-        presence: required
-        rangelist:
-        - NeverConnect
-        - ConnectIfNeeded
+      - key: ActionParameter
+        title: Action Parameter
+        type: <dictionary>
+        presence: optional
         content: |-
-          The DNS settings behavior for the specified domains. Allowed values are:
-          * 'NeverConnect': Do not use the DNS Settings for the specified domains.
-          * 'ConnectIfNeeded': Allow using the DNS Settings for the specified domains.
+          A dictionary that provides per-connection rules.
+          The keys allowed in each dictionary are described below. Note: This array is used only for dictionaries in which EvaluateConnection is the Action value.
+        subkeys:
+        - key: Domains
+          title: Domains
+          type: <array>
+          presence: required
+          content: The domains for which this evaluation applies.
+          subkeys:
+          - key: DomainsElement
+            title: Domains Element
+            type: <string>
+        - key: DomainAction
+          title: Domain Action
+          type: <string>
+          presence: required
+          rangelist:
+          - NeverConnect
+          - ConnectIfNeeded
+          content: |-
+            The DNS settings behavior for the specified domains. Allowed values:
+
+            * 'NeverConnect': Don't use the DNS Settings for the specified domains.
+            * 'ConnectIfNeeded': Allow using the DNS Settings for the specified domains.
     - key: DNSDomainMatch
       title: DNS Domain Match
       type: <array>
       presence: optional
       content: |-
         An array of domain names. This rule matches if any of the domain names in the specified list matches any domain in the device's search domains list.
-        A single wildcard '*' prefix is supported, but is not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but do not match against 'mydomain-example.com'.
+        The system supports a single wildcard ('*') prefix, but it's not required. For example, both '*.example.com' and 'example.com' match against 'mydomain.example.com' and 'your.domain.example.com', but don't match against 'mydomain-example.com'.
       subkeys:
       - key: DNSDomainMatchElement
         title: DNS Domain Match Element
@@ -148,7 +168,7 @@ payloadkeys:
       presence: optional
       content: |-
         An array of IP addresses. This rule matches if any of the network's specified DNS servers match any entry in the array.
-        Matching with a single wildcard is supported. For example, 17.* matches any DNS server in the 17.0.0.0/8 subnet.
+        The system supports matching with a single wildcard. For example, '17.*' matches any DNS server in the 17.0.0.0/8 subnet.
       subkeys:
       - key: DNSServerAddressMatchElement
         title: DNS Server Address Match Element
@@ -167,9 +187,9 @@ payloadkeys:
       title: SSID Match
       type: <array>
       presence: optional
-      content: |-
-        An array of SSIDs to match against the current network. If the network is not a Wi-Fi network or if the SSID does not appear in this array, the match fails.
-        Omit this key and the corresponding array to match against any SSID.
+      content: An array of SSIDs to match against the current network. If the network
+        isn't a Wi-Fi network or if the SSID doesn't appear in this array, the match
+        fails. Omit this key and the corresponding array to match against any SSID.
       subkeys:
       - key: SSIDMatchElement
         title: SSID Match Element
@@ -178,15 +198,15 @@ payloadkeys:
       title: URL String Probe
       type: <string>
       presence: optional
-      content: A URL to probe. If this URL is successfully fetched (returning a 200
-        HTTP status code) without redirection, this rule matches.
+      content: A URL to probe. This rule matches if this URL is successfully fetched
+        and returns a 200 HTTP status code without redirection.
 - key: ProhibitDisablement
   title: Prohibit Disablement
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prohibits users from disabling DNS settings. This key is only
-    available on supervised devices.
+  content: If 'true', the system prohibits users from disabling DNS settings. This
+    key is only available on supervised devices.
 - key: PayloadCertificateUUID
   title: Certificate UUID
   supportedOS:

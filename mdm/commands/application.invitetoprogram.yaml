@@ -22,6 +22,12 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command allows a server to invite a user to join a program. This command
     issues the invitation, but does not allow the server to monitor whether the user
     has joined the program. This command is supported in the user channel. This command

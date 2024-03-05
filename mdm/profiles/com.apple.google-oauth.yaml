@@ -15,6 +15,19 @@ payload:
         userchannel: true
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
   content: A Google account payload sets up a Google email address as well as any
     other Google services the user enables after authentication. Google accounts must
     be installed via MDM or by Apple Configurator 2 (if the device is supervised).
@@ -57,7 +70,7 @@ payloadkeys:
         introduced: n/a
     type: <dictionary>
     presence: optional
-    content: A dictionary defining which app to use for audio calls made from this
+    content: A dictionary that defines which app to use for audio calls from this
       account.
     subkeys:
     - key: AudioCall
@@ -69,8 +82,8 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: A string containing the bundle identifier for the default application
-        that handles audio calls made to contacts from this account.
+      content: The bundle identifier for the default application that handles audio
+        calls to contacts from this account.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:
@@ -78,6 +91,5 @@ payloadkeys:
       introduced: '14.0'
   type: <string>
   presence: optional
-  content: |-
-    The VPNUUID of the per-app VPN the account uses for network communication.
+  content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.

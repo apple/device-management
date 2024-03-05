@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
       - local
       allowed-scopes:
@@ -14,8 +15,15 @@ payload:
         allowed-scopes:
         - system
     macOS:
-      introduced: n/a
+      introduced: '14.4'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -32,9 +40,11 @@ payloadkeys:
   - unsupported
   content: |-
     The battery health status, which has the following values:
-    * 'non-genuine' - the battery isn't a genuine Apple battery.
-    * 'normal' - the battery is operating normally.
-    * 'service-recommended' - the system recommends battery service.
-    * 'unknown' - the system couldn't determine battery health information.
-    * 'unsupported' - the device doesn't support battery health reporting.
-    This field is available in iOS 17 and later on iPhone only. iPad returns 'unsupported'.
+
+    * 'non-genuine': The battery isn't a genuine Apple battery.
+    * 'normal': The battery is operating normally.
+    * 'service-recommended': The system recommends battery service.
+    * 'unknown': The system couldn't determine battery health information.
+    * 'unsupported': The device doesn't support battery health reporting.
+
+    Available in iOS 17 and later on iPhone only, and macOS 14.4 and later on Apple silicon Mac computers. iPad and Intel-based Macs return 'unsupported'.

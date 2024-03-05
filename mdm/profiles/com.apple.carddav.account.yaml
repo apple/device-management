@@ -25,6 +25,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: CardDAVAccountDescription
   title: Account Description
@@ -57,7 +68,7 @@ payloadkeys:
       introduced: '10.7'
   type: <string>
   presence: optional
-  content: The user's password.
+  content: The user's password. Only use this with encrypted profiles.
 - key: CardDAVPrincipalURL
   title: Principal URL
   supportedOS:
@@ -74,7 +85,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL.
+  content: If 'true', the system enables SSL.
 - key: CardDAVPort
   title: Port Number
   supportedOS:
@@ -114,8 +125,8 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: A string containing the bundle identifier for the default application
-        that handles audio calls made to contacts from this account.
+      content: The bundle identifier for the default application that handles audio
+        calls to contacts from this account.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:
@@ -125,6 +136,5 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The VPNUUID of the per-app VPN the account uses for network communication.
+  content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.

@@ -30,6 +30,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '9.0'
       multiple: true
@@ -77,9 +84,11 @@ payloadkeys:
   - RSA
   - ECSECPrimeRandom
   content: |-
-    The type of key pair to generate.
-    * 'RSA': Specifies an RSA key pair. RSA key pairs must have a KeySize in the range [1024..4096] inclusive and a multiple of 8, and 'HardwareBound' must be false.
-    * 'ECSECPrimeRandom': Specifies a key pair on the P-192, P-256, P-384 or P-521 curves as defined in FIPS Pub 186-4. KeySize defines the particular curve, which must be 192, 256, 384 or 521. Hardware bound keys only support values of 256 and 384. Note that the key size is 521, not 512, even though the other key sizes are multiples of 64.
+    The type of key pair to generate. Allowed values:
+
+    * 'RSA': Specifies an RSA key pair. RSA key pairs need to have a 'KeySize' that's a multiple of 8 in the range of 1024 through 4096 (inclusive), and 'HardwareBound' needs to be 'false'.
+    * 'ECSECPrimeRandom': Specifies a key pair on the P-192, P-256, P-384, or P-521 curves as defined in FIPS Pub 186-4. 'KeySize' defines the particular curve, which needs to be '192', '256', '384', or '521'. Hardware bound keys only support values of '256' and '384'.
+    Note that the key size is '521', not '512', even though the other key sizes are multiples of 64.
 - key: HardwareBound
   title: Hardware Bound
   type: <boolean>
@@ -88,7 +97,7 @@ payloadkeys:
     If 'false', the private key isn't bound to the device.
     If 'true', the private key is bound to the device. The Secure Enclave generates the key pair, and the private key is cryptographically entangled with a system key. This prevents the system from exporting the private key.
     If 'true', 'KeyType' must be 'ECSECPrimeRandom' and 'KeySize' must be 256 or 384.
-    This key is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of false.
+    Setting this key to 'true' is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of 'false'.
 - key: Subject
   title: Subject
   type: <array>
@@ -170,14 +179,16 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', the device provides attestations describing the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
-    When 'Attest' is 'true', 'HardwareBound' must also be 'true'.
+    If 'true', the device provides attestations that describe the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
+    When 'Attest' is 'true', 'HardwareBound' also needs to be 'true'.
     This key is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. If this key is specified for older macOS versions or other Mac devices, it must have a value of 'false'.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -192,6 +203,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a

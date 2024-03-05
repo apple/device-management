@@ -27,6 +27,13 @@ payload:
       introduced: '6.0'
       accessrights: AllowQuerySecurity
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowQuerySecurity
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowQuerySecurity
@@ -58,6 +65,9 @@ responsekeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        userenrollment:
+          mode: forbidden
     type: <boolean>
     content: If 'true', the device has a passcode. This value is available in iOS
       4 and later, and tvOS 6 and later.
@@ -76,6 +86,9 @@ responsekeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        userenrollment:
+          mode: forbidden
     type: <boolean>
     content: If 'true', the user's passcode is compliant with requirements from profiles.
       This key doesn't apply to User-Enrolled devices. This value is available in
@@ -88,6 +101,9 @@ responsekeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        userenrollment:
+          mode: forbidden
     type: <integer>
     content: The user preference for the number of seconds before a locked screen
       requires the device passcode to unlock it. This value is only available for
@@ -100,6 +116,9 @@ responsekeys:
           mode: forbidden
       macOS:
         introduced: n/a
+      visionOS:
+        userenrollment:
+          mode: forbidden
     type: <integer>
     content: The enforced value for the number of seconds before a locked screen requires
       the device passcode to unlock it. If a device has a passcode, changing 'PasscodeLockGracePeriod'
@@ -117,6 +136,8 @@ responsekeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <integer>
@@ -130,6 +151,8 @@ responsekeys:
         introduced: '10.9'
         userchannel: false
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -147,6 +170,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -163,6 +188,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -178,6 +205,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -196,6 +225,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -216,6 +247,8 @@ responsekeys:
         userchannel: false
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -229,6 +262,8 @@ responsekeys:
         introduced: '10.12'
         userchannel: false
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -291,6 +326,8 @@ responsekeys:
         userchannel: false
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -325,6 +362,8 @@ responsekeys:
           introduced: n/a
         tvOS:
           introduced: n/a
+        visionOS:
+          introduced: n/a
         watchOS:
           introduced: n/a
       type: <boolean>
@@ -335,6 +374,8 @@ responsekeys:
         iOS:
           introduced: n/a
         tvOS:
+          introduced: n/a
+        visionOS:
           introduced: n/a
         watchOS:
           introduced: n/a
@@ -357,6 +398,8 @@ responsekeys:
           introduced: '10.15'
         tvOS:
           introduced: n/a
+        visionOS:
+          introduced: n/a
         watchOS:
           introduced: n/a
       type: <boolean>
@@ -370,6 +413,8 @@ responsekeys:
         introduced: '10.15'
         userchannel: false
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -427,6 +472,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -440,6 +487,8 @@ responsekeys:
         introduced: '11.0'
         userchannel: false
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -456,6 +505,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -478,6 +529,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -495,6 +548,8 @@ responsekeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <boolean>
@@ -511,6 +566,8 @@ responsekeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a

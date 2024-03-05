@@ -3,6 +3,8 @@ description: Parental controls for restricting Siri, Dictation and Profanity
 payload:
   payloadtype: com.apple.ironwood.support
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.9'
       deprecated: '10.13'
@@ -14,6 +16,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Profanity Allowed
   type: <boolean>

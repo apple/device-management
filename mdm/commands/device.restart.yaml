@@ -27,6 +27,10 @@ payload:
       introduced: '10.2'
       accessrights: AllowPasscodeRemovalAndLock
       supervised: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command requires the Device Lock access right. The device will restart
     immediately.
 payloadkeys:

@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.mcxloginscripts
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Login and logout managed script handling
 payloadkeys:
 - key: loginscripts
@@ -42,9 +50,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', doesn't execute the login scripts during login.
+  content: If 'true', the system doesn't execute the login scripts during login.
 - key: skipLogoutHook
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', doesn't execute the logout scripts during logout.
+  content: If 'true', the system doesn't execute the logout scripts during logout.

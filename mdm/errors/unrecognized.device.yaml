@@ -1,0 +1,40 @@
+title: Error Unrecognized Device
+description: Error response for unrecognized device.
+payload:
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: '14.0'
+    tvOS:
+      introduced: '17.0'
+    visionOS:
+      introduced: '1.1'
+    watchOS:
+      introduced: '10.0'
+  content: |-
+    The schema for a JSON or property list XML document returned in an MDM server's 403 response body. The
+    response headers must include a "Content-Type" header indicating whether JSON or XML is being returned.
+
+    This response is returned when a server does not recognize the device making the MDM request, and
+    causes the device to unenroll with the MDM server. This error should be used in place of the server
+    returning a 401 response to trigger an unenroll.
+payloadkeys:
+- key: code
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.unrecognized.device
+  content: Indicates that the device is not recognized by the server, causing the
+    device to unenroll from MDM.
+- key: description
+  type: <string>
+  presence: optional
+  content: The description of the error. This will only be used by the client for
+    logging purposes and will not be displayed to the user.
+- key: message
+  type: <string>
+  presence: optional
+  content: A description of the error suitable for displaying to the user. If needed,
+    the client will make a best-effort attempt to display the message, but may not
+    be able to, due to local conditions.

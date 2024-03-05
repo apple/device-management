@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.loginitems.managed
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.13'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This payload handles login items usage on macOS.
 payloadkeys:
 - key: AutoLaunchedApplicationDictionary-managed
@@ -33,4 +41,5 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', hide this item in the Users & Groups login items list.
+      content: If 'true', the system hides this item in the Users & Groups login items
+        list.

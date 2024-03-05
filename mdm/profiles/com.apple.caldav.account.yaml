@@ -25,6 +25,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: CalDAVAccountDescription
   title: Account Description
@@ -40,14 +51,13 @@ payloadkeys:
   title: Account Username
   type: <string>
   presence: optional
-  content: |-
-    The user name for logins.
-    If this profile part of a non-interactive install, this field is required.
+  content: The user name for logins. If this profile is part of a non-interactive
+    install, the system requires this field.
 - key: CalDAVPassword
   title: Account Password
   type: <string>
   presence: optional
-  content: The user's password. This is only used with encrypted profiles.
+  content: The user's password. Only use this with encrypted profiles.
 - key: CalDAVPrincipalURL
   title: Principal URL
   type: <string>
@@ -58,7 +68,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL.
+  content: If 'true', the system enables SSL.
 - key: CalDAVPort
   title: Port Number
   type: <integer>
@@ -73,6 +83,5 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The VPNUUID of the per-app VPN the account uses for network communication.
+  content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.

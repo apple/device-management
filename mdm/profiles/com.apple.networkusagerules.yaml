@@ -14,6 +14,14 @@ payload:
         userchannel: false
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Network Usage Rules allow enterprises to specify how devices use networks,
     such as cellular data networks. iOS 9-12 support only ApplicationRules. In iOS
     13, ApplicationRules, SIMRules, or both must be present.
@@ -78,6 +86,9 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Wi-Fi Assist policy to apply to the SIM cards specified in the ICCIDs. See About Wi-Fi Assist <https://support.apple.com/en-us/HT205296> to learn more.
+        The Wi-Fi Assist policy to apply to the SIM cards specified in the ICCIDs. Allowed values:
+
         * '2': Use the default system policy for the specified SIM card(s).
         * '3': Make Wi-Fi Assist switch more aggressively from a poor Wi-Fi connection to cellular data for the specified SIM card(s). This setting may increase cellular data use and may impact battery life.
+
+        For more information, see About Wi-Fi Assist <https://support.apple.com/en-us/HT205296>.

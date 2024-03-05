@@ -3,11 +3,19 @@ description: AirPlay Security settings
 payload:
   payloadtype: com.apple.airplay.security
   supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '11.0'
       multiple: false
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Manages the AirPlay Security settings on Apple TV (Settings > AirPlay >
     Security). Use this payload to lock Apple TV to a particular style of AirPlay
     security. The setting can enable/disable an on-screen passcode, or require a specific
@@ -22,13 +30,13 @@ payloadkeys:
   - PASSCODE_ALWAYS
   - PASSWORD
   content: |-
-    The security policy for AirPlay.
-    'PASSCODE_ONCE' requires an onscreen passcode on first connection from a device. Subsequent connections from the same device aren't prompted.
-    'PASSCODE_ALWAYS' requires an onscreen passcode for every AirPlay connection. After an AirPlay connection ends, reconnecting within 30 seconds is allowed without a password.
+    The security policy for AirPlay. Allowed values:
 
-    'PASSWORD' requires a passphrase as specified in the 'Password' key.
+    * 'PASSCODE_ONCE': Requires an onscreen passcode on first connection from a device. Subsequent connections from the same device aren't prompted.
+    * 'PASSCODE_ALWAYS': Requires an onscreen passcode for every AirPlay connection. After an AirPlay connection ends, the system allows reconnecting within 30 seconds without a password.
+    * 'PASSWORD': Requires the passphrase set for 'Password'.
 
-    'NONE' was deprecated in tvOS 11.3. Existing profiles using 'NONE' get the 'PASSWORD_ONCE' behavior.
+    'NONE' was deprecated in tvOS 11.3. Existing profiles that use 'NONE' get the 'PASSWORD_ONCE' behavior.
 - key: AccessType
   title: Access Type
   type: <string>
@@ -44,4 +52,4 @@ payloadkeys:
   title: Password
   type: <string>
   presence: optional
-  content: The AirPlay password; required if SecurityType is 'PASSWORD'.
+  content: The AirPlay password; required if 'SecurityType' is 'PASSWORD'.

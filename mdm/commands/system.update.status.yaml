@@ -29,6 +29,10 @@ payload:
       devicechannel: true
       supervised: true
       requiresdep: false
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Queries the device for the status of software updates.
 responsekeys:
 - key: OSUpdateStatus

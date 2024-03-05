@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.xsan.preferences
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.11'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: The Xsan preferences payload can be used to configure which volumes automatically
     mount at startup. For StorNext volumes this payload also determines whether the
     mount uses Fibre Channel or Distributed LAN Client (DLC).

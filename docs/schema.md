@@ -35,13 +35,14 @@ The definition of the schema used here is in the `schema.yaml` file. That file c
 | iOS      | object | Supported features on this iOS |
 | macOS    | object | Supported features on this macOS |
 | tvOS     | object | Supported features on this tvOS |
+| visionOS | object | Supported features on this visionOS |
 | watchOS  | object | Supported features on this watchOS |
 
 __Notes__
 
 The `supportedOS` object is used in the `payload` object to indicate overall support for this object on each OS, as well as which enrollment modes are supported per OS. The `supportedOS` key may also appear on any payload key defined in `payloadkeys` or `responsekeys` array item objects. Each payload key is assumed to "inherit" the `supportedOS` values from the `payload` object, but that is then updated with any items in the key's own `supportedOS` object if present. This also overriding specific values in `supportedOS` on a per-key basis without the need to duplicate the entire `supportedOS` value from the `payload`.
 
-### iOS, macOS, tvOS, watchOS Objects
+### iOS, macOS, tvOS, visionOS, watchOS Objects
 
 | Name                | Type    | Description |
 |---------------------|---------|-------------|

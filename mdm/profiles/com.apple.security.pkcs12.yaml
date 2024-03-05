@@ -29,6 +29,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '3.0'
       multiple: true
@@ -59,13 +66,15 @@ payloadkeys:
       introduced: '10.10'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows apps access to the private key. Available in macOS 10.10
-    and later.
+  content: If 'true', the system allows apps access to the private key. Available
+    in macOS 10.10 and later.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
@@ -74,9 +83,12 @@ payloadkeys:
       introduced: '10.15'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', doesn't tag the private key data as extractable in the keychain.
+  content: If 'false', the system doesn't tag the private key data as extractable
+    in the keychain.

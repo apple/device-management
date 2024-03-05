@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.loginwindow
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: The com.apple.loginwindow payload creates managed preferences on macOS
     for system/device profiles.
 payloadkeys:
@@ -20,28 +28,29 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', shows the name and password dialog; if 'false', displays a list
-    of users.
+  content: If 'true', the system shows the name and password dialog. If 'false', the
+    system displays a list of users.
 - key: HideLocalUsers
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', shows only network and system users when showing a user list.
+  content: If 'true', the system shows only network and system users when showing
+    a user list.
 - key: IncludeNetworkUser
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', shows network users when showing a user list.
+  content: If 'true', the system shows network users when showing a user list.
 - key: HideAdminUsers
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', hides administrator users when showing a user list.
+  content: If 'true', the system hides administrator users when showing a user list.
 - key: SHOWOTHERUSERS_MANAGED
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', displays Other... when showing a list of users.
+  content: If 'true', the system displays “Other...” when it shows a list of users.
 - key: AdminHostInfo
   type: <string>
   presence: optional
@@ -49,16 +58,16 @@ payloadkeys:
   - HostName
   - SystemVersion
   - IPAddress
-  content: If this key is included in the payload, its value is displayed in the login
-    window as additional computer information. Before macOS 10.10, this string could
-    contain only certain information (host name, system version, or IP address). After
+  content: The admin host info. If present in the payload, the system displays its
+    value in the login window as additional computer information. Before macOS 10.10,
+    this string could only contain host name, system version, or IP address. After
     macOS 10.10, setting this key to any value allows the user to click the time area
     of the menu bar to toggle through various computer information values.
 - key: AllowList
   type: <array>
   presence: optional
-  content: The list of user GUIDs or group GUIDs of users that are allowed to log
-    in. An asterisk '*' string specifies all users or groups.
+  content: The list of user GUIDs or group GUIDs of users that the system allows to
+    log in. An asterisk ('*') string specifies all users or groups.
   subkeys:
   - key: AllowListItem
     type: <string>
@@ -67,8 +76,8 @@ payloadkeys:
 - key: DenyList
   type: <array>
   presence: optional
-  content: The list of user GUIDs or group GUIDs of users that cannot log in. This
-    list takes priority over the list in the 'AllowList' key.
+  content: The list of user GUIDs or group GUIDs of users that the system disallows
+    to log in. This list takes priority over the list in the 'AllowList' key.
   subkeys:
   - key: DenyListItem
     type: <string>
@@ -78,29 +87,29 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', hides mobile account users in a user list. In some cases, mobile
-    users show up as network users.
+  content: If 'true', the system hides mobile account users in a user list. In some
+    cases, mobile users show up as network users.
 - key: ShutDownDisabled
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Shut Down button.
+  content: If 'true', the system disables the Shut Down button.
 - key: RestartDisabled
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Restart item.
+  content: If 'true', the system disables the Restart item.
 - key: SleepDisabled
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Sleep button.
+  content: If 'true', the system disables the Sleep button.
 - key: DisableConsoleAccess
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disregards the '>console' special user name, which will provide
-    a command line UI.
+  content: If 'true', the system disregards the '>console' special user name, which
+    provides a command line UI.
 - key: LoginwindowText
   type: <string>
   presence: optional
@@ -109,17 +118,20 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Shut Down menu item when the user is logged in.
+  content: If 'true', the system disables the Shut Down menu item when the user is
+    logged in.
 - key: RestartDisabledWhileLoggedIn
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Restart menu item when the user is logged in.
+  content: If 'true', the system disables the Restart menu item when the user is logged
+    in.
 - key: PowerOffDisabledWhileLoggedIn
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Power Off menu item when the user is logged in.
+  content: If 'true', the system disables the Power Off menu item when the user is
+    logged in.
 - key: LogOutDisabledWhileLoggedIn
   supportedOS:
     macOS:
@@ -127,8 +139,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Log Out menu item when the user is logged in. Available
-    in macOS 10.13 and later.
+  content: If 'true', the system disables the Log Out menu item when the user is logged
+    in. Available in macOS 10.13 and later.
 - key: DisableScreenLockImmediate
   supportedOS:
     macOS:
@@ -136,8 +148,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the immediate Screen Lock functions. Available in macOS
-    10.13 and later.
+  content: If 'true', the system disables the immediate Screen Lock functions. Available
+    in macOS 10.13 and later.
 - key: showInputMenu
   supportedOS:
     macOS:
@@ -145,7 +157,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', shows the Input Menu in the login window.
+  content: If 'true', the system shows the Input Menu in the login window.
 - key: DisableFDEAutoLogin
   supportedOS:
     macOS:
@@ -153,7 +165,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the automatic login option when using FileVault.
+  content: If 'true', the system disables the automatic login option when using FileVault.
 - key: AutologinUsername
   supportedOS:
     macOS:

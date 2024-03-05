@@ -16,6 +16,8 @@ payload:
         mode: allowed
     tvOS:
       introduced: '10.2'
+    visionOS:
+      introduced: '1.1'
     watchOS:
       introduced: '10.0'
 payloadkeys:
@@ -93,6 +95,8 @@ payloadkeys:
               removed: '0'
             tvOS:
               removed: '0'
+            visionOS:
+              removed: '0'
             watchOS:
               introduced: n/a
           type: <boolean>
@@ -134,6 +138,8 @@ payloadkeys:
             removed: '0'
           tvOS:
             removed: '0'
+          visionOS:
+            removed: '0'
           watchOS:
             introduced: n/a
         type: <integer>
@@ -157,6 +163,8 @@ payloadkeys:
           macOS:
             removed: '0'
           tvOS:
+            removed: '0'
+          visionOS:
             removed: '0'
           watchOS:
             introduced: n/a

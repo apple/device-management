@@ -10,6 +10,8 @@ payload:
       introduced: '10.9'
     tvOS:
       introduced: '10.2'
+    visionOS:
+      introduced: '1.1'
     watchOS:
       introduced: '10.0'
 payloadkeys:
@@ -25,6 +27,9 @@ payloadkeys:
     tvOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: required
   content: The device's UDID.
@@ -38,6 +43,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     tvOS:
+      userenrollment:
+        mode: forbidden
+    visionOS:
       userenrollment:
         mode: forbidden
   type: <string>
@@ -96,11 +104,11 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
-      userenrollment:
-        mode: forbidden
+      introduced: n/a
     tvOS:
-      userenrollment:
-        mode: forbidden
+      introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The device's IMEI (if available).
@@ -111,11 +119,11 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
-      userenrollment:
-        mode: forbidden
+      introduced: n/a
     tvOS:
-      userenrollment:
-        mode: forbidden
+      introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The device's MEID (if available).
@@ -133,6 +141,8 @@ payloadkeys:
       introduced: '14.0'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -149,6 +159,21 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <data>
   presence: optional
   content: The pairing token to validate when a watch is enrolling.
+- key: SOFTWARE_UPDATE_DEVICE_ID
+  title: Software Update Device ID
+  supportedOS:
+    iOS:
+      introduced: '17.4'
+    macOS:
+      introduced: '14.4'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The device model identifier used to lookup available OS updates through
+    https://gdmf.apple.com/v2/pmv.

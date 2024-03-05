@@ -29,6 +29,13 @@ payload:
       multiple: true
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: 5.1.1
       multiple: true
@@ -41,10 +48,10 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    An array of certificates for which certificate transparency is disabled. For Certificate Transparency enforcement to be disabled when this policy is set, one of the following conditions must be met:
+    An array of certificates for which certificate transparency is disabled. One of the following conditions needs to be met to disable certificate transparency enforcement when this policy is set:
     * The hash is of the server certificate's 'subjectPublicKeyInfo'.
-    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate is constrained through the X.509v3 'nameConstraints' extension; one or more 'directoryName' 'nameConstraints' are present in the 'permittedSubtrees;' and the 'directoryName' contains an 'organizationName' attribute.
-    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate has one or more 'organizationName' attributes in the certificate 'Subject;' and the server's certificate contains the same number of 'organizationName' attributes, in the same order, and with byte-for-byte identical values.
+    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate is constrained through the X.509v3 'nameConstraints' extension. One or more 'directoryName' 'nameConstraints' are present in the 'permittedSubtrees', and the 'directoryName' contains an 'organizationName' attribute.
+    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain. The CA certificate has one or more 'organizationName' attributes in the certificate 'Subject', and the server's certificate contains the same number of 'organizationName' attributes, in the same order, and with byte-for-byte identical values.
   subkeys:
   - key: SubjectPublicKeyInfoHashDict
     type: <dictionary>
@@ -65,9 +72,10 @@ payloadkeys:
   title: Disabled domains
   type: <array>
   presence: optional
-  content: |-
-    An array of strings representing the domains to be excluded from certificate transparency enforcement. A leading period (.) is supported to signify subdomains.
-    Wildcard domains are not supported. If a leading period (.) is specified, the domain cannot be a top-level domain (for example, '.com' and '.co.uk' are disallowed).
+  content: An array of strings that represent the domains to exclude from certificate
+    transparency enforcement. The system supports using a leading period ('.') to
+    signify subdomains. However, the system doesn't support wildcards. If you include
+    a leading period, the domain can't be a top-level domain, such as '.com' and '.co.uk'.
   subkeys:
   - key: domain
     type: <string>

@@ -12,6 +12,14 @@ payload:
         mode: forbidden
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Name
   type: <string>
@@ -25,29 +33,29 @@ payloadkeys:
   - key: PrincipalName
     type: <string>
     presence: optional
-    content: The principal name. If not provided, the user will be prompted for one
-      during profile installation. This field is required for MDM installation.
+    content: The principal name. If not provided, the system prompts the user for
+      one during profile installation. Required for MDM installation.
   - key: PayloadCertificateUUID
     supportedOS:
       iOS:
         introduced: '8.0'
     type: <string>
     presence: optional
-    content: The 'PayloadUUID' of an identity certificate payload that can be used
-      to renew the Kerberos credential without user interaction. The certificate payload
-      must have either the 'com.apple.security.pkcs12' or 'com.apple.security.scep'
-      payload type. Both the Single Sign On payload and the identity certificate payload
-      must be included in the same configuration profile.
+    content: The 'PayloadUUID' of an identity certificate payload that the system
+      can use to renew the Kerberos credential without user interaction. Set the payload
+      type to either 'com.apple.security.pkcs12' or 'com.apple.security.scep' in the
+      certificate payload. The configuration file needs to contain both the SSO payload
+      and the identity certificate payload.
   - key: Realm
     type: <string>
     presence: required
-    content: The realm name. This value should be properly capitalized.
+    content: The properly capitalized realm name.
   - key: URLPrefixMatches
     type: <array>
     presence: optional
     content: |-
-      The list of URL prefixes that must be matched in order to use this account for Kerberos authentication over HTTP. If this key is missing, the account will be eligible to match all 'http://' and 'https://' URLs.
-      The URL matching patterns must begin with either 'http://' or 'https://'. A simple string match is performed, so the URL prefix 'http://www.apple.com/' will not match 'http://www.apple.com:80/'. However, if a matching pattern does not end in '/', a '/' will be appended to it.
+      The list of URL prefixes to match in order to use this account for Kerberos authentication over HTTP. If this key is missing, the system makes the account eligible to match all 'http://' and 'https://' URLs.
+      Begin the URL matching patterns with either 'http://' or 'https://'. The system performs a simple string match, so the URL prefix 'http://www.apple.com/' doesn't match 'http://www.apple.com:80/'. However, if a matching pattern doesn't end in '/', the system automatically append a '/' to it.
     subkeys:
     - key: URLPrefixMatchesItem
       type: <string>
@@ -57,9 +65,8 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      The list of app identifiers that are allowed to use this login. If this field missing, this login will match all app identifiers.
-      This array may not be empty.
-      This array must contain strings that match App Bundle IDs. These strings may be exact matches, e.g. 'com.mycompany.myapp' or may specify a prefix match on the Bundle ID by using the '*' wildcard character. The wildcard character must appear after a period character ('.'), and may only appear once, at the end of the string, e.g. 'com.mycompany.*'. When a wildcard is given, any app whose Bundle ID begins with the prefix will be granted access to the account.
+      The list of app identifiers that the system allows to use this login. If this field missing, the system matches all app identifiers with this login.
+      Don't set an empty array. The array needs to contain strings that match App Bundle IDs. These strings can be exact matches such as 'com.mycompany.myapp', or they may specify a prefix match on the Bundle ID by using the '*' wildcard character. The wildcard character needs to appear after a period ('.'), and may only appear once, at the end of the string, for example, 'com.mycompany.*'. When you provide a wildcard, the system grants access to the account to any app with a Bundle ID that begins with the prefix.
     subkeys:
     - key: AppIdentifierMatchesItem
       type: <string>

@@ -4,11 +4,19 @@ description: Use this section to place an Apple TV device into Conference Room D
 payload:
   payloadtype: com.apple.conferenceroomdisplay
   supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '10.2'
       multiple: false
       supervised: true
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Configures an Apple TV to enter Conference Room Display mode, and restrictions
     exit from that mode
 payloadkeys:

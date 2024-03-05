@@ -22,6 +22,12 @@ payload:
       requiresdep: false
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command prompts the user to share their screen using AirPlay Mirroring.
 payloadkeys:
 - key: DestinationName

@@ -14,6 +14,19 @@ payload:
         userchannel: false
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
   content: Policies that affect system-wide certificate revocation checking.
 payloadkeys:
 - key: EnabledForCerts
@@ -23,7 +36,7 @@ payloadkeys:
   content: |-
     An array of certificates that the system checks for revocation.
     Specifying a certificate authority (CA) enables revocation checking for all certificates chaining up to that CA.
-    It is not necessary to specify trusted root certificates because they are implicitly specified. See <https://support.apple.com/en-us/HT209143> for the available trusted root certificates for Apple operating systems.
+    It's not necessary to specify trusted root certificates because they're implicitly specified. See <https://support.apple.com/en-us/HT209143> for the available trusted root certificates for Apple operating systems.
   subkeys:
   - key: SubjectPublicKeyInfoHashDict
     type: <dictionary>

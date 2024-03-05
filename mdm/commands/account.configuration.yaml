@@ -4,6 +4,8 @@ description: This command can be sent to the device to have it create the local 
 payload:
   requesttype: AccountConfiguration
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.11'
       accessrights: None
@@ -12,6 +14,12 @@ payload:
       requiresdep: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: When a macOS (v10.11 and later) device is configured via DEP to enroll
     in an MDM server and the DEP profile has the await_device_configuration flag set
     to true, the AccountConfiguration command can be sent to the device to have it

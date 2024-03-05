@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.systemmigration
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: 10.12.4
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Provides a way of customizing items migrated during System Migration.
 payloadkeys:
 - key: CustomBehavior

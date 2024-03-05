@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '15.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -17,15 +18,24 @@ payload:
     macOS:
       introduced: '13.0'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       - local
       allowed-scopes:
       - user
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
+  apply: multiple
   content: A CalDAV configuration defines a CalDAV calendar and reminders account
     for a user.
 payloadkeys:

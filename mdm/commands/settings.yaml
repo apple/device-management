@@ -26,6 +26,13 @@ payload:
       introduced: '6.0'
       accessrights: AllowSettings
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowSettings
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowSettings
@@ -53,6 +60,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -82,9 +91,12 @@ payloadkeys:
       - 3
       content: |-
         A number that indicates where to use the wallpaper, which is one of the following values:
+
         * '1': Lock screen
         * '2': Home screen
-        * '3': Lock and Home screens
+        * '3': Both lock and home screens.
+
+        In iOS 16 and later, and iPadOS 17 and later, when you set the wallpaper for the first time, the system sets both the lock screen and home screen. After that, you can separately set each location.
   - key: DataRoaming
     supportedOS:
       iOS:
@@ -97,6 +109,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -131,6 +145,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -164,6 +180,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -200,6 +218,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -235,6 +255,8 @@ payloadkeys:
         userchannel: false
       tvOS:
         introduced: '10.2'
+        accessrights: AllowAppInstallation
+      visionOS:
         accessrights: AllowAppInstallation
       watchOS:
         accessrights: AllowAppInstallation
@@ -281,6 +303,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: '10.2'
+        accessrights: AllowAppInstallation
+      visionOS:
         accessrights: AllowAppInstallation
       watchOS:
         accessrights: AllowAppInstallation
@@ -393,6 +417,8 @@ payloadkeys:
             introduced: '16.4'
           tvOS:
             introduced: n/a
+          visionOS:
+            introduced: n/a
           watchOS:
             introduced: n/a
         type: <boolean>
@@ -406,6 +432,8 @@ payloadkeys:
           iOS:
             introduced: '17.0'
           tvOS:
+            introduced: n/a
+          visionOS:
             introduced: n/a
           watchOS:
             introduced: n/a
@@ -428,6 +456,8 @@ payloadkeys:
         introduced: '10.10'
         userenrollment:
           mode: forbidden
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -455,6 +485,8 @@ payloadkeys:
         userenrollment:
           mode: forbidden
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -551,6 +583,8 @@ payloadkeys:
           mode: forbidden
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -588,6 +622,8 @@ payloadkeys:
               mode: forbidden
           tvOS:
             introduced: n/a
+          visionOS:
+            introduced: n/a
         type: <boolean>
         presence: optional
         default: false
@@ -599,6 +635,8 @@ payloadkeys:
           macOS:
             introduced: '11.0'
           tvOS:
+            introduced: n/a
+          visionOS:
             introduced: n/a
         type: <boolean>
         presence: optional
@@ -625,6 +663,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -661,6 +701,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -785,9 +827,7 @@ payloadkeys:
         content: |-
           The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
           If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
-          If the value set is less than one of the known
-          values, the next lowest value will be used. For example a value of 299 will
-          result in an effective setting of 60.
+          If the value set is less than one of the known values, the next lowest value will be used. For example a value of 299 will result in an effective setting of 60.
           This setting won't take effect if 'TemporarySessionOnly' is 'true' because there's no passcode for a temporary session.
       - key: AutoLockTime
         type: <integer>
@@ -807,6 +847,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -841,6 +883,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -874,6 +918,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -922,6 +968,8 @@ payloadkeys:
       tvOS:
         introduced: '14.0'
         supervised: true
+      visionOS:
+        introduced: n/a
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -956,6 +1004,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         introduced: n/a
@@ -998,6 +1048,8 @@ payloadkeys:
       macOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
       watchOS:
         supervised: true

@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
       allowed-scopes:
       - system
@@ -15,10 +16,12 @@ payload:
     macOS:
       introduced: '14.0'
       allowed-enrollments:
-      - device
+      - supervised
       allowed-scopes:
       - system
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a

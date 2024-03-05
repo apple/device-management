@@ -14,6 +14,19 @@ payload:
         userchannel: true
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: SubCalAccountDescription
   title: Description
@@ -40,7 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables SSL.
+  content: If 'true', the system enables SSL.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:
@@ -48,6 +61,5 @@ payloadkeys:
       introduced: '14.0'
   type: <string>
   presence: optional
-  content: |-
-    The VPNUUID of the per-app VPN the account uses for network communication.
+  content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.

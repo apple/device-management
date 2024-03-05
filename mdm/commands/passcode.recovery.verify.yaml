@@ -3,6 +3,8 @@ description: Verifies the device's recovery lock password. (AppleSilicon devices
 payload:
   requesttype: VerifyRecoveryLock
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '11.5'
       accessrights: DeviceLockAndRemovePasscode
@@ -11,6 +13,12 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Verifies the device's recovery lock password. (AppleSilicon devices only)
 payloadkeys:
 - key: Password

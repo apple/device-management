@@ -12,6 +12,8 @@ payload:
     tvOS:
       introduced: '10.2'
       always-skippable: true
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -29,6 +31,19 @@ payloadkeys:
   presence: optional
   content: The key to skip the Accessibility pane, when creating additional users.
     This key is not available in macOS.
+- key: ActionButton
+  title: Skip Action Button setup pane
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the Action Button configuration pane. This key is available
+    in iOS 17 and later.
 - key: Android
   title: Prevents migration from Android device
   supportedOS:
@@ -465,8 +480,9 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: If the key is included in the SkipSetup array the Wallpaper pane will be
-    skipped.
+  content: |-
+    The key to skip Wallpaper setup.
+    This key is available in macOS 14.1 and later,
 - key: WatchMigration
   title: Skip watch migration
   supportedOS:

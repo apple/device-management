@@ -23,6 +23,12 @@ payload:
     tvOS:
       introduced: '10.2'
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       supervised: false
@@ -43,6 +49,9 @@ payloadkeys:
     iOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: required
   content: The device's UDID (Unique Device ID).
@@ -58,6 +67,9 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    visionOS:
+      userenrollment:
+        mode: required
     watchOS:
       introduced: n/a
   type: <string>

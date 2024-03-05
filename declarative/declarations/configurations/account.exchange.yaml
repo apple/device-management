@@ -7,6 +7,7 @@ payload:
     iOS:
       introduced: '15.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -18,15 +19,24 @@ payload:
     macOS:
       introduced: '13.0'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       - local
       allowed-scopes:
       - user
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
+  apply: multiple
   content: This payload configures an Exchange ActiveSync account on an iOS device.
 payloadkeys:
 - key: VisibleName
@@ -72,6 +82,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <integer>
   presence: optional
   content: The port number of the EWS server. The system uses this only when this
@@ -81,6 +93,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The path of the EWS server. The system uses this only when this declaration
@@ -89,6 +103,8 @@ payloadkeys:
   title: Server External Host Name
   supportedOS:
     iOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
   type: <string>
   presence: optional
@@ -100,6 +116,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <integer>
   presence: optional
   content: The external port number of the EWS server. The system uses this only when
@@ -108,6 +126,8 @@ payloadkeys:
   title: Server External Path
   supportedOS:
     iOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
   type: <string>
   presence: optional

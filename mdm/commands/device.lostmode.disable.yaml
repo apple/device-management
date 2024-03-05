@@ -14,4 +14,12 @@ payload:
         userchannel: false
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command allows the server to take the device out of MDM lost mode.

@@ -3,6 +3,8 @@ description: Configures Security Preferences:Privacy settings
 payload:
   payloadtype: com.apple.TCC.configuration-profile-policy
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.14'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Services
   type: <dictionary>
@@ -57,8 +65,9 @@ payloadkeys:
       - key: Allowed
         type: <boolean>
         presence: required
-        content: If 'true', access is granted; otherwise, the process doesn't have
-          access. The user isn't prompted and can't change this value.
+        content: |-
+          If 'true', access is granted; otherwise, the process doesn't have access. The user isn't prompted and can't change this value.
+          Every payload needs to include either 'Authorization' or 'Allowed', but not both.
       - key: Authorization
         supportedOS:
           macOS:
@@ -70,10 +79,13 @@ payloadkeys:
         - Deny
         - AllowStandardUserToSetSystemService
         content: |-
-          The 'Authorization' key is an optional replacement for the 'Allowed' key. Every payload must specify either 'Authorization' or 'Allowed', but not both.
-          'Allow': Equivalent to a 'true' value for the 'Allowed' key.
-          'Deny': Equivalent to a 'false' value for the 'Allowed' key.
-          'AllowStandardUserToSetSystemService:' allows a standard (non-admin) user to configure the permissions for the specified app in the Privacy preferences for services that otherwise require admin authorization. 'AllowStandardUserToSetSystemService' is only valid for the 'ListenEvent' and 'ScreenCapture' services.
+          The 'Authorization' key is an optional replacement for the 'Allowed' key, which has one of the following possible values:
+
+          * 'Allow': Equivalent to a 'true' value for the 'Allowed' key
+          * 'Deny': Equivalent to a 'false' value for the 'Allowed' key
+          * 'AllowStandardUserToSetSystemService': Allows a standard (non-admin) user to configure the permissions for the specified app in the Privacy preferences for services that otherwise require admin authorization; only valid for the 'ListenEvent' and 'ScreenCapture' services
+
+          Every payload needs to include either 'Authorization' or 'Allowed', but not both.
           Available in macOS 11 and later.
       - key: Comment
         type: <string>

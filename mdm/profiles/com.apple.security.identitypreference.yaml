@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.security.identitypreference
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.12'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Defines an Identity Preference item in the user's keychain that references
     a identity payload included in the same profile. Can only appear in a user profile
     (not a device profile). See also "com.apple.security.certificatepreference" for

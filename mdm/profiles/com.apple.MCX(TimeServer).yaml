@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.MCX
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: 10.12.4
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Settings for time zone and server. If multiple profiles with this payload
     are sent, the device's time server will be set to the value in the last payload
     installed. Removing the payload will not change the settings back to the prior

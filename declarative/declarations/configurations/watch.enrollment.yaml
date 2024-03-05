@@ -6,7 +6,7 @@ payload:
     iOS:
       introduced: '17.0'
       allowed-enrollments:
-      - device
+      - supervised
       allowed-scopes:
       - system
       sharedipad:
@@ -15,8 +15,11 @@ payload:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
+  apply: single
 payloadkeys:
 - key: EnrollmentProfileURL
   title: Watch Enrollment Profile's URL.

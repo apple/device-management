@@ -27,5 +27,9 @@ payload:
       introduced: '10.2'
       accessrights: None
       supervised: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Informs the device that it can continue past DEP enrollment. Only works
     on devices in DEP that have their cloud configuration set to await configuration.

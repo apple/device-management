@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.ews.account
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: For macOS 10.9 and higher, an Exchange Web services (EWS) account is configured
     with support for Mail, Contacts, Calendar, Notes and Reminders. macOS 10.7-10.8
     only supported Contacts.
@@ -25,14 +33,12 @@ payloadkeys:
 - key: Host
   type: <string>
   presence: optional
-  content: |-
-    The Exchange server host name or IP address.
-    If using OAuth, the host name is ignored..
+  content: The Exchange server host name or IP address. Ignored if using OAuth.
 - key: SSL
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL.
+  content: If 'true', the system enables SSL.
 - key: OAuth
   title: Use OAuth
   supportedOS:
@@ -41,9 +47,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If 'true', enables OAuth for authentication. If OAuth is enabled, don't specify a password.
-    Available in macOS 10.14 and later
+  content: If 'true', the system enables OAuth for authentication. Don't specify a
+    password if 'OAuth' is 'true'. Available in macOS 10.14 and later
 - key: OAuthSignInURL
   title: URL for OAuth sign-in
   supportedOS:
@@ -51,14 +56,14 @@ payloadkeys:
       introduced: '10.14'
   type: <string>
   presence: optional
-  content: The URL to load into a web view for authentication via OAuth when autodiscovery
+  content: The URL to load into a web view for authentication through OAuth when autodiscovery
     isn't used. This setting requires a 'Host' value.
 - key: UserName
   type: <string>
   presence: optional
-  content: The user name for this Exchange account. This string is required for noninteractive
-    (for example, MDM) installation. If it's missing, the device prompts for it during
-    interactive profile installation.
+  content: The user name for this Exchange account. Required for noninteractive installation,
+    such as through MDM. If missing, the system prompts the user for it during interactive
+    profile installation.
 - key: Password
   type: <string>
   presence: optional
@@ -71,7 +76,7 @@ payloadkeys:
   type: <string>
   presence: optional
   format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
-  content: The UUID of of the certificate payload within the same profile to use for
+  content: The UUID of the certificate payload within the same profile to use for
     the identity credential. Supported on macOS 10.12 or later.
 - key: AuthenticationCertificateUUID
   supportedOS:
@@ -79,7 +84,7 @@ payloadkeys:
       introduced: '10.11'
   type: <string>
   presence: optional
-  content: The UUID of of the certificate payload within the same profile to use for
+  content: The UUID of the certificate payload within the same profile to use for
     the identity credential. Supported on macOS 10.11 or later. On macOS 10.12 or
     later use the PayloadCertificateUUID.
 - key: allowMailDrop
@@ -90,7 +95,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables Mail Drop.
+  content: If 'true', the system enables Mail Drop.
 - key: Path
   type: <string>
   presence: optional
@@ -107,7 +112,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL for connections to the external server.
+  content: If 'true', the system enables SSL for connections to the external server.
 - key: ExternalPath
   type: <string>
   presence: optional

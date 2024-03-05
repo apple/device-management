@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -18,7 +19,7 @@ payload:
     macOS:
       introduced: '14.0'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       - local
       allowed-scopes:
@@ -27,14 +28,23 @@ payload:
     tvOS:
       introduced: '17.0'
       allowed-enrollments:
+      - supervised
       - device
+      - local
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '1.1'
+      allowed-enrollments:
+      - device
+      - user
       - local
       allowed-scopes:
       - system
     watchOS:
       introduced: '10.0'
       allowed-enrollments:
-      - device
+      - supervised
       - local
       allowed-scopes:
       - system
@@ -60,8 +70,9 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the certificate is removed and the status item object only
-        contains this key and the 'identifier' key.
+      content: To indicate removal of a certificate, this key's value is set to true,
+        and only this key and the "identifier" key will be present in the status item
+        object.
     - key: declaration-identifier
       title: Asset declaration identifier.
       type: <string>

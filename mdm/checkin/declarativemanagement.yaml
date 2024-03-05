@@ -25,6 +25,12 @@ payload:
       introduced: '16.0'
       supervised: false
       requiresdep: false
+    visionOS:
+      introduced: '1.1'
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       supervised: false
@@ -58,6 +64,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: required
   content: The device's UDID.
@@ -71,6 +80,9 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    visionOS:
+      userenrollment:
+        mode: required
     watchOS:
       introduced: n/a
   type: <string>
@@ -86,6 +98,8 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
@@ -99,6 +113,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -116,6 +132,8 @@ payloadkeys:
       devicechannel: false
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
@@ -130,6 +148,8 @@ payloadkeys:
     macOS:
       devicechannel: false
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a

@@ -24,6 +24,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: false
+      supervised: false
+      allowmanualinstall: false
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
   content: As of iOS 15.0 this payload can be installed on unsupervised devices via
     MDM and can only be installed via MDM. As of iOS 16.0, this can be installed on
     User Enrollments via MDM if DNSProxyUUID is specified.

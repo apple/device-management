@@ -6,6 +6,7 @@ payload:
     iOS:
       introduced: '17.2'
       allowed-enrollments:
+      - supervised
       - device
       - user
       allowed-scopes:
@@ -17,33 +18,36 @@ payload:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
+  apply: multiple
   beta: true
 payloadkeys:
 - key: AppStoreID
   title: App Store ID
   type: <string>
   presence: optional
-  content: Specifies the App Store ID of the managed app. One and only one of `AppStoreID`,
-    `BundleID`, or `ManifestURL` must be present.
+  content: The App Store ID of the managed app. One and only one of 'AppStoreID',
+    'BundleID', or 'ManifestURL' must be present.
 - key: BundleID
   title: Bundle ID
   type: <string>
   presence: optional
-  content: Specifies the Bundle ID of the managed app. One and only one of `AppStoreID`,
-    `BundleID`, or `ManifestURL` must be present.
+  content: The bundle ID of the managed app. One and only one of 'AppStoreID', 'BundleID',
+    or 'ManifestURL' must be present.
 - key: ManifestURL
   title: Manifest URL
   type: <string>
   presence: optional
-  content: Specifies the URL of the manifest for the managed app. One and only one
-    of `AppStoreID`, `BundleID`, or `ManifestURL` must be present.
+  content: The URL of the manifest for the managed app. One and only one of 'AppStoreID',
+    'BundleID', or 'ManifestURL' must be present.
 - key: InstallBehavior
   title: Install Behavior
   type: <dictionary>
   presence: optional
-  content: Describes how and when the app will be installed.
+  content: A dictionary that describes how and when to install the app.
   subkeys:
   - key: Install
     title: Install
@@ -54,15 +58,17 @@ payloadkeys:
     - Required
     default: Optional
     content: |-
-      Describes whether the app must remain on the device at all times, or if the user can freely install and remove it:
-      * Optional - the user can install and remove the app after the configuration is activated.
-      * Required - the app is installed when the configuration is activated. The user may not remove the app.
-      On supervised devices apps are installed automatically. Otherwise the device prompts the user to approve the install of the app.
+      A string that specifies if the app needs to remain on the device at all times or if the user can freely install and remove it, which is one of the following values:
+
+      * Optional: The user can install and remove the app after the system activates the configuration.
+      * Required: The system installs the app after it activates the configuration. The user can't remove the app.
+
+      The system automatically installs apps on supervised devices. Otherwise, the device prompts the user to approve installation of the app.
   - key: License
     title: License
     type: <dictionary>
     presence: optional
-    content: Describes how the app is licensed.
+    content: A dictionary that describes the app's license.
     subkeys:
     - key: VPPType
       title: VPP Type
@@ -72,17 +78,18 @@ payloadkeys:
       - Device
       - User
       content: |-
-        Indicates what type of VPP license is used for the app when installed via the App Store:
-        * Device - the app has a VPP device license.
-        * User - the app has a VPP user license.
-        This key must be present when an App Store app is being installed.
+        The type of VPP license that the app uses for installation through the App Store, which is one of the following values:
+
+        * Device: The app has a VPP device license.
+        * User: The app has a VPP user license.
+
+        This key needs to be present to install an app through the App Store.
 - key: IncludeInBackup
   title: Include in Backup
   type: <boolean>
   presence: optional
   default: true
-  content: If `true`, backups will contain the app and its data. If `false`, backups
-    will not contain the app and its data.
+  content: If 'true', backups contain the app and its data.
 - key: Attributes
   title: App Attributes
   supportedOS:
@@ -90,7 +97,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: A dictionary of values associated with the app.
+  content: A dictionary of values to associate with the app.
   subkeys:
   - key: AssociatedDomains
     title: Associated Domains
@@ -108,16 +115,15 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If `true`, direct downloads will be enabled for associated domains.
+    content: If 'true', the system enables direct downloads for the 'AssociatedDomains'.
   - key: CellularSliceUUID
     title: Cellular Slice UUID
     type: <string>
     presence: optional
-    content: Either data network name (DNN) or traffic category can be set as the
-      enterprise slice identifier. For DNN, the value must be encoded as "DNN:name”,
-      where "name" is the carrier provided DNN name. For app category, the value must
-      be encoded as "AppCategory:category", where "category" is a carrier provided
-      string like "Enterprise1".
+    content: The cellular slice identifier, which can be the data network name (DNN)
+      or app category. For DNN, encode the value as “DNN:name”, where “name” is the
+      carrier-provided DNN name. For app category, encode the value as “AppCategory:category”,
+      where “category” is a carrier-provided string such as “Enterprise1”.
   - key: ContentFilterUUID
     title: Content Filter UUID
     type: <string>
@@ -132,15 +138,14 @@ payloadkeys:
     title: Relay UUID
     type: <string>
     presence: optional
-    content: The UUID of the Relay to associated with the app.
+    content: The UUID of the relay to associate with the app.
   - key: TapToPayScreenLock
     title: Tap to Pay Screen Lock
     type: <boolean>
     presence: optional
     default: false
-    content: If `true`, the device will automatically lock after every transaction
-      that requires a customer's card PIN. If `false`, the user of the device may
-      choose the behavior they prefer.
+    content: If 'true', the device automatically locks after every transaction that
+      requires a customer's card PIN. If 'false', the user can choose the behavior.
   - key: VPNUUID
     title: VPN UUID
     type: <string>

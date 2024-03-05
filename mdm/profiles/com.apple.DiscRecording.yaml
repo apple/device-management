@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.DiscRecording
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: false
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: BurnSupport
   type: <string>
@@ -22,8 +30,8 @@ payloadkeys:
   - authenticate
   - 'on'
   content: |-
-    If 'off', disables disc burning.
+    Configure disc-burn. Allowed values:
 
-    If 'on', allows normal default operation. Setting this key to 'on' doesn't enable disc burn support if it has already been disabled by other mechanisms or preferences. It also must be enabled with the Finder profile.
-
-    If 'authenticate', requires authentication.
+    * 'off': The system disables disc burning.
+    * 'on': The system allows normal default operation. Setting this key to 'on' doesn't enable disc burn support if other mechanisms or preferences disabled it. Needs to be enabled with the Finder profile
+    * 'authenticate': The system requires authentication.

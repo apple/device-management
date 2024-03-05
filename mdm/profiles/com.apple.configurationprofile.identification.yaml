@@ -2,6 +2,8 @@ title: Identification
 payload:
   payloadtype: com.apple.configurationprofile.identification
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: false
@@ -12,6 +14,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: |-
     This payload can be used on the device or user channel depending on what payload it is paired with.
 
@@ -30,7 +38,7 @@ payloadkeys:
 - key: PayloadIdentification
   type: <dictionary>
   presence: required
-  content: The dictionary containing details about the user.
+  content: The dictionary that contains details about the user.
   subkeys:
   - key: UserName
     type: <string>
@@ -50,13 +58,12 @@ payloadkeys:
     rangelist:
     - Password
     - UserEnteredPassword
-    content: The authorization method. Either the password is supplied in the profile
-      or the user supplies it.
+    content: The authorization method. Either the profile contains the password or
+      the user provides it.
   - key: Password
     type: <string>
     presence: required
-    content: The password for the account. Required when the 'AuthMethod' is of type
-      'password'.
+    content: The password for the account. Required when the 'AuthMethod' is 'Password'.
   - key: Prompt
     type: <string>
     presence: optional

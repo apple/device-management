@@ -22,6 +22,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: |-
     Each payload may contain one font file. Font files may be in TrueType (.ttf) or OpenType (.otf) file format. Collection types (.ttc or .otc) formats are not supported.
     Fonts are uniquely identified internally by their embedded PostScript name. Two fonts with the same PostScript name will be considered the same font, even if their contents differ. Installing two different fonts with the same PostScript name is not supported, and it is undefined which font will remain installed.

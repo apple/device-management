@@ -9,6 +9,8 @@ payload:
       introduced: '13.0'
     tvOS:
       introduced: '16.0'
+    visionOS:
+      introduced: '1.1'
     watchOS:
       introduced: '10.0'
 payloadkeys:

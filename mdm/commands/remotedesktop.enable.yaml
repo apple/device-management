@@ -3,6 +3,8 @@ description: Enable Remote Desktop on the device.
 payload:
   requesttype: EnableRemoteDesktop
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: 10.14.4
       devicechannel: true
@@ -11,4 +13,10 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Enable Remote Desktop.

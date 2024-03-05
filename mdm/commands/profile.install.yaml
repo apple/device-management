@@ -29,6 +29,13 @@ payload:
       introduced: '6.0'
       accessrights: AllowInstallationRemoval
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowInstallationRemoval
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowInstallationRemoval

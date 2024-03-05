@@ -30,6 +30,13 @@ payload:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowAppInstallation

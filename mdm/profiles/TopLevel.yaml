@@ -29,6 +29,13 @@ payload:
       multiple: false
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: '1.0'
+      multiple: false
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '1.0'
       multiple: false
@@ -110,6 +117,8 @@ payloadkeys:
         mode: forbidden
     tvOS:
       supervised: true
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -159,6 +168,8 @@ payloadkeys:
       introduced: '10.15'
     tvOS:
       introduced: '12.2'
+    visionOS:
+      introduced: '1.1'
     watchOS:
       introduced: '5.2'
   type: <integer>
@@ -170,11 +181,12 @@ payloadkeys:
   - 3
   - 4
   - 5
+  - 6
   default: 0
   content: |-
     The type of platform of the target device. Specifying the platform type helps prevent unintended installations.
     For interactive installations on iOS devices, specifying a target platform avoids interstitial alerts that prompt the user to choose a profile target when multiple targets are eligible.
-    Possible values include:
+    Allowed values:
 
     * '0': Any/unspecified
     * '1': iPhone/iPad/iPod Touch
@@ -182,6 +194,7 @@ payloadkeys:
     * '3': HomePod
     * '4': Apple TV
     * '5': Mac
+    * '6': Vision Pro
 - key: ConsentText
   type: <dictionary>
   presence: optional

@@ -24,6 +24,17 @@ payload:
       allowmanualinstall: false
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: false
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
   content: Configures an app extension that performs SSO on behalf of certain URLs.
     User channel support was added in macOS 11.0.
 payloadkeys:
@@ -38,9 +49,8 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The team identifier of the app extension.
-    This key is required on macOS and ignored elsewhere.
+  content: The team identifier of the app extension. This key is required on macOS
+    and ignored elsewhere.
 - key: Type
   type: <string>
   presence: required
@@ -51,9 +61,8 @@ payloadkeys:
 - key: Realm
   type: <string>
   presence: optional
-  content: |-
-    The realm name for 'Credential' payloads. Use proper capitalization for this value.
-    This key is ignored for 'Redirect' payloads.
+  content: The realm name for 'Credential' payloads. Use proper capitalization for
+    this value. Ignored for 'Redirect' payloads.
 - key: ExtensionData
   type: <dictionary>
   presence: optional
@@ -69,7 +78,11 @@ payloadkeys:
   content: |-
     An array of URL prefixes of identity providers where the app extension performs SSO.
     Required for 'Redirect' payloads. Ignored for 'Credential' payloads.
-    The URLs must begin with 'http://' or 'https://', the scheme and host name are matched case-insensitively, query parameters and URL fragments are not allowed, and the URLs of all installed Extensible SSO payloads must be unique.
+    The URLs need to begin with 'http://' or 'https://'.
+    The system:
+    * Matches scheme and host name case-insensitively
+    * Doesn't allow query parameters and URL fragments
+    * Requires that the URLs of all installed Extensible SSO payloads are unique
   subkeys:
   - key: URL
     type: <string>
@@ -79,10 +92,12 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    An array of host names or domain names that apps can authenticate through the app extension.
+    An array of host or domain names that apps can authenticate through the app extension.
     Required for 'Credential' payloads. Ignored for 'Redirect' payloads.
-    Host or domain names are matched case-insensitively, and all the host/domain names of all installed Extensible SSO payloads must be unique.
-    Hosts that begin with a “.” are wildcard suffixes and match all subdomains; otherwise the host must be an exact match.
+    The system:
+    * Matches host or domain names case-insensitively
+    * Requires that all the host and domain names of all installed Extensible SSO payloads are unique
+    Host names that begin with a “.” are wildcard suffixes that match all subdomains; otherwise the host name needs be an exact match.
   subkeys:
   - key: hostname
     type: <string>
@@ -100,9 +115,11 @@ payloadkeys:
   - Cancel
   - DoNotHandle
   default: Cancel
-  content: |-
-    If set to 'Cancel', the system cancels authentication requests when the screen is locked. If set to 'DoNotHandle', the request continues without SSO instead. This does not apply to requests where 'userInterfaceEnabled' is set to 'false' or background NSURLSession requests.
-    Available in iOS 15 and later and macOS 12 and later.
+  content: If set to 'Cancel', the system cancels authentication requests when the
+    screen is locked. If set to 'DoNotHandle', the request continues without SSO instead.
+    This doesn't apply to requests where 'userInterfaceEnabled' is 'false', or for
+    background NSURLSession requests. Available in iOS 15 and later, and macOS 12
+    and later.
 - key: DeniedBundleIdentifiers
   supportedOS:
     iOS:
@@ -111,9 +128,8 @@ payloadkeys:
       introduced: '12.0'
   type: <array>
   presence: optional
-  content: |-
-    An array of bundle identifiers of apps that don't use SSO provided by this extension.
-    Available in iOS 15 and later and macOS 12 and later.
+  content: An array of bundle identifiers of apps that don't use SSO provided by this
+    extension. Available in iOS 15 and later, and macOS 12 and later.
   subkeys:
   - key: bundleIdentifier
     type: <string>
@@ -131,9 +147,9 @@ payloadkeys:
   rangelist:
   - Password
   - UserSecureEnclaveKey
-  content: |-
-    The Platform SSO authentication method the extension uses. Requires that the SSO Extension also supports the method.
-    Available in macOS 13 and later and deprecated in macOS 14.
+  content: The Platform SSO authentication method the extension uses. Requires that
+    the SSO Extension also supports the method. Available in macOS 13 and later, and
+    deprecated in macOS 14.
 - key: RegistrationToken
   supportedOS:
     iOS:
@@ -142,9 +158,9 @@ payloadkeys:
       introduced: '13.0'
   type: <string>
   presence: optional
-  content: |-
-    The token this device uses for registration with Platform SSO. Use it for silent registration with the Identity Provider. Requires that 'PlatformSSO' 'AuthenticationMethod' isn't empty.
-    Available in macOS 13 and later.
+  content: The token this device uses for registration with Platform SSO. Use it for
+    silent registration with the Identity Provider. Requires that 'PlatformSSO.AuthenticationMethod'
+    isn't empty. Available in macOS 13 and later.
 - key: PlatformSSO
   supportedOS:
     iOS:
@@ -222,7 +238,8 @@ payloadkeys:
     - Admin
     - Groups
     content: |-
-      The permission to apply to newly created accounts at login, which has the following values:
+      The permission to apply to newly created accounts at login. Allowed values:
+
       * 'Standard': The account is a standard user.
       * 'Admin': The system adds the account to the local administrators group.
       * 'Groups': The system assigns group to the account using 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
@@ -234,7 +251,8 @@ payloadkeys:
     - Admin
     - Groups
     content: |-
-      The permission to apply to an account each time the user authenticates, which has the following values:
+      The permission to apply to an account each time the user authenticates. Allowed values:
+
       * 'Standard': The account is a standard user.
       * 'Admin': The system adds the account to the local administrators group.
       * 'Groups': The system assigns group to the account using 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.

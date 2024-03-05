@@ -27,6 +27,13 @@ payload:
       introduced: '10.2'
       accessrights: AllowDeviceErase
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowDeviceErase
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '10.0'
       accessrights: AllowDeviceErase
@@ -42,6 +49,8 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: false
@@ -56,6 +65,8 @@ payloadkeys:
     macOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -73,6 +84,8 @@ payloadkeys:
       introduced: '10.8'
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
@@ -86,6 +99,8 @@ payloadkeys:
     macOS:
       introduced: '12.0'
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -116,6 +131,8 @@ payloadkeys:
     macOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a

@@ -25,6 +25,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: LDAPAccountDescription
   title: Account Description
@@ -45,13 +56,13 @@ payloadkeys:
   title: Account Password
   type: <string>
   presence: optional
-  content: The user's password. The password is enabled only with encrypted profiles.
+  content: The user's password. Only use this with encrypted profiles.
 - key: LDAPAccountUseSSL
   title: Use SSL
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL.
+  content: If 'true', the system enables SSL.
 - key: LDAPSearchSettings
   title: Search Settings
   type: <array>
@@ -82,10 +93,11 @@ payloadkeys:
       - LDAPSearchSettingScopeSubtree
       default: LDAPSearchSettingScopeSubtree
       content: |-
-        The type of recursion to use in the search. It is one of the following values:
-        * 'LDAPSearchSettingScopeBase': Only the immediate node that the search base points to.
-        * 'LDAPSearchSettingScopeOneLevel': The node plus its immediate children.
-        * 'LDAPSearchSettingScopeSubtree': The node plus all children, regardless of depth.
+        The type of recursion to use in the search. Allowed values:
+
+        * 'LDAPSearchSettingScopeBase': Only the immediate node that the search base points to
+        * 'LDAPSearchSettingScopeOneLevel': The node plus its immediate children
+        * 'LDAPSearchSettingScopeSubtree': The node plus all children, regardless of depth
 - key: VPNUUID
   title: VPNUUID
   supportedOS:
@@ -95,6 +107,5 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The VPNUUID of the per-app VPN the account uses for network communication.
+  content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.

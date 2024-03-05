@@ -14,11 +14,17 @@ payload:
         userchannel: true
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '11.3'
       multiple: false
       supervised: true
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: AllowedRemotes
   supportedOS:
@@ -35,7 +41,7 @@ payloadkeys:
       type: <string>
       presence: required
       content: The MAC address of a permitted iOS device that can control this Apple
-        TV. Use the format xx:xx:xx:xx:xx:xx. The field isn't case sensitive.
+        TV. Use the format 'xx:xx:xx:xx:xx:xx', which isn't case-sensitive.
 - key: AllowedTVs
   supportedOS:
     tvOS:
@@ -50,13 +56,13 @@ payloadkeys:
     - key: TVDeviceID
       type: <string>
       presence: required
-      content: The MAC address of an Apple TV device that this iOS device is permitted
-        to control. Use the format 'xx:xx:xx:xx:xx:xx'. The field isn't case sensitive.
+      content: The MAC address of an Apple TV device that the system permits this
+        iOS device to control. Use the format 'xx:xx:xx:xx:xx:xx', which isn't case-sensitive.
     - key: TVDeviceName
       supportedOS:
         iOS:
           introduced: '15.0'
       type: <string>
       presence: optional
-      content: The name of an Apple TV device that this iOS device is permitted to
-        control.
+      content: The name of an Apple TV device that the system permits this iOS device
+        to control.

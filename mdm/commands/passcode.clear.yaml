@@ -13,6 +13,17 @@ payload:
         mode: forbidden
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowPasscodeRemovalAndLock
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '10.0'
       accessrights: AllowPasscodeRemovalAndLock

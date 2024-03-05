@@ -4,6 +4,8 @@ description: Configures a computer to send or receive "PowerON". "PowerOFF", "Re
 payload:
   payloadtype: com.apple.lom
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '11.0'
       multiple: false
@@ -14,6 +16,12 @@ payload:
       allowmanualinstall: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Configures a computer to send or receive "PowerON". "PowerOFF", "Reset"
     requests.
 payloadkeys:
@@ -37,7 +45,7 @@ payloadkeys:
   title: CA certificate payload UUIDs
   type: <array>
   presence: optional
-  content: Array of payload UUIDs containing CA certificates that controllers use
+  content: An array of payload UUIDs containing CA certificates that controllers use
     to evaluate trust of device certificates.
   subkeys:
   - key: DeviceCACertificateUUIDsItem
@@ -47,7 +55,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    Array of payload UUIDs containing CA certificates that devices use to evaluate trust of controller certificates.
+    An array of payload UUIDs containing CA certificates that devices use to evaluate trust of controller certificates.
     This key configures the device to accept the LOMDeviceRequestCommand from MDM and then send it to the target device. This certificate must contain the Key Usage attributes of Digital Signature, Key Encipherment and Data Encipherment. As well as the Extended Key Usage attributes of Server Authentication and Client Authentication.
   subkeys:
   - key: ControllerCACertificateUUIDsItem

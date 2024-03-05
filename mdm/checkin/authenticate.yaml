@@ -23,6 +23,12 @@ payload:
     tvOS:
       introduced: '10.2'
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       supervised: false
@@ -33,6 +39,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -45,6 +53,8 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
@@ -55,6 +65,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -79,6 +91,9 @@ payloadkeys:
     macOS:
       userenrollment:
         mode: forbidden
+    visionOS:
+      userenrollment:
+        mode: forbidden
   type: <string>
   presence: required
   content: The device's UDID (Unique Device ID).
@@ -94,6 +109,9 @@ payloadkeys:
         mode: required
     tvOS:
       introduced: n/a
+    visionOS:
+      userenrollment:
+        mode: required
     watchOS:
       introduced: n/a
   type: <string>
@@ -104,6 +122,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+    visionOS:
       accessrights: AllowQueryDeviceInformation
     watchOS:
       introduced: '10.0'
@@ -116,6 +136,8 @@ payloadkeys:
     iOS:
       introduced: '9.0'
       accessrights: AllowQueryDeviceInformation
+    visionOS:
+      accessrights: AllowQueryDeviceInformation
     watchOS:
       introduced: '10.0'
       accessrights: AllowQueryDeviceInformation
@@ -126,6 +148,8 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '9.0'
+      accessrights: AllowQueryDeviceInformation
+    visionOS:
       accessrights: AllowQueryDeviceInformation
     watchOS:
       introduced: '10.0'
@@ -141,6 +165,10 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
+    visionOS:
       accessrights: AllowQueryDeviceInformation
       userenrollment:
         mode: forbidden
@@ -161,6 +189,10 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '10.0'
       accessrights: AllowQueryDeviceInformation
@@ -178,6 +210,10 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      accessrights: AllowQueryDeviceInformation
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '10.0'
       accessrights: AllowQueryDeviceInformation

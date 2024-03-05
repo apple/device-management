@@ -24,13 +24,20 @@ payload:
       requiresdep: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: This command allows the server to delete a user that has an active account
     on the device.
 payloadkeys:
 - key: UserName
   type: <string>
-  presence: required
-  content: The user name of the account to delete.
+  presence: optional
+  content: The user name of the account to delete. This key is required when the value
+    for DeleteAllUsers is absent or false.
 - key: ForceDeletion
   supportedOS:
     macOS:

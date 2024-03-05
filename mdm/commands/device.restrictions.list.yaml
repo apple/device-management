@@ -16,10 +16,19 @@ payload:
         userchannel: true
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '6.1'
       accessrights: AllowQueryRestrictions
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowQueryRestrictions
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: '10.0'
       accessrights: AllowQueryRestrictions

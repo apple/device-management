@@ -29,10 +29,14 @@ payload:
       multiple: false
       supervised: false
       allowmanualinstall: true
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: ANY
   type: <any>
   presence: optional
-  content: Keys relevant to 802.1X configuration.   User enrollment payloads do not
-    support the various proxy keys including ProxyType, ProxyServer, ProxyServerPort,
-    ProxyUsername, ProxyPassword, ProxyPACURL and ProxyPACFallbackAllowed.
+  content: Keys relevant to 802.1X configuration. User enrollment payloads don't support
+    the various proxy keys, including 'ProxyType', 'ProxyServer', 'ProxyServerPort',
+    'ProxyUsername', 'ProxyPassword', 'ProxyPACURL' and 'ProxyPACFallbackAllowed'.

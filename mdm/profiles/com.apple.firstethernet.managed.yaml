@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.firstethernet.managed
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: false
@@ -13,10 +15,16 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: ANY
   type: <any>
   presence: optional
-  content: Keys relevant to 802.1x configuration.   User enrollment payloads do not
+  content: Keys relevant to 802.1x configuration.  User enrollment payloads do not
     support the various proxy keys including ProxyType, ProxyServer, ProxyServerPort,
     ProxyUsername, ProxyPassword,, ProxyPACURL and ProxyPACFallbackAllowed.

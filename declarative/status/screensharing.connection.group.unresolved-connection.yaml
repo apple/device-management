@@ -9,13 +9,15 @@ payload:
     macOS:
       introduced: '14.1'
       allowed-enrollments:
-      - device
+      - supervised
       - user
       - local
       allowed-scopes:
       - system
       - user
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
     watchOS:
       introduced: n/a
@@ -24,7 +26,7 @@ payloadkeys:
   title: Connection Groups status
   type: <array>
   presence: required
-  content: Status value.
+  content: A status item that contains an array of unresolved connection groups.
   subkeytype: UnresolvedGroup
   subkeys:
   - key: unresolved_group
@@ -34,8 +36,7 @@ payloadkeys:
       title: Unique identifier of the connection group.
       type: <string>
       presence: required
-      content: The unique identifier (i.e., ConnectionGroupUUID) of the connection
-        group.
+      content: The unique 'ConnectionGroupUUID' identifier of the connection group.
     - key: _removed
       title: Indicates removal of the unresolved connection group.
       type: <boolean>
@@ -48,8 +49,8 @@ payloadkeys:
       title: Unique identifiers of unresolved connections.
       type: <array>
       presence: optional
-      content: An array of ConnectionUUID values (as specifed by the 'Members' key
-        in the group's declaration) which were not resolved.
+      content: An array of 'ConnectionUUID' values specified in the 'Members' key
+        in the group's declaration for the unresolved connections.
       subkeys:
       - key: ConnectionUUID
         title: Connection Unique Identifier

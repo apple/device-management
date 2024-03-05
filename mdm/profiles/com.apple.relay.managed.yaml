@@ -24,6 +24,17 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
+    watchOS:
+      introduced: n/a
 payloadkeys:
 - key: Relays
   title: Relays

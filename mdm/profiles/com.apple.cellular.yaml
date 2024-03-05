@@ -14,6 +14,12 @@ payload:
         userchannel: false
       userenrollment:
         mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: '3.2'
       multiple: false
@@ -65,7 +71,7 @@ payloadkeys:
     - 2
     - 3
     content: |-
-      The Internet Protocol versions that the system supports. Possible values are:
+      The Internet Protocol versions that the system supports. Allowed values:
 
       * '1': IPv4
       * '2': IPv6
@@ -128,7 +134,7 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The default Internet Protocol versions. Available in iOS 10.3 but no longer used in iOS 11 and later. Possible values are:
+        The default Internet Protocol versions. Available in iOS 10.3 but no longer used in iOS 11 and later. Allowed values:
 
         * '1': IPv4
         * '2': IPv6
@@ -145,7 +151,7 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports. Available in iOS 10.3 and later. Possible values are:
+        The Internet Protocol versions that the system supports. Available in iOS 10.3 and later. Allowed values:
 
         * '1': IPv4
         * '2': IPv6
@@ -162,7 +168,7 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Possible values are:
+        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Allowed values:
 
         * '1': IPv4
         * '2': IPv6
@@ -179,7 +185,7 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Possible values are:
+        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Allowed values:
 
         * '1': IPv4
         * '2': IPv6

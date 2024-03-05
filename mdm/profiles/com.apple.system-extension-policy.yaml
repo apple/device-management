@@ -3,6 +3,8 @@ description: ''
 payload:
   payloadtype: com.apple.system-extension-policy
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.15'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: false
       userenrollment:
         mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: Provides a way of enabling a set of team identifiers or specific system
     extensions for loading without user approval. Also provides a way to block users
     from approving additional system extensions. Payload must be user-approved only.

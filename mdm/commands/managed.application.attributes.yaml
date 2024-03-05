@@ -15,10 +15,19 @@ payload:
         userchannel: false
       userenrollment:
         mode: allowed
+    macOS:
+      introduced: n/a
     tvOS:
       introduced: '10.2'
       accessrights: AllowAppInstallation
       supervised: false
+    visionOS:
+      introduced: '1.1'
+      accessrights: AllowAppInstallation
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowAppInstallation
@@ -143,6 +152,8 @@ responsekeys:
             introduced: '16.4'
           tvOS:
             introduced: n/a
+          visionOS:
+            introduced: n/a
           watchOS:
             introduced: n/a
         type: <boolean>
@@ -157,6 +168,8 @@ responsekeys:
           iOS:
             introduced: '17.0'
           tvOS:
+            introduced: n/a
+          visionOS:
             introduced: n/a
           watchOS:
             introduced: n/a

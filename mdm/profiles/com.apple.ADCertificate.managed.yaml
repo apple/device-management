@@ -3,6 +3,8 @@ description: Active Directory Certificate
 payload:
   payloadtype: com.apple.ADCertificate.managed
   supportedOS:
+    iOS:
+      introduced: n/a
     macOS:
       introduced: '10.7'
       multiple: true
@@ -13,6 +15,12 @@ payload:
       allowmanualinstall: true
       userenrollment:
         mode: allowed
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
   content: A certificate can be requested from a Microsoft Certificate Authority (CA)
     using DCE/RPC and the Active Directory Certificate profile payload instructions
     detailed at support.apple.com/kb/HT5357.
@@ -47,9 +55,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The name of the certificate authority (CA). This value is determined from the common name (CN) of the Active Directory entry. Available in macOS 10.8 and later.
-
-    Valid values:
+    The name of the certificate authority (CA), which is determined from the common name (CN) of the Active Directory entry. Available in macOS 10.8 and later. Valid values:
     * CN=<your CA Name>
     * CN='Certification Authorities'
     * CN='Public Key Services'
@@ -83,9 +89,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user is prompted for credentials when the profile is installed.
-    This key applies only to user certificates with the Manual Download profile delivery
-    method. Omit this key for computer certificates. Available in macOS 10.8 and later.
+  content: If 'true', the system prompts the user for credentials when is installs
+    the profile. This key applies only to user certificates with the Manual Download
+    profile delivery method. Omit this key for computer certificates. Available in
+    macOS 10.8 and later.
 - key: KeyIsExtractable
   title: Key Is Extractable
   supportedOS:
@@ -94,8 +101,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows exporting the private key. Available in macOS 10.10 and
-    later.
+  content: If 'true', the system allows exporting the private key. Available in macOS
+    10.10 and later.
 - key: Keysize
   title: Key Size
   supportedOS:
