@@ -225,3 +225,8 @@ payloadkeys:
       type: <string>
       presence: optional
       content: A localized description.
+related-status-items:
+- status-items:
+  - passcode.is-compliant
+  - passcode.is-present
+  note: This configuration may affect the corresponding status items.

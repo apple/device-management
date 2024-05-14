@@ -151,3 +151,7 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The UUID of the VPN to associate with the app.
+related-status-items:
+- status-items:
+  - app.managed.list
+  note: Each configuration will have a corresponding status item.

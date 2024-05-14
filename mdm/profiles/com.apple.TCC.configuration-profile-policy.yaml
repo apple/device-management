@@ -291,3 +291,12 @@ payloadkeys:
     content: Allows the application to access data of other apps.
     subkeytype: Identity
     subkeys: *id001
+  - key: BluetoothAlways
+    supportedOS:
+      macOS:
+        introduced: '11.0'
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the app to access Bluetooth devices.
+    subkeytype: Identity
+    subkeys: *id001

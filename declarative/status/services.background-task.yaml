@@ -67,7 +67,7 @@ payloadkeys:
       - enabled
       - requires-approval
       - not-found
-      content: The SMAppServiceStatus enumeration.
+      content: The SMAppService.Status enumeration.
     - key: type
       title: Background task type
       type: <string>

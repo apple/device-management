@@ -43,3 +43,8 @@ payloadkeys:
   subkeys:
   - key: ConnectionUUID
     type: <string>
+related-status-items:
+- status-items:
+  - screensharing.connection.group.unresolved-connection
+  note: Any unresolved connection groups in the configuration will appear in the corresponding
+    status item.

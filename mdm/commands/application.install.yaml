@@ -326,7 +326,7 @@ responsekeys:
   - Managed
   - ManagedButUninstalled
   - UserInstalledApp
-  - UserRejectedFailed
+  - UserRejected
   - PromptingForUpdate
   - PromptingForUpdateLogin
   - ValidatingUpdate
@@ -334,6 +334,7 @@ responsekeys:
   - UpdateRejected
   - PromptingForManagement
   - ManagementRejected
+  - Failed
   - Unknown
   content: The app's installation state, if the user accepted the request. If this
     value is 'NeedsRedemption', the server must send a redemption code to complete

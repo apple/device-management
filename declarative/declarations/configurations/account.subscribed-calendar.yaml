@@ -59,3 +59,7 @@ payloadkeys:
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with a calendar server. Set the corresponding asset
     type to 'CredentialUserNameAndPassword'.
+related-status-items:
+- status-items:
+  - account.list.subscribed-calendar
+  note: Each configuration will have a corresponding status item.

@@ -283,8 +283,8 @@ payloadkeys:
     presence: optional
     content: |-
       A name that hides the user's true name. The user's actual name appears only inside the encrypted tunnel. For example, you might set this to anonymous or anon, or anon@mycompany.net. It can increase security because an attacker can't see the authenticating user's name in the clear.
-
       This key is only relevant to TTLS, PEAP, and EAP-FAST.
+      This field is required if 'TLSMinimumVersion' is '1.3'.
   - key: EAPFASTUsePAC
     title: Use PAC
     type: <boolean>

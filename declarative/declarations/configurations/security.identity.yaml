@@ -89,3 +89,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'true', the private key is extractable in the keychain.
+related-status-items:
+- status-items:
+  - security.certificate.list
+  note: Each configuration will have a corresponding status item.

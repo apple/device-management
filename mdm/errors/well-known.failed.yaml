@@ -1,0 +1,38 @@
+title: Error Well-known Failed
+description: Error response for well-known failed
+payload:
+  supportedOS:
+    iOS:
+      introduced: '17.5'
+    macOS:
+      introduced: '14.5'
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '1.2'
+    watchOS:
+      introduced: n/a
+  content: |-
+    The schema for a JSON or property list XML document returned in an MDM server's 403 response body. The
+    response headers must include a "Content-Type" header indicating whether JSON or XML is being returned.
+
+    This response is returned when a device is doing well-known resource service discovery for account driven
+    enrollments, and the server rejects the request.
+payloadkeys:
+- key: code
+  type: <string>
+  presence: required
+  rangelist:
+  - com.apple.well-known.failed
+  content: Indicates that the well-known request has failed.
+- key: description
+  type: <string>
+  presence: optional
+  content: The description of the error. This will only be used by the client for
+    logging purposes and will not be displayed to the user.
+- key: message
+  type: <string>
+  presence: optional
+  content: A description of the error suitable for displaying to the user. If needed,
+    the client will make a best-effort attempt to display the message, but may not
+    be able to, due to local conditions.

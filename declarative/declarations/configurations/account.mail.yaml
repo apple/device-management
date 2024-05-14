@@ -227,3 +227,9 @@ payloadkeys:
       default: false
       content: If 'true', the system enables the per-message encryption switch in
         the compose view.
+related-status-items:
+- status-items:
+  - account.list.mail.incoming
+  - account.list.mail.outgoing
+  note: Each configuration will have a corresponding status item for incoming and
+    outgoing accounts.

@@ -55,3 +55,25 @@ payloadkeys:
       version identifier can be included (e.g., "20A242a"). If the build version is
       not consistent with the OS version specified in the 'OSVersion' key, the OS
       version will take precedence.
+  - key: RequireBetaProgram
+    supportedOS:
+      iOS:
+        introduced: '17.5'
+      macOS:
+        introduced: '14.5'
+    type: <dictionary>
+    presence: optional
+    content: The device automatically enrolls in this beta program, to allow enforced
+      software updates to beta program OS versions. The device will remain in the
+      beta program after the enforced software update is completed.
+    subkeys:
+    - key: Description
+      type: <string>
+      presence: required
+      content: A human readable description of the beta program.
+    - key: Token
+      type: <string>
+      presence: required
+      content: The AxM seeding service token for the AxM organization the MDM server
+        is part of. This token is used to enroll the device in the corresponding beta
+        program.

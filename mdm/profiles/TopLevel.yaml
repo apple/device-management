@@ -128,6 +128,7 @@ payloadkeys:
     If present and set to 'true', the user can't delete the profile unless the profile has a removal password and the user provides it.
     On macOS 10.15 and later, this key only affects removal of manually installed profiles. If set to 'true' and no profile removal payload is present, removing the profile requires admin auth.
     On macOS versions prior to 10.15, this key prevents admins from removing MDM installed profiles. However, as of macOS 10.15, users can never remove MDM profiles, not even the admin.
+    On iOS users can't remove a MDM profile.
     Requires a supervised device.
 - key: PayloadScope
   supportedOS:

@@ -181,7 +181,7 @@ payloadkeys:
   content: |-
     If 'true', the device provides attestations that describe the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
     When 'Attest' is 'true', 'HardwareBound' also needs to be 'true'.
-    This key is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. If this key is specified for older macOS versions or other Mac devices, it must have a value of 'false'.
+    Setting this key to 'true' is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of 'false'.
 - key: KeyIsExtractable
   supportedOS:
     iOS:

@@ -37,7 +37,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The user name of the account to delete. This key is required when the value
-    for DeleteAllUsers is absent or false.
+    for 'DeleteAllUsers' is absent or 'false'.
 - key: ForceDeletion
   supportedOS:
     macOS:

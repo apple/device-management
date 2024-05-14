@@ -1557,7 +1557,8 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The dictionary to use when 'VPNType' is 'AlwaysOn'. Not available in watchOS.
+  content: The dictionary to use when 'VPNType' is 'AlwaysOn'. Not available in tvOS
+    or watchOS.
   subkeys:
   - key: UIToggleEnabled
     title: UI Toggle Enabled

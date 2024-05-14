@@ -58,3 +58,7 @@ payloadkeys:
   presence: required
   content: The identifier of an asset declaration that contains the certificate to
     install.
+related-status-items:
+- status-items:
+  - security.certificate.list
+  note: Each configuration will have a corresponding status item.

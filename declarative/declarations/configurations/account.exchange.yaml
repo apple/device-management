@@ -352,3 +352,7 @@ payloadkeys:
   default: false
   content: If 'true', the system prevents the user from changing the status of the
     notes service for this account.
+related-status-items:
+- status-items:
+  - account.list.exchange
+  note: Each configuration will have a corresponding status item.

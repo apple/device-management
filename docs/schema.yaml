@@ -349,3 +349,23 @@ properties:
                 - <array>
                 - <dictionary>
                 - <any>
+
+  related-status-items:
+    type: array
+    description: An array describing any status items that might be related to a configuration.
+    items:
+      type: object
+      description: An additional note about a payload. A note is written in "markdown" and can be transformed to HTML if needed.
+      additionalProperties: false
+      required:
+      - status-items
+      properties:
+        status-items:
+          type: array
+          description: List of status-item types.
+          items:
+            type:
+            - string
+        note:
+          type: string
+          description: A description of the relationship.

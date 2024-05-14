@@ -8,32 +8,17 @@ This release corresponds to the following OS versions
 
 | OS       | Version |
 |----------|---------|
-| iOS      | 17.4    |
-| macOS    | 14.4    |
-| tvOS     | 17.4    |
-| visionOS |  1.1    |
-| watchOS  | 10.4    |
+| iOS      | 17.5    |
+| macOS    | 14.5    |
+| tvOS     | 17.5    |
+| visionOS |  1.2    |
+| watchOS  | 10.5    |
 
 ## Important Release Notes
 
-### visionOS support
+### Declarative device management related status
 
-The 17.4/14.4 release adds a `visionOS` value to the `supportedOS` key to indicate support for visionOS devices.
-
-### Declarative device management supervision state
-
-The 17.4/14.4 release includes a major change to the `allowed-enrollments` key in declarative device management schema items. A new `supervised` value has been added. So now:
-
-* `supervised` is used to indicate support for a supervised device enrollment
-* `device` is used to indicate support for an unsupervised device enrollment.
-
-On macOS, device enrollments are always supervised, so the `device` value has been replaced by `supervised` in all `allowed-enrollments`.
-
-On other platforms, `supervision` has been added or `device` has been removed, as appropriate for actual support.
-
-### Declarative device management combinetype values
-
-The 17.4/14.4 release has renamed the `enum-lowest` and `enum-highest` combinetype values to `enum-first` and `enum-last` respectively.
+Declarative device management configuration schema now includes a `related-status-items` key to show the relationship between status items and configurations.
 
 ## What's Available
 

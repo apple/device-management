@@ -2010,7 +2010,7 @@ responsekeys:
     type: <real>
     content: The battery level, between '0.0' and '1.0', or '-1.0' if MDM can't determine
       the battery level. Requires the Device Information access right. Available in
-      iOS 5 and later.
+      iOS 5 and later, and macOS 13.3 and later.
   - key: HasBattery
     supportedOS:
       iOS:

@@ -56,3 +56,10 @@ payloadkeys:
   presence: optional
   content: The URL of a web page that shows details that the organization provides
     about the enforced update.
+related-status-items:
+- status-items:
+  - softwareupdate.failure-reason
+  - softwareupdate.install-reason
+  - softwareupdate.install-state
+  - softwareupdate.pending-version
+  note: This configuration may affect the corresponding status items.
