@@ -62,20 +62,26 @@ payloadkeys:
   supportedOS:
     macOS:
       introduced: '12.0'
+      deprecated: '15.0'
+      removed: '15.0'
   type: <boolean>
   presence: optional
   content: If 'true', the system enables logging. Available in macOS 12 and later.
+    Removed in macOS 15.
 - key: LoggingOption
   supportedOS:
     macOS:
       introduced: '12.0'
+      deprecated: '15.0'
+      removed: '15.0'
   type: <string>
   presence: optional
   rangelist:
   - throttled
   - brief
   - detail
-  content: The type of logging. Available in macOS 12 and later.
+  content: The type of logging. Available in macOS 12 and later. Removed in macOS
+    15.
 - key: AllowSigned
   supportedOS:
     macOS:

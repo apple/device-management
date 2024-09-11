@@ -1,0 +1,304 @@
+title: Software Update:Settings
+description: Software update settings
+payload:
+  declarationtype: com.apple.configuration.softwareupdate.settings
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '15.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: Notifications
+  title: Software Update Notifications
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If 'true', the device shows all software update enforcement notifications.
+    If 'false', the device only shows notifications triggered one hour before the
+    enforcement deadline, and the restart countdown notification.
+- key: Deferrals
+  title: Software Update Deferrals
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+  type: <dictionary>
+  presence: optional
+  content: Controls the deferral of software updates. Rapid Security Responses are
+    not considered within 'Major', 'Minor', or 'System' deferral mechanism.
+  subkeys:
+  - key: CombinedPeriodInDays
+    title: Combined Major/Minor Update Deferral Period
+    supportedOS:
+      macOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    range:
+      min: 1
+      max: 90
+    combinetype: number-max
+    content: Specifies the number of days to defer a major or minor OS software update
+      on the device. When set, software updates only appear after the specified delay,
+      following the release of the software update.
+  - key: MajorPeriodInDays
+    title: Major Update Deferral Period
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    range:
+      min: 1
+      max: 90
+    combinetype: number-max
+    content: Specifies the number of days to defer a major OS software update on the
+      device. When set, software updates only appear after the specified delay, following
+      the release of the software update.
+  - key: MinorPeriodInDays
+    title: Minor Update Deferral Period
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    range:
+      min: 1
+      max: 90
+    combinetype: number-max
+    content: Specifies the number of days to defer a minor OS software update on the
+      device. When set, software updates only appear after the specified delay, following
+      the release of the software update.
+  - key: SystemPeriodInDays
+    title: System Update Deferral Period
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <integer>
+    presence: optional
+    range:
+      min: 1
+      max: 90
+    combinetype: number-max
+    content: Specifies the number of days to defer system or non-OS updates. When
+      set, updates only appear after the specified delay, following the release of
+      the update.
+- key: RecommendedCadence
+  title: Software Update Recommended Cadence
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  rangelist:
+  - All
+  - Oldest
+  - Newest
+  combinetype: enum-last
+  content: |-
+    Specifies how the device shows software updates to the user. When more than one update is available update, the device behaves as follows:
+    * "All" - Shows all software update versions.
+    * "Oldest" - Shows only the oldest (lower numbered) software update version.
+    * "Newest" - Shows only the newest (highest numbered) software update version.
+- key: AutomaticActions
+  title: Automatic Software Update Settings
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+  type: <dictionary>
+  presence: optional
+  content: Specifies various automatic Software Update functionality.
+  subkeys:
+  - key: Download
+    title: Automatic downloads of available updates.
+    type: <string>
+    presence: optional
+    rangelist:
+    - Allowed
+    - AlwaysOn
+    - AlwaysOff
+    default: Allowed
+    combinetype: enum-last
+    content: |-
+      Specifies whether automatic downloads of available updates can be controlled by the user:
+      * "Allowed" - the user can enable or disable automatic downloads.
+      * "AlwaysOn" - automatic downloads are always enabled.
+      * "AlwaysOff" - automatic downloads are always disabled.
+  - key: InstallOSUpdates
+    title: Automatic installs of OS updates.
+    type: <string>
+    presence: optional
+    rangelist:
+    - Allowed
+    - AlwaysOn
+    - AlwaysOff
+    default: Allowed
+    combinetype: enum-last
+    content: |-
+      Specifies whether automatic install of available OS updates can be controlled by the user:
+      * "Allowed" - the user can enable or disable automatic installs.
+      * "AlwaysOn" - automatic installs are always enabled.
+      * "AlwaysOff" - automatic installs are always disabled.
+  - key: InstallSecurityUpdate
+    title: Automatic installs of available security updates.
+    supportedOS:
+      iOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    rangelist:
+    - Allowed
+    - AlwaysOn
+    - AlwaysOff
+    default: Allowed
+    combinetype: enum-last
+    content: |-
+      Specifies whether automatic install of available security updates can be controlled by the user:
+      * "Allowed" - the user can enable or disable automatic installs.
+      * "AlwaysOn" - automatic installs are always enabled.
+      * "AlwaysOff" - automatic installs are always disabled.
+- key: RapidSecurityResponse
+  title: Rapid Security Response Settings
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+  type: <dictionary>
+  presence: optional
+  content: These configurations allow for setting user access to interacting with
+    Rapid Security Responses (RSRs).
+  subkeys:
+  - key: Enable
+    title: Enable Rapid Security Response Installation
+    type: <boolean>
+    presence: optional
+    default: true
+    combinetype: boolean-and
+    content: If 'false', Rapid Security Responses are not offered for user installation.
+      Rapid Security Responses can still be installed via 'com.apple.configuration.softwareupdate.enforcement.specific'
+      configurations. If 'true', Rapid Security Responses are offered to the user.
+  - key: EnableRollback
+    title: Enable Rapid Security Response Rollbacks
+    type: <boolean>
+    presence: optional
+    default: true
+    combinetype: boolean-and
+    content: If 'false', Rapid Security Response rollbacks are not offered to the
+      user. If 'true', Rapid Security Response rollbacks are offered to the user.
+- key: AllowStandardUserOSUpdates
+  title: Allow Standard User OS Updates
+  supportedOS:
+    iOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If 'true', a standard user can perform Major and Minor Software Updates.
+    If 'false', only administrators can perform Major and Minor Software Updates.
+- key: Beta
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Configurations for controlling or specifying the beta programs associated
+    with a device.
+  subkeys:
+  - key: ProgramEnrollment
+    supportedOS:
+      iOS:
+        allowed-enrollments:
+        - supervised
+    type: <string>
+    presence: optional
+    rangelist:
+    - Allowed
+    - AlwaysOn
+    - AlwaysOff
+    default: Allowed
+    combinetype: enum-last
+    content: |-
+      Specifies whether beta program enrollment can be controlled by the user in software update settings UI:
+      * "Allowed" - the user can enroll in any applicable beta programs associated with their
+        logged in Apple Account. If the `OfferPrograms` key is present, then the programs listed in
+        that key are also presented to the user.
+      * "AlwaysOn" - the beta programs specified by the organization are used, and the user
+        is not be able to enroll in a beta program using their logged in Apple Account. The device
+        is automatically enrolled into the beta program specified by the `RequireProgram` key if
+        it is present. Otherwise, the programs listed in the `OfferPrograms` key are
+        presented to the user to choose which to enroll with.
+      * "AlwaysOff" - The device is not allowed to enroll in any beta programs. The device is
+        removed from any beta programs, if already enrolled.
+  - key: OfferPrograms
+    type: <array>
+    presence: optional
+    combinetype: set-union
+    content: An array of beta programs allowed on the device. This key must only be
+      present if the `ProgramEnrollment` key is set to `Allowed` or `AlwaysOn`. This
+      key must not be present if the `RequireProgram` key is present. This key can
+      be present on unsupervised devices where the `ProgramEnrollment` key is not
+      supported but is implicitly set to `Allowed`.
+    subkeys:
+    - key: Program
+      type: <dictionary>
+      presence: required
+      content: The name and token associated with a specific beta program to be allowed.
+      subkeys:
+      - key: Description
+        type: <string>
+        presence: required
+        content: A human readable description of the beta program.
+      - key: Token
+        type: <string>
+        presence: required
+        content: The Apple Business Manager or Apple School Manager seeding service
+          token for the organization the MDM server is part of. This token is used
+          to enroll the device in the corresponding beta program.
+  - key: RequireProgram
+    supportedOS:
+      iOS:
+        allowed-enrollments:
+        - supervised
+    type: <dictionary>
+    presence: optional
+    combinetype: first
+    content: The device automatically enrolls in this beta program. This key must
+      only be present if the `ProgramEnrollment` key is set to `AlwaysOn`. The `OfferPrograms`
+      key must not be present if this key is present.
+    subkeys:
+    - key: Description
+      type: <string>
+      presence: required
+      content: A human readable description of the beta program.
+    - key: Token
+      type: <string>
+      presence: required
+      content: The Apple Business Manager or Apple School Manager seeding service
+        token for the organization the MDM server is part of. This token is used to
+        enroll the device in the corresponding beta program.
+related-status-items:
+- status-items:
+  - softwareupdate.beta-enrollment
+  - softwareupdate.pending-version

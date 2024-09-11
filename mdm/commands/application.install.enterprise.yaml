@@ -40,7 +40,8 @@ payloadkeys:
 - key: ManifestURL
   type: <string>
   presence: optional
-  content: The URL of the app manifest, which needs to begin with 'https:'.
+  content: The URL of the app manifest, which needs to begin with 'https:'. The manifest
+    is returned as a property list.
 - key: ManifestURLPinningCerts
   type: <array>
   presence: optional

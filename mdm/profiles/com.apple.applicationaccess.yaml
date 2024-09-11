@@ -25,7 +25,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.1'
+      introduced: '9.0'
       multiple: true
       supervised: false
       allowmanualinstall: true
@@ -56,14 +56,17 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       supervised: true
   type: <boolean>
   presence: optional
   default: true
   content: If 'false', the system disables modification of accounts such as Apple
-    IDs and Internet-based accounts such as Mail, Contacts, and Calendar. Available
+    Accounts and Internet-based accounts such as Mail, Contacts, and Calendar. Available
     in iOS 7 and later, macOS 14 and later, and watchOS 10 and later. Requires a supervised
     device in iOS and watchOS.
 - key: allowActivityContinuation
@@ -80,7 +83,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -88,8 +93,9 @@ payloadkeys:
   default: true
   content: If 'false', the system disables activity continuation. Available in iOS
     8 and later, and macOS 10.15 and later. Support for this restriction on unsupervised
-    devices and with managed Apple IDs is deprecated. In a future release, this restriction
-    will begin requiring supervision and will apply to personal Apple IDs only.
+    devices and with Managed Apple Accounts is deprecated. In a future release, this
+    restriction will begin requiring supervision and will apply to personal Apple
+    Accounts only.
 - key: allowAddingGameCenterFriends
   title: Allow Adding Game Center Friends
   supportedOS:
@@ -128,7 +134,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -278,7 +287,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       supervised: true
   type: <boolean>
@@ -300,7 +312,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -362,7 +376,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -448,7 +462,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If set to false, disables auto dim on iPads with OLED displays.
+  content: If 'false', disables auto dim on iPads with OLED displays. Requires a supervised
+    device in iOS. Available in iOS 17.4 and later.
 - key: allowAutomaticAppDownloads
   title: Allow Automatic App Downloads
   supportedOS:
@@ -602,7 +617,6 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '4.0'
-      supervised: false
       userenrollment:
         mode: forbidden
     macOS:
@@ -611,9 +625,10 @@ payloadkeys:
         mode: forbidden
     tvOS:
       introduced: '17.0'
-      supervised: false
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -690,7 +705,6 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '5.0'
-      supervised: false
       userenrollment:
         mode: forbidden
     macOS:
@@ -698,7 +712,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -780,7 +796,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -789,7 +808,7 @@ payloadkeys:
   content: If 'false', the system disables document and key-value syncing to iCloud.
     Available in iOS 5 and later, and macOS 10.11 and later. Requires a supervised
     device in iOS 13 and later, and Shared iPad doesn't support it. Support for this
-    restriction on unsupervised devices and with managed Apple IDs is deprecated.
+    restriction on unsupervised devices and with Managed Apple Accounts is deprecated.
 - key: allowCloudFreeform
   supportedOS:
     iOS:
@@ -813,7 +832,6 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '7.0'
-      supervised: false
       userenrollment:
         mode: forbidden
     macOS:
@@ -823,7 +841,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -831,7 +851,7 @@ payloadkeys:
   default: true
   content: If 'false', the system disables iCloud keychain synchronization. Available
     in iOS 7 and later, and macOS 10.12 and later. Support for this restriction on
-    unsupervised devices and with managed Apple IDs is deprecated.
+    unsupervised devices and with Managed Apple Accounts is deprecated.
 - key: allowCloudMail
   supportedOS:
     iOS:
@@ -884,7 +904,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -893,7 +915,8 @@ payloadkeys:
   content: If 'false', the system disables iCloud Photo Library. The system removes
     any photos from local storage that aren't fully downloaded from iCloud Photo Library
     to the device. Available in iOS 9 and later, and macOS 10.12 and later. Support
-    for this restriction on unsupervised devices and with managed Apple IDs is deprecated.
+    for this restriction on unsupervised devices and with Managed Apple Accounts is
+    deprecated.
 - key: allowCloudPrivateRelay
   supportedOS:
     iOS:
@@ -908,7 +931,8 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -916,7 +940,7 @@ payloadkeys:
   default: true
   content: If 'false', the system disables iCloud Private Relay. Available in iOS
     15 and later, and in macOS 12 and later. Requires a supervised device in iOS.
-    Support for this restriction on unsupervised devices and with managed Apple IDs
+    Support for this restriction on unsupervised devices and with Managed Apple Accounts
     is deprecated.
 - key: allowCloudReminders
   supportedOS:
@@ -1017,7 +1041,10 @@ payloadkeys:
       introduced: '11.0'
       supervised: true
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1055,7 +1082,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
   type: <boolean>
   presence: optional
   default: true
@@ -1075,7 +1102,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1120,7 +1150,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1142,7 +1175,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1205,7 +1240,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1235,6 +1273,27 @@ payloadkeys:
   default: true
   content: If 'false', the system disables modifications of eSIMs. Requires a supervised
     device. Available in iOS 12.1 and later.
+- key: allowESIMOutgoingTransfers
+  title: Allow eSIM Outgoing Transfers
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prevents the transfer of an eSIM from the device on which the
+    restriction is installed to a different device. Available in iOS 18 and later.
 - key: allowExplicitContent
   title: Allow Explicit Content
   supportedOS:
@@ -1291,7 +1350,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1397,7 +1459,9 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1421,7 +1485,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1454,6 +1521,30 @@ payloadkeys:
   content: If 'false', the system disables Game Center, and the system removes its
     icon from the Home screen. Available in iOS 6 and later, and macOS 10.13 and later.
     Requires a supervised device in iOS.
+- key: allowGenmoji
+  title: Allow Genmoji
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits creating new Genmoji. Available in iOS 18 and later.
 - key: allowGlobalBackgroundFetchWhenRoaming
   title: Allow Automatic Sync While Roaming
   supportedOS:
@@ -1498,6 +1589,53 @@ payloadkeys:
     disables all pairing. Host pairing lets the administrator control if an iOS device
     can pair with a host Mac or PC. Requires a supervised device. Available in iOS
     7 and later.
+- key: allowImagePlayground
+  title: Allow Image Playground
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits the use of image generation. Available in iOS 18
+    and later and macOS 15 and later.
+- key: allowImageWand
+  title: Allow Image Wand
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits the use of Image Wand. Available in iOS 18 and later.
 - key: allowInAppPurchases
   title: Allow In App Purchases
   supportedOS:
@@ -1538,6 +1676,31 @@ payloadkeys:
   default: true
   content: If 'false', the system prevents modifying the Internet Sharing setting
     in System Settings. Available in macOS 14 and later.
+- key: allowiPhoneMirroring
+  title: Allow iPhone mirroring
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', prohibits the use of iPhone Mirroring. When used on macOS,
+    this prevents the Mac from mirroring any iPhone. When used on iOS, this prevents
+    the iPhone from mirroring to any Mac. Available in iOS 18 and later and macOS
+    15 and later.
 - key: allowiPhoneWidgetsOnMac
   title: Allow iPhone widget on Mac
   supportedOS:
@@ -1560,8 +1723,8 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', the system disallows iPhone widgets on a Mac that has signed
-    in the same Apple ID for iCloud. Requires a supervised device. Available on iOS
-    17 and later.
+    in the same Apple Account for iCloud. Requires a supervised device. Available
+    on iOS 17 and later.
 - key: allowiTunes
   title: Allow use of iTunes
   supportedOS:
@@ -1775,7 +1938,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1796,7 +1959,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1928,7 +2094,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1946,7 +2115,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -1964,7 +2133,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2050,7 +2219,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2073,7 +2245,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2125,7 +2300,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2155,6 +2333,27 @@ payloadkeys:
   default: true
   content: If 'false', the system disables modifications of the personal hotspot setting.
     Requires a supervised device. Available in iOS 12.2 and later.
+- key: allowPersonalizedHandwritingResults
+  title: Allow personalized handwriting results
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, prevents the system from generating text in the user's handwriting.
+    Available in iOS 18 and later.
 - key: allowPhotoStream
   title: Allow Photo Stream
   supportedOS:
@@ -2417,7 +2616,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
   type: <boolean>
   presence: optional
   default: true
@@ -2541,7 +2740,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2582,7 +2784,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       supervised: true
   type: <boolean>
@@ -2606,7 +2811,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2646,7 +2854,8 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      allowmanualinstall: false
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2734,7 +2943,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2776,7 +2988,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -2826,8 +3041,33 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: When 'false', the device prevents installation of apps directly from the
-    web.
+  content: If 'false', the device prevents installation of apps directly from the
+    web. Available in iOS 17.5 and later.
+- key: allowWritingTools
+  title: Allow writing tools
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.0'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If 'false', disables Apple Intelligence writing tools. Available in iOS
+    18 and later and macOS 15 and later.
 - key: autonomousSingleAppModePermittedAppIDs
   supportedOS:
     iOS:
@@ -3039,7 +3279,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -3054,7 +3294,7 @@ payloadkeys:
     macOS:
       introduced: n/a
     tvOS:
-      introduced: '6.2'
+      introduced: '9.0'
     visionOS:
       introduced: n/a
     watchOS:
@@ -3140,7 +3380,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -3164,7 +3407,10 @@ payloadkeys:
       introduced: '12.2'
       supervised: true
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -3407,7 +3653,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
   type: <boolean>
   presence: optional
   default: false
@@ -3502,7 +3748,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -3658,7 +3907,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -3710,7 +3959,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>

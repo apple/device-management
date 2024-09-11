@@ -107,6 +107,20 @@ payloadkeys:
   - key: DenyListURLItems
     title: Denylisted url items
     type: <string>
+- key: HideDenyListURLs
+  title: HideDenyListURLs
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+    macOS:
+      introduced: n/a
+    visionOS:
+      introduced: '2.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: Hide the DenyListURLs in profiles UI in Settings > General > VPN & Device
+    Management > profiles details.
 - key: WhitelistedBookmarks
   title: White list
   supportedOS:

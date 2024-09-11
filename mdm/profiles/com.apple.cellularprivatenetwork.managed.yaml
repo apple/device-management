@@ -5,7 +5,7 @@ payload:
   supportedOS:
     iOS:
       introduced: '17.0'
-      multiple: false
+      multiple: true
       supervised: false
       allowmanualinstall: true
       sharedipad:
@@ -24,7 +24,7 @@ payload:
       introduced: n/a
   content: Payload can be used to provide device info on private network deployments
     including geographical location, preference over wifi, and network deployment
-    type.
+    type. Only five Cellular Private Networks can be configured simultaneously.
 payloadkeys:
 - key: Geofences
   type: <array>
@@ -79,3 +79,23 @@ payloadkeys:
   presence: optional
   default: false
   content: Set to 'true' if this private network is NR Standalone.
+- key: NetworkIdentifier
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+  type: <string>
+  presence: optional
+  content: String formatted in accordance with the definition of a "Coordinated NID"
+    (option 1 or option 2) in 3GPP 31.102 §12.7.1. Used to match this profile to a
+    SIM present on the device. All combinations of NetworkIdentifier and CsgNetworkIdentifier
+    must be unique between profiles installed on the device.
+- key: CsgNetworkIdentifier
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+  type: <string>
+  presence: optional
+  content: String formatted in accordance with the definition of "CSG_ID" in 3GPP
+    23.003 §4.7. Used to match this profile to a SIM present on the device. All combinations
+    of NetworkIdentifier and CsgNetworkIdentifier must be unique between profiles
+    installed on the device.

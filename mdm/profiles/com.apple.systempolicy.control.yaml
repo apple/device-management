@@ -35,3 +35,11 @@ payloadkeys:
     If 'true', enables Gatekeeper's 'Mac App Store and identified developers' option.
     If 'false', enables Gatekeeper's 'Mac App Store' option.
     If the value of 'EnableAssessment' isn't set to 'true', this key has no effect.
+- key: EnableXProtectMalwareUpload
+  supportedOS:
+    macOS:
+      introduced: '15.0'
+  type: <boolean>
+  presence: optional
+  content: If 'false', prevents Gatekeeper from prompting the user to upload blocked
+    malware to Apple for purposes of improving malware detection.

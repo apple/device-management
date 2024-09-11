@@ -74,6 +74,6 @@ payloadkeys:
     - key: Token
       type: <string>
       presence: required
-      content: The AxM seeding service token for the AxM organization the MDM server
-        is part of. This token is used to enroll the device in the corresponding beta
-        program.
+      content: The Apple Business Manager or Apple School Manager seeding service
+        token for the organization the MDM server is part of. This token is used to
+        enroll the device in the corresponding beta program.

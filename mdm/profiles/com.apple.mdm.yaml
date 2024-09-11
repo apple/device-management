@@ -25,7 +25,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       multiple: false
       supervised: false
       allowmanualinstall: true
@@ -53,25 +53,25 @@ payloadkeys:
   title: Topic
   type: <string>
   presence: required
-  content: The topic that MDM listens to for push notifications. The certificate that
-    the server uses to send push notifications must have the same topic in its subject.
-    The topic must begin with the 'com.apple.mgmt.' prefix.
+  content: |-
+    The topic that MDM listens to for push notifications. The certificate that the server uses to send push notifications must have the same topic in its subject. The topic must begin with the 'com.apple.mgmt.' prefix.
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
 - key: ServerURL
   title: Server URL
   type: <string>
   presence: required
   format: ^https://.*$
-  content: The URL that the device contacts to retrieve device management instructions.
-    The URL must begin with the 'https://' URL scheme, and may contain a port number
-    (':1234', for example).
+  content: |-
+    The URL that the device contacts to retrieve device management instructions. The URL must begin with the 'https://' URL scheme, and may contain a port number (':1234', for example).
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
 - key: CheckInURL
   title: Check In URL
   type: <string>
   presence: optional
   format: ^https://.*$
-  content: The URL that the device should use to check in during installation. The
-    URL must begin with the 'https://' URL scheme and may contain a port number (':1234',
-    for example). If not set, the system uses 'ServerURL'.
+  content: |-
+    The URL that the device should use to check in during installation. The URL must begin with the 'https://' URL scheme and may contain a port number (':1234', for example). If not set, the system uses 'ServerURL'.
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
 - key: SignMessage
   title: Sign Message
   type: <boolean>
@@ -111,6 +111,8 @@ payloadkeys:
     * '4096': Allow app management.
 
     Don't set to '0'. Specify '1' if you specify '2'. Specify '64' if you specify '128'. Ignored if you set a value for 'ManagedAppleID'.
+
+    When updating the payload, the addition of any access right is an error, and the update rejected.
 - key: UseDevelopmentAPNS
   title: Use Development APNS
   type: <boolean>
@@ -120,16 +122,18 @@ payloadkeys:
     If 'true', the device uses the development APNS servers. Otherwise, the device uses the production servers.
     Set to 'false' if your Apple Push Notification Service certificate was issued by the Apple Push Certificate Portal ('https://identity.apple.com/pushcert'). That portal only issues certificates for the production push environment.
 - key: ManagedAppleID
-  title: Managed Apple ID
+  title: Managed Apple Account
   supportedOS:
     iOS:
       introduced: '13.1'
       deprecated: '17.0'
+      removed: '18.0'
       userenrollment:
         mode: required
     macOS:
       introduced: '10.15'
       deprecated: '14.0'
+      removed: '15.0'
       userenrollment:
         mode: required
     tvOS:
@@ -140,12 +144,11 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The Managed Apple ID of the user. Required for profile-driven user enrollment.
-    Don't set for account-driven enrollment. Available in iOS 13.1 and later, and
-    macOS 10.15 and later. As of iOS 17 and macOS 14, profile-driven user enrollment
-    is deprecated and will be removed in a future release.
+  content: |-
+    The Managed Apple Account of the user. Previously required for profile-driven user enrollment.
+    Removed as of iOS 18 and macOS 15.
 - key: AssignedManagedAppleID
-  title: Assigned Managed Apple ID
+  title: Assigned Managed Apple Account
   supportedOS:
     iOS:
       introduced: '15.0'
@@ -157,9 +160,10 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The Managed Apple ID pre-assigned to the authenticated user. The system
-    only uses this value with account-driven enrollment. Don't set this value for
-    profile-driven user enrollment. Available in iOS 15 and later.
+  content: |-
+    The Managed Apple Account pre-assigned to the authenticated user. The system only uses this value with account-driven enrollment.
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
+    Available in iOS 15 and later.
 - key: EnrollmentMode
   title: Enrollment Mode
   supportedOS:
@@ -176,9 +180,10 @@ payloadkeys:
   rangelist:
   - BYOD
   - ADDE
-  content: The enrollment mode the server indicates to use when enrolling. Required
-    for account-driven enrollment. Don't set for profile-driven user enrollment. Available
-    in iOS 15 and macOS 14, and later.
+  content: |-
+    The enrollment mode the server indicates to use when enrolling. Required for account-driven enrollment.
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
+    Available in iOS 15 and macOS 14, and later.
 - key: ServerURLPinningCertificateUUIDs
   supportedOS:
     iOS:
@@ -231,9 +236,13 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    A unique array of strings indicating server capabilities. If the server manages macOS devices or a Shared iPad, this field is mandatory and must contain the value 'com.apple.mdm.per-user-connections', which indicates that the server supports both device and user connections.
-    Starting with macOS 11, it's also recommended that macOS device enrollment profiles contain the value 'com.apple.mdm.bootstraptoken' to ensure the Bootstrap Token is created and escrowed with the MDM server at enrollment time.
-    If the server supports the "GetToken" CheckIn message type, then this key must be present and must include "com.apple.mdm.token" as one of its values.
+    A unique array of strings indicating server capabilities.
+
+    * com.apple.mdm.per-user-connections - used to indicate that the server supports both device and user connections. This must be present when managing Shared iPad or macOS devices.
+    * com.apple.mdm.bootstraptoken - used to indicate that the server supports escrowing the Bootstrap Token. This must be present to have the device create a Bootstrap Token and send it to the server. Available as of macOS 11.0.
+    * com.apple.mdm.token - used to indicate that the server supports the "GetToken" CheckIn message type. This must be present to have the device use "GetToken" CheckIn message requests when appropriate.
+
+    When updating the payload, the "com.apple.mdm.per-user-connections" capability must not be added or removed. Any such change is an error, and the update rejected.
   subkeys:
   - key: ServerCapabilitiesItems
     type: <string>
@@ -262,6 +271,7 @@ payloadkeys:
   content: |-
     This property specifies an iTunes Store ID for an app the system can install with the InstallApplicationCommand, without any approval from the user. The MDM vendor or managing organization generally provides this app, which enhances the management experience for the user. The device shows the user details about this app in the account-driven enrollment process prior to installing the MDM profile. Use this property with account-driven MDM enrollment that normally requires user approval for app installs through MDM.
     Only account-driven enrollment supports this property and other enrollment types ignore it.
+    When updating the payload, the value of this key must not change. Any change is an error, and the update rejected.
     Available in iOS 15.1 and later.
 - key: PromptUserToAllowBootstrapTokenForAuthentication
   supportedOS:

@@ -1,4 +1,4 @@
-title: Security Information Command
+title: Security Info Command
 description: This command queries the device for security-related information. Queries
   are available if the MDM host has the Security Query right.
 payload:
@@ -24,7 +24,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       accessrights: AllowQuerySecurity
       supervised: false
     visionOS:

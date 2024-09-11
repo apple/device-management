@@ -67,11 +67,31 @@ payloadkeys:
     subkeys:
     - key: DeviceID
       title: Device ID
+      supportedOS:
+        iOS:
+          deprecated: '18.0'
+        macOS:
+          deprecated: '15.0'
       type: <string>
-      presence: required
+      presence: optional
       format: ^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$
-      content: The device ID of the AirPlay destination in the format 'xx:xx:xx:xx:xx:xx'.
-        This field isn't case-sensitive.
+      content: |-
+        The device ID of the AirPlay destination in the format 'xx:xx:xx:xx:xx:xx'. This field isn't case-sensitive.
+        The list of visible AirPlay destinations will be limited to devices that are present in the `AllowList` field of all installed AirPlay payloads.
+        Specifying the same MACAddress more than once, whether in the same payload across different payloads, will result in undefined behavior.
+        As of iOS 18 and macOS 15, `DeviceID` isn't supported, as tvOS 18 AirPlay destinations do not support it.
+    - key: DeviceName
+      title: Device Name
+      supportedOS:
+        iOS:
+          introduced: '18.0'
+        macOS:
+          introduced: '15.0'
+      type: <string>
+      presence: optional
+      content: |-
+        The name of the AirPlay device.
+        The list of visible AirPlay destinations will be limited to devices that are present in the AllowList field of all installed AirPlay payloads.
 - key: Passwords
   title: Passwords
   type: <array>
@@ -89,10 +109,11 @@ payloadkeys:
       title: Device Name
       supportedOS:
         macOS:
-          introduced: n/a
+          introduced: '15.0'
       type: <string>
       presence: required
-      content: The name of the AirPlay destination; used in iOS.
+      content: The name of the AirPlay destination; used in iOS, and available in
+        macOS 15 and later.
     - key: Password
       title: Password
       type: <string>
@@ -102,9 +123,13 @@ payloadkeys:
       supportedOS:
         iOS:
           introduced: n/a
+        macOS:
+          deprecated: '15.0'
       type: <string>
-      presence: required
-      content: The device ID of the AirPlay destination; used in macOS.
+      presence: optional
+      content: |-
+        The device ID of the AirPlay destination; used in macOS.
+        In macOS 15 and later, 'DeviceID' is deprecated as tvOS 18 AirPlay destinations do not support it; use 'DeviceName' instead.
 - key: Whitelist
   title: Whitelist
   supportedOS:

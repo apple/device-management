@@ -25,7 +25,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '5.1'
+      introduced: '9.0'
       multiple: true
       supervised: false
       allowmanualinstall: true
@@ -343,7 +343,7 @@ payloadkeys:
       macOS:
         introduced: '10.8'
       tvOS:
-        introduced: '7.0'
+        introduced: '9.0'
     type: <boolean>
     presence: optional
     default: false
@@ -618,7 +618,7 @@ payloadkeys:
   presence: optional
   content: The password used to authenticate to the proxy server.
 - key: ProxyPACURL
-  title: Proxy Username
+  title: Proxy PAC URL
   supportedOS:
     iOS:
       userenrollment:
@@ -657,7 +657,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
     macOS:
-      introduced: n/a
+      introduced: '15.0'
+      userenrollment:
+        mode: forbidden
     tvOS:
       introduced: n/a
     visionOS:
@@ -670,5 +672,5 @@ payloadkeys:
   default: false
   content: |-
     If 'true,' disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
-    If 'false', then the system enables MAC address randomization.
-    This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it. Available in iOS 14 and later, and watchOS 7 and later.
+    If 'false', then the system enables MAC address randomization on iOS, watchOS, and visionOS.
+    This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it. Available in iOS 14 and later, watchOS 7 and later, macOS 15 and later, and visionOS.

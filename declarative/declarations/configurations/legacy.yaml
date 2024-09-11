@@ -36,6 +36,7 @@ payload:
     visionOS:
       introduced: '1.1'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -55,5 +56,5 @@ payloadkeys:
   type: <string>
   presence: required
   content: |-
-    The URL of the profile to download and install, which needs to start with 'https://', and must be hosted by the MDM server. The system silently ignores any account or passcode payloads in the profile. Use their declarative configurations instead.
+    The URL of the profile to download and install, which needs to start with 'https://', and must be hosted by the MDM server.
     If a user enrollment triggers this configuration, the system silently ignores any MDM 1 payloads in macOS where the User Enrollment Mode setting is 'forbidden'. In iOS and tvOS, the system rejects the entire profile.

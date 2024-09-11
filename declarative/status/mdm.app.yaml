@@ -27,6 +27,7 @@ payload:
     visionOS:
       introduced: '1.1'
       allowed-enrollments:
+      - supervised
       - device
       - user
       allowed-scopes:
@@ -61,7 +62,8 @@ payloadkeys:
       default: false
       content: To indicate removal of an app, this key's value is set to true, and
         only this key and the "identifier" key will be present in the status item
-        object.
+        object. An MDM installed app will be reported as removed if management of
+        the app has been transferred to declarative device management.
     - key: name
       title: App name
       type: <string>

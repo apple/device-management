@@ -72,11 +72,11 @@ payloadkeys:
   content: The key to skip the Choose Your Look screen. This key is available in iOS
     13+ and macOS 10.14 and later.
 - key: AppleID
-  title: Disables signing in to Apple ID and iCloud
+  title: Disables signing in to an Apple Account and iCloud
   type: <string>
   presence: optional
-  content: The key to skip Apple ID setup. This key is available in iOS 7.0+, tvOS
-    10.2 and later, and macOS 10.9 and later.
+  content: The key to skip Apple Account setup. This key is available in iOS 7.0+,
+    tvOS 10.2 and later, and macOS 10.9 and later.
 - key: AppStore
   title: Skips AppStore information pane
   supportedOS:
@@ -148,7 +148,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The key to skip the Lockdown Mode pane if an Apple ID is set up. Available
+  content: The key to skip the Lockdown Mode pane if an Apple Account is set up. Available
     in macOS 14 and later, and iOS 17.1 and later.
 - key: FileVault
   title: Skip configuration of FileVault
@@ -217,6 +217,34 @@ payloadkeys:
   presence: optional
   content: The key to skip the iMessage and FaceTime screen in iOS. This key is available
     in iOS 12 and later.
+- key: Intelligence
+  title: Skip Intelligence setup pane
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+    macOS:
+      introduced: '15.0'
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the Intelligence pane. This key is available in iOS 18
+    and later and macOS 15 and later.
+- key: Keyboard
+  title: Skip Keyboard pane
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      always-skippable: false
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Keyboard pane will be
+    skipped. This pane isn't always skippable because it appears before the device
+    retrieves the Cloud Configuration from the server.
 - key: Location
   title: Disables Location Services
   supportedOS:
@@ -382,6 +410,21 @@ payloadkeys:
   presence: optional
   content: The key to skip the mandatory software update screen in iOS. This key is
     available in iOS 12 and later.
+- key: SpokenLanguage
+  title: Skip Dictation pane
+  supportedOS:
+    iOS:
+      introduced: '13.0'
+      always-skippable: false
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Dictation pane will be
+    skipped. This pane isn't always skippable because it appears before the device
+    retrieves the Cloud Configuration from the server.
 - key: TapToSetup
   title: Skips simplified tap setup
   supportedOS:
@@ -393,8 +436,8 @@ payloadkeys:
       always-skippable: false
   type: <string>
   presence: optional
-  content: The key to skip the Tap To Set Up option in AppleTV about using an iOS
-    device to set up your AppleTV. This key is available in tvOS 10.2 and later.
+  content: The key to skip the Tap To Set Up option in Apple TV related to using an
+    iOS device to set up your Apple TV. This key is available in tvOS 10.2 and later.
 - key: TermsOfAddress
   title: Skips Terms of Address
   supportedOS:
@@ -467,7 +510,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The key to skip the Software Update Complete pane. This field is available
+  content: The key to skip the Software Update Complete pane. This key is available
     in iOS 14 and later.
 - key: Wallpaper
   title: Skips Wallpaper selection
@@ -502,7 +545,7 @@ payloadkeys:
     iOS:
       introduced: '13.0'
     macOS:
-      introduced: n/a
+      introduced: '15.0'
     tvOS:
       introduced: n/a
   type: <string>

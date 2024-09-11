@@ -1,0 +1,101 @@
+title: Safari:Extension Settings
+description: Use this configuration to manage Safari Extensions.
+payload:
+  declarationtype: com.apple.configuration.safari.extensions.settings
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '15.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: ManagedExtensions
+  title: Managed Extensions
+  type: <dictionary>
+  presence: optional
+  content: Extensions being managed
+  subkeys:
+  - key: ANY
+    type: <dictionary>
+    presence: optional
+    content: The composed identifier of the managed extension, or "*" for all extensions.
+      In order for the extension to be managed, its host app must be present on the
+      device. To generate this string use codesign -dv <path_to_appex>. The browser
+      extension is located in the PlugIns folder inside the app bundle. The expected
+      format is "Identifier (TeamIdentifier)". For extensions that are not also available
+      on macOS the app developer will need to provide this information.
+    subkeytype: ExtensionDictionary
+    subkeys:
+    - key: State
+      title: Extension state
+      type: <string>
+      presence: optional
+      rangelist:
+      - Allowed
+      - AlwaysOn
+      - AlwaysOff
+      combinetype: enum-last
+      content: |-
+        Controls whether an extension is allowed.
+        * Allowed - The user is allowed to turn the extension on or off
+        * AlwaysOn - The extension will always be on
+        * AlwaysOff - The extension will always be off
+    - key: PrivateBrowsing
+      title: Private Browsing state
+      type: <string>
+      presence: optional
+      rangelist:
+      - Allowed
+      - AlwaysOn
+      - AlwaysOff
+      combinetype: enum-last
+      content: |-
+        Controls whether an extension is allowed in Private Browsing.
+        * Allowed - The user is allowed to turn the extension on or off in Private Browsing
+        * AlwaysOn - The extension will always be on in Private Browsing if the extension is on outside of Private Browsing
+        * AlwaysOff - The extension will never be on in Private Browsing
+    - key: AllowedDomains
+      title: Allowed domains
+      type: <array>
+      presence: optional
+      combinetype: set-union
+      content: Controls the domains and sub-domains the extension is granted access
+        to. Any non-prefixed domains take precedence over prefixed domains, and DeniedDomains
+        takes precedence over AllowedDomains. Any domains not specified in AllowedDomains
+        or DeniedDomains are configurable by the user.
+      subkeys:
+      - key: Domain
+        title: Domain
+        type: <string>
+        content: A domain or set of sub-domains where the extension is allowed
+    - key: DeniedDomains
+      title: Denied domains
+      type: <array>
+      presence: optional
+      combinetype: set-union
+      content: Controls the domains and sub-domains the extension is not allowed to
+        access. Any non-prefixed domains take precedence over prefixed domains, and
+        DeniedDomains takes precedence over AllowedDomains. Any domains not specified
+        in AllowedDomains or DeniedDomains are configurable by the user.
+      subkeys:
+      - key: Domain
+        title: Domain
+        type: <string>
+        content: A domain or set of sub-domains where the extension is not allowed

@@ -45,6 +45,22 @@ payloadkeys:
   type: <string>
   presence: required
   content: A globally unique identifier for this VPN configuration.
+- key: CellularSliceUUID
+  title: Cellular Slice UUID
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The data network name (DNN) or app category identifying a Cellular Slice
+    for the VPN.  The presence of this key will scope the VPN tunnel onto the specified
+    Cellular Slice.
 - key: SafariDomains
   supportedOS:
     watchOS:

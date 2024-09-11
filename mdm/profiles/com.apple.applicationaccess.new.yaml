@@ -53,7 +53,7 @@ payloadkeys:
       type: <data>
       presence: required
       content: The identifier of the app. Obtain this value from the Security framework
-        using SecCodeCopyDesignatedRequirement.
+        using SecCodeCopyDesignatedRequirement(_:_:_:).
     - key: detachedSignature
       type: <data>
       presence: optional

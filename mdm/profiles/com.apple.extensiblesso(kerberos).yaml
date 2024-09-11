@@ -27,7 +27,12 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '1.1'
+      multiple: true
+      supervised: false
+      allowmanualinstall: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: n/a
   content: Configures the included Kerberos extension that performs SSO on behalf
@@ -117,6 +122,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         introduced: '12.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: false
@@ -172,6 +179,8 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: true
@@ -194,6 +203,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         deprecated: '12.0'
+      visionOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     content: The number of days that the system allows using passwords on this domain.
@@ -202,6 +213,8 @@ payloadkeys:
   - key: pwNotificationDays
     supportedOS:
       iOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <integer>
     presence: optional
@@ -213,6 +226,8 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     content: The minimum length of passwords on the domain.Available in macOS 10.15
@@ -220,6 +235,8 @@ payloadkeys:
   - key: pwReqComplexity
     supportedOS:
       iOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <boolean>
     presence: optional
@@ -230,6 +247,8 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     content: The minimum age of passwords before the system allows changing them on
@@ -237,6 +256,8 @@ payloadkeys:
   - key: pwReqHistory
     supportedOS:
       iOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <integer>
     presence: optional
@@ -246,14 +267,31 @@ payloadkeys:
     supportedOS:
       iOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <string>
     presence: optional
     content: The text version of the domain's password requirements. Only for use
       if 'pwReqComplexity' or 'pwReqLength' aren't specified. Available in macOS 10.15
       and later.
+  - key: pwReqRTFData
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '15.0'
+      visionOS:
+        introduced: n/a
+    type: <data>
+    presence: optional
+    content: The RTF file formatted version of the domain's password requirements.
+      Only for use if 'pwReqComplexity' or 'pwReqLength' aren't specified. Available
+      in macOS 15 and later.
   - key: pwChangeURL
     supportedOS:
       iOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <string>
     presence: optional
@@ -262,6 +300,8 @@ payloadkeys:
   - key: syncLocalPassword
     supportedOS:
       iOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <boolean>
     presence: optional
@@ -276,6 +316,8 @@ payloadkeys:
       macOS:
         introduced: '11.0'
         deprecated: '12.0'
+      visionOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     default: 900
@@ -288,6 +330,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         introduced: '11.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: false
@@ -300,6 +344,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         introduced: '11.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: true
@@ -361,6 +407,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         introduced: '13.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: false
@@ -372,6 +420,8 @@ payloadkeys:
         introduced: n/a
       macOS:
         introduced: '13.0'
+      visionOS:
+        introduced: n/a
     type: <boolean>
     presence: optional
     default: true
@@ -390,6 +440,59 @@ payloadkeys:
       doesn't check for password expiration, show the password expiration in the menu,
       check for external password changes, perform password sync, or retrieve the
       home directory. Available in macOS 13 and later.
+  - key: identityIssuerAutoSelectFilter
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '15.0'
+      visionOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    content: A string with wildcards that can use used to filter the list of available
+      SmartCards by issuer. e.g “*My CA2*”. If there is one remaining, it will be
+      auto-selected. If there more than one remaining, then the list is shorter. Available
+      in macOS 15 and later.
+  - key: allowSmartCard
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '15.0'
+      visionOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'true', allow the user to switch the user interface to SmartCard mode.
+      Available in macOS 15 and later.
+  - key: allowPassword
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '15.0'
+      visionOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If 'true', allow the user to switch the user interface to Password mode.
+      Available in macOS 15 and later.
+  - key: startInSmartCardMode
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        introduced: '15.0'
+      visionOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If 'true', the user interface will start in SmartCard mode. Available
+      in macOS 15 and later.
 - key: Hosts
   type: <array>
   presence: optional

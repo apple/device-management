@@ -23,7 +23,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       accessrights: AllowSettings
       supervised: false
     visionOS:
@@ -457,7 +457,10 @@ payloadkeys:
         userenrollment:
           mode: forbidden
       visionOS:
-        introduced: n/a
+        introduced: '2.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -584,7 +587,7 @@ payloadkeys:
       tvOS:
         introduced: n/a
       visionOS:
-        introduced: n/a
+        introduced: '2.0'
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -624,6 +627,8 @@ payloadkeys:
             introduced: n/a
           visionOS:
             introduced: n/a
+          watchOS:
+            introduced: n/a
         type: <boolean>
         presence: optional
         default: false
@@ -637,6 +642,8 @@ payloadkeys:
           tvOS:
             introduced: n/a
           visionOS:
+            introduced: n/a
+          watchOS:
             introduced: n/a
         type: <boolean>
         presence: optional
@@ -756,7 +763,7 @@ payloadkeys:
       default: false
       content: |-
         If 'true', the user only sees the Guest Welcome pane and can only log in as a guest user.
-        If 'false', the user can sign in with a managed Apple ID (the existing behavior).
+        If 'false', the user can sign in with a Managed Apple Account (the existing behavior).
         Available in iOS 14.5 and later.
     - key: ManagedAppleIDDefaultDomains
       supportedOS:
@@ -765,7 +772,7 @@ payloadkeys:
       type: <array>
       presence: optional
       content: |-
-        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple ID.
+        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list for their Managed Apple Account.
         If this list contains more than 3 domains, the system picks 3 at random for display. Available in iOS 16 and later.
       subkeys:
       - key: AppleID domain
@@ -969,7 +976,10 @@ payloadkeys:
         introduced: '14.0'
         supervised: true
       visionOS:
-        introduced: n/a
+        introduced: '2.0'
+        supervised: true
+        userenrollment:
+          mode: forbidden
       watchOS:
         introduced: n/a
     type: <dictionary>
@@ -1125,6 +1135,8 @@ payloadkeys:
     - key: GrayscaleEnabled
       supportedOS:
         iOS:
+          introduced: n/a
+        watchOS:
           introduced: n/a
       type: <boolean>
       presence: optional

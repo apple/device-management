@@ -14,6 +14,7 @@ The definition of the schema used here is in the `schema.yaml` file. That file c
 | payloadkeys  | array  | A list of YAML objects representing the command request |
 | responsekeys | array  | A list of YAML objects representing the command response |
 | reasons      | array  | A list of YAML objects representing declarative device management status reason codes |
+| notes        | array  | A list of YAML objects representing additional notes for the schema item as a whole |
 
 ### Payload Object
 
@@ -95,8 +96,9 @@ The `mode` can have one of four values: `allowed`, `required`, `forbidden`, and 
 | title       | string | The title of the key |
 | supportedOS | object | Identifies the range of supported OS versions that support the key |
 | type        | string | The type of key |
-| subtype     | string | Indicates the expected format of the string value of the key |
-| assettypes  | string | Indicates the set of allowed asset types |
+| subtype     | string | Indicates the expected format of the string value of the key (deprecated) |
+| valuetype   | string | Indicates the expected format of the string value of the key |
+| assettypes  | array  | Indicates the set of allowed asset types |
 | presence    | string | Whether the key is required or optional |
 | rangelist   | array  | List of allowed values for this key |
 | range       | object | Bounds for the value of this key |
@@ -110,11 +112,62 @@ The `mode` can have one of four values: `allowed`, `required`, `forbidden`, and 
 
 __Notes__
 
-The `type` value can be one of: `<string>`, `<integer>`, `<real>`, `<boolean>`, `<date>`, `<data>`, `<array>`, `<dictionary>`, or `<any>`. The value `<any>` may be used to indicate that any of the standard values can be used without any expectation that the value will be validated.
+The `subtype` key is deprecated in favor of the `valuetype` key.
 
-The `subtype` value can be one of: `<url>`, `<hostname>`, or `<email>`, to indicate the expected value of a string.
+The `presence` value must be one of: `required` or `optional`.
 
-The `presence` value can be one of: `required` or `optional`.
+#### Type Values
+
+| Name          | Description |
+|---------------|-------------|
+| \<string>     | A string value |
+| \<integer>    | An integer value |
+| \<real>       | A real value |
+| \<boolean>    | A boolean value |
+| \<date>       | A date value (deprecated) |
+| \<data>       | A data value |
+| \<array>      | An array value |
+| \<dictionary> | A dictionary value |
+| \<any>        | Any standard value |
+
+__Notes__
+
+If the `<string>` value is used, the `valuetype` key may also be specified to define a specific format for the string (see below).
+
+The value `<any>` may be used to indicate that any of the standard values can be used without any expectation that the value will be validated.
+
+The `<date>` value is deprecated. Instead `<string>` will be used with a suitable `<valuetype>` set to indicate one of several date-time formats.
+
+#### Valuetype Values
+
+`domain`
+: The string value is a domain name. This is an exact match (i.e., `example.com` will match `example.com` and will not match `test.example.com`, `1example.com`, `example.com2`).
+
+`domain-prefix`
+: The string value is a domain name pattern, with matching rules as follows:
+* If the string starts with a `*.`, the pattern will match any sub-domain of the parent domain, but not the parent domain itself (i.e., `*.example.com` will match `test.example.com` and will not match `example.com`, `test.1example.com`, `test.example.com2`).
+* If the match prefix is not present, the pattern will match the exact domain only (i.e., `example.com` will match `example.com` and will not match `test.example.com`, `1example.com`, `example.com2`).
+
+`email`
+: The string value is an email address conforming to the syntax of [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322.txt). e.g., `user@example.com`.
+
+`hostname`
+: The string value is a hostname, IPv4 address, or IPv6 address (with the IPV6 literal enclosed in square braces). e.g., `server.example.com`, `10.0.1.1`, `[fe80::1]`.
+
+`localtime`
+: The string value is a date and time conforming to the syntax of [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.txt) without a `time-offset` or `time-secfrac` element: `YYYY-MM-DDTHH:MM:SS`. e.g., `2023-09-21T12:00:00`.
+
+`regex`
+: The string value is a regular expression.
+
+`timestamp`
+: The string value is a date and time conforming to the syntax of [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.txt) with a `time-offset` element, and without a `time-secfrac` element: `YYYY-MM-DDTHH:MM:SSZ` or `YYYY-MM-DDTHH:MM:SS+ZZZZ`. e.g., `2023-09-21T12:00:00Z`, `2023-09-21T12:00:00-0500`.
+
+`url`
+: The string value is a URL conforming to the syntax of [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.txt).
+
+`uuid`
+: The string value is a 36-character UUID, with both lowercase and uppercase hexadecimal digits allowed.
 
 ### Range Object
 

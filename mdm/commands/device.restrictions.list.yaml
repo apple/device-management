@@ -1,4 +1,4 @@
-title: Device Restrictions Command
+title: Restrictions Command
 description: This command allows the server to determine what restrictions are being
   enforced on the device, and the total sum of all restrictions. This command requires
   the Restrictions Query access right.
@@ -19,7 +19,7 @@ payload:
     macOS:
       introduced: n/a
     tvOS:
-      introduced: '6.1'
+      introduced: '9.0'
       accessrights: AllowQueryRestrictions
       supervised: false
     visionOS:

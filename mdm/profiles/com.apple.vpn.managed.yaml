@@ -1248,6 +1248,64 @@ payloadkeys:
     default: 1
     content: If 1 and IncludeAllNetworks is 1, then network traffic used for communicating
       with devices connected via USB or Wi-Fi is excluded from the tunnel.
+  - key: PPK
+    title: Post-quantum Pre-shared Key
+    supportedOS:
+      iOS:
+        introduced: '18.0'
+      macOS:
+        introduced: '15.0'
+      tvOS:
+        introduced: '18.0'
+      visionOS:
+        introduced: '2.0'
+      watchOS:
+        introduced: '11.0'
+    type: <data>
+    presence: optional
+    content: The Post-quantum Pre-shared key (PPK) used for this VPN. This key is
+      meant to be used with VPN servers that support RFC 8784. If this key is present
+      PPKIdentifier must also be present.
+  - key: PPKIdentifier
+    title: Post-quantum Pre-shared Key Identifier
+    supportedOS:
+      iOS:
+        introduced: '18.0'
+      macOS:
+        introduced: '15.0'
+      tvOS:
+        introduced: '18.0'
+      visionOS:
+        introduced: '2.0'
+      watchOS:
+        introduced: '11.0'
+    type: <string>
+    presence: optional
+    content: The identifier for the Post-quantum Pre-shared key (PPK) used for this
+      VPN. This key is meant to be used with VPN servers that support RFC 8784. If
+      this key is present PPK must also be present.
+  - key: PPKMandatory
+    title: Post-quantum Pre-shared Key Mandatory
+    supportedOS:
+      iOS:
+        introduced: '18.0'
+      macOS:
+        introduced: '15.0'
+      tvOS:
+        introduced: '18.0'
+      visionOS:
+        introduced: '2.0'
+      watchOS:
+        introduced: '11.0'
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 1
+    content: This key has no effect if PPK and PPKIdentifier are not present. If the
+      value of this key is 1, the VPN will fail to establish if the server does not
+      support RFC 8784 or does not accept the PPK identifier specified in PPKIdentifier.
   - key: IKESecurityAssociationParameters
     title: IKESecurityAssociationParameters
     type: <dictionary>

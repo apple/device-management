@@ -37,6 +37,8 @@ payloadkeys:
   type: <string>
   assettypes:
   - com.apple.asset.data
+  asset-content-types:
+  - application/zip
   presence: required
   content: |-
     The identifier of an asset declaration that contains a reference to the files to use for system service configuration. Ensure that the corresponding asset:

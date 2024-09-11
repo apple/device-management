@@ -126,7 +126,7 @@ payloadkeys:
     - key: BeaconID
       type: <integer>
       presence: required
-      content: The group's unique beacon ID.
+      content: An unsigned 16 bit integer specifying this group's unique beacon ID.
     - key: Name
       type: <string>
       presence: required
@@ -138,7 +138,7 @@ payloadkeys:
     - key: ImageURL
       supportedOS:
         iOS:
-          deprecated: 9.3.2
+          deprecated: 9.3.1
         macOS:
           introduced: n/a
       type: <string>
@@ -226,9 +226,9 @@ payloadkeys:
     - key: FullScreenImageURL
       supportedOS:
         iOS:
-          deprecated: 9.3.2
+          deprecated: 9.3.1
         macOS:
-          deprecated: n/a
+          introduced: n/a
       type: <string>
       presence: optional
       content: Deprecated in iOS 9.3.1 and later. The URL pointing to an image of
@@ -239,7 +239,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: |-
-        The managed Apple ID for this user.
+        The Managed Apple Account for this user.
         Not required to configure Classroom, but if set the system uses it.
         Required to configure the Shared iPad login screen.
     - key: PasscodeType

@@ -1,4 +1,4 @@
-title: Remote Desktop Disable Command
+title: Disable Remote Desktop Command
 description: Disable Remote Desktop on the device.
 payload:
   requesttype: DisableRemoteDesktop

@@ -1,4 +1,4 @@
-title: Application:List Active NSExtensions
+title: Active NSExtensions Command
 description: Returns information about the active NSExtensions for a particular user.
 payload:
   requesttype: ActiveNSExtensions

@@ -1,4 +1,4 @@
-title: App Attributes Command
+title: Managed Application Attributes Command
 description: Queries managed application attributes. Attributes can be set on managed
   apps. These attributes can be changed over time.
 payload:

@@ -25,7 +25,14 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
     watchOS:
       introduced: '10.0'
       allowed-enrollments:
@@ -116,6 +123,8 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '13.1'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <integer>
@@ -181,6 +190,8 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '13.1'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -197,6 +208,8 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '14.0'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <dictionary>

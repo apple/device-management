@@ -1,4 +1,4 @@
-title: NSExtensions Mappings NSExtensions
+title: NSExtension Mappings Command
 description: This command returns information about installed extensions for a user.
 payload:
   requesttype: NSExtensionMappings

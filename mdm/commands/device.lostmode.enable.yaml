@@ -1,4 +1,4 @@
-title: Enable MDM Lost Mode Command
+title: Enable Lost Mode Command
 description: This command allows the server to put the device in MDM lost mode, with
   a message, phone number, and footnote text. A message or phone number must be provided.
 payload:

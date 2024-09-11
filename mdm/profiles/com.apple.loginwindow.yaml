@@ -173,7 +173,7 @@ payloadkeys:
       allowmanualinstall: false
   type: <string>
   presence: optional
-  content: The user short name to set up auto login.
+  content: The user short name for an existing user to set up auto login.
 - key: AutologinPassword
   supportedOS:
     macOS:
@@ -181,6 +181,5 @@ payloadkeys:
       allowmanualinstall: false
   type: <string>
   presence: optional
-  content: An optional user password to set up auto login. If this key doesn't exist
-    but a user name does exist, the system sets up auto login the next time the user
-    logs in to the client.
+  content: A user password to set up auto login, must match the "AutologinUsername"
+    user's current password.

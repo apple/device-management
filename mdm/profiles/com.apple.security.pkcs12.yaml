@@ -25,7 +25,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '5.0'
+      introduced: '9.0'
       multiple: true
       supervised: false
       allowmanualinstall: true
@@ -48,7 +48,7 @@ payloadkeys:
   presence: optional
   content: The file name of the enclosed certificate.
 - key: PayloadContent
-  title: Payload Certificate Filename
+  title: Payload Certificate Data
   type: <data>
   presence: required
   content: The binary representation of the payload, encoded in Base64.

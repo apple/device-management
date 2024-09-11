@@ -120,9 +120,9 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: On Shared iPad, this value returns the Managed Apple ID of the user. When
-    present indicates that the token is for the user channel. On macOS, this value
-    always returns the short name of the user.
+  content: On Shared iPad, this value returns the Managed Apple Account of the user.
+    When present indicates that the token is for the user channel. On macOS, this
+    value always returns the short name of the user.
 - key: UserID
   supportedOS:
     iOS:

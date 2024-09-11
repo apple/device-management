@@ -26,7 +26,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       multiple: true
       supervised: false
       allowmanualinstall: true
@@ -47,8 +47,7 @@ payloadkeys:
   title: Payload Content
   type: <dictionary>
   presence: required
-  content: An array of payload dictionaries. This array isn't present if 'IsEncrypted'
-    is 'true'.
+  content: A dictionary containing the SCEP information.
   subkeys:
   - key: URL
     title: URL

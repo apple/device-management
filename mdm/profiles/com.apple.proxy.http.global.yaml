@@ -25,12 +25,17 @@ payload:
       userenrollment:
         mode: forbidden
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       multiple: false
       supervised: true
       allowmanualinstall: true
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      multiple: false
+      supervised: true
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   content: PEM-encoded cer

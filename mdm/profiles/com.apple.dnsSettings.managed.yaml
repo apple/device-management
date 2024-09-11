@@ -119,8 +119,8 @@ payloadkeys:
       title: Action Parameters
       type: <array>
       presence: optional
-      content: An array of dictionaries that provides per-connection rules. The system
-        uses this array only for settings where the 'Action' value is'EvaluateConnection'.
+      content: An array of dictionaries that provide per-connection rules. The system
+        uses this array only for settings where the 'Action' value is 'EvaluateConnection'.
       subkeys:
       - key: ActionParameter
         title: Action Parameter

@@ -110,3 +110,33 @@ payloadkeys:
         type: <string>
         presence: required
         content: The hash value of the 'launchd' 'plist' file.
+      - key: device-management
+        title: Device Management
+        supportedOS:
+          macOS:
+            introduced: '15.0'
+        type: <dictionary>
+        presence: optional
+        content: If present, indicates this background task was created by a 'services.background-tasks'
+          configuration. This dictionary contains properties that identify the configuration
+          and specific version of the declaration asset that provided the launchd
+          plist for the task.
+        subkeys:
+        - key: configuration-identifier
+          title: Configuration Identifier
+          type: <string>
+          presence: required
+          content: The identifier of the 'services.background-tasks' configuration
+            that created this task.
+        - key: asset-identifier
+          title: Asset Identifier
+          type: <string>
+          presence: required
+          content: The identifier of the declaration asset that provided the launchd
+            plist for this task.
+        - key: asset-server-token
+          title: Asset Server Token
+          type: <string>
+          presence: required
+          content: The server token of the declaration asset that provided the launchd
+            plist for this task.

@@ -9,7 +9,9 @@ payload:
       supervised: false
       allowmanualinstall: true
       sharedipad:
-        mode: forbidden
+        mode: allowed
+        devicechannel: false
+        userchannel: true
       userenrollment:
         mode: allowed
     macOS:
@@ -25,12 +27,18 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: n/a
   content: |-
     Each payload may contain one font file. Font files may be in TrueType (.ttf) or OpenType (.otf) file format. Collection types (.ttc or .otc) formats are not supported.
     Fonts are uniquely identified internally by their embedded PostScript name. Two fonts with the same PostScript name will be considered the same font, even if their contents differ. Installing two different fonts with the same PostScript name is not supported, and it is undefined which font will remain installed.
+    Supported on the Shared iPad user channel as of iPadOS 18.0. Earlier versions of iPadOS erroneously accepted the Font payload on the device channel but installed it for the currently logged in user.
 payloadkeys:
 - key: Name
   title: Font Name

@@ -1,4 +1,4 @@
-title: Device Erase Command
+title: Erase Device Command
 description: This command allows the server to remotely erase the device. This command
   requires the Device Erase right.
 payload:
@@ -131,7 +131,7 @@ payloadkeys:
     macOS:
       introduced: n/a
     tvOS:
-      introduced: n/a
+      introduced: '18.0'
     visionOS:
       introduced: n/a
     watchOS:
@@ -139,7 +139,7 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: The configuration settings for Return to Service. This value is available
-    in iOS 17 and later.
+    in iOS 17 and later and with Shared iPad and tvOS 18 and later.
   subkeys:
   - key: Enabled
     title: Use Return to Service

@@ -24,7 +24,12 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      accessrights: None
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   content: Clears the Activation Lock bypass code from the device.

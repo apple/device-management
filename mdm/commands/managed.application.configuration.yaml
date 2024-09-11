@@ -1,4 +1,4 @@
-title: App Configuration Command
+title: Managed Application Configuration Command
 description: This command queries the device for the current configuration of managed
   applications. This command requires the App Management right. macOS supports this
   command as of 10.15, on the device channel and for User Enrollments only, because

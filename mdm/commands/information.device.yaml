@@ -24,7 +24,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       accessrights: Special Case
       supervised: false
     visionOS:
@@ -68,6 +68,7 @@ payloadkeys:
         watchOS:
           accessrights: n/a
       type: <string>
+      presence: optional
       content: The key to get the unique identifier of the device.
     - key: ProvisioningUDID
       supportedOS:
@@ -85,6 +86,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the device identifier for provisioning profiles. This
         value differs from the UDID for Apple silicon. Available in macOS 11.3 and
         later.
@@ -103,6 +105,7 @@ payloadkeys:
         watchOS:
           accessrights: n/a
       type: <string>
+      presence: optional
       content: The key to get the contents of SettingsCommand.Command.Settings.OrganizationInfo.OrganizationInfo.
     - key: MDMOptions
       supportedOS:
@@ -119,6 +122,7 @@ payloadkeys:
         watchOS:
           introduced: '10.0'
       type: <string>
+      presence: optional
       content: The key to get the contents of SettingsCommand.Command.Settings.MDMOptions.MDMOptions.
     - key: LastCloudBackupDate
       supportedOS:
@@ -136,6 +140,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the date of the most recent iCloud backup. Available
         in iOS 8 and later.
     - key: AwaitingConfiguration
@@ -154,10 +159,13 @@ payloadkeys:
           introduced: '10.2'
           accessrights: n/a
         visionOS:
-          introduced: n/a
+          introduced: '2.0'
+          userenrollment:
+            mode: forbidden
         watchOS:
           accessrights: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device is waiting for a DeviceConfigured
         or UserConfigured Command to continue through Setup Assistant on the device
         channel or user channel, respectively.
@@ -181,6 +189,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowAppInstallation
       type: <string>
+      presence: optional
       content: The key to determine whether iTunes Store account is active. Requires
         the App Installation access right.
     - key: iTunesStoreAccountHash
@@ -203,6 +212,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowAppInstallation
       type: <string>
+      presence: optional
       content: The key to get a hash of the logged-in iTunes Store account. Also see
         GetVppUserRequest. This value requires the App Installation access right.
     - key: DeviceName
@@ -218,6 +228,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the device name. Requires the Device Information access
         right.
     - key: OSVersion
@@ -233,6 +244,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the operating system version. Requires the Device Information
         access right.
     - key: SupplementalOSVersionExtra
@@ -251,6 +263,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the OS update rapid security response version letter,
         if a rapid security response update is installed. This value requires the
         Device Information access right.
@@ -267,6 +280,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the operating system version. This value requires the
         Device Information access right.
     - key: SupplementalBuildVersion
@@ -285,6 +299,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the build version for the currently installed rapid
         security response. If there's no installed rapid security response, this value
         is the same as 'BuildVersion'. Requires the Device Information access right.
@@ -301,6 +316,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the model name, such as iPhone. Requires the Device
         Information access right.
     - key: Model
@@ -316,6 +332,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the model. Requires the Device Information access right.
     - key: ModelNumber
       supportedOS:
@@ -333,6 +350,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the device's hardware model number including region
         info, such as 'MK1A3LL/A'. Requires the Device Information access right. Requires
         Apple silicon on macOS.
@@ -350,6 +368,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device is a Mac with Apple silicon
         (for example, an Apple M1 chip). Available in macOS 12 and later.
     - key: ProductName
@@ -365,6 +384,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the product name, such as iPad8,12. This value requires
         the Device Information access right.
     - key: SerialNumber
@@ -386,6 +406,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the serial number. Requires the Device Information access
         right.
     - key: DeviceCapacity
@@ -401,6 +422,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the device's total capacity. Requires the Device Information
         access right. Available in iOS 4 and later, and macOS 10.7 and later.
     - key: AvailableDeviceCapacity
@@ -416,6 +438,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the available capacity. Requires the Device Information
         access right. Available in iOS 4 and later, and macOS 10.7 and later.
     - key: IMEI
@@ -434,6 +457,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the International Mobile Equipment Identity (IMEI) number.
         Requires the Device Information access right. Available as of iOS 4 and deprecated
         in iOS 16.
@@ -453,6 +477,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the mobile equipment ID (MEID). Requires the Device
         Information access right. Available as of iOS 4 and deprecated in iOS 16.
     - key: ModemFirmwareVersion
@@ -470,6 +495,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the modem firmware version. Requires the Device Information
         access right. Available in iOS 4 and later.
     - key: CellularTechnology
@@ -486,6 +512,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the cellular technology type. Requires the Device Information
         access right. Available in iOS 4.2.6 and later.
     - key: BatteryLevel
@@ -503,6 +530,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the battery level. Requires the Device Information access
         right. Available in iOS 5 and later.
     - key: HasBattery
@@ -519,6 +547,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device has an internal battery.
     - key: IsSupervised
       supportedOS:
@@ -535,6 +564,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the device is supervised. Requires the
         Device Information access right. Available in iOS 6 and later, macOS 10.15
         and later, and tvOS 9 and later.
@@ -552,6 +582,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device is a Shared iPad. Requires
         the Device Information access right. Available in iOS 9.3 and later.
     - key: IsDeviceLocatorServiceEnabled
@@ -568,6 +599,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled a device locator service
         such as Find My on the device. Requires the Device Information access right.
         Available in iOS 7 and later.
@@ -593,6 +625,7 @@ payloadkeys:
           deprecated: '10.0'
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled Activation Lock on
         the device. Requires the Device Information access right. Available as of
         iOS 7 and macOS 10.15, and deprecated in iOS 16 and macOS 13.
@@ -612,6 +645,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device supports Activation Lock. Also
         see 'IsActivationLockManageable' in SecurityInfoResponse.SecurityInfo.ManagementStatus.
         Available in macOS 10.9 and later.
@@ -633,6 +667,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the device is in Do Not Disturb (DND)
         mode. Requires the Device Information access right. Available in iOS 7 and
         later.
@@ -643,13 +678,14 @@ payloadkeys:
         macOS:
           introduced: n/a
         tvOS:
-          introduced: '6.0'
+          introduced: '9.0'
           accessrights: AllowQueryDeviceInformation
         visionOS:
           introduced: n/a
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the device ID. Requires the Device Information access
         right. Available in tvOS 6 and later.
     - key: EASDeviceIdentifier
@@ -666,6 +702,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the device identifier for Exchange ActiveSync (EAS).
         Requires the Device Information access right. Available in iOS 7 and later.
     - key: IsCloudBackupEnabled
@@ -686,6 +723,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled iCloud Backup on the
         device. Requires the Device Information access right. Available in iOS 7.1
         and later.
@@ -704,6 +742,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get an array of directory GUIDs for logged-in managed users.
         Requires the Device Information access right. Available in macOS 10.11 and
         later.
@@ -723,6 +762,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the contents of DeviceInformationResponse.QueryResponses.OSUpdateSettings.
         Requires the Device Information access right. Available in macOS 10.11 and
         later.
@@ -740,6 +780,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the local hostname from Bonjour. Available in macOS
         10.11 and later.
     - key: HostName
@@ -756,6 +797,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the hostname. Available in macOS 10.11 and later.
     - key: AutoSetupAdminAccounts
       supportedOS:
@@ -774,6 +816,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the contents of DeviceInformationResponse.QueryResponses.AutoSetupAdminAccountsItem,
         which Setup Assistant automatically creates during enrollment. Requires the
         Device Information access right. Available in macOS 10.11 and later.
@@ -791,6 +834,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled System Integrity Protection
         on the device. This value requires the Device Information access right, and
         is available in macOS 10.12 and later.
@@ -808,6 +852,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device can receive 'PowerON', 'PowerOFF',
         and 'Reset' commands from a lights-out management (LOM) controller. Available
         in macOS 11 and later.
@@ -827,6 +872,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled Managed Lost Mode on
         the device. Requires the Device Information access right. Available in iOS
         9.3 and later.
@@ -852,6 +898,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the maximum number of users that can use this Shared
         iPad device. In iOS 13.4 and later, this value is always '32'. Requires the
         Device Information access right. Available in iOS 9.3 and later.
@@ -877,6 +924,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the estimated number of users that can use this Shared
         iPad device, according to the available space of the device and each user's
         quota. Requires the Device Information access right. Available in iOS 14 and
@@ -903,6 +951,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the quota size for each user on this Shared iPad device.
         Requires the Device Information access right. Available in iOS 13.4 and later.
     - key: ResidentUsers
@@ -927,6 +976,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the number of users currently on this Shared iPad device.
         Requires the Device Information access right. Available in iOS 13.4 and later.
     - key: UserSessionTimeout
@@ -951,6 +1001,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the timeout interval for the user session.
     - key: TemporarySessionTimeout
       supportedOS:
@@ -974,6 +1025,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the timeout interval for the temporary session.
     - key: TemporarySessionOnly
       supportedOS:
@@ -997,6 +1049,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device only allows temporary sessions.
     - key: ManagedAppleIDDefaultDomains
       supportedOS:
@@ -1020,6 +1073,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the list of domains that the device suggests on the
         Shared iPad login screen. Available in iOS 16 and later.
     - key: OnlineAuthenticationGracePeriod
@@ -1044,6 +1098,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the grace period for Shared iPad online authentication
         (in days). Available in iOS 16 and later.
     - key: SkipLanguageAndLocaleSetupForNewUsers
@@ -1068,6 +1123,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system skips the language and country/region
         panes for new users on Shared iPad.
     - key: PushToken
@@ -1088,6 +1144,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the push token for the current user-channel connection.
         The MDM server ignores this query for the device channel. Requires the Device
         Information access right. Available in iOS 9.3 and later, and macOS 10.12
@@ -1106,6 +1163,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled the diagnostic submission
         setting on the device. Requires the Device Information access right. Available
         in iOS 9.3 and later.
@@ -1123,6 +1181,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to determine whether the device is sharing app analytics. Requires
         the Device Information access right. Available in iOS 4 and later, and macOS
         10.7 and later.
@@ -1137,10 +1196,12 @@ payloadkeys:
           introduced: '14.0'
           accessrights: AllowQueryDeviceInformation
         visionOS:
+          introduced: '2.0'
           accessrights: AllowQueryDeviceInformation
         watchOS:
           accessrights: AllowQueryDeviceInformation
       type: <string>
+      presence: optional
       content: The key to get the current Internet Assigned Numbers Authority (IANA)
         time zone database name. Requires the Device Information access right. Available
         in iOS 14 and later, and tvOS 14 and later.
@@ -1160,6 +1221,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the integrated circuit card (ICC) identifier for the
         installed SIM card. Requires the Network Information access right. Available
         as of iOS 4 and deprecated in iOS 16.
@@ -1182,6 +1244,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the Bluetooth media access control (MAC) address. Requires
         the Network Information access right.
     - key: WiFiMAC
@@ -1203,6 +1266,7 @@ payloadkeys:
         watchOS:
           accessrights: AllowQueryNetworkInformation
       type: <string>
+      presence: optional
       content: The key to get the Wi-Fi MAC address. Requires the Network Information
         access right.
     - key: EthernetMAC
@@ -1220,6 +1284,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the primary Ethernet MAC address. Requires the Network
         Information access right. Available in macOS 10.7 and later.
     - key: CurrentCarrierNetwork
@@ -1238,6 +1303,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the name of the current carrier network. Requires the
         Network Information access right. Available as of iOS 4 and deprecated in
         iOS 16.
@@ -1257,6 +1323,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: Apple no longer supports this query. Use 'SubscriberCarrierNetwork'
         instead.
     - key: SubscriberCarrierNetwork
@@ -1276,6 +1343,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the home carrier network. Requires the Network Information
         access right. Available as of iOS 5 and deprecated in iOS 16.
     - key: CarrierSettingsVersion
@@ -1294,6 +1362,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the version of the carrier settings. Requires the Network
         Information access right. Available as of iOS 4 and deprecated in iOS 16.
     - key: PhoneNumber
@@ -1312,6 +1381,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the raw phone number, without punctuation, and including
         the country code. Requires the Network Information access right. Available
         as of iOS 4 and deprecated in iOS 16.
@@ -1331,6 +1401,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled data roaming on the
         device. Requires the Network Information access right. Available in iOS 5
         and later.
@@ -1351,6 +1422,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled voice roaming on the
         device, which isn't available for all carriers. Requires the Network Information
         access right. Available as of iOS 5 and deprecated in iOS 16.
@@ -1370,6 +1442,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the system enabled Personal Hotspot on
         the device, which isn't available for all carriers. Requires the Network Information
         access right. Available in iOS 7 and later.
@@ -1387,6 +1460,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device is network-tethered. Requires
         the Network Information access right. Available in iOS 10.3 and later.
     - key: IsRoaming
@@ -1405,6 +1479,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device is roaming. Requires the Network
         Information access right. Available in iOS 4.2 and later.
     - key: SubscriberMCC
@@ -1424,6 +1499,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the home mobile country code. Requires the Network Information
         access right. Available as of iOS 4.2.6 and deprecated in iOS 16.
     - key: SubscriberMNC
@@ -1443,6 +1519,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the home mobile network code. Requires the Network Information
         access right. Available as of iOS 4.2.6 and deprecated in iOS 16.
     - key: CurrentMCC
@@ -1461,6 +1538,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the current mobile country code (MCC). Requires the
         Network Information access right. It's available as of iOS 4 and deprecated
         in iOS 16.
@@ -1480,6 +1558,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the current mobile network code (MNC). Requires the
         Network Information access right. Available as of iOS 4 and deprecated in
         iOS 16.
@@ -1499,6 +1578,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the contents of DeviceInformationResponse.QueryResponses.ServiceSubscriptionProperty.
         Requires the Network Information access right.
     - key: PINRequiredForEraseDevice
@@ -1514,7 +1594,10 @@ payloadkeys:
           introduced: n/a
         visionOS:
           introduced: n/a
+        watchOS:
+          introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the EraseDeviceCommand requires a PIN.
         Available in macOS 11 and later.
     - key: PINRequiredForDeviceLock
@@ -1533,6 +1616,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the DeviceLockCommand requires a PIN.
         Available in macOS 11 and later.
     - key: SupportsiOSAppInstalls
@@ -1549,6 +1633,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the macOS device supports iOS or iPadOS
         app installs. Available in macOS 11 and later.
     - key: SoftwareUpdateDeviceID
@@ -1569,6 +1654,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the device identifier that you use to look up available
         OS updates through <https://gdmf.apple.com/v2/pmv>. Available in iOS 15 and
         later, and macOS 12 and later.
@@ -1587,6 +1673,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to get the device settings that control which updates appear
         in the Software Update pane in Settings. Available in iOS 14.5 and later.
     - key: AccessibilitySettings
@@ -1608,6 +1695,7 @@ payloadkeys:
         watchOS:
           supervised: true
       type: <string>
+      presence: optional
       content: The key to get the current state of settable accessibility settings.
         Available in iOS 16 and later.
     - key: DevicePropertiesAttestation
@@ -1624,9 +1712,11 @@ payloadkeys:
           userenrollment:
             mode: allowed
       type: <string>
-      content: The key to get an attestation of the device's properties. Available
+      presence: optional
+      content: The key to request an attestation of the device's properties. Available
         in iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10
-        and later.
+        and later. See the DeviceInformation attestation hardware support note for
+        hardware requirements.
     - key: EACSPreflight
       supportedOS:
         iOS:
@@ -1644,6 +1734,7 @@ payloadkeys:
         watchOS:
           introduced: n/a
       type: <string>
+      presence: optional
       content: The key to determine whether the device can perform an EraseDeviceCommand
         using Erase All Content and Settings (EACS).
 - key: DeviceAttestationNonce
@@ -1662,8 +1753,9 @@ payloadkeys:
   type: <data>
   presence: optional
   content: |-
-    This value can contain up to 32 bytes of data. If specified, queries need to contain 'DevicePropertiesAttestation'. If omitted or if the value matches the cached attestation, the system returns the cached attestation. Otherwise, the system requests and returns a new attestation that contains the new nonce.
-    The nonce appears in the resulting attestation to ensure it was recently generated. To request a new attestation, provide a new nonce. The system caches the most recently generated attestation on the device. Requests for new attestations are rate limited. If it has been fewer than 7 days since the system generated an attestation, the device returns the cached attestation rather than generating a new one.
+    This specifies a freshness code which appears in the resulting attestation. The value can contain up to 32 bytes of data. If specified, 'Queries' needs to contain 'DevicePropertiesAttestation'.
+    The MDM server can use this to prove that an attestation was recently generated. The system caches the most recently generated attestation on the device. If omitted or if the value matches the cached attestation, the system returns the cached attestation. To request a new attestation, provide a new freshness code. Requests for new attestations are rate limited. If it has been fewer than 7 days since the system generated an attestation, the device returns the cached attestation rather than generating a new one.
+    Available in iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10 and later. See the DeviceInformation attestation hardware support note for hardware requirements.
 responsekeys:
 - key: QueryResponses
   type: <dictionary>
@@ -1812,7 +1904,7 @@ responsekeys:
       tvOS:
         introduced: '10.2'
       visionOS:
-        introduced: n/a
+        introduced: '2.0'
     type: <boolean>
     content: |-
       If 'true' on the device channel, the device is still waiting for a DeviceConfiguredCommand to continue through Setup Assistant.
@@ -2132,7 +2224,7 @@ responsekeys:
       macOS:
         introduced: n/a
       tvOS:
-        introduced: '6.0'
+        introduced: '9.0'
       visionOS:
         introduced: n/a
       watchOS:
@@ -2204,6 +2296,7 @@ responsekeys:
     subkeys:
     - key: CatalogURL
       type: <string>
+      presence: optional
       content: The URL to the software update catalog the client is using. This value
         is available in macOS 10.11 and later.
     - key: IsDefaultCatalog
@@ -2215,9 +2308,15 @@ responsekeys:
       content: The date of the last software update scan. This value is available
         in macOS 10.11 and later.
     - key: PreviousScanResult
+      supportedOS:
+        macOS:
+          deprecated: '11.0'
+          removed: '15.0'
       type: <string>
+      presence: optional
       content: The result code of last software update scan; '”0”' = success. This
-        value is available in macOS 10.11 and later.
+        value is available in macOS 10.11 and later. This key was removed in macOS
+        15 as it has been unsupported since macOS 11.
     - key: PerformPeriodicCheck
       type: <boolean>
       content: If 'true', start a new scan. This value is available in macOS 10.11
@@ -3091,9 +3190,25 @@ responsekeys:
         userenrollment:
           mode: allowed
     type: <array>
-    content: The key to get an attestation of the device's properties. Available in
+    content: |-
+      The key to get an attestation of the device's properties. Available in
       iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10 and
-      later.
+      later. See the DeviceInformation attestation hardware support note for hardware
+      requirements.
+      The value is an array of certificates in DER form that forms a certificate chain. The chain is rooted with the Apple CA 'Apple Enterprise Attestation Root CA'. The first array item is the leaf certificate. The leaf certificate contains custom OIDs describing a device. Which OIDs are present in the certificate depend on the OS version of the device and the type of enrollment. If Apple's attestation servers are unable to verify a device property it will provide a blank value, omit the OID entirely, or refuse to issue an attestation certificate.
+      The following OIDs were introduced in iOS 16, iPadOS 16, tvOS 16, watchOS 9.l0, visionOS 1.0 and macOS 14.0:
+      * 1.2.840.113635.100.8.9.1 serial number -- This is the serial number of the device. It is omitted if the enrollment is a User Enrollment.
+      * 1.2.840.113635.100.8.9.2 UDID  -- For a Mac this has the same value as the ProvisioningUDID key in the DeviceInformation response, and does not match the UDID used elsewhere in the MDM protocol. It is omitted if the enrollment is a User Enrollment.
+      * 1.2.840.113635.100.8.10.2 sepOS version  -- This is the version of the operating system running on the Secure Enclave at the time the attestation is generated. In most cases this matches the version of the main operating system.
+      * 1.2.840.113635.100.8.11.1 Freshness code  -- This is the freshness code. For an explanation of the expected value, see the DeviceAttestationNonce key in the DeviceInformation request. This may not match the requested freshness code if a cached attestation was returned.
+      The following OIDs were introduced in iOS 17.2, iPadOS 17.2, tvOS 17.2, watchOS 10.2, visionOS 1.l0, and macOS 14.2:
+      * 1.2.840.113635.100.8.9.4 Software Update Device ID -- This is an identifier of the device model. It is expected to match the SoftwareUpdateDeviceID in the DeviceInformation response. This is the device identifier to use when looking up available OS updates through https://gdmf.apple.com/v2/pmv.
+      * 1.2.840.113635.100.8.10.1 OS Version -- This is the version of iOS, iPadOS or tvOS running on the device at the time the attestation is generated.
+      * 1.2.840.113635.100.8.10.3 LLB Version -- This is the version of the Low Level Bootloader firmware running on the device at the time the attestation is generated. For more information about the boot process, see the documentation of the boot process in the Apple Platform Security guide.
+      The following OIDs were introduced in macOS 14.2:
+      * 1.2.840.113635.100.8.13.1 System Integrity Protection (SIP) status -- This indicates whether SIP is enabled or disabled at the time the attestation is generated. 0 indicates enabled, 1 indicates disabled.
+      * 1.2.840.113635.100.8.13.2 Secure boot status -- This describes part of the configuration of the LocalPolicy at the time the attestation is generated. The possible values are 'Full Security', 'Reduced Security', or 'Permissive Security'. For a description of these values see the Apple Platform Security guide.
+      * 1.2.840.113635.100.8.13.3 Third party kernel extensions allowed -- This indicates whether third party kernel extensions are allowed. A value of 0 indicates third party kernel extensions are not allowed. Any other value means that some kinds of third party kernel extensions are allowed.
     subkeys:
     - key: AttestationCertificate
       type: <data>
@@ -3119,3 +3234,13 @@ responsekeys:
       * 'not supported': The device is too old to support EACS.
       * 'unknown failure': A problem occurred for which there isn't a more specific error message.
       * '(other string)': A reason why the device can't perform EACS, such as “System is not sealed”
+notes:
+- title: DeviceInformation attestation hardware support
+  content: |-
+    The following table indicates which System on Chips (SoCs) support DeviceInformation attestation.
+    Unsupported devices ignore the DevicePropertiesAttestation and DeviceAttestationNonce keys.
+
+    | Support status | iPhone, iPad                         | Mac           | Apple TV                | Apple Watch    | Vision Pro |
+    |----------------|--------------------------------------|---------------|-------------------------|----------------|------------|
+    | Unsupported    | A10x Fusion and earlier              | Intel         | A10x Fusion and earlier | S3 and earlier | none       |
+    | Supported      | A11 Bionic and later<br>All M series | Apple Silicon | A12 Bionic and later    | S4 and later   | All        |

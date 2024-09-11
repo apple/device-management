@@ -40,7 +40,10 @@ payloadkeys:
   presence: required
   content: An array of dictionaries specifying the updates to download or install.
     If this value is missing, the device applies the default behavior for handling
-    updates.
+    updates. This command is ignored and an informational error is returned if a Software
+    Update is actively managed via a Declarative Device Management 'Software Update
+    Enforcement Policy' configuration, as the Declarative Device Management configuration
+    takes precedence.
   subkeys:
   - key: UpdatesItem
     type: <dictionary>

@@ -37,14 +37,18 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: n/a
+    macOS:
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Apple ID setup pane.
+  content: If 'true', the system skips the Apple Account setup pane.
 - key: SkipSiriSetup
   supportedOS:
     iOS:
       introduced: n/a
+    macOS:
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -55,6 +59,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: 10.13.4
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -65,6 +70,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: 10.13.4
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -75,6 +81,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: 10.13.6
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -85,6 +92,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '10.14'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -95,6 +103,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '10.15'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -105,6 +114,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '10.15'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -115,6 +125,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '11.0'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -124,11 +135,12 @@ payloadkeys:
     iOS:
       introduced: '14.0'
     macOS:
-      introduced: n/a
+      introduced: '15.0'
   type: <array>
   presence: optional
   content: An array strings that describe the setup items to skip. SkipKeys provides
-    a list of valid strings and their meanings. Available in iOS 14 and later.
+    a list of valid strings and their meanings. Available in iOS 14, macOS 15 and
+    later.
   subkeys:
   - key: SkipSetupItems
     type: <string>
@@ -138,6 +150,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '12.0'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false
@@ -148,6 +161,7 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '14.1'
+      deprecated: '15.0'
   type: <boolean>
   presence: optional
   default: false

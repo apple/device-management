@@ -25,7 +25,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '5.0'
+      introduced: '9.0'
       multiple: false
       supervised: false
       allowmanualinstall: true

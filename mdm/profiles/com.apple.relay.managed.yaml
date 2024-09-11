@@ -13,7 +13,7 @@ payload:
         devicechannel: true
         userchannel: false
       userenrollment:
-        mode: forbidden
+        mode: allowed
     macOS:
       introduced: '14.0'
       multiple: true
@@ -25,14 +25,17 @@ payload:
       userenrollment:
         mode: forbidden
     tvOS:
-      introduced: n/a
+      introduced: '17.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
     visionOS:
       introduced: '1.0'
       multiple: true
       supervised: false
       allowmanualinstall: true
       userenrollment:
-        mode: forbidden
+        mode: allowed
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -86,7 +89,7 @@ payloadkeys:
       type: <array>
       presence: optional
       content: |-
-        An array of raw public keys that the system uses to authenticate the server during a TLS handshake. The server needs to use one of the keys in the handshake to authenticate.
+        An array of DER-encoded public keys that the system uses to authenticate the server during a TLS handshake. The server needs to use one of the keys in the handshake to authenticate.
         If this array is empty, the system uses the default TLS trust evaluation.
       subkeys:
       - key: RawPublicKeysElement
@@ -119,4 +122,5 @@ payloadkeys:
   type: <string>
   presence: optional
   content: A globally-unique identifier for this relay configuration. The system uses
-    this UUID to route managed apps through the servers in 'Relays'.
+    this UUID to route managed apps through the servers in 'Relays'. This key is required
+    for user enrollments.

@@ -72,4 +72,4 @@ payloadkeys:
   presence: optional
   content: A globally-unique identifier for this DNS proxy configuration. Managed
     apps with the same 'DNSProxyUUID' in their app attributes have their DNS lookups
-    traffic processed by the proxy.
+    traffic processed by the proxy. This key is required for user enrollments.

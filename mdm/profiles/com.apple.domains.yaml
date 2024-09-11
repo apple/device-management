@@ -27,13 +27,21 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      multiple: false
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   content: This payload defines web domains that are under an enterprise's management.
 payloadkeys:
 - key: EmailDomains
   title: Email Domains
+  supportedOS:
+    visionOS:
+      introduced: n/a
   type: <array>
   presence: optional
   content: |-
@@ -77,7 +85,7 @@ payloadkeys:
   - key: SafariPasswordAutoFillDomainsItem
     type: <string>
 - key: CrossSiteTrackingPreventionRelaxedDomains
-  title: Cross-Site Tracking Prevention RelaxedDomains
+  title: Cross-Site Tracking Prevention Relaxed Domains
   supportedOS:
     iOS:
       introduced: '16.2'

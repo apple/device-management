@@ -103,3 +103,46 @@ payloadkeys:
       type: <string>
       presence: required
       content: Removed system extension bundle ID
+- key: NonRemovableSystemExtensions
+  supportedOS:
+    macOS:
+      introduced: '15.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary of system extensions on the computer. The dictionary maps
+    the team identifiers (keys) to arrays of bundle identifiers, where the bundle
+    identifier defines the system extension which cannot be disabled or uninstalled
+    when SIP is enabled. It's an error for the same mapping to appear in the dictionary
+    values corresponding to 'RemovableSystemExtensions' and 'NonRemovableSystemExtensions'
+    keys.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: System extension bundle identifiers
+    subkeys:
+    - key: NonRemovableSystemExtensionsItems
+      type: <string>
+      presence: required
+      content: Non Removable system extension bundle ID
+- key: NonRemovableFromUISystemExtensions
+  supportedOS:
+    macOS:
+      introduced: '15.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary of system extensions on the computer. The dictionary maps
+    the team identifiers (keys) to arrays of bundle identifiers, where the bundle
+    identifier defines the system extension which cannot be disabled or uninstalled
+    from System Settings or Finder. The set of system extensions between 'RemovableSystemExtensions'
+    and 'NonRemovableFromUISystemExtensions' are allowed to overlap.
+  subkeys:
+  - key: ANY
+    type: <array>
+    presence: optional
+    content: System extension bundle identifiers
+    subkeys:
+    - key: NonRemovableFromUISystemExtensionsItems
+      type: <string>
+      presence: required
+      content: Non Removable from UI system extension bundle ID

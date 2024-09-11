@@ -1,6 +1,7 @@
 title: ManifestURL
-description: The definition of the ManifestURL that specifies where package is to
-  be downloaded from and provides hashes to verify the integrity of the package
+description: The definition of the ManifestURL property list that specifies where
+  a package is to be downloaded from, and provides hashes to verify the integrity
+  of the package
 payload:
   payloadtype: ManifestURL
   supportedOS:

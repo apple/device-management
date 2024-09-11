@@ -22,31 +22,40 @@ payload:
     watchOS:
       introduced: n/a
 payloadkeys:
-- key: PreferenceDomain
+- key: PayloadContent
   type: <dictionary>
   presence: required
-  content: The dictionary containing app preference domains.
+  content: Dictionary containing app preference domains. The key names correspond
+    to application preference domain identifiers (e.g., 'com.example.my-app'), or
+    the string '.GlobalPreferences' for the global domain. The values specify the
+    corresponding forced and set-once preferences.
   subkeys:
-  - key: Forced
-    type: <array>
+  - key: ANY
+    type: <dictionary>
     presence: required
-    content: The dictionary of forced settings.
-    subkeys: &id001
-    - key: Settings
-      type: <dictionary>
-      presence: required
-      subkeys:
-      - key: mcx_preference_settings
+    content: The dictionary containing app preference domains.
+    subkeytype: PreferenceDomain
+    subkeys:
+    - key: Forced
+      type: <array>
+      presence: optional
+      content: The dictionary of forced settings.
+      subkeys: &id001
+      - key: Settings
         type: <dictionary>
         presence: required
-        content: The dictionary of settings.
         subkeys:
-        - key: ANY
-          type: <any>
-          presence: optional
-          content: The setting/value pairs.
-  - key: Set-Once
-    type: <array>
-    presence: required
-    content: The dictionary of one-time settings.
-    subkeys: *id001
+        - key: mcx_preference_settings
+          type: <dictionary>
+          presence: required
+          content: The dictionary of settings.
+          subkeys:
+          - key: ANY
+            type: <any>
+            presence: optional
+            content: The setting/value pairs.
+    - key: Set-Once
+      type: <array>
+      presence: optional
+      content: The dictionary of one-time settings.
+      subkeys: *id001

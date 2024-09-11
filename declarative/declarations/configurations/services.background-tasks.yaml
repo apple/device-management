@@ -1,0 +1,91 @@
+title: Services Background Tasks
+description: Specifies management of a background tasks
+payload:
+  declarationtype: com.apple.configuration.services.background-tasks
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '15.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: multiple
+payloadkeys:
+- key: TaskType
+  title: Task Type
+  type: <string>
+  presence: required
+  content: The unique identifier of the set of background tasks managed with this
+    configuration. This should be a reverse DNS style identifier. This is used solely
+    by the management system to differentiate between tasks in different configurations.
+- key: TaskDescription
+  title: Task Description
+  type: <string>
+  presence: optional
+  content: A description of the set of background tasks managed by this configuration.
+- key: ExecutableAssetReference
+  title: Executable Asset Reference
+  type: <string>
+  assettypes:
+  - com.apple.asset.data
+  asset-content-types:
+  - application/zip
+  presence: optional
+  content: |-
+    Specifies the identifier of an asset declaration containing a reference
+    to the files to be used for the background task configuration. The corresponding
+    asset must be of type "com.apple.asset.data". The referenced data must be a zip
+    archive of an entire directory, that will be expanded and stored in a well known
+    location for the background task. The asset's "ContentType" and "Hash-SHA-256"
+    keys in the "Reference" key are required.
+
+    This file should contain background task executables, scripts, and configuration
+    files, but not the launchd configuration files.
+- key: LaunchdConfigurations
+  title: Launchd Configurations
+  type: <array>
+  presence: optional
+  content: An array of launchd configuration files used to run the background tasks.
+  subkeys:
+  - key: launchd-item
+    type: <dictionary>
+    presence: required
+    subkeys:
+    - key: FileAssetReference
+      title: File Asset Reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.data
+      asset-content-types:
+      - application/plist
+      - application/x-plist
+      - application/xml
+      - text/xml
+      presence: required
+      content: |-
+        Specifies the identifier of an asset declaration containing a reference
+        to the launchd configuration file for the background task. The referenced data must be a
+        property list file conforming to the launchd.plist format. The asset's "ContentType" and "Hash-SHA-256"
+        keys in the "Reference" key are required.
+    - key: Context
+      title: Launchd Context
+      type: <string>
+      presence: required
+      rangelist:
+      - daemon
+      - agent
+      content: Indicates whether the launchd configuration file is applied to the
+        system daemon, or system agent domain.
+related-status-items:
+- status-items:
+  - services.background-task
+  note: Each service managed by a configuration will have a corresponding status item
+    that will contain a reference to the configuration.

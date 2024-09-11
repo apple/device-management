@@ -53,7 +53,8 @@ payload:
     client identity by the payload's PayloadUUID. For details on the content of the
     attestation provided to the ACME server, see the documentation of the DevicePropertiesAttestation
     key in the DeviceInformation response. In the attestation certificate the value
-    of the nonce OID matches the nonce specified by the ACME server via the ACME protocol.
+    of the freshness code OID matches the nonce specified by the ACME server via the
+    ACME protocol.
 payloadkeys:
 - key: DirectoryURL
   title: ACME directory URL
@@ -65,11 +66,11 @@ payloadkeys:
   type: <string>
   presence: required
   content: A unique string identifying a specific device. The server may use this
-    as a nonce to prevent issuing multiple certificates. This identifier also indicates
-    to the ACME server that the device has access to a valid client identifier issued
-    by the enterprise infrastructure. This can help the ACME server determine whether
-    to trust the device. Though this is a relatively weak indication because of the
-    risk that an attacker can intercept the client identifier.
+    as an anti-replay code to prevent issuing multiple certificates. This identifier
+    also indicates to the ACME server that the device has access to a valid client
+    identifier issued by the enterprise infrastructure. This can help the ACME server
+    determine whether to trust the device. Though this is a relatively weak indication
+    because of the risk that an attacker can intercept the client identifier.
 - key: KeySize
   title: Key Size
   type: <integer>
@@ -181,7 +182,7 @@ payloadkeys:
   content: |-
     If 'true', the device provides attestations that describe the device and the generated key to the ACME server. The server can use the attestations as strong evidence that the key is bound to the device, and that the device has properties listed in the attestation. The server can use that as part of a trust score to decide whether to issue the requested certificate.
     When 'Attest' is 'true', 'HardwareBound' also needs to be 'true'.
-    Setting this key to 'true' is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of 'false'.
+    Setting this key to 'true' is supported as of macOS 14. Older macOS versions require this key but it must have a value of 'false'.\nSee the ACME attestation hardware support note for hardware requirements.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
@@ -212,3 +213,14 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', all apps have access to the private key.
+notes:
+- title: ACME attestation hardware support
+  content: |-
+    The following table indicates which System on Chips (SoCs) support ACME attestation.
+    If the Attest key is false or ignored, the ACME server does not receive an attestation.
+
+    | Attest key support | iPhone, iPad                         | Mac            | Apple TV                | Apple Watch    | Vision Pro |
+    |--------------------|--------------------------------------|----------------|-------------------------|----------------|------------|
+    | Must be false      | none                                 | T1 and earlier | none                    | none           | none       |
+    | Ignored            | A10x Fusion and earlier              | T2             | A10x Fusion and earlier | S3 and earlier | none       |
+    | Supported          | A11 Bionic and later<br>All M series | Apple Silicon  | A12 Bionic and later    | S4 and later   | All        |

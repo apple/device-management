@@ -1,4 +1,4 @@
-title: Device Shut Down Command
+title: Shut Down Device Command
 description: This command requires the Device Lock access right. The device will shut
   down immediately.
 payload:

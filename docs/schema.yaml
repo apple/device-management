@@ -369,3 +369,21 @@ properties:
         note:
           type: string
           description: A description of the relationship.
+
+  notes:
+    type: array
+    description: An array of additional notes about a payload. These are published to the open source repository.
+    items:
+      type: object
+      description: An additional note about a payload. A note is written in "markdown" and can be transformed to HTML if needed.
+      additionalProperties: false
+      required:
+      - title
+      - content
+      properties:
+        title:
+          type: string
+          description: Title for the note.
+        content:
+          type: string
+          description: The note content in "markdown" format.

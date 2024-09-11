@@ -29,7 +29,7 @@ payload:
       userenrollment:
         mode: allowed
     tvOS:
-      introduced: '6.0'
+      introduced: '9.0'
       accessrights: AllowInspection
       supervised: false
     visionOS:

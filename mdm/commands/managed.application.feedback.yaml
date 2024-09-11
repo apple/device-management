@@ -1,4 +1,4 @@
-title: App Feedback Command
+title: Managed Application Feedback Command
 description: This command queries the device for application feedback information.
   This command requires the App Management right.
 payload:

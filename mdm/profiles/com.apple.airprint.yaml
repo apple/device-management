@@ -27,7 +27,12 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      multiple: true
+      supervised: false
+      allowmanualinstall: true
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: n/a
 payloadkeys:

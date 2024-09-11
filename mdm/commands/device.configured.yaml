@@ -28,7 +28,12 @@ payload:
       accessrights: None
       supervised: true
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      accessrights: None
+      supervised: true
+      requiresdep: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   content: Informs the device that it can continue past DEP enrollment. Only works

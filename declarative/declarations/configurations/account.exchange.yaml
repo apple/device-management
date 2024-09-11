@@ -29,6 +29,7 @@ payload:
     visionOS:
       introduced: '1.1'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local
@@ -268,9 +269,6 @@ payloadkeys:
       content: If 'true', the system enables the per-message encryption switch in
         the compose view.
 - key: MailServiceActive
-  supportedOS:
-    macOS:
-      introduced: n/a
   type: <boolean>
   presence: optional
   default: true
@@ -285,9 +283,6 @@ payloadkeys:
   content: If 'true', the system prevents the user from changing the status of the
     mail service for this account.
 - key: ContactsServiceActive
-  supportedOS:
-    macOS:
-      introduced: n/a
   type: <boolean>
   presence: optional
   default: true
@@ -302,9 +297,6 @@ payloadkeys:
   content: If 'true', the system prevents the user from changing the status of the
     address book service for this account.
 - key: CalendarServiceActive
-  supportedOS:
-    macOS:
-      introduced: n/a
   type: <boolean>
   presence: optional
   default: true
@@ -319,9 +311,6 @@ payloadkeys:
   content: If 'true', the system prevents the user from changing the status of the
     calendar service for this account.
 - key: RemindersServiceActive
-  supportedOS:
-    macOS:
-      introduced: n/a
   type: <boolean>
   presence: optional
   default: true
@@ -336,9 +325,6 @@ payloadkeys:
   content: If 'true', the system prevents the user from changing the status of the
     reminders service for this account.
 - key: NotesServiceActive
-  supportedOS:
-    macOS:
-      introduced: n/a
   type: <boolean>
   presence: optional
   default: true

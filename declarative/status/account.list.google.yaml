@@ -28,6 +28,7 @@ payload:
     visionOS:
       introduced: '1.1'
       allowed-enrollments:
+      - supervised
       - device
       - user
       - local

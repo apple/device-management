@@ -1,4 +1,4 @@
-title: Remote Desktop Enable Command
+title: Enable Remote Desktop Command
 description: Enable Remote Desktop on the device.
 payload:
   requesttype: EnableRemoteDesktop

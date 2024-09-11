@@ -29,19 +29,20 @@ payloadkeys:
   title: App Store ID
   type: <string>
   presence: optional
-  content: The App Store ID of the managed app. One and only one of 'AppStoreID',
-    'BundleID', or 'ManifestURL' must be present.
+  content: The App Store ID of the managed app that is downloaded from the App Store.
+    One and only one of 'AppStoreID', 'BundleID', or 'ManifestURL' must be present.
 - key: BundleID
   title: Bundle ID
   type: <string>
   presence: optional
-  content: The bundle ID of the managed app. One and only one of 'AppStoreID', 'BundleID',
-    or 'ManifestURL' must be present.
+  content: The bundle ID of the managed app that is downloaded from the App Store.
+    One and only one of 'AppStoreID', 'BundleID', or 'ManifestURL' must be present.
 - key: ManifestURL
   title: Manifest URL
   type: <string>
   presence: optional
-  content: The URL of the manifest for the managed app. One and only one of 'AppStoreID',
+  content: The URL of the manifest for the managed app that is downloaded from a web
+    site. The manifest is returned as a property list. One and only one of 'AppStoreID',
     'BundleID', or 'ManifestURL' must be present.
 - key: InstallBehavior
   title: Install Behavior
@@ -70,8 +71,25 @@ payloadkeys:
     presence: optional
     content: A dictionary that describes the app's license.
     subkeys:
+    - key: Assignment
+      title: Assignment
+      type: <string>
+      presence: optional
+      rangelist:
+      - Device
+      - User
+      content: |-
+        Indicates what type of license to use when an App Store app is installed:
+        * Device - the license is assigned to the device.
+        * User - the license is assigned to the user.
+        This key must be present for App Store apps, when either 'AppStoreID' or 'BundleID' are present in the configuration.
     - key: VPPType
       title: VPP Type
+      supportedOS:
+        iOS:
+          removed: '18.0'
+        macOS:
+          removed: '15.0'
       type: <string>
       presence: optional
       rangelist:

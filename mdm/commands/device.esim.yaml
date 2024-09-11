@@ -1,4 +1,4 @@
-title: eSIM Cellular Plan Management Command
+title: Refresh Cellular Plans Command
 description: Instructs the device to query for active cellular plan eSIM "profiles"
   at the designated carrier eSIM server URL.
 payload:

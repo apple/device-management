@@ -129,7 +129,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    On Shared iPad: This is the Managed Apple ID of the user on Shared iPad. It indicates that the token is for the user channel.
+    On Shared iPad: This is the Managed Apple Account identifier of the user on Shared iPad. It indicates that the token is for the user channel.
     On macOS, this is the short name of the user.
 - key: UserID
   supportedOS:

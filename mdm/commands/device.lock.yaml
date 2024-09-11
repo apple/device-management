@@ -26,7 +26,12 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '2.0'
+      accessrights: AllowPasscodeRemovalAndLock
+      supervised: false
+      requiresdep: false
+      userenrollment:
+        mode: allowed
     watchOS:
       introduced: '10.0'
       accessrights: AllowPasscodeRemovalAndLock
@@ -42,6 +47,8 @@ payloadkeys:
         mode: ignored
     macOS:
       introduced: '10.14'
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The message to display on the Lock screen of the device. This value doesn't
@@ -55,6 +62,8 @@ payloadkeys:
         mode: ignored
     macOS:
       introduced: '11.5'
+    visionOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: The phone number to display on the Lock screen. This value doesn't apply
@@ -66,6 +75,8 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: '10.8'
+    visionOS:
+      introduced: n/a
     watchOS:
       introduced: n/a
   type: <string>
