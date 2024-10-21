@@ -1561,8 +1561,7 @@ payloadkeys:
     title: HTTP Proxy
     type: <string>
     presence: optional
-    content: The port number of the HTTP proxy. This field is required if 'HTTPProxy'
-      is specified.
+    content: The host name of the HTTP proxy.
   - key: HTTPPort
     title: HTTP Port
     type: <integer>
@@ -1570,7 +1569,8 @@ payloadkeys:
     range:
       min: 0
       max: 65535
-    content: The host name of the HTTP proxy.
+    content: The port number of the HTTP proxy. This field is required if 'HTTPProxy'
+      is specified.
   - key: HTTPProxyUsername
     title: HTTP ProxyUsername
     type: <string>

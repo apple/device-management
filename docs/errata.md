@@ -2,6 +2,12 @@
 
 This document lists errata for the YAML schema. This is used when older versions of the schema are incorrect, and a fix was made in later schema to correct the problem.
 
+## iOS 18.1 / macOS 15.1
+
+### mdm/profiles/com.apple.applicationaccess.yaml
+
+allowExplicitContent was incorrectly marked as supported on unsupervised devices for tvOS.
+
 ## iOS 18 / macOS 15
 
 ### tvOS
@@ -25,6 +31,12 @@ a dictionary of application preference domain identifiers to
 iOS 17 supported multiple private network payloads, but the `multiple` key was set to false.
 
 iOS 17 also mistakenly forbade multiple private network payloads in a single profile.
+
+### mdm/checkin/authenticate.yaml
+
+Starting in iOS 13 and macOS 10.15 UDID is optional because User Enrollments do not return UUIDs.
+
+Starting is iOS 13 and macOS 10.15 Enrollment ID is optional because Device Enrollments only return UUIDs.
 
 ## iOS 17 / macOS 14
 

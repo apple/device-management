@@ -442,6 +442,38 @@ payloadkeys:
         content: |-
           The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier-provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier-provided string like “Enterprise1”'.'
           Available in iOS 17 and later.
+      - key: Hideable
+        supportedOS:
+          iOS:
+            introduced: '18.1'
+          tvOS:
+            introduced: n/a
+          visionOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: true
+        content: Setting this to false prevents the user from hiding the app. It does
+          not affect the user's ability to leave it in the App Library, while removing
+          it from the home screen.
+      - key: Lockable
+        supportedOS:
+          iOS:
+            introduced: '18.1'
+          tvOS:
+            introduced: n/a
+          visionOS:
+            introduced: n/a
+          watchOS:
+            introduced: n/a
+        type: <boolean>
+        presence: optional
+        default: true
+        content: Setting this to false prevents the user from locking the app. Because
+          hiding an app also requires locking it, disallowing the user from locking
+          the app will also prevent the user from hiding it.
   - key: DeviceName
     supportedOS:
       iOS:

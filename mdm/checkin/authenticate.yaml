@@ -95,8 +95,9 @@ payloadkeys:
       userenrollment:
         mode: forbidden
   type: <string>
-  presence: required
-  content: The device's UDID (Unique Device ID).
+  presence: optional
+  content: The device's UDID (Unique Device ID). This is required if the enrollment
+    type is not user enrollment.
 - key: EnrollmentID
   supportedOS:
     iOS:
@@ -115,9 +116,9 @@ payloadkeys:
     watchOS:
       introduced: n/a
   type: <string>
-  presence: required
+  presence: optional
   content: The per-enrollment identifier for the device. Available in macOS 10.15
-    and iOS 13.0 and later.
+    and iOS 13.0 and later. This is required if the enrollment type is user enrollment.
 - key: OSVersion
   supportedOS:
     iOS:

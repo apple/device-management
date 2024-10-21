@@ -103,6 +103,19 @@ payloadkeys:
   presence: optional
   content: The key to skip biometric setup. This key is available in iOS 8.1 and later,
     and macOS 10.12.4 and later.
+- key: CameraButton
+  title: Skips Camera Control pane
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Camera Control pane will
+    be skipped.
 - key: DeviceToDeviceMigration
   title: Skip Device To Device Migration pane
   supportedOS:

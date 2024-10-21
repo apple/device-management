@@ -76,8 +76,8 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The hostname of the EWS server (or IP address). This is a required field
-    unless the declaration contains an 'OAuth' property, with a 'SignInURL' that has
-    'enabled' as 'true'.
+    on iOS and visionOS, unless the declaration contains an 'OAuth' property, with
+    'Enabled' set to 'true' and without a 'SignInURL'.
 - key: Port
   title: Server Port
   supportedOS:
@@ -109,9 +109,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The external hostname of the EWS server (or IP address). This is a required
-    field unless the declaration contains an 'OAuth' property, with a 'SignInURL'
-    that has 'enabled' as 'true'.
+  content: The external hostname of the EWS server (or IP address).
 - key: ExternalPort
   title: Server External Port
   supportedOS:
@@ -122,7 +120,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The external port number of the EWS server. The system uses this only when
-    this declaration has a 'HostName' value.
+    this declaration has a 'ExternalHostName' value.
 - key: External Path
   title: Server External Path
   supportedOS:
@@ -133,7 +131,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The external path of the EWS server. The system uses this only when this
-    declaration has a 'HostName' value.
+    declaration has a 'ExternalHostName' value.
 - key: OAuth
   title: Controls use of OAuth
   type: <dictionary>

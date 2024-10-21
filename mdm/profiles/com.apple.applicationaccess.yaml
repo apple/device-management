@@ -278,7 +278,6 @@ payloadkeys:
   title: Allow App Installation
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -344,6 +343,49 @@ payloadkeys:
   content: |-
     If 'false', the system disables removal of apps from an iOS device. This applies to App Store apps, marketplace apps, and locally installed apps (using Configurator, Xcode, etc).
     Requires a supervised device. Available in iOS 4.2.1 and later, and watchOS 10 and later.
+- key: allowAppsToBeHidden
+  title: Allow Hiding Apps
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, disables the ability for the user to hide apps. It does not affect
+    the user's ability to leave it in the App Library, while removing it from the
+    home screen.
+- key: allowAppsToBeLocked
+  title: Allow Locking Apps
+  supportedOS:
+    iOS:
+      introduced: '18.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, disables the ability for the user to lock apps. Because hiding
+    apps also requires locking them, disallowing locking also disallows hiding.
 - key: allowARDRemoteManagementModification
   title: Allow modifying Remote Management Sharing setting
   supportedOS:
@@ -612,11 +654,32 @@ payloadkeys:
   content: If 'false', the system prevents the user from downloading Apple Books media
     that's tagged as erotica. Available in iOS 6 and later, and tvOS 11.3 and later.
     Support for this restriction on unsupervised devices is deprecated.
+- key: allowCallRecording
+  title: Allow Call Recording
+  supportedOS:
+    iOS:
+      introduced: '18.1'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, call recording is disabled.
 - key: allowCamera
   title: Allow Camera Use
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -1183,12 +1246,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system removes the Trust Enterprise Developer button in
-    Settings > General > Profiles & Device Management, which prevents provisioning
-    apps by universal provisioning profiles. This restriction applies to free developer
-    accounts. However, it doesn't apply to enterprise app developers, because they're
-    trusted and the system installed their apps through MDM. It also doesn't revoke
-    previously granted trust. Available in iOS 9 and later.
+  content: If 'false', the system removes the Trust Developer button in Settings >
+    General > VPN & Device Management, which prevents provisioning apps by universal
+    provisioning profiles. This restriction applies to both free developer accounts
+    and enterprise app developers that are not implicitly trusted by apps installed
+    through MDM. This restriction does not revoke previously granted trust. Available
+    in iOS 9 and later.
 - key: allowEnterpriseBookBackup
   title: Allow Enterprise Books Backup
   supportedOS:
@@ -1293,12 +1356,12 @@ payloadkeys:
   presence: optional
   default: true
   content: If 'false', prevents the transfer of an eSIM from the device on which the
-    restriction is installed to a different device. Available in iOS 18 and later.
+    restriction is installed to a different device. Requires a supervised device.
+    Available in iOS 18 and later.
 - key: allowExplicitContent
   title: Allow Explicit Content
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -1306,6 +1369,7 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: '11.3'
+      supervised: true
     visionOS:
       introduced: n/a
     watchOS:
@@ -1544,12 +1608,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prohibits creating new Genmoji. Available in iOS 18 and later.
+  content: If 'false', prohibits creating new Genmoji. Requires a supervised device.
+    Available in iOS 18 and later.
 - key: allowGlobalBackgroundFetchWhenRoaming
   title: Allow Automatic Sync While Roaming
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -1612,8 +1676,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prohibits the use of image generation. Available in iOS 18
-    and later and macOS 15 and later.
+  content: If 'false', prohibits the use of image generation. Requires a supervised
+    device. Available in iOS 18 and later and macOS 15 and later.
 - key: allowImageWand
   title: Allow Image Wand
   supportedOS:
@@ -1635,12 +1699,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prohibits the use of Image Wand. Available in iOS 18 and later.
+  content: If 'false', prohibits the use of Image Wand. Requires a supervised device.
+    Available in iOS 18 and later.
 - key: allowInAppPurchases
   title: Allow In App Purchases
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -1682,6 +1746,8 @@ payloadkeys:
     iOS:
       introduced: '18.0'
       supervised: true
+      sharedipad:
+        mode: forbidden
       userenrollment:
         mode: forbidden
     macOS:
@@ -1699,8 +1765,8 @@ payloadkeys:
   default: true
   content: If 'false', prohibits the use of iPhone Mirroring. When used on macOS,
     this prevents the Mac from mirroring any iPhone. When used on iOS, this prevents
-    the iPhone from mirroring to any Mac. Available in iOS 18 and later and macOS
-    15 and later.
+    the iPhone from mirroring to any Mac. Requires a supervised device. Available
+    in iOS 18 and later and macOS 15 and later.
 - key: allowiPhoneWidgetsOnMac
   title: Allow iPhone widget on Mac
   supportedOS:
@@ -1729,7 +1795,6 @@ payloadkeys:
   title: Allow use of iTunes
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -1928,6 +1993,28 @@ payloadkeys:
   default: true
   content: If 'false', the system disables Mail Privacy Protection on the device.
     Requires a supervised device. Available in iOS 15.2 and later.
+- key: allowMailSummary
+  supportedOS:
+    iOS:
+      introduced: '18.1'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.1'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, disables the ability to create summaries of email messages manually.
+    This does not affect automatic summary generation.
 - key: allowManagedAppsCloudSync
   title: Allow iCloud Sync for Managed Apps
   supportedOS:
@@ -1993,6 +2080,25 @@ payloadkeys:
   content: If 'false', the system prevents installation of alternative marketplace
     apps from the web and prevents any installed alternative marketplace apps from
     installing apps. Available in iOS 17.4 and later. Requires a supervised device.
+- key: allowMediaSharingModification
+  title: Allow modifying Media Sharing setting
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '15.1'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, prevents modification of Media Sharing settings.
 - key: allowMultiplayerGaming
   title: Allow Multiplayer Gaming
   supportedOS:
@@ -2339,6 +2445,8 @@ payloadkeys:
     iOS:
       introduced: '18.0'
       supervised: true
+      sharedipad:
+        mode: forbidden
       userenrollment:
         mode: forbidden
     macOS:
@@ -2353,7 +2461,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If false, prevents the system from generating text in the user's handwriting.
-    Available in iOS 18 and later.
+    Requires a supervised device. Available in iOS 18 and later.
 - key: allowPhotoStream
   title: Allow Photo Stream
   supportedOS:
@@ -2523,6 +2631,25 @@ payloadkeys:
   default: true
   content: If 'false', the system prohibits removal of rapid security responses. Available
     in iOS 16 and later, and macOS 13 and later.
+- key: allowRCSMessaging
+  supportedOS:
+    iOS:
+      introduced: '18.1'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, prevents the use of RCS messaging.
 - key: allowRemoteAppleEventsModification
   title: Allow modifying Remote Apple Events Sharing setting
   supportedOS:
@@ -2587,7 +2714,6 @@ payloadkeys:
   title: Allow use of Safari
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -2934,7 +3060,6 @@ payloadkeys:
   title: Allow Video Conferencing
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -2958,7 +3083,6 @@ payloadkeys:
   title: Allow Voice Dialing While Device is Locked
   supportedOS:
     iOS:
-      introduced: '4.0'
       deprecated: '17.0'
       userenrollment:
         mode: forbidden
@@ -3066,8 +3190,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables Apple Intelligence writing tools. Available in iOS
-    18 and later and macOS 15 and later.
+  content: If 'false', disables Apple Intelligence writing tools. Requires a supervised
+    device. Available in iOS 18 and later and macOS 15 and later.
 - key: autonomousSingleAppModePermittedAppIDs
   supportedOS:
     iOS:
@@ -3293,8 +3417,6 @@ payloadkeys:
       introduced: n/a
     macOS:
       introduced: n/a
-    tvOS:
-      introduced: '9.0'
     visionOS:
       introduced: n/a
     watchOS:
@@ -3365,9 +3487,9 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system forces the use of the profanity filter assistant.
-    Available in iOS 11 and later, and macOS 10.13 and later. Requires a supervised
-    device in iOS.
+  content: If 'true', the system forces the use of the profanity filter for Siri and
+    dictation. Available in iOS 11 and later, and macOS 10.13 and later. Requires
+    a supervised device in iOS.
 - key: forceAuthenticationBeforeAutoFill
   supportedOS:
     iOS:
@@ -3421,6 +3543,24 @@ payloadkeys:
     when the device can determine its location using a cellular connection or Wi-Fi
     with location services enabled. Requires a supervised device. Available in iOS
     12 and later, and tvOS 12.2 and later.
+- key: forceBypassScreenCaptureAlert
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '15.1'
+      allowmanualinstall: false
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to true, then the presentation of a screen capture alert will be
+    bypassed.
 - key: forceClassroomAutomaticallyJoinClasses
   supportedOS:
     iOS:
@@ -3588,8 +3728,6 @@ payloadkeys:
 - key: forceEncryptedBackup
   title: Force Encrypted Backups
   supportedOS:
-    iOS:
-      introduced: '4.0'
     macOS:
       introduced: n/a
     tvOS:
@@ -3785,7 +3923,6 @@ payloadkeys:
   title: Apps Ranking Number
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -3816,7 +3953,6 @@ payloadkeys:
   title: Movies Ranking Number
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -3869,7 +4005,6 @@ payloadkeys:
   title: TV Shows Ranking Number
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -3919,7 +4054,6 @@ payloadkeys:
   title: Accept Cookies in Safari
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -3948,7 +4082,6 @@ payloadkeys:
   title: Allow AutoFill in Safari
   supportedOS:
     iOS:
-      introduced: '4.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -3975,7 +4108,6 @@ payloadkeys:
   title: Allow JavaScript
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -3995,7 +4127,6 @@ payloadkeys:
   title: Allow Pop-ups
   supportedOS:
     iOS:
-      introduced: '4.0'
       userenrollment:
         mode: forbidden
     macOS:
@@ -4014,8 +4145,6 @@ payloadkeys:
 - key: safariForceFraudWarning
   title: Enable Fraud Warning
   supportedOS:
-    iOS:
-      introduced: '4.0'
     macOS:
       introduced: n/a
     tvOS:

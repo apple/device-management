@@ -8,11 +8,11 @@ This release corresponds to the following OS versions
 
 | OS       | Version |
 |----------|---------|
-| iOS      | 18.0    |
-| macOS    | 15.0    |
-| tvOS     | 18.0    |
-| visionOS |  2.0    |
-| watchOS  | 11.0    |
+| iOS      | 18.1    |
+| macOS    | 15.1    |
+| tvOS     | 18.1    |
+| visionOS |  2.1    |
+| watchOS  | 11.1    |
 
 ## Important Release Notes
 
