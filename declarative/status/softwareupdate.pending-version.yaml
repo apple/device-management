@@ -46,3 +46,10 @@ payloadkeys:
     presence: required
     content: The build version of the pending software update, including any rapid
       security response version. This string is empty if no update is pending.
+  - key: target-local-date-time
+    title: The target local date-time
+    type: <date>
+    presence: optional
+    content: The local date time value for when the pending software update will be
+      installed. This key is only present when the pending software update is being
+      enforced.

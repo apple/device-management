@@ -1065,6 +1065,27 @@ payloadkeys:
   default: true
   content: If 'false', the system disables QuickPath keyboard. Requires a supervised
     device. Available in iOS 13 and later.
+- key: allowDefaultBrowserModification
+  title: Allow default browser modification
+  supportedOS:
+    iOS:
+      introduced: '18.2'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '2.2'
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, disables default browser preference modification. The MDM Settings
+    command to set the default browser preference will still work when this is applied.
 - key: allowDefinitionLookup
   title: Allow Define
   supportedOS:
@@ -1382,6 +1403,57 @@ payloadkeys:
     such as record labels, when sold through the iTunes Store. Available in iOS 4
     and later, and tvOS 11.3 and later. Requires a supervised device in iOS 13 and
     later. Support for this restriction on unsupervised devices is deprecated.
+- key: allowExternalIntelligenceIntegrations
+  title: Allow external intelligence integrations
+  supportedOS:
+    iOS:
+      introduced: '18.2'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.2'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, disables the use of external, cloud-based intelligence services
+    with Siri.
+- key: allowExternalIntelligenceIntegrationsSignIn
+  title: Allow external intelligence integrations sign-in
+  supportedOS:
+    iOS:
+      introduced: '18.2'
+      supervised: true
+      sharedipad:
+        mode: forbidden
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '15.2'
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If false, forces external intelligence providers into anonymous mode. If
+    a user is already signed in to an external intelligence provider, applying this
+    restriction will cause them to be signed out.
 - key: allowFileSharingModification
   title: Allow modifying File Sharing setting
   supportedOS:
@@ -1998,6 +2070,8 @@ payloadkeys:
     iOS:
       introduced: '18.1'
       supervised: true
+      sharedipad:
+        mode: forbidden
       userenrollment:
         mode: forbidden
     macOS:

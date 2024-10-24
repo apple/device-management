@@ -604,6 +604,40 @@ payloadkeys:
         presence: optional
         content: A unique identifier for the various services a single organization
           manages.
+  - key: DefaultApplications
+    supportedOS:
+      iOS:
+        introduced: '18.2'
+        sharedipad:
+          mode: forbidden
+        userenrollment:
+          mode: forbidden
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: '2.2'
+        userenrollment:
+          mode: forbidden
+      watchOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: A dictionary that contains default application bundle identifiers. Currently
+      it supports a default web browser app.
+    subkeys:
+    - key: Item
+      type: <string>
+      presence: required
+      rangelist:
+      - DefaultApplications
+      content: Sets information about default applications.
+    - key: WebBrowser
+      type: <string>
+      presence: optional
+      content: The bundle identifier of the app that will be set as the default web
+        browser. This app must be an eligible web browser in the region of the device.
   - key: MDMOptions
     supportedOS:
       iOS:

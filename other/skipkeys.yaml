@@ -552,6 +552,19 @@ payloadkeys:
   presence: optional
   content: The key to skip the screen for watch migration. This key is available in
     iOS 11 and later.
+- key: WebContentFiltering
+  title: Skip web content filtering pane
+  supportedOS:
+    iOS:
+      introduced: '18.2'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: If the key is included in the SkipSetup array the Web Content Filtering
+    pane will be skipped.
 - key: Welcome
   title: Skip Get Started pane
   supportedOS:
