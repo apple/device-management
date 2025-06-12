@@ -1,5 +1,5 @@
 title: Status Device Serial Number
-description: The device's serial number.
+description: A status report of the device's serial number.
 payload:
   statusitemtype: device.identifier.serial-number
   supportedOS:

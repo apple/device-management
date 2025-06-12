@@ -1,5 +1,5 @@
 title: Software Update:Settings
-description: Software update settings
+description: The declaration to configure software updates.
 payload:
   declarationtype: com.apple.configuration.softwareupdate.settings
   supportedOS:
@@ -27,7 +27,12 @@ payload:
       allowed-scopes:
       - system
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
   apply: combined
@@ -39,8 +44,9 @@ payloadkeys:
   default: true
   combinetype: boolean-and
   content: |-
-    If set to 'true', the device shows all software update enforcement notifications.
-    If set to 'false', the device only shows notifications triggered one hour before the enforcement deadline, and the restart countdown notification.
+    If set to `true`, the device shows all software update enforcement notifications.
+
+    If set to `false`, the device only shows notifications triggered one hour before the enforcement deadline, and the restart countdown notification.
 - key: Deferrals
   title: Software Update Deferrals
   supportedOS:
@@ -50,10 +56,13 @@ payloadkeys:
     tvOS:
       allowed-enrollments:
       - supervised
+    visionOS:
+      allowed-enrollments:
+      - supervised
   type: <dictionary>
   presence: optional
   content: This object configures the deferral of software updates. Rapid Security
-    Responses aren't considered within 'Major', 'Minor', or 'System' deferral mechanism.
+    Responses aren't considered in `Major`, `Minor`, or `System` deferral mechanism.
   subkeys:
   - key: CombinedPeriodInDays
     title: Combined Major/Minor Update Deferral Period
@@ -76,6 +85,8 @@ payloadkeys:
         introduced: n/a
       tvOS:
         introduced: n/a
+      visionOS:
+        introduced: n/a
     type: <integer>
     presence: optional
     range:
@@ -91,6 +102,8 @@ payloadkeys:
       iOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <integer>
     presence: optional
@@ -108,6 +121,8 @@ payloadkeys:
       iOS:
         introduced: n/a
       tvOS:
+        introduced: n/a
+      visionOS:
         introduced: n/a
     type: <integer>
     presence: optional
@@ -134,9 +149,10 @@ payloadkeys:
   combinetype: enum-last
   content: |-
     This string specifies how the device shows software updates to the user. When more than one update is available update, the device behaves as follows:
-    * 'All' - Shows all software update versions.
-    * 'Oldest' - Shows only the oldest (lower numbered) software update version.
-    * 'Newest' - Shows only the newest (highest numbered) software update version.
+
+    - `All` - Shows all software update versions.
+    - `Oldest` - Shows only the oldest (lower numbered) software update version.
+    - `Newest` - Shows only the newest (highest numbered) software update version.
 - key: AutomaticActions
   title: Automatic Software Update Settings
   supportedOS:
@@ -144,6 +160,9 @@ payloadkeys:
       allowed-enrollments:
       - supervised
     tvOS:
+      allowed-enrollments:
+      - supervised
+    visionOS:
       allowed-enrollments:
       - supervised
   type: <dictionary>
@@ -165,9 +184,10 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies whether the user can control automatic downloads of available updates:
-      * 'Allowed' - the user can enable or disable automatic downloads.
-      * 'AlwaysOn' - automatic downloads are always enabled.
-      * 'AlwaysOff' - automatic downloads are always disabled.
+
+      - `Allowed` - the user can enable or disable automatic downloads.
+      - `AlwaysOn` - automatic downloads are always enabled.
+      - `AlwaysOff` - automatic downloads are always disabled.
   - key: InstallOSUpdates
     title: Automatic installs of OS updates.
     type: <string>
@@ -180,14 +200,13 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies whether the user can control automatic installation of available updates:
-      * 'Allowed' - the user can enable or disable automatic installation.
-      * 'AlwaysOn' - automatic installations are always enabled.
-      * 'AlwaysOff' - automatic installations are always disabled.
+
+      - `Allowed` - the user can enable or disable automatic installation.
+      - `AlwaysOn` - automatic installations are always enabled.
+      - `AlwaysOff` - automatic installations are always disabled.
   - key: InstallSecurityUpdate
     title: Automatic installs of available security updates.
     supportedOS:
-      iOS:
-        introduced: n/a
       tvOS:
         introduced: n/a
     type: <string>
@@ -200,9 +219,10 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies whether the user can control automatic installation of available security updates:
-      * 'Allowed' - the user can enable or disable automatic installation.
-      * 'AlwaysOn' - automatic installations are always enabled.
-      * 'AlwaysOff' - automatic installations are always disabled.
+
+      - `Allowed` - the user can enable or disable automatic installation.
+      - `AlwaysOn` - automatic installations are always enabled.
+      - `AlwaysOff` - automatic installations are always disabled.
 - key: RapidSecurityResponse
   title: Rapid Security Response Settings
   supportedOS:
@@ -210,6 +230,8 @@ payloadkeys:
       allowed-enrollments:
       - supervised
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
   type: <dictionary>
   presence: optional
@@ -223,8 +245,9 @@ payloadkeys:
     default: true
     combinetype: boolean-and
     content: |-
-      If set to 'false', Rapid Security Responses aren't offered for user installation. The system can still install Rapid Security Responses with 'com.apple.configuration.softwareupdate.enforcement.specific' configurations.
-      If set to 'true', the system offers Rapid Security Responses to the user.
+      If set to `false`, Rapid Security Responses aren't offered for user installation. The system can still install Rapid Security Responses with `com.apple.configuration.softwareupdate.enforcement.specific` configurations.
+
+      If set to `true`, the system offers Rapid Security Responses to the user.
   - key: EnableRollback
     title: Enable Rapid Security Response Rollbacks
     type: <boolean>
@@ -232,8 +255,9 @@ payloadkeys:
     default: true
     combinetype: boolean-and
     content: |-
-      If set to 'false', the system doesn't offer Rapid Security Response rollbacks to the user.
-      If set to 'true', the system offers Rapid Security Response rollbacks to the user.
+      If set to `false`, the system doesn't offer Rapid Security Response rollbacks to the user.
+
+      If set to `true`, the system offers Rapid Security Response rollbacks to the user.
 - key: AllowStandardUserOSUpdates
   title: Allow Standard User OS Updates
   supportedOS:
@@ -241,13 +265,16 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: n/a
+    visionOS:
+      introduced: n/a
   type: <boolean>
   presence: optional
   default: true
   combinetype: boolean-and
   content: |-
-    If set to 'true', a standard user can perform Major and Minor Software Updates.
-    If set to 'false', only administrators can perform Major and Minor Software Updates.
+    If set to `true`, a standard user can perform Major and Minor Software Updates.
+
+    If set to `false`, only administrators can perform Major and Minor Software Updates.
 - key: Beta
   supportedOS:
     macOS:
@@ -257,6 +284,8 @@ payloadkeys:
       allowed-scopes:
       - system
     tvOS:
+      introduced: n/a
+    visionOS:
       introduced: n/a
   type: <dictionary>
   presence: optional
@@ -277,18 +306,19 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies whether the user can control beta program enrollment in the software update settings UI:
-      * 'Allowed' - the user can enroll in any applicable beta programs associated with their logged in Apple Account. If the 'OfferPrograms' key is present, then the programs listed in that key are also presented to the user.
-      * 'AlwaysOn' - the beta programs specified by the organization are used, and the user isn't able to enroll in a beta program using their logged in Apple Account. The device is automatically enrolled into the beta program specified by the 'RequireProgram' key if it's present. Otherwise, the system presents the programs listed in the 'OfferPrograms' key to the user to choose which to enroll with.
-      * 'AlwaysOff' - The device isn't allowed to enroll in any beta programs. The system removes the device from any beta programs, if already enrolled.
+
+      - `Allowed` - the user can enroll in any applicable beta programs associated with their logged in Apple Account. If the `OfferPrograms` key is present, then the programs listed in that key are also presented to the user.
+      - `AlwaysOn` - the beta programs specified by the organization are used, and the user isn't able to enroll in a beta program using their logged in Apple Account. The device is automatically enrolled into the beta program specified by the `RequireProgram` key if it's present. Otherwise, the system presents the programs listed in the `OfferPrograms` key to the user to choose which to enroll with.
+      - `AlwaysOff` - The device isn't allowed to enroll in any beta programs. The system removes the device from any beta programs, if already enrolled.
   - key: OfferPrograms
     type: <array>
     presence: optional
     combinetype: set-union
     content: An array of beta programs allowed on the device. This key must only be
-      present if the 'ProgramEnrollment' key is set to 'Allowed' or 'AlwaysOn'. This
-      key must not be present if the 'RequireProgram' key is present. This key can
-      be present on unsupervised devices where the 'ProgramEnrollment' key isn't supported
-      but is implicitly set to 'Allowed'.
+      present if the `ProgramEnrollment` key is set to `Allowed` or `AlwaysOn`. This
+      key must not be present if the `RequireProgram` key is present. This key can
+      be present on unsupervised devices where the `ProgramEnrollment` key isn't supported
+      but is implicitly set to `Allowed`.
     subkeys:
     - key: Program
       type: <dictionary>
@@ -314,7 +344,7 @@ payloadkeys:
     presence: optional
     combinetype: first
     content: The device automatically enrolls in this beta program. This key must
-      only be present if the 'ProgramEnrollment' key is set to 'AlwaysOn'. The 'OfferPrograms'
+      only be present if the `ProgramEnrollment` key is set to `AlwaysOn`. The `OfferPrograms`
       key must not be present if this key is present.
     subkeys:
     - key: Description

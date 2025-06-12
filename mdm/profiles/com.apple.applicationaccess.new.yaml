@@ -1,5 +1,5 @@
 title: 'Parental Controls: Application Restrictions'
-description: ''
+description: The payload that configures parental controls for apps.
 payload:
   payloadtype: com.apple.applicationaccess.new
   supportedOS:
@@ -36,7 +36,7 @@ payloadkeys:
 - key: familyControlsEnabled
   type: <boolean>
   presence: required
-  content: If 'true', enables app access restrictions.
+  content: If `true`, enables app access restrictions.
 - key: whiteList
   type: <array>
   presence: optional
@@ -45,6 +45,7 @@ payloadkeys:
   subkeys: &id001
   - key: whiteListItem
     type: <dictionary>
+    content: A dictionary defining an app for parental control.
     subkeys:
     - key: bundleID
       type: <string>
@@ -54,7 +55,7 @@ payloadkeys:
       type: <data>
       presence: required
       content: The identifier of the app. Obtain this value from the Security framework
-        using SecCodeCopyDesignatedRequirement(_:_:_:).
+        using `SecCodeCopyDesignatedRequirement`.
     - key: detachedSignature
       type: <data>
       presence: optional
@@ -63,7 +64,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', this app isn't added to the allow list.
+      content: If `true`, this app isn't added to the allow list.
     - key: subApps
       type: <array>
       presence: optional
@@ -100,3 +101,13 @@ payloadkeys:
     type: <string>
     presence: required
     content: A path.
+notes:
+- title: ''
+  content: |-
+    To determine if an app can be launched, the app is evaluated with these rules:
+
+    - Certain system app and utilities are always allowed to run.
+    - The allow list is searched to see if the `bundleID` has a matching entry. If a match is found, `appID` and `detachedSignature` (if present) are used to verify the signature of the app being launched. If the signature is valid and matches the designated requirement (in the appID key), the app is allowed to launch.
+    - If the path to the binary being launched matches or is in a subdirectory of a path in the deny list, the binary is denied.
+    - If the path to the binary being launched matches or is a subdirectory of a path in the allow list, the binary is allowed to launch.
+    - The binary is denied permission to launch.

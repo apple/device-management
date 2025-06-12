@@ -1,6 +1,5 @@
 title: Jabber Account
-description: Use this section to define settings for configuration access to Jabber
-  servers.
+description: The payload that configures a Jabber account.
 payload:
   payloadtype: com.apple.jabber.account
   supportedOS:
@@ -52,7 +51,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables SSL.
+  content: If `true`, enables SSL.
 - key: JabberPort
   title: Port Number
   type: <integer>

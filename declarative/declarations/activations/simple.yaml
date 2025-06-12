@@ -1,5 +1,5 @@
 title: Activation:Simple
-description: An activation used to install a set of configurations.
+description: The declaration to activate a set of configurations.
 payload:
   declarationtype: com.apple.activation.simple
   supportedOS:
@@ -26,6 +26,6 @@ payloadkeys:
 - key: Predicate
   type: <string>
   presence: optional
-  content: A predicate format string as Apple's Predicate Programming <https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html>
-    describes. The activation only installs when the predicate evaluates to 'true'
+  content: A predicate format string as [Apple's Predicate Programming](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html)
+    describes. The activation only installs when the predicate evaluates to `true`
     or isn't present.

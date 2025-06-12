@@ -1,5 +1,6 @@
 title: Declarations
-description: Declarations
+description: The payload that applies a set of declaration to the device through the
+  Settings app.
 payload:
   payloadtype: com.apple.declarations
   supportedOS:
@@ -57,3 +58,8 @@ payloadkeys:
     type: <data>
     presence: required
     content: An item in the declarations list
+notes:
+- title: ''
+  content: |-
+    > Note:
+    > Install this profile manually, not through an MDM server, which enables manual installations of declarations when an MDM enrollment isn't present.

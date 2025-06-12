@@ -1,5 +1,5 @@
 title: Account:Mail
-description: Use this configuration to define settings for access to email servers.
+description: The declaration to configure a Mail account.
 payload:
   declarationtype: com.apple.configuration.account.mail
   supportedOS:
@@ -52,7 +52,7 @@ payloadkeys:
   - com.apple.asset.useridentity
   presence: optional
   content: The identifier of an asset declaration that contains the user identity
-    for this account. Set the corresponding asset type to 'UserIdentity'.
+    for this account. Set the corresponding asset type to `UserIdentity`.
 - key: IncomingServer
   title: Incoming Server Settings
   type: <dictionary>
@@ -95,14 +95,15 @@ payloadkeys:
     - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
-      The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
-      If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an incoming mail server. The corresponding asset must be of type `CredentialUserNameAndPassword`.
+
+      If the `AuthenticationMethod` is `None`, this field must be blank. Otherwise, the declaration must contain this field.
   - key: IMAPPathPrefix
     title: IMAP Path Prefix
     type: <string>
     presence: optional
-    content: The path prefix for the IMAP server. The system uses this only when 'ServerType'
-      is 'IMAP'.
+    content: The path prefix for the IMAP server. The system uses this only when `ServerType`
+      is `IMAP`.
 - key: OutgoingServer
   title: Outgoing Server Settings
   type: <dictionary>
@@ -137,8 +138,9 @@ payloadkeys:
     - com.apple.asset.credential.userpassword
     presence: optional
     content: |-
-      The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type 'CredentialUserNameAndPassword'.
-      If the 'AuthenticationMethod' is 'None', this field must be blank. Otherwise, the declaration must contain this field.
+      The identifier of an asset declaration that contains the credentials for this account to authenticate with an outgoing mail server. The corresponding asset must be of type `CredentialUserNameAndPassword`.
+
+      If the `AuthenticationMethod` is `None`, this field must be blank. Otherwise, the declaration must contain this field.
 - key: SMIME
   title: S/MIME Settings
   supportedOS:
@@ -160,7 +162,7 @@ payloadkeys:
       title: Signing Enabled
       type: <boolean>
       presence: required
-      content: If 'true', the system enables S/MIME signing.
+      content: If `true`, the system enables S/MIME signing.
     - key: IdentityAssetReference
       title: S/MIME Signing Identity Asset Reference
       type: <string>
@@ -176,13 +178,13 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can turn S/MIME signing on or off in Settings.
+      content: If `true`, the user can turn S/MIME signing on or off in Settings.
     - key: IdentityUserOverrideable
       title: Signing Identity User Overrideable
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can select an S/MIME signing identity in Settings.
+      content: If `true`, the user can select an S/MIME signing identity in Settings.
   - key: Encryption
     title: S/MIME Encryption Settings
     type: <dictionary>
@@ -193,8 +195,8 @@ payloadkeys:
       title: Encryption By Default Enabled
       type: <boolean>
       presence: required
-      content: If 'true', the system enables S/MIME encryption by default, which the
-        user can't override if 'PerMessageSwitchEnabled' is 'false'.
+      content: If `true`, the system enables S/MIME encryption by default, which the
+        user can't override if `PerMessageSwitchEnabled` is `false`.
     - key: IdentityAssetReference
       title: S/MIME Encryption Identity Asset Reference
       type: <string>
@@ -213,20 +215,20 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can set the default value for S/MIME encryption
+      content: If `true`, the user can set the default value for S/MIME encryption
         to on or off in Settings.
     - key: IdentityUserOverrideable
       title: Encryption Identity User Overrideable
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can select an S/MIME signing identity in Settings.
+      content: If `true`, the user can select an S/MIME signing identity in Settings.
     - key: PerMessageSwitchEnabled
       title: Per Message Switch Enabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables the per-message encryption switch in
+      content: If `true`, the system enables the per-message encryption switch in
         the compose view.
 related-status-items:
 - status-items:

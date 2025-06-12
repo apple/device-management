@@ -1,6 +1,5 @@
 title: Management:Organization Information
-description: Use this declaration to tell the client about the server's organization
-  information.
+description: The declaration to configure the managing organization's contact information.
 payload:
   declarationtype: com.apple.management.organization-info
   supportedOS:

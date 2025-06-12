@@ -1,5 +1,5 @@
 title: Status Software Update Device ID
-description: The device's software update device ID.
+description: A status report of the device's update device ID.
 payload:
   statusitemtype: softwareupdate.device-id
   supportedOS:
@@ -27,7 +27,12 @@ payload:
       allowed-scopes:
       - system
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -36,4 +41,4 @@ payloadkeys:
   type: <string>
   presence: required
   content: The device identifier to use when looking up available software updates
-    via 'https://gdmf.apple.com/v2/pmv'.
+    via `https://gdmf.apple.com/v2/pmv`.

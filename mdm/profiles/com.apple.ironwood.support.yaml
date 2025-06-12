@@ -1,5 +1,5 @@
 title: 'Parental Control: Dictation and Profanity'
-description: Parental controls for restricting Siri, Dictation and Profanity
+description: The payload that configures parental control for dictation and profanity.
 payload:
   payloadtype: com.apple.ironwood.support
   supportedOS:
@@ -28,10 +28,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', suppresses profanity. Use 'forceAssistantProfanityFilter' in
+  content: If `false`, suppresses profanity. Use `forceAssistantProfanityFilter` in
     Restrictions instead.
 - key: Ironwood Allowed
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', disables dictation. Use 'allowDictation' in Restrictions instead.
+  content: If `false`, disables dictation. Use `allowDictation` in Restrictions instead.

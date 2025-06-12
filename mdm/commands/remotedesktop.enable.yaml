@@ -1,5 +1,5 @@
 title: Enable Remote Desktop Command
-description: Enable Remote Desktop on the device.
+description: Enable Remote Desktop on a device.
 payload:
   requesttype: EnableRemoteDesktop
   supportedOS:
@@ -20,3 +20,15 @@ payload:
     watchOS:
       introduced: n/a
   content: Enable Remote Desktop.
+notes:
+- title: ''
+  content: |-
+    This command enables the following capabilities on the device:
+
+    - Remote Desktop with the All Users access
+    - The ability to receive remote events
+    - The Observe, Control, and Show being Observed options
+
+    All other options remain unchanged.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

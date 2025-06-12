@@ -1,5 +1,5 @@
 title: Services Configuration Files
-description: Specifies managed configuration files for services
+description: The managed configuration files for services.
 payload:
   declarationtype: com.apple.configuration.services.configuration-files
   supportedOS:
@@ -24,14 +24,15 @@ payloadkeys:
   type: <string>
   presence: required
   content: |-
-    The identifier of the system service with managed configuration files. Use a reverse DNS style for this identifier. However, the system reserves 'com.apple.' prefix for built-in services. The available built-in services are:
-    * 'com.apple.sshd' configures sshd
-    * 'com.apple.sudo' configures sudo
-    * 'com.apple.pam' configures PAM
-    * 'com.apple.cups' configures CUPS
-    * 'com.apple.apache.httpd' configures Apache httpd
-    * 'com.apple.bash' configures bash
-    * 'com.apple.zsh' configures zsh
+    The identifier of the system service with managed configuration files. Use a reverse DNS style for this identifier. However, the system reserves `com.apple.` prefix for built-in services. The available built-in services are:
+
+    - `com.apple.sshd` configures sshd
+    - `com.apple.sudo` configures sudo
+    - `com.apple.pam` configures PAM
+    - `com.apple.cups` configures CUPS
+    - `com.apple.apache.httpd` configures Apache httpd
+    - `com.apple.bash` configures bash
+    - `com.apple.zsh` configures zsh
 - key: DataAssetReference
   title: Data Asset Reference
   type: <string>
@@ -43,8 +44,8 @@ payloadkeys:
   content: |-
     The identifier of an asset declaration that contains a reference to the files to use for system service configuration. Ensure that the corresponding asset:
 
-    * Is of type 'com.apple.asset.data'
-    * Is a zip archive of an entire directory
-    * Has a 'Reference' key that includes the 'ContentType' and 'Hash-SHA-256' keys, which the system requires
+    - Is of type `com.apple.asset.data`
+    - Is a zip archive of an entire directory
+    - Has a `Reference` key that includes the `ContentType` and `Hash-SHA-256` keys, which the system requires
 
     The system expands the zip archive and stores the data in a well-known location for the service.

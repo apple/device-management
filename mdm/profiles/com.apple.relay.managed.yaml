@@ -1,5 +1,5 @@
 title: Relay
-description: Use this section to define settings for network relays.
+description: The payload that configures relay settings.
 payload:
   payloadtype: com.apple.relay.managed
   supportedOS:
@@ -57,14 +57,16 @@ payloadkeys:
       presence: optional
       content: |-
         The URL or URI template, as defined in RFC 9298, of a relay server that's reachable using HTTP/3 and supports proxying TCP and UDP using the CONNECT method.
-        Each relay needs to include either 'HTTP2RelayURL' or 'HTTP3RelayURL', or it can include both.
+
+        Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
     - key: HTTP2RelayURL
       title: HTTP/2 Relay URL
       type: <string>
       presence: optional
       content: |-
         The URL or URI template, as defined in RFC 9298, of a relay server that's reachable using HTTP/2 and supports proxying TCP and UDP using the CONNECT method.
-        Each relay needs to include either 'HTTP2RelayURL' or 'HTTP3RelayURL', or it can include both.
+
+        Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
     - key: AdditionalHTTPHeaderFields
       title: Additional HTTP Header Fields
       type: <dictionary>
@@ -90,7 +92,8 @@ payloadkeys:
       type: <array>
       presence: optional
       content: |-
-        An array of DER-encoded public keys that the system uses to authenticate the server during a TLS handshake. The server needs to use one of the keys in the handshake to authenticate.
+        An array of DER-encoded raw public keys that the system uses to authenticate the server during a TLS handshake. The server needs to use one of the keys in the handshake to authenticate.
+
         If this array is empty, the system uses the default TLS trust evaluation.
       subkeys:
       - key: RawPublicKeysElement
@@ -101,9 +104,11 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    A list of domain strings that the system uses to determine which connection to route through the servers in 'Relays'.
-    Any connection that matches a domain in the list exactly or is a subdomain of the listed domain uses the relay servers, unless it matches a domain in 'ExcludedDomains'.
-    If this list is empty, the system routes traffic to all domains to the relay servers, except those that match an excluded domain.
+    A list of domain strings that the system uses to determine which connection to route through the servers in `Relays`.
+
+    Any connection that matches a domain in the list exactly or is a subdomain of the listed domain uses the relay servers, unless it matches a domain in `ExcludedDomains`.
+
+    If this list and `MatchFQDNs` are empty, the system routes traffic to all domains to the relay servers, except those that match an excluded domain or excluded FQDN.
   subkeys:
   - key: MatchDomainsElement
     title: Match Domains Element
@@ -113,7 +118,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: A list of domain strings to exclude from routing through the servers in
-    'Relays'. Any connection that matches a domain in the list exactly or is a subdomain
+    `Relays`. Any connection that matches a domain in the list exactly or is a subdomain
     of the listed domain won't use the relay server.
   subkeys:
   - key: ExcludedDomainsElement
@@ -132,11 +137,11 @@ payloadkeys:
       introduced: '2.4'
   type: <array>
   presence: optional
-  content: A list of Fully Qualified Domain Names (FQDNs), also known as hostnames,
-    that should be routed through the servers contained in Relays. Any connection
-    that matches this exact FQDN or hostname will use the relays. If no FQDNs and
-    no 'MatchDomains' are listed, traffic to all domains, except those matching an
-    excluded domain or excluded FQDN, will be routed to the relay servers.
+  content: A list of Fully Qualified Domain Names (FQDNs) to be routed through the
+    servers contained in `Relays`. Any connection that matches an FQDN in the list
+    exactly uses the relay servers. If this list and `MatchDomains` are empty, the
+    system routes traffic to all domains to the relay servers, except those that match
+    an excluded domain or excluded FQDN.
   subkeys:
   - key: MatchFQDNsElement
     title: Match FQDNs Element
@@ -154,11 +159,11 @@ payloadkeys:
       introduced: '2.4'
   type: <array>
   presence: optional
-  content: A list of Fully Qualified Domain Names (FQDNs), also known as hostnames,
-    that should not be routed through the servers contained in Relays. Any connection
-    that matches the FQDN exactly will not use the relay server. When 'MatchDomains'
-    are also specified any FQDN listed here in 'ExcludedFQDNs' should be a subdomain
-    of at least one MatchDomain otherwise it will not have any effect.
+  content: A list of Fully Qualified Domain Names (FQDNs) to exclude from routing
+    through the servers contained in `Relays`. Any connection that matches an FQDN
+    in the list exactly won't use the relay server. When `MatchDomains` is also present,
+    any FQDN listed in the list should be a subdomain of at least one `MatchDomain`
+    value, otherwise it will not have any effect.
   subkeys:
   - key: ExcludedFQDNsElement
     title: Excluded FQDNs Element
@@ -166,6 +171,37 @@ payloadkeys:
 - key: RelayUUID
   type: <string>
   presence: optional
-  content: A globally-unique identifier for this relay configuration. The system uses
-    this UUID to route managed apps through the servers in 'Relays'. This key is required
-    for user enrollments.
+  content: A globally unique identifier for this relay configuration. The system uses
+    this UUID to route managed apps through the servers in `Relays`. This key is required
+    for user enrollment.
+- key: UIToggleEnabled
+  title: UI Toggle Enabled
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+    macOS:
+      introduced: '26.0'
+    tvOS:
+      introduced: '26.0'
+    visionOS:
+      introduced: '26.0'
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If `true`, the device allows the user to disable this network relay configuration.
+- key: AllowDNSFailover
+  title: Allow DNS Failover
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+    macOS:
+      introduced: '26.0'
+    tvOS:
+      introduced: '26.0'
+    visionOS:
+      introduced: '26.0'
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the device allows the relay to failover to the default system
+    DNS resolver.

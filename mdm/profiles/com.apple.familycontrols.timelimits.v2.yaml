@@ -1,5 +1,5 @@
 title: 'Parental Controls: Time Limits'
-description: ''
+description: The payload that configures parental control time limits.
 payload:
   payloadtype: com.apple.familycontrols.timelimits.v2
   supportedOS:
@@ -27,11 +27,11 @@ payloadkeys:
 - key: familyControlsEnabled
   type: <boolean>
   presence: required
-  content: If 'true', enables time limits.
+  content: If `true`, enables time limits.
 - key: time-limits
   type: <dictionary>
   presence: optional
-  content: The time limits to enforce if 'familyControlsEnabled' is enabled.
+  content: The time limits to enforce if `familyControlsEnabled` is enabled.
   subkeys:
   - key: weekday-allowance
     type: <dictionary>
@@ -42,7 +42,7 @@ payloadkeys:
     - key: enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable these settings.
+      content: If `true`, enable these settings.
     - key: rangeType
       type: <integer>
       presence: required
@@ -52,8 +52,8 @@ payloadkeys:
       content: |-
         The type of day range, which has the following possible values:
 
-        * '0': Weekday
-        * '1': Weekend
+        - `0`: Weekday
+        - `1`: Weekend
     - key: start
       type: <string>
       presence: optional
@@ -61,7 +61,7 @@ payloadkeys:
     - key: end
       type: <string>
       presence: optional
-      content: The curfew end time, in the format '%d:%d:%d'.
+      content: The curfew end time, in the format `%d:%d:%d`.
     - key: secondsPerDay
       type: <integer>
       presence: optional

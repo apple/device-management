@@ -1,5 +1,5 @@
 title: Status Software Update Install Reason
-description: The software update install reason state.
+description: A status report of the reason for a pending software update on the device.
 payload:
   statusitemtype: softwareupdate.install-reason
   supportedOS:
@@ -27,7 +27,12 @@ payload:
       allowed-scopes:
       - system
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -73,5 +78,5 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The identifier of the declaration that caused the software update to
-      occur. This key is present only if the 'reason' array contains the 'declaration'
+      occur. This key is present only if the `reason` array contains the `declaration`
       value.

@@ -1,5 +1,5 @@
 title: Status Reason
-description: Information about a status error.
+description: Provides details about an error for an item in a status report.
 payload:
   declarationtype: status-reason
   supportedOS:
@@ -28,4 +28,8 @@ payloadkeys:
   title: Error Details
   type: <dictionary>
   presence: optional
-  content: An arbitrary object containing details specific to this error.
+  content: A dictionary that contains additional details about the error.
+notes:
+- title: ''
+  content: Each status item defines its own set of `code`, `description`, and `details`
+    values.

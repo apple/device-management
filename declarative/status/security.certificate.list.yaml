@@ -1,5 +1,5 @@
 title: Status Security Certificate List
-description: The client's managed certificates.
+description: A status report of the client's managed certificates.
 payload:
   statusitemtype: security.certificate.list
   supportedOS:
@@ -59,6 +59,7 @@ payloadkeys:
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of a security certificate.
     subkeys:
     - key: identifier
       title: Unique identifier of the certificate.
@@ -71,9 +72,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: To indicate removal of a certificate, this key's value is set to true,
-        and only this key and the "identifier" key will be present in the status item
-        object.
+      content: If `true`, the system removed the app and only this key and the `identifier`
+        key are present in the status item object.
     - key: declaration-identifier
       title: Asset declaration identifier.
       type: <string>
@@ -89,7 +89,7 @@ payloadkeys:
       title: Is Identity
       type: <boolean>
       presence: required
-      content: If 'true', the certificate is an identity certificate.
+      content: If `true`, the certificate is an identity certificate.
     - key: data
       title: Certificate Data
       type: <data>

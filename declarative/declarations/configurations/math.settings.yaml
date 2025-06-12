@@ -1,5 +1,5 @@
 title: Math Settings
-description: Use this configuration to configure math-related settings
+description: The declaration to configure the math and calculator apps.
 payload:
   declarationtype: com.apple.configuration.math.settings
   supportedOS:
@@ -11,7 +11,6 @@ payload:
       - system
       sharedipad:
         allowed-scopes:
-        - system
         - user
     macOS:
       introduced: '15.0'

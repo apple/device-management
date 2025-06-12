@@ -1,5 +1,5 @@
 title: Status Software Update Failure Reason
-description: The software update failure reason state.
+description: A status report of a software update failure reason.
 payload:
   statusitemtype: softwareupdate.failure-reason
   supportedOS:
@@ -27,7 +27,12 @@ payload:
       allowed-scopes:
       - system
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -43,7 +48,7 @@ payloadkeys:
     type: <integer>
     presence: required
     content: The number of times the current software update failed. If there are
-      no failures, or no pending software update, this is '0'.
+      no failures, or no pending software update, this is `0`.
   - key: reason
     title: The reason for the software update failure.
     type: <string>

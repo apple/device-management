@@ -1,5 +1,5 @@
 title: '802.1X: Global Ethernet'
-description: ''
+description: The payload that configures the default fallback global Ethernet interface.
 payload:
   payloadtype: com.apple.globalethernet.managed
   supportedOS:
@@ -39,5 +39,13 @@ payloadkeys:
   type: <any>
   presence: optional
   content: Keys relevant to 802.1X configuration. User enrollment payloads don't support
-    the various proxy keys, including 'ProxyType', 'ProxyServer', 'ProxyServerPort',
-    'ProxyUsername', 'ProxyPassword', 'ProxyPACURL' and 'ProxyPACFallbackAllowed'.
+    the various proxy keys, including `ProxyType`, `ProxyServer`, `ProxyServerPort`,
+    `ProxyUsername`, `ProxyPassword`, `ProxyPACURL` and `ProxyPACFallbackAllowed`.
+notes:
+- title: ''
+  content: |-
+    This payload's contents contain these profile-specific keys:
+
+    - Interface (String): This payload uses the value `GlobalEthernet`.
+    - EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
+    - SetupModes (String): The type of connection mode, which is either `System` or `Loginwindow`. `System` is the default.

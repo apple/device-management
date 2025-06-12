@@ -1,5 +1,5 @@
 title: 'Login Window: Login Items'
-description: ''
+description: The payload that configures login behavior.
 payload:
   payloadtype: loginwindow
   supportedOS:
@@ -30,5 +30,5 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from disabling login item launches
+  content: If `true`, the system prevents the user from disabling login item launches
     by using the Shift key.

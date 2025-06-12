@@ -1,5 +1,5 @@
 title: ShareKit
-description: ''
+description: The payload that configures ShareKit.
 payload:
   payloadtype: com.apple.ShareKitHelper
   supportedOS:
@@ -40,7 +40,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: The list of plugin IDs that won't show up in the user's Share menu. This
-    key is used only if there is no 'SHKAllowedShareServices' key.
+    key is used only if there is no `SHKAllowedShareServices` key.
   subkeys:
   - key: SHKDeniedShareServicesItem
     type: <string>

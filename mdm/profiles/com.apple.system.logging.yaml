@@ -1,5 +1,5 @@
 title: System Logging
-description: ''
+description: The payload that configures system logging.
 payload:
   payloadtype: com.apple.system.logging
   supportedOS:
@@ -42,8 +42,8 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: A dictionary enabling the logging level for subsystems. See 'Customizing
-    Logging Behavior While Debugging' for more details about the format of the dictionary.
+  content: A dictionary enabling the logging level for subsystems. See `Customizing
+    Logging Behavior While Debugging` for more details about the format of the dictionary.
   subkeytype: Item
   subkeys: *id001
 - key: System
@@ -52,7 +52,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: This dictionary has one key, 'Enable-Private-Data'. Setting that value
-    to 'true' enables private data logging for the entire system.
+  content: This dictionary has one key, `Enable-Private-Data`. Setting that value
+    to `true` enables private data logging for the entire system.
   subkeytype: Item
   subkeys: *id001

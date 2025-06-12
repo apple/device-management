@@ -1,6 +1,5 @@
 title: Management:Status Subscriptions
-description: Use this configuration to define the status subscriptions that cause
-  status to be reported by the client.
+description: The declaration to configure status subscriptions.
 payload:
   declarationtype: com.apple.configuration.management.status-subscriptions
   supportedOS:
@@ -56,6 +55,7 @@ payloadkeys:
   subkeys:
   - key: StatusItem
     type: <dictionary>
+    content: The declaration for configuring a specific status subscription.
     subkeys:
     - key: Name
       type: <string>

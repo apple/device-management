@@ -1,5 +1,5 @@
 title: 'Certificate (PKCS #12)'
-description: Use this section to define settings for a pkcs12 certificate.
+description: 'The payload that configures a PKCS #12-formatted certificate.'
 payload:
   payloadtype: com.apple.security.pkcs12
   supportedOS:
@@ -74,7 +74,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system allows apps access to the private key. Available
+  content: If `true`, the system allows apps access to the private key. Available
     in macOS 10.10 and later.
 - key: KeyIsExtractable
   supportedOS:
@@ -91,5 +91,16 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system doesn't tag the private key data as extractable
+  content: If `false`, the system doesn't tag the private key data as extractable
     in the keychain.
+notes:
+- title: ''
+  content: |-
+    > Warning:
+    > The system obfuscates the profile but doesn't encrypt it, so it's possible to intercept the profile and extract the password and identity.
+
+    It's recommended to omit the password in the profile, or do one of the following instead:
+
+    - Securely deliver the profile to authorized users only, such as through MDM.
+    - Encrypt the profile so that only authorized devices can decrypt it.
+    - Use `SCEP` or `ACMECertificate` to provision the identity.

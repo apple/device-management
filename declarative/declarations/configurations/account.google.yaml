@@ -1,5 +1,5 @@
 title: Account:Google
-description: Use this configuration to define settings for access to Google services.
+description: The declaration to configure a Google account.
 payload:
   declarationtype: com.apple.configuration.account.google
   supportedOS:
@@ -54,8 +54,8 @@ payloadkeys:
   - com.apple.asset.useridentity
   presence: required
   content: The identifier of an asset declaration that contains the user identity
-    for this Google account. Set the corresponding asset type to 'UserIdentity' and
-    ensure that it contains an 'EmailAddress' key that specifies the full Google email
+    for this Google account. Set the corresponding asset type to `UserIdentity` and
+    ensure that it contains an `EmailAddress` key that specifies the full Google email
     address for the account.
 related-status-items:
 - status-items:

@@ -1,0 +1,179 @@
+title: Safari:Settings
+description: The declaration to configure Safari settings.
+payload:
+  declarationtype: com.apple.configuration.safari.settings
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: AcceptCookies
+  title: Accept Cookies
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    macOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  rangelist:
+  - Never
+  - CurrentWebsite
+  - VisitedWebsites
+  - Always
+  default: Always
+  combinetype: enum-first
+  content: |-
+    The policy Safari uses for managing cookies:
+
+    - `Never`: Safari always blocks cookies.
+    - `CurrentWebsite`: Safari allows cookies only from the current website.
+    - `VisitedWebsites`: Safari allows cookies only from visited websites.
+    - `Always`: Safari always allows cookies.
+- key: AllowDisablingFraudWarning
+  title: Allow Disabling Fraud Warning
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    macOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system forces fraud warnings on in Safari.
+- key: AllowHistoryClearing
+  title: Allow History Clearing
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    visionOS:
+      allowed-enrollments:
+      - supervised
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system disables clearing history in Safari.
+- key: AllowJavaScript
+  title: Allow JavaScript
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    macOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system disables JavaScript in Safari.
+- key: AllowPrivateBrowsing
+  title: Allow Private Browsing
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    visionOS:
+      allowed-enrollments:
+      - supervised
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system disables private browsing in Safari.
+- key: AllowPopups
+  title: Allow Popups
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    macOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system disables popups in Safari.
+- key: AllowSummary
+  title: Allow Summary
+  supportedOS:
+    iOS:
+      allowed-enrollments:
+      - supervised
+    visionOS:
+      allowed-enrollments:
+      - supervised
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, the system disables summarization of content in Safari.
+- key: NewTabStartPage
+  title: New Tab Start Page
+  type: <dictionary>
+  presence: optional
+  content: Sets the start page for new tabs in Safari.
+  subkeys:
+  - key: PageType
+    type: <string>
+    presence: required
+    rangelist:
+    - Start
+    - Home
+    - Extension
+    content: |-
+      Sets the start page type in Safari:
+
+      - `Start` - Safari uses the default start page. Safari disables the Homepage.
+      - `Home` - Safari uses the page specified by `HomepageURL`, and Safari also sets that as the Homepage.
+      - `Extension` - Safari uses the page specified by the Safari extension whose identifier is `ExtensionIdentifier`. Safari disables the Homepage.
+  - key: HomepageURL
+    title: The homepage URL.
+    type: <string>
+    presence: optional
+    content: The URL of the homepage which needs to start with `https://` or `http://`.
+      Required when setting `PageType` to `Home`.
+  - key: ExtensionIdentifier
+    title: The extension identifier.
+    type: <string>
+    presence: optional
+    content: The composed identifier of the extension that provides the start page.
+      The required format is "Identifier (TeamIdentifier)", for example "com.example.app
+      (ABCD1234)". Required when setting `PageType` to `Extension`.

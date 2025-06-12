@@ -1,5 +1,5 @@
 title: Error Code Software Update Required
-description: Error response for software update required.
+description: An error response that indicates the system requires a software update.
 payload:
   supportedOS:
     iOS:
@@ -9,7 +9,7 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
     watchOS:
       introduced: n/a
   content: |-
@@ -24,37 +24,36 @@ payloadkeys:
   presence: required
   rangelist:
   - com.apple.softwareupdate.required
-  content: Indicates that a software update is required before enrollment and setup
-    can proceed.
+  content: Indicates that the device needs to perform a software update before enrollment
+    and setup can proceed.
 - key: description
   type: <string>
   presence: optional
-  content: The description of the error. This will only be used by the client for
-    logging purposes and will not be displayed to the user.
+  content: A description of the error. Only use this for logging purposes and don't
+    display it to the user.
 - key: message
   type: <string>
   presence: optional
-  content: A description of the error suitable for displaying to the user. If needed,
-    the client will make a best-effort attempt to display the message, but may not
-    be able to, due to local conditions.
+  content: A description of the error to display to the user.
 - key: details
   type: <dictionary>
   presence: required
-  content: A dictionary of additional data specific to the error code.
+  content: A dictionary that contains additional data about the error code.
   subkeys:
   - key: OSVersion
     type: <string>
     presence: required
-    content: The OS version that the device is required to update to (e.g., "16.1").
-      A supplemental version identifier can be included (e.g., "16.1 (a)").
+    content: The OS version that the device needs to update to, for example, "16.1".
+      This identifier can include a supplemental version identifier, for example,
+      "16.1 (a)".
   - key: BuildVersion
     type: <string>
     presence: optional
-    content: The build version that the device is required to update to  (e.g., "20A242).
-      The build version is used for testing during seeding periods. A supplemental
-      version identifier can be included (e.g., "20A242a"). If the build version is
-      not consistent with the OS version specified in the 'OSVersion' key, the OS
-      version will take precedence.
+    content: The build version that the device needs to update to, for example, "20A242.
+      The systems uses the build version for testing during seeding periods. This
+      identifier can include a supplemental version identifier, for example, "20A242a".
+      If the `BuildVersion` isn't consistent with the `OSVersion`, `OSVersion` take
+      precedence.
   - key: RequireBetaProgram
     supportedOS:
       iOS:
@@ -63,9 +62,9 @@ payloadkeys:
         introduced: '14.5'
     type: <dictionary>
     presence: optional
-    content: The device automatically enrolls in this beta program, to allow enforced
-      software updates to beta program OS versions. The device will remain in the
-      beta program after the enforced software update is completed.
+    content: The device enrolls in the beta program, allowing enforced software updates
+      to beta program OS versions. The device remains in the beta program after the
+      system completes the enforced software update.
     subkeys:
     - key: Description
       type: <string>
@@ -74,6 +73,12 @@ payloadkeys:
     - key: Token
       type: <string>
       presence: required
-      content: The Apple Business Manager or Apple School Manager seeding service
-        token for the organization the MDM server is part of. This token is used to
-        enroll the device in the corresponding beta program.
+      content: The AxM seeding service token for the AxM organization the MDM server
+        is part of. The system uses this token to enroll the device in the corresponding
+        beta program.
+notes:
+- title: ''
+  content: |-
+    The MDM server's 403 response body contains the schema for a JSON or property list XML document. The response headers need to include a "Content-Type" header that indicates whether the response returns JSON or XML.
+
+    The system returns this response when a device attempts to enroll with an MDM server during Setup Assistant, but the MDM server requires the device to perform a software update before it can continue with enrollment and setup.

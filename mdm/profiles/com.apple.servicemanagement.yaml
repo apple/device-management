@@ -1,6 +1,6 @@
 title: Service Management - Managed Login Items
-description: Control the user experience for ServiceManagement login items (including
-  launchd agents and daemons) in Login Items Settings.
+description: This payload that configures managed login items, which auto-enables
+  and auto-allows matched items.
 payload:
   payloadtype: com.apple.servicemanagement
   supportedOS:
@@ -64,4 +64,4 @@ payloadkeys:
       type: <string>
       presence: optional
       content: An additional constraint to limit the scope of the rule that the system
-        tests after matching the 'RuleType' and 'RuleValue'.
+        tests after matching the `RuleType` and `RuleValue`.

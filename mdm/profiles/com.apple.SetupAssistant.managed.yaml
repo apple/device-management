@@ -1,5 +1,5 @@
 title: Setup Assistant
-description: ''
+description: The payload that configures Setup Assistant settings.
 payload:
   payloadtype: com.apple.SetupAssistant.managed
   supportedOS:
@@ -43,7 +43,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Apple Account setup pane.
+  content: If `true`, the system skips the Apple Account setup pane.
 - key: SkipSiriSetup
   supportedOS:
     iOS:
@@ -53,7 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Siri setup pane.
+  content: If `true`, the system skips the Siri setup pane.
 - key: SkipPrivacySetup
   supportedOS:
     iOS:
@@ -64,7 +64,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Privacy consent pane.
+  content: If `true`, the system skips the Privacy consent pane.
 - key: SkipiCloudStorageSetup
   supportedOS:
     iOS:
@@ -75,7 +75,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the iCloud Storage pane.
+  content: If `true`, the system skips the iCloud Storage pane.
 - key: SkipTrueTone
   supportedOS:
     iOS:
@@ -86,7 +86,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the True Tone Display pane.
+  content: If `true`, the system skips the True Tone Display pane.
 - key: SkipAppearance
   supportedOS:
     iOS:
@@ -97,7 +97,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Choose Your Look pane.
+  content: If `true`, the system skips the Choose Your Look pane.
 - key: SkipTouchIDSetup
   supportedOS:
     iOS:
@@ -108,7 +108,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Touch ID setup pane.
+  content: If `true`, the system skips the Touch ID setup pane.
 - key: SkipScreenTime
   supportedOS:
     iOS:
@@ -119,7 +119,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Screen Time pane.
+  content: If `true`, the system skips the Screen Time pane.
 - key: SkipAccessibility
   supportedOS:
     iOS:
@@ -130,7 +130,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Accessibility pane.
+  content: If `true`, the system skips the Accessibility pane.
 - key: SkipSetupItems
   supportedOS:
     iOS:
@@ -139,9 +139,9 @@ payloadkeys:
       introduced: '15.0'
   type: <array>
   presence: optional
-  content: An array strings that describe the setup items to skip. SkipKeys provides
-    a list of valid strings and their meanings. Available in iOS 14, macOS 15 and
-    later.
+  content: An array of strings that describe the setup items to skip. `SkipKeys` provides
+    a list of valid strings and their meanings. Available in iOS 14 and later, and
+    macOS 15 and later.
   subkeys:
   - key: SkipSetupItems
     type: <string>
@@ -155,7 +155,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system skips the Unlock With Apple Watch pane.
+  content: If `true`, the system skips the Unlock With Apple Watch pane.
 - key: SkipWallpaper
   supportedOS:
     iOS:

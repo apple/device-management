@@ -1,5 +1,5 @@
 title: Status Device Model Family
-description: The device's hardware family.
+description: A status report of the device's hardware family.
 payload:
   statusitemtype: device.model.family
   supportedOS:
@@ -54,4 +54,4 @@ payloadkeys:
   title: Status item value.
   type: <string>
   presence: required
-  content: The hardware family of the device, such as 'Mac', 'iPhone', or 'iPad'.
+  content: The hardware family of the device, such as `Mac`, `iPhone`, or `iPad`.

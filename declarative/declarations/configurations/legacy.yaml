@@ -1,5 +1,5 @@
 title: Legacy Profile
-description: Specifies an MDMv1 profile to download and install
+description: The declaration to configure a legacy profile.
 payload:
   declarationtype: com.apple.configuration.legacy
   supportedOS:
@@ -56,5 +56,12 @@ payloadkeys:
   type: <string>
   presence: required
   content: |-
-    The URL of the profile to download and install, which needs to start with 'https://', and must be hosted by the MDM server.
-    If a user enrollment triggers this configuration, the system silently ignores any MDM 1 payloads in macOS where the User Enrollment Mode setting is 'forbidden'. In iOS and tvOS, the system rejects the entire profile.
+    The URL of the profile to download and install, which needs to start with `https://`, and must be hosted by the MDM server.
+
+    If a user enrollment triggers this configuration, the system silently ignores any MDMv1 payloads in macOS where the User Enrollment Mode setting is `forbidden`. In iOS, the system rejects the entire profile.
+notes:
+- title: ''
+  content: |-
+    This declaration specifies an MDMv1 profile for the device to download and install.
+
+    The declaration may contain any profile that MDM supports. The system doesn't allow MDM enrollment and Profile Services profiles.

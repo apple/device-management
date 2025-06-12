@@ -1,5 +1,5 @@
 title: Subscribed Calendars
-description: Use this section to define settings for subscribed calendar account.
+description: The payload that configures subscribed calendars.
 payload:
   payloadtype: com.apple.subscribedcalendar.account
   supportedOS:
@@ -53,7 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables SSL.
+  content: If `true`, the system enables SSL.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:

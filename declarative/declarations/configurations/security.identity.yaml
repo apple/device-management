@@ -1,5 +1,5 @@
 title: Security:Identity
-description: Use this configuration to install an identity on the device.
+description: The declaration to install an identity on the device.
 payload:
   declarationtype: com.apple.configuration.security.identity
   supportedOS:
@@ -74,7 +74,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', apps can access the private key.
+  content: If `true`, apps can access the private key.
 - key: KeyIsExtractable
   title: Key is extractable
   supportedOS:
@@ -89,7 +89,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the private key is extractable in the keychain.
+  content: If `true`, the private key is extractable in the keychain.
 related-status-items:
 - status-items:
   - security.certificate.list

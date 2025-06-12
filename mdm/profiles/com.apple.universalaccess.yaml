@@ -1,4 +1,5 @@
 title: Accessibility
+description: The payload that configures the accessibility features of the device.
 payload:
   payloadtype: com.apple.universalaccess
   supportedOS:
@@ -30,7 +31,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Use keyboard shortcuts” in the Zoom options.
+  content: If `true`, enables "Use keyboard shortcuts" in the Zoom options.
 - key: closeViewNearPoint
   type: <integer>
   presence: optional
@@ -39,7 +40,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Use scroll gesture” in the Zoom options.
+  content: If `true`, enables "Use scroll gesture" in the Zoom options.
 - key: closeViewShowPreview
   supportedOS:
     macOS:
@@ -48,13 +49,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Show preview rectangle” in the Zoom options. Only available
+  content: If `true`, enables "Show preview rectangle" in the Zoom options. Only available
     in macOS 10.15 and earlier.
 - key: closeViewSmoothImages
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Smooth images” in the Zoom options.
+  content: If `true`, enables "Smooth images" in the Zoom options.
 - key: contrast
   type: <real>
   presence: optional
@@ -66,7 +67,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Flash the screen” in the Audio options.
+  content: If `true`, enables "Flash the screen" in the Audio options.
 - key: grayscale
   supportedOS:
     macOS:
@@ -75,13 +76,14 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', enables “Use grayscale” in the Display options.
+    If `true`, enables "Use grayscale" in the Display options.
+
     This option is deprecated in macOS 11.
 - key: mouseDriver
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables Mouse Keys in the Mouse & Trackpad options.
+  content: If `true`, enables Mouse Keys in the Mouse & Trackpad options.
 - key: mouseDriverCursorSize
   type: <integer>
   presence: optional
@@ -90,7 +92,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', ignores the built-in trackpad.
+  content: If `true`, ignores the built-in trackpad.
 - key: mouseDriverInitialDelay
   type: <integer>
   presence: optional
@@ -103,12 +105,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Slow Keys” in the Keyboard options.
+  content: If `true`, enables "Slow Keys" in the Keyboard options.
 - key: slowKeyBeepOn
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “click key sounds” for Slow Keys.
+  content: If `true`, enables "click key sounds" for Slow Keys.
 - key: slowKeyDelay
   type: <integer>
   presence: optional
@@ -117,29 +119,29 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', plays stereo audio as mono.
+  content: If `true`, plays stereo audio as mono.
 - key: stickyKey
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables Sticky Keys in the Keyboard options.
+  content: If `true`, enables Sticky Keys in the Keyboard options.
 - key: stickyKeyBeepOnModifier
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables the beep when a modifier key is set for Sticky Keys.
+  content: If `true`, enables the beep when a modifier key is set for Sticky Keys.
 - key: stickyKeyShowWindow
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Display pressed keys on screen” for Sticky Keys.
+  content: If `true`, enables "Display pressed keys on screen" for Sticky Keys.
 - key: voiceOverOnOffKey
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables Voice Over.
+  content: If `true`, enables Voice Over.
 - key: whiteOnBlack
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables Invert Colors in Display Accommodations.
+  content: If `true`, enables Invert Colors in Display Accommodations.

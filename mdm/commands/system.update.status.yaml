@@ -1,10 +1,11 @@
 title: OS Update Status Command
-description: Queries the device for the status of software updates.
+description: Get the status of operating-system updates on a device.
 payload:
   requesttype: OSUpdateStatus
   supportedOS:
     iOS:
       introduced: '9.0'
+      deprecated: '26.0'
       accessrights: AllowAppInstallation
       supervised: true
       requiresdep: false
@@ -16,6 +17,7 @@ payload:
         mode: forbidden
     macOS:
       introduced: 10.11.5
+      deprecated: '26.0'
       accessrights: None
       devicechannel: true
       userchannel: false
@@ -25,6 +27,7 @@ payload:
         mode: forbidden
     tvOS:
       introduced: '12.0'
+      deprecated: '26.0'
       accessrights: AllowAppInstallation
       devicechannel: true
       supervised: true
@@ -38,14 +41,14 @@ responsekeys:
 - key: OSUpdateStatus
   type: <array>
   presence: required
-  content: An array of dictionaries that describes the statuses of software updates.
-    This command only returns the status for System Applications and Configuration
-    Data updates if a Software Update is actively managed via a Declarative Device
-    Management 'Software Update Enforcement Policy' configuration.
+  content: |-
+    An array of dictionaries that describes the statuses of software updates. The array is empty if there are no software updates currently in progress.
+    This command only returns the status for System Applications and Configuration Data updates when a software update is managed by a Declarative Device Management `SoftwareUpdateEnforcementSpecific` configuration.
   subkeys:
   - key: OSUpdateStatusItem
     type: <dictionary>
     presence: required
+    content: A dictionary that describes the status of a software update.
     subkeys:
     - key: ProductKey
       type: <string>
@@ -54,20 +57,21 @@ responsekeys:
     - key: IsDownloaded
       type: <boolean>
       presence: required
-      content: If 'true', the update has finished downloading.
+      content: If `true`, the update has finished downloading.
     - key: DownloadPercentComplete
       type: <real>
       presence: required
-      content: A floating-point number between '0.0' and '1.0' that indicates the
+      content: A floating-point number between `0.0` and `1.0` that indicates the
         download progress as a percentage.
     - key: Status
       type: <string>
       presence: required
       content: |-
         The status of the update, which is one of the following values:
-        * 'Idle': The update is idle.
-        * 'Downloading': The software update is downloading and subsequently preparing.
-        * 'Installing': The software update is installing.
+
+        - `Idle`: The update is idle.
+        - `Downloading`: The software update is downloading and subsequently preparing.
+        - `Installing`: The software update is installing.
     - key: MaxDeferrals
       supportedOS:
         iOS:
@@ -80,6 +84,7 @@ responsekeys:
       presence: optional
       content: |-
         The number of times a user can defer this OS update.
+
         Available in macOS 12.3 and later.
     - key: DeferralsRemaining
       supportedOS:
@@ -93,6 +98,7 @@ responsekeys:
       presence: optional
       content: |-
         The number of remaining user deferrals for this OS update.
+
         Available in macOS 12.3 and later.
     - key: NextScheduledInstall
       supportedOS:
@@ -106,6 +112,7 @@ responsekeys:
       presence: optional
       content: |-
         The date of the next attempt at installing this OS update.
+
         Available in macOS 12.3 and later.
     - key: PastNotifications
       supportedOS:
@@ -119,8 +126,13 @@ responsekeys:
       presence: optional
       content: |-
         The dates/times when the OS notified the user about installing this OS update.
+
         Available in macOS 12.3 and later.
       subkeys:
       - key: PastNotificationDate
         title: Past Notification Date
         type: <date>
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

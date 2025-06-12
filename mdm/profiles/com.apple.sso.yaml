@@ -1,10 +1,11 @@
 title: Single Sign-On
-description: ''
+description: The payload that configures single sign-on (SSO).
 payload:
   payloadtype: com.apple.sso
   supportedOS:
     iOS:
       introduced: '7.0'
+      deprecated: '26.0'
       multiple: false
       supervised: false
       allowmanualinstall: true
@@ -41,9 +42,9 @@ payloadkeys:
         introduced: '8.0'
     type: <string>
     presence: optional
-    content: The 'PayloadUUID' of an identity certificate payload that the system
+    content: The `PayloadUUID` of an identity certificate payload that the system
       can use to renew the Kerberos credential without user interaction. Set the payload
-      type to either 'com.apple.security.pkcs12' or 'com.apple.security.scep' in the
+      type to either `com.apple.security.pkcs12` or `com.apple.security.scep` in the
       certificate payload. The configuration file needs to contain both the SSO payload
       and the identity certificate payload.
   - key: Realm
@@ -54,8 +55,9 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      The list of URL prefixes to match in order to use this account for Kerberos authentication over HTTP. If this key is missing, the system makes the account eligible to match all 'http://' and 'https://' URLs.
-      Begin the URL matching patterns with either 'http://' or 'https://'. The system performs a simple string match, so the URL prefix 'http://www.apple.com/' doesn't match 'http://www.apple.com:80/'. However, if a matching pattern doesn't end in '/', the system automatically append a '/' to it.
+      The list of URL prefixes to match in order to use this account for Kerberos authentication over HTTP. If this key is missing, the system makes the account eligible to match all `http://` and `https://` URLs.
+
+      Begin the URL matching patterns with either `http://` or `https://`. The system performs a simple string match, so the URL prefix `http://www.apple.com/` doesn't match `http://www.apple.com:80/`. However, if a matching pattern doesn't end in `/`, the system automatically append a `/` to it.
     subkeys:
     - key: URLPrefixMatchesItem
       type: <string>
@@ -66,9 +68,13 @@ payloadkeys:
     presence: optional
     content: |-
       The list of app identifiers that the system allows to use this login. If this field missing, the system matches all app identifiers with this login.
-      Don't set an empty array. The array needs to contain strings that match App Bundle IDs. These strings can be exact matches such as 'com.mycompany.myapp', or they may specify a prefix match on the Bundle ID by using the '*' wildcard character. The wildcard character needs to appear after a period ('.'), and may only appear once, at the end of the string, for example, 'com.mycompany.*'. When you provide a wildcard, the system grants access to the account to any app with a Bundle ID that begins with the prefix.
+
+      Don't set an empty array. The array needs to contain strings that match App Bundle IDs. These strings can be exact matches such as `com.mycompany.myapp`, or they may specify a prefix match on the Bundle ID by using the `*` wildcard character. The wildcard character needs to appear after a period (`.`), and may only appear once, at the end of the string, for example, `com.mycompany.*`. When you provide a wildcard, the system grants access to the account to any app with a Bundle ID that begins with the prefix.
     subkeys:
     - key: AppIdentifierMatchesItem
       type: <string>
       presence: required
       content: An app identifier.
+notes:
+- title: ''
+  content: Deprecated in iOS 26. Use the `ExtensibleSingleSignOn` payload instead.

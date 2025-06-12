@@ -1,5 +1,5 @@
 title: Screensaver
-description: ''
+description: The payload that configures the screen saver.
 payload:
   payloadtype: com.apple.screensaver
   supportedOS:
@@ -30,8 +30,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user is prompted for a password when the screen saver is
-    unlocked or stopped. When you use this prompt, you must also provide 'askForPasswordDelay'.
+  content: If `true`, the user is prompted for a password when the screen saver is
+    unlocked or stopped. When you use this prompt, you must also provide `askForPasswordDelay`.
     Available in macOS 10.13 and later.
 - key: askForPasswordDelay
   supportedOS:
@@ -40,9 +40,9 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The number of seconds to delay before the password will be required to
-    unlock or stop the screen saver (the grace period). A value of '2147483647' (for
-    example, '0x7FFFFFFF') disables this requirement. To use this option, you must
-    set 'askForPassword' to 'true'. Available in macOS 10.13 and later.
+    unlock or stop the screen saver (the grace period). A value of `2147483647` (for
+    example, `0x7FFFFFFF`) disables this requirement. To use this option, you must
+    set `askForPassword` to `true`. Available in macOS 10.13 and later.
 - key: loginWindowIdleTime
   type: <integer>
   presence: optional

@@ -1,4 +1,5 @@
 title: System Preferences
+description: The payload that configures the preference panes.
 payload:
   payloadtype: com.apple.systempreferences
   supportedOS:
@@ -95,11 +96,11 @@ payloadkeys:
       introduced: '13.0'
   type: <array>
   presence: optional
-  content: The list of disabled System Settings extensions. All other items will be
-    enabled. When DisabledSystemSettings is specified, DisabledPreferencePanes and
-    EnabledPreferencePanes are ignored. Note that a given System Settings extension
-    may supply more than one section in System Settings; disabling such an extension
-    will disable all sections it supplies.
+  content: |-
+    The list of disabled System Settings extensions. All other items will be enabled. When `DisabledSystemSettings` is specified, the device ignores `DisabledPreferencePanes` and `EnabledPreferencePanes`.
+
+    > Note:
+    > A given System Settings extension can supply more than one section in System Settings; disabling such an extension disables all sections it supplies.
   subkeys:
   - key: SettingsExtensions
     type: <string>

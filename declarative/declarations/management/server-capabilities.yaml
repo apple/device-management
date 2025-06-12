@@ -1,5 +1,5 @@
 title: Management:Server Capabilities
-description: Use this declaration to tell the client about the server's capabilities.
+description: The declaration to configure the server's feature set.
 payload:
   declarationtype: com.apple.management.server-capabilities
   supportedOS:
@@ -25,7 +25,8 @@ payloadkeys:
   presence: required
   content: |-
     A dictionary that contains the server's optional protocol features.
-    Each dictionary item uses the key name to represent a feature, and the value to hold the feature's associated parameters. This protocol reserves keys with a prefix of “'com.apple.'”, which appear as subkeys in this dictionary.
+
+    Each dictionary item uses the key name to represent a feature, and the value to hold the feature's associated parameters. This protocol reserves keys with a prefix of `com.apple.`, which appear as subkeys in this dictionary.
   subkeys:
   - key: ANY
     type: <any>

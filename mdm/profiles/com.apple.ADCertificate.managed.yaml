@@ -1,5 +1,5 @@
 title: Active Directory Certificate
-description: Active Directory Certificate
+description: The payload that configures Active Directory Certificate settings.
 payload:
   payloadtype: com.apple.ADCertificate.managed
   supportedOS:
@@ -36,7 +36,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The certificate template for your environment. The default user certificate
-    value is `User`. The default computer certificate value is `Machine`.
+    value is \`User\`. The default computer certificate value is \`Machine\`.
 - key: Description
   title: Description
   type: <string>
@@ -57,12 +57,13 @@ payloadkeys:
   presence: optional
   content: |-
     The name of the certificate authority (CA), which is determined from the common name (CN) of the Active Directory entry. Available in macOS 10.8 and later. Valid values:
-    * CN=<your CA Name>
-    * CN='Certification Authorities'
-    * CN='Public Key Services'
-    * CN='Services'
-    * CN='Configuration'
-    * CN=<your base Domain Name>
+
+    - CN=<your CA Name>
+    - CN=`Certification Authorities`
+    - CN=`Public Key Services`
+    - CN=`Services`
+    - CN=`Configuration`
+    - CN=<your base Domain Name>
 - key: CertificateAcquisitionMechanism
   title: Certificate Acquisition Mechanism
   supportedOS:
@@ -70,7 +71,7 @@ payloadkeys:
       introduced: '10.8'
   type: <string>
   presence: optional
-  content: This value is most commonly 'RPC'; if using web enrollment, use 'HTTP'.
+  content: This value is most commonly `RPC`; if using web enrollment, use `HTTP`.
     Available in macOS 10.8 and later.
 - key: AllowAllAppsAccess
   title: Allow All Apps Access
@@ -80,7 +81,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', gives apps access to the private key. Available in macOS 10.10
+  content: If `true`, gives apps access to the private key. Available in macOS 10.10
     and later.
 - key: PromptForCredentials
   title: Prompt For Credentials
@@ -90,7 +91,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prompts the user for credentials when is installs
+  content: If `true`, the system prompts the user for credentials when is installs
     the profile. This key applies only to user certificates with the Manual Download
     profile delivery method. Omit this key for computer certificates. Available in
     macOS 10.8 and later.
@@ -102,7 +103,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system allows exporting the private key. Available in macOS
+  content: If `true`, the system allows exporting the private key. Available in macOS
     10.10 and later.
 - key: Keysize
   title: Key Size
@@ -122,6 +123,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the certificate obtained with this payload attempts auto-renewal.
+  content: If `true`, the certificate obtained with this payload attempts auto-renewal.
     Auto-renewal can only be used with device Active Directory certificate payloads.
     Available in macOS 10.13.4 and later.
+notes:
+- title: ''
+  content: To get a certificate from a Microsoft CA, follow the instructions at [Request
+    a certificate from a Microsoft Certificate Authority](https://support.apple.com/en-us/HT204602).

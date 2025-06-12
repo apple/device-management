@@ -1,5 +1,6 @@
 title: System Policy Managed
-description: ''
+description: The payload that configures the Finder's contextual menu to bypass the
+  system policy.
 payload:
   payloadtype: com.apple.systempolicy.managed
   supportedOS:
@@ -29,4 +30,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the Finder's contextual menu item.
+  content: If `true`, disables the Finder's contextual menu item.

@@ -1,6 +1,5 @@
 title: Google Account
-description: Use this section to configure Google accounts. The user will be prompted
-  to sign in afterward.
+description: The payload that configures a Google account.
 payload:
   payloadtype: com.apple.google-oauth
   supportedOS:
@@ -93,3 +92,12 @@ payloadkeys:
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
     Available in iOS 14 and later.
+notes:
+- title: ''
+  content: |-
+    You can install multiple Google payloads. Each sets up a Google email address and any other Google services the user enables after authentication.
+
+    > Note:
+    > For supervised devices, the system requires installation of Google accounts through MDM or Apple Configurator 2.
+
+    The payload never contains credentials; the system prompts the user to enter credentials shortly after installation of the payload.

@@ -1,5 +1,5 @@
 title: Status Test Integer Value
-description: A test status item integer.
+description: A test status item for an integer.
 payload:
   statusitemtype: test.integer-value
   supportedOS:

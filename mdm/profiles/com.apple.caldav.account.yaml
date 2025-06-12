@@ -1,6 +1,5 @@
 title: CalDAV
-description: Use this section to define settings for configuration access to CalDAV
-  servers.
+description: The payload that configures a Calendar account.
 payload:
   payloadtype: com.apple.caldav.account
   supportedOS:
@@ -58,7 +57,7 @@ payloadkeys:
   title: Account Password
   type: <string>
   presence: optional
-  content: The user's password. Only use this with encrypted profiles.
+  content: The user's password. Only use this in encrypted profiles.
 - key: CalDAVPrincipalURL
   title: Principal URL
   type: <string>
@@ -69,7 +68,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system enables SSL.
+  content: If `true`, the system enables SSL.
 - key: CalDAVPort
   title: Port Number
   type: <integer>

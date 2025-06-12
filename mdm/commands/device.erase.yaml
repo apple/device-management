@@ -1,6 +1,5 @@
 title: Erase Device Command
-description: This command allows the server to remotely erase the device. This command
-  requires the Device Erase right.
+description: Remotely and immediately erase a device.
 payload:
   requesttype: EraseDevice
   supportedOS:
@@ -55,7 +54,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', preserve the data plan on an iPhone or iPad with eSIM functionality,
+  content: If `true`, preserve the data plan on an iPhone or iPad with eSIM functionality,
     if one exists. This value is available in iOS 11 and later.
 - key: DisallowProximitySetup
   supportedOS:
@@ -74,7 +73,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disable Proximity Setup on the next reboot and skip the pane
+  content: If `true`, disable Proximity Setup on the next reboot and skip the pane
     in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS
     14, don't use this option with any other option.
 - key: PIN
@@ -114,17 +113,20 @@ payloadkeys:
   - Always
   content: |-
     This key defines the fallback behavior for erasing a device.
-    In macOS 12 and later, this command uses Erase All Content and Settings (EACS) on Mac computers with the Apple M1 chip or the Apple T2 Security Chip. On those devices, if EACS can't run, the device can use obliteration (macOS 11.x behavior). This key has no effect on machines prior to the T2 chip. For a list of supported macs, see Mac models with the Apple T2 Security Chip <https://support.apple.com/en-us/HT208862>.
-    Upon receiving this command, the device performs preflight checks to determine if the device is in a state that allows EACS. The 'status' of the EraseDeviceResponse is either 'Acknowledged' or 'Error'.
+
+    In macOS 12 and later, this command uses Erase All Content and Settings (EACS) on Mac computers with the Apple M1 chip or the Apple T2 Security Chip. On those devices, if EACS can't run, the device can use obliteration (macOS 11.x behavior). This key has no effect on machines prior to the T2 chip. For a list of supported macs, see [Mac models with the Apple T2 Security Chip](https://support.apple.com/en-us/HT208862).
+
+    Upon receiving this command, the device performs preflight checks to determine if the device is in a state that allows EACS. The `status` of the `EraseDeviceResponse` is either `Acknowledged` or `Error`.
+
     The following values define the device's fallback behavior:
 
-    * 'DoNotObliterate': If EACS preflight fails, the device responds to the server with an 'Error' status and doesn't attempt to erase itself.
-    If EACS preflight succeeds but EACS fails, then the device doesn't attempt to erase itself.
-    * 'ObliterateWithWarning': If EACS preflight fails, the device responds with an 'Acknowledged' status and then attempts to erase itself.
-    If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
-    * 'Always': The system doesn't attempt EACS. T2 and later devices always obliterate.
-    * 'Default': If EACS preflight fails, the device responds to the server with an 'Error' status and then attempts to erase itself.
-    If EACS preflight succeeds but EACS fails, then the device attempts to erase itself.
+    - `DoNotObliterate`: If EACS preflight fails, the device responds to the server with an `Error` status and doesn't attempt to erase itself.
+      If EACS preflight succeeds, but EACS fails, the device doesn't attempt to erase itself.
+    - `ObliterateWithWarning`: If EACS preflight fails, the device responds with an `Acknowledged` status and then attempts to erase itself.
+        If EACS preflight succeeds, but EACS fails, the device attempts to erase itself.
+    - `Always`: The system doesn't attempt EACS. T2 and later devices always obliterate.
+    - `Default`: If EACS preflight fails, the device responds to the server with an `Error` status and then attempts to erase itself.
+      If EACS preflight succeeds, but EACS fails, the device attempts to erase itself.
 - key: ReturnToService
   supportedOS:
     iOS:
@@ -134,28 +136,53 @@ payloadkeys:
     tvOS:
       introduced: '18.0'
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
     watchOS:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The configuration settings for Return to Service. This value is available
-    in iOS 17 and later and with Shared iPad and tvOS 18 and later.
+  content: The configuration settings for return to service. This value is available
+    in iOS 17 and later, with Shared iPad, in tvOS 18 and later, and in visionOS 26
+    and later.
   subkeys:
   - key: Enabled
-    title: Use Return to Service
+    title: Use return to service
     type: <boolean>
     presence: required
-    content: If 'true', the device tries to re-enroll itself automatically after erasure.
+    content: If `true`, the device tries to reenroll itself automatically after erasure.
       The user needs to deactivate all activation locks for this feature to work correctly.
   - key: WiFiProfileData
     type: <data>
     presence: optional
-    content: The WiFi profile that installed after erasure, when using Return to Service.
-      This is required when the device doesn't have ethernet access.
+    content: The Wi-Fi profile that installs after erasure when using return to service.
+      This is required when the device doesn't have an Ethernet or cellular connection.
   - key: MDMProfileData
     type: <data>
     presence: optional
     content: |-
-      The MDM profile installed after erasure, when using Return to Service. This key is required for all unsupervised devices, as well as supervised devices that weren't enrolled with ADE. If provided, the device uses this profile directly instead of fetching it from the server. For ADE enrolled devices, this key isn't necessary unless the cloud configuration profile of the device contains the 'configuration-web-url' key.
-      The cloud configuration is still downloaded from Apple's servers when the profile contains this key, so the supervision identity, MDM removability and other settings from the cloud configuration still applies. However, the device doesn't use the URL specified in the cloud configuration to fetch the MDM profile.
+      The MDM profile that installs after erasure when using return to service. This key is required for all unsupervised devices, as well as supervised devices that don't enroll with Automated Device Enrollment. If provided, the device uses this profile directly instead of fetching it from the server. For devices that enroll with Automated Device Enrollment, this key isn't necessary unless the cloud configuration profile of the device contains the `configuration-web-url` key.
+
+      The cloud configuration still downloads from Apple's servers when the profile contains this key, so the supervision identity, MDM removability, and other settings from the cloud configuration still apply. However, the device doesn't use the specified URL in the cloud configuration to fetch the MDM profile.
+  - key: BootstrapToken
+    supportedOS:
+      iOS:
+        introduced: '26.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: '26.0'
+      watchOS:
+        introduced: n/a
+    type: <data>
+    presence: optional
+    content: The bootstrap token the system uses to implement return to service with
+      app preservation. Required when enabling return to service through the cloud
+      configuration.
+notes:
+- title: ''
+  content: |-
+    This command allows the server to immediately erase a device, even a locked device, without warning the user. The device sends a response to the server, but it doesn't retry if it isn't successful the first time.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

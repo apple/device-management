@@ -1,5 +1,5 @@
 title: Wi-Fi
-description: Use this section to define Wi-Fi settings
+description: The payload that configures Wi-Fi settings.
 payload:
   payloadtype: com.apple.wifi.managed
   supportedOS:
@@ -51,8 +51,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'true', the device joins the network automatically.
-    If 'false', the user must tap the network name to join it.
+    If `true`, the device joins the network automatically.
+
+    If `false`, the user must tap the network name to join it.
+
     Available in iOS 5.0 and later, and in macOS 10.7 and later.
 - key: SSID_STR
   title: SSID
@@ -62,13 +64,13 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The SSID of the Wi-Fi network to use. In iOS 7.0 and later, the SSID is
-    optional if a value exists for 'DomainName' value.
+    optional if a value exists for `DomainName` value.
 - key: HIDDEN_NETWORK
   title: Hidden
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', defines this network as hidden.
+  content: If `true`, defines this network as hidden.
 - key: ProxyType
   title: Proxy Type
   supportedOS:
@@ -104,13 +106,18 @@ payloadkeys:
   default: Any
   content: |-
     The encryption type for the network.
-    If set to anything except 'None', the payload may contain the following three keys: 'Password', 'PayloadCertificateUUID', or 'EAPClientConfiguration'.
+
+    If set to anything except `None`, the payload may contain the following three keys: `Password`, `PayloadCertificateUUID`, or `EAPClientConfiguration`.
+
     As of iOS 16, tvOS 16, watchOS 9, and macOS 13:
-    * 'WPA' allows joining WPA or WPA2 networks
-    * 'WPA2' allows joining WPA2 or WPA3 networks
-    * 'WPA3' allows joining WPA3 networks only
-    * 'Any' allows joining WPA, WPA2, WPA3, and WEP networks
-    Prior to iOS 16, tvOS 16, and watchOS 9, specifying 'WPA', 'WPA2', and 'WPA3' were equivalent and would allow joining any WPA network.
+
+    - `WPA` allows joining WPA or WPA2 networks
+    - `WPA2` allows joining WPA2 or WPA3 networks
+    - `WPA3` allows joining WPA3 networks only
+    - `Any` allows joining WPA, WPA2, WPA3, and WEP networks
+
+    Prior to iOS 16, tvOS 16, and watchOS 9, specifying `WPA`, `WPA2`, and `WPA3` were equivalent and would allow joining any WPA network.
+
     Prior to macOS 13, the encryption type, if specified explicitly, needed to match the encryption type of the network exactly.
 - key: Password
   title: Password
@@ -137,13 +144,13 @@ payloadkeys:
     content: |-
       The EAP types that the system accepts. Allowed values:
 
-      * 13: TLS
-      * 17: LEAP
-      * 18: EAP-SIM
-      * 21: TTLS
-      * 23: EAP-AKA
-      * 25: PEAP
-      * 43: EAP-FAST
+      - `13`: EAP-TLS
+      - `17`: LEAP
+      - `18`: EAP-SIM
+      - `21`: EAP-TTLS
+      - `23`: EAP-AKA
+      - `25`: PEAPv0/v1
+      - `43`: EAP-FAST
 
       For EAP-TLS authentication without a network payload, install the necessary identity certificates and have your users select EAP-TLS mode in the 802.1X credentials dialog that appears when they connect to the network. For other EAP types, a network payload is necessary and must specify the correct settings for the network.
     subkeys:
@@ -399,7 +406,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows connection to roaming service providers. Available in
+  content: If `true`, allows connection to roaming service providers. Available in
     iOS 7.0 and later, and in macOS 10.9 and later.
 - key: IsHotspot
   title: Is Hotspot
@@ -411,7 +418,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the device treats the network as a hotspot. Available in iOS
+  content: If `true`, the device treats the network as a hotspot. Available in iOS
     7.0 and later, and in macOS 10.9 and later.
 - key: HESSID
   supportedOS:
@@ -460,7 +467,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system bypasses Captive Network detection when the device
+  content: If `true`, the system bypasses Captive Network detection when the device
     connects to the network. Available in iOS 10.0 and later.
 - key: QoSMarkingPolicy
   title: QoS Marking Policy
@@ -487,7 +494,7 @@ payloadkeys:
     presence: optional
     content: An array of app bundle identifiers that defines the allow list for L2
       and L3 marking for traffic that goes to the Wi-Fi network. If the array isn't
-      present, but the 'QoSMarkingPolicy' key is present — even empty — no apps can
+      present, but the `QoSMarkingPolicy` key is present — even empty — no apps can
       use L2 and L3 marking.
     subkeys: &id001
     - key: appBundleID
@@ -504,14 +511,14 @@ payloadkeys:
         introduced: n/a
     type: <array>
     presence: optional
-    content: Use 'QoSMarkingAllowListAppIdentifiers' instead.
+    content: Use `QoSMarkingAllowListAppIdentifiers` instead.
     subkeys: *id001
   - key: QoSMarkingAppleAudioVideoCalls
-    title: QoS marking for audio/video calls
+    title: QoS marking for audio or video calls
     type: <boolean>
     presence: optional
     default: true
-    content: If 'true', adds audio and video traffic of built-in audio/video services,
+    content: If `true`, adds audio and video traffic of built-in audio or video services,
       such as FaceTime and Wi-Fi Calling, to the allow list for L2 and L3 marking
       for traffic that goes to the Wi-Fi network.
   - key: QoSMarkingEnabled
@@ -520,8 +527,11 @@ payloadkeys:
     presence: optional
     default: true
     content: |-
-      If 'true', disables L3 marking and only uses L2 marking for traffic that goes to the Wi-Fi network.
-      If 'false', the system behaves as if Wi-Fi doesn't have an association with a Cisco QoS fast lane network.
+      If `true`, disables L3 marking and only uses L2 marking for traffic that goes to the Wi-Fi network.
+
+
+
+      If `false`, the system behaves as if Wi-Fi doesn't have an association with a Cisco QoS fast lane network.
 - key: SetupModes
   supportedOS:
     iOS:
@@ -549,14 +559,14 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables IPv6 on this interface.
+  content: If `true`, enables IPv6 on this interface.
 - key: TLSCertificateRequired
   title: Certificate Required
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or
-    EAP-FAST. If 'false', allows for zero-factor authentication for EAP-TLS.
+  content: If `true`, allows for two-factor authentication for EAP-TTLS, PEAP, or
+    EAP-FAST. If `false`, allows for zero-factor authentication for EAP-TLS.
 - key: ProxyServer
   title: Proxy Server
   supportedOS:
@@ -647,7 +657,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows connecting directly to the destination if the PAC file
+  content: If `true`, allows connecting directly to the destination if the PAC file
     is unreachable.
 - key: DisableAssociationMACRandomization
   title: Disable MAC address randomization during association
@@ -671,6 +681,40 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true,' disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
-    If 'false', then the system enables MAC address randomization on iOS, watchOS, and visionOS.
-    This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it. Available in iOS 14 and later, watchOS 7 and later, macOS 15 and later, and visionOS.
+    If `true,` disables MAC address randomization for a Wi-Fi network while associated with that network. This feature also shows a privacy warning in Settings indicating that the network has reduced privacy protections.
+
+    If `false`, then the system enables MAC address randomization on iOS, watchOS, and visionOS..
+
+    This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it. Available in iOS 14 and later, macOS 15 and later, and watchOS 7 and later, and visionOS..
+- key: AllowJoinBeforeFirstUnlock
+  title: Allow Join Before First Unlock
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '26.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If `true`, the device makes this network available for joining before the device is unlocked for the first time following a reboot, on a device configured for return to service. Any network credentials are placed into Class D storage within the keychain, and information about the network is stored on disk in Class D.
+
+    There are several restrictions on the use of this flag:
+
+    - This property is only available in the return to service mode.
+    - Only one network can be designated as available before first unlock.
+    - `EAPClientConfiguration` must not be present.
+    - If `IsHotspot` is present, it must be set to `false`.
+    - `QoSMarkingPolicy` must not be present.
+    - If `ProxyType` is present, it must be set to `None`.
+
+    The device fails to install the profile payload if any of these conditions are not met.

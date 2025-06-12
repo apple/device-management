@@ -1,5 +1,5 @@
 title: Mail
-description: Use this section to define settings for access to Email servers.
+description: The payload that configures a Mail account.
 payload:
   payloadtype: com.apple.mail.managed
   supportedOS:
@@ -92,35 +92,34 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables SSL for authentication on the incoming mail
+  content: If `true`, the system enables SSL for authentication on the incoming mail
     server.
 - key: IncomingMailServerUsername
   title: Username
   type: <string>
   presence: optional
   content: The user name for the email account, usually the same as the email address
-    up to the “@” character. If not set and the account requires authentication for
+    up to the "@" character. If not set and the account requires authentication for
     incoming email, the device prompts the user for this string during interactive
     profile installation in Settings or System Preferences.
 - key: IncomingPassword
   title: Password
   type: <string>
   presence: optional
-  content: The password for the incoming mail server. Only use this with encrypted
-    profiles.
+  content: The password for the incoming mail server. Only use this in encrypted profiles.
 - key: OutgoingPassword
   title: Password
   type: <string>
   presence: optional
-  content: The password for the outgoing mail server. Only uses this with encrypted
-    profiles.
+  content: The password for the outgoing mail server. Only use this in encrypted profiles.
 - key: OutgoingPasswordSameAsIncomingPassword
   title: Outgoing Password Same As Incoming
   type: <boolean>
   presence: optional
   default: false
   content: |-
-    If 'true', the system prompts the user only once for the password, which it uses for both outgoing and incoming mail.
+    If `true`, the system prompts the user only once for the password, which it uses for both outgoing and incoming mail.
+
     This setting is only supported by interactive profile installations. Not supported by non-interactive installations, such as MDM on iOS.
 - key: OutgoingMailServerAuthentication
   title: Authentication Type
@@ -149,13 +148,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables SSL authentication on the outgoing mail server.
+  content: If `true`, the system enables SSL authentication on the outgoing mail server.
 - key: OutgoingMailServerUsername
   title: Username
   type: <string>
   presence: optional
   content: The user name for the email account, usually the same as the email address
-    up to the “@” character. If not set and the account requires authentication for
+    up to the "@" character. If not set and the account requires authentication for
     outgoing email, the device prompts the user for this string during interactive
     profile installation in Settings or System Preferences.
 - key: PreventMove
@@ -168,7 +167,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents moving messages out of this email account
+  content: If `true`, the system prevents moving messages out of this email account
     and into another account. It also prevents forwarding or replying from an account
     other than the recipient of the message.
 - key: PreventAppSheet
@@ -181,7 +180,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents this account from sending mail in any app
+  content: If `true`, the system prevents this account from sending mail in any app
     other than the Apple Mail app.
 - key: SMIMEEnabled
   title: S/MIME Enabled
@@ -193,7 +192,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption. The system ignores this
+  content: If `true`, the system enables S/MIME encryption. The system ignores this
     key in iOS 10.0 and later.
 - key: SMIMESigningEnabled
   title: S/MIME Signing Enabled
@@ -205,7 +204,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME signing for this account.
+  content: If `true`, the system enables S/MIME signing for this account.
 - key: SMIMESigningCertificateUUID
   title: S/MIME Signing Certificate
   supportedOS:
@@ -228,7 +227,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption for this account.
+  content: If `true`, the system enables S/MIME encryption for this account.
 - key: SMIMEEncryptionCertificateUUID
   title: S/MIME Encryption Certificate
   supportedOS:
@@ -256,8 +255,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system displays the per-message encryption switch in the
-    Mail Compose UI. Deprecated in iOS 12.0. Use 'SMIMEEnableEncryptionPerMessageSwitch'
+  content: If `true`, the system displays the per-message encryption switch in the
+    Mail Compose UI. Deprecated in iOS 12.0. Use `SMIMEEnableEncryptionPerMessageSwitch`
     instead.
 - key: disableMailRecentsSyncing
   title: Disable Mail Recents Syncing
@@ -267,7 +266,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system excludes this account from Recent Addresses syncing.
+  content: If `true`, the system excludes this account from Recent Addresses syncing.
 - key: allowMailDrop
   title: Allow Mail Drop
   supportedOS:
@@ -278,7 +277,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables this account to use Mail Drop.
+  content: If `true`, the system enables this account to use Mail Drop.
 - key: IncomingMailServerIMAPPathPrefix
   title: Path Prefix
   type: <string>
@@ -293,7 +292,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can turn S/MIME signing on or off in Settings.
+  content: If `true`, the user can turn S/MIME signing on or off in Settings.
 - key: SMIMESigningCertificateUUIDUserOverrideable
   supportedOS:
     iOS:
@@ -303,7 +302,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can select the signing identity.
+  content: If `true`, the user can select the signing identity.
 - key: SMIMEEncryptByDefault
   supportedOS:
     iOS:
@@ -313,7 +312,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption by default.
+  content: If `true`, the system enables S/MIME encryption by default.
 - key: SMIMEEncryptByDefaultUserOverrideable
   supportedOS:
     iOS:
@@ -323,7 +322,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can turn encryption by default on/off, and encryption
+  content: If `true`, the user can turn encryption by default on/off, and encryption
     is on.
 - key: SMIMEEncryptionCertificateUUIDUserOverrideable
   supportedOS:
@@ -334,7 +333,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can select the S/MIME encryption identity, and encryption
+  content: If `true`, the user can select the S/MIME encryption identity, and encryption
     is on.
 - key: SMIMEEnableEncryptionPerMessageSwitch
   supportedOS:
@@ -345,7 +344,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system displays the per-message encryption switch in the
+  content: If `true`, the system displays the per-message encryption switch in the
     Mail Compose UI.
 - key: VPNUUID
   title: VPNUUID

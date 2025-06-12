@@ -1,5 +1,5 @@
 title: Status App Managed List
-description: The client's declarative managed apps.
+description: The device's declarative managed apps.
 payload:
   statusitemtype: app.managed.list
   supportedOS:
@@ -15,7 +15,13 @@ payload:
         allowed-scopes:
         - system
     macOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - user
+      allowed-scopes:
+      - system
+      - user
     tvOS:
       introduced: n/a
     visionOS:
@@ -39,6 +45,7 @@ payloadkeys:
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A dictionary that describes a declarative managed app.
     subkeys:
     - key: identifier
       title: Unique identifier of the app.
@@ -50,9 +57,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: To indicate removal of an app, this key's value is set to true, and
-        only this key and the "identifier" key will be present in the status item
-        object.
+      content: If `true`, the system removed the app and only this key and the `identifier`
+        key are present in the status item object.
     - key: declaration-identifier
       title: Identifier of the declaration that controls the app.
       type: <string>
@@ -68,8 +74,9 @@ payloadkeys:
       type: <integer>
       presence: optional
       content: |-
-        The app's external version ID. You can also retrieve this value from the store through the contentMetadataLookupUrl <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/5-Web_Service_Protocol_VPP/webservice.html#//apple_ref/doc/uid/TP40017387-CH8-SW209> of VPPServiceConfigSrv <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/5-Web_Service_Protocol_VPP/webservice.html#//apple_ref/doc/uid/TP40017387-CH8-SW15>.
-        In the response from 'uclient-api.itunes.apple.com' URL, there's an 'externalId' at the path 'results.<adamId>.offers[0].version.externalId'. If the current external version identifier of an app on the store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
+        The app's external version ID. You can also retrieve this value from the store through the `contentMetadataLookupUrl` of the `VPPServiceConfigSrv`.
+
+        In the response from `uclient-api.itunes.apple.com` URL, there's an `externalId` at the path `results.<adamId>.offers[0].version.externalId`. If the current external version identifier of an app on the store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
     - key: version
       title: Version
       type: <string>
@@ -87,6 +94,7 @@ payloadkeys:
       rangelist:
       - optional
       - queued
+      - not-present
       - prompting-for-consent
       - prompting-for-login
       - prompting-for-management
@@ -98,16 +106,17 @@ payloadkeys:
       content: |-
         The status of the app, which has the following possible values:
 
-        * 'optional': The app is optional and the user has to trigger its installation.
-        * 'queued': Installation of the app started.
-        * 'prompting-for-consent': The system is displaying a prompt to the user to proceed with app installation.
-        * 'prompting-for-login': The system is displaying an App Store sign-in prompt to the user to allow app installation.
-        * 'prompting-for-management': The system is displaying a prompt to the user to allow changing the installed app to a managed app.
-        * 'downloading': The system is downloading an app update.
-        * 'installing': The system is installing an app update.
-        * 'managed': The app is installed and managed.
-        * 'managed-but-uninstalled': The app is managed, but the user removed it. The app remains managed if the system installs it again.
-        * 'failed': An app update failed.
+        - `optional`: The app is optional and the user has to trigger its installation.
+        - `queued`: The system has started installation of the app.
+        - `not-present`: Management of the app occurs after it is installed.
+        - `prompting-for-consent`: The system is displaying a prompt to the user to proceed with app installation.
+        - `prompting-for-login`: The system is displaying an App Store sign-in prompt to the user to allow app installation.
+        - `prompting-for-management`: The system is displaying a prompt to the user to allow changing the installed app to a managed app.
+        - `downloading`: The system is downloading the app.
+        - `installing`: The system is installing the app.
+        - `managed`: The app is installed and managed.
+        - `managed-but-uninstalled`: The app is required, but the system hasn't installed it. The app becomes managed if the system installs it again. If the user removes an optional app, its state is `optional`, not `managed-but-uninstalled`.
+        - `failed`: The app install failed.
     - key: update-state
       title: Managed application update status
       type: <string>
@@ -121,12 +130,14 @@ payloadkeys:
       content: |-
         The update status of the app, which has the following possible values:
 
-        * 'available': An update is available for the app.
-        * 'prompting-for-update': The system is displaying a prompt to the user to proceed with app installation.
-        * 'prompting-for-update-login': The system is displaying an App Store sign-in prompt to the user to allow app installation.
-        * 'updating': The app is updating.
-        * 'failed': The app update failed.
-        This key is only present if 'state' is 'managed' and an update is available.
+        - `available`: An update is available for the app.
+        - `prompting-for-update`: The system is displaying a prompt to the user to proceed with app installation.
+        - `prompting-for-update-login`: The system is displaying an App Store sign-in prompt to the user to allow app installation.
+        - `updating`: The app is updating.
+        - `failed`: The app update failed.
+
+        > Note:
+        > This key is only present if `state` is `managed` and an update is available.
     - key: config-state
       title: Managed application configuration status
       supportedOS:
@@ -159,9 +170,9 @@ payloadkeys:
           - valid
           content: |-
             The managed configuration status.
-            * 'unknown' - the managed configuration has not been read
-            * 'invalid' - the managed configuration was read and deemed to be invalid
-            * 'valid' - the managed configuration was read and deemed to be valid
+            - `unknown`: The managed configuration has not been read
+            - `invalid`: The managed configuration was read and deemed to be invalid
+            - `valid`: The managed configuration was read and deemed to be valid
       - key: extension-config-state
         title: Extensions managed configuration status
         type: <dictionary>
@@ -230,6 +241,9 @@ reasons:
     description: The RFC 3339 timestamp of the last install failure.
 - value: Error.InvalidAppID
   description: The app id could not be found.
+- value: Error.InvalidCodeSignature
+  description: The code signature of the app does not match the composed identifier,
+    and the app cannot be managed.
 - value: Error.IsSystemApp
   description: The app is a system app that cannot be managed.
 - value: Error.LicenseNotFound

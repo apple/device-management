@@ -1,6 +1,6 @@
 title: Security:Passkey:Attestation
-description: Configures the device to allow WebAuthn enterprise attestation for certain
-  passkeys.
+description: The declaration to configure the device to allow WebAuthn enterprise
+  attestation for certain passkeys.
 payload:
   declarationtype: com.apple.configuration.security.passkey.attestation
   supportedOS:
@@ -45,7 +45,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the private key for the attestation identity is extractable
+  content: If `true`, the private key for the attestation identity is extractable
     in the keychain.
 - key: RelyingParties
   title: Relying parties

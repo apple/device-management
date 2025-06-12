@@ -1,8 +1,5 @@
 title: Install Provisioning Profile Command
-description: This command allows the server to install a provisioning profile. No
-  error occurs if the provisioning profile is already installed. This command requires
-  the Provisioning Profile Installation and Removal right. On macOS, this command
-  is for iOS and iPadOS style provisioning profiles only.
+description: Install a provisioning profile on a device.
 payload:
   requesttype: InstallProvisioningProfile
   supportedOS:
@@ -50,3 +47,9 @@ payloadkeys:
   type: <data>
   presence: required
   content: The provisioning profile.
+notes:
+- title: ''
+  content: |-
+    No error occurs if the provisioning profile is already present.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

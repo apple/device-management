@@ -1,5 +1,5 @@
 title: App Lock
-description: App Lock (Supervised Only)
+description: The payload that configures a device to run a single app.
 payload:
   payloadtype: com.apple.app.lock
   supportedOS:
@@ -51,7 +51,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system disables the touch screen. In tvOS, it disables
+      content: If `true`, the system disables the touch screen. In tvOS, it disables
         the touch surface on the Apple TV Remote.
     - key: DisableDeviceRotation
       title: Disable Device Rotation
@@ -61,7 +61,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system disables device rotation sensing.
+      content: If `true`, the system disables device rotation sensing.
     - key: DisableVolumeButtons
       title: Disable Volume Buttons
       supportedOS:
@@ -70,7 +70,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system disables the volume buttons.
+      content: If `true`, the system disables the volume buttons.
     - key: DisableRingerSwitch
       title: Disable Ringer Switch
       supportedOS:
@@ -79,7 +79,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system disables the ringer switch. When disabled, the
+      content: If `true`, the system disables the ringer switch. When disabled, the
         ringer behavior depends on what position the switch was in when it was first
         disabled.
     - key: DisableSleepWakeButton
@@ -90,32 +90,32 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system disables the sleep/wake button.
+      content: If `true`, the system disables the sleep/wake button.
     - key: DisableAutoLock
       title: Disable Auto Lock
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the device doesn't automatically go to sleep after an idle
+      content: If `true`, the device doesn't automatically go to sleep after an idle
         period.
     - key: EnableVoiceOver
       title: Enable Voice Over
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables VoiceOver.
+      content: If `true`, the system enables VoiceOver.
     - key: EnableZoom
       title: Enable Zoom
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables Zoom.
+      content: If `true`, the system enables Zoom.
     - key: EnableInvertColors
       title: Enable Invert Colors
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables Invert Colors.
+      content: If `true`, the system enables Invert Colors.
     - key: EnableAssistiveTouch
       title: Enable Assistive Touch
       supportedOS:
@@ -124,7 +124,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables AssistiveTouch.
+      content: If `true`, the system enables AssistiveTouch.
     - key: EnableSpeakSelection
       title: Enable Speak Selection
       supportedOS:
@@ -133,7 +133,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables Speak Selection.
+      content: If `true`, the system enables Speak Selection.
     - key: EnableMonoAudio
       title: Enable Mono Audio
       supportedOS:
@@ -142,7 +142,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables Mono Audio.
+      content: If `true`, the system enables Mono Audio.
     - key: EnableVoiceControl
       title: Enable Voice Control
       supportedOS:
@@ -153,7 +153,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables Voice Control.
+      content: If `true`, the system enables Voice Control.
   - key: UserEnabledOptions
     title: User Enabled Options
     supportedOS:
@@ -173,25 +173,25 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system allows the user to toggle Voice Control.
+      content: If `true`, the system allows the user to toggle Voice Control.
     - key: VoiceOver
       title: Voice Over
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system allows the user to toggle VoiceOver.
+      content: If `true`, the system allows the user to toggle VoiceOver.
     - key: Zoom
       title: Zoom
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system allows the user to toggle Zoom.
+      content: If `true`, the system allows the user to toggle Zoom.
     - key: InvertColors
       title: Invert Colors
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system allows the user to toggle Invert Colors.
+      content: If `true`, the system allows the user to toggle Invert Colors.
     - key: AssistiveTouch
       title: Assistive Touch
       supportedOS:
@@ -200,4 +200,10 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system allows the user to toggle AssistiveTouch.
+      content: If `true`, the system allows the user to toggle AssistiveTouch.
+notes:
+- title: ''
+  content: |-
+    With an app lock profile, the device locks to the specified app until removal of the profile. The device returns to the app automatically upon wake or restart.
+
+    Only use an app lock payload after installing the target app.

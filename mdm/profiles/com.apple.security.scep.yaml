@@ -1,6 +1,6 @@
 title: SCEP
-description: Use this section to define settings for configuration access to SCEP
-  servers.
+description: The payload that configures Simple Certificate Enrollment Protocol (SCEP)
+  settings.
 payload:
   payloadtype: com.apple.security.scep
   supportedOS:
@@ -72,7 +72,9 @@ payloadkeys:
     presence: optional
     content: |-
       The representation of an X.500 name as an array of OID and value.
-      For example, '/C=US/O=Apple Inc./CN=foo/1.2.5.3=bar' translates to '[ [ ['C', 'US'] ], [ ['O', 'Apple Inc.'] ], …, [ [ '1.2.5.3', 'bar' ] ] ]'.
+
+      For example, `/C=US/O=Apple Inc./CN=foo/1.2.5.3=bar` translates to `[ [ ["C", "US"] ], [ ["O", "Apple Inc."] ], …, [ [ "1.2.5.3", "bar" ] ] ]`.
+
       OIDs can be represented as dotted numbers, with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).
     subkeys:
     - key: SCEPSubjectArrayInnerArray
@@ -109,7 +111,7 @@ payloadkeys:
     type: <string>
     presence: optional
     default: RSA
-    content: Always 'RSA'.
+    content: Always `RSA`.
   - key: Key Usage
     title: Key Usage
     supportedOS:
@@ -120,8 +122,10 @@ payloadkeys:
     default: 0
     content: |-
       A bitmask indicating the use of the key. Possible values:
-      * '1': Signing
-      * '4': Encryption
+
+      - `1`: Signing
+      - `4`: Encryption
+
       Some certificate authorities, such as Windows CA, support only encryption or signing, but not both at the same time.
   - key: CAFingerprint
     title: Fingerprint
@@ -152,7 +156,7 @@ payloadkeys:
     title: Subject Alt Name
     type: <dictionary>
     presence: optional
-    content: The SCEP payload can specify an optional 'SubjectAltName' dictionary
+    content: The SCEP payload can specify an optional `SubjectAltName` dictionary
       that provides values required by the CA for issuing a certificate. You can specify
       a single string or an array of strings for each key. The values you specify
       depend on the CA you're using, but might include DNS name, URL, or email values.
@@ -186,7 +190,7 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: true
-    content: If 'false', the system disables exporting the private key from the keychain.
+    content: If `false`, the system disables exporting the private key from the keychain.
   - key: AllowAllAppsAccess
     title: Allow All Apps Access
     supportedOS:
@@ -195,4 +199,8 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', all apps have access to the private key.
+    content: If `true`, all apps have access to the private key.
+notes:
+- title: ''
+  content: A SCEP payload automates the request of a client certificate from a SCEP
+    server, as described in [Over-the-Air Profile Delivery and Configuration](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/iPhoneOTAConfiguration/Introduction/Introduction.html).

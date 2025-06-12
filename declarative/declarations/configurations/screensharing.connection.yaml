@@ -1,5 +1,5 @@
 title: Screen Sharing:Connection
-description: Use this configuration to define a connection to a Screen Sharing host.
+description: The declaration to configure a connection to a screen-sharing host.
 payload:
   declarationtype: com.apple.configuration.screensharing.connection
   supportedOS:
@@ -57,8 +57,8 @@ payloadkeys:
     content: |-
       The type of display for the connection, which has these allowed values:
 
-      * 'Virtual1': Create one virtual display.
-      * 'Virtual2': Create two virtual displays.
+      - `Virtual1`: Create one virtual display.
+      - `Virtual2`: Create two virtual displays.
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
@@ -67,4 +67,4 @@ payloadkeys:
   presence: optional
   content: The identifier of an asset declaration that contains the required credentials
     for this connection to authenticate with the screen-sharing server. Set the corresponding
-    asset type to 'com.apple.asset.credential.userpassword'.
+    asset type to `com.apple.asset.credential.userpassword`.

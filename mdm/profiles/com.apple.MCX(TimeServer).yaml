@@ -1,5 +1,5 @@
 title: Time Server
-description: ''
+description: The payload that configures the time server.
 payload:
   payloadtype: com.apple.MCX
   supportedOS:
@@ -29,10 +29,15 @@ payloadkeys:
 - key: timeServer
   type: <string>
   presence: optional
-  content: The NTP server to connect to. As of macOS 10.13 only one time server is
-    supported.
+  content: The NTP server to connect to. In macOS 10.13 and later, only one time server
+    is supported.
 - key: timeZone
   type: <string>
   presence: optional
-  content: The time zone path location string in '/usr/share/zoneinfo/'; for example,
-    'America/Denver' or 'Zulu'.
+  content: The time zone path location string in `/usr/share/zoneinfo/`; for example,
+    `America/Denver` or `Zulu`.
+notes:
+- title: ''
+  content: If multiple profiles with this payload are sent, the system sets the device's
+    time server to the value in the last payload installed. Removing the payload won't
+    change the settings back to the prior settings.

@@ -1,5 +1,5 @@
 title: File Provider
-description: ''
+description: The payload that configures file provider settings.
 payload:
   payloadtype: com.apple.fileproviderd
   supportedOS:
@@ -15,7 +15,7 @@ payload:
       userapprovedmdm: true
       allowmanualinstall: false
       userenrollment:
-        mode: allowed
+        mode: forbidden
     tvOS:
       introduced: n/a
     visionOS:
@@ -27,7 +27,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables file providers access to the path of the requesting
+  content: If `true`, enables file providers access to the path of the requesting
     process.
 - key: ManagementAllowsKnownFolderSyncing
   supportedOS:
@@ -35,14 +35,11 @@ payloadkeys:
       introduced: '15.2'
       devicechannel: true
       userchannel: false
-      userenrollment:
-        mode: forbidden
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the device prevents the File Provider extension using desktop
-    and documents synchronization in any app. If 'true', the device allows File Provider
-    extension desktop and documents synchronization. This does not impact the ability
+  content: If `false`, the device prevents the File Provider extension from using
+    desktop and documents synchronization in any app. This does not impact the ability
     for apps to utilize the File Provider extension for file and folder syncing with
     remote storage.
 - key: ManagementKnownFolderSyncingAllowList
@@ -51,17 +48,16 @@ payloadkeys:
       introduced: '15.2'
       devicechannel: true
       userchannel: false
-      userenrollment:
-        mode: forbidden
   type: <array>
   presence: optional
-  content: An array of app identifiers for apps that are allowed to utilize File Provider
-    extension desktop and documents synchronization. If present, and `ManagementAllowsKnownFolderSyncing`
+  content: An array of strings representing the composed identifiers of apps. The
+    device allows the corresponding apps to use File Provider extension desktop and
+    documents synchronization. If present, and `ManagementAllowsKnownFolderSyncing`
     is set to `true`, the device allows only the apps in this list to use desktop
     and documents synchronization. This key is ignored if `ManagementAllowsKnownFolderSyncing`
-    is set to `false`. This setting does not impact the ability for apps to utilize
-    File Provider extension for volume access. The format of the app identifiers is
-    "Bundle.Identifier (TeamIdentifier)".
+    is set to `false`. This setting does not impact the ability for apps to use File
+    Provider extension volume access. The format of the app identifiers is "Bundle-ID
+    (Team-ID)", for example `com.example.app (ABCD1234)`.
   subkeys:
   - key: AllowListItem
     type: <string>

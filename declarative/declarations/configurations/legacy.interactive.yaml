@@ -1,6 +1,5 @@
 title: Legacy Interactive Profile
-description: Specifies an MDMv1 profile to present to the user who may choose to download
-  and install it
+description: The declaration to configure an interactive legacy profile.
 payload:
   declarationtype: com.apple.configuration.legacy.interactive
   supportedOS:
@@ -46,11 +45,18 @@ payloadkeys:
   type: <string>
   presence: required
   content: |-
-    The URL of the profile to download and install, which needs to start with 'https://', and must be hosted by the MDM server.
-    If a user enrollment triggers this configuration, the system silently ignores any MDM 1 payloads in macOS where the User Enrollment Mode setting is 'forbidden'. In iOS, the system rejects the entire profile.
+    The URL of the profile to download and install, which needs to start with `https://`, and must be hosted by the MDM server.
+
+    If a user enrollment triggers this configuration, the system silently ignores any MDMv1 payloads in macOS that are forbidden with user enrollment. In iOS, the system rejects the entire profile.
 - key: VisibleName
   title: Configuration Visible Name
   type: <string>
   presence: required
   content: The visible name of the configuration. This name needs to indicate the
     nature of the profile.
+notes:
+- title: ''
+  content: |-
+    This declaration specifies an MDMv1 profile to present to the user, who may choose to download and install the profile.
+
+    The declaration may contain any profile that MDM supports. The system doesn't allow MDM enrollment and Profile Services profiles.

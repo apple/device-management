@@ -1,5 +1,5 @@
 title: Security:Certificate
-description: Use this configuration to add a certificate to the device.
+description: The declaration to add a certificate to the device.
 payload:
   declarationtype: com.apple.configuration.security.certificate
   supportedOS:

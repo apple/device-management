@@ -1,5 +1,5 @@
 title: Disable Lost Mode Command
-description: This command allows the server to take the device out of MDM lost mode.
+description: Take the device out of Lost Mode.
 payload:
   requesttype: DisableLostMode
   supportedOS:
@@ -23,3 +23,15 @@ payload:
     watchOS:
       introduced: n/a
   content: This command allows the server to take the device out of MDM lost mode.
+notes:
+- title: ''
+  content: |-
+    A device responds with error codes:
+
+    - `12067`: If it isn't in Lost Mode.
+    - `12069`: If the request to disable Lost Mode failed.
+    - `12078`: If the command is invalid while in Lost Mode.
+
+    Erasing a device also disables Lost Mode. To reenable Lost Mode, the MDM server needs to store the device's Lost Mode state before erasing it, and restore that state if the device enrolls again.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

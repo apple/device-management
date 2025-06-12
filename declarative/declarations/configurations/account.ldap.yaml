@@ -1,5 +1,6 @@
 title: Account:LDAP
-description: Use this configuration to define settings for access to LDAP servers.
+description: The declaration to configure a Lightweight Directory Access Protocol
+  (LDAP) account.
 payload:
   declarationtype: com.apple.configuration.account.ldap
   supportedOS:
@@ -62,7 +63,7 @@ payloadkeys:
   - com.apple.asset.credential.userpassword
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
-    this account. Set the corresponding asset type to 'CredentialUserNameAndPassword'.
+    this account. Set the corresponding asset type to `CredentialUserNameAndPassword`.
 - key: SearchSettings
   title: Search Settings
   type: <array>
@@ -85,8 +86,8 @@ payloadkeys:
       title: Search Base
       type: <string>
       presence: required
-      content: The path to the node where a search starts. For example, 'ou=people,o=example
-        corp'.
+      content: The path to the node where a search starts. For example, `ou=people,o=example
+        corp`.
     - key: Scope
       title: Scope
       type: <string>
@@ -97,10 +98,11 @@ payloadkeys:
       - Subtree
       default: Subtree
       content: |-
-        The type of recursion to use in the search.
-        * 'Base': Only the 'SearchBase' node.
-        * 'OneLevel': The 'SearchBase' node and its immediate children.
-        * 'Subtree': The 'SearchBase' node and all its children, regardless of depth.
+        The type of recursion to use in the search:
+
+        - `Base`: The search uses only the `SearchBase` node.
+        - `OneLevel`: The search uses the `SearchBase` node and its immediate children.
+        - `Subtree`: The search uses the `SearchBase` node and all its children, regardless of depth.
 related-status-items:
 - status-items:
   - account.list.ldap

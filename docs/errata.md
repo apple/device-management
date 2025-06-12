@@ -2,6 +2,21 @@
 
 This document lists errata for the YAML schema. This is used when older versions of the schema are incorrect, and a fix was made in later schema to correct the problem.
 
+## iOS 26.0
+
+### mdm/profiles/com.apple.cellularprivatenetwork.managed.yaml
+
+This payload was previously marked as supported on user enrollment, changed to forbidden.
+
+## visionOS 26.0
+
+### mdm/profiles/com.apple.applicationaccess.yaml
+
+allowDefaultBrowserModification was incorrectly marked as supported on visionOS
+
+## macOS 15.4
+
+The Associated Domains payload is only able to be installed via MDM.
 
 ## iOS 18.4 / macOS 15.4
 
@@ -51,9 +66,9 @@ iOS 17 also mistakenly forbade multiple private network payloads in a single pro
 
 ### mdm/checkin/authenticate.yaml
 
-Starting in iOS 13 and macOS 10.15 UDID is optional because User Enrollments do not return UUIDs.
+Starting in iOS 13 and macOS 10.15 UDID is optional because user enrollments do not return UUIDs.
 
-Starting is iOS 13 and macOS 10.15 Enrollment ID is optional because Device Enrollments only return UUIDs.
+Starting is iOS 13 and macOS 10.15 Enrollment ID is optional because device enrollments only return UUIDs.
 
 ## iOS 17 / macOS 14
 

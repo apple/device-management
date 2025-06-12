@@ -1,8 +1,5 @@
 title: Install Profile Command
-description: This command allows the host to install a configuration profile. The
-  profile may be encrypted using any installed identity certificate. The profile may
-  also be signed. This command requires the Profile Installation and Removal right.
-  It's supported in the user channel.
+description: Install a configuration profile on a device.
 payload:
   requesttype: InstallProfile
   supportedOS:
@@ -51,3 +48,7 @@ payloadkeys:
   presence: required
   content: The profile to install, which you can encrypt using any identity certificate
     installed on the device. You can also sign the profile.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

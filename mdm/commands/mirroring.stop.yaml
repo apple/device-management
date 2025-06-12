@@ -1,5 +1,5 @@
 title: Stop Mirroring Command
-description: This command stops AirPlay mirroring.
+description: Stop mirroring the display to another device.
 payload:
   requesttype: StopMirroring
   supportedOS:
@@ -30,3 +30,7 @@ payload:
     watchOS:
       introduced: n/a
   content: This command stops AirPlay mirroring.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

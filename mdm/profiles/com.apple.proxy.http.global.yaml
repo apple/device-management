@@ -1,5 +1,5 @@
 title: Global HTTP Proxy
-description: Global HTTP Proxy (Supervised devices only)
+description: The payload that configures a global HTTP proxy.
 payload:
   payloadtype: com.apple.proxy.http.global
   supportedOS:
@@ -56,36 +56,36 @@ payloadkeys:
   type: <string>
   subtype: <hostname>
   presence: optional
-  content: The proxy server's network address. This is required if the ProxyType is
-    set to Manual, and is ignored if the ProxyType is set to Automatic.
+  content: The proxy server's network address. The device requires this if `ProxyType`
+    is set to `Manual`, and ignores it if `ProxyType` is set to `Automatic`.
 - key: ProxyServerPort
   title: Proxy Server Port
   type: <integer>
   presence: optional
-  content: The proxy server's port number. This is required if the ProxyType is set
-    to Manual, and is ignored if the ProxyType is set to Automatic.
+  content: The proxy server's port number. The device requires this if `ProxyType`
+    is set to `Manual`, and ignores this if `ProxyType` is set to `Automatic`.
 - key: ProxyUsername
   title: Proxy Username
   type: <string>
   presence: optional
-  content: The user name used to authenticate to the proxy server. This setting is
-    only used if the ProxyType is set to Manual, and is ignored if the ProxyType is
-    set to Automatic.
+  content: The user name used to authenticate to the proxy server. The device only
+    uses this if `ProxyType` is set to `Manual`, and ignores it if `ProxyType` is
+    set to `Automatic`.
 - key: ProxyPassword
   title: Proxy Password
   type: <string>
   presence: optional
-  content: The password used to authenticate to the proxy server. This setting is
-    only used if the ProxyType is set to Manual, and is ignored if the ProxyType is
-    set to Automatic.
+  content: The password used to authenticate to the proxy server. The device only
+    uses this if `ProxyType` is set to `Manual`, and ignores it if `ProxyType` is
+    set to `Automatic`.
 - key: ProxyPACURL
   title: Proxy PAC URL
   type: <string>
   presence: optional
   content: The URL of the PAC file that defines the proxy configuration. Starting
-    in iOS 13 and macOS 10.15, only URLs that begin with 'http://' or 'https://' are
-    allowed. This setting is only used if the ProxyType is set to Automatic, and is
-    ignored if the ProxyType is set to Manual.
+    in iOS 13 and macOS 10.15, only URLs that begin with `http://` or `https://` are
+    allowed. This is only used if `ProxyType` is set to `Automatic`, and is ignored
+    if `ProxyType` is set to `Manual`.
 - key: ProxyPACFallbackAllowed
   title: Proxy PAC Fallback Allowed
   supportedOS:
@@ -94,7 +94,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows connecting directly to the destination if the proxy autoconfiguration
+  content: If `true`, allows connecting directly to the destination if the proxy autoconfiguration
     (PAC) file is unreachable.
 - key: ProxyCaptiveLoginAllowed
   title: Proxy Bypass Allowed
@@ -104,5 +104,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', allows the device to bypass the proxy server to display the
+  content: If `true`, allows the device to bypass the proxy server to display the
     login page for captive networks.
+notes:
+- title: ''
+  content: There can only be one payload of this type on the device at any time.

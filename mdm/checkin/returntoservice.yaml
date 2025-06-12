@@ -1,0 +1,72 @@
+title: Return To Service
+description: Gets the return-to-service configuration from the server.
+payload:
+  requesttype: ReturnToService
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+      supervised: true
+      requiresdep: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '26.0'
+      supervised: true
+      requiresdep: true
+      userenrollment:
+        mode: forbidden
+    watchOS:
+      introduced: n/a
+  content: Check-in protocol send ReturnToService request.
+payloadkeys:
+- key: MessageType
+  type: <string>
+  presence: required
+  rangelist:
+  - ReturnToService
+  content: The message type, which requires a value of `ReturnToService`.
+- key: UDID
+  type: <string>
+  presence: required
+  content: The device's UDID (unique device identifier). The system requires this
+    value if the enrollment type is a device enrollment.
+responsekeys:
+- key: ReturnToService
+  type: <dictionary>
+  presence: required
+  content: A dictionary containing the configuration for return to service.
+  subkeys:
+  - key: Enabled
+    title: Use return to service
+    type: <boolean>
+    presence: required
+    content: If `true`, the device automatically erases itself and then performs reenrollment.
+  - key: WiFiProfileData
+    type: <data>
+    presence: optional
+    content: The Wi-Fi profile that installs after erasure when using return to service.
+      This is required when the device doesn't have Ethernet access.
+  - key: MDMProfileData
+    type: <data>
+    presence: optional
+    content: |-
+      The MDM profile that installs after erasure when using return to service. If provided, the device uses this profile directly instead of fetching it from the server. This key is required if the device's Automated Device Enrollment profile contains the `configuration-web-url` key.
+
+      The device always downloads the Automated Device Enrollment profile even when this key is present, so the supervision identity, MDM removability, and other settings still apply. However, the device doesn't use the specified URL in the Automated Device Enrollment profile to fetch the MDM profile.
+  - key: BootstrapToken
+    type: <data>
+    presence: optional
+    content: |-
+      The system uses the bootstrap token for return to service with app preservation. Required when Automated Device Enrollment enables return to service for the device.
+
+      If the bootstrap token isn't present, the device performs a full erasure and a regular return to service, and can't preserve any data for app preservation.
+notes:
+- title: ''
+  content: The device sends the `ReturnToService` message when the user triggers a
+    return to service, or when the device's idle timeout expires. The device only
+    sends this message when it's in the return-to-service mode that its Automated
+    Device Enrollment profile sets.

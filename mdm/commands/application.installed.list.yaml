@@ -1,5 +1,5 @@
 title: Installed Application List Command
-description: This command allows the server to query for installed 3rd party applications.
+description: Get a list of the installed apps on a device.
 payload:
   requesttype: InstalledApplicationList
   supportedOS:
@@ -39,6 +39,7 @@ payload:
       accessrights: AllowQueryApplications
       supervised: false
   content: This command allows the server to query for installed 3rd party applications.
+    Starting in iOS 26, this query will also return system apps.
 payloadkeys:
 - key: Identifiers
   supportedOS:
@@ -48,14 +49,11 @@ payloadkeys:
       introduced: '10.15'
   type: <array>
   presence: optional
-  content: An array of app identifiers. Provide this value to limit the response to
-    only include these apps. This value is available in iOS 7 and later, macOS 10.15
-    and later, and tvOS 10.2 and later. For a watchOS app, the identifier needs to
-    be the watch's bundle identifier, which differs from the main bundle identifier
-    for the iPhone to which the watch is paired. Obtain the watch's bundle identifier
-    for an app with a watch bundle, in the 'watchBundleId' key that's part of the
-    Content Metadata query. For more information on this query, see Getting App and
-    Book Information (Legacy).
+  content: |-
+    An array of app identifiers. Provide this value to limit the response to only include these apps. This value is available in iOS 7 and later, macOS 10.15 and later, tvOS 10.2 and later, visionOS 1.1 and later, and watchOS 10 and later.
+
+    > Important:
+    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -68,7 +66,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', only get a list of managed apps excluding ones that are managed
+  content: If `true`, only get a list of managed apps, excluding ones that are managed
     by Declarative Device Management. This value is available in iOS 7 and later,
     macOS 10.15 and later, and tvOS 10.2 and later.
 - key: Items
@@ -82,8 +80,10 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    An array of strings that represent keys in InstalledApplicationListResponse.InstalledApplicationListItem. If present, the response only contains the keys listed here, except 'Identifier' is always included. If not present, the response contains all keys.
-    Only request the keys that you need, because some key values can take significant time and power to calculate on the device.
+    An array of strings that represent keys in `InstalledApplicationListItem`. If present, the response only contains the keys listed here, except `Identifier` is always included. If not present, the response contains all keys.
+
+    > Tip:
+    > Only request the keys that you need, because some key values can take significant time and power to calculate on the device.
   subkeys:
   - key: ItemsItem
     type: <string>
@@ -112,13 +112,16 @@ responsekeys:
   subkeys:
   - key: InstalledApplicationListItem
     type: <dictionary>
+    content: A dictionary that describes an app list item.
     subkeys:
     - key: Identifier
       type: <string>
       presence: optional
       content: |-
         The app's identifier. This key is always be present on iOS and tvOS, but may be missing on macOS.
-        For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
+
+        > Note:
+        > For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
     - key: ExternalVersionIdentifier
       supportedOS:
         iOS:
@@ -130,8 +133,10 @@ responsekeys:
       type: <integer>
       presence: optional
       content: |-
-        The app's external version identifier, which you can use in the iTunes Search API to determine if an updated version of the app is available. Compare this value to the 'externalId' value in the 'contentMetadataLookupUrl' response from the 'VPPServiceConfigSrv' endpoint. If these values don't match, an updated version of the app may be available.
-        A newer version of an app might not be available for installation on the device for a variety of reasons. A common reason is that the device's operating system version or hardware is incompatible with the available version of the app.
+        The app's external version identifier, which you can use in the iTunes Search API to determine if an updated version of the app is available. Compare this value to the `externalId` value in the `contentMetadataLookupUrl` response from the `VPPServiceConfigSrv` endpoint. If these values don't match, an updated version of the app may be available.
+
+        > Note:
+        > A newer version of an app might not be available for installation on the device for a variety of reasons. A common reason is that the device's operating system version or hardware is incompatible with the available version of the app.
     - key: DistributorIdentifier
       supportedOS:
         iOS:
@@ -190,14 +195,14 @@ responsekeys:
           introduced: n/a
       type: <boolean>
       presence: optional
-      content: If 'true', the app is valid and can run on the device. If the app is
+      content: If `true`, the app is valid and can run on the device. If the app is
         enterprise-distributed and unvalidated, it won't be able to run until validation
         has occurred. This value is available in iOS 9.2 and later, and tvOS 10.2
         and later.
     - key: Installing
       type: <boolean>
       presence: optional
-      content: If 'true', the app is downloading. If 'false', it's already installed.
+      content: If `true`, the app is downloading. If `false`, it's already installed.
     - key: AppStoreVendable
       supportedOS:
         iOS:
@@ -208,9 +213,9 @@ responsekeys:
           introduced: '11.3'
       type: <boolean>
       presence: optional
-      content: If 'true', the app came from the App Store and can participate in store
+      content: If `true`, the app came from the App Store and can participate in store
         features. For device-based Volume Purchase Program (VPP) apps, this value
-        is 'false'. This value is available in iOS 11.3 and later, and tvOS 11.3 and
+        is `false`. This value is available in iOS 11.3 and later, and tvOS 11.3 and
         later.
     - key: DeviceBasedVPP
       supportedOS:
@@ -222,7 +227,7 @@ responsekeys:
           introduced: '11.3'
       type: <boolean>
       presence: optional
-      content: If 'true', installing the app didn't require an Apple Account. This
+      content: If `true`, installing the app didn't require an Apple Account. This
         value is available in iOS 11.3 and later, and tvOS 11.3 and later.
     - key: BetaApp
       supportedOS:
@@ -234,7 +239,7 @@ responsekeys:
           introduced: '11.3'
       type: <boolean>
       presence: optional
-      content: If 'true', the app is part of the Apple Beta Software Program. This
+      content: If `true`, the app is part of the Apple Beta Software Program. This
         value is available in iOS 11.3 and later, and tvOS 11.3 and later.
     - key: AdHocCodeSigned
       supportedOS:
@@ -246,7 +251,7 @@ responsekeys:
           introduced: '11.3'
       type: <boolean>
       presence: optional
-      content: If 'true', the app is ad-hoc code signed. This query is available in
+      content: If `true`, the app is ad-hoc code signed. This query is available in
         iOS 11.3 and later, and tvOS 11.3 and later.
     - key: HasUpdateAvailable
       supportedOS:
@@ -256,7 +261,7 @@ responsekeys:
           introduced: 10.13.4
       type: <boolean>
       presence: optional
-      content: If 'true', the app has an update available. This key is present only
+      content: If `true`, the app has an update available. This key is present only
         for App Store apps. In macOS, this key is present only for Volume Purchase
         Program (VPP) apps. This status updates daily and isn't always up-to-date
         when installing an app.
@@ -264,22 +269,22 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the download failed.
+      content: If `true`, the download failed.
     - key: DownloadWaiting
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the app is in the initial state, which is waiting to download.
+      content: If `true`, the app is in the initial state, which is waiting to download.
     - key: DownloadPaused
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user paused the download.
+      content: If `true`, the user paused the download.
     - key: DownloadCancelled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user canceled the download.
+      content: If `true`, the user canceled the download.
     - key: IsAppClip
       supportedOS:
         iOS:
@@ -293,7 +298,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the app is an App Clip. Available in iOS 16 and later.
+      content: If `true`, the app is an App Clip. Available in iOS 16 and later.
     - key: Source
       supportedOS:
         iOS:
@@ -309,4 +314,10 @@ responsekeys:
       type: <string>
       presence: optional
       content: The source of the application. When the app is managed by Declarative
-        Device Management this value is 'Declarative Device Management'.
+        Device Management this value is `Declarative Device Management`.
+notes:
+- title: ''
+  content: |-
+    The response includes system apps on macOS devices, however, it doesn't include them on iOS devices.
+
+    Refer to the following sections to determine supported channels and requirements, and to see request and response examples for iOS and macOS.

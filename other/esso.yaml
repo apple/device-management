@@ -1,5 +1,6 @@
 title: Enrollment SSO Document
-description: The JSON object returned from the MDM server's Enrollment SSO endpoint.
+description: Enrollment SSO streamlines the MDM enrollment process, reduces sign-ins,
+  and improves security.
 payload:
   payloadtype: ESSO
   supportedOS:
@@ -47,16 +48,17 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true,' allows the domain to directly verify site association, instead
+  content: If `true,` allows the domain to directly verify site association, instead
     of at Apple's servers. Use this verification only with domains that are inaccessible
     on the public Internet.
 - key: ConfigurationProfile
   title: Configuration Profile
   type: <data>
   presence: optional
-  content: The profile containing an ExtensibleSingleSignOn payload that specifies
-    the SSO extension in the downloaded app prior to enrollment. This profile may
-    contain certificate payloads.
+  content: |-
+    The profile containing an `ExtensibleSingleSignOn` payload that specifies the SSO extension in the downloaded app prior to enrollment. This profile may contain certificate payloads.
+
+    One of `ConfigurationProfile` and `Declarations` must be present.
 - key: Declarations
   title: Declarations
   supportedOS:
@@ -66,14 +68,14 @@ payloadkeys:
       introduced: '2.4'
   type: <array>
   presence: optional
-  content: The set of declarative device management declarations used to specify the
-    managed app and its configuration (including any certificates or identities).
-    The set of declarations must include one `com.apple.configuration.app.managed`
-    configuration, and one activation declaration that references the configuration.
-    Asset declarations may be present if required by the app config. The app configuration
-    must include `AppStoreID` when developer mode is not being used, or it must include
-    `BundleID` when developer mode is used. One of `ConfigurationProfile` and `Declarations`
-    must be present.
+  content: |-
+    An array of base64-encoded JSON formatted Declarative Device Management declarations that specify the managed app and its configuration, including any certificates or identities.
+
+    The set of declarations must include one `com.apple.configuration.app.managed` configuration, and one activation declaration that references the configuration. Asset declarations may be present if required by the app config.
+
+    The app configuration must include `AppStoreID` when developer mode is not being used, or it must include `BundleID` when developer mode is used.
+
+    One of `ConfigurationProfile` and `Declarations` must be present.
   subkeys:
   - key: Declaration
     title: Declaration Domain

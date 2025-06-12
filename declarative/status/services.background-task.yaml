@@ -1,5 +1,5 @@
 title: Status Services Background Task
-description: The client's background task details.
+description: A status report of the device's background task details.
 payload:
   statusitemtype: services.background-task
   supportedOS:
@@ -28,6 +28,7 @@ payloadkeys:
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of a background task.
     subkeys:
     - key: identifier
       title: Identifier
@@ -39,13 +40,13 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the background task is removed and the status item object
-        only contains this key and the 'identifier' key.
+      content: If `true`, the background task is removed and the status item object
+        only contains this key and the `identifier` key.
     - key: code-signature
       title: Code signature
       type: <string>
       presence: optional
-      content: For types other than 'agent' or 'daemon', this is the code signature
+      content: For types other than `agent` or `daemon`, this is the code signature
         designated requirement of the item, if available.
     - key: uid
       title: Numeric user identifier
@@ -56,7 +57,7 @@ payloadkeys:
       title: Path
       type: <string>
       presence: required
-      content: For an 'agent' or 'daemon', the path to the 'launchd' 'plist' file.
+      content: For an `agent` or `daemon`, the path to the `launchd` `plist` file.
         For other types, the path to the app or the document.
     - key: state
       title: Background task state
@@ -67,7 +68,7 @@ payloadkeys:
       - enabled
       - requires-approval
       - not-found
-      content: The SMAppService.Status enumeration.
+      content: The `SMAppService.Status` enumeration.
     - key: type
       title: Background task type
       type: <string>
@@ -83,24 +84,24 @@ payloadkeys:
       title: Launchd background task
       type: <dictionary>
       presence: optional
-      content: Details about a 'launchd'-based background task, which is only present
-        when the type is 'daemon' or 'agent'.
+      content: Details about a `launchd`-based background task, which is only present
+        when the type is `daemon` or `agent`.
       subkeys:
       - key: label
         title: Label
         type: <string>
         presence: required
-        content: The label of the 'launchd'-based background task.
+        content: The label of the `launchd`-based background task.
       - key: program
         title: Program
         type: <string>
         presence: required
-        content: The program that the 'launchd' 'plist' file specifies.
+        content: The program that the `launchd` `plist` file specifies.
       - key: program-arguments
         title: Program arguments
         type: <array>
         presence: optional
-        content: The program arguments that the 'launchd' 'plist' file specifies.
+        content: The program arguments that the `launchd` `plist` file specifies.
         subkeys:
         - key: program-arguments-item
           title: Program argument
@@ -109,7 +110,7 @@ payloadkeys:
         title: The hash value of the launchd plist.
         type: <string>
         presence: required
-        content: The hash value of the 'launchd' 'plist' file.
+        content: The hash value of the `launchd` `plist` file.
       - key: device-management
         title: Device Management
         supportedOS:
@@ -117,26 +118,26 @@ payloadkeys:
             introduced: '15.0'
         type: <dictionary>
         presence: optional
-        content: If present, indicates this background task was created by a 'services.background-tasks'
-          configuration. This dictionary contains properties that identify the configuration
-          and specific version of the declaration asset that provided the launchd
-          plist for the task.
+        content: A dictionary that indicates a `ServicesBackgroundTasks` configuration
+          created this background task. The dictionary contains properties that identify
+          the configuration and the declaration asset that provided the launchd plist
+          for the task.
         subkeys:
         - key: configuration-identifier
           title: Configuration Identifier
           type: <string>
           presence: required
-          content: The identifier of the 'services.background-tasks' configuration
-            that created this task.
+          content: The identifier of the `ServicesBackgroundTasks` configuration that
+            created this task.
         - key: asset-identifier
           title: Asset Identifier
           type: <string>
           presence: required
-          content: The identifier of the declaration asset that provided the launchd
+          content: The `Identifier` of the declaration asset that provided the launchd
             plist for this task.
         - key: asset-server-token
           title: Asset Server Token
           type: <string>
           presence: required
-          content: The server token of the declaration asset that provided the launchd
+          content: The `ServerToken` of the declaration asset that provided the launchd
             plist for this task.

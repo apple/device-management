@@ -1,5 +1,5 @@
 title: Status Device Model Number
-description: The device's hardware number.
+description: A status report of the device's hardware number.
 payload:
   statusitemtype: device.model.number
   supportedOS:

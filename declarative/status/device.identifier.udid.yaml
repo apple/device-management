@@ -1,5 +1,5 @@
 title: Status Device UDID
-description: The device's UDID.
+description: A status report of the device's UDID.
 payload:
   statusitemtype: device.identifier.udid
   supportedOS:

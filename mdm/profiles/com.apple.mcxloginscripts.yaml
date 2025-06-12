@@ -1,5 +1,5 @@
 title: 'Login Window: Scripts'
-description: ''
+description: The payload that configures scripts to run at login and logout.
 payload:
   payloadtype: com.apple.mcxloginscripts
   supportedOS:
@@ -31,6 +31,7 @@ payloadkeys:
   subkeys: &id001
   - key: ScriptsItems
     type: <dictionary>
+    content: A dictionary of login scripts.
     subkeys:
     - key: filename
       type: <string>
@@ -50,9 +51,15 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system doesn't execute the login scripts during login.
+  content: If `true`, the system doesn't execute the login scripts during login.
 - key: skipLogoutHook
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system doesn't execute the logout scripts during logout.
+  content: If `true`, the system doesn't execute the logout scripts during logout.
+notes:
+- title: ''
+  content: |-
+    The MCX login and logout managed-scripts payload contains information about executable scripts that can run at user login and logout. To use this payload, set `EnableMCXLoginScripts` to `true` in `/var/root/Library/Preferences/com.apple.loginwindow.plist`; otherwise, the system ignores this payload.
+
+    `Loginwindow` uses the `LoginHook` and `LogoutHook` string keys in `/var/root/Library/Preferences/com.apple.loginwindow.plist` to indicate a path to the executable script files, which run during user login and logout. The system passes the current user name as an argument to the file.

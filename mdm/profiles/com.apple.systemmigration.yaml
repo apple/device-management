@@ -1,5 +1,5 @@
 title: System Migration
-description: ''
+description: The payload that configures system migration.
 payload:
   payloadtype: com.apple.systemmigration
   supportedOS:
@@ -30,6 +30,7 @@ payloadkeys:
   subkeys:
   - key: CustomBehaviorItem
     type: <dictionary>
+    content: The custom behavior dictionary.
     subkeys:
     - key: Context
       type: <string>
@@ -42,6 +43,7 @@ payloadkeys:
       subkeys:
       - key: PathsItem
         type: <dictionary>
+        content: The custom behavior path dictionary.
         subkeys:
         - key: SourcePath
           type: <string>
@@ -50,7 +52,7 @@ payloadkeys:
         - key: SourcePathInUserHome
           type: <boolean>
           presence: required
-          content: If 'true', the source path is located within a user home directory.
+          content: If `true`, the source path is located within a user home directory.
         - key: TargetPath
           type: <string>
           presence: required
@@ -58,4 +60,4 @@ payloadkeys:
         - key: TargetPathInUserHome
           type: <boolean>
           presence: required
-          content: If 'true', the target path is located within a user home directory.
+          content: If `true`, the target path is located within a user home directory.

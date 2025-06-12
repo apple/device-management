@@ -1,5 +1,6 @@
 title: Status Account List LDAP
-description: The client's LDAP accounts.
+description: A status report of the client's Lightweight Directory Access Protocol
+  (LDAP) accounts.
 payload:
   statusitemtype: account.list.ldap
   supportedOS:
@@ -46,6 +47,7 @@ payloadkeys:
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of the client's LDAP account details.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -57,8 +59,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the account is removed and the status item object only contains
-        this key and the 'identifier' key.
+      content: If `true`, the account is removed and the status item object only contains
+        this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>

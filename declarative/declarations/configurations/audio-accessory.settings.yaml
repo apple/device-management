@@ -1,0 +1,76 @@
+title: Audio Accessory:Settings
+description: The declaration to configure audio accessory settings.
+payload:
+  declarationtype: com.apple.configuration.audio-accessory.settings
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: TemporaryPairing
+  title: Temporary Pairing
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that describes audio accessory temporary pairing behavior.
+    The device enables temporary pairing when this key is present and the `Disabled`
+    key isn't `false`. The device doesn't synchronize pairing information with iCloud
+    when temporary pairing is active.
+  subkeys:
+  - key: Disabled
+    title: Temporary Pairing Disabled
+    type: <boolean>
+    presence: optional
+    default: false
+    combinetype: boolean-or
+    content: If `true`, temporary pairing of audio accessories is disabled.
+  - key: Configuration
+    title: Temporary Pairing Configuration
+    type: <dictionary>
+    presence: optional
+    combinetype: first
+    content: A dictionary providing configuration for temporary pairing. Required
+      if `Disabled` isn't present or is `false`.
+    subkeys:
+    - key: UnpairingTime
+      title: Temporary Pairing Unpairing Time
+      type: <dictionary>
+      presence: required
+      content: A dictionary that describes when the device automatically unpairs temporarily
+        paired audio accessories.
+      subkeys:
+      - key: Policy
+        title: Unpairing Policy
+        type: <string>
+        presence: required
+        rangelist:
+        - None
+        - Hour
+        content: |-
+          A string that specifies the device's unpairing policy.
+          - `None`: The device doesn't automatically unpair. Use this only with a return to service device that you erase and reenroll when assigning it from one user to another.
+          - `Hour`: The device automatically unpairs temporarily paired audio accessories at the local time that the `Hour` key specifies.
+      - key: Hour
+        title: Hour of Unpairing
+        type: <integer>
+        presence: optional
+        range:
+          min: 0
+          max: 23
+        content: The local time hour (24-hour clock) when the device automatically
+          unpairs temporarily paired audio accessories. Required when setting the
+          `Policy` key to `Hour`.

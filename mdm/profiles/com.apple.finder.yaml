@@ -1,5 +1,5 @@
 title: Finder
-description: ''
+description: The payload that configures Finder settings.
 payload:
   payloadtype: com.apple.finder
   supportedOS:
@@ -27,7 +27,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system disables the Finder's burn support.
+  content: If `true`, the system disables the Finder's burn support.
 - key: InterfaceLevel
   supportedOS:
     macOS:
@@ -42,39 +42,39 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system disables Connect to Server.
+  content: If `true`, the system disables Connect to Server.
 - key: ProhibitEject
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system disables Eject.
+  content: If `true`, the system disables Eject.
 - key: ProhibitGoToFolder
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system disables Go to Folder.
+  content: If `true`, the system disables Go to Folder.
 - key: ShowExternalHardDrivesOnDesktop
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system doesn't show external hard drives on the Desktop.
+  content: If `false`, the system doesn't show external hard drives on the Desktop.
 - key: ShowHardDrivesOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If 'false', the system doesn't show internal hard drives on the Desktop.
+  content: If `false`, the system doesn't show internal hard drives on the Desktop.
 - key: ShowMountedServersOnDesktop
   type: <boolean>
   presence: optional
   default: false
-  content: If 'false', the system doesn't show mounted file servers on the Desktop.
+  content: If `false`, the system doesn't show mounted file servers on the Desktop.
 - key: ShowRemovableMediaOnDesktop
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system doesn't show removable media items on the Desktop.
+  content: If `false`, the system doesn't show removable media items on the Desktop.
 - key: WarnOnEmptyTrash
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system doesn't warn the user before emptying the trash.
+  content: If `false`, the system doesn't warn the user before emptying the trash.

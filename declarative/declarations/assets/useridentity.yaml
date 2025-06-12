@@ -1,5 +1,5 @@
 title: Asset:User Identity
-description: User identity data.
+description: The user-identity data.
 payload:
   declarationtype: com.apple.asset.useridentity
   supportedOS:

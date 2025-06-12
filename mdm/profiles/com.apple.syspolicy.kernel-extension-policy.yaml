@@ -1,5 +1,5 @@
 title: System Policy - Kernel Extensions
-description: ''
+description: The payload that configures the kernel extension policies.
 payload:
   payloadtype: com.apple.syspolicy.kernel-extension-policy
   supportedOS:
@@ -33,13 +33,14 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', nonadministrative users can approve additional kernel extensions in the Security & Privacy preferences.
+    If `true`, nonadministrative users can approve additional kernel extensions in the Security & Privacy preferences.
+
     Available in macOS 11 and later.
 - key: AllowUserOverrides
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', users can approve additional kernel extensions that configuration
+  content: If `true`, users can approve additional kernel extensions that configuration
     profiles don't explicitly allow.
 - key: AllowedTeamIdentifiers
   type: <array>

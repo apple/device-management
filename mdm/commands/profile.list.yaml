@@ -1,7 +1,5 @@
 title: Profile List Command
-description: This command allows the MDM server to query for the profiles installed
-  on the device. This command requires the Inspect Profile Manifest right. It's supported
-  on the user channel.
+description: Get a list of installed profiles on a device.
 payload:
   requesttype: ProfileList
   supportedOS:
@@ -55,7 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', only include profiles that MDM has installed. For user enrollments,
+  content: If `true`, only include profiles that MDM has installed. For user enrollments,
     the device ignores this key and always limits the results to managed profiles.
     This value is available in iOS 13 and later, macOS 10.5 and later, and tvOS 13
     and later.
@@ -67,6 +65,7 @@ responsekeys:
   subkeys:
   - key: ProfileListItem
     type: <dictionary>
+    content: A dictionary that describes a profile list item.
     subkeys:
     - key: PayloadUUID
       type: <string>
@@ -75,12 +74,12 @@ responsekeys:
     - key: PayloadIdentifier
       type: <string>
       presence: required
-      content: The reverse-DNS-style identifier of the profile; for example, 'com.example.myprofile'.
+      content: The reverse-DNS-style identifier of the profile; for example, `com.example.myprofile`.
     - key: PayloadVersion
       type: <integer>
       presence: optional
       content: The version of the configuration profile as a whole, not of the individual
-        profiles within it. The value should be '1'.
+        profiles within it. The value should be `1`.
     - key: PayloadDisplayName
       type: <string>
       presence: optional
@@ -97,19 +96,19 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can't delete the profile unless it has a removal
+      content: If `true`, the user can't delete the profile unless it has a removal
         password and the user provides it. The framework ignores this field on unsupervised
         devices.
     - key: HasRemovalPasscode
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the profile has a passcode for removal.
+      content: If `true`, the profile has a passcode for removal.
     - key: IsEncrypted
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', it's an encrypted profile.
+      content: If `true`, it's an encrypted profile.
     - key: SignerCertificates
       type: <array>
       presence: optional
@@ -126,7 +125,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the current MDM service installed the profile. MDM doesn't
+      content: If `true`, the current MDM service installed the profile. MDM doesn't
         return this value for supervised devices, and can remove or replace all profiles
         on supervised devices.
     - key: Source
@@ -143,29 +142,32 @@ responsekeys:
           introduced: '11.0'
       type: <string>
       presence: optional
-      content: Source of the profile. This value will be set to "Declarative Device
-        Management" when the profile is managed by Declarative Device Management.
+      content: A string set to `Declarative Device Management` when the profile is
+        managed by Declarative Device Management.
     - key: PayloadContent
       type: <array>
       presence: optional
-      content: An array of payload content items. This value isn't present if 'IsEncrypted'
-        is 'true'.
+      content: An array of payload content items. This value isn't present if `IsEncrypted`
+        is `true`.
       subkeys:
       - key: PayloadContentItem
         type: <dictionary>
+        content: A dictionary that describes a profile payload content item.
         subkeys:
         - key: PayloadType
           type: <string>
           presence: required
-          content: The type of payload, such as 'com.apple.wifi.managed'.
+          content: The type of payload, such as `com.apple.wifi.managed`.
         - key: PayloadVersion
           type: <integer>
           presence: required
-          content: The version of the payload. The value should be '1'.
+          rangelist:
+          - 1
+          content: The version of the payload. The value is `1`.
         - key: PayloadIdentifier
           type: <string>
           presence: required
-          content: The reverse-DNS-style identifier of the payload, such as 'com.example.mypayload'.
+          content: The reverse-DNS-style identifier of the payload, such as `com.example.mypayload`.
         - key: PayloadUUID
           supportedOS:
             iOS:
@@ -189,3 +191,7 @@ responsekeys:
           type: <string>
           presence: optional
           content: The human-readable name of the organization that provided the payload.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

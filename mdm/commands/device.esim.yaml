@@ -1,6 +1,5 @@
 title: Refresh Cellular Plans Command
-description: Instructs the device to query for active cellular plan eSIM "profiles"
-  at the designated carrier eSIM server URL.
+description: Query a carrier URL for active eSIM cellular-plan profiles on a device.
 payload:
   requesttype: RefreshCellularPlans
   supportedOS:
@@ -33,3 +32,11 @@ payloadkeys:
   presence: required
   content: The carrier's eSIM server URL to query. Obtain this URL from each carrier
     separately.
+notes:
+- title: Error codes
+  content: |-
+    An error response uses one of the following error codes:
+
+    - `36001`: Unable to communicate with the cellular software stack.
+    - `36002`: The hardware doesn't support this command.
+    - `36003`: The cellular stack was unable to perform the request. This error can also occur if the cellular stack is busy, in which case, retrying the command later may resolve the issue.

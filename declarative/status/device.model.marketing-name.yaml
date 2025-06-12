@@ -1,5 +1,5 @@
 title: Status Device Model Marketing Name
-description: The device's hardware marketing name.
+description: A status report of the device's marketing name.
 payload:
   statusitemtype: device.model.marketing-name
   supportedOS:
@@ -54,5 +54,5 @@ payloadkeys:
   title: Status item value.
   type: <string>
   presence: required
-  content: The device's marketing name, such as 'iPhone 12'. This value may not always
+  content: The device's marketing name, such as `iPhone 12`. This value may not always
     be available.

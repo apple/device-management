@@ -1,5 +1,5 @@
 title: Passcode:Settings
-description: Use this configuration to define passcode policy settings
+description: The declaration to configure passcode policy settings.
 payload:
   declarationtype: com.apple.configuration.passcode.settings
   supportedOS:
@@ -48,7 +48,7 @@ payloadkeys:
   presence: optional
   default: false
   combinetype: boolean-or
-  content: If 'true', the system requires the user to set a passcode without any requirements
+  content: If `true`, the system requires the user to set a passcode without any requirements
     about the length or quality of the passcode. The presence of any other keys implicitly
     requires a passcode, and overrides this key's value.
 - key: RequireAlphanumericPasscode
@@ -64,7 +64,7 @@ payloadkeys:
   presence: optional
   default: false
   combinetype: boolean-or
-  content: If 'true', the passcode needs to consist of at least one alphabetic character
+  content: If `true`, the passcode needs to consist of at least one alphabetic character
     and at least one number.
 - key: RequireComplexPasscode
   title: Require Complex Passcode
@@ -72,7 +72,7 @@ payloadkeys:
   presence: optional
   default: false
   combinetype: boolean-or
-  content: If 'true', the system requires a complex passcode. A complex passcode is
+  content: If `true`, the system requires a complex passcode. A complex passcode is
     one that doesn't contain repeated characters or increasing or decreasing characters
     (such as 123 or CBA).
 - key: MinimumLength
@@ -102,8 +102,8 @@ payloadkeys:
   default: 0
   combinetype: number-max
   content: Specifies the minimum number of complex characters in the password. A complex
-    character is a character other than a number or a letter, such as '&', '%', '$',
-    and '#'.
+    character is a character other than a number or a letter, such as `&`, `%`, `$`,
+    and `#`.
 - key: MaximumFailedAttempts
   title: Maximum Number of Failed Attempts
   type: <integer>
@@ -115,6 +115,7 @@ payloadkeys:
   combinetype: number-min
   content: |-
     The number of failed passcode attempts that the system allows the user before iOS erases the device or macOS locks the device. If you don't change this setting, after six failed attempts, the device imposes a time delay before the user can enter a passcode again. The time delay increases with each failed attempt.
+
     After the final failed attempt, the system securely erases all data and settings from the iOS device. A macOS device locks after the final attempt. The passcode time delay begins after the sixth attempt, so if this value is six or lower, the system has no time delay and triggers the erase or lock as soon as the user exceeds the limit.
 - key: FailedAttemptsResetInMinutes
   title: Failed Attempts Reset
@@ -131,7 +132,7 @@ payloadkeys:
   presence: optional
   combinetype: number-min
   content: The number of minutes before the login is reset after the maximum number
-    of failed attempts. Also set the 'MaximumFailedAttempts' key for this to take
+    of failed attempts. Also set the `MaximumFailedAttempts` key for this to take
     effect.
 - key: MaximumGracePeriodInMinutes
   title: Maximum Grace Period
@@ -139,7 +140,7 @@ payloadkeys:
   presence: optional
   combinetype: number-min
   content: The maximum period that a user can select, during which the user can unlock
-    the device without a passcode. A value of '0' means no grace period, and the device
+    the device without a passcode. A value of `0` means no grace period, and the device
     requires a passcode immediately. In the absence of this key, the user can select
     any period. In macOS, the system translates this to screensaver settings.
 - key: MaximumInactivityInMinutes
@@ -198,7 +199,7 @@ payloadkeys:
   presence: optional
   default: false
   combinetype: boolean-or
-  content: If 'true', the system forces a password reset the next time the user tries
+  content: If `true`, the system forces a password reset the next time the user tries
     to authenticate. If you set this key in a configuration in the system scope (device
     channel), the setting takes effect for all users, and admin authentication may
     fail until the admin user password is also reset.
@@ -229,9 +230,9 @@ payloadkeys:
   - key: Description
     type: <dictionary>
     presence: optional
-    content: A dictionary with supported OS language IDs for the keys (such as 'en-US'),
+    content: A dictionary with supported OS language IDs for the keys (such as `en-US`),
       and values that represent a localized description of the policy that the regular
-      expression enforces. Use the special 'default' key for languages that the dictionary
+      expression enforces. Use the special `default` key for languages that the dictionary
       doesn't contain.
     subkeys:
     - key: ANY

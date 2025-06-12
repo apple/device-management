@@ -1,5 +1,5 @@
 title: Status Account List CalDAV
-description: The client's CalDAV accounts.
+description: A status report of the client's Calendar accounts.
 payload:
   statusitemtype: account.list.caldav
   supportedOS:
@@ -41,11 +41,12 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: A list of status values for the CalDAV accounts.
+  content: A list of status values for the Calendar accounts.
   subkeytype: Account
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of the client's Calendar account details.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -57,8 +58,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the account is removed and the status item object only contains
-        this key and the 'identifier' key.
+      content: If `true`, the account is removed and the status item object only contains
+        this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
@@ -89,10 +90,10 @@ payloadkeys:
       title: Are calendars enabled
       type: <boolean>
       presence: optional
-      content: If 'true', the Calendar app is displaying calendars and events for
+      content: If `true`, the Calendar app is displaying calendars and events for
         the account.
     - key: are-reminders-enabled
       title: Are reminders enabled
       type: <boolean>
       presence: optional
-      content: If 'true', the Reminders app is displaying reminders for the account.
+      content: If `true`, the Reminders app is displaying reminders for the account.

@@ -1,5 +1,5 @@
 title: Request Unlock Token Command
-description: This command requests an UnlockToken from the device.
+description: Request an unlock token from a device.
 payload:
   requesttype: RequestUnlockToken
   supportedOS:
@@ -28,3 +28,7 @@ responsekeys:
   type: <data>
   presence: required
   content: The unlock token. Erasing the user partition invalidates this token.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

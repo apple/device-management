@@ -1,5 +1,5 @@
 title: Certificate Revocation
-description: Use this section to define settings for certificate revocation.
+description: The payload that configures certificate revocation checking.
 payload:
   payloadtype: com.apple.security.certificaterevocation
   supportedOS:
@@ -35,21 +35,25 @@ payloadkeys:
   presence: optional
   content: |-
     An array of certificates that the system checks for revocation.
+
     Specifying a certificate authority (CA) enables revocation checking for all certificates chaining up to that CA.
-    It's not necessary to specify trusted root certificates because they're implicitly specified. See <https://support.apple.com/en-us/HT209143> for the available trusted root certificates for Apple operating systems.
+
+    It's not necessary to specify trusted root certificates because they're implicitly specified. See [https://support.apple.com/en-us/HT209143](https://support.apple.com/en-us/HT209143) for the available trusted root certificates for Apple operating systems.
   subkeys:
   - key: SubjectPublicKeyInfoHashDict
     type: <dictionary>
+    content: A dictionary of hashed public keys.
     subkeys:
     - key: Algorithm
       type: <string>
       presence: required
       rangelist:
       - sha256
-      content: The algorithm must be 'sha256'.
+      content: The algorithm must be `sha256`.
     - key: Hash
       type: <data>
       presence: required
       content: |-
-        The hash of the DER-encoding of the certificate's 'subjectPublicKeyInfo'.
-        The hash field requires the data ('subjectPublicKeyInfo' hash) in a specific format: a Base64 encoded (binary) SHA-256 hash of the certificate's public key.
+        The hash of the DER-encoding of the certificate's `subjectPublicKeyInfo`.
+
+        The hash field requires the data (`subjectPublicKeyInfo` hash) in a specific format: a Base64 encoded (binary) SHA-256 hash of the certificate's public key.

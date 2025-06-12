@@ -1,5 +1,5 @@
 title: Set Recovery Lock Command
-description: Sets or clears the recovery lock password (AppleSilicon devices only)
+description: Set or clear the Recovery Lock password.
 payload:
   requesttype: SetRecoveryLock
   supportedOS:
@@ -33,3 +33,9 @@ payloadkeys:
   presence: required
   content: The new password for Recovery Lock. Set as an empty string to clear the
     Recovery Lock password.
+notes:
+- title: ''
+  content: |-
+    This command sets, or clears, a password on booting to recoveryOS. When the device unenrolls MDM the system removes the recovery password.
+
+    This command is only available on Mac computers with Apple silicon.

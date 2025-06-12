@@ -1,6 +1,6 @@
 title: Validate Applications Command
-description: This commands allows the server to force validation of the free developer
-  and universal provisioning profiles associated with an enterprise app.
+description: Force validation of developer and universal provisioning profiles for
+  enterprise apps.
 payload:
   requesttype: ValidateApplications
   supportedOS:
@@ -41,3 +41,7 @@ payloadkeys:
   subkeys:
   - key: IdentifiersItem
     type: <string>
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

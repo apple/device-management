@@ -1,5 +1,5 @@
 title: Common Payload Keys
-description: Payload dictionary keys common to all payload types
+description: The properties common to all payloads.
 payload:
   payloadtype: CommonPayloadKeys
   supportedOS:
@@ -46,14 +46,16 @@ payloadkeys:
   type: <string>
   presence: required
   content: |-
-    The reverse-DNS-style identifier for the payload. This identifier is usually the same as the TopLevel value, with an additional appended component. This string must be unique within the profile.
-    During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.
+    The reverse-DNS-style identifier for the payload. This identifier is usually the same as the `TopLevel` value, with an additional appended component. This string must be unique within the profile.
+
+    During a profile replacement, the system updates payloads with the same `PayloadIdentifier` and `PayloadUUID` in the old and new profiles.
 - key: PayloadUUID
   type: <string>
   presence: required
   content: |-
-    The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use 'uuidgen' to generate UUIDs.
-    During a profile replacement, the system updates payloads with the same 'PayloadIdentifier' and 'PayloadUUID' in the old and new profiles.
+    The globally unique identifier for the payload. The actual content is unimportant, but must be globally unique. In macOS, use `uuidgen` to generate UUIDs.
+
+    During a profile replacement, the system updates payloads with the same `PayloadIdentifier` and `PayloadUUID` in the old and new profiles.
 - key: PayloadType
   type: <string>
   presence: required

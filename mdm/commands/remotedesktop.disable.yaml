@@ -1,5 +1,5 @@
 title: Disable Remote Desktop Command
-description: Disable Remote Desktop on the device.
+description: Disable Remote Desktop on a device.
 payload:
   requesttype: DisableRemoteDesktop
   supportedOS:
@@ -20,3 +20,9 @@ payload:
     watchOS:
       introduced: n/a
   content: Disable Remote Desktop.
+notes:
+- title: ''
+  content: |-
+    This command disables Remote Desktop on the device, and prevents any further remote event processing. It removes any `PostEvent` Transparency Consent and Control (TCC) ability, unless the device already has an installed TCC configuration profile with that ability enabled.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

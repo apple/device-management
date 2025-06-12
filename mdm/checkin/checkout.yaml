@@ -1,5 +1,5 @@
 title: Check Out
-description: Check-in protocol check out request keys.
+description: Responds to the removal of the MDM enrollment profile from a device.
 payload:
   requesttype: CheckOut
   supportedOS:
@@ -40,11 +40,11 @@ payloadkeys:
   presence: required
   rangelist:
   - CheckOut
-  content: The message type, which must have a value of 'CheckOut'.
+  content: The message type, which requires a value of `CheckOut`.
 - key: Topic
   type: <string>
   presence: required
-  content: The topic to which the device subscribed.
+  content: The topic the device subscribes to.
 - key: UDID
   supportedOS:
     iOS:
@@ -55,7 +55,8 @@ payloadkeys:
         mode: forbidden
   type: <string>
   presence: required
-  content: The device's UDID (Unique Device ID).
+  content: The device's UDID (unique device identifier). The system requires this
+    value if the enrollment type is a device enrollment.
 - key: EnrollmentID
   supportedOS:
     iOS:
@@ -75,5 +76,13 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: required
-  content: The per-enrollment identifier for the device. Available in macOS 10.15
-    and iOS 13.0 and later.
+  content: |-
+    The per-enrollment identifier for the device. The system requires this value if the enrollment type is a user enrollment.
+
+    Available in iOS 13 and later, macOS 10.15 and later, and visionOS 2 and later.
+notes:
+- title: ''
+  content: |-
+    The system sends this message on a best-effort basis. If the system can't send the message while removing the MDM profile, it removes the profile and doesn't resend the message.
+
+    On success, the server needs to respond with a `200 OK` status.

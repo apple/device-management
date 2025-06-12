@@ -1,5 +1,5 @@
 title: Request Mirroring Command
-description: This command prompts the user to share their screen using AirPlay mirroring.
+description: Prompt the user to share their screen using AirPlay Mirroring.
 payload:
   requesttype: RequestMirroring
   supportedOS:
@@ -39,12 +39,14 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The hardware address of the AirPlay Mirroring destination that identifies
-    the device, in the format 'xx:xx:xx:xx:xx'. This value isn't case-sensitive.
+    the device, in the format `xx:xx:xx:xx:xx`. This value isn't case-sensitive. Not
+    available for Apple TV devices running tvOS 18 or later, use `DestinationName`
+    instead.
 - key: ScanTime
   type: <integer>
   presence: optional
-  content: The number of seconds, from '10' to '300', for the device to spend searching
-    for the destination. The default value is '30'.
+  content: The number of seconds, from `10` to `300`, for the device to spend searching
+    for the destination. The default value is `30`.
 - key: Password
   type: <string>
   presence: optional
@@ -56,7 +58,14 @@ responsekeys:
   presence: optional
   content: |-
     The result of the request. One of these values:
-    * 'Prompting': The user is receiving a prompt to share their screen.
-    * 'DestinationNotFound': The device is unable to reach the destination.
-    * 'Cancelled': The user canceled the request.
-    * 'Unknown': An unknown error occurred.
+
+    - `Prompting`: The user is receiving a prompt to share their screen.
+    - `DestinationNotFound`: The device is unable to reach the destination.
+    - `Cancelled`: The user canceled the request.
+    - `Unknown`: An unknown error occurred.
+notes:
+- title: ''
+  content: |-
+    Provide either the `DestinationName` or the `DestinationDeviceID`. If you provide both values, MDM uses `DestinationDeviceID`.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

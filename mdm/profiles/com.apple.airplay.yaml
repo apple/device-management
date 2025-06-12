@@ -1,5 +1,5 @@
 title: AirPlay
-description: AirPlay settings
+description: The payload that configures AirPlay settings.
 payload:
   payloadtype: com.apple.airplay
   supportedOS:
@@ -77,10 +77,13 @@ payloadkeys:
       presence: optional
       format: ^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$
       content: |-
-        The device ID of the AirPlay destination in the format 'xx:xx:xx:xx:xx:xx'. This field isn't case-sensitive.
-        The system limits the list of visible AirPlay destinations to devices that are present in the 'AllowList' field of all installed AirPlay payloads.
+        The device ID of the AirPlay destination in the format `xx:xx:xx:xx:xx:xx`. This field isn't case-sensitive.
+
+        The system limits the list of visible AirPlay destinations to devices that are present in the `AllowList` field of all installed AirPlay payloads.
+
         Specifying the same MACAddress more than once, whether in the same payload across different payloads, results in undefined behavior.
-        As of tvOS 18, 'DeviceID' isn't supported.
+
+        As of tvOS 18, `DeviceID` isn't supported.
     - key: DeviceName
       title: Device Name
       supportedOS:
@@ -92,7 +95,8 @@ payloadkeys:
       presence: optional
       content: |-
         The name of the AirPlay device.
-        The system limits the list of visible AirPlay destinations to devices that are present in the 'AllowList' field of all installed AirPlay payloads.
+
+        The system limits the list of visible AirPlay destinations to devices that are present in the `AllowList` field of all installed AirPlay payloads.
 - key: Passwords
   title: Passwords
   type: <array>
@@ -130,7 +134,8 @@ payloadkeys:
       presence: optional
       content: |-
         The device ID of the AirPlay destination; used in macOS.
-        In macOS 15 and later, 'DeviceID' is deprecated as tvOS 18 AirPlay destinations do not support it; use 'DeviceName' instead.
+
+        Deprecated in macOS 15 and later as tvOS 18 AirPlay destinations don't support it; use `DeviceName` instead.
 - key: Whitelist
   title: Whitelist
   supportedOS:
@@ -145,5 +150,5 @@ payloadkeys:
         mode: ignored
   type: <array>
   presence: optional
-  content: Use 'AllowList' instead. This key is deprecated in iOS 14.5 and macOS 11.3.
+  content: Use `AllowList` instead. This key is deprecated in iOS 14.5 and macOS 11.3.
   subkeys: *id001

@@ -1,5 +1,5 @@
 title: Invite To Program Command
-description: This command allows a server to invite a user to join a program.
+description: Invite a user to join the Volume Purchase Program (VPP).
 payload:
   requesttype: InviteToProgram
   supportedOS:
@@ -40,7 +40,7 @@ payloadkeys:
   presence: required
   rangelist:
   - com.apple.cloudvpp
-  content: The program's identifier, which can only be 'com.apple.cloudvpp'.
+  content: The program's identifier, which can only be `com.apple.cloudvpp`.
 - key: InvitationURL
   type: <string>
   presence: required
@@ -54,3 +54,7 @@ responsekeys:
   - InvalidProgramID
   - InvalidInvitationURL
   content: The result of the command.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

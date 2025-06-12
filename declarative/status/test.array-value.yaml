@@ -1,5 +1,5 @@
 title: Status Test Array Value
-description: A test status item array.
+description: A test status item for an array.
 payload:
   statusitemtype: test.array-value
   supportedOS:
@@ -59,6 +59,7 @@ payloadkeys:
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status value for the test status item array.
     subkeys:
     - key: key1
       title: First Key Value

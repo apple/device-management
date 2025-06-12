@@ -1,5 +1,5 @@
 title: Web Content Filter
-description: Use this section to define managed email and web domains.
+description: The payload that configures web content filters.
 payload:
   payloadtype: com.apple.webcontent-filter
   supportedOS:
@@ -60,8 +60,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables automatic filtering. Use when 'FilterType'
-    is 'BuiltIn'.
+  content: If `true`, the system enables automatic filtering. Use when `FilterType`
+    is `BuiltIn`.
 - key: PermittedURLs
   title: PermittedURLs
   supportedOS:
@@ -70,8 +70,8 @@ payloadkeys:
   type: <array>
   presence: optional
   content: An array or URLs that are accessible whether or not the automatic filter
-    allows access. Use when 'FilterType' is 'BuiltIn'. Requires that 'AutoFilterEnabled'
-    is 'true'.
+    allows access. Use when `FilterType` is `BuiltIn`. Requires that `AutoFilterEnabled`
+    is `true`.
   subkeys:
   - key: PermittedURLItems
     title: Permitted url items
@@ -87,7 +87,7 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: Use 'DenyListURLs' instead.
+  content: Use `DenyListURLs` instead.
   subkeys:
   - key: BlacklistedURLItems
     title: Blacklisted url items
@@ -101,8 +101,8 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of URLs that are inaccessible. Use when 'FilterType' is 'BuiltIn'.
-    Limit the number of these URLs to about 500.
+  content: An array of URLs that are inaccessible. Use when `FilterType` is `BuiltIn`.
+    Limit the number of these URLs to no more than 500.
   subkeys:
   - key: DenyListURLItems
     title: Denylisted url items
@@ -119,8 +119,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: Hide the DenyListURLs in profiles UI in Settings > General > VPN & Device
-    Management > profiles details.
+  content: If `true`, the device hides the `DenyListURLs` item in the profiles that
+    display in Settings > General > VPN & Device Management.
 - key: WhitelistedBookmarks
   title: White list
   supportedOS:
@@ -132,7 +132,7 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: Use 'AllowListBookmarks' instead.
+  content: Use `AllowListBookmarks` instead.
   subkeys:
   - key: WhitelistedBookmarksItem
     title: Identifier
@@ -158,7 +158,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: An array of dictionaries that define the pages that the user can bookmark
-    or visit. Use when 'FilterType' is 'BuiltIn'.
+    or visit. Use when `FilterType` is `BuiltIn`.
   subkeys:
   - key: AllowListBookmarksItem
     title: Identifier
@@ -178,50 +178,50 @@ payloadkeys:
   title: UserDefinedName
   type: <string>
   presence: optional
-  content: The display name for this filtering configuration. Required when 'FilterType'
-    is 'Plugin'.
+  content: The display name for this filtering configuration. Required when `FilterType`
+    is `Plugin`.
 - key: PluginBundleID
   title: PluginBundleID
   type: <string>
   presence: optional
   content: The bundle ID of the plug-in that provides filtering service. Required
-    when 'FilterType' is 'Plugin'. Otherwise, it ignores this value. Consult your
+    when `FilterType` is `Plugin`. Otherwise, it ignores this value. Consult your
     filtering solution vendor to determine what to specify for this value. Required
-    when 'FilterType' is 'Plugin'.
+    when `FilterType` is `Plugin`.
 - key: ServerAddress
   title: ServerAddress
   type: <string>
   presence: optional
   content: The server address, which may be the IP address, hostname, or URL. Use
-    when 'FilterType' is 'Plugin'.
+    when `FilterType` is `Plugin`.
 - key: UserName
   title: Username
   type: <string>
   presence: optional
-  content: The user name for the service. Use when 'FilterType' is 'Plugin'.
+  content: The user name for the service. Use when `FilterType` is `Plugin`.
 - key: Password
   title: Password
   type: <string>
   presence: optional
-  content: The password for the service. Use when 'FilterType' is 'Plugin'.
+  content: The password for the service. Use when `FilterType` is `Plugin`.
 - key: PayloadCertificateUUID
   title: Certificate UUID
   type: <string>
   presence: optional
   format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
   content: The UUID of the certificate payload within the same profile that the system
-    uses to authenticate the user. Use when 'FilterType' is 'Plugin'.
+    uses to authenticate the user. Use when `FilterType` is `Plugin`.
 - key: Organization
   title: Organization
   type: <string>
   presence: optional
-  content: The organization string to pass to the third-party plug-in. Use when 'FilterType'
-    is 'Plugin'.
+  content: The organization string to pass to the third-party plug-in. Use when `FilterType`
+    is `Plugin`.
 - key: VendorConfig
   type: <dictionary>
   presence: optional
   content: The custom dictionary that the filtering service plug-in needs. Use when
-    'FilterType' is 'Plugin'.
+    `FilterType` is `Plugin`.
   subkeys:
   - key: ANY
     type: <any>
@@ -236,16 +236,20 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', the system enables filtering WebKit traffic. Use when 'FilterType' is 'Plugin'.
-    At least one of 'FilterBrowsers' or 'FilterSockets' needs to be 'true'.
+    If `true`, the system enables filtering WebKit traffic. Use when `FilterType` is `Plugin`.
+
+    > Note:
+    > At least one of `FilterBrowsers` or `FilterSockets` needs to be `true`.
 - key: FilterSockets
   title: FilterSockets
   type: <boolean>
   presence: optional
   default: false
   content: |-
-    If 'true', enables the filtering of socket traffic. Use when 'FilterType' is 'Plugin'.
-    At least one of 'FilterBrowsers' or 'FilterSockets' needs to be 'true'.
+    If `true`, enables the filtering of socket traffic. Use when `FilterType` is `Plugin`.
+
+    > Note:
+    > At least one of `FilterBrowsers` or `FilterSockets` needs to be `true`.
 - key: FilterDataProviderDesignatedRequirement
   title: Filter Data Provider Designated Requirement
   supportedOS:
@@ -259,7 +263,7 @@ payloadkeys:
   presence: optional
   content: The designated requirement string that the system embeds in the code signature
     of the filter data provider system extension. This string identifies the filter
-    data provider when the filter starts running. Required if 'FilterSockets' is 'true'.
+    data provider when the filter starts running. Required if `FilterSockets` is `true`.
 - key: FilterDataProviderBundleIdentifier
   title: Filter Data Provider Bundle Identifier
   supportedOS:
@@ -273,7 +277,7 @@ payloadkeys:
   presence: optional
   content: The bundle identifier string of the filter data provider system extension.
     This string identifies the filter data provider when the filter starts running.
-    Required if 'FilterSockets' is 'true'.
+    Required if `FilterSockets` is `true`.
 - key: FilterPackets
   title: Filter Network Packets
   supportedOS:
@@ -287,8 +291,10 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true' and 'FilterType' is 'Plugin', the system enables filtering network packets. Use when 'FilterType' is 'Plugin'.
-    At least one of 'FilterPackets' or 'FilterSockets' needs to be 'true'.
+    If `true` and `FilterType` is `Plugin`, the system enables filtering network packets. Use when `FilterType` is `Plugin`.
+
+    > Note:
+    > At least one of `FilterPackets` or `FilterSockets` needs to be `true`.
 - key: FilterPacketProviderDesignatedRequirement
   title: Filter Packet Provider Designated Requirement
   supportedOS:
@@ -302,8 +308,8 @@ payloadkeys:
   presence: optional
   content: The designated requirement string that the system embeds in the code signature
     of the filter packet provider system extension. This string identifies the filter
-    packet provider when the filter starts running. Required if 'FilterPackets' is
-    'true'.
+    packet provider when the filter starts running. Required if `FilterPackets` is
+    `true`.
 - key: FilterPacketProviderBundleIdentifier
   title: Filter Packet Provider Bundle Identifier
   supportedOS:
@@ -317,7 +323,7 @@ payloadkeys:
   presence: optional
   content: The bundle identifier string of the filter packet provider system extension.
     This string identifies the filter packet provider when the filter starts running.
-    Required if 'FilterPackets' is 'true'.
+    Required if `FilterPackets` is `true`.
 - key: FilterGrade
   title: Filter Grade
   supportedOS:
@@ -334,8 +340,8 @@ payloadkeys:
   - inspector
   default: firewall
   content: The system uses this value to derive the relative order of content filters.
-    Filters with a grade of 'firewall' see network traffic before filters with a grade
-    of 'inspector'. However, the system doesn't define the order of filters within
+    Filters with a grade of `firewall` see network traffic before filters with a grade
+    of `inspector`. However, the system doesn't define the order of filters within
     a grade.
 - key: ContentFilterUUID
   title: Content Filter UUID
@@ -347,6 +353,98 @@ payloadkeys:
   type: <string>
   presence: optional
   content: A globally unique identifier for this content filter configuration. The
-    content filter processes network traffic for managed apps with the same 'ContentFilterUUID'
-    in their app attributes. Use when 'FilterType' is 'Plugin'. This key must be present
-    for unsupervised devices and user enrollments.
+    content filter processes network traffic for managed apps with the same `ContentFilterUUID`
+    in their app attributes. Use when `FilterType` is `Plugin`.This key must be present
+    for unsupervised devices and user enrollment.
+- key: FilterURLs
+  title: FilterURLs
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+    macOS:
+      introduced: '26.0'
+    visionOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system filters URL requests. Use when `FilterType` is `Plugin`.
+    Available in iOS 26 and macOS 26, and later.
+- key: URLFilterParameters
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+    macOS:
+      introduced: '26.0'
+    visionOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: A dictionary containing URL filter parameters. Required when `FilterURLs`
+    is `true`. Available in iOS 26 and macOS 26 and later.
+  subkeys:
+  - key: URLFilterControlProviderDesignatedRequirement
+    title: URL Filter Control Provider Designated Requirement
+    type: <string>
+    presence: optional
+    content: The designated requirement string in the code signature of the URL filter
+      control provider app extension. The system uses this string to identify the
+      URL filter control provider when the filter starts running.
+  - key: URLFilterControlProviderBundleIdentifier
+    title: URL Filter Control Provider Bundle Identifier
+    type: <string>
+    presence: required
+    content: The bundle identifier string of the URL filter control provider app extension.
+      The system uses this string to identify the URL filter control provider when
+      the filter starts running.
+  - key: PIRServerURL
+    title: Private Information Retrieval server URL
+    type: <string>
+    presence: required
+    content: The URL containing the domain name of the private information retrieval
+      server.
+  - key: PIRPrivacyPassIssuerURL
+    title: Privacy Pass Issuer URL
+    type: <string>
+    presence: required
+    content: The URL containing the domain name of Privacy Pass Issuer.
+  - key: PIRAuthenticationToken
+    title: Authentication Token
+    type: <string>
+    presence: required
+    content: The per-user authentication token string, which is an HTTP bearer token
+      for the person using your app. The system uses this token to attest that it
+      is a valid user when requesting anonymous authentication tokens for PIR exchanges.
+  - key: URLFilterFailClosed
+    title: URLFilterFailClosed
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the system blocks URLs if the filter is enabled, but it fails
+      to make any filtering decision; for example, if there's a communication failure
+      with the PIR server. If `false`, the system allows URLs if the filter is enabled,
+      but it fails to make any filtering decision.
+  - key: URLPrefilterFetchFrequency
+    title: URLPrefilterFetchFrequency
+    type: <integer>
+    presence: optional
+    range:
+      min: 2700
+    default: 86400
+    content: The time interval in seconds that the system uses to periodically run
+      the `NEURLFilterControlProvider` app extension. The default value is 86400 seconds
+      (1 day). The minimum allowed value is 2700 seconds (45 minutes). The system
+      allows `NEURLFilterControlProvider` implementations to download prefilter Bloom
+      filter data onto the device periodically at the specified interval. Implementations
+      need to allow for a slight difference between the scheduled time and the actual
+      runtime of the task, due to the scheduling mechanism on the system.
+notes:
+- title: ''
+  content: |-
+    The system matches URLs using string-based matching. A URL matches an allow list, deny list, or permitted list pattern if the exact characters of the pattern appear as a substring of the URL requested in the web browser. For example, if the system doesn't allow `test.com/a`, it blocks `test.com/a`, `test.com/apple`, and `test.com/a/b`.
+
+    The system matches list entries that terminate with a `/` character explicitly; if the system blocks or allows `test.com/a/`, it blocks or allows `test.com/a` and `test.com/a/b`.
+
+    Matching discards a `www` subdomain prefix if present, so if the system doesn't allow `www.test.com`, it also blocks `m.test.com`.
+
+    All filtering options are active simultaneously. The system only permits URLs and sites that pass all rules.

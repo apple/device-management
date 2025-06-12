@@ -1,6 +1,5 @@
 title: Associated Domains
-description: Use this section to define settings for Associated Domains to be used
-  with features such as Extensible AppSSO, universal links and Password AutoFill.
+description: The payload that configures associated domains.
 payload:
   payloadtype: com.apple.associated-domains
   supportedOS:
@@ -14,7 +13,7 @@ payload:
       supervised: false
       requiresdep: false
       userapprovedmdm: true
-      allowmanualinstall: true
+      allowmanualinstall: false
       userenrollment:
         mode: allowed
     tvOS:
@@ -37,6 +36,7 @@ payloadkeys:
   subkeys:
   - key: ConfigurationItem
     type: <dictionary>
+    content: A dictionary that maps apps to their associated domains.
     subkeys:
     - key: ApplicationIdentifier
       type: <string>
@@ -46,8 +46,8 @@ payloadkeys:
       type: <array>
       presence: required
       content: The domains to associate with the app. Each string is in the form of
-        “'service:domain'”. Use fully qualified hostnames, such as 'www.example.com'.
-        See Supporting associated domains for more information.
+        `service:domain`. Use fully qualified hostnames, such as `www.example.com`.
+        See `Supporting associated domains` for more information.
       subkeys:
       - key: AssociatedDomain
         type: <string>
@@ -59,6 +59,10 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables direct download of data for this domain
-        instead of through a CDN. Set the entitlement value for this domain to 'service:domain?mode=managed';
+      content: If `true`, the system enables direct download of data for this domain
+        instead of through a CDN. Set the entitlement value for this domain to `service:domain?mode=managed`;
         otherwise, the system ignores this value. Available in macOS 11 and later.
+notes:
+- title: ''
+  content: You can use associated domains with features such as Extensible AppSSO,
+    universal links, and Password AutoFill.

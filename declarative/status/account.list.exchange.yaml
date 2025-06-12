@@ -1,5 +1,5 @@
 title: Status Account List Exchange
-description: The client's exchange accounts.
+description: A status report of the client's Exchange accounts.
 payload:
   statusitemtype: account.list.exchange
   supportedOS:
@@ -41,11 +41,12 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: A list of status values for the exchange accounts.
+  content: A list of status values for the Exchange accounts.
   subkeytype: Account
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of the client's Exchange account details.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -57,8 +58,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the account is removed and the status item object only contains
-        this key and the 'identifier' key.
+      content: If `true`, the account is removed and the status item object only contains
+        this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>

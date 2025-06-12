@@ -1,0 +1,103 @@
+title: Safari:Bookmarks
+description: The declaration to configure managed bookmarks in Safari.
+payload:
+  declarationtype: com.apple.configuration.safari.bookmarks
+  supportedOS:
+    iOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: ManagedBookmarks
+  title: Managed Bookmarks
+  type: <array>
+  presence: optional
+  content: A dictionary that specifies a set of managed bookmarks.
+  subkeys:
+  - key: BookmarkGroup
+    type: <dictionary>
+    presence: required
+    content: A group of managed bookmarks.
+    subkeys:
+    - key: GroupIdentifier
+      type: <string>
+      presence: required
+      content: A string that specifies the unique identifier for this group of managed
+        bookmarks. Safari displays a separate managed bookmarks item for each set
+        of unique managed bookmarks based on the value of this key. If multiple active
+        configurations use the same value for this key, Safari displays a single group
+        formed by merging the list of `Bookmarks` from each group.
+    - key: Title
+      title: The name of the bookmarks folder.
+      type: <string>
+      presence: required
+      content: The name of the bookmarks folder. Safari uses this as the title for
+        the top-level managed bookmarks item.
+    - key: Bookmarks
+      title: Bookmarks
+      type: <array>
+      presence: required
+      combinetype: array-append
+      content: A list of bookmarks. Either a `URL` or `Folder` key must be present
+        in each item.
+      subkeytype: BookmarksItem
+      subkeys:
+      - key: bookmarks-item
+        type: <dictionary>
+        presence: required
+        content: A bookmark that specifies a title, and either a URL for the bookmark,
+          or a nested folder of bookmarks.
+        subkeys: &id001
+        - key: Title
+          title: Title
+          type: <string>
+          presence: required
+          content: The title of the bookmark shown in Safari.
+        - key: URL
+          title: URL
+          type: <string>
+          presence: optional
+          content: |-
+            The URL for the bookmark item.
+
+            Only one of `URL` or `Folder` must be present.
+        - key: Folder
+          title: Folder
+          type: <array>
+          presence: optional
+          content: |-
+            An array of bookmarks for each bookmark in the folder. Folders can include bookmark items and bookmark folders.
+
+            Only one of `URL` or `Folder` must be present.
+          subkeytype: BookmarksItem
+          subkeys:
+          - key: folder-item
+            type: <dictionary>
+            presence: required
+            content: A bookmark that specifies a title, and either a URL for the bookmark,
+              or a nested folder of bookmarks.
+            subkeys: *id001

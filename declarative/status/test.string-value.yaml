@@ -1,5 +1,5 @@
 title: Status Test String Value
-description: A test status item string.
+description: A test status item for a string.
 payload:
   statusitemtype: test.string-value
   supportedOS:

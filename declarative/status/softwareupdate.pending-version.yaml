@@ -1,5 +1,5 @@
 title: Status Software Update Pending Version
-description: The pending software update version.
+description: A status report of the pending software update version.
 payload:
   statusitemtype: softwareupdate.pending-version
   supportedOS:
@@ -27,7 +27,12 @@ payload:
       allowed-scopes:
       - system
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
 payloadkeys:
@@ -55,6 +60,6 @@ payloadkeys:
     title: The target local date-time
     type: <string>
     presence: optional
-    content: The local date time value for when the pending software update will be
-      installed. This key is only present when the pending software update is being
-      enforced.
+    content: The local date time value that indicates when the pending software update
+      will be installed. This key is only present when the pending software update
+      is being enforced.

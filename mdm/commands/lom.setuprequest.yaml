@@ -1,6 +1,5 @@
 title: LOM Setup Request Command
-description: Queries the device for LOM setup information such as IP addresses, protocol
-  version, etc.
+description: Get information from a device to set up lights-out management (LOM).
 payload:
   requesttype: LOMSetupRequest
   supportedOS:
@@ -47,3 +46,7 @@ responsekeys:
   type: <integer>
   presence: required
   content: The LOM protocol version that the device supports.
+notes:
+- title: ''
+  content: This command requires the `DeviceLockAndRemovePasscode` access right, `LightsOutManagementLOM`
+    configuration and is available in macOS 11 and later on [supported macOS devices](https://support.apple.com/guide/deployment/lights-out-management-payload-settings-dep580cf25bc/web).

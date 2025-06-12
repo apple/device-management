@@ -1,6 +1,5 @@
 title: Content Caching Information Command
-description: This command allows the server to query for information about Content
-  Caching.
+description: Get the status of the content caches on a device.
 payload:
   requesttype: ContentCachingInformation
   supportedOS:
@@ -32,32 +31,33 @@ responsekeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', the device has enabled content caching. Enabling content caching
-      doesn't guarantee service. See the 'Active' key for the readiness of content
+    content: If `true`, the device has enabled content caching. Enabling content caching
+      doesn't guarantee service. See the `Active` key for the readiness of content
       caching to serve requests.
   - key: Active
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', content caching is ready to serve requests.
+    content: If `true`, content caching is ready to serve requests.
   - key: ActualCacheUsed
     type: <integer>
     presence: optional
     content: The actual amount of disk space, in bytes, that cached content uses.
-      See related values 'CacheUsed' and 'PersonalCacheUsed'.
+      See related values `CacheUsed` and `PersonalCacheUsed`.
   - key: AlertsForPeerFilterRanges
     type: <dictionary>
     presence: optional
     content: |-
-      The error conditions the content cache detected in the 'PeerFilterRanges' in the installed 'com.apple.AssetCache.managed' payload.
-      To display these alerts on the device, set 'DisplayAlerts' to 'true' in the installed ContentCaching profile.
+      The error conditions the content cache detected in the `PeerFilterRanges` in the installed `com.apple.AssetCache.managed` payload.
+
+      To display these alerts on the device, set `DisplayAlerts` to `true` in the installed `ContentCaching` profile.
     subkeys:
     - key: ANY index
       type: <dictionary>
       presence: required
       content: A dictionary that describes the alerts for the peer filter ranges.
-        The key name is  the index into the PeerFilterRanges array in the installed
-        com.apple.AssetCache.managed payload.
+        The key name is the index into the `PeerFilterRanges` array in the installed
+        `com.apple.AssetCache.managed` payload.
       subkeys:
       - key: className
         type: <string>
@@ -72,7 +72,7 @@ responsekeys:
       - key: peerFilterRangeIndex
         type: <integer>
         presence: required
-        content: The index into the 'PeerFilterRanges' in the installed ContentCaching
+        content: The index into the `PeerFilterRanges` in the installed ContentCaching
           payload.
       - key: addresses
         type: <array>
@@ -90,13 +90,17 @@ responsekeys:
     presence: optional
     content: |-
       An array that contains the error conditions the content cache detected that aren't related to peer filter ranges, parent content caches, or peer content caches.
-      See 'AlertsForPeerFilterRanges' for errors related to peer filter ranges.
-      See 'Parents' and 'Peers' for errors related to parent and peer content caches.
-      To display these alerts on the device, set 'DisplayAlerts' to 'true' in the installed ContentCaching profile.
+
+      See `AlertsForPeerFilterRanges` for errors related to peer filter ranges.
+
+      See `Parents` and `Peers` for errors related to parent and peer content caches.
+
+      To display these alerts on the device, set `DisplayAlerts` to `true` in the installed `ContentCaching` profile.
     subkeys:
     - key: AlertsItem
       type: <dictionary>
       presence: required
+      content: A dictionary that describes an alert from the content cache.
       subkeys:
       - key: className
         type: <string>
@@ -116,24 +120,24 @@ responsekeys:
         type: <integer>
         presence: optional
         content: The limit, in bytes, for the content cache at the time of the alert.
-          This value only applies to 'AssetCacheLowSpaceAlert' and 'AssetCacheNoSpaceAlert'
+          This value only applies to `AssetCacheLowSpaceAlert` and `AssetCacheNoSpaceAlert`
           types.
       - key: reservedVolumeSpace
         type: <integer>
         presence: optional
         content: The space, in bytes, that the system reserves at the time of the
-          alert. This value only applies to the 'AssetCacheLowSpaceAlert' and 'AssetCacheNoSpaceAlert'
+          alert. This value only applies to the `AssetCacheLowSpaceAlert` and `AssetCacheNoSpaceAlert`
           types.
       - key: resource
         type: <string>
         presence: optional
         content: The resource that was missing or inaccessible at the time of the
-          alert. This value only applies to the 'AssetCacheResourceMissingAlert' type.
+          alert. This value only applies to the `AssetCacheResourceMissingAlert` type.
       - key: pathPreventingAccess
         type: <string>
         presence: optional
         content: The subpath of the resource that was missing or inaccessible at the
-          time of the alert. This value only applies to the 'AssetCacheResourceMissingAlert'
+          time of the alert. This value only applies to the `AssetCacheResourceMissingAlert`
           type.
   - key: CacheDetails
     type: <dictionary>
@@ -154,15 +158,15 @@ responsekeys:
     type: <integer>
     presence: optional
     content: The maximum amount of disk space, in bytes, available to the content
-      cache. A value of '0' indicates an unlimited amount. This value corresponds
-      to 'CacheLimit' in the installed ContentCaching profile.
+      cache. A value of `0` indicates an unlimited amount. This value corresponds
+      to `CacheLimit` in the installed `ContentCaching` profile.
   - key: CacheStatus
     type: <string>
     presence: optional
     rangelist:
     - LOWSPACE
     - OK
-    content: The level of cache pressure. 'LowSpace' means cache pressure is high.
+    content: The level of cache pressure. `LowSpace` means cache pressure is high.
   - key: CacheUsed
     type: <integer>
     presence: optional
@@ -173,7 +177,7 @@ responsekeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', the content cache finished moving from one volume to another.
+    content: If `true`, the content cache finished moving from one volume to another.
   - key: DataMigrationError
     type: <dictionary>
     presence: optional
@@ -203,16 +207,16 @@ responsekeys:
     range:
       min: 0.0
       max: 1.0
-    content: A floating-point number between '0.0' and '1.0' that indicates the percentage
+    content: A floating-point number between `0.0` and `1.0` that indicates the percentage
       of progress in moving the content cache from one volume to another. A value
-      of '1.0' indicates that the content cache has fully migrated.
+      of `1.0` indicates that the content cache has fully migrated.
   - key: MaxCachePressureLast1Hour
     type: <real>
     presence: optional
     range:
       min: 0.0
       max: 1.0
-    content: A floating-point number between '0.0' and '1.0' that represents how often
+    content: A floating-point number between `0.0` and `1.0` that represents how often
       the cache needed more disk space over the last hour of operation. A lower value
       is better.
   - key: Parents
@@ -223,6 +227,7 @@ responsekeys:
     - key: ParentsItem
       type: <dictionary>
       presence: optional
+      content: A dictionary that describes a parent content cache.
       subkeys:
       - key: address
         type: <string>
@@ -264,7 +269,7 @@ responsekeys:
           type: <boolean>
           presence: optional
           default: false
-          content: If 'true', the parent content cache power source is AC; otherwise,
+          content: If `true`, the parent content cache power source is AC; otherwise,
             an internal battery provides its power.
         - key: cache-size
           type: <integer>
@@ -281,43 +286,43 @@ responsekeys:
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of imports and
+            content: If `true`, the parent content cache is capable of imports and
               uploads.
           - key: ns
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of handling namespaces,
+            content: If `true`, the parent content cache is capable of handling namespaces,
               which is an aspect of personal caching.
           - key: pc
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of caching personal
+            content: If `true`, the parent content cache is capable of caching personal
               iCloud content.
           - key: query-parameters
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of handling query
+            content: If `true`, the parent content cache is capable of handling query
               parameters in URLs.
           - key: sc
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of caching shared
+            content: If `true`, the parent content cache is capable of caching shared
               non-iCloud content.
           - key: ur
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache is capable of prioritizing
+            content: If `true`, the parent content cache is capable of prioritizing
               imports and uploads.
         - key: is-portable
           type: <boolean>
           presence: optional
           default: false
-          content: If 'true', the parent content cache computer is portable; for example,
+          content: If `true`, the parent content cache computer is portable; for example,
             a laptop.
         - key: local-network
           type: <dictionary>
@@ -334,8 +339,8 @@ responsekeys:
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the parent content cache has a wired connection to
-              its local network. If 'false', it has a wireless connection; for example,
+            content: If `true`, the parent content cache has a wired connection to
+              its local network. If `false`, it has a wireless connection; for example,
               Wi-Fi.
       - key: guid
         type: <string>
@@ -344,7 +349,7 @@ responsekeys:
       - key: healthy
         type: <boolean>
         presence: required
-        content: If 'true,' the parent content cache is able to respond to requests
+        content: If `true,` the parent content cache is able to respond to requests
           from this content cache.
       - key: port
         type: <integer>
@@ -362,6 +367,7 @@ responsekeys:
     - key: PeersItem
       type: <dictionary>
       presence: optional
+      content: A dictionary that describes a peer content cache.
       subkeys:
       - key: address
         type: <string>
@@ -407,7 +413,7 @@ responsekeys:
           type: <boolean>
           presence: optional
           default: false
-          content: If 'true', the peer content cache power source is AC; otherwise,
+          content: If `true`, the peer content cache power source is AC; otherwise,
             an internal battery provides its power.
         - key: cache-size
           type: <integer>
@@ -424,42 +430,42 @@ responsekeys:
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of imports and uploads.
+            content: If `true`, the peer content cache is capable of imports and uploads.
           - key: ns
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of handling namespaces,
+            content: If `true`, the peer content cache is capable of handling namespaces,
               which is an aspect of personal caching.
           - key: pc
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of caching personal
+            content: If `true`, the peer content cache is capable of caching personal
               iCloud content.
           - key: query-parameters
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of handling query
+            content: If `true`, the peer content cache is capable of handling query
               parameters in URLs.
           - key: sc
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of caching shared
+            content: If `true`, the peer content cache is capable of caching shared
               non-iCloud content.
           - key: ur
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache is capable of prioritizing
+            content: If `true`, the peer content cache is capable of prioritizing
               imports and uploads.
         - key: is-portable
           type: <boolean>
           presence: optional
           default: false
-          content: If 'true', the peer content cache computer is portable; for example,
+          content: If `true`, the peer content cache computer is portable; for example,
             a laptop.
         - key: local-network
           type: <dictionary>
@@ -476,13 +482,13 @@ responsekeys:
             type: <boolean>
             presence: optional
             default: false
-            content: If 'true', the peer content cache has a wired connection to its
-              local network. If 'false', it has a wireless connection; for example,
+            content: If `true`, the peer content cache has a wired connection to its
+              local network. If `false`, it has a wireless connection; for example,
               Wi-Fi.
       - key: friendly
         type: <boolean>
         presence: required
-        content: If 'true', the peer content cache is able to respond to requests
+        content: If `true`, the peer content cache is able to respond to requests
           from the content cache.
       - key: guid
         type: <string>
@@ -491,7 +497,7 @@ responsekeys:
       - key: healthy
         type: <boolean>
         presence: required
-        content: If 'true', the peer content cache is able to respond to requests
+        content: If `true`, the peer content cache is able to respond to requests
           from the content cache.
       - key: port
         type: <integer>
@@ -510,7 +516,7 @@ responsekeys:
     type: <integer>
     presence: optional
     content: The maximum amount of disk space, in bytes, available to the content
-      cache for personal iCloud content. A value of '0' indicates an unlimited amount.
+      cache for personal iCloud content. A value of `0` indicates an unlimited amount.
   - key: PersonalCacheUsed
     type: <integer>
     presence: optional
@@ -559,14 +565,15 @@ responsekeys:
     - 1
     content: |-
       The status of the content cache's registration with Apple, which is one of the following values:
-      * '-1:' Failed
-      * '0:' Pending
-      * '1:' Succeeded
+
+      - `-1:` Failed
+      -  `0:` Pending
+      -  `1:` Succeeded
   - key: RestrictedMedia
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', a restriction prevents caching of certain content types.
+    content: If `true`, a restriction prevents caching of certain content types.
   - key: ServerGUID
     type: <string>
     presence: optional
@@ -589,51 +596,52 @@ responsekeys:
     - 1
     content: |-
       The status of tethered caching, which is content caching with a shared internet connection, which is one of the following values:
-      * '-1:' Unknown
-      * '0:' Disabled
-      * '1:' Enabled
+
+      - `-1:` Unknown
+      -  `0:` Disabled
+      -  `1:` Enabled
   - key: TotalBytesAreSince
     type: <date>
     presence: optional
-    content: The start date to use when collecting data for the other 'TotalBytes'
+    content: The start date to use when collecting data for the other `TotalBytes`
       values.
   - key: TotalBytesDropped
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache downloaded, but
-      couldn't add to its cache, since the 'TotalBytesAreSince' date.
+      couldn't add to its cache, since the `TotalBytesAreSince` date.
   - key: TotalBytesImported
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache received since the
-      'TotalBytesAreSince' date.
+      `TotalBytesAreSince` date.
   - key: TotalBytesReturnedToChildren
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache served to its child
-      content cache since the 'TotalBytesAreSince' date.
+      content cache since the `TotalBytesAreSince` date.
   - key: TotalBytesReturnedToClients
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache served to client
-      iOS, macOS, and tvOS devices since the 'TotalBytesAreSince' date.
+      iOS, macOS, and tvOS devices since the `TotalBytesAreSince` date.
   - key: TotalBytesReturnedToPeers
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache served to peer content
-      caches since the 'TotalBytesAreSince' date.
+      caches since the `TotalBytesAreSince` date.
   - key: TotalBytesStoredFromOrigin
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache saved from the internet
-      since the 'TotalBytesAreSince' date.
+      since the `TotalBytesAreSince` date.
   - key: TotalBytesStoredFromParents
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache saved from parent
-      content caches since the 'TotalBytesAreSince' date.
+      content caches since the `TotalBytesAreSince` date.
   - key: TotalBytesStoredFromPeers
     type: <integer>
     presence: optional
     content: The amount of data, in bytes, that the content cache saved from peer
-      content caches since the 'TotalBytesAreSince' date.
+      content caches since the `TotalBytesAreSince` date.

@@ -1,6 +1,5 @@
 title: User List Command
-description: This command allows the server to query for a list of users that have
-  an active account on the device.
+description: Get a list of users with active accounts on a device.
 payload:
   requesttype: UserList
   supportedOS:
@@ -42,6 +41,7 @@ responsekeys:
   - key: UsersItem
     type: <dictionary>
     presence: required
+    content: A dictionary that contains information about an active account on a device.
     subkeys:
     - key: UserName
       type: <string>
@@ -70,12 +70,12 @@ responsekeys:
           introduced: n/a
       type: <string>
       presence: required
-      content: The user's 'GeneratedUID'. This value is available in macOS 10.13 and
+      content: The user's `GeneratedUID`. This value is available in macOS 10.13 and
         later.
     - key: IsLoggedIn
       type: <boolean>
       presence: required
-      content: If 'true', the user is currently logged in on the device. This value
+      content: If `true`, the user is currently logged in on the device. This value
         is available in iOS 9.3 and later, and macOS 10.13 and later.
     - key: HasDataToSync
       supportedOS:
@@ -83,7 +83,7 @@ responsekeys:
           introduced: n/a
       type: <boolean>
       presence: required
-      content: If 'true', the user has data to sync to the cloud. This value is available
+      content: If `true`, the user has data to sync to the cloud. This value is available
         in iOS 9.3 and later.
     - key: DataQuota
       supportedOS:
@@ -107,7 +107,7 @@ responsekeys:
           introduced: n/a
       type: <boolean>
       presence: required
-      content: If 'true', the account is a mobile account. This value is available
+      content: If `true`, the account is a mobile account. This value is available
         in macOS 10.13 and later.
     - key: HasSecureToken
       supportedOS:
@@ -117,5 +117,9 @@ responsekeys:
           introduced: '11.0'
       type: <boolean>
       presence: required
-      content: If 'true', the user currently has a secure token set. This value is
+      content: If `true`, the user currently has a secure token set. This value is
         available in macOS 11 and later.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

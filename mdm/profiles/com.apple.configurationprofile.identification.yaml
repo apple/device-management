@@ -1,4 +1,5 @@
 title: Identification
+description: The payload that configures the names of the account user.
 payload:
   payloadtype: com.apple.configurationprofile.identification
   supportedOS:
@@ -65,7 +66,7 @@ payloadkeys:
   - key: Password
     type: <string>
     presence: required
-    content: The password for the account. Required when the 'AuthMethod' is 'Password'.
+    content: The password for the account. Required when the `AuthMethod` is `Password`.
   - key: Prompt
     type: <string>
     presence: optional

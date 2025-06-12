@@ -1,5 +1,5 @@
 title: Exchange Web Services
-description: ''
+description: The payload that configures an Exchange Web Services accounts.
 payload:
   payloadtype: com.apple.ews.account
   supportedOS:
@@ -39,7 +39,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system enables SSL.
+  content: If `true`, the system enables SSL.
 - key: OAuth
   title: Use OAuth
   supportedOS:
@@ -48,8 +48,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables OAuth for authentication. Don't specify a
-    password if 'OAuth' is 'true'. Available in macOS 10.14 and later
+  content: If `true`, the system enables OAuth for authentication. Don't specify a
+    password if `OAuth` is `true`. Available in macOS 10.14 and later
 - key: OAuthSignInURL
   title: URL for OAuth sign-in
   supportedOS:
@@ -58,7 +58,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The URL to load into a web view for authentication through OAuth when autodiscovery
-    isn't used. This setting requires a 'Host' value.
+    isn't used. This setting requires a `Host` value.
 - key: UserName
   type: <string>
   presence: optional
@@ -96,7 +96,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables Mail Drop.
+  content: If `true`, the system enables Mail Drop.
 - key: Path
   type: <string>
   presence: optional
@@ -113,7 +113,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system enables SSL for connections to the external server.
+  content: If `true`, the system enables SSL for connections to the external server.
 - key: ExternalPath
   type: <string>
   presence: optional

@@ -1,5 +1,5 @@
 title: Schedule OS Update Scan Command
-description: Requests that the device perform a background scan for OS updates.
+description: Schedule a background scan for operating-system updates on a device.
 payload:
   requesttype: ScheduleOSUpdateScan
   supportedOS:
@@ -7,6 +7,7 @@ payload:
       introduced: n/a
     macOS:
       introduced: '10.11'
+      deprecated: '26.0'
       accessrights: None
       devicechannel: true
       userchannel: false
@@ -26,10 +27,14 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', force a scan to start immediately. Otherwise, the scan starts
+  content: If `true`, force a scan to start immediately. Otherwise, the scan starts
     at a system-determined time.
 responsekeys:
 - key: ScanInitiated
   type: <boolean>
   presence: required
-  content: If 'true', the scan started successfully.
+  content: If `true`, the scan started successfully.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

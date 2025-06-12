@@ -1,5 +1,5 @@
 title: Status Account List Subscribed Calendar
-description: The client's subscribed calendar accounts.
+description: A status report of the client's subscribed calendars.
 payload:
   statusitemtype: account.list.subscribed-calendar
   supportedOS:
@@ -41,48 +41,49 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: A list of status values for the calendar accounts.
+  content: A list of status values for the subscribed calendars.
   subkeytype: Account
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report of the client's subscribed calendar details.
     subkeys:
     - key: identifier
-      title: Unique identifier of the account.
+      title: Unique identifier of the subscribed calendar.
       type: <string>
       presence: required
-      content: The unique identifier for the account.
+      content: The unique identifier for the subscribed calendar.
     - key: _removed
-      title: Indicates removal of the account.
+      title: Indicates removal of the subscribed calendar.
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the account is removed and the status item object only contains
-        this key and the 'identifier' key.
+      content: If `true`, the subscribed calendar is removed and the status item object
+        only contains this key and the `identifier` key.
     - key: declaration-identifier
-      title: Identifier of the declaration that installed the account.
+      title: Identifier of the declaration that installed the subscribed calendar.
       type: <string>
       presence: optional
-      content: The identifier of the declaration that installed the account. Only
-        present if a declaration installed the account.
+      content: The identifier of the declaration that installed the subscribed calendar.
+        Only present if a declaration installed the subscribed calendar.
     - key: visible-name
-      title: Account name
+      title: Subscribed calendar name
       type: <string>
       presence: optional
-      content: The name of the account.
+      content: The name of the subscribed calendar.
     - key: calendar-url
-      title: Account calendar URL
+      title: Subscribed calendar URL
       type: <string>
       presence: optional
       content: The URL of the subscribed calendar.
     - key: username
-      title: Account username
+      title: Subscribed calendar username
       type: <string>
       presence: optional
-      content: The user name for the account.
+      content: The user name for authenticating with the subscribed calendar.
     - key: is-enabled
       title: Is the calendar enabled
       type: <boolean>
       presence: optional
       content: A Boolean value that indicates whether the Calendar app displays this
-        calendar.
+        subscribed calendar.

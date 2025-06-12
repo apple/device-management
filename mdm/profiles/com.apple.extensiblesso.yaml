@@ -1,5 +1,6 @@
 title: Extensible Single Sign-On
-description: Configures an app extension to handle SSO.
+description: The payload that configures an app extension that performs single sign-on
+  (SSO).
 payload:
   payloadtype: com.apple.extensiblesso
   supportedOS:
@@ -64,8 +65,8 @@ payloadkeys:
 - key: Realm
   type: <string>
   presence: optional
-  content: The realm name for 'Credential' payloads. Use proper capitalization for
-    this value. Ignored for 'Redirect' payloads.
+  content: The realm name for `Credential` payloads. Use proper capitalization for
+    this value. Ignored for `Redirect` payloads.
 - key: ExtensionData
   type: <dictionary>
   presence: optional
@@ -80,12 +81,16 @@ payloadkeys:
   presence: optional
   content: |-
     An array of URL prefixes of identity providers where the app extension performs SSO.
-    Required for 'Redirect' payloads. Ignored for 'Credential' payloads.
-    The URLs need to begin with 'http://' or 'https://'.
+
+    Required for `Redirect` payloads. Ignored for `Credential` payloads.
+
+    The URLs need to begin with `http://` or `https://`.
+
     The system:
-    * Matches scheme and host name case-insensitively
-    * Doesn't allow query parameters and URL fragments
-    * Requires that the URLs of all installed Extensible SSO payloads are unique
+
+    - Matches scheme and host name case-insensitively
+    - Doesn't allow query parameters and URL fragments
+    - Requires that the URLs of all installed Extensible SSO payloads are unique
   subkeys:
   - key: URL
     type: <string>
@@ -96,11 +101,16 @@ payloadkeys:
   presence: optional
   content: |-
     An array of host or domain names that apps can authenticate through the app extension.
-    Required for 'Credential' payloads. Ignored for 'Redirect' payloads.
+
+    Required for `Credential` payloads. Ignored for `Redirect` payloads.
+
     The system:
-    * Matches host or domain names case-insensitively
-    * Requires that all the host and domain names of all installed Extensible SSO payloads are unique
-    Host names that begin with a “.” are wildcard suffixes that match all subdomains; otherwise the host name needs be an exact match.
+
+    - Matches host or domain names case-insensitively
+    - Requires that all the host and domain names of all installed Extensible SSO payloads are unique
+
+    > Note:
+    > Host names that begin with a "." are wildcard suffixes that match all subdomains; otherwise the host name needs be an exact match.
   subkeys:
   - key: hostname
     type: <string>
@@ -118,11 +128,11 @@ payloadkeys:
   - Cancel
   - DoNotHandle
   default: Cancel
-  content: If set to 'Cancel', the system cancels authentication requests when the
-    screen is locked. If set to 'DoNotHandle', the request continues without SSO instead.
-    This doesn't apply to requests where 'userInterfaceEnabled' is 'false', or for
-    background URLSession requests. Available in iOS 15 and later, and macOS 12 and
-    later.
+  content: If set to `Cancel`, the system cancels authentication requests when the
+    screen is locked. If set to `DoNotHandle`, the request continues without SSO instead.
+    This doesn't apply to requests where `userInterfaceEnabled` is `false`, or for
+    background `URLSession` requests. Available in iOS 15 and later, and macOS 12
+    and later.
 - key: DeniedBundleIdentifiers
   supportedOS:
     iOS:
@@ -166,8 +176,8 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The token this device uses for registration with Platform SSO. Use it for
-    silent registration with the Identity Provider. Requires that 'PlatformSSO.AuthenticationMethod'
-    isn't empty. Available in macOS 13 and later.
+    silent registration with the Identity Provider. Requires that `AuthenticationMethod`
+    in `PlatformSSO` isn't empty. Available in macOS 13 and later.
 - key: PlatformSSO
   supportedOS:
     iOS:
@@ -196,7 +206,7 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', the system uses the same signing and encryption keys for all
+    content: If `true`, the system uses the same signing and encryption keys for all
       users. Only supported on the device channel.
   - key: AccountDisplayName
     type: <string>
@@ -216,20 +226,29 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: Enables creating new users at the login window with an 'AuthenticationMethod'
-      of either 'Password' or 'SmartCard'. Requires that 'UseSharedDeviceKeys' is
-      'true'.
+    content: Enables creating users at the Login Window with an `AuthenticationMethod`
+      of either `Password` or `SmartCard`. Requires that `UseSharedDeviceKeys` is
+      `true`.
+  - key: EnableCreateFirstUserDuringSetup
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If `true`, the device uses Platform SSO to create the first user account
+      on the Mac during `Setup Assistant`.
   - key: EnableAuthorization
     type: <boolean>
     presence: optional
     default: false
     content: Enables using identity provider accounts at authorization prompts. Requires
-      that 'UseSharedDeviceKeys' is 'true'. The system assigns groups using 'AdministratorGroups',
-      'AdditionalGroups', or 'AuthorizationGroups'.
+      that `UseSharedDeviceKeys` is `true`. The system assigns groups using `AdministratorGroups`,
+      `AdditionalGroups`, or `AuthorizationGroups`.
   - key: TokenToUserMapping
     type: <dictionary>
     presence: optional
-    content: The attribute mapping to use when creating new users or for authorization.
+    content: The attribute mapping to use when creating users, or for authorization.
     subkeys:
     - key: AccountName
       type: <string>
@@ -239,6 +258,29 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The claim name to use for the user's full name.
+  - key: NewUserAuthenticationMethods
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <array>
+    presence: optional
+    content: The set of authentication methods to use for newly created accounts at
+      login or during `Setup Assistant`. The system uses `Password` and `SmartCard`
+      if this key isn't present.
+    subkeys:
+    - key: NewUserAuthenticationMethod
+      type: <string>
+      presence: optional
+      rangelist:
+      - Password
+      - SmartCard
+      - AccessKey
+      content: |-
+        An authentication method to use for newly created accounts at login or during `Setup Assistant`. Allowed values:
+
+        - `Password`: The account uses a password for authentication.
+        - `SmartCard`: The account uses a smart card for authentication.
+        - `AccessKey`: The account uses an access key for authentication.
   - key: NewUserAuthorizationMode
     type: <string>
     presence: optional
@@ -246,12 +288,14 @@ payloadkeys:
     - Standard
     - Admin
     - Groups
+    - Temporary
     content: |-
       The permission to apply to newly created accounts at login. Allowed values:
 
-      * 'Standard': The account is a standard user.
-      * 'Admin': The system adds the account to the local administrators group.
-      * 'Groups': The system assigns group to the account using 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
+      - `Standard`: The account is a standard user.
+      - `Admin`: The system adds the account to the local administrators group.
+      - `Groups`: The system assigns groups to the account using `AdministratorGroups`, `AdditionalGroups`, or `AuthorizationGroups`.
+      - `Temporary`: The system uses a temporary session configuration for newly created accounts at login.
   - key: UserAuthorizationMode
     type: <string>
     presence: optional
@@ -262,9 +306,9 @@ payloadkeys:
     content: |-
       The permission to apply to an account each time the user authenticates. Allowed values:
 
-      * 'Standard': The account is a standard user.
-      * 'Admin': The system adds the account to the local administrators group.
-      * 'Groups': The system assigns group to the account using 'AdministratorGroups', 'AdditionalGroups', or 'AuthorizationGroups'.
+      - `Standard`: The account is a standard user.
+      - `Admin`: The system adds the account to the local administrators group.
+      - `Groups`: The system assigns group to the account using `AdministratorGroups`, `AdditionalGroups`, or `AuthorizationGroups`.
   - key: AdministratorGroups
     type: <array>
     presence: optional
@@ -287,23 +331,53 @@ payloadkeys:
   - key: AuthorizationGroups
     type: <dictionary>
     presence: optional
-    content: The pairing of Authorization Rights to group names. The system updates
-      the Authorization Right to use the group when used.
+    content: The pairing of Authorization Rights to group names. When using this,
+      the system updates the Authorization Right to use the group.
     subkeys:
     - key: ANY
       type: <string>
       presence: optional
       content: The key is an access right value, the value is the group to be associated
         with that access right.
+  - key: AccessKeyReaderGroupIdentifier
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <data>
+    presence: optional
+    content: The reader group identifier for use with the `AccessKey`. The value needs
+      to match the configured access key. Required if `NewUserAuthenticationMethods`
+      contains `AccessKey`.
+  - key: AccessKeyTerminalIdentityUUID
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <string>
+    presence: optional
+    content: |-
+      The `PayloadUUID` of an identity payload to use as the `Terminal` identity of the access key. The identity needs to be trusted by the access key. Required if `NewUserAuthenticationMethods` includes `AccessKey`. Allowed identity payload types:
+
+      - `com.apple.security.pkcs12`
+      - `com.apple.security.acme`
+      - `com.apple.security.scep`
+  - key: AllowAccessKeyExpressMode
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the system uses the access key is used in express mode, and
+      doesn't require authentication before use.
   - key: FileVaultPolicy
     supportedOS:
       macOS:
         introduced: '15.0'
     type: <array>
     presence: optional
-    content: The policy to apply when using Platform SSO at FileVault unlock on Apple
-      Silicon Macs. Applies when 'AuthenticationMethod' is 'Password'. Available in
-      macOS 15 and later.
+    content: The policy to apply when using Platform SSO at FileVault unlock on Mac
+      computers with Apple silicon. Applies when `AuthenticationMethod` is `Password`.
+      Available in macOS 15 and later.
     subkeys:
     - key: policy
       type: <string>
@@ -338,8 +412,8 @@ payloadkeys:
         introduced: '15.0'
     type: <array>
     presence: optional
-    content: The policy to apply when using Platform SSO at the login window. Applies
-      when 'AuthenticationMethod' is 'Password'. Available in macOS 15 and later.
+    content: The policy to apply when using Platform SSO at the Login Window. Applies
+      when `AuthenticationMethod` is `Password`. Available in macOS 15 and later.
     subkeys:
     - key: policy
       type: <string>
@@ -375,7 +449,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: The policy to apply when using Platform SSO at screensaver unlock. Applies
-      when 'AuthenticationMethod' is 'Password'. Available in macOS 15 and later.
+      when `AuthenticationMethod` is `Password`. Available in macOS 15 and later.
     subkeys:
     - key: policy
       type: <string>
@@ -414,27 +488,27 @@ payloadkeys:
         introduced: '15.0'
     type: <integer>
     presence: optional
-    content: The amount of time after the last successful Platform SSO login a local
-      account password can be used offline. Required when 'AllowOfflineGracePeriod'
-      is set. Available in macOS 15 and later.
+    content: The amount of time after the last successful Platform SSO login for using
+      a local account password offline. Required when setting `AllowOfflineGracePeriod`.
+      Available in macOS 15 and later.
   - key: AuthenticationGracePeriod
     supportedOS:
       macOS:
         introduced: '15.0'
     type: <integer>
     presence: optional
-    content: The amount of time after a 'FileVaultPolicy', 'LoginPolicy', or 'UnlockPolicy'
-      is received or updated that unregistered local accounts can be used. Required
-      when 'AllowAuthenticationGracePeriod' is set. Available in macOS 15 and later.
+    content: The amount of time after receiving or updating a `FileVaultPolicy`, `LoginPolicy`,
+      or `UnlockPolicy` that the system can use unregistered local accounts. Required
+      when `AllowAuthenticationGracePeriod` is set. Available in macOS 15 and later.
   - key: NonPlatformSSOAccounts
     supportedOS:
       macOS:
         introduced: '15.0'
     type: <array>
     presence: optional
-    content: The list of local accounts that aren't subject to the 'FileVaultPolicy',
-      'LoginPolicy', or 'UnlockPolicy'. The accounts aren't prompted to register for
-      Platform SSO. Available in macOS 15 and later.
+    content: The list of local accounts that aren't subject to the `FileVaultPolicy`,
+      `LoginPolicy`, or `UnlockPolicy`. The accounts don't receive a prompt to register
+      for Platform SSO. Available in macOS 15 and later.
     subkeys:
     - key: username
       type: <string>
@@ -447,5 +521,17 @@ payloadkeys:
     type: <boolean>
     presence: optional
     default: false
-    content: If set to true, the device UDID and serial number will be included in
-      Platform SSO attestations.
+    content: If `true`, the system includes the device UDID and serial number in Platform
+      SSO attestations.
+  - key: SynchronizeProfilePicture
+    supportedOS:
+      macOS:
+        introduced: '26.0'
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the system uses the access key in express mode and doesn't
+      require authentication before use.
+notes:
+- title: ''
+  content: The system supports user channel installation in macOS 11 and later.

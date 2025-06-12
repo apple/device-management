@@ -1,0 +1,129 @@
+title: Status Package List
+description: The client's declarative packages.
+payload:
+  statusitemtype: package.list
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: package.list
+  title: Status item value.
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describe the device's declarative packages.
+  subkeytype: Package
+  subkeys:
+  - key: status_value
+    type: <dictionary>
+    content: A dictionary that describes a declarative package.
+    subkeys:
+    - key: identifier
+      title: Unique identifier of the package.
+      type: <string>
+      presence: required
+      content: The package's unique identifier. This is the package identifier value
+        of the package file.
+    - key: _removed
+      title: Indicates removal of the package.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If `true`, the system removed the package and only this key and the
+        `identifier` key are present in the status item object.
+    - key: declaration-identifier
+      title: Identifier of the declaration that controls the package.
+      type: <string>
+      presence: optional
+      content: The identifier of the declaration that controls the package.
+    - key: name
+      title: Package name
+      type: <string>
+      presence: optional
+      content: The name of the package.
+    - key: version
+      title: Version
+      type: <string>
+      presence: optional
+      content: The version of the package. This will be the package version value
+        of the package file.
+    - key: state
+      title: Package status
+      type: <string>
+      presence: optional
+      rangelist:
+      - optional
+      - queued
+      - prompting-for-consent
+      - downloading
+      - installing
+      - installed
+      - failed
+      content: |-
+        The status of the package, which has the following possible values:
+
+        - `optional`: The package is optional and the user has to trigger its installation.
+        - `queued`: Installation of the package has started.
+        - `prompting-for-consent`: The system is displaying a prompt to the user to proceed with package installation.
+        - `downloading`: The system is downloading the package.
+        - `installing`: The system is installing the package.
+        - `installed`: The package is installed.
+        - `failed`: The package install failed.
+    - key: reasons
+      title: Status Reasons
+      type: <array>
+      presence: optional
+      content: An array that contains additional details about the package state,
+        including errors.
+      subkeytype: StatusReason
+      subkeys:
+      - key: _reasons
+        title: Status Reason
+        type: <dictionary>
+        content: Information about a status error.
+        subkeytype: StatusReason
+        subkeys:
+        - key: code
+          title: Error Code
+          type: <string>
+          presence: required
+          content: A code for the state.
+        - key: description
+          title: Error Description
+          type: <string>
+          presence: optional
+          content: A description of the state.
+        - key: details
+          title: Error Details
+          type: <dictionary>
+          presence: optional
+          content: A dictionary that contains additional details about the state.
+          subkeys:
+          - key: ANY
+            type: <any>
+            presence: optional
+            content: Additional keys may be present.
+reasons:
+- value: Error.DownloadFailed
+  description: The package download failed.
+  details:
+  - key: Timestamp
+    type: <string>
+    description: The RFC 3339 timestamp of the last download failure.
+- value: Error.InstallFailed
+  description: The package install failed.
+  details:
+  - key: Timestamp
+    type: <string>
+    description: The RFC 3339 timestamp of the last install failure.

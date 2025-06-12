@@ -1,4 +1,5 @@
 title: Security Preferences
+description: The payload that configures security preferences.
 payload:
   payloadtype: com.apple.preference.security
   supportedOS:
@@ -26,14 +27,14 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables user changes to the password.
+  content: If `true`, disables user changes to the password.
 - key: dontAllowLockMessageUI
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables user changes to the lock message.
+  content: If `true`, disables user changes to the lock message.
 - key: dontAllowFireWallUI
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables user changes to the firewall settings.
+  content: If `true`, disables user changes to the firewall settings.

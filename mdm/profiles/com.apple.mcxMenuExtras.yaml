@@ -1,4 +1,5 @@
 title: Managed Menu Extras
+description: The payload that configures menu extras.
 payload:
   payloadtype: com.apple.mcxMenuExtras
   supportedOS:
@@ -41,104 +42,104 @@ payloadkeys:
 - key: AirPort.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the AirPort menu extra.
+  content: If `true`, enables the AirPort menu extra.
 - key: Battery.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Battery menu extra.
+  content: If `true`, enables the Battery menu extra.
 - key: Bluetooth.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Bluetooth menu extra.
+  content: If `true`, enables the Bluetooth menu extra.
 - key: CPU.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the CPU menu extra.
+  content: If `true`, enables the CPU menu extra.
 - key: Clock.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Clock menu extra.
+  content: If `true`, enables the Clock menu extra.
 - key: Displays.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Displays menu extra.
+  content: If `true`, enables the Displays menu extra.
 - key: Eject.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Eject menu extra.
+  content: If `true`, enables the Eject menu extra.
 - key: Fax.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Fax menu extra.
+  content: If `true`, enables the Fax menu extra.
 - key: HomeSync.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the HomeSync menu extra.
+  content: If `true`, enables the HomeSync menu extra.
 - key: iChat.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the iChat menu extra.
+  content: If `true`, enables the iChat menu extra.
 - key: Ink.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Ink menu extra.
+  content: If `true`, enables the Ink menu extra.
 - key: IrDA.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the IrDA menu extra.
+  content: If `true`, enables the IrDA menu extra.
 - key: PCCard.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the PCCard menu extra.
+  content: If `true`, enables the PCCard menu extra.
 - key: PPP.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the PPP menu extra.
+  content: If `true`, enables the PPP menu extra.
 - key: PPPoE.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the PPPoE menu extra.
+  content: If `true`, enables the PPPoE menu extra.
 - key: RemoteDesktop.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Remote Desktop menu extra.
+  content: If `true`, enables the Remote Desktop menu extra.
 - key: Script Menu.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Script menu extra.
+  content: If `true`, enables the Script menu extra.
 - key: Spaces.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Spaces menu extra.
+  content: If `true`, enables the Spaces menu extra.
 - key: Sync.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Sync menu extra.
+  content: If `true`, enables the Sync menu extra.
 - key: TextInput.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Text Input menu extra.
+  content: If `true`, enables the Text Input menu extra.
 - key: TimeMachine.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the TimeMachine menu extra.
+  content: If `true`, enables the TimeMachine menu extra.
 - key: UniversalAccess.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Universal Access menu extra.
+  content: If `true`, enables the Universal Access menu extra.
 - key: User.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the User menu extra.
+  content: If `true`, enables the User menu extra.
 - key: VPN.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the VPN menu extra.
+  content: If `true`, enables the VPN menu extra.
 - key: Volume.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the Volume menu extra.
+  content: If `true`, enables the Volume menu extra.
 - key: WWAN.menu
   type: <boolean>
   presence: optional
-  content: If 'true', enables the WWAN menu extra.
+  content: If `true`, enables the WWAN menu extra.

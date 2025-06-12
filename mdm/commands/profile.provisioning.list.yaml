@@ -1,8 +1,5 @@
 title: Provisioning Profile List Command
-description: This command allows the server to retrieve the list of installed provisioning
-  profiles on the device. This command requires the Inspect Provisioning Profiles
-  right. On macOS, this command is for iOS and iPadOS style provisioning profiles
-  only.
+description: Get a list of installed provisioning profiles on a device.
 payload:
   requesttype: ProvisioningProfileList
   supportedOS:
@@ -55,7 +52,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', only include profiles that MDM has installed. For user enrollments,
+  content: If `true`, only include profiles that MDM has installed. For user enrollments,
     the device ignores this key and always limits the results to managed profiles.
     This value is available in iOS 13 and later, and tvOS 13 and later.
 responsekeys:
@@ -66,6 +63,7 @@ responsekeys:
   subkeys:
   - key: ProvisioningProfileListItem
     type: <dictionary>
+    content: A dictionary that describes a provisioning profile list item.
     subkeys:
     - key: Name
       type: <string>
@@ -79,3 +77,7 @@ responsekeys:
       type: <date>
       presence: optional
       content: The expiry date of the provisioning profile.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

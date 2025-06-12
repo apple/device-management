@@ -1,5 +1,5 @@
 title: '802.1X: Second Ethernet'
-description: ''
+description: The payload that configures the second wired Ethernet interface.
 payload:
   payloadtype: com.apple.secondethernet.managed
   supportedOS:
@@ -29,3 +29,13 @@ payloadkeys:
   content: Keys relevant to 802.1x configuration.  User enrollment payloads do not
     support the various proxy keys including ProxyType, ProxyServer, ProxyServerPort,
     ProxyUsername, ProxyPassword,, ProxyPACURL and ProxyPACFallbackAllowed.
+notes:
+- title: ''
+  content: |-
+    This payload's contents contain these profile-specific keys:
+
+    - Interface (String): This payload uses the value `SecondEthernet`.
+    - EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
+    - SetupModes (String): The type of connection mode, which is either "System" or "Loginwindow." "System" is the default.
+
+    This payload applies to Ethernet interfaces according to service order, regardless of whether the interface is working.

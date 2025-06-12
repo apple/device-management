@@ -1,5 +1,6 @@
 title: Unlock User Account Command
-description: This command allows the server to unlock a local user account.
+description: Unlock a user account that the system locked because of too many failed
+  password attempts.
 payload:
   requesttype: UnlockUserAccount
   supportedOS:
@@ -29,3 +30,7 @@ payloadkeys:
   presence: required
   content: The user name of the local account, which can be any local account on the
     system, not just a managed user account.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

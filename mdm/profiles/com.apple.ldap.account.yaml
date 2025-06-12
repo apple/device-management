@@ -1,6 +1,6 @@
 title: LDAP
-description: Use this section to define settings for configuration access to LDAP
-  servers.
+description: The payload that configures a Lightweight Directory Access Protocol (LDAP)
+  account.
 payload:
   payloadtype: com.apple.ldap.account
   supportedOS:
@@ -57,13 +57,13 @@ payloadkeys:
   title: Account Password
   type: <string>
   presence: optional
-  content: The user's password. Only use this with encrypted profiles.
+  content: The user's password. Only use this in encrypted profiles.
 - key: LDAPAccountUseSSL
   title: Use SSL
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system enables SSL.
+  content: If `true`, the system enables SSL.
 - key: LDAPSearchSettings
   title: Search Settings
   type: <array>
@@ -94,11 +94,11 @@ payloadkeys:
       - LDAPSearchSettingScopeSubtree
       default: LDAPSearchSettingScopeSubtree
       content: |-
-        The type of recursion to use in the search. Allowed values:
+        The type of recursion to use in the search:
 
-        * 'LDAPSearchSettingScopeBase': Only the immediate node that the search base points to
-        * 'LDAPSearchSettingScopeOneLevel': The node plus its immediate children
-        * 'LDAPSearchSettingScopeSubtree': The node plus all children, regardless of depth
+        - `LDAPSearchSettingScopeBase`: The search uses only the immediate node that the search base points to.
+        - `LDAPSearchSettingScopeOneLevel`: The search uses the node plus its immediate children.
+        - `LDAPSearchSettingScopeSubtree`: The search uses the node plus all children, regardless of depth.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:

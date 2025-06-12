@@ -1,4 +1,5 @@
 title: Time Machine
+description: The payload that configures Time Machine.
 payload:
   payloadtype: com.apple.MCX.TimeMachine
   supportedOS:
@@ -25,12 +26,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', performs automatic backups at regular intervals.
+  content: If `true`, performs automatic backups at regular intervals.
 - key: BackupAllVolumes
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', backs up only the startup volume by default.
+  content: If `true`, backs up only the startup volume by default.
 - key: BackupDestURL
   type: <string>
   presence: required
@@ -44,12 +45,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', skips system files and folders by default.
+  content: If `true`, skips system files and folders by default.
 - key: MobileBackups
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', create local backup snapshots when not connected to the network.
+  content: If `true`, create local backup snapshots when not connected to the network.
 - key: BasePaths
   type: <array>
   presence: optional

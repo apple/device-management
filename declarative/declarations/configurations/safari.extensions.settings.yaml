@@ -1,5 +1,5 @@
 title: Safari:Extension Settings
-description: Use this configuration to manage Safari Extensions.
+description: The declaration to configure Safari Extensions.
 payload:
   declarationtype: com.apple.configuration.safari.extensions.settings
   supportedOS:
@@ -21,7 +21,11 @@ payload:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '26.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
     watchOS:
       introduced: n/a
   apply: combined
@@ -36,8 +40,10 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: |-
-      The composed identifier of the managed extension, or “*” for all extensions. In order for the extension to be managed, its host app must be present on the device.
-      To generate this string use 'codesign -dv <path_to_appex>'. The browser extension is located in the PlugIns folder inside the app bundle. The expected format is “Identifier (TeamIdentifier)”.
+      The composed identifier of the managed extension, or "*" for all extensions. In order for the extension to be managed, its host app must be present on the device.
+
+      To generate this string use `codesign -dv <path_to_appex>`. The browser extension is located in the PlugIns folder inside the app bundle. The expected format is "Identifier (TeamIdentifier)", for example "com.example.app (ABCD1234)".
+
       For extensions that aren't also available on macOS the app developer needs to provide this information.
     subkeytype: ExtensionDictionary
     subkeys:
@@ -52,9 +58,9 @@ payloadkeys:
       combinetype: enum-last
       content: |-
         Controls whether an extension is allowed.
-        * 'Allowed' - The user is allowed to turn the extension on or off.
-        * 'AlwaysOn' - The extension will always be on.
-        * 'AlwaysOff' - The extension will always be off.
+        * `Allowed` - The user is allowed to turn the extension on or off.
+        * `AlwaysOn` - The extension will always be on.
+        * `AlwaysOff` - The extension will always be off.
     - key: PrivateBrowsing
       title: Private Browsing state
       type: <string>
@@ -66,18 +72,18 @@ payloadkeys:
       combinetype: enum-last
       content: |-
         Controls whether an extension is allowed in Private Browsing.
-        * 'Allowed' - The user is allowed to turn the extension on or off in Private Browsing.
-        * 'AlwaysOn' - The extension will always be on in Private Browsing if the extension is on outside of Private Browsing.
-        * 'AlwaysOff' - The extension will never be on in Private Browsing.
+        * `Allowed` - The user is allowed to turn the extension on or off in Private Browsing.
+        * `AlwaysOn` - The extension will always be on in Private Browsing if the extension is on outside of Private Browsing.
+        * `AlwaysOff` - The extension will never be on in Private Browsing.
     - key: AllowedDomains
       title: Allowed domains
       type: <array>
       presence: optional
       combinetype: set-union
       content: Controls the domains and sub-domains the extension is granted access
-        to. Any non-prefixed domains take precedence over prefixed domains, and 'DeniedDomains'
-        takes precedence over 'AllowedDomains'. Any domains not specified in 'AllowedDomains'
-        or 'DeniedDomains' are configurable by the user.
+        to. Any non-prefixed domains take precedence over prefixed domains, and `DeniedDomains`
+        takes precedence over `AllowedDomains`. The user can configure any domains
+        not matched by the values in `AllowedDomains` or `DeniedDomains`.
       subkeys:
       - key: Domain
         title: Domain
@@ -90,8 +96,8 @@ payloadkeys:
       combinetype: set-union
       content: Controls the domains and sub-domains the extension isn't allowed to
         access. Any non-prefixed domains take precedence over prefixed domains, and
-        'DeniedDomains' takes precedence over 'AllowedDomains'. Any domains not specified
-        in 'AllowedDomains' or 'DeniedDomains' are configurable by the user.
+        `DeniedDomains` takes precedence over `AllowedDomains`. The user can configure
+        any domains not matched by the values in `AllowedDomains` or `DeniedDomains`.
       subkeys:
       - key: Domain
         title: Domain

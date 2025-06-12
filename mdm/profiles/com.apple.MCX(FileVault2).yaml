@@ -1,5 +1,5 @@
 title: FDE FileVault Options
-description: ''
+description: The payload that configures FileVault options.
 payload:
   payloadtype: com.apple.MCX
   supportedOS:
@@ -27,12 +27,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system won't disable FileVault.
+  content: If `true`, the system won't disable FileVault.
 - key: dontAllowFDEEnable
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system won't enable FileVault.
+  content: If `true`, the system won't enable FileVault.
 - key: DestroyFVKeyOnStandby
   supportedOS:
     macOS:
@@ -40,4 +40,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system won't store th FileVault key across restarts.
+  content: If `true`, the system won't store th FileVault key across restarts.

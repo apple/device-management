@@ -1,5 +1,5 @@
 title: Desktop
-description: ''
+description: The payload that configures the desktop wallpaper.
 payload:
   payloadtype: com.apple.desktop
   supportedOS:
@@ -30,7 +30,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks the desktop picture. Replaced with allowWallpaperModification
+  content: If `true`, locks the desktop picture. Replaced with allowWallpaperModification
     in macOS 10.13.
 - key: override-picture-path
   type: <string>

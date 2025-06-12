@@ -1,5 +1,5 @@
 title: Disk Management:Settings
-description: Use this configuration to install disk management settings on the device.
+description: The declaration to configure disk management settings on the device.
 payload:
   declarationtype: com.apple.configuration.diskmanagement.settings
   supportedOS:
@@ -36,9 +36,10 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies the mount policy for external storage:
-      * 'Allowed': the system can mount external storage that is read-write or read-only.
-      * 'ReadOnly': the system can only mount read-only external storage. Note that external storage that is read-write will not be mounted read-only.
-      * 'Disallowed': The system can't mount any external storage.
+
+      - `Allowed`: The system can mount external storage that is read-write or read-only.
+      - `ReadOnly`: The system can only mount read-only external storage. Note that external storage that is read-write will not be mounted read-only.
+      - `Disallowed`: The system can't mount any external storage.
   - key: NetworkStorage
     title: Network Storage
     type: <string>
@@ -50,6 +51,7 @@ payloadkeys:
     combinetype: enum-last
     content: |-
       Specifies the mount policy for network storage:
-      * 'Allowed': the system can mount network storage that is read-write or read-only.
-      * 'ReadOnly': the system can only mount read-only network storage. Note that network storage that is read-write will not be mounted read-only.
-      * 'Disallowed': The system can't mount any network storage.
+
+      - `Allowed`: The system can mount network storage that is read-write or read-only.
+      - `ReadOnly`: The system can only mount read-only network storage. Note that network storage that is read-write will not be mounted read-only.
+      - `Disallowed`: The system can't mount any network storage.

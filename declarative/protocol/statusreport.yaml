@@ -75,9 +75,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: When set to "true", this indicates that the status report contains the
-    full set of current status, and is not an incremental report. This will include
-    the full set of items in any status array item (not just the changes). Servers
-    can use this to replace their entire set of status for the device, rather than
-    do incremental update processing. Devices will set this to "true" when sending
-    a "safety sync" status report, which is typically sent every 24 hours or so.
+  content: The system sets this to `true` to indicate that the status report contains
+    the full set of current status, and is not an incremental report. A full status
+    report includes the full set of items in any status array item, not just the changes.
+    Servers use this to replace their entire status for the device, rather than do
+    an incremental update to the existing status. The system sets this to `true` when
+    sending a "safety sync" status report, which is typically sent every 24 hours
+    or so.

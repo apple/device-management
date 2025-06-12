@@ -1,6 +1,5 @@
 title: Device Configured Command
-description: Informs the device that it can continue past DEP enrollment. Only works
-  on devices in DEP that have their cloud configuration set to await configuration.
+description: Inform the device that it can allow the user to continue in Setup Assistant.
 payload:
   requesttype: DeviceConfigured
   supportedOS:
@@ -39,3 +38,9 @@ payload:
       introduced: n/a
   content: Informs the device that it can continue past DEP enrollment. Only works
     on devices in DEP that have their cloud configuration set to await configuration.
+notes:
+- title: ''
+  content: |-
+    This command only works on Device Enrollment Program (DEP) devices that have their cloud configuration set to await configuration.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

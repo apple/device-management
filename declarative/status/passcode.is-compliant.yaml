@@ -1,5 +1,5 @@
 title: Status Passcode Compliance
-description: The state of passcode compliance.
+description: A status report of passcode compliance.
 payload:
   statusitemtype: passcode.is-compliant
   supportedOS:
@@ -41,7 +41,7 @@ payloadkeys:
   title: Status item value.
   type: <boolean>
   presence: required
-  content: If 'true', the passcode is in compliance with all passcode policies set
-    on the device. If 'false', the passcode isn't in compliance with one or more passcode
+  content: If `true`, the passcode is in compliance with all passcode policies set
+    on the device. If `false`, the passcode isn't in compliance with one or more passcode
     policies set on the device. When there are no passcode policies on the device,
-    this value 'true'.
+    this value `true`.

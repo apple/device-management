@@ -1,6 +1,5 @@
 title: Remove Profile Command
-description: This command allows the server to remove a profile. This command requires
-  the Profile Installation and Removal Right. It's supported in the user channel.
+description: Remove a previously installed profile from the device.
 payload:
   requesttype: RemoveProfile
   supportedOS:
@@ -46,3 +45,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The identifier of the profile to remove.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

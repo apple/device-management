@@ -1,5 +1,5 @@
 title: Screen Sharing:Connection Group
-description: Use this configuration to define a group of Screen Sharing connections.
+description: The declaration to configure a group of screen-sharing connections.
 payload:
   declarationtype: com.apple.configuration.screensharing.connection.group
   supportedOS:
@@ -26,20 +26,18 @@ payloadkeys:
   title: Unique Identifier
   type: <string>
   presence: required
-  content: A string which uniquely identifies this connection group.
+  content: A unique identifier for this connection group.
 - key: GroupName
   title: Group Name
   type: <string>
   presence: required
-  content: The name of the Connection Group.
+  content: The name of the connection group.
 - key: Members
   title: Group Members
   type: <array>
   presence: required
-  content: |-
-    Array of ConnectionUUIDs (matching a connection declared in a
-    com.apple.configuration.screensharing.connection configuration) of the Connections
-    that should be members of this group.
+  content: An array of `ConnectionUUID`s that represent connections declared in `ScreenSharingConnection`
+    configurations that are members of this group.
   subkeys:
   - key: ConnectionUUID
     type: <string>

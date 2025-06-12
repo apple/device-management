@@ -1,5 +1,5 @@
 title: Active NSExtensions Command
-description: Returns information about the active NSExtensions for a particular user.
+description: Get a list of active extensions for a user on a device.
 payload:
   requesttype: ActiveNSExtensions
   supportedOS:
@@ -42,6 +42,7 @@ responsekeys:
   subkeys:
   - key: ExtensionsItem
     type: <dictionary>
+    content: A dictionary that contains information about an extension.
     subkeys:
     - key: Identifier
       type: <string>
@@ -50,7 +51,7 @@ responsekeys:
     - key: ExtensionPoint
       type: <string>
       presence: required
-      content: The NSExtensionPointIdentifier for the extension.
+      content: The `NSExtensionPointIdentifier` for the extension.
     - key: DisplayName
       type: <string>
       presence: required
@@ -80,3 +81,11 @@ responsekeys:
       - Ignore
       content: The user-selected state of the extension, which a user sets in the
         Extensions preference pane in System Preferences.
+notes:
+- title: ''
+  content: |-
+    This command returns information about the active extensions for a user. Extensions exist for each user, not for the device.
+
+    Extensions restricted from executing by Application Launch Restrictions or the `NSExtensionManagement` configuration profile won't appear in the response.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

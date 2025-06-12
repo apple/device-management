@@ -1,5 +1,5 @@
 title: Status Software Update Beta Enrollment
-description: The device's enrolled beta program.
+description: A status report of the device's enrolled beta program.
 payload:
   statusitemtype: softwareupdate.beta-enrollment
   supportedOS:

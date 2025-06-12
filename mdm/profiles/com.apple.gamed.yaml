@@ -1,5 +1,5 @@
 title: 'Parental Controls: Game Center'
-description: ''
+description: The payload that configures Game Center parental controls.
 payload:
   payloadtype: com.apple.gamed
   supportedOS:
@@ -31,12 +31,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables Game Center.
+  content: If `true`, enables Game Center.
 - key: GKFeatureAccountModificationAllowed
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', allows account modifications.
+  content: If `true`, allows account modifications.
 - key: GKFeatureAddingGameCenterFriendsAllowed
   supportedOS:
     macOS:
@@ -44,7 +44,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', allows adding Game Center friends.
+  content: If `true`, allows adding Game Center friends.
 - key: GKFeatureMultiplayerGamingAllowed
   supportedOS:
     macOS:
@@ -52,4 +52,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', allows multiplayer gaming.
+  content: If `true`, allows multiplayer gaming.

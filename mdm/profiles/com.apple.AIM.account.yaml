@@ -1,5 +1,5 @@
 title: AIM Account
-description: Use this section to define settings for configuration access to AIM servers.
+description: The payload that configures an AIM account on the device.
 payload:
   payloadtype: com.apple.AIM.account
   supportedOS:
@@ -53,7 +53,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', enables SSL.
+  content: If `true`, enables SSL.
 - key: AIMPort
   title: Port Number
   type: <integer>

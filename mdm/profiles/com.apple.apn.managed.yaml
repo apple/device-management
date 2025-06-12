@@ -1,5 +1,5 @@
 title: APN
-description: ''
+description: The payload that configures access point names.
 payload:
   payloadtype: com.apple.apn.managed
   supportedOS:
@@ -37,10 +37,11 @@ payloadkeys:
   - key: apns
     type: <array>
     presence: required
-    content: An array of APN dictionaries (`APN.DefaultsData.Apns`).
+    content: An array of APN dictionaries (\`APN.DefaultsData.Apns\`).
     subkeys:
     - key: apnsItem
       type: <dictionary>
+      content: A dictionary that describes an APN configuration.
       subkeys:
       - key: apn
         type: <string>
@@ -71,3 +72,6 @@ payloadkeys:
   rangelist:
   - com.apple.managedCarrier
   content: The domain name.
+notes:
+- title: ''
+  content: This profile is deprecated. Use the `Cellular` profile instead.

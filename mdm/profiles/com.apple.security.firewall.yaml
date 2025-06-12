@@ -1,5 +1,5 @@
 title: Firewall
-description: ''
+description: The payload that configures the firewall.
 payload:
   payloadtype: com.apple.security.firewall
   supportedOS:
@@ -30,15 +30,15 @@ payloadkeys:
 - key: EnableFirewall
   type: <boolean>
   presence: required
-  content: If 'true', the system enables the firewall.
+  content: If `true`, the system enables the firewall.
 - key: BlockAllIncoming
   type: <boolean>
   presence: optional
-  content: If 'true', the system enables blocking all incoming connections.
+  content: If `true`, the system enables blocking all incoming connections.
 - key: EnableStealthMode
   type: <boolean>
   presence: optional
-  content: If 'true', the system enables stealth mode.
+  content: If `true`, the system enables stealth mode.
 - key: Applications
   type: <array>
   presence: optional
@@ -57,7 +57,7 @@ payloadkeys:
       title: Allow connections
       type: <boolean>
       presence: required
-      content: If 'true', the system allows connections for the app.
+      content: If `true`, the system allows connections for the app.
 - key: EnableLogging
   supportedOS:
     macOS:
@@ -66,7 +66,7 @@ payloadkeys:
       removed: '15.0'
   type: <boolean>
   presence: optional
-  content: If 'true', the system enables logging. Available in macOS 12 through macOS
+  content: If `true`, the system enables logging. Available in macOS 12 through macOS
     14.6.
 - key: LoggingOption
   supportedOS:
@@ -89,8 +89,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'true', the system allows built-in software to receive incoming connections. Available in macOS 12.3 and later.
-    The system ensures that 'AllowSigned' always has a value. If missing from the payload, the system sets it to 'true'.
+    If `true`, the system allows built-in software to receive incoming connections. Available in macOS 12.3 and later.
+
+    > Note:
+    > The system ensures that `AllowSigned` always has a value. If missing from the payload, the system sets it to `true`.
 - key: AllowSignedApp
   supportedOS:
     macOS:
@@ -99,5 +101,13 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'true', the system allows downloaded signed software to receive incoming connections. Available in macOS 12.3 and later.
-    The system ensures that 'AllowSignedApp' always has a value. If missing from the payload, the system sets it to 'true'.
+    If `true`, the system allows downloaded signed software to receive incoming connections. Available in macOS 12.3 and later.
+
+    > Note:
+    > The system ensures that `AllowSignedApp` always has a value. If missing from the payload, the system sets it to `true`.
+notes:
+- title: ''
+  content: |-
+    The payload needs to exist in a system-scoped profile.
+
+    If more than one profile contains this payload, the system uses the most restrictive union of settings.

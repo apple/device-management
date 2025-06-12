@@ -1,6 +1,5 @@
 title: Remove Media Command
-description: This command allows an MDM server to remove managed media. This command
-  returns Acknowledged even if the item is not found.
+description: Remove a previously installed book from a device.
 payload:
   requesttype: RemoveMedia
   supportedOS:
@@ -31,7 +30,7 @@ payloadkeys:
   presence: required
   rangelist:
   - Book
-  content: The media type, which can only be 'Book'.
+  content: The media type, which can only be `Book`.
 - key: iTunesStoreID
   type: <string>
   presence: optional
@@ -39,4 +38,8 @@ payloadkeys:
 - key: PersistentID
   type: <string>
   presence: optional
-  content: The book's persistent identifier in reverse-DNS form; for example, 'com.acme.manuals.training'.
+  content: The book's persistent identifier in reverse-DNS form; for example, `com.acme.manuals.training`.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

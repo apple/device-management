@@ -1,5 +1,5 @@
 title: Account:CalDAV
-description: Use this configuration to define settings for access to CalDAV servers.
+description: The declaration to configure a Calendar account.
 payload:
   declarationtype: com.apple.configuration.account.caldav
   supportedOS:
@@ -68,7 +68,7 @@ payloadkeys:
   - com.apple.asset.credential.userpassword
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
-    this account. Set the corresponding asset type to 'CredentialUserNameAndPassword'.
+    this account. Set the corresponding asset type to `CredentialUserNameAndPassword`.
 related-status-items:
 - status-items:
   - account.list.caldav

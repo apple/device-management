@@ -1,5 +1,5 @@
 title: Authenticate
-description: Check-in protocol authenticate request keys.
+description: Authenticates a user during MDM payload installation.
 payload:
   requesttype: Authenticate
   supportedOS:
@@ -79,11 +79,11 @@ payloadkeys:
   presence: required
   rangelist:
   - Authenticate
-  content: The message type, which must have a value of 'Authenticate'.
+  content: The message type, which requires a value of `Authenticate`.
 - key: Topic
   type: <string>
   presence: required
-  content: The topic to which the device subscribes.
+  content: The topic that the device subscribes to.
 - key: UDID
   supportedOS:
     iOS:
@@ -97,8 +97,8 @@ payloadkeys:
         mode: forbidden
   type: <string>
   presence: optional
-  content: The device's UDID (Unique Device ID). The system requires this value if
-    the enrollment type isn't user enrollment.
+  content: The device's UDID (unique device identifier). The system requires this
+    value if the enrollment type is a device enrollment.
 - key: EnrollmentID
   supportedOS:
     iOS:
@@ -119,8 +119,9 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The per-enrollment identifier for the device. The system requires this value if the enrollment type is user enrollment.
-    Available in macOS 10.15 and iOS 13.0 and later.
+    The per-enrollment identifier for the device. The system requires this value if the enrollment type is a user enrollment.
+
+    Available in iOS 13 and later, macOS 10.15 and later, and visionOS 2 and later.
 - key: OSVersion
   supportedOS:
     iOS:
@@ -159,7 +160,7 @@ payloadkeys:
       accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
-  content: The device's product name ('iPhone3,1').
+  content: The device's product name (such as `iPhone17,2`).
 - key: SerialNumber
   supportedOS:
     iOS:
@@ -201,7 +202,7 @@ payloadkeys:
       accessrights: AllowQueryDeviceInformation
   type: <string>
   presence: optional
-  content: The device's IMEI (International Mobile Station Equipment Identity).
+  content: The device's IMEI (International Mobile Equipment Identity).
 - key: MEID
   supportedOS:
     iOS:
@@ -223,3 +224,9 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The device's MEID (Mobile Equipment Identifier).
+notes:
+- title: ''
+  content: On success, the server needs to respond with a `200 OK` status. Don't assume
+    that the device has installed the MDM payload at this time because other payloads
+    in the profile may still fail to install. When the device successfully installs
+    the MDM payload, it sends a `Token-Update` message.

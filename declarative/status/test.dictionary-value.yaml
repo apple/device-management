@@ -1,5 +1,5 @@
 title: Status Test Dictionary Value
-description: A test status item dictionary.
+description: A test status item for a dictionary.
 payload:
   statusitemtype: test.dictionary-value
   supportedOS:

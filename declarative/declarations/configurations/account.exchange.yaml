@@ -1,6 +1,5 @@
 title: Account:Exchange
-description: Use this configuration to define settings for access to Exchange ActiveSync
-  and Web Services servers.
+description: The declaration to configure an Exchange account.
 payload:
   declarationtype: com.apple.configuration.account.exchange
   supportedOS:
@@ -52,9 +51,12 @@ payloadkeys:
   presence: required
   content: |-
     The set of protocol types to enable on the Exchange server, in order of preference. This is an array of unique strings with possible values:
-    * 'EAS:' Exchange ActiveSync
-    * 'EWS:' Exchange Web Services (EWS)
+
+    - `EAS:` Exchange ActiveSync
+    - `EWS:` Exchange Web Services (EWS)
+
     If the device supports one or more of the listed protocol types, it sets up an account for the first supported type.
+
     If the device doesn't support any of the listed protocol types, it doesn't set up an account and the system reports an error.
   subkeys:
   - key: EnabledProtocolTypesItem
@@ -70,12 +72,12 @@ payloadkeys:
   - com.apple.asset.useridentity
   presence: optional
   content: The identifier of an asset declaration that contains the user identity
-    for this account. The corresponding asset must be of type 'UserIdentity'.
+    for this account. The corresponding asset must be of type `UserIdentity`.
 - key: HostName
   title: Server Host Name
   type: <string>
   presence: optional
-  content: Specifies the Exchange server host name (or IP address).
+  content: The IP address or fully qualified domain name (FQDN) of the Exchange host.
 - key: Port
   title: Server Port
   supportedOS:
@@ -86,7 +88,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The port number of the EWS server. The system uses this only when this
-    declaration has a 'HostName' value.
+    declaration has a `HostName` value.
 - key: Path
   title: Server Path
   supportedOS:
@@ -97,7 +99,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The path of the EWS server. The system uses this only when this declaration
-    has a 'HostName' value.
+    has a `HostName` value.
 - key: ExternalHostName
   title: Server External Host Name
   supportedOS:
@@ -118,7 +120,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The external port number of the EWS server. The system uses this only when
-    this declaration has a 'ExternalHostName' value.
+    this declaration has a `ExternalHostName` value.
 - key: External Path
   title: Server External Path
   supportedOS:
@@ -129,7 +131,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The external path of the EWS server. The system uses this only when this
-    declaration has a 'ExternalHostName' value.
+    declaration has a `ExternalHostName` value.
 - key: OAuth
   title: Controls use of OAuth
   type: <dictionary>
@@ -140,14 +142,14 @@ payloadkeys:
     title: Use OAuth
     type: <boolean>
     presence: required
-    content: If 'true', enables OAuth for this account.
+    content: If `true`, enables OAuth for this account.
   - key: SignInURL
     type: <string>
     presence: optional
     content: The URL that this account uses for signing in with OAuth. The system
-      ignores this value unless 'Enabled' is 'true'. The system doesn't use autodiscovery
+      ignores this value unless `Enabled` is `true`. The system doesn't use autodiscovery
       when a declaration contains this URL, so the declaration must also contain a
-      'HostName'.
+      `HostName`.
   - key: TokenRequestURL
     supportedOS:
       macOS:
@@ -155,7 +157,7 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The URL that this account uses for token requests with OAuth. The system
-      ignores this value unless 'Enabled' is 'true'.
+      ignores this value unless `Enabled` is `true`.
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
@@ -164,7 +166,7 @@ payloadkeys:
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with an Exchange server. Set the corresponding asset
-    type to 'CredentialUserNameAndPassword'.
+    type to `CredentialUserNameAndPassword`.
 - key: AuthenticationIdentityAssetReference
   title: Authentication Identity Asset Reference
   type: <string>
@@ -196,7 +198,7 @@ payloadkeys:
       title: Signing Enabled
       type: <boolean>
       presence: required
-      content: If 'true', the system enables S/MIME signing.
+      content: If `true`, the system enables S/MIME signing.
     - key: IdentityAssetReference
       title: S/MIME Signing Identity Asset Reference
       type: <string>
@@ -212,13 +214,13 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can turn S/MIME signing on or off in Settings.
+      content: If `true`, the user can turn S/MIME signing on or off in Settings.
     - key: IdentityUserOverrideable
       title: Signing Identity User Overrideable
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can select an S/MIME signing identity in Settings.
+      content: If `true`, the user can select an S/MIME signing identity in Settings.
   - key: Encryption
     title: S/MIME Encryption Settings
     type: <dictionary>
@@ -229,8 +231,8 @@ payloadkeys:
       title: Encryption By Default Enabled
       type: <boolean>
       presence: required
-      content: If 'true', the system enables S/MIME encryption by default, which the
-        user can't override if 'PerMessageSwitchEnabled' is 'false'.
+      content: If `true`, the system enables S/MIME encryption by default, which the
+        user can't override if `PerMessageSwitchEnabled` is `false`.
     - key: IdentityAssetReference
       title: S/MIME Encryption Identity Asset Reference
       type: <string>
@@ -249,26 +251,26 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can turn S/MIME encryption by default on or off
+      content: If `true`, the user can turn S/MIME encryption by default on or off
         in Settings.
     - key: IdentityUserOverrideable
       title: Encryption Identity User Overrideable
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the user can select an S/MIME signing identity in Settings.
+      content: If `true`, the user can select an S/MIME signing identity in Settings.
     - key: PerMessageSwitchEnabled
       title: Per Message Switch Enabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables the per-message encryption switch in
+      content: If `true`, the system enables the per-message encryption switch in
         the compose view.
 - key: MailServiceActive
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system activates the mail service for this account.
+  content: If `true`, the system activates the mail service for this account.
 - key: LockMailService
   supportedOS:
     macOS:
@@ -276,13 +278,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from changing the status of the
+  content: If `true`, the system prevents the user from changing the status of the
     mail service for this account.
 - key: ContactsServiceActive
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', activates the address book service for this account.
+  content: If `true`, activates the address book service for this account.
 - key: LockContactsService
   supportedOS:
     macOS:
@@ -290,13 +292,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from changing the status of the
+  content: If `true`, the system prevents the user from changing the status of the
     address book service for this account.
 - key: CalendarServiceActive
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', activates the calendar service for this account.
+  content: If `true`, activates the calendar service for this account.
 - key: LockCalendarService
   supportedOS:
     macOS:
@@ -304,13 +306,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from changing the status of the
+  content: If `true`, the system prevents the user from changing the status of the
     calendar service for this account.
 - key: RemindersServiceActive
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system activates the reminders service for this account.
+  content: If `true`, the system activates the reminders service for this account.
 - key: LockRemindersService
   supportedOS:
     macOS:
@@ -318,13 +320,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from changing the status of the
+  content: If `true`, the system prevents the user from changing the status of the
     reminders service for this account.
 - key: NotesServiceActive
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system activates the notes service for this account.
+  content: If `true`, the system activates the notes service for this account.
 - key: LockNotesService
   supportedOS:
     macOS:
@@ -332,7 +334,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents the user from changing the status of the
+  content: If `true`, the system prevents the user from changing the status of the
     notes service for this account.
 related-status-items:
 - status-items:

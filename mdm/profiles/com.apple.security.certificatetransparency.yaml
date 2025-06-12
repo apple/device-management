@@ -1,5 +1,5 @@
 title: Certificate Transparency
-description: Use this section to define settings for certificate transparency.
+description: The payload that configures certificate transparency enforcement.
 payload:
   payloadtype: com.apple.security.certificatetransparency
   supportedOS:
@@ -49,33 +49,36 @@ payloadkeys:
   presence: optional
   content: |-
     An array of certificates for which certificate transparency is disabled. One of the following conditions needs to be met to disable certificate transparency enforcement when this policy is set:
-    * The hash is of the server certificate's 'subjectPublicKeyInfo'.
-    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain; the CA certificate is constrained through the X.509v3 'nameConstraints' extension. One or more 'directoryName' 'nameConstraints' are present in the 'permittedSubtrees', and the 'directoryName' contains an 'organizationName' attribute.
-    * The hash is of a 'subjectPublicKeyInfo' that appears in a CA certificate in the certificate chain. The CA certificate has one or more 'organizationName' attributes in the certificate 'Subject', and the server's certificate contains the same number of 'organizationName' attributes, in the same order, and with byte-for-byte identical values.
+
+    - The hash is of the server certificate's `subjectPublicKeyInfo`.
+    - The hash is of a `subjectPublicKeyInfo` that appears in a CA certificate in the certificate chain; the CA certificate is constrained through the X.509v3 `nameConstraints` extension. One or more `directoryName` `nameConstraints` are present in the `permittedSubtrees`, and the `directoryName` contains an `organizationName` attribute.
+    - The hash is of a `subjectPublicKeyInfo` that appears in a CA certificate in the certificate chain. The CA certificate has one or more `organizationName` attributes in the certificate `Subject`, and the server's certificate contains the same number of `organizationName` attributes, in the same order, and with byte-for-byte identical values.
   subkeys:
   - key: SubjectPublicKeyInfoHashDict
     type: <dictionary>
+    content: A dictionary of hashed public keys.
     subkeys:
     - key: Algorithm
       type: <string>
       presence: required
       rangelist:
       - sha256
-      content: The algorithm must be 'sha256'.
+      content: The algorithm must be `sha256`.
     - key: Hash
       type: <data>
       presence: required
       content: |-
-        The hash of the DER-encoding of the certificate's 'subjectPublicKeyInfo'.
-        The hash field requires the data ('subjectPublicKeyInfo' hash) in a specific format: a Base64 encoded (binary) SHA-256 hash of the certificate's public key.
+        The hash of the DER-encoding of the certificate's `subjectPublicKeyInfo`.
+
+        The hash field requires the data (`subjectPublicKeyInfo` hash) in a specific format: a Base64 encoded (binary) SHA-256 hash of the certificate's public key.
 - key: DisabledForDomains
   title: Disabled domains
   type: <array>
   presence: optional
   content: An array of strings that represent the domains to exclude from certificate
-    transparency enforcement. The system supports using a leading period ('.') to
+    transparency enforcement. The system supports using a leading period (`.`) to
     signify subdomains. However, the system doesn't support wildcards. If you include
-    a leading period, the domain can't be a top-level domain, such as '.com' and '.co.uk'.
+    a leading period, the domain can't be a top-level domain, such as `.com` and `.co.uk`.
   subkeys:
   - key: domain
     type: <string>

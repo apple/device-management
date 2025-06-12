@@ -1,5 +1,5 @@
 title: Status Test Boolean Value
-description: A test status item boolean.
+description: A test status item for a Boolean value.
 payload:
   statusitemtype: test.boolean-value
   supportedOS:

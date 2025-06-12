@@ -1,5 +1,5 @@
 title: Network Usage Rules
-description: ''
+description: The payload that configures network-usage rules.
 payload:
   payloadtype: com.apple.networkusagerules
   supportedOS:
@@ -33,13 +33,17 @@ payloadkeys:
   subkeys:
   - key: ApplicationRulesItem
     type: <dictionary>
+    content: The application rules dictionary.
     subkeys:
     - key: AppIdentifierMatches
       type: <array>
       presence: optional
       content: |-
         A list of managed app identifiers, as strings, that must follow the associated rules. If this key is missing, the rules apply to all managed apps on the device.
-        Each string in the 'AppIdentifierMatches' array may either be an exact app identifier match (for example, 'com.mycompany.myapp') or it may specify a prefix match for the bundle ID by using the * wildcard character. If used, this character must appear after a period (.) and may only appear once, at the end of the string; for example, 'com.mycompany.*'.
+
+
+
+        Each string in the `AppIdentifierMatches` array may either be an exact app identifier match (for example, `com.mycompany.myapp`) or it may specify a prefix match for the bundle ID by using the \* wildcard character. If used, this character must appear after a period (.) and may only appear once, at the end of the string; for example, `com.mycompany.*`.
       subkeys:
       - key: AppIdentifierMatchesItem
         type: <string>
@@ -49,13 +53,13 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: true
-      content: If 'false', disables cellular data while roaming for all matching managed
+      content: If `false`, disables cellular data while roaming for all matching managed
         apps.
     - key: AllowCellularData
       type: <boolean>
       presence: optional
       default: true
-      content: If 'false', disables cellular data for all matching managed apps.
+      content: If `false`, disables cellular data for all matching managed apps.
 - key: SIMRules
   supportedOS:
     iOS:
@@ -66,13 +70,14 @@ payloadkeys:
   subkeys:
   - key: SIMRulesItem
     type: <dictionary>
+    content: The policy for individual SIM cards.
     subkeys:
     - key: ICCIDs
       type: <array>
       presence: required
-      content: One or more ICCIDs of SIM cards for which the 'WiFiAssistPolicy' applies.
+      content: One or more ICCIDs of SIM cards for which the `WiFiAssistPolicy` applies.
         All ICCIDs in all installed Network Usage Rules payloads must be unique. An
-        example ICCID is '89310410106543789301'.
+        example ICCID is `89310410106543789301`.
       subkeys:
       - key: ICCID
         type: <string>
@@ -87,7 +92,12 @@ payloadkeys:
       content: |-
         The Wi-Fi Assist policy to apply to the SIM cards specified in the ICCIDs. Allowed values:
 
-        * '2': Use the default system policy for the specified SIM card(s).
-        * '3': Make Wi-Fi Assist switch more aggressively from a poor Wi-Fi connection to cellular data for the specified SIM card(s). This setting may increase cellular data use and may impact battery life.
+        - `2`: Use the default system policy for the specified SIM card(s).
+        - `3`: Make Wi-Fi Assist switch more aggressively from a poor Wi-Fi connection to cellular data for the specified SIM card(s). This setting may increase cellular data use and may impact battery life.
 
-        For more information, see About Wi-Fi Assist <https://support.apple.com/en-us/HT205296>.
+        For more information, see [About Wi-Fi Assist](https://support.apple.com/en-us/HT205296).
+notes:
+- title: ''
+  content: Network usage rules allow enterprises to specify how devices use networks,
+    such as cellular data networks. iOS 9-12 require the application rules. In iOS
+    13, application rules, SIM rules, or both must be present.

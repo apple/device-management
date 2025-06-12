@@ -1,5 +1,5 @@
 title: Certificate (Root)
-description: Use this section to define settings for a root certificate.
+description: The payload that configures a root certificate.
 payload:
   payloadtype: com.apple.security.root
   supportedOS:

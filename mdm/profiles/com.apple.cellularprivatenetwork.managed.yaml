@@ -1,5 +1,6 @@
 title: Cellular Private Network
-description: Cellular Private Network Settings and Device Configuration
+description: The payload that provides device info on private network deployments,
+  including geographical location, preference over Wi-Fi, and network deployment type.
 payload:
   payloadtype: com.apple.cellularprivatenetwork.managed
   supportedOS:
@@ -13,7 +14,7 @@ payload:
         devicechannel: true
         userchannel: false
       userenrollment:
-        mode: allowed
+        mode: forbidden
     macOS:
       introduced: n/a
     tvOS:
@@ -23,7 +24,7 @@ payload:
     watchOS:
       introduced: n/a
   content: Payload can be used to provide device info on private network deployments
-    including geographical location, preference over wifi, and network deployment
+    including geographical location, preference over Wi-Fi, and network deployment
     type. Only five Cellular Private Networks can be configured simultaneously.
 payloadkeys:
 - key: Geofences
@@ -34,6 +35,7 @@ payloadkeys:
   subkeys:
   - key: GeofenceItem
     type: <dictionary>
+    content: A geofence for a private network.
     subkeys:
     - key: Longitude
       type: <real>
@@ -73,29 +75,29 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: Set to 'true' to prefer this private network over Wi-Fi.
+  content: Set to `true` to prefer this private network over Wi-Fi.
 - key: EnableNRStandalone
   type: <boolean>
   presence: optional
   default: false
-  content: Set to 'true' if this private network is NR Standalone.
+  content: Set to `true` if this private network is NR Standalone.
 - key: NetworkIdentifier
   supportedOS:
     iOS:
       introduced: '18.0'
   type: <string>
   presence: optional
-  content: String formatted in accordance with the definition of a "Coordinated NID"
-    (option 1 or option 2) in 3GPP 31.102 §12.7.1. Used to match this profile to a
-    SIM present on the device. All combinations of NetworkIdentifier and CsgNetworkIdentifier
-    must be unique between profiles installed on the device.
+  content: |-
+    A string using the 3GPP "Coordinated NID" (option 1 or option 2) format (defined in 3GPP 31.102, Section 12.7.1). The device uses this value to match a SIM present on the device.
+
+    All combinations of `NetworkIdentifier` and `CsgNetworkIdentifier` must be unique across all profiles installed on the device.
 - key: CsgNetworkIdentifier
   supportedOS:
     iOS:
       introduced: '18.0'
   type: <string>
   presence: optional
-  content: String formatted in accordance with the definition of "CSG_ID" in 3GPP
-    23.003 §4.7. Used to match this profile to a SIM present on the device. All combinations
-    of NetworkIdentifier and CsgNetworkIdentifier must be unique between profiles
-    installed on the device.
+  content: |-
+    A string using the 3GPP "CSG_ID" format (defined in 3GPP 23.003, Section 4.7). The device uses this value to match a SIM present on the device.
+
+    All combinations of `NetworkIdentifier` and `CsgNetworkIdentifier` must be unique across all profiles installed on the device.

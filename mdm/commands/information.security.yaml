@@ -1,6 +1,5 @@
 title: Security Info Command
-description: This command queries the device for security-related information. Queries
-  are available if the MDM host has the Security Query right.
+description: Get security-related information about a device.
 payload:
   requesttype: SecurityInfo
   supportedOS:
@@ -54,10 +53,14 @@ responsekeys:
     type: <integer>
     content: |-
       An integer that indicates the underlying hardware encryption capabilities of the device, which is one of the following values:
-      * '1': Block-level encryption
-      * '2': File-level encryption
-      * '3': Both block-level and file-level encryption
-      For a device to have data protection, 'HardwareEncryptionCaps' must be '3' and 'PasscodePresent' must 'true'.
+
+      - `1`: Block-level encryption
+      - `2`: File-level encryption
+      - `3`: Both block-level and file-level encryption
+
+      > Important:
+      > For a device to have data protection, `HardwareEncryptionCaps` must be `3` and `PasscodePresent` must `true`.
+
       This value is available in iOS 4 and later, and tvOS 6 and later.
   - key: PasscodePresent
     supportedOS:
@@ -70,14 +73,14 @@ responsekeys:
         userenrollment:
           mode: forbidden
     type: <boolean>
-    content: If 'true', the device has a passcode. This key doesn't apply to User-Enrolled
+    content: If `true`, the device has a passcode. This key doesn't apply to User-Enrolled
       devices. This value is available in iOS 4 and later, and tvOS 6 and later.
   - key: PasscodeCompliant
     supportedOS:
       macOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', the user's passcode is compliant with all requirements on
+    content: If `true`, the user's passcode is compliant with all requirements on
       the device, including Exchange and other accounts. This value is available in
       iOS 4 and later, and tvOS 6 and later.
   - key: PasscodeCompliantWithProfiles
@@ -91,7 +94,7 @@ responsekeys:
         userenrollment:
           mode: forbidden
     type: <boolean>
-    content: If 'true', the user's passcode is compliant with requirements from profiles.
+    content: If `true`, the user's passcode is compliant with requirements from profiles.
       This key doesn't apply to User-Enrolled devices. This value is available in
       iOS 4 and later, and tvOS 6 and later.
   - key: PasscodeLockGracePeriod
@@ -122,7 +125,7 @@ responsekeys:
           mode: forbidden
     type: <integer>
     content: The enforced value for the number of seconds before a locked screen requires
-      the device passcode to unlock it. If a device has a passcode, changing 'PasscodeLockGracePeriod'
+      the device passcode to unlock it. If a device has a passcode, changing `PasscodeLockGracePeriod`
       to a larger value doesn't take effect until the user logs out or removes the
       passcode. This value is only available for Shared iPad.
   - key: AutoLockTime
@@ -158,7 +161,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', the device has enabled FileVault full disk encryption (FDE).
+    content: If `true`, the device has enabled FileVault full disk encryption (FDE).
       This value is available in macOS 10.9 and later.
   - key: FDE_HasPersonalRecoveryKey
     supportedOS:
@@ -176,7 +179,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', FileVault FDE has a personal recovery key. This value is available
+    content: If `true`, FileVault FDE has a personal recovery key. This value is available
       in macOS 10.9 and later.
   - key: FDE_HasInstitutionalRecoveryKey
     supportedOS:
@@ -194,7 +197,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', FileVault FDE has an institutional recovery key. This value
+    content: If `true`, FileVault FDE has an institutional recovery key. This value
       is available in macOS 10.9 and later.
   - key: FDE_PersonalRecoveryKeyCMS
     supportedOS:
@@ -213,7 +216,7 @@ responsekeys:
         introduced: n/a
     type: <data>
     content: If the FileVault personal recovery key has enabled escrow with a recovery
-      key, this value contains the key. The certificate from the FDERecoveryKeyEscrow
+      key, this value contains the key. The certificate from the `FDERecoveryKeyEscrow`
       profile encrypts the key and wraps it as CMS data. This value is available in
       macOS 10.13 and later.
   - key: FDE_PersonalRecoveryKeyDeviceKey
@@ -234,9 +237,9 @@ responsekeys:
     type: <string>
     content: If the FileVault personal recovery key has enabled escrow with a recovery
       key, this value is the device serial number. This is the value that displays
-      to the user at the EFI login window as part of the help message if they enter
+      to the user at the EFI Login Window as part of the help message if they enter
       their password incorrectly three times. The server also uses this value as an
-      index when saving the device personal recovery key. This replaces the 'recordNumber'
+      index when saving the device personal recovery key. This replaces the `recordNumber`
       that the server returned in the previous escrow mechanism. This value is available
       in macOS 10.13 and later.
   - key: SystemIntegrityProtectionEnabled
@@ -253,7 +256,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', System Integrity Protection (SIP) is active on the device.
+    content: If `true`, System Integrity Protection (SIP) is active on the device.
       This value is available in macOS 10.12 and later.
   - key: FirewallSettings
     supportedOS:
@@ -274,10 +277,10 @@ responsekeys:
     subkeys:
     - key: FirewallEnabled
       type: <boolean>
-      content: If 'true', the firewall is on.
+      content: If `true`, the firewall is on.
     - key: BlockAllIncoming
       type: <boolean>
-      content: If 'true', the firewall blocks all incoming connections.
+      content: If `true`, the firewall blocks all incoming connections.
     - key: StealthMode
       type: <boolean>
       content: If true, stealth mode is active for the firewall.
@@ -292,22 +295,23 @@ responsekeys:
       subkeys:
       - key: ApplicationsItem
         type: <dictionary>
+        content: A dictionary that describes the allowed apps.
         subkeys:
         - key: Allowed
           type: <boolean>
-          content: If 'true', the app is an allowed app.
+          content: If `true`, the app is an allowed app.
         - key: BundleID
           type: <string>
           content: The app's bundle identifier.
         - key: Name
           type: <string>
-          content: The app's display name if it's determinable from the 'BundleID'.
+          content: The app's display name if it's determinable from the `BundleID`.
     - key: LoggingEnabled
       supportedOS:
         macOS:
           introduced: '12.0'
       type: <boolean>
-      content: If 'true', logging is enabled.
+      content: If `true`, logging is enabled.
     - key: LoggingOption
       supportedOS:
         macOS:
@@ -337,15 +341,17 @@ responsekeys:
     subkeys:
     - key: PasswordExists
       type: <boolean>
-      content: If 'true', the device has an EFI firmware password.
+      content: If `true`, the device has an EFI firmware password.
     - key: ChangePending
       type: <boolean>
       content: |-
-        If 'true', a firmware password change is pending. A device restart is necessary for this change to take effect. Until then, additional attempts to change the password fail.
-        If 'true', the other values show the current state of the device, not the state after a restart.
+        If `true`, a firmware password change is pending. A device restart is necessary for this change to take effect. Until then, additional attempts to change the password fail.
+
+        > Note:
+        > If `true`, the other values show the current state of the device, not the state after a restart.
     - key: AllowOroms
       type: <boolean>
-      content: If 'true', enable ROMs.
+      content: If `true`, enable ROMs.
   - key: ManagementStatus
     supportedOS:
       iOS:
@@ -368,7 +374,7 @@ responsekeys:
         watchOS:
           introduced: n/a
       type: <boolean>
-      content: If 'true', the device enrolled in MDM through the Device Enrollment
+      content: If `true`, the device enrolled in MDM through the Device Enrollment
         Program (DEP). This value is available in macOS 10.13.2 and later.
     - key: UserApprovedEnrollment
       supportedOS:
@@ -381,7 +387,7 @@ responsekeys:
         watchOS:
           introduced: n/a
       type: <boolean>
-      content: If 'true', the enrollment was user-approved. If 'false', the device
+      content: If `true`, the enrollment was user-approved. If `false`, the device
         may reject certain security-sensitive payloads or commands. This value is
         available in macOS 10.13.2 and later.
     - key: IsUserEnrollment
@@ -389,7 +395,7 @@ responsekeys:
         macOS:
           introduced: '10.15'
       type: <boolean>
-      content: If 'true', the device is user-enrolled. This value is available in
+      content: If `true`, the device is user-enrolled. This value is available in
         iOS 13 and later, and macOS 10.15 and later.
     - key: IsActivationLockManageable
       supportedOS:
@@ -404,7 +410,7 @@ responsekeys:
         watchOS:
           introduced: n/a
       type: <boolean>
-      content: If 'true', the type of enrollment allows the MDM to manage Activation
+      content: If `true`, the type of enrollment allows the MDM to manage Activation
         Lock for this device. This value is available in macOS 10.15 and later.
   - key: SecureBoot
     supportedOS:
@@ -445,7 +451,8 @@ responsekeys:
           introduced: '11.0'
       type: <array>
       content: |-
-        Reports which security features the user disables in 'recoveryOS'. This property is only present for Apple silicon when 'SecureBootLevel' is 'medium'.
+        Reports which security features the user disables in `recoveryOS`. This property is only present for Mac computers with Apple silicon when `SecureBootLevel` is `medium`.
+
         Available in iOS 11 and later.
       subkeys:
       - key: ReducedSecurityItems
@@ -478,7 +485,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', Remote Desktop is active on the device. This value is available
+    content: If `true`, Remote Desktop is active on the device. This value is available
       in macOS 10.14.4 and later.
   - key: AuthenticatedRootVolumeEnabled
     supportedOS:
@@ -494,7 +501,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', the system booted using an Authenticated Root Volume. This
+    content: If `true`, the system booted using an Authenticated Root Volume. This
       value is available in macOS 11 and later.
   - key: BootstrapTokenAllowedForAuthentication
     supportedOS:
@@ -518,7 +525,8 @@ responsekeys:
     - not supported
     content: |-
       This value specifies whether the Secure Enclave Processor (SEP) supports and allows secure operations to use the Bootstrap Token. The value is automatically set for devices enrolled through the Device Enrollment Program (DEP). The user can also manually set this value in the RecoveryOS.
-      This value is available for Apple silicon in macOS 11 and later. Not available for user enrollment.
+
+      This value is available for Mac computers with Apple silicon in macOS 11 and later. Not available for user enrollment.
   - key: BootstrapTokenRequiredForSoftwareUpdate
     supportedOS:
       iOS:
@@ -536,8 +544,9 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: |-
-      If 'true', the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to installation. This only applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo response.
-      This value is available for Apple silicon in macOS 11 and later. Not available for user enrollment.
+      If `true`, the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to installation. This only applies when `BootstrapTokenAllowedForAuthentication` is `true` in the `SecurityInfo` response.
+
+      This value is available for Mac computers with Apple silicon in macOS 11 and later. Not available for user enrollment.
   - key: BootstrapTokenRequiredForKernelExtensionApproval
     supportedOS:
       iOS:
@@ -555,8 +564,9 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: |-
-      If 'true', the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to enabling kernel extensions. This includes enabling kexts through the 'com.apple.syspolicy.kernel-extension-policy' payload or triggering the 'RestartDevice' command with 'RebuildKernelCache' set to 'true'. This only applies when 'BootstrapTokenAllowedForAuthentication' is 'true' in the SecurityInfoResponse.SecurityInfo response.
-      This value is available for Apple silicon in macOS 11 and later. Not available for user enrollment.
+      If `true`, the device can accept a Bootstrap Token from the MDM server instead of prompting for user authentication prior to enabling kernel extensions. This includes enabling kexts through the `com.apple.syspolicy.kernel-extension-policy` payload or triggering the `RestartDevice` command with `RebuildKernelCache` set to `true`. This only applies when `BootstrapTokenAllowedForAuthentication` is `true` in the `SecurityInfo` response.
+
+      This value is available for Mac computers with Apple silicon in macOS 11 and later. Not available for user enrollment.
   - key: IsRecoveryLockEnabled
     supportedOS:
       iOS:
@@ -573,5 +583,9 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If 'true', a password is required to enter recovery (see SetRecoveryLockCommand).
-      Available in macOS 11.5 and later and only on Apple silicon devices.
+    content: If `true`, a password is required to enter recovery (see `SetRecoveryLockCommand`).
+      Available in macOS 11.5 and later and only on Mac computers with Apple silicon.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

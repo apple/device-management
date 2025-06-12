@@ -1,5 +1,5 @@
 title: Dock
-description: ''
+description: The payload that configures the dock.
 payload:
   payloadtype: com.apple.dock
   supportedOS:
@@ -34,17 +34,17 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks the size slider.
+  content: If `true`, locks the size slider.
 - key: magnification
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables magnification.
+  content: If `true`, enables magnification.
 - key: magnify-immutable
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks magnification.
+  content: If `true`, locks magnification.
 - key: largesize
   type: <integer>
   presence: optional
@@ -56,7 +56,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks the magnification slider.
+  content: If `true`, locks the magnification slider.
 - key: orientation
   type: <string>
   presence: optional
@@ -69,7 +69,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks the position.
+  content: If `true`, locks the position.
 - key: mineffect
   type: <string>
   presence: optional
@@ -81,7 +81,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks “Minimize windows using.”
+  content: If `true`, locks "Minimize windows using."
 - key: windowtabbing
   supportedOS:
     macOS:
@@ -92,7 +92,7 @@ payloadkeys:
   - manual
   - always
   - fullscreen
-  content: Set the “Prefer tabs when opening documents” to the provided value.
+  content: Set the "Prefer tabs when opening documents" to the provided value.
 - key: windowtabbing-immutable
   supportedOS:
     macOS:
@@ -100,7 +100,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables “Prefer tabs when opening documents” checkbox.
+  content: If `true`, disables "Prefer tabs when opening documents" checkbox.
 - key: dblclickbehavior
   supportedOS:
     macOS:
@@ -119,12 +119,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks “Double-click a window's title bar.”
+  content: If `true`, locks "Double-click a window's title bar."
 - key: minimize-to-application
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Minimize windows into application icon.”
+  content: If `true`, enables "Minimize windows into application icon."
 - key: minintoapp-immutable
   supportedOS:
     macOS:
@@ -132,27 +132,27 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the “Minimize windows into application icon” checkbox.
+  content: If `true`, disables the "Minimize windows into application icon" checkbox.
 - key: launchanim
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Animate opening applications.”
+  content: If `true`, enables "Animate opening applications."
 - key: launchanim-immutable
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks “Animate opening applications.”
+  content: If `true`, locks "Animate opening applications."
 - key: autohide
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Automatically hide and show the dock.”
+  content: If `true`, enables "Automatically hide and show the dock."
 - key: autohide-immutable
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks “Automatically hide.”
+  content: If `true`, locks "Automatically hide."
 - key: show-process-indicators
   type: <boolean>
   presence: optional
@@ -162,7 +162,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', locks “Show indicators.”
+  content: If `true`, locks "Show indicators."
 - key: show-recents
   supportedOS:
     macOS:
@@ -170,7 +170,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', enables “Show recent items.”
+  content: If `true`, enables "Show recent items."
 - key: showrecents-immutable
   supportedOS:
     macOS:
@@ -178,18 +178,21 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables “Show recent applications” checkbox.
+  content: If `true`, disables "Show recent applications" checkbox.
 - key: contents-immutable
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables changes to the dock.
+  content: If `true`, disables changes to the dock.
 - key: MCXDockSpecialFolders
   type: <array>
   presence: optional
   content: |-
     One or more special folders that may be created at user login time and placed in the dock.
-    The “My Applications” item is only used for Simple Finder environments. The “Original Network Home” item is only used for mobile account users.
+
+
+
+    The "My Applications" item is only used for Simple Finder environments. The "Original Network Home" item is only used for mobile account users.
   subkeys:
   - key: MCXDockSpecialFoldersItems
     type: <string>
@@ -205,16 +208,16 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', use the file in '/Library/Preferences/com.apple.dockfixup.plist'
+  content: If `true`, use the file in `/Library/Preferences/com.apple.dockfixup.plist`
     when a new user or migrated user logs in. This option has no effect for existing
     users. Available in macOS 10.12 and later. Only available on the device channel.
 - key: static-only
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', uses the 'static-apps' and 'static-others' dictionaries for
-    the dock and ignores any items in the 'persistent-apps' and 'persistent-others'
-    dictionaries. If 'false', the contents are merged with the static items listed
+  content: If `true`, uses the `static-apps` and `static-others` dictionaries for
+    the dock and ignores any items in the `persistent-apps` and `persistent-others`
+    dictionaries. If `false`, the contents are merged with the static items listed
     first.
 - key: static-others
   type: <array>
@@ -225,6 +228,8 @@ payloadkeys:
   subkeys: &id001
   - key: StaticItem
     type: <dictionary>
+    content: Items that are located on the Documents side of the Dock and cannot be
+      removed from that location.
     subkeys:
     - key: tile-data
       type: <dictionary>
@@ -248,9 +253,10 @@ payloadkeys:
         - 3
         content: |-
           The type of tile:
-          * '0': URL
-          * '1': File
-          * '3': Directory
+
+          - `0`: URL
+          - `1`: File
+          - `3`: Directory
       - key: file-data
         type: <dictionary>
         presence: optional

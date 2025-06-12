@@ -1,6 +1,5 @@
 title: Clear Passcode Command
-description: This command allows the server to clear the passcode on the device. This
-  command requires the Device Lock and Passcode Removal right.
+description: Remove the passcode from a device.
 payload:
   requesttype: ClearPasscode
   supportedOS:
@@ -34,5 +33,11 @@ payloadkeys:
 - key: UnlockToken
   type: <data>
   presence: required
-  content: The unlock token value that the device provides in its 'TokenUpdateMessage'
+  content: The unlock token value that the device provides in its `TokenUpdateMessage`
     check-in message.
+notes:
+- title: ''
+  content: |-
+    Clearing the passcode in iOS 16 no longer adds the passcode to the history of passcodes. Therefore, the user can reuse the cleared passcode even when the `Passcode` payload has the `pinHistory` key set.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

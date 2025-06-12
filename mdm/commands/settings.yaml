@@ -1,5 +1,5 @@
 title: Settings Command
-description: This command allows the server to set settings on the device.
+description: Configure settings on a device.
 payload:
   requesttype: Settings
   supportedOS:
@@ -69,9 +69,9 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains wallpaper settings. This setting doesn't support
-      User Enrollment, and is available in iOS 8 and later. Starting from iOS 16.0
-      & iPadOS 17.0, when the wallpaper is set for the first time, both location will
-      be updated. After that either location can be set separately.
+      user enrollment. Available in iOS 8 and later. Starting in iOS 16 and iPadOS
+      17, when setting the wallpaper for the first time, both locations update. After
+      that, you can set either location separately.
     subkeys:
     - key: Item
       type: <string>
@@ -92,10 +92,12 @@ payloadkeys:
       - 3
       content: |-
         A number that indicates where to use the wallpaper, which is one of the following values:
-        * '1': Lock screen
-        * '2': Home screen
-        * '3': Both lock and home screens.
-        In iOS 16 and later, and iPadOS 17 and later, when you set the wallpaper for the first time, the system sets both the lock screen and home screen. After that, you can separately set each location.
+
+        - `1`: Lock Screen
+        - `2`: Home Screen
+        - `3`: Both Lock and Home Screens.
+
+          In iOS 16 and later, and iPadOS 17 and later, when you set the wallpaper for the first time, the system sets both the Lock Screen and Home Screen. After that, you can separately set each location.
   - key: DataRoaming
     supportedOS:
       iOS:
@@ -116,8 +118,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains data roaming settings. This setting requires
-      the Network Information access right, doesn't support User Enrollment, and is
-      available in iOS 5 and later.
+      the Network Information access right, and doesn't support user enrollment. Available
+      in iOS 5 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -128,8 +130,8 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable data roaming, which also enables voice roaming. If
-        'false', disable data roaming.
+      content: If `true`, enable data roaming, which also enables voice roaming. If
+        `false`, disable data roaming.
   - key: VoiceRoaming
     supportedOS:
       iOS:
@@ -151,8 +153,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains voice roaming settings. This setting requires
-      the Network Information access right, doesn't support User Enrollment, and is
-      available in iOS 5 and later.
+      the Network Information access right, and doesn't support user enrollment. Available
+      in iOS 5 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -163,7 +165,7 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable voice roaming. If 'false', disable voice roaming,
+      content: If `true`, enable voice roaming. If `false`, disable voice roaming,
         which also disables data roaming. The setting is only available for certain
         carriers.
   - key: PersonalHotspot
@@ -187,8 +189,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains Personal Hotspot settings. This setting requires
-      the Network Information access right, doesn't support User Enrollment, and is
-      available in iOS 5 and later.
+      the Network Information access right, and doesn't support user enrollment. Available
+      in iOS 5 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -199,7 +201,7 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable Personal Hotspot. If 'false', disable Personal Hotspot.
+      content: If `true`, enable Personal Hotspot. If `false`, disable Personal Hotspot.
   - key: Bluetooth
     supportedOS:
       iOS:
@@ -224,9 +226,9 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains Bluetooth settings. This setting requires
-      the Network Information access right, doesn't support User Enrollment, is only
-      available on supervised devices, and is available in iOS 11.3 and later, and
-      macOS 10.13.4 and later.
+      the Network Information access right, doesn't support user enrollment, and is
+      available only on supervised devices. Available in iOS 11.3 and later, and macOS
+      10.13.4 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -237,7 +239,7 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable the Bluetooth setting. If 'false', disable the Bluetooth
+      content: If `true`, enable the Bluetooth setting. If `false`, disable the Bluetooth
         setting.
   - key: ApplicationConfiguration
     supportedOS:
@@ -263,9 +265,9 @@ payloadkeys:
     presence: optional
     content: A dictionary that contains the configurations to apply to the app. Omit
       this setting to remove existing configurations. This setting requires the App
-      Management access right, supports User Enrollment, and is available in iOS 7
-      and later, macOS 10.15 and later, and tvOS 10.2 and later. This setting will
-      fail for apps that are managed by Declarative Device Management.
+      Management access right, supports user enrollment, and is available in iOS 7
+      and later, macOS 10.15 and later, and tvOS 10.2 and later. This setting fails
+      for apps that Declarative Device Management manages.
     subkeys:
     - key: Item
       type: <string>
@@ -278,7 +280,9 @@ payloadkeys:
       presence: required
       content: |-
         The bundle identifier of the managed app.
-        For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
+
+        > Important:
+        > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
     - key: Configuration
       type: <dictionary>
       presence: optional
@@ -310,9 +314,9 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains the attributes to apply to the app. Omit this
-      setting to remove existing attributes. This setting supports User Enrollment,
-      is available in iOS 7 and later, and tvOS 10.2 and later. This setting will
-      fail for apps that are managed by Declarative Device Management.
+      setting to remove existing attributes. This setting supports user enrollment,
+      is available in iOS 7 and later, and tvOS 10.2 and later. This setting fails
+      for apps that Declarative Device Management manages.
     subkeys:
     - key: Item
       type: <string>
@@ -325,7 +329,9 @@ payloadkeys:
       presence: required
       content: |-
         The bundle identifier of the app.
-        For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId' key that's part of the Content Metadata query. For more information on this query, see Getting App and Book Information (Legacy).
+
+        > Important:
+        > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
     - key: Attributes
       type: <dictionary>
       presence: optional
@@ -383,7 +389,7 @@ payloadkeys:
         type: <array>
         presence: optional
         content: An array that contains the associated domains to add to this app.
-          Available in iOS 7 and later.
+          Available in iOS 13 and later.
         subkeys:
         - key: AssociatedDomain
           type: <string>
@@ -396,8 +402,8 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: false
-        content: If 'true', perform claimed site association verification directly
-          at the domain, instead of on Apple's servers. Only set this to 'true' for
+        content: If `true`, perform claimed site association verification directly
+          at the domain, instead of on Apple's servers. Only set this to `true` for
           domains that can't access the internet. Available in iOS 14 and later.
       - key: Removable
         supportedOS:
@@ -408,7 +414,7 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: true
-        content: If 'false', this app isn't removable while it's managed. Available
+        content: If `false`, this app isn't removable while it's managed. Available
           in iOS 14 and later, and tvOS 14 and later.
       - key: TapToPayScreenLock
         supportedOS:
@@ -424,7 +430,8 @@ payloadkeys:
         presence: optional
         default: false
         content: |-
-          If true, the system require Tap to Pay on iPhone users to use Face ID or a passcode to unlock their device after every transaction that requires a customer's card PIN. If 'false', the user can configure this setting on their device.
+          If true, the system require Tap to Pay on iPhone users to use Face ID or a passcode to unlock their device after every transaction that requires a customer's card PIN. If `false`, the user can configure this setting on their device.
+
           Available in iOS 16.4 and later.
       - key: CellularSliceUUID
         supportedOS:
@@ -439,7 +446,8 @@ payloadkeys:
         type: <string>
         presence: optional
         content: |-
-          The data network name (DNN) or app category. For DNN, the value is 'DNN:name', where 'name' is the carrier-provided DNN name. For app category, the value is 'AppCategory:category', where 'category' is a carrier-provided string like “Enterprise1”'.'
+          The data network name (DNN) or app category. For DNN, the value is `DNN:name`, where `name` is the carrier-provided DNN name. For app category, the value is `AppCategory:category`, where `category` is a carrier-provided string like "Enterprise1"`.`
+
           Available in iOS 17 and later.
       - key: Hideable
         supportedOS:
@@ -454,9 +462,9 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: true
-        content: Setting this to false prevents the user from hiding the app. It does
-          not affect the user's ability to leave it in the App Library, while removing
-          it from the home screen.
+        content: If `false`, the system prevents the user from hiding the app. It
+          doesn't affect the user's ability to leave it in the App Library, while
+          removing it from the Home Screen.
       - key: Lockable
         supportedOS:
           iOS:
@@ -470,9 +478,8 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: true
-        content: Setting this to false prevents the user from locking the app. Because
-          hiding an app also requires locking it, disallowing the user from locking
-          the app will also prevent the user from hiding it.
+        content: If `false`, the system prevents the user from locking the app. This
+          also prevents the user from hiding the app.
   - key: DeviceName
     supportedOS:
       iOS:
@@ -497,8 +504,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains device name settings. This setting doesn't
-      support User Enrollment, and is only available on supervised devices. Available
-      on iOS 5 and later.
+      support user enrollment, and is available only on supervised devices. Available
+      in iOS 5 and later, macOS 10.10 and later, and visionOS 2 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -527,7 +534,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains hostname settings. This setting doesn't support
-      User Enrollment, and is available in macOS 10.11 and later.
+      user enrollment, and is available in macOS 10.11 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -551,7 +558,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings about the organization operating
-      the MDM server. This setting supports User Enrollment. Available in iOS 5 and
+      the MDM server. This setting supports user enrollment. Available in iOS 5 and
       later.
     subkeys:
     - key: Item
@@ -582,13 +589,13 @@ payloadkeys:
             introduced: '13.0'
         type: <string>
         presence: optional
-        content: A shorter version of 'OrganizationName', preferably a single word
+        content: A shorter version of `OrganizationName`, preferably a single word
           or abbreviation, suitable for display to the user in places where a very
           short name is necessary.
       - key: OrganizationAddress
         type: <string>
         presence: optional
-        content: The organization's address. Use the LF character ('&#10') to insert
+        content: The organization's address. Use the LF character (`&#10`) to insert
           line breaks.
       - key: OrganizationPhone
         type: <string>
@@ -626,17 +633,11 @@ payloadkeys:
     content: A dictionary that contains default application bundle identifiers for
       each default application type that can be set.
     subkeys:
-    - key: Item
-      type: <string>
-      presence: required
-      rangelist:
-      - DefaultApplications
-      content: Sets information about default applications.
     - key: WebBrowser
       type: <string>
       presence: optional
-      content: The bundle identifier of the app that will be set as the default web
-        browser. This app must be an eligible web browser in the region of the device.
+      content: The bundle identifier of the app the system sets as the default web
+        browser. This app must be an eligible web browser for the region of the device.
   - key: MDMOptions
     supportedOS:
       iOS:
@@ -658,8 +659,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings related to the MDM protocol. This
-      setting doesn't support User Enrollment, and is available in iOS 7 and later,
-      and macOS 10.15 and later.
+      setting doesn't support user enrollment. Available in iOS 7 and later, macOS
+      10.15 and later, and visionOS 2 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -676,7 +677,7 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: false
-        content: If 'true', a supervised device registers itself with Activation Lock
+        content: If `true`, a supervised device registers itself with Activation Lock
           when the user enables Find My. This setting is available for supervised
           devices in iOS 7 and later, and macOS 10.15 and later.
       - key: BootstrapTokenAllowed
@@ -697,7 +698,7 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: false
-        content: If 'true', the server supports the Bootstrap Token commands.
+        content: If `true`, the server supports the Bootstrap Token commands.
       - key: PromptUserToAllowBootstrapTokenForAuthentication
         supportedOS:
           iOS:
@@ -713,14 +714,14 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: false
-        content: If 'true', warn the user that they need to reboot into RecoveryOS
+        content: If `true`, warn the user that they need to reboot into RecoveryOS
           and allow the MDM server to use the Bootstrap Token for authentication for
           certain sensitive operations; for example, enabling kernel extensions or
-          installing certain types of software updates. Set this value to 'false'
+          installing certain types of software updates. Set this value to `false`
           if your MDM server doesn't need to perform these operations. The value provided
-          here overrides the value specified in MDM, and only applies when 'BootstrapTokenAllowedForAuthentication'
-          is 'true' in the SecurityInfoResponse.SecurityInfo response. This value
-          is available for Apple silicon in macOS 11 and later.
+          here overrides the value specified in MDM, and only applies when `BootstrapTokenAllowedForAuthentication`
+          is `true` in the `SecurityInfo` response. This value is available for Mac
+          computers with Apple silicon in macOS 11 and later.
       - key: IdleRebootAllowed
         supportedOS:
           iOS:
@@ -736,9 +737,9 @@ payloadkeys:
         type: <boolean>
         presence: optional
         default: false
-        content: If true, device will automatically reboot while locked after several
-          days of inactivity. This will be turned off by default upon enrollment on
-          supervised devices.
+        content: If `true`, the device automatically reboots while locked after several
+          days of inactivity. This is set to `false` by default when a supervised
+          device enrolls.
   - key: MaximumResidentUsers
     supportedOS:
       iOS:
@@ -761,9 +762,8 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for maximum resident users. Apple
-      deprecated this setting in iOS 13.4. Use 'SharedDeviceConfiguration' instead.
-      This setting doesn't support User Enrollment, and is only available for Shared
-      iPad.
+      deprecated this setting in iOS 13.4. Use 'SharedDeviceConfiguration` instead.
+      This setting is available only for Shared iPad.
     subkeys:
     - key: Item
       type: <string>
@@ -776,7 +776,9 @@ payloadkeys:
       presence: required
       content: |-
         The maximum number of users that can use the device. If this value is greater than the value for the maximum possible number of users that the device supports, the MDM server uses that value instead.
-        This setting requires that the device is in the 'AwaitingConfiguration' phase before it receives the DeviceConfigured <https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html#//apple_ref/doc/uid/TP40017387-CH3-SW301> message.
+
+        This setting requires that the device is in the `AwaitingConfiguration` phase before it receives the [DeviceConfigured](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/MobileDeviceManagementProtocolRef/3-MDM_Protocol/MDM_Protocol.html#//apple_ref/doc/uid/TP40017387-CH3-SW301) message.
+
         When a device reaches the maximum number of resident users and a new user tries to sign in, the MDM server removes a synchronized user to make space for the new user. If there are no synchronized users, the new user sign-in fails. A synchronized user is a user that has completed syncing their data.
   - key: SharedDeviceConfiguration
     supportedOS:
@@ -799,10 +801,13 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains shared device configuration settings. This
-      setting doesn't support User Enrollment, and is available in iOS 13.4 and later
-      for Shared iPad.
+      setting is available only for Shared iPad in iOS 13.4 and later.
     subkeys:
     - key: Item
+      supportedOS:
+        visionOS:
+          introduced: '26.0'
+          supervised: true
       type: <string>
       presence: required
       rangelist:
@@ -827,16 +832,21 @@ payloadkeys:
       type: <integer>
       presence: optional
       content: |-
-        The timeout, in seconds, for the user session. The user session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        The timeout, in seconds, for the user session. The user session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to `0` removes the timeout.
+
         Available in iOS 14.5 and later.
     - key: TemporarySessionTimeout
       supportedOS:
         iOS:
           introduced: '14.5'
+        visionOS:
+          introduced: '26.0'
+          supervised: true
       type: <integer>
       presence: optional
       content: |-
-        The timeout, in seconds, for the temporary session. The temporary session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to '0' removes the timeout.
+        The timeout, in seconds, for the temporary session. The temporary session logs out automatically after the specified period of inactivity. The minimum value is 30 seconds. Setting this value to `0` removes the timeout.
+
         Available in iOS 14.5 and later.
     - key: TemporarySessionOnly
       supportedOS:
@@ -846,8 +856,10 @@ payloadkeys:
       presence: optional
       default: false
       content: |-
-        If 'true', the user only sees the Guest Welcome pane and can only log in as a guest user.
-        If 'false', the user can sign in with a Managed Apple Account (the existing behavior).
+        If `true`, the user only sees the Guest Welcome pane and can only log in as a guest user.
+
+        If `false`, the user can sign in with a Managed Apple Account (the existing behavior).
+
         Available in iOS 14.5 and later.
     - key: ManagedAppleIDDefaultDomains
       supportedOS:
@@ -856,7 +868,8 @@ payloadkeys:
       type: <array>
       presence: optional
       content: |-
-        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list for their Managed Apple Account.
+        A list of domains that the Shared iPad login screen displays. The user can pick a domain from the list to complete their Managed Apple Account.
+
         If this list contains more than 3 domains, the system picks 3 at random for display. Available in iOS 16 and later.
       subkeys:
       - key: AppleID domain
@@ -869,7 +882,9 @@ payloadkeys:
       presence: optional
       content: |-
         A grace period (in days) for Shared iPad online authentication. The Shared iPad only verifies the user's passcode locally during login for users that already exist on the device. However, the system requires an online authentication (against Apple's identity server) after the number of days specified by this setting.
+
         Setting this value to 0 enforces online authentication every time.
+
         Available in iOS 16 and later.
     - key: SkipLanguageAndLocaleSetupForNewUsers
       supportedOS:
@@ -879,7 +894,8 @@ payloadkeys:
       presence: optional
       default: false
       content: |-
-        If 'true', the system picks the system language and locale automatically for the new Shared iPad user.
+        If `true`, the system picks the system language and locale automatically for the new Shared iPad user.
+
         Available in iOS 16.2 and later.
     - key: AwaitUserConfiguration
       supportedOS:
@@ -888,15 +904,16 @@ payloadkeys:
       type: <dictionary>
       presence: optional
       content: |-
-        If enabled, the Shared iPad device enters Setup Assistant after the user triggers a login. The MDM server has a chance to configure the device and user. After configuration, a UserConfiguredCommand needs be sent to the user channel to unblock the login. This feature requires the device to have network access during the login process.
+        If enabled, the Shared iPad device enters Setup Assistant after the user triggers a login. The MDM server has a chance to configure the device and user. After configuration, the server needs to send a `User-Configured-Command` command to the user channel to unblock the login. This feature requires the device to have network access during the login process.
+
         Available in iOS 17 and later.
       subkeys:
       - key: Enabled
         type: <boolean>
         presence: required
-        content: If 'true', the device stops at a Setup Assistant pane after user
-          login. The user won't be able to use the device until the device receives
-          a UserConfiguredCommand command.
+        content: If `true`, the device stops at the Setup Assistant pane after user
+          login. The user can't use the device until it receives a `User-Configured-Command`
+          command.
     - key: PasscodePolicy
       supportedOS:
         iOS:
@@ -916,15 +933,18 @@ payloadkeys:
         - 3600
         - 14400
         content: |-
-          The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
+          The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is `0` seconds and the maximum value is `14400` seconds.
+
           If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
-          If the value set is less than one of the known values, the next lowest value will be used. For example a value of 299 will result in an effective setting of 60.
-          This setting won't take effect if 'TemporarySessionOnly' is 'true' because there's no passcode for a temporary session.
+
+          If the value is less than one of the known values, the device uses the next lowest value. For example a value of 299 results in an effective setting of 60.
+
+          This setting won't take effect if `TemporarySessionOnly` is `true` because there's no passcode for a temporary session.
       - key: AutoLockTime
         type: <integer>
         presence: optional
         content: The number of seconds before a device goes to sleep after being idle.
-          The minimum value for this setting is '120' seconds.
+          The minimum value for this setting is `120` seconds.
   - key: DiagnosticSubmission
     supportedOS:
       iOS:
@@ -946,8 +966,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains diagnostic submission settings. This setting
-      doesn't support User Enrollment, and is only available for Shared iPad. Available
-      in iOS 9.3 and later.
+      is available only for Shared iPad in iOS 9.3 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -958,7 +977,7 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enables diagnostic submission. If 'false', disables diagnostic
+      content: If `true`, enables diagnostic submission. If `false`, disables diagnostic
         submission.
   - key: AppAnalytics
     supportedOS:
@@ -981,8 +1000,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains settings for sharing app analytics. This setting
-      doesn't support User Enrollment, and is only available for Shared iPad. Available
-      in iOS 9.3.2 and later.
+      is available only for Shared iPad in iOS 9.3.2 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -993,7 +1011,7 @@ payloadkeys:
     - key: Enabled
       type: <boolean>
       presence: required
-      content: If 'true', enable sharing app analytics with app developers. If 'false',
+      content: If `true`, enable sharing app analytics with app developers. If `false`,
         disable sharing app analytics.
   - key: PasscodeLockGracePeriod
     supportedOS:
@@ -1017,7 +1035,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: |-
-      A dictionary that contains password lock grace period settings. This setting doesn't support User Enrollment, and is only available for Shared iPad. Available in iOS 9.3.2 and later.
+      A dictionary that contains password lock grace period settings. This setting is available only for Shared iPad in iOS 9.3.2 and later.
       This key is deprecated. Use 'PasscodeLockGracePeriod' in SettingsCommand.Command.Settings.SharedDeviceConfiguration.PasscodePolicy instead.
     subkeys:
     - key: Item
@@ -1037,12 +1055,13 @@ payloadkeys:
       - 3600
       - 14400
       content: |-
-        The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is '0' seconds and the maximum value is '14400' seconds.
+        The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. The minimum value is `0` seconds and the maximum value is `14400` seconds.
+
         If a device has a passcode, a change to a larger value doesn't take effect until the user logs out or removes the passcode. For this reason, it's better to set this value before the user sets a passcode.
-        If the value set is less than one of the known values, the next
-        lowest value will be used. For example a value of 299 will result in an effective
-        setting of 60.
-        This setting won't take effect if 'TemporarySessionOnly' is 'true' because there's no passcode for a temporary session.
+
+        If the value is less than one of the known values, the device uses the next lowest value. For example a value of 299 results in an effective setting of 60.
+
+        This setting won't take effect if `TemporarySessionOnly` is `true` because there's no passcode for a temporary session.
   - key: TimeZone
     supportedOS:
       iOS:
@@ -1068,9 +1087,9 @@ payloadkeys:
         introduced: n/a
     type: <dictionary>
     presence: optional
-    content: A dictionary that contains time zone settings. This setting is only available
-      on supervised devices and doesn't support User Enrollment. Available in iOS
-      14 and later, and tvOS 14 and later.
+    content: A dictionary that contains time zone settings. This setting is available
+      only on supervised devices and doesn't support user enrollment. Available in
+      iOS 14 and later, tvOS 14 and later, and visionOS 2 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -1083,11 +1102,13 @@ payloadkeys:
       presence: required
       content: |-
         The Internet Assigned Numbers Authority (IANA) time zone database name.
-        If the 'forceAutomaticDateAndTime' restriction is set in Restrictions, this setting fails with an error. Otherwise, setting this value disables automatic time zone logic. The user is still be able to change the timezone; for example, by turning automatic date and time back on. The intention is to allow setting the timezone when automatic determination isn't be available, such as when Location Services are off.
+
+        If the `forceAutomaticDateAndTime` restriction is set in `Restrictions`, this setting fails with an error. Otherwise, setting this value disables automatic time zone logic. The user is still be able to change the time zone; for example, by turning automatic date and time back on. The intention is to allow setting the time zone when automatic determination isn't be available, such as when Location Services are off.
   - key: SoftwareUpdateSettings
     supportedOS:
       iOS:
         introduced: '14.5'
+        deprecated: '26.0'
         supervised: true
         sharedipad:
           mode: allowed
@@ -1106,7 +1127,7 @@ payloadkeys:
     type: <dictionary>
     presence: optional
     content: A dictionary that contains software update settings. This setting doesn't
-      support User Enrollment, and is available in iOS 14.5 and later.
+      support user enrollment. Available in iOS 14.5 and later.
     subkeys:
     - key: Item
       type: <string>
@@ -1124,10 +1145,13 @@ payloadkeys:
       - 2
       content: |-
         This value defines how the system presents software updates to the user. When there's more than one available update for the user, the system behaves as follows:
-        * '0': Presents both options to the user.
-        * '1': Presents the lower numbered (oldest) software update version.
-        * '2': Presents only the highest numbered (most recent) release available for the device.
+
+        - `0`: Presents both options to the user.
+        - `1`: Presents the lower numbered (oldest) software update version.
+        - `2`: Presents only the highest numbered (most recent) release available for the device.
+
         This value has no effect when there's only one available update; the system shows the single available update to the user regardless of the value of this setting.
+
         Available in iOS 14.5 and later.
   - key: AccessibilitySettings
     supportedOS:
@@ -1163,7 +1187,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables bold text.
+      content: If `true`, the system enables bold text.
     - key: IncreaseContrastEnabled
       supportedOS:
         watchOS:
@@ -1171,17 +1195,17 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables increase contrast.
+      content: If `true`, the system enables increase contrast.
     - key: ReduceMotionEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables reduced motion.
+      content: If `true`, the system enables reduced motion.
     - key: ReduceTransparencyEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables reduced transparency.
+      content: If `true`, the system enables reduced transparency.
     - key: TextSize
       type: <integer>
       presence: optional
@@ -1199,23 +1223,23 @@ payloadkeys:
       - 10
       - 11
       default: 4
-      content: The accessibility text size apps that support dynamic text use. '0'
-        is the smallest value, and '11' is the largest available.
+      content: The accessibility text size apps that support dynamic text use. `0`
+        is the smallest value, and `11` is the largest available.
     - key: TouchAccommodationsEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables touch accommodations.
+      content: If `true`, the system enables touch accommodations.
     - key: VoiceOverEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables voiceover.
+      content: If `true`, the system enables voiceover.
     - key: ZoomEnabled
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables zoom.
+      content: If `true`, the system enables zoom.
     - key: GrayscaleEnabled
       supportedOS:
         iOS:
@@ -1225,7 +1249,7 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', the system enables grayscale display.
+      content: If `true`, the system enables grayscale display.
 responsekeys:
 - key: Settings
   type: <dictionary>
@@ -1237,8 +1261,9 @@ responsekeys:
     presence: required
     content: |-
       The status of the setting, which is one of the following values:
-      * 'Acknowledged': The device processed the command successfully.
-      * 'Error': An error occurred. See the 'ErrorChain' for more details.
+
+      - `Acknowledged`: The device processed the command successfully.
+      - `Error`: An error occurred. See the `ErrorChain` for more details.
   - key: ErrorChain
     type: <array>
     presence: optional
@@ -1246,6 +1271,7 @@ responsekeys:
     subkeys:
     - key: ErrorChainItem
       type: <dictionary>
+      content: A dictionary that describes an error chain item.
       subkeys:
       - key: ANY
         type: <any>
@@ -1263,4 +1289,12 @@ responsekeys:
     presence: optional
     content: |-
       The app identifier to which this error applies.
-      For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
+
+      > Note:
+      > For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
+notes:
+- title: ''
+  content: |-
+    Users may be able to change the settings later if a profile isn't set to restrict such changes.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

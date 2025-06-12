@@ -1,5 +1,5 @@
 title: Domains
-description: Use this section to define Domains settings.
+description: The payload that configures the domains under an organization's management.
 payload:
   payloadtype: com.apple.domains
   supportedOS:
@@ -47,6 +47,7 @@ payloadkeys:
   presence: optional
   content: |-
     An array of domains. The system considers email addresses that lack a suffix matching any of these strings out of domain and marked in Mail.
+
     Available in iOS 8 and later and macOS 10.10 and later.
   subkeys:
   - key: EmailDomainsItem
@@ -62,6 +63,7 @@ payloadkeys:
   presence: optional
   content: |-
     An array of domains. The system considers URLs matching the patterns listed in this property managed.
+
     Available in iOS 9.3 and later.
   subkeys:
   - key: WebDomainsItem
@@ -80,7 +82,9 @@ payloadkeys:
   presence: optional
   content: |-
     An array of domains. Users can only save passwords in Safari from URLs matching the patterns listed here. This property doesn't disable the autofill feature itself.
+
     Supervised devices or Shared iPads need this property to enable saving passwords in Safari.
+
     Available in iOS 9.3 and later.
   subkeys:
   - key: SafariPasswordAutoFillDomainsItem
@@ -101,6 +105,7 @@ payloadkeys:
   presence: optional
   content: |-
     An array of up to 10 strings. URLs matching the patterns listed here have relaxed enforcement of cross-site tracking prevention.
+
     Available in iOS 16.2 and later and macOS 13.1 and later.
   subkeys:
   - key: CrossSiteTrackingPreventionRelaxedDomainItem
@@ -119,10 +124,18 @@ payloadkeys:
       allowmanualinstall: false
   type: <array>
   presence: optional
-  content: An array of up to 10 strings representing app bundle-ids. Apps matching
-    the bundle-ids listed here will have relaxed enforcement of cross-site tracking
-    prevention for the domains listed in the 'CrossSiteTrackingPreventionRelaxedDomains'
-    key.
+  content: |-
+    An array of up to 10 strings representing app bundle-ids. Apps matching the bundle-ids listed here have relaxed enforcement of cross-site tracking prevention for the domains listed in `CrossSiteTrackingPreventionRelaxedDomains`.
+
+    Available in iOS 18 and later and macOS 15 and later.
   subkeys:
   - key: CrossSiteTrackingPreventionRelaxedAppsItem
     type: <string>
+notes:
+- title: ''
+  content: |-
+    A URL that begins with the prefix `www.` is treated as though it doesn't contain that prefix during matching. For example, `http://www.apple.com/store` is matched as `http://apple.com/store`.
+
+    Trailing slashes are ignored.
+
+    If a domain string entry contains a port number, the system considers only addresses that specify that port number managed. Otherwise, the system matches the domain without regard to the port number specified. For example, the pattern `*.apple.com:8080` matches `http://site.apple.com:8080/page.html` but not `http://site.apple.com/page.html`, while the pattern `*.apple.com` matches both URLs.

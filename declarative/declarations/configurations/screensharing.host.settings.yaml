@@ -1,5 +1,5 @@
 title: Screen Sharing:Host Settings
-description: Use this configuration to define Screen Sharing host settings and restrictions.
+description: The declaration to configure screen-sharing host settings and restrictions.
 payload:
   declarationtype: com.apple.configuration.screensharing.host.settings
   supportedOS:
@@ -27,7 +27,7 @@ payloadkeys:
   range:
     min: 0
     max: 2
-  content: Sets the maximum number of Virtual Displays to make available to clients.
+  content: The maximum number of virtual displays to make available to clients.
 - key: PortBase
   title: UDP Port base
   type: <integer>
@@ -35,27 +35,28 @@ payloadkeys:
   range:
     min: 1024
     max: 65535
-  content: |-
-    Specifies the initial UDP port number for connecting to the host. Screen Sharing needs multiple connections
-    so additional connections will increment this base port number by 1 for each needed connection. This does not
-    change the port number used to initially establish a connection with a host, which is always TCP port 5900.
+  content: The initial UDP port number to connect to the host. Screen sharing requires
+    multiple connections, so the system increments this value by 1 for each additional
+    connection. This doesn't change the port number that the system uses to initially
+    establish a connection with a host, which is always TCP port 5900.
 - key: PreventCopyFilesFromHost
   title: Prevent copying files from host
   type: <boolean>
   presence: optional
   default: false
-  content: Set to true to prevent users from copying files from the Screen Sharing
+  content: If `true`, the system prevents users from copying files from the screen-sharing
     host.
 - key: PreventCopyFilesToHost
   title: Prevent copying files to host
   type: <boolean>
   presence: optional
   default: false
-  content: Set to true to prevent users from copying files to the Screen Sharing host.
+  content: If `true`, the system prevents users from copying files to the screen-sharing
+    host.
 - key: PreventHighPerformanceConnections
   title: Prevent High Performance connections
   type: <boolean>
   presence: optional
   default: false
-  content: Set to true to prevent clients from establishing High Performance connections
-    to the host.
+  content: If `true`, the system prevents clients from establishing high-performance
+    connections to the host.

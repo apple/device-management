@@ -1,6 +1,5 @@
 title: Conference Room Display
-description: Use this section to place an Apple TV device into Conference Room Display
-  mode.
+description: The payload that configures Conference Room Display mode for Apple TV.
 payload:
   payloadtype: com.apple.conferenceroomdisplay
   supportedOS:
@@ -25,3 +24,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The custom message displayed on the screen in Conference Room Display mode.
+notes:
+- title: ''
+  content: Conference Room Display mode locks Apple TV into that mode, to prevent
+    other types of usage.

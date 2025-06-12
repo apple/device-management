@@ -1,7 +1,5 @@
 title: ManifestURL
-description: The definition of the ManifestURL property list that specifies where
-  a package is to be downloaded from, and provides hashes to verify the integrity
-  of the package
+description: The URL to the app manifest.
 payload:
   payloadtype: ManifestURL
   supportedOS:
@@ -26,7 +24,7 @@ payloadkeys:
   title: The manifest items
   type: <array>
   presence: required
-  content: An array of dictionaries representing what the manifest will install
+  content: An array of dictionaries representing what the manifest installs.
   subkeys:
   - key: items-item
     type: <dictionary>
@@ -36,7 +34,7 @@ payloadkeys:
       title: An asset
       type: <array>
       presence: required
-      content: An array of dictionaries
+      content: An array of dictionaries that describe an item to install.
       subkeys:
       - key: assets-item
         type: <dictionary>
@@ -50,43 +48,67 @@ payloadkeys:
           - asset-pack-manifest
           - display-image
           - full-size-image
-          content: The asset-item kind
+          - software-package
+          content: The kind of manifest item to install. Use `software-package` for
+            apps and macOS packages.
+        - key: md5
+          title: md5 hash
+          type: <string>
+          presence: optional
+          content: The MD5 hash value the device uses when verifying the hash of the
+            manifest item data. When this key is present, the device ignores the `md5-size`
+            and `md5s` keys.
         - key: md5-size
           title: md5 chunk size
           type: <integer>
           presence: optional
-          content: The md5 chunk size
+          content: The data *chunk* size the device uses when verifying the hash of
+            the manifest item data. Required when the `md5s` key is present.
         - key: md5s
           title: md5 hashes
           type: <array>
           presence: optional
-          content: An array of <string>
+          content: An array of strings representing a set of MD5 hash values. The
+            device uses these values to verify the integrity of the downloaded manifest
+            item data. Required when the `md5-size` key is present.
           subkeys:
           - key: md5s-item
             title: md5 hash
             type: <string>
             presence: required
+            content: An MD5 hash value.
+        - key: sha256
+          title: sha256 hash
+          type: <string>
+          presence: optional
+          content: The SHA-256 hash value the device uses when verifying the hash
+            of the manifest item data. When this key is present, the device ignores
+            the `sha256-size` and `sha256` keys.
         - key: sha256-size
           title: sha256 chunk size
           type: <integer>
           presence: optional
-          content: sha256 hash size
+          content: The data *chunk* size the device uses when verifying the hash of
+            the manifest item data. Required when the `sha256s` key is present.
         - key: sha256s
           title: If there are multiple sha256 hashes provide a chunk size
           type: <array>
           presence: optional
-          content: An array of sha256 hashes
+          content: An array of strings representing a set of SHA-256 hash values.
+            The device uses these values to verify the integrity of the downloaded
+            manifest item data. Required when the `sha256-size` key is present.
           subkeys:
           - key: sha256s-item
             title: sha256 hash
             type: <string>
             presence: required
+            content: A SHA-256 hash value.
         - key: url
           title: The asset URL
           type: <string>
           presence: required
-          content: URL must be HTTPs and support ATP security (internal only URL must
-            not be a URL hosted from the same device installing the manifest.)
+          content: The URL that hosts the manifest item data. The URL needs to start
+            with `https://`.
         - key: needs-shine
           title: Icon treatment
           supportedOS:
@@ -108,28 +130,26 @@ payloadkeys:
       title: Application metadata
       type: <dictionary>
       presence: required
-      content: Metadata related to the application being installed
+      content: The metadata for an application or package manifest item.
       subkeys:
       - key: bundle-identifier
-        title: Bundle identifier for app being installed.
+        title: Bundle identifier
         type: <string>
         presence: required
-        content: Must be a string with a length greater than one character. (internal
-          only can not be the bundle identifier of a system application. Must be a
-          profile validated application if the bundle identifier matches that of an
-          existing application)
+        content: The bundle identifier of the app or package manifest item.
       - key: bundle-version
         title: The bundle version
         type: <string>
         presence: optional
-        content: The bundle version of the application
+        content: The bundle version of the app or package manifest item.
       - key: kind
         title: The kind
         type: <string>
         presence: required
         rangelist:
         - software
-        content: If an application must be software
+        content: The type of manifest item. For an app or package, this needs to be
+          `software`.
       - key: sizeInBytes
         title: Size in bytes
         supportedOS:
@@ -150,12 +170,12 @@ payloadkeys:
         title: The application subtitle
         type: <string>
         presence: optional
-        content: The application subtitle maps to the application developer name
+        content: The name of the app or package developer.
       - key: title
         title: The title
         type: <string>
         presence: required
-        content: Must be a string with length greater than one character.
+        content: The title of the app or package being installed.
       - key: items
         title: The items
         supportedOS:
@@ -187,3 +207,8 @@ payloadkeys:
             type: <string>
             presence: optional
             content: removed
+notes:
+- title: ''
+  content: Use SHA-256 hashes instead of MD5 because SHA-256 has stronger security.
+    If both SHA-256 and MD5 hash properties are present, the device uses only the
+    SHA-256 hashes to verify the manifest data.

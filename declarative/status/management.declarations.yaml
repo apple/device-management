@@ -1,5 +1,5 @@
 title: Status Management Declarations
-description: State of declarations processed by the client.
+description: A status report of the client's processed declarations.
 payload:
   statusitemtype: management.declarations
   supportedOS:
@@ -70,17 +70,17 @@ payloadkeys:
         title: Identifier
         type: <string>
         presence: required
-        content: The 'identifier' of the declaration this status report refers to.
+        content: The `identifier` of the declaration this status report refers to.
       - key: server-token
         title: Server-Token
         type: <string>
         presence: required
-        content: The 'ServerToken' of the declaration this status report refers to.
+        content: The `ServerToken` of the declaration this status report refers to.
       - key: active
         title: Declaration's Active State
         type: <boolean>
         presence: required
-        content: If 'true', the declaration is active on the device.
+        content: If `true`, the declaration is active on the device.
       - key: valid
         title: Declaration's Valid State
         type: <string>
@@ -89,8 +89,8 @@ payloadkeys:
         - unknown
         - invalid
         - valid
-        content: This string defines the validity of the declaration. If it's 'invalid',
-          the 'reasons' property contains more details.
+        content: This string defines the validity of the declaration. If it's `invalid`,
+          the `reasons` property contains more details.
       - key: reasons
         title: Status Reasons
         type: <array>
@@ -165,3 +165,6 @@ payloadkeys:
       content: Status for a declaration processed by the client.
       subkeytype: Declaration
       subkeys: *id001
+notes:
+- title: ''
+  content: The name of the declaration status item is `management.declarations`.

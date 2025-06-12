@@ -1,6 +1,5 @@
 title: Managed Application Feedback Command
-description: This command queries the device for application feedback information.
-  This command requires the App Management right.
+description: Get app feedback from a managed app on the device.
 payload:
   requesttype: ManagedApplicationFeedback
   supportedOS:
@@ -50,8 +49,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', delete the app's feedback dictionary after the server reads
-    it. Apps that are managed by Declarative Device Management will be ignored.
+  content: If `true`, delete the app's feedback dictionary after the server reads
+    it. Apps that are managed by Declarative Device Management are ignored.
 responsekeys:
 - key: ManagedApplicationFeedback
   type: <array>
@@ -60,6 +59,7 @@ responsekeys:
   subkeys:
   - key: ManagedApplicationFeedbackItem
     type: <dictionary>
+    content: A dictionary that contains a managed app's feedback item.
     subkeys:
     - key: Identifier
       type: <string>
@@ -74,3 +74,7 @@ responsekeys:
         type: <any>
         presence: optional
         content: The app's feedback items.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

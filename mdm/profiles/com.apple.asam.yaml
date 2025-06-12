@@ -1,5 +1,5 @@
 title: Autonomous Single App Mode
-description: ''
+description: The payload that configures Autonomous Single App mode.
 payload:
   payloadtype: com.apple.asam
   supportedOS:
@@ -33,6 +33,8 @@ payloadkeys:
   subkeys:
   - key: AllowedApplicationsItem
     type: <dictionary>
+    content: A dictionary that specifies an app that can be granted access to the
+      Accessibilty APIs.
     subkeys:
     - key: BundleIdentifier
       supportedOS:
@@ -41,8 +43,8 @@ payloadkeys:
       type: <string>
       presence: required
       content: The unique bundle identifier. If two dictionaries contain the same
-        'BundleIdentifier' value but a different 'TeamIdentifier' value, this will
-        be considered an error and the profile won't be installed.
+        `BundleIdentifier` value but a different `TeamIdentifier` value, an error
+        occurs and the profile won't be installed.
     - key: TeamIdentifier
       supportedOS:
         macOS:
@@ -51,3 +53,10 @@ payloadkeys:
       presence: required
       content: The developer's team identifier that the system used when it signed
         the app.
+notes:
+- title: ''
+  content: |-
+    The system only allows installation of one profile of this type, and it requires installation through a user-approved MDM server. Apps listed in this profile have low-level access to the system, including, but not limited to, key logging and user interface manipulation outside the app's context.
+
+    > Important:
+    > If two dictionaries contain the same `BundleIdentifier` value but a different `TeamIdentifier` value, an error occurs and the system doesn’t install the profile.

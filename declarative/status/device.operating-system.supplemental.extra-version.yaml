@@ -1,5 +1,6 @@
 title: Status Device Operating System Supplemental Extra Version
-description: The device's operating system rapid security response version.
+description: A status report of the device's operating system's rapid security response
+  identifier.
 payload:
   statusitemtype: device.operating-system.supplemental.extra-version
   supportedOS:
@@ -55,4 +56,4 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system's rapid security response version in use on the device,
-    for example, 'a'.
+    for example, `a`.

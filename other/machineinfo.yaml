@@ -1,6 +1,5 @@
 title: MachineInfo
-description: The definition of MachineInfo payload sent by a client when fetching
-  an MDM enrollment profile
+description: A device's information in response to a MDM enrollment profile request.
 payload:
   payloadtype: MachineInfo
   supportedOS:
@@ -55,12 +54,12 @@ payloadkeys:
   title: Product
   type: <string>
   presence: required
-  content: The device's product type, e.g. iPhone5,1.
+  content: The device's product type, for example, `iPhone5,1`.
 - key: VERSION
   title: Build Version
   type: <string>
   presence: required
-  content: The build version installed on the device, e.g. 7A182.
+  content: The build version installed on the device, for example, `7A182`.
 - key: OS_VERSION
   title: OS Version
   supportedOS:
@@ -72,7 +71,10 @@ payloadkeys:
       introduced: '17.0'
   type: <string>
   presence: required
-  content: The OS version installed on the device, e.g. 17.0.
+  content: |-
+    The OS version installed on the device, for example, 17.0.
+
+    Available on iOS 17 and later, macOS 14 and later, tvOS 17 and later, and watchOS 10 and later.
 - key: SUPPLEMENTAL_BUILD_VERSION
   title: Supplemental Build Version
   supportedOS:
@@ -84,7 +86,10 @@ payloadkeys:
       introduced: '17.0'
   type: <string>
   presence: optional
-  content: The device's operating system supplemental build version (if available).
+  content: |-
+    The device's operating system supplemental build version (if available).
+
+    Available on iOS 17 and later, macOS 14 and later, tvOS 17 and later, and watchOS 10 and later.
 - key: SUPPLEMENTAL_OS_VERSION_EXTRA
   title: Supplemental OS Version Extra
   supportedOS:
@@ -96,7 +101,10 @@ payloadkeys:
       introduced: '17.0'
   type: <string>
   presence: optional
-  content: The device's operating system supplemental OS version extra (if available).
+  content: |-
+    The device's operating system supplemental OS version extra (if available).
+
+    Available on iOS 17 and later, macOS 14 and later, tvOS 17 and later, and watchOS 10 and later.
 - key: IMEI
   title: IMEI
   supportedOS:
@@ -131,7 +139,7 @@ payloadkeys:
   title: Language
   type: <string>
   presence: optional
-  content: The user's currently-selected language, e.g. en.
+  content: The user's currently-selected language, for example, `en`.
 - key: MDM_CAN_REQUEST_SOFTWARE_UPDATE
   title: MDM Can Request Software Update
   supportedOS:
@@ -148,8 +156,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If set to "true", indicates that the device can be triggered by the server
-    to do a required software update.
+  content: |-
+    If `true`, indicates that the server can trigger the device to do a required software update.
+
+    Available on iOS 17 and later, and macOS 14 and later.
 - key: PAIRING_TOKEN
   title: Watch Enrollment Pairing Token
   supportedOS:
@@ -163,7 +173,10 @@ payloadkeys:
       introduced: n/a
   type: <data>
   presence: optional
-  content: The pairing token to validate when a watch is enrolling.
+  content: |-
+    The pairing token to validate when a watch is enrolling.
+
+    Available on watchOS 10 and later.
 - key: SOFTWARE_UPDATE_DEVICE_ID
   title: Software Update Device ID
   supportedOS:
@@ -176,4 +189,30 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The device model identifier used to lookup available OS updates through
-    https://gdmf.apple.com/v2/pmv.
+    https://gdmf.apple.com/v2/pmv. Available on iOS 17.4 and later, macOS 14.4 and
+    later, and visionOS 1.1 and later.
+- key: MDM_CAN_REQUEST_PSSO_CONFIG
+  title: Platform SSO is Supported
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '26.0'
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If `true`, indicates that the server can trigger the device to do a required Platform SSO authentication before enrolling.
+
+    Available on macOS 26 and later.
+notes:
+- title: ''
+  content: This dictionary is CMS-signed with the device identity certificate. The
+    system includes the device's certificate and all necessary intermediate certificates.
+    The certificate chain should validate against the Apple Root CA.

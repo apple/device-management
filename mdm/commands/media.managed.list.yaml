@@ -1,5 +1,5 @@
 title: Managed Media List Command
-description: This command allows the server to query for installed 3rd party applications.
+description: Get a list of the managed books on a device.
 payload:
   requesttype: ManagedMediaList
   supportedOS:
@@ -31,6 +31,7 @@ responsekeys:
   subkeys:
   - key: BooksItem
     type: <dictionary>
+    content: A dictionary that describes a managed book.
     subkeys:
     - key: iTunesStoreID
       type: <integer>
@@ -41,31 +42,35 @@ responsekeys:
       presence: optional
       content: |-
         The installation state of this book, which is one of the following values:
-        * 'Queued'
-        * 'PromptingForLogin'
-        * 'Updating'
-        * 'Installing'
-        * 'Managed'
-        * 'ManagedButUninstalled'
-        * 'Installed'
-        * 'Uninstalled'
-        * 'Failed'
-        * 'Unknown'
-        The 'Failed' and 'Unknown' states are transient and the device only reports them once. Books from the Book Store report their state as 'Installed' instead of 'Managed'.
+
+        - `Queued`
+        - `PromptingForLogin`
+        - `Updating`
+        - `Installing`
+        - `Managed`
+        - `ManagedButUninstalled`
+        - `Installed`
+        - `Uninstalled`
+        - `Failed`
+        - `Unknown`
+
+        The `Failed` and `Unknown` states are transient and the device only reports them once. Books from the Book Store report their state as `Installed` instead of `Managed`.
     - key: PersistentID
       type: <string>
       presence: optional
       content: The book's persistent identifier in reverse-DNS form; for example,
-        'com.acme.manuals.training'.
+        `com.acme.manuals.training`.
     - key: Kind
       type: <string>
       presence: optional
       content: |-
         The kind of the media, which is one of the following values:
-        * 'pdf': A PDF file
-        * 'epub': An EPUB file in 'gzip' format
-        * 'ibooks': An iBooks Author file in 'gzip' format
-        * The file extension in the URL
+
+        - `pdf`: A PDF file
+        - `epub`: An EPUB file in `gzip` format
+        - `ibooks`: An iBooks Author file in `gzip` format
+        - The file extension in the URL
+
         This value is available in iOS 8 and later.
     - key: Version
       type: <string>
@@ -79,3 +84,7 @@ responsekeys:
       type: <string>
       presence: optional
       content: The book's title.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

@@ -1,5 +1,5 @@
 title: Log Out User Command
-description: This command allows the server to force the current user to logout.
+description: Force the current user to log out of a device.
 payload:
   requesttype: LogOutUser
   supportedOS:
@@ -23,3 +23,9 @@ payload:
     watchOS:
       introduced: n/a
   content: This command allows the server to force the current user to logout.
+notes:
+- title: ''
+  content: |-
+    After logging out the user, MDM commands aren't available on the device for up to 2 minutes.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

@@ -1,5 +1,5 @@
 title: Management:Properties
-description: Use this declaration to set properties on the device.
+description: The declaration to configure the properties on the device.
 payload:
   declarationtype: com.apple.management.properties
   supportedOS:

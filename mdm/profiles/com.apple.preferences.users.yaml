@@ -1,4 +1,5 @@
 title: User Preferences
+description: The payload that configures iCloud password preferences.
 payload:
   payloadtype: com.apple.preference.users
   supportedOS:
@@ -26,4 +27,4 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', disables the iCloud password for local accounts.
+  content: If `true`, disables the iCloud password for local accounts.

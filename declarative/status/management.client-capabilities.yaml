@@ -1,5 +1,5 @@
 title: Status Management Client Capabilities
-description: The client's protocol capabilities.
+description: A status report of the client's protocol capabilities.
 payload:
   statusitemtype: management.client-capabilities
   supportedOS:

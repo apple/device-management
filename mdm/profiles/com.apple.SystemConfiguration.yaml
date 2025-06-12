@@ -1,4 +1,5 @@
 title: Network Proxy Configuration
+description: The payload that configures network proxies for a device.
 payload:
   payloadtype: com.apple.SystemConfiguration
   supportedOS:
@@ -29,11 +30,11 @@ payloadkeys:
   - key: FTPEnable
     type: <integer>
     presence: optional
-    content: If 'true', enables FTP proxy.
+    content: If `true`, enables FTP proxy.
   - key: FTPPassive
     type: <integer>
     presence: optional
-    content: If 'true', enables passive FTP mode.
+    content: If `true`, enables passive FTP mode.
   - key: FTPPort
     type: <integer>
     presence: optional
@@ -45,7 +46,7 @@ payloadkeys:
   - key: GopherEnable
     type: <integer>
     presence: optional
-    content: If 'true', enables gopher proxy.
+    content: If `true`, enables gopher proxy.
   - key: GopherPort
     type: <integer>
     presence: optional
@@ -57,7 +58,7 @@ payloadkeys:
   - key: HTTPEnable
     type: <integer>
     presence: optional
-    content: If 'true', enables web proxy.
+    content: If `true`, enables web proxy.
   - key: HTTPPort
     type: <integer>
     presence: optional
@@ -69,7 +70,7 @@ payloadkeys:
   - key: HTTPSEnable
     type: <integer>
     presence: optional
-    content: If 'true', enables secure web proxy.
+    content: If `true`, enables secure web proxy.
   - key: HTTPSPort
     type: <integer>
     presence: optional
@@ -81,7 +82,7 @@ payloadkeys:
   - key: ProxyAutoConfigEnable
     type: <integer>
     presence: optional
-    content: If 'true', enables automatic proxy configuration.
+    content: If `true`, enables automatic proxy configuration.
   - key: ProxyAutoConfigURLString
     type: <string>
     presence: optional
@@ -96,7 +97,7 @@ payloadkeys:
   - key: RTSPEnable
     type: <integer>
     presence: optional
-    content: If 'true', enable streaming proxy.
+    content: If `true`, enable streaming proxy.
   - key: RTSPPort
     type: <integer>
     presence: optional
@@ -108,7 +109,7 @@ payloadkeys:
   - key: SOCKSEnable
     type: <integer>
     presence: optional
-    content: If 'true', enable the SOCKS proxy.
+    content: If `true`, enable the SOCKS proxy.
   - key: SOCKSPortinteger
     type: <integer>
     presence: optional
@@ -121,8 +122,9 @@ payloadkeys:
     type: <integer>
     presence: optional
     content: |-
-      If '1', enables fallback. Default is '1'.
-      For managed devices, if not supplied, the default is '0'.
+      If `1`, enables fallback. Default is `1`.
+
+      For managed devices, if not supplied, the default is `0`.
   - key: ExceptionsList
     type: <array>
     presence: optional

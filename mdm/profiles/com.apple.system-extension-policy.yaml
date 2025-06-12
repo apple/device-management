@@ -1,5 +1,5 @@
 title: System Extensions
-description: ''
+description: The payload that configures system extensions.
 payload:
   payloadtype: com.apple.system-extension-policy
   supportedOS:
@@ -35,15 +35,17 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', restricts users from approving additional system extensions
+  content: If `false`, restricts users from approving additional system extensions
     that configuration profiles don't explicitly allow.
 - key: AllowedTeamIdentifiers
   type: <array>
   presence: optional
   content: |-
     An array of team identifiers that defines valid, signed system extensions that are allowable to load. Approved system extensions are those signed with any of the specified team identifiers.
-    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using activationRequest(forExtensionWithIdentifier:queue:).
-    It's an error for the same team identifier to appear in both this array and as a key in the 'AllowedSystemExtensions' dictionary.
+
+    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using `OSSystemExtensionActivationRequest API`.
+
+    It's an error for the same team identifier to appear in both this array and as a key in the `AllowedSystemExtensions` dictionary.
   subkeys:
   - key: AllowedTeamIdentifiersItem
     title: Identifier
@@ -52,7 +54,8 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: |-
-    A dictionary that maps a team identifier to an array of strings, where each string is a type of system extension that you can install for that team identifier. The allowed extension types are 'DriverExtension', 'NetworkExtension', and 'EndpointSecurityExtension'.
+    A dictionary that maps a team identifier to an array of strings, where each string is a type of system extension that you can install for that team identifier. The allowed extension types are `DriverExtension`, `NetworkExtension`, and `EndpointSecurityExtension`.
+
     If there's no entry for a specified team identifier in the dictionary, the system allows all extension types.
   subkeys:
   - key: ANY
@@ -70,8 +73,10 @@ payloadkeys:
   presence: optional
   content: |-
     A dictionary of approved system extensions on the computer. The dictionary maps the team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension to install.
-    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using activationRequest(forExtensionWithIdentifier:queue:).
-    It's an error for the same team identifier to appear in both the 'AllowedTeamIdentifiers' array and as a key in this dictionary.
+
+    To avoid requiring an administrator to authorize the operation, you can activate system extensions that this key specifies using `OSSystemExtensionActivationRequest API`.
+
+    It's an error for the same team identifier to appear in both the `AllowedTeamIdentifiers` array and as a key in this dictionary.
   subkeys:
   - key: ANY
     type: <array>
@@ -90,7 +95,8 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: |-
-    A dictionary of system extensions that are allowed to remove themselves from the machine. The dictionary maps team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension. An application using the 'OSSystemExtensionDeactivationRequest' API can deactivate the specified system extensions without requiring an administrator to authorize the operation.
+    A dictionary of system extensions that are allowed to remove themselves from the machine. The dictionary maps team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension. An application using the `OSSystemExtensionDeactivationRequest` API can deactivate the specified system extensions without requiring an administrator to authorize the operation.
+
     Available in macOS 12 and later.
   subkeys:
   - key: ANY
@@ -113,7 +119,7 @@ payloadkeys:
     the team identifiers (keys) to arrays of bundle identifiers, where the bundle
     identifier defines the system extension which can't be disabled or uninstalled
     when SIP is enabled. It's an error for the same mapping to appear in the dictionary
-    values corresponding to 'RemovableSystemExtensions' and 'NonRemovableSystemExtensions'
+    values corresponding to `RemovableSystemExtensions` and `NonRemovableSystemExtensions`
     keys.
   subkeys:
   - key: ANY
@@ -134,8 +140,8 @@ payloadkeys:
   content: A dictionary of system extensions on the computer. The dictionary maps
     the team identifiers (keys) to arrays of bundle identifiers, where the bundle
     identifier defines the system extension which can't be disabled or uninstalled
-    from System Settings or Finder. The set of system extensions between 'RemovableSystemExtensions'
-    and 'NonRemovableFromUISystemExtensions' can to overlap.
+    from System Settings or Finder. The set of system extensions between `RemovableSystemExtensions`
+    and `NonRemovableFromUISystemExtensions` can to overlap.
   subkeys:
   - key: ANY
     type: <array>
@@ -146,3 +152,12 @@ payloadkeys:
       type: <string>
       presence: required
       content: Non Removable from UI system extension bundle ID
+notes:
+- title: ''
+  content: |-
+    When there are multiple installed profiles, the keys combine as follows:
+
+    - `AllowUserOverrides` is `false` if any profile sets it to `false`.
+    - All the other values combine together.
+
+    Beginning in macOS 11.3, installing or removing this payload can change the state of system extensions on the computer. If a containing application activates a system extension, and the system extension is in a pending state, installing a payload that allows the extension completes the activation process. If a system extension is active, removing a payload that allows the extension deactivates that extension.

@@ -1,6 +1,5 @@
 title: CardDAV
-description: Use this section to define settings for configuration access to CardDAV
-  servers.
+description: The payload that configures a Contacts account.
 payload:
   payloadtype: com.apple.carddav.account
   supportedOS:
@@ -69,7 +68,7 @@ payloadkeys:
       introduced: '10.7'
   type: <string>
   presence: optional
-  content: The user's password. Only use this with encrypted profiles.
+  content: The user's password. Only use this in encrypted profiles.
 - key: CardDAVPrincipalURL
   title: Principal URL
   supportedOS:
@@ -86,7 +85,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'true', the system enables SSL.
+  content: If `true`, the system enables SSL.
 - key: CardDAVPort
   title: Port Number
   supportedOS:

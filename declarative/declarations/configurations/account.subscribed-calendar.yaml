@@ -1,5 +1,5 @@
 title: Account:Subscribed Calendar
-description: Use this configuration to define settings for a subscribed calendar.
+description: The declaration to configure a subscribed calendar.
 payload:
   declarationtype: com.apple.configuration.account.subscribed-calendar
   supportedOS:
@@ -50,7 +50,7 @@ payloadkeys:
   title: Calendar URL
   type: <string>
   presence: required
-  content: The URL of the subscribed calendar, which needs to start with 'https://'.
+  content: The URL of the subscribed calendar, which needs to start with `https://`.
 - key: AuthenticationCredentialsAssetReference
   title: Authentication Credentials Asset Reference
   type: <string>
@@ -59,7 +59,7 @@ payloadkeys:
   presence: optional
   content: The identifier of an asset declaration that contains the credentials for
     this account to authenticate with a calendar server. Set the corresponding asset
-    type to 'CredentialUserNameAndPassword'.
+    type to `CredentialUserNameAndPassword`.
 related-status-items:
 - status-items:
   - account.list.subscribed-calendar

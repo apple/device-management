@@ -1,5 +1,5 @@
 title: Accounts
-description: ''
+description: The payload that configures guest accounts.
 payload:
   payloadtype: com.apple.MCX
   supportedOS:
@@ -29,7 +29,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables the guest account.
+  content: If `true`, the system enables the guest account.
 - key: DisableGuestAccount
   supportedOS:
     macOS:
@@ -37,5 +37,5 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system disables the guest account. This property has no
-    effect if 'EnableGuestAccount' is 'true'.
+  content: If `true`, the system disables the guest account. This property has no
+    effect if `EnableGuestAccount` is `true`.

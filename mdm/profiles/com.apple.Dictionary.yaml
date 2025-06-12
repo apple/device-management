@@ -1,5 +1,5 @@
 title: 'Parental Controls: Dictionary'
-description: ''
+description: The payload that configures parental control dictionary restrictions.
 payload:
   payloadtype: com.apple.Dictionary
   supportedOS:
@@ -27,4 +27,4 @@ payloadkeys:
 - key: parentalControl
   type: <boolean>
   presence: required
-  content: If 'true', enables parental controls dictionary restrictions.
+  content: If `true`, enables parental controls dictionary restrictions.

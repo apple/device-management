@@ -1,5 +1,5 @@
 title: NSExtension Mappings Command
-description: This command returns information about installed extensions for a user.
+description: Get a list of the installed extensions for a user on a device.
 payload:
   requesttype: NSExtensionMappings
   supportedOS:
@@ -35,6 +35,7 @@ responsekeys:
   subkeys:
   - key: ExtensionsItem
     type: <dictionary>
+    content: A dictionary that contains information about an extension.
     subkeys:
     - key: Identifier
       type: <string>
@@ -43,8 +44,14 @@ responsekeys:
     - key: ExtensionPoint
       type: <string>
       presence: required
-      content: The NSExtensionPointIdentifier for the extension.
+      content: The `NSExtensionPointIdentifier` for the extension.
     - key: DisplayName
       type: <string>
       presence: required
       content: The display name of the extension.
+notes:
+- title: ''
+  content: |-
+    This list is a superset of the list that `ActiveNSExtensionsCommand` returns. It may contain extensions that the system never enables due to various restrictions.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

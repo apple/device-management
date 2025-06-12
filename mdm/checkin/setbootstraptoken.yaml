@@ -1,5 +1,5 @@
 title: Set Bootstrap Token
-description: Check-in protocol set bootstrap token data.
+description: Sends the bootstrap token to the server.
 payload:
   requesttype: SetBootstrapToken
   supportedOS:
@@ -26,15 +26,23 @@ payloadkeys:
   presence: required
   rangelist:
   - SetBootstrapToken
-  content: The message type, which must have a value of 'SetBootstrapToken'.
+  content: The message type, which requires a value of `SetBootstrapToken`.
 - key: BootstrapToken
   type: <data>
   presence: optional
   content: The device's bootstrap token data. If this field is missing or zero length,
-    the bootstrap token should be removed for this device.
+    the server needs to remove the bootstrap token for this device.
 - key: AwaitingConfiguration
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the device is awaiting a DeviceConfigured MDM command before
-    proceeding through Setup Assistant.
+  content: If `true`, the device is awaiting a `Device-Configured-Command` command
+    before proceeding through Setup Assistant.
+notes:
+- title: ''
+  content: |-
+    A server that supports this request needs to include a `com.apple.mdm.bootstraptoken` value in the `ServerCapabilities` key of the MDM profile payload to enroll the device.
+
+    This request changes or clears a device's bootstrap token data that the server stores.
+
+    It requires a device using Automated Device Enrollment, or a supervised device in macOS 11 and later.

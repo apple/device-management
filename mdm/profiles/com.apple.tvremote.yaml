@@ -1,5 +1,5 @@
 title: TV Remote
-description: ''
+description: The payload that configures the Apple TV remote.
 payload:
   payloadtype: com.apple.tvremote
   supportedOS:
@@ -36,12 +36,13 @@ payloadkeys:
   subkeys:
   - key: AllowedRemotesItem
     type: <dictionary>
+    content: The array of valid devices that Apple TV can connect to.
     subkeys:
     - key: RemoteDeviceID
       type: <string>
       presence: required
       content: The MAC address of a permitted iOS device that can control this Apple
-        TV. Use the format 'xx:xx:xx:xx:xx:xx', which isn't case-sensitive.
+        TV. Use the format `xx:xx:xx:xx:xx:xx`, which isn't case-sensitive.
 - key: AllowedTVs
   supportedOS:
     tvOS:
@@ -52,12 +53,13 @@ payloadkeys:
   subkeys:
   - key: AllowedTVsItem
     type: <dictionary>
+    content: The array of valid Apple TV identifiers that the remote can connect to.
     subkeys:
     - key: TVDeviceID
       type: <string>
       presence: required
       content: The MAC address of an Apple TV device that the system permits this
-        iOS device to control. Use the format 'xx:xx:xx:xx:xx:xx', which isn't case-sensitive.
+        iOS device to control. Use the format `xx:xx:xx:xx:xx:xx`, which isn't case-sensitive.
     - key: TVDeviceName
       supportedOS:
         iOS:

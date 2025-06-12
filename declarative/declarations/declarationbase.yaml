@@ -241,3 +241,9 @@ reasons:
   - key: Predicate
     type: <string>
     description: The predicate description of the predicate that is false.
+- value: Info.UnsupportedSettings
+  description: Unsupported settings in a configuration.
+  details:
+  - key: Settings
+    type: <array>
+    description: Array of strings containing each unsupported setting key-path.

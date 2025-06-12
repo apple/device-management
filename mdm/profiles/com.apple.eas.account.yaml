@@ -1,5 +1,5 @@
 title: Exchange ActiveSync
-description: Use this section to define settings for the Exchange ActiveSync account.
+description: The payload that configures Exchange ActiveSync accounts.
 payload:
   payloadtype: com.apple.eas.account
   supportedOS:
@@ -47,7 +47,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables SSL for authentication.
+  content: If `true`, the system enables SSL for authentication.
 - key: OAuth
   title: Use OAuth
   supportedOS:
@@ -57,7 +57,8 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', enables OAuth for authentication. If enabled, don't specify a password.
+    If `true`, enables OAuth for authentication. If enabled, don't specify a password.
+
     Available only in iOS 12.0 and above.
 - key: UserName
   title: User
@@ -77,7 +78,7 @@ payloadkeys:
       introduced: '7.0'
   type: <data>
   presence: optional
-  content: The '.p12' identity certificate in NSData blob format, for accounts that
+  content: The `.p12` identity certificate in NSData blob format, for accounts that
     allow authentication via certificate.
 - key: CertificateName
   title: Authentication Credential Name
@@ -91,7 +92,7 @@ payloadkeys:
   title: Authentication Credential Password
   type: <string>
   presence: optional
-  content: The password necessary for the '.p12' identity certificate. Used with mandatory
+  content: The password necessary for the `.p12` identity certificate. Used with mandatory
     encryption of profiles.
 - key: PreventMove
   title: Prevent Move
@@ -101,7 +102,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system prevents moving messages from out of this email account
+  content: If `true`, the system prevents moving messages from out of this email account
     into another account. This setting also prevents forwarding or replying from an
     account other than the recipient of the message.
 - key: PreventAppSheet
@@ -112,7 +113,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', prevents this account from sending mail in any app other than
+  content: If `true`, prevents this account from sending mail in any app other than
     the Apple Mail app.
 - key: PayloadCertificateUUID
   title: Payload Certificate UUID
@@ -133,8 +134,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption. In iOS 10.0 and later,
-    this key is ignored. Use 'SMIMESigningEnabled' instead.
+  content: If `true`, the system enables S/MIME encryption. In iOS 10.0 and later,
+    this key is ignored. Use `SMIMESigningEnabled` instead.
 - key: SMIMESigningEnabled
   title: S/MIME Signing Enabled
   supportedOS:
@@ -143,7 +144,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME signing for this account. Available
+  content: If `true`, the system enables S/MIME signing for this account. Available
     in iOS 10.0 and later.
 - key: SMIMESigningCertificateUUID
   title: S/MIME Signing Certificate
@@ -166,8 +167,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption for this account. Available
-    in iOS 10.0 and later. As of iOS 12.0, this key is deprecated. Use 'SMIMEEncryptByDefault'
+  content: If `true`, the system enables S/MIME encryption for this account. Available
+    in iOS 10.0 and later. As of iOS 12.0, this key is deprecated. Use `SMIMEEncryptByDefault`
     instead.
 - key: SMIMEEncryptionCertificateUUID
   title: S/MIME Encryption Certificate
@@ -194,14 +195,15 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If 'true', the system displays the per-message encryption switch in the Mail Compose UI.
-    Available in iOS 8.0 and later. As of iOS 12.0, this key is deprecated. Use 'SMIMEEnableEncryptionPerMessageSwitch' instead.
+    If `true`, the system displays the per-message encryption switch in the Mail Compose UI.
+
+    Available in iOS 8.0 and later. As of iOS 12.0, this key is deprecated. Use `SMIMEEnableEncryptionPerMessageSwitch` instead.
 - key: disableMailRecentsSyncing
   title: Disable Mail Recents Syncing
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system excludes this account from Recent Addresses syncing.
+  content: If `true`, the system excludes this account from Recent Addresses syncing.
 - key: MailNumberOfPastDaysToSync
   title: Past Days of Mail to Sync
   type: <integer>
@@ -216,7 +218,8 @@ payloadkeys:
   default: 7
   content: |-
     The number of days in the past to sync mail on the device.
-    For no limit, use the value '0'.
+
+    For no limit, use the value `0`.
 - key: HeaderMagic
   supportedOS:
     iOS:
@@ -225,7 +228,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The value of the 'X-Apple-Config-Magic' header in each EAS HTTP request.
+  content: The value of the `X-Apple-Config-Magic` header in each EAS HTTP request.
 - key: CommunicationServiceRules
   title: Communication Service Rules
   supportedOS:
@@ -261,7 +264,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables this account to use Mail Drop.
+  content: If `true`, the system enables this account to use Mail Drop.
 - key: SMIMESigningUserOverrideable
   supportedOS:
     iOS:
@@ -269,7 +272,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can turn S/MIME signing on or off in Settings. Available
+  content: If `true`, the user can turn S/MIME signing on or off in Settings. Available
     in iOS 12.0 and later.
 - key: SMIMESigningCertificateUUIDUserOverrideable
   supportedOS:
@@ -278,7 +281,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can select the signing identity. Available in iOS 12.0
+  content: If `true`, the user can select the signing identity. Available in iOS 12.0
     and later.
 - key: SMIMEEncryptByDefault
   supportedOS:
@@ -287,8 +290,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables S/MIME encryption by default. If 'SMIMEEnableEncryptionPerMessageSwitch'
-    is 'false', the user can't change this default. Available in iOS 12.0 and later.
+  content: If `true`, the system enables S/MIME encryption by default. If `SMIMEEnableEncryptionPerMessageSwitch`
+    is `false`, the user can't change this default. Available in iOS 12.0 and later.
 - key: SMIMEEncryptByDefaultUserOverrideable
   supportedOS:
     iOS:
@@ -296,7 +299,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system enables encryption by default and the user can't
+  content: If `true`, the system enables encryption by default and the user can't
     change it. Available in iOS 12.0 and later.
 - key: SMIMEEncryptionCertificateUUIDUserOverrideable
   supportedOS:
@@ -305,7 +308,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the user can select the S/MIME encryption identity, and encryption
+  content: If `true`, the user can select the S/MIME encryption identity, and encryption
     is on.Available in iOS 12.0 and later.
 - key: SMIMEEnableEncryptionPerMessageSwitch
   supportedOS:
@@ -314,7 +317,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system displays the per-message encryption switch in the
+  content: If `true`, the system displays the per-message encryption switch in the
     Mail Compose UI. Available in iOS 12.0 and later.
 - key: EnableMail
   supportedOS:
@@ -324,8 +327,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', the system disables the Mail service for this account. The user can reenable Mail service in Settings unless 'EnableMailUserOverridable' is 'false'.
-    At least of the following fields needs to be 'true': 'EnableMail', 'EnableContacts', 'EnableCalendars', 'EnableReminders', and 'EnableNotes'.
+    If `false`, the system disables the Mail service for this account. The user can reenable Mail service in Settings unless `EnableMailUserOverridable` is `false`.
+
+    > Note:
+    > At least of the following fields needs to be `true`: `EnableMail`, `EnableContacts`, `EnableCalendars`, `EnableReminders`, and `EnableNotes`.
 - key: EnableContacts
   supportedOS:
     iOS:
@@ -334,8 +339,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', the system disables the Contacts service for this account. The user can reenable Contacts service in Settings unless 'EnableContactsUserOverridable' is 'false'.
-    At least of the following fields needs to be 'true': 'EnableMail', 'EnableContacts', 'EnableCalendars', 'EnableReminders', and 'EnableNotes'.
+    If `false`, the system disables the Contacts service for this account. The user can reenable Contacts service in Settings unless `EnableContactsUserOverridable` is `false`.
+
+    > Note:
+    > At least of the following fields needs to be `true`: `EnableMail`, `EnableContacts`, `EnableCalendars`, `EnableReminders`, and `EnableNotes`.
 - key: EnableCalendars
   supportedOS:
     iOS:
@@ -344,8 +351,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', the system disables the Calendars service for this account. The user can reenable Calendars service in Settings unless 'EnableCalendarsUserOverridable' is 'false'.
-    At least of the following fields needs to be 'true': 'EnableMail', 'EnableContacts', 'EnableCalendars', 'EnableReminders', and 'EnableNotes'.
+    If `false`, the system disables the Calendars service for this account. The user can reenable Calendars service in Settings unless `EnableCalendarsUserOverridable` is `false`.
+
+    > Note:
+    > At least of the following fields needs to be `true`: `EnableMail`, `EnableContacts`, `EnableCalendars`, `EnableReminders`, and `EnableNotes`.
 - key: EnableReminders
   supportedOS:
     iOS:
@@ -354,8 +363,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', the system disables the Reminders service for this account. The user can reenable Reminders service in Settings unless 'EnableRemindersUserOverridable' is 'false'.
-    At least of the following fields needs to be 'true': 'EnableMail', 'EnableContacts', 'EnableCalendars', 'EnableReminders', and 'EnableNotes'.
+    If `false`, the system disables the Reminders service for this account. The user can reenable Reminders service in Settings unless `EnableRemindersUserOverridable` is `false`.
+
+    > Note:
+    > At least of the following fields needs to be `true`: `EnableMail`, `EnableContacts`, `EnableCalendars`, `EnableReminders`, and `EnableNotes`.
 - key: EnableNotes
   supportedOS:
     iOS:
@@ -364,8 +375,10 @@ payloadkeys:
   presence: optional
   default: true
   content: |-
-    If 'false', the system disables the Notes service for this account. The user can reenable Notes service in Settings unless 'EnableNotesUserOverridable' is 'false'.
-    At least of the following fields needs to be 'true': 'EnableMail', 'EnableContacts', 'EnableCalendars', 'EnableReminders', and 'EnableNotes'.
+    If `false`, the system disables the Notes service for this account. The user can reenable Notes service in Settings unless `EnableNotesUserOverridable` is `false`.
+
+    > Note:
+    > At least of the following fields needs to be `true`: `EnableMail`, `EnableContacts`, `EnableCalendars`, `EnableReminders`, and `EnableNotes`.
 - key: EnableMailUserOverridable
   supportedOS:
     iOS:
@@ -373,7 +386,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system prevents the user from changing the state of the
+  content: If `false`, the system prevents the user from changing the state of the
     Mail service for this account in Settings.
 - key: EnableContactsUserOverridable
   supportedOS:
@@ -382,7 +395,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system prevents the user from changing the state of the
+  content: If `false`, the system prevents the user from changing the state of the
     Contacts service for this account in Settings.
 - key: EnableCalendarsUserOverridable
   supportedOS:
@@ -391,7 +404,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system prevents the user from changing the state of the
+  content: If `false`, the system prevents the user from changing the state of the
     Calendars service for this account in Settings.
 - key: EnableRemindersUserOverridable
   supportedOS:
@@ -400,7 +413,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', the system prevents the user from changing the state of the
+  content: If `false`, the system prevents the user from changing the state of the
     Reminders service for this account in Settings.
 - key: EnableNotesUserOverridable
   supportedOS:
@@ -409,7 +422,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If 'false', prevents the user from changing the state of the Notes service
+  content: If `false`, prevents the user from changing the state of the Notes service
     for this account in Settings.
 - key: OAuthSignInURL
   supportedOS:
@@ -418,7 +431,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The URL that this account should use for signing in through OAuth. Ignored
-    unless 'OAuth' is 'true'. If you specify this URL, auto-discovery isn't used for
+    unless `OAuth` is `true`. If you specify this URL, auto-discovery isn't used for
     this account, so you need to also specify a host.
 - key: OAuthTokenRequestURL
   supportedOS:
@@ -427,7 +440,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The URL that this account should use for token requests through OAuth.
-    Ignored unless 'OAuth' is 'true'.
+    Ignored unless `OAuth` is `true`.
 - key: OverridePreviousPassword
   supportedOS:
     iOS:
@@ -435,7 +448,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If 'true', the system overrides the previous user/EAS password with the
+  content: If `true`, the system overrides the previous user/EAS password with the
     new EAS password in the payload. Available in iOS 14 and later.
 - key: VPNUUID
   title: VPNUUID

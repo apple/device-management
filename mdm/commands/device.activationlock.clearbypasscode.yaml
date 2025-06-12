@@ -1,5 +1,5 @@
 title: Clear Activation Lock Bypass Code Command
-description: Clears the Activation Lock bypass code from the device.
+description: Clear the Activation Lock bypass code on a device.
 payload:
   requesttype: ClearActivationLockBypassCode
   supportedOS:
@@ -33,3 +33,7 @@ payload:
     watchOS:
       introduced: n/a
   content: Clears the Activation Lock bypass code from the device.
+notes:
+- title: ''
+  content: Refer to the following sections to determine supported channels and requirements,
+    and to see an example request and response.

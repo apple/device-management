@@ -1,8 +1,5 @@
 title: Managed Application List Command
-description: This command allows the server to query the status of managed apps. Certain
-  statuses are transient. Once they are reported to the server, the entries for the
-  apps are removed from the next query. macOS supports this command on the user channel
-  starting with macOS 11.3.
+description: Get the status of all managed apps on a device.
 payload:
   requesttype: ManagedApplicationList
   supportedOS:
@@ -41,10 +38,7 @@ payload:
       introduced: '10.0'
       accessrights: AllowAppInstallation
       supervised: false
-  content: This command allows the server to query the status of managed apps. Certain
-    statuses are transient. Once they are reported to the server, the entries for
-    the apps are removed from the next query. macOS supports this command on the user
-    channel starting with macOS 11.3.
+  content: This command allows the server to query the status of managed apps.
 payloadkeys:
 - key: Identifiers
   supportedOS:
@@ -52,12 +46,11 @@ payloadkeys:
       introduced: '7.0'
   type: <array>
   presence: optional
-  content: The bundle identifiers of the managed apps to include in the response.
-    For a watchOS app, the identifier needs to be the watch's bundle identifier, which
-    differs from the main bundle identifier for the iPhone to which the watch is paired.
-    Obtain the watch's bundle identifier for an app with a watch bundle, in the 'watchBundleId'
-    key that's part of the Content Metadata query. For more information on this query,
-    see Getting App and Book Information (Legacy).
+  content: |-
+    The bundle identifiers of the managed apps to include in the response.
+
+    > Important:
+    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -66,7 +59,7 @@ responsekeys:
   type: <dictionary>
   presence: required
   content: A dictionary that contains status information about each managed app. The
-    response will not include apps that are managed by Declarative Device Management.
+    response doesn't include apps that Declarative Device Management manages.
   subkeytype: ManagedApplicationListItem
   subkeys:
   - key: ANY app identifier
@@ -101,27 +94,30 @@ responsekeys:
       - Failed
       content: |-
         The status of the managed app, which is one of the following values:
-        * 'Queued': The app is scheduled for installation.
-        * 'NeedsRedemption': The app needs a redemption code to complete installation.
-        * 'Redeeming': The device is redeeming the redemption code for the app.
-        * 'Prompting': The app installation is prompting the user.
-        * 'PromptingForLogin' - The app installation is prompting the user for App Store credentials.
-        * 'ValidatingPurchase': Validation of the app purchase is occurring.
-        * 'PromptingForUpdate': An app update is prompting the user.
-        * 'PromptingForUpdateLogin': An app update is prompting the user for App Store credentials.
-        * 'PromptingForManagement': Changing the app to a managed app is prompting the user.
-        * 'ValidatingUpdate': Validation of an app update is occurring.
-        * 'Updating': The app is updating.
-        * 'Installing': The app is installing.
-        * 'Managed': The installed app is a managed app.
-        * 'ManagedButUninstalled': The app is a managed app and the user removed it. Reinstalling the app reinstates it as a managed app.
-        * 'Unknown': The app state is unknown.
+
+        - `Queued`: The app is scheduled for installation.
+        - `NeedsRedemption`: The app needs a redemption code to complete installation.
+        - `Redeeming`: The device is redeeming the redemption code for the app.
+        - `Prompting`: The app installation is prompting the user.
+        - `PromptingForLogin' - The app installation is prompting the user for App Store credentials.
+        - `ValidatingPurchase`: Validation of the app purchase is occurring.
+        - `PromptingForUpdate`: An app update is prompting the user.
+        - `PromptingForUpdateLogin`: An app update is prompting the user for App Store credentials.
+        - `PromptingForManagement`: Changing the app to a managed app is prompting the user.
+        - `ValidatingUpdate`: Validation of an app update is occurring.
+        - `Updating`: The app is updating.
+        - `Installing`: The app is installing.
+        - `Managed`: The installed app is a managed app.
+        - `ManagedButUninstalled`: The app is a managed app and the user removed it. Reinstalling the app reinstates it as a managed app.
+        - `Unknown`: The app state is unknown.
+
         The following statuses are transient and report only once:
-        * 'UserInstalledApp': The user installed the app before managed app installation could occur.
-        * 'UserRejected': The user rejected the offer to install the app.
-        * 'UpdateRejected': The user rejected the offer to update the app.
-        * 'ManagementRejected':The user rejected management of an installed app.
-        * 'Failed': The app installation failed.
+
+        - `UserInstalledApp`: The user installed the app before managed app installation could occur.
+        - `UserRejected`: The user rejected the offer to install the app.
+        - `UpdateRejected`: The user rejected the offer to update the app.
+        - `ManagementRejected`:The user rejected management of an installed app.
+        - `Failed`: The app installation failed.
     - key: ManagementFlags
       type: <integer>
       presence: required
@@ -189,3 +185,11 @@ responsekeys:
       content: |-
         The app's external version identifier, which you can use in the iTunes Search API to determine if an updated version of the app is available. Compare this value to the 'externalId' value in the 'contentMetadataLookupUrl' response from the 'VPPServiceConfigSrv' endpoint. If these values don't match, an updated version of the app may be available. This value is available in iOS 10.3 and later, macOS 11.3 and later, and tvOS 10.2 and later.
         A newer version of an app may not be available for installation on the device for a variety of reasons, including that the device's operating system version or hardware is incompatible with the available version of the app.
+notes:
+- title: ''
+  content: |-
+    This command returns the status of managed apps from the App Store.
+
+    Some statuses are transient and the device removes them after reporting them to the server.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

@@ -1,5 +1,5 @@
 title: Status Device Operating System Supplemental Build Version
-description: The device's operating system supplemental build version.
+description: A status report of the device's operating system supplemental build identifier.
 payload:
   statusitemtype: device.operating-system.supplemental.build-version
   supportedOS:
@@ -55,4 +55,4 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system's build and rapid security response versions in use
-    on the device, for example, '20A123a' or '20B27c'.
+    on the device, for example, `20A123a` or `20B27c`.

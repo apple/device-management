@@ -1,5 +1,5 @@
 title: Status Test Real Value
-description: A test status item real.
+description: A test status item for a real value.
 payload:
   statusitemtype: test.real-value
   supportedOS:

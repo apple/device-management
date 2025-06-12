@@ -1,5 +1,5 @@
 title: Error Well-known Failed
-description: Error response for well-known failed
+description: ''
 payload:
   supportedOS:
     iOS:
@@ -28,11 +28,9 @@ payloadkeys:
 - key: description
   type: <string>
   presence: optional
-  content: The description of the error. This will only be used by the client for
-    logging purposes and will not be displayed to the user.
+  content: A description of the error. Only use this for logging purposes and don't
+    display it to the user.
 - key: message
   type: <string>
   presence: optional
-  content: A description of the error suitable for displaying to the user. If needed,
-    the client will make a best-effort attempt to display the message, but may not
-    be able to, due to local conditions.
+  content: A description of the error to display to the user.

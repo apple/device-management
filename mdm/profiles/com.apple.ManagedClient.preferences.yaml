@@ -1,5 +1,5 @@
 title: Managed Preferences
-description: ''
+description: The payload that configures managed preferences.
 payload:
   payloadtype: com.apple.ManagedClient.preferences
   supportedOS:
@@ -26,10 +26,10 @@ payloadkeys:
 - key: PayloadContent
   type: <dictionary>
   presence: required
-  content: Dictionary containing app preference domains. The key names correspond
-    to application preference domain identifiers (e.g., 'com.example.my-app'), or
-    the string '.GlobalPreferences' for the global domain. The values specify the
-    corresponding forced and set-once preferences.
+  content: The dictionary containing app preference domains. The key names are application
+    preference domain identifiers (for example, `com.example.my-app`), or the string
+    `.GlobalPreferences` for the global domain. The values are the corresponding forced
+    and set-once preferences.
   subkeys:
   - key: ANY
     type: <dictionary>

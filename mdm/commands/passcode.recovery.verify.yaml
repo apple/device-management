@@ -1,5 +1,5 @@
 title: Verify Recovery Lock Command
-description: Verifies the device's recovery lock password. (AppleSilicon devices only)
+description: Verify the device's Recovery Lock password.
 payload:
   requesttype: VerifyRecoveryLock
   supportedOS:
@@ -30,4 +30,7 @@ responsekeys:
 - key: PasswordVerified
   type: <boolean>
   presence: required
-  content: If 'true', the device verified the password.
+  content: If `true`, the device verified the password.
+notes:
+- title: ''
+  content: This command is only available on Mac computers with Apple silicon.

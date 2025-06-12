@@ -1,5 +1,5 @@
 title: Status MDM App
-description: The client's MDM installed apps.
+description: A status report of the client's MDM-installed apps.
 payload:
   statusitemtype: mdm.app
   supportedOS:
@@ -43,12 +43,13 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: The list of apps. The response will not include apps that are managed by
+  content: The list of apps. The response doesn't include apps that are managed by
     Declarative Device Management.
   subkeytype: App
   subkeys:
   - key: status_value
     type: <dictionary>
+    content: A status report that contains details about an MDM-installed app.
     subkeys:
     - key: identifier
       title: Unique identifier of the app.
@@ -60,10 +61,10 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: To indicate removal of an app, this key's value is set to true, and
-        only this key and the "identifier" key will be present in the status item
-        object. An MDM installed app will be reported as removed if management of
-        the app has been transferred to declarative device management.
+      content: If `true`, the system removed the app and only this key and the `identifier`
+        key are present in the status item object. The device reports an MDM-installed
+        app as removed if management of the app has been transferred to Declarative
+        Device Management.
     - key: name
       title: App name
       type: <string>
@@ -73,9 +74,9 @@ payloadkeys:
       title: External version id
       type: <string>
       presence: optional
-      content: The application's external version ID. Use Service Config to get the
-        'contentMetadataLookupUrl' endpoint. In the response from that URL, find a
-        key named 'externalId' at the path 'results.<adamId>.offers[0].version.externalId'.
+      content: The application's external version ID. Use `Service-Config` to get
+        the `contentMetadataLookupUrl` endpoint. In the response from that URL, find
+        a key named `externalId` at the path `results.<adamId>.offers[0].version.externalId`.
         If the current external version identifier of an app on the store doesn't
         match the external version identifier reported by the device, there may be
         an app update available for the device.
@@ -114,4 +115,4 @@ payloadkeys:
       - update-rejected
       - management-rejected
       - failed
-      content: The status of the app that ManagedApplicationListCommand reports.
+      content: The status of the app that `ManagedApplicationListCommand` reports.

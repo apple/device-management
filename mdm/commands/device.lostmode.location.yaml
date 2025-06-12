@@ -1,6 +1,5 @@
 title: Device Location Command
-description: This command allows the server to ask for the device's location if it
-  is in MDM lost mode.
+description: Request the location of a device when in Lost Mode.
 payload:
   requesttype: DeviceLocation
   supportedOS:
@@ -78,5 +77,15 @@ responsekeys:
       introduced: '10.3'
   type: <string>
   presence: required
-  content: The RFC 3339 timestamp of when the server determined the location of the
+  content: The RFC 3339 timestamp of when the server determines the location of the
     device.
+notes:
+- title: ''
+  content: |-
+    A device responds with error codes:
+
+    - `12067`: If it isn't in Lost mode.
+    - `12068`: If its location is unknown.
+    - `12078`: If the command is invalid while in Lost Mode.
+
+    Refer to the following sections to determine supported channels and requirements, and to see an example request and response.

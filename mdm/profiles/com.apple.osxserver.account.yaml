@@ -1,5 +1,5 @@
 title: macOS Server Account
-description: Use this section to define a macOS Server account
+description: The payload that configures a macOS Server account.
 payload:
   payloadtype: com.apple.osxserver.account
   supportedOS:
@@ -47,7 +47,7 @@ payloadkeys:
   title: Configured Accounts
   type: <array>
   presence: required
-  content: Array of dictionaries containing configured account types and relevant
+  content: An array of dictionaries containing configured account types and relevant
     settings
   subkeys:
   - key: ConfiguredAccountsItem

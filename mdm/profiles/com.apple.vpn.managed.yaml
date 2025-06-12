@@ -1,5 +1,5 @@
 title: VPN
-description: Use this section to define settings for VPN access.
+description: The payload that configures a VPN.
 payload:
   payloadtype: com.apple.vpn.managed
   supportedOS:
@@ -53,22 +53,29 @@ payloadkeys:
   - TransparentProxy
   content: |-
     The type of the VPN, which defines which settings are appropriate for this VPN payload.
-    If the type is 'VPN' or 'TransparentProxy', then the system requires a value for 'VPNSubType'.
-    'TransparentProxy' is only available in macOS. 'L2TP' and 'IPSec' aren't available in tvOS. 'AlwaysOn' is only available on iOS and Apple Watch pairing isn't supported with 'AlwaysOn'. For a previously paired Apple Watch, all phone-watch communications cease when 'AlwaysOn' is enabled. Not available in watchOS.
+
+    If the type is `VPN` or `TransparentProxy`, then the system requires a value for `VPNSubType`.
+
+    `TransparentProxy` is only available in macOS. `L2TP` and `IPSec` aren't available in tvOS. `AlwaysOn` is only available on iOS and Apple Watch pairing isn't supported with `AlwaysOn`. For a previously paired Apple Watch, all phone-watch communications cease when `AlwaysOn` is enabled. Not available in watchOS.
 - key: VPNSubType
   title: VPN Subtype
   type: <string>
   presence: optional
   content: |-
-    An identifier for a vendor-specified configuration dictionary when the value for 'VPNType' is 'VPN'.
-    If 'VPNType' is 'VPN', the system requires this field. If the configuration targets a VPN solution that uses a VPN plugin, then this field contains the bundle identifier of the plugin. Here are some examples:
-    * Cisco AnyConnect: 'com.cisco.anyconnect.applevpn.plugin'
-    * Juniper SSL: 'net.juniper.sslvpn'
-    * F5 SSL: 'com.f5.F5-Edge-Client.vpnplugin'
-    * SonicWALL Mobile Connect: 'com.sonicwall.SonicWALL-SSLVPN.vpnplugin'
-    * ``Aruba VIA: 'com.arubanetworks.aruba-via.vpnplugin'
+    An identifier for a vendor-specified configuration dictionary when the value for `VPNType` is `VPN`.
+
+    If `VPNType` is `VPN`, the system requires this field. If the configuration targets a VPN solution that uses a VPN plugin, then this field contains the bundle identifier of the plugin. Here are some examples:
+
+    - Cisco AnyConnect: `com.cisco.anyconnect.applevpn.plugin`
+    - Juniper SSL: `net.juniper.sslvpn`
+    - F5 SSL: `com.f5.F5-Edge-Client.vpnplugin`
+    - SonicWALL Mobile Connect: `com.sonicwall.SonicWALL-SSLVPN.vpnplugin`
+    - ``Aruba VIA: `com.arubanetworks.aruba-via.vpnplugin`
+
     If the configuration targets a VPN solution that uses a network extension provider, then this field contains the bundle identifier of the app that contains the provider. Contact the VPN solution vendor for the value of the identifier.
-    If 'VPNType' is 'IKEv2', then the 'VPNSubType' field is optional and reserved for future use. If it's specified, it needs to contain an empty string.
+
+    If `VPNType` is `IKEv2`, then the `VPNSubType` field is optional and reserved for future use. If it's specified, it needs to contain an empty string.
+
     Not available in watchOS.
 - key: UserDefinedName
   title: User Defined Name
@@ -81,7 +88,7 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: The vendor-specific configuration dictionary, which the system reads only
-    when 'VPNSubType' has a value. Not available in watchOS.
+    when `VPNSubType` has a value. Not available in watchOS.
   subkeys:
   - key: Realm
     title: Realm
@@ -111,7 +118,7 @@ payloadkeys:
   title: VPN
   type: <dictionary>
   presence: optional
-  content: The VPN dictionary is used when VPNType is VPN.
+  content: The dictionary to use when `VPNType` is `VPN`.
   subkeys:
   - key: AuthName
     title: Account Username
@@ -122,12 +129,13 @@ payloadkeys:
     title: Account Password
     type: <string>
     presence: optional
-    content: The VPN account password. Only used if AuthenticationMethod is Password.
+    content: The VPN account password. Only use this if `AuthenticationMethod` is
+      set to `Password`.
   - key: RemoteAddress
     title: RemoteAddress
     type: <string>
     presence: required
-    content: IP address or hostname of the VPN server.
+    content: The IP address or hostname of the VPN server.
   - key: AuthenticationMethod
     title: Authentication Method
     type: <string>
@@ -170,13 +178,13 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', disconnects after an on-demand connection idles.
+    content: If `1`, disconnects after an on-demand connection idles.
   - key: DisconnectOnIdleTimer
     title: Disconnect on Idle time
     type: <integer>
     presence: optional
     content: The length of time to wait, in seconds, before disconnecting an on-demand
-      connection. In watchOS, the maximum allowed value is '15'.
+      connection. In watchOS, the maximum allowed value is `15`.
   - key: ProviderType
     type: <string>
     presence: optional
@@ -184,8 +192,8 @@ payloadkeys:
     - packet-tunnel
     - app-proxy
     default: packet-tunnel
-    content: The type of VPN service. If the value is 'app-proxy', the service tunnels
-      traffic at the app level. If the value is 'packet-tunnel', the service tunnels
+    content: The type of VPN service. If the value is `app-proxy`, the service tunnels
+      traffic at the app level. If the value is `packet-tunnel`, the service tunnels
       traffic at the IP layer. Not available in watchOS.
   - key: IncludeAllNetworks
     title: Include All Networks
@@ -203,12 +211,14 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', routes all traffic through the VPN, with some exclusions. Several of the exclusions can be controlled with the ExcludeLocalNetworks, ExcludeCellularServices, ExcludeAPNs and ExcludeDeviceCommunication properties. See the documentation for those properties. The following traffic is always excluded from the tunnel. Not available in watchOS.
+      If `1``, routes all traffic through the VPN, with some exclusions. Several of the exclusions can be controlled with the `ExcludeLocalNetworks`, `ExcludeCellularServices`, `ExcludeAPNs` and `ExcludeDeviceCommunication` properties. The following traffic is always excluded from the tunnel:
 
-      * Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
-      * Traffic necessary for connecting to captive networks.
-      * Certain cellular services traffic that is not routable over the internet and is instead directly routed to the cellular network. See the ExcludeCellularServices property for more details.
-      * Network communication with a companion device such as a watchOS device.
+      - Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
+      - Traffic necessary for connecting to captive networks.
+      - Certain cellular services traffic that is not routable over the internet and is instead directly routed to the cellular network. See the ExcludeCellularServices property for more details.
+      - Network communication with a companion device such as a watchOS device.
+
+      Not available in watchOS.
   - key: EnforceRoutes
     title: Enforce Routes
     supportedOS:
@@ -223,8 +233,10 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', all the VPN's non-default routes take precedence over any locally defined routes.
-      If 'IncludeAllNetworks' is '1', the system ignores the value of 'EnforceRoutes'.
+      If `1`, all the VPN's non-default routes take precedence over any locally defined routes.
+
+      If `IncludeAllNetworks` is `1`, the system ignores the value of `EnforceRoutes`.
+
       Available in iOS 14.2 and later, and macOS 11 and later. Not available in watchOS.
   - key: ExcludeLocalNetworks
     title: Exclude Local Networks
@@ -240,7 +252,7 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1' and 'IncludeAllNetworks' is '1', routes all local network traffic
+    content: If `1` and `IncludeAllNetworks` is `1`, routes all local network traffic
       outside the VPN. Not available in watchOS.
   - key: ExcludeCellularServices
     title: Exclude Cellular Services
@@ -257,7 +269,7 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If '1' and 'IncludeAllNetworks' is '1', then the system excludes internet-routable
+    content: If `1` and `IncludeAllNetworks` is `1`, then the system excludes internet-routable
       network traffic for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual
       Voicemail, etc.) from the tunnel. Note that some cellular carriers route cellular
       services traffic directly to the carrier network, bypassing the internet. Such
@@ -278,7 +290,7 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If '1' and 'IncludeAllNetworks' is '1', then the system excludes the
+    content: If `1` and `IncludeAllNetworks` is `1`, then the system excludes the
       network traffic for the Apple Push Notification service (APNs) from the tunnel.
       Not available in watchOS.
   - key: ExcludeDeviceCommunication
@@ -298,8 +310,9 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then network traffic used for communicating
-      with devices connected via USB or Wi-Fi is excluded from the tunnel.
+    content: If set to `1` and `IncludeAllNetworks` is set to `1`, the device excludes
+      network traffic used for communicating with devices connected via USB or Wi-Fi
+      from the tunnel.
   - key: OnDemandEnabled
     title: Enable VPN On Demand
     type: <integer>
@@ -308,7 +321,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', enables VPN On Demand.
+    content: If `1`, enables VPN On Demand.
   - key: OnDemandUserOverrideDisabled
     title: Prevent users from toggling VPN On Demand
     supportedOS:
@@ -322,7 +335,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the Connect On Demand toggle in Settings is disabled for this
+    content: If `1`, the Connect On Demand toggle in Settings is disabled for this
       configuration. Available in iOS 14 and later. Not available in watchOS.
   - key: OnDemandMatchDomainsAlways
     title: On Demand Match Domains Always
@@ -332,8 +345,10 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      A list of domain names. The system treats associated domain names as though they're associated with the 'OnDemandMatchDomainsOnRetry' key. This behavior can be overridden by 'OnDemandRules'.
-      In iOS 7 and later, this key is deprecated (but still supported) in favor of 'EvaluateConnection' actions in the 'OnDemandRules' dictionaries.
+      A list of domain names. The system treats associated domain names as though they're associated with the `OnDemandMatchDomainsOnRetry` key. This behavior can be overridden by `OnDemandRules`.
+
+      In iOS 7 and later, this key is deprecated (but still supported) in favor of `EvaluateConnection` actions in the `OnDemandRules` dictionaries.
+
       Not available in watchOS.
     subkeytype: MatchDomainAlwaysElement
     subkeys: &id001
@@ -349,7 +364,9 @@ payloadkeys:
     presence: optional
     content: |-
       A list of domain names. If the host name ends with one of these domain names, the system doesn't start the VPN automatically. The system uses this value to exclude a subdomain within an included domain.
-      In iOS 7 and later, this key is deprecated (but still supported) in favor of 'EvaluateConnection' actions in the 'OnDemandRules' dictionaries.
+
+      In iOS 7 and later, this key is deprecated (but still supported) in favor of `EvaluateConnection` actions in the `OnDemandRules` dictionaries.
+
       Not available in watchOS.
     subkeytype: MatchDomainNeverElement
     subkeys: &id002
@@ -365,7 +382,9 @@ payloadkeys:
     presence: optional
     content: |-
       A list of domain names. If the host name ends with one of these domain names and a DNS query for that domain name fails, the system starts the VPN automatically.
-      In iOS 7 and later, this key is deprecated (but still supported) in favor of 'EvaluateConnection' actions in the 'OnDemandRules' dictionaries.
+
+      In iOS 7 and later, this key is deprecated (but still supported) in favor of `EvaluateConnection` actions in the `OnDemandRules` dictionaries.
+
       Not available in watchOS.
     subkeytype: MatchDomainOnRetryElement
     subkeys: &id003
@@ -395,20 +414,20 @@ payloadkeys:
         - Ignore
         content: |-
           The action to take if this dictionary matches the current network. Possible values are:
-          * 'Allow': Deprecated. Allow VPN On Demand to connect if triggered.
-          * 'Connect': Unconditionally initiate a VPN connection on the next network attempt.
-          * 'Disconnect': Tear down the VPN connection and don't reconnect on demand as long as this dictionary matches.
-          * 'EvaluateConnection': Evaluate the ActionParameters array for each connection attempt.
-          * 'Ignore:' Leave any existing VPN connection up, but don't reconnect on demand as long as this dictionary matches.
-          Only the 'Disconnect' action is available on watchOS 10 and later.
+          - `Allow`: Deprecated. Allow VPN On Demand to connect if triggered.
+          - `Connect`: Unconditionally initiate a VPN connection on the next network attempt.
+          - `Disconnect`: Tear down the VPN connection and don't reconnect on demand as long as this dictionary matches.
+          - `EvaluateConnection`: Evaluate the ActionParameters array for each connection attempt.
+          - `Ignore`: Leave any existing VPN connection up, but don't reconnect on demand as long as this dictionary matches.
+          Only the `Disconnect` action is available on watchOS 10 and later.
       - key: ActionParameters
         title: Action Parameters
         type: <array>
         presence: optional
-        content: An array of dictionaries that provides rules similar to the 'OnDemandRules'
+        content: An array of dictionaries that provides rules similar to the `OnDemandRules`
           dictionary, but evaluated on each connection instead of when the network
-          changes. This value is only for use with dictionaries in which the 'Action'
-          value is 'EvaluateConnection'. The system evaluates these dictionaries in
+          changes. This value is only for use with dictionaries in which the `Action`
+          value is `EvaluateConnection`. The system evaluates these dictionaries in
           order and the first dictionary that matches determines the behavior. Not
           available in watchOS.
         subkeys:
@@ -464,7 +483,7 @@ payloadkeys:
         presence: optional
         content: |-
           An array of domain names. This rule matches if any of the domain names in the specified list matches any domain in the device's search domains list.
-          The system supports a wildcard ('*') prefix. For example, '*.example.com' matches against either 'mydomain.example.com' or 'yourdomain.example.com'.
+          The system supports a wildcard (`*`) prefix. For example, `*.example.com` matches against either `mydomain.example.com` or `yourdomain.example.com`.
         subkeys:
         - key: DNSDomainMatchElement
           title: DNS Domain Match Element
@@ -475,7 +494,7 @@ payloadkeys:
         presence: optional
         content: |-
           An array of IP addresses. This rule matches if any of the network's specified DNS servers match any entry in the array.
-          The system supports matching with a single wildcard. For example, '17.*' matches any DNS server in the '17.0.0.0/8' subnet.
+          The system supports matching with a single wildcard. For example, `17.*` matches any DNS server in the `17.0.0.0/8` subnet.
         subkeys:
         - key: DNSServerAddressMatchElement
           title: DNS Server Address Match Element
@@ -506,7 +525,7 @@ payloadkeys:
         type: <string>
         presence: optional
         content: A URL to probe. This rule matches when this URL is successfully fetched
-          (returns a '200' HTTP status code) without redirection. Not available in
+          (returns a `200` HTTP status code) without redirection. Not available in
           watchOS.
 - key: IPv4
   title: IPv4 Settings
@@ -525,7 +544,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the system sends all network traffic over VPN. Only applies to
+    content: If `1`, the system sends all network traffic over VPN. Only applies to
       Cisco IPsec and L2TP VPN types.
 - key: PPP
   title: PPP
@@ -534,7 +553,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The dictionary to use when 'VPNType' is 'L2TP' or 'PTPP'. Not available
+  content: The dictionary to use when `VPNType` is `L2TP` or `PTPP`. Not available
     in watchOS.
   subkeys:
   - key: AuthName
@@ -546,7 +565,7 @@ payloadkeys:
     title: Account Password
     type: <string>
     presence: optional
-    content: If 'TokenCard' is '1', use this password for authentication. This key
+    content: If `TokenCard` is `1`, use this password for authentication. This key
       is for use with L2TP and PPTP networks.
   - key: TokenCard
     title: Use Token Card
@@ -556,7 +575,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', uses a token card such as an RSA SecurID card for connecting.
+    content: If `1`, uses a token card such as an RSA SecurID card for connecting.
       This key is for use with L2TP networks.
   - key: CommRemoteAddress
     title: Remote Address
@@ -569,7 +588,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: 'An array of authentication plugins. For use of RSA SecurID, this array
-      should only have one value: ''EAP-RSA''. This key is for use with L2TP and PPTP
+      should only have one value: `EAP-RSA`. This key is for use with L2TP and PPTP
       networks.'
     subkeys:
     - key: EAPPluginElement
@@ -587,7 +606,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: An array of authentication protocols. For use of RSA SecurID, this array
-      should have one value, 'EAP'. This key is for use with L2TP and PPTP networks.
+      should have one value, `EAP`. This key is for use with L2TP and PPTP networks.
     subkeys:
     - key: AuthProtocolElement
       title: Auth Protocol
@@ -604,7 +623,7 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1' and 'CCPEnabled' is also '1', enables CCPMPPE128 encryption.
+    content: If `1` and `CCPEnabled` is also `1`, enables CCPMPPE128 encryption.
   - key: CCPMPPE128Enabled
     title: Enable CCPMPPE128
     type: <integer>
@@ -612,7 +631,7 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1' and 'CCPEnabled' is also '1', enables CCPMPPE40 encryption.
+    content: If `1` and `CCPEnabled` is also `1`, enables CCPMPPE40 encryption.
   - key: CCPEnabled
     title: Enable CCP
     type: <integer>
@@ -620,7 +639,7 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1', enables encryption on the connection. This key is for use with
+    content: If `1`, enables encryption on the connection. This key is for use with
       PPTP networks.
   - key: DisconnectOnIdle
     title: Enable Disconnect on Idle
@@ -630,7 +649,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', disconnects after an on demand connection idles.
+    content: If `1`, disconnects after an on demand connection idles.
   - key: DisconnectOnIdleTimer
     title: Disconnect on Idle time
     type: <integer>
@@ -676,21 +695,22 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1', enables Xauth for Cisco IPSec VPNs.
+    content: If `1`, enables Xauth for Cisco IPSec VPNs.
   - key: XAuthPasswordEncryption
     title: XAUTH Password Encryption
     type: <string>
     presence: optional
     rangelist:
     - Prompt
-    content: A string that either has the value “Prompt” or isn't present.
+    content: A string that either has the value "Prompt" or isn't present.
   - key: LocalIdentifier
     title: Local Identifier
     type: <string>
     presence: optional
     content: |-
-      The name of the group. For hybrid authentication, the string needs to end with “hybrid”.
-      Present only for Cisco IPSec if 'AuthenticationMethod' is 'SharedSecret'.
+      The name of the group. For hybrid authentication, the string needs to end with "hybrid".
+
+      Present only for Cisco IPSec if `AuthenticationMethod` is `SharedSecret`.
   - key: LocalIdentifierType
     title: Local Identifier Type
     type: <string>
@@ -698,28 +718,30 @@ payloadkeys:
     rangelist:
     - KeyID
     default: KeyID
-    content: Present only if 'AuthenticationMethod' is 'SharedSecret'. The value is
-      'KeyID'. The system uses this value for L2TP and Cisco IPSec VPNs.
+    content: Present only if `AuthenticationMethod` is `SharedSecret`. The value is
+      `KeyID`. The system uses this value for L2TP and Cisco IPSec VPNs.
   - key: SharedSecret
     title: Shared Secret
     type: <data>
     presence: optional
     content: |-
       The shared secret for this VPN account.
-      Only use this with L2TP and Cisco IPSec VPNs and if the 'AuthenticationMethod' key is to 'SharedSecret'.
+
+      Only use this with L2TP and Cisco IPSec VPNs and if the `AuthenticationMethod` key is to `SharedSecret`.
   - key: PayloadCertificateUUID
     title: Certificate UUID
     type: <string>
     presence: optional
     content: |-
       The UUID of the certificate payload within the same profile to use for the account credentials.
-      Only use this with Cisco IPSec VPNs and if the 'AuthenticationMethod' key is to 'Certificate'.
+
+      Only use this with Cisco IPSec VPNs and if the `AuthenticationMethod` key is to `Certificate`.
   - key: PromptForVPNPIN
     title: Prompt for PIN
     type: <boolean>
     presence: optional
     default: false
-    content: If 'true', prompts for a PIN when connecting to Cisco IPSec VPNs.
+    content: If `true`, prompts for a PIN when connecting to Cisco IPSec VPNs.
   - key: DisconnectOnIdle
     title: Enable Disconnect on Idle
     type: <integer>
@@ -728,7 +750,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', disconnect after an on-demand connection idles.
+    content: If `1`, disconnect after an on-demand connection idles.
   - key: DisconnectOnIdleTimer
     title: Disconnect on Idle time
     type: <integer>
@@ -742,7 +764,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', enables bringing the VPN connection up on demand.
+    content: If `1`, enables bringing the VPN connection up on demand.
   - key: OnDemandMatchDomainsAlways
     title: On Demand Match Domains Always
     supportedOS:
@@ -752,8 +774,8 @@ payloadkeys:
     presence: optional
     content: Deprecated. A list of domain names. In iOS 7 and later, if this key is
       present, the system treats associated domain names as though they're associated
-      with the 'OnDemandMatchDomainsOnRetry' key. This behavior can be overridden
-      by 'OnDemandRules'.
+      with the `OnDemandMatchDomainsOnRetry` key. This behavior can be overridden
+      by `OnDemandRules`.
     subkeytype: MatchDomainAlwaysElement
     subkeys: *id001
   - key: OnDemandMatchDomainsNever
@@ -764,7 +786,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Deprecated. A list of domain names. In iOS 7 and later, this key is deprecated
-      (but still supported) in favor of 'EvaluateConnection' actions in the 'OnDemandRules'
+      (but still supported) in favor of `EvaluateConnection` actions in the `OnDemandRules`
       dictionaries.
     subkeytype: MatchDomainNeverElement
     subkeys: *id002
@@ -776,8 +798,8 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Deprecated. A list of domain names. In iOS 7 and later, this field is
-      deprecated (but still supported) in favor of 'EvaluateConnection' actions in
-      the 'OnDemandRules' dictionaries.
+      deprecated (but still supported) in favor of `EvaluateConnection` actions in
+      the `OnDemandRules` dictionaries.
     subkeytype: MatchDomainOnRetryElement
     subkeys: *id003
   - key: OnDemandRules
@@ -794,7 +816,7 @@ payloadkeys:
       introduced: '10.0'
   type: <dictionary>
   presence: optional
-  content: The dictionary to use when 'VPNType' is 'IKEv2'.
+  content: The dictionary to use when `VPNType` is `IKEv2`.
   subkeys:
   - key: RemoteAddress
     title: RemoteAddress
@@ -821,7 +843,8 @@ payloadkeys:
     - Certificate
     content: |-
       The type of authentication method for the VPN.
-      To enable EAP-only authentication, set this to 'None' and 'ExtendedAuthEnabled' to '1'. If this is 'None' and the 'ExtendedAuthEnabled' key isn't set, the authentication configuration defaults to 'SharedSecret'.
+
+      To enable EAP-only authentication, set this to `None` and `ExtendedAuthEnabled` to `1`. If this is `None` and the `ExtendedAuthEnabled` key isn't set, the authentication configuration defaults to `SharedSecret`.
   - key: CertificateType
     title: Certificate Type
     type: <string>
@@ -833,14 +856,14 @@ payloadkeys:
     - ECDSA521
     - RSA-PSS
     default: RSA
-    content: The type of 'PayloadCertificateUUID' to use for IKEv2 machine authentication.
-      If this key is included, the system requires a value for 'ServerCertificateIssuerCommonName'.
+    content: The type of `PayloadCertificateUUID` to use for IKEv2 machine authentication.
+      If this key is included, the system requires a value for `ServerCertificateIssuerCommonName`.
   - key: PayloadCertificateUUID
     title: PayloadCertificateUUID
     type: <string>
     presence: optional
     content: The UUID of the certificate payload within the same profile to use as
-      the account credential. If the value of 'AuthenticationMethod' is 'Certificate',
+      the account credential. If the value of `AuthenticationMethod` is `Certificate`,
       the system sends this certificate out for IKEv2 machine authentication. If extended
       authentication (EAP) is used, the system sends this certificate out for EAP-TLS
       authentication.
@@ -848,8 +871,8 @@ payloadkeys:
     title: Account Password
     type: <string>
     presence: optional
-    content: The password to use for the account credentials. Only used if 'AuthenticationMethod'
-      is 'Password'.
+    content: The password to use for the account credentials. Only used if `AuthenticationMethod`
+      is `Password`.
   - key: ProviderBundleIdentifier
     title: Provider Bundle Identifier
     type: <string>
@@ -877,7 +900,7 @@ payloadkeys:
     title: SharedSecret
     type: <string>
     presence: optional
-    content: If 'AuthenticationMethod' is 'SharedSecret', this value is used for IKE
+    content: If `AuthenticationMethod` is `SharedSecret`, this value is used for IKE
       authentication.
   - key: ExtendedAuthEnabled
     title: ExtendedAuthEnabled
@@ -887,7 +910,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', enables EAP-only authentication.
+    content: If `1`, enables EAP-only authentication.
   - key: AuthName
     title: AuthName
     type: <string>
@@ -906,7 +929,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', enables VPN up on demand.
+    content: If `1`, enables VPN up on demand.
   - key: OnDemandUserOverrideDisabled
     title: Prevent users from toggling VPN On Demand
     supportedOS:
@@ -920,7 +943,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the system disables the Connect On Demand toggle in Settings
+    content: If `1`, the system disables the Connect On Demand toggle in Settings
       for this configuration.
   - key: OnDemandRules
     title: On Demand Rules
@@ -944,10 +967,12 @@ payloadkeys:
     default: Medium
     content: |-
       One of the following:
-      * 'None': No keepalive.
-      * 'Low': Send keepalive every 30 minutes.
-      * 'Medium': Send keepalive every 10 minutes.
-      * 'High': Send keepalive every 1 minute.
+
+      - `None`: No keepalive.
+      - `Low`: Send keepalive every 30 minutes.
+      - `Medium`: Send keepalive every 10 minutes.
+      - `High`: Send keepalive every 1 minute.
+
       Not available in watchOS.
   - key: ServerCertificateIssuerCommonName
     title: ServerCertificateIssuerCommonName
@@ -955,8 +980,8 @@ payloadkeys:
     presence: optional
     content: Common Name of the server certificate issuer. If set, this field causes
       IKE to send a certificate request based on this certificate issuer to the server.
-      This key is required if the 'CertificateType' key is included and the 'ExtendedAuthEnabled'
-      key is '1'.
+      This key is required if the `CertificateType` key is included and the `ExtendedAuthEnabled`
+      key is `1`.
   - key: ServerCertificateCommonName
     title: ServerCertificateCommonName
     type: <string>
@@ -1005,8 +1030,8 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', negotiations should use IKEv2 Configuration Attribute 'INTERNAL_IP4_SUBNET'
-      and 'INTERNAL_IP6_SUBNET'.
+    content: If `1`, negotiations should use IKEv2 Configuration Attribute `INTERNAL_IP4_SUBNET`
+      and `INTERNAL_IP6_SUBNET`.
   - key: DisableMOBIKE
     title: Disable Mobility and Multihoming
     supportedOS:
@@ -1018,7 +1043,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the system disables MOBIKE.
+    content: If `1`, the system disables MOBIKE.
   - key: DisableRedirect
     title: Disable Redirect
     supportedOS:
@@ -1030,7 +1055,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the system disables IKEv2 redirect. If not set, the system redirects
+    content: If `1`, the system disables IKEv2 redirect. If not set, the system redirects
       an IKEv2 connection when it receives a redirect request from the server.
   - key: DisconnectOnIdle
     title: Enable Disconnect on Idle
@@ -1040,12 +1065,12 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the VPN disconnects automatically after a period defined by 'DisconnectOnIdleTimer'.
+    content: If `1`, the VPN disconnects automatically after a period defined by `DisconnectOnIdleTimer`.
   - key: DisconnectOnIdleTimer
     title: Disconnect on Idle time
     type: <integer>
     presence: optional
-    content: Only used if 'DisconnectOnIdle' is '1'. The number of seconds before
+    content: Only used if `DisconnectOnIdle` is `1`. The number of seconds before
       the VPN disconnects. On watchOS, maximum allowed value is 15 seconds
   - key: NATKeepAliveOffloadEnable
     title: NAT Keep Alive Offload Enable
@@ -1059,8 +1084,9 @@ payloadkeys:
     - 1
     default: 1
     content: |-
-      If '1', enables NAT keepalive offload for Always On VPN IKEv2 connections. The device sends keepalive packets to maintain NAT mappings for IKEv2 connections that have a NAT on the path. It sends keepalive packets at regular intervals when the device is awake. If 'NATKeepAliveOffloadEnable' is '1', the system offloads keepalive packets to hardware while the device is asleep.
-      NAT keepalive offload has an impact on the battery life due to the extra workload during sleep. The default interval for the keepalive offload packets is 20 seconds over WiFi and 110 seconds over Cellular interface. The default NAT keepalive works well on networks with small NAT mapping timeouts but imposes a potential battery impact. If a network has larger NAT mapping timeouts, larger keepalive intervals may be safely used to minimize battery impact. Modify the keepalive interval through the 'NATKeepAliveInterval' key.
+      If `1`, enables NAT keepalive offload for Always On VPN IKEv2 connections. The device sends keepalive packets to maintain NAT mappings for IKEv2 connections that have a NAT on the path. It sends keepalive packets at regular intervals when the device is awake. If `NATKeepAliveOffloadEnable` is `1`, the system offloads keepalive packets to hardware while the device is asleep.
+
+      NAT keepalive offload has an impact on the battery life due to the extra workload during sleep. The default interval for the keepalive offload packets is 20 seconds over Wi-Fi and 110 seconds over Cellular interface. The default NAT keepalive works well on networks with small NAT mapping timeouts but imposes a potential battery impact. If a network has larger NAT mapping timeouts, larger keepalive intervals may be safely used to minimize battery impact. Modify the keepalive interval through the `NATKeepAliveInterval` key.
   - key: NATKeepAliveInterval
     title: NAT Keepalive Interval
     supportedOS:
@@ -1084,7 +1110,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1',  enables Perfect Forward Secrecy (PFS) for IKEv2 Connections.
+    content: If `1`,  enables Perfect Forward Secrecy (PFS) for IKEv2 Connections.
   - key: EnableCertificateRevocationCheck
     title: Enable certificate revocation check
     supportedOS:
@@ -1096,7 +1122,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', the system performs a certificate revocation check for IKEv2
+    content: If `1`, the system performs a certificate revocation check for IKEv2
       connections. This is a best-effort revocation check and server response timeouts
       won't cause it to fail.
   - key: EnableFallback
@@ -1115,8 +1141,10 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', the system enables a tunnel over cellular data to carry traffic that's eligible for WiFi Assist and also requires VPN.
+      If `1`, the system enables a tunnel over cellular data to carry traffic that's eligible for Wi-Fi Assist and also requires VPN.
+
       Enabling fallback requires that the server support multiple tunnels for a single user.
+
       This field is available in iOS 13 and later, and tvOS 17 and later. Not available in watchOS.
   - key: MTU
     title: Maximum Transmission Unit
@@ -1141,8 +1169,8 @@ payloadkeys:
     - packet-tunnel
     - app-proxy
     default: packet-tunnel
-    content: If the value of this key is 'app-proxy', the VPN service tunnels traffic
-      at the application layer. If the value of this key is 'packet-tunnel', the VPN
+    content: If the value of this key is `app-proxy`, the VPN service tunnels traffic
+      at the application layer. If the value of this key is `packet-tunnel`, the VPN
       service tunnels traffic at the IP layer.
   - key: IncludeAllNetworks
     title: Include All Networks
@@ -1162,11 +1190,12 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', then the system routes all network traffic through the VPN, with some controllable exclusions, such as 'ExcludeLocalNetworks', 'ExcludeCellularServices', 'ExcludeAPNs', and 'ExcludeDeviceCommunication' properties. The system always excludes the following traffic from the tunnel:
-      * Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
-      * Traffic necessary for connecting to captive networks.
-      * Certain cellular services traffic that's not routable over the internet and is instead directly routed to the cellular network. See the 'ExcludeCellularServices' field for more information.
-      * Network communication with a companion device such as a watchOS device.
+      If `1`, then the system routes all network traffic through the VPN, with some controllable exclusions, such as `ExcludeLocalNetworks`, `ExcludeCellularServices`, and `ExcludeAPNs` properties. The system always excludes the following traffic from the tunnel:
+
+      - Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
+      - Traffic necessary for connecting to captive networks.
+      - Certain cellular services traffic that's not routable over the internet and is instead directly routed to the cellular network. See the `ExcludeCellularServices` field for more information.
+      - Network communication with a companion device such as a watchOS device.
   - key: EnforceRoutes
     title: Enforce Routes
     supportedOS:
@@ -1182,8 +1211,8 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', all the VPN's non-default routes take precedence over any locally-defined
-      routes. If 'IncludeAllNetworks' is '1', the system ignores 'EnforceRoutes'.
+    content: If `1`, all the VPN's non-default routes take precedence over any locally-defined
+      routes. If `IncludeAllNetworks` is `1`, the system ignores `EnforceRoutes`.
   - key: ExcludeLocalNetworks
     title: Exclude Local Networks
     supportedOS:
@@ -1200,9 +1229,9 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If '1' and either 'IncludeAllNetworks' or 'EnforceRoutes' are '1', then
+    content: If `1` and either `IncludeAllNetworks` or `EnforceRoutes` are `1`, then
       the system routes local network traffic outside of the VPN. The default for
-      this value is '0' on macOS and '1' on iOS.
+      this value is `0` on macOS and `1` on iOS.
   - key: ExcludeCellularServices
     title: Exclude Cellular Services
     supportedOS:
@@ -1220,7 +1249,7 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If '1' and 'IncludeAllNetworks' is '1', the system excludes internet-routable
+    content: If `1` and `IncludeAllNetworks` is `1`, the system excludes internet-routable
       network traffic for cellular services (VoLTE, Wi-Fi Calling, IMS, MMS, Visual
       Voicemail, etc.) from the tunnel. Note that some cellular carriers route cellular
       services traffic directly to the carrier network, bypassing the internet. Such
@@ -1242,7 +1271,7 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If '1' and 'IncludeAllNetworks' is '1', the system excludes network traffic
+    content: If `1` and `IncludeAllNetworks` is `1`, the system excludes network traffic
       for the Apple Push Notification service (APNs) from the tunnel.
   - key: ExcludeDeviceCommunication
     title: Exclude Device Communication
@@ -1263,8 +1292,9 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If 1 and IncludeAllNetworks is 1, then network traffic used for communicating
-      with devices connected via USB or Wi-Fi is excluded from the tunnel.
+    content: If set to `1` and `IncludeAllNetworks` is set to `1`, the device excludes
+      network traffic used for communicating with devices connected via USB or Wi-Fi
+      from the tunnel.
   - key: PPK
     title: Post-quantum Pre-shared Key
     supportedOS:
@@ -1280,9 +1310,9 @@ payloadkeys:
         introduced: '11.0'
     type: <data>
     presence: optional
-    content: The Post-quantum Pre-shared key (PPK) used for this VPN. This key is
-      meant to be used with VPN servers that support RFC 8784. If this key is present
-      PPKIdentifier must also be present.
+    content: The Post-quantum Pre-shared key (PPK) the device uses for this VPN. This
+      key is is used with VPN servers that support RFC 8784. If this key is present
+      `PPKIdentifier` must also be present.
   - key: PPKIdentifier
     title: Post-quantum Pre-shared Key Identifier
     supportedOS:
@@ -1298,9 +1328,9 @@ payloadkeys:
         introduced: '11.0'
     type: <string>
     presence: optional
-    content: The identifier for the Post-quantum Pre-shared key (PPK) used for this
-      VPN. This key is meant to be used with VPN servers that support RFC 8784. If
-      this key is present PPK must also be present.
+    content: The identifier for the Post-quantum Pre-shared key (PPK) the device uses
+      for this VPN. This key is is used with VPN servers that support RFC 8784. If
+      this key is present `PPK` must also be present.
   - key: PPKMandatory
     title: Post-quantum Pre-shared Key Mandatory
     supportedOS:
@@ -1320,14 +1350,61 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: This key has no effect if PPK and PPKIdentifier are not present. If the
-      value of this key is 1, the VPN will fail to establish if the server does not
-      support RFC 8784 or does not accept the PPK identifier specified in PPKIdentifier.
+    content: If set to `1`, the VPN doesn't establish a connection if the server doesn't
+      support RFC 8784 or doesn't accept the PPK identifier specified in `PPKIdentifier`.
+      The device ignores this key if `PPK` and `PPKIdentifier` are not present.
+  - key: AllowPostQuantumKeyExchangeFallback
+    title: Allow Post-quantum Key Exchange Fallback
+    supportedOS:
+      iOS:
+        introduced: '26.0'
+      macOS:
+        introduced: '26.0'
+      tvOS:
+        introduced: '26.0'
+      visionOS:
+        introduced: '26.0'
+      watchOS:
+        introduced: '26.0'
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 0
+    content: If set to `0`, the VPN doesn't establish a connection if the server does
+      not support or doesn't allow post-quantum key exchanges. Thd device ignores
+      this key if `PostQuantumKeyExchangeMethods` is not present in `IKESecurityAssociationParameters`
+      or `ChildSecurityAssociationParameters`.
+  - key: EnforceStrictAlgorithmSelection
+    title: Enforce Strict Algorithm Selection
+    supportedOS:
+      iOS:
+        introduced: '18.5'
+      macOS:
+        introduced: '15.5'
+      tvOS:
+        introduced: '18.5'
+      visionOS:
+        introduced: '2.5'
+      watchOS:
+        introduced: '11.5'
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 0
+    - 1
+    default: 0
+    content: If set to `1`, the device doesn't allow DES, 3DES, and Diffie-Hellman
+      groups less than 14. Also the device requires the encryption algorithm specified
+      for the IKE SA to be at least as cryptographically strong as the algorithm specified
+      for the child SA. The device rejects this profile payload if these requirements
+      are not met.
   - key: IKESecurityAssociationParameters
     title: IKESecurityAssociationParameters
     type: <dictionary>
     presence: optional
-    content: These parameters apply to Child Security Association unless 'ChildSecurityAssociationParameters'
+    content: These parameters apply to Child Security Association unless `ChildSecurityAssociationParameters`
       is specified.
     subkeytype: SecurityAssociationParameters
     subkeys: &id005
@@ -1344,7 +1421,11 @@ payloadkeys:
       - AES-256-GCM
       - ChaCha20Poly1305
       default: AES-256
-      content: The encryption algorithm.
+      content: |-
+        The encryption algorithm.
+
+        In watchOS and tvOS, the default value is `AES-256-GCM`.
+        `DES` and `3DES` are available only in iOS, macOS, and visionOS prior to iOS 26, macOS 26, and visionOS 26.
     - key: IntegrityAlgorithm
       title: IntegrityAlgorithm
       type: <string>
@@ -1356,7 +1437,10 @@ payloadkeys:
       - SHA2-384
       - SHA2-512
       default: SHA2-256
-      content: The integrity algorithm.
+      content: |-
+        The integrity algorithm.
+
+        `SHA1-96` and `SHA1-160` are available only in iOS, macOS, and visionOS prior to iOS 26, macOS 26, and visionOS 26.
     - key: DiffieHellmanGroup
       title: DiffieHellmanGroup
       type: <integer>
@@ -1376,8 +1460,38 @@ payloadkeys:
       - 31
       - 32
       default: 14
-      content: The Diffie-Hellman group. For AlwaysOn VPN, minimum allowed Diffie
-        Hellman Group is '14' in iOS 14.2 and later.
+      content: |-
+        The Diffie-Hellman group.
+
+        For `AlwaysOn` VPN in iOS 14.2 and later, the minimum allowed value is `14`.
+
+        `1`, `2`, and `5` are available only in iOS, macOS, and visionOS prior to iOS 26, macOS 26, and visionOS 26.
+    - key: PostQuantumKeyExchangeMethods
+      title: Post-quantum Key Exchange Methods
+      supportedOS:
+        iOS:
+          introduced: '26.0'
+        macOS:
+          introduced: '26.0'
+        tvOS:
+          introduced: '16.0'
+        visionOS:
+          introduced: '26.0'
+        watchOS:
+          introduced: '26.0'
+      type: <array>
+      presence: optional
+      content: An array of strings representing postquantum key exchange methods the
+        device uses during SA establishment and rekey. You can specify up to seven
+        items, which correspond to ADDKE1 - ADDKE7 from RFC 9370.
+      subkeys:
+      - key: PostQuantumKeyExchangeMethod
+        title: Post-quantum Key Exchange Method
+        type: <integer>
+        rangelist:
+        - 0
+        - 36
+        - 37
     - key: LifeTimeInMinutes
       title: LifeTimeInMinutes
       type: <integer>
@@ -1391,7 +1505,7 @@ payloadkeys:
     title: ChildSecurityAssociationParameters
     type: <dictionary>
     presence: optional
-    content: The 'ChildSecurityAssociationParameters' dictionaries.
+    content: The `ChildSecurityAssociationParameters` dictionaries.
     subkeytype: SecurityAssociationParameters
     subkeys: *id005
 - key: DNS
@@ -1427,10 +1541,10 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484,
-      which needs to use the 'https://' scheme. The system uses the hostname or address
-      in the URL to validate the server certificate. If 'ServerAddresses' isn't specified,
+      which needs to use the `https://` scheme. The system uses the hostname or address
+      in the URL to validate the server certificate. If `ServerAddresses` isn't specified,
       the system uses the hostname or address in the URL to determine the server addresses.
-      This key is required if the 'DNSProtocol' is 'HTTPS'.
+      This key is required if the `DNSProtocol` is `HTTPS`.
   - key: ServerName
     title: Server Name
     supportedOS:
@@ -1441,9 +1555,9 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The hostname of a DNS-over-TLS server to validate the server certificate,
-      as defined in RFC 7858. If 'ServerAddresses' isn't specified, the system uses
+      as defined in RFC 7858. If `ServerAddresses` isn't specified, the system uses
       the hostname to determine the server addresses. This key is required if the
-      'DNSProtocol' is 'TLS'.
+      `DNSProtocol` is `TLS`.
   - key: ServerAddresses
     title: DNS Server Addresses
     supportedOS:
@@ -1493,9 +1607,11 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      The list of domain strings used to determine which DNS queries use the DNS resolver settings in 'ServerAddresses'. The system uses this key to create a split DNS configuration where it resolves only hosts in certain domains using the tunnel's DNS resolver. The system uses the default resolver for hosts that aren't in one of the domains in this list.
-      If 'SupplementalMatchDomains' contains the empty string it becomes the default domain.
-      Split-tunnel configurations can direct all DNS queries to the VPN DNS servers before the primary DNS servers. If the VPN tunnel becomes the network's default route, the servers listed in 'ServerAddresses' become the default resolver and the system ignores the 'SupplementalMatchDomains' list.
+      The list of domain strings used to determine which DNS queries use the DNS resolver settings in `ServerAddresses`. The system uses this key to create a split DNS configuration where it resolves only hosts in certain domains using the tunnel's DNS resolver. The system uses the default resolver for hosts that aren't in one of the domains in this list.
+
+      If `SupplementalMatchDomains` contains the empty string it becomes the default domain.
+
+      Split-tunnel configurations can direct all DNS queries to the VPN DNS servers before the primary DNS servers. If the VPN tunnel becomes the network's default route, the servers listed in `ServerAddresses` become the default resolver and the system ignores the `SupplementalMatchDomains` list.
     subkeys: &id006
     - key: SupplementalMatchDomainsElement
       title: Supplemental Match Domains Element
@@ -1513,7 +1629,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '0', append the domains in the 'SupplementalMatchDomains' list to
+    content: If `0`, append the domains in the `SupplementalMatchDomains` list to
       the resolver's list of search domains.
   - key: PayloadCertificateUUID
     title: DNS Certificate UUID
@@ -1534,7 +1650,7 @@ payloadkeys:
       introduced: '10.0'
   type: <dictionary>
   presence: optional
-  content: The dictionary to use to configure 'Proxies' for use with 'VPN'.
+  content: The dictionary to use to configure `Proxies` for use with `VPN`.
   subkeys:
   - key: ProxyAutoConfigEnable
     title: Proxy AutoConfig Enable
@@ -1543,7 +1659,7 @@ payloadkeys:
     rangelist:
     - 0
     - 1
-    content: If 'true', enables automatic proxy configuration.
+    content: If `true`, enables automatic proxy configuration.
   - key: ProxyAutoDiscoveryEnable
     title: Proxy Auto Discovery Enable
     type: <integer>
@@ -1552,13 +1668,13 @@ payloadkeys:
     - 0
     - 1
     default: 1
-    content: If 'true', enables proxy auto discovery.
+    content: If `true`, enables proxy auto discovery.
   - key: ProxyAutoConfigURLString
     title: Proxy Server URL
     type: <string>
     presence: optional
     content: The URL to the location of the proxy auto-configuration file. Used only
-      when 'ProxyAutoConfigEnable' is 'true'.
+      when `ProxyAutoConfigEnable` is `true`.
   - key: SupplementalMatchDomains
     title: Supplemental Match Domains
     type: <array>
@@ -1573,7 +1689,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', enables proxy for HTTP traffic.
+    content: If `1`, enables proxy for HTTP traffic.
   - key: HTTPProxy
     title: HTTP Proxy
     type: <string>
@@ -1586,7 +1702,7 @@ payloadkeys:
     range:
       min: 0
       max: 65535
-    content: The port number of the HTTP proxy. This field is required if 'HTTPProxy'
+    content: The port number of the HTTP proxy. This field is required if `HTTPProxy`
       is specified.
   - key: HTTPProxyUsername
     title: HTTP ProxyUsername
@@ -1606,7 +1722,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If 'true', enables proxy for HTTPS traffic.
+    content: If `true`, enables proxy for HTTPS traffic.
   - key: HTTPSProxy
     title: HTTPS Proxy
     type: <string>
@@ -1619,7 +1735,7 @@ payloadkeys:
     range:
       min: 0
       max: 65535
-    content: The port number of the HTTPS proxy. This field is required if 'HTTPSProxy'
+    content: The port number of the HTTPS proxy. This field is required if `HTTPSProxy`
       is specified.
 - key: AlwaysOn
   title: AlwaysOn
@@ -1632,7 +1748,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The dictionary to use when 'VPNType' is 'AlwaysOn'. Not available in tvOS
+  content: The dictionary to use when `VPNType` is `AlwaysOn`. Not available in tvOS
     or watchOS.
   subkeys:
   - key: UIToggleEnabled
@@ -1643,7 +1759,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', allows the user to disable the VPN configuration.
+    content: If `1`, allows the user to disable the VPN configuration.
   - key: TunnelConfigurations
     title: TunnelConfigurations
     type: <array>
@@ -1660,7 +1776,7 @@ payloadkeys:
         presence: required
         rangelist:
         - IKEv2
-        content: The type of connection, which needs to be 'IKEv2'.
+        content: The type of connection, which needs to be `IKEv2`.
       - key: Interfaces
         title: Interfaces
         type: <array>
@@ -1692,11 +1808,12 @@ payloadkeys:
         - AirPrint
         - CellularServices
         - DeviceCommunication
-        content: The name of a service that's exempt from Always On VPN. 'CellularServices'
-          is available in iOS 11.3 and later; it exempts 'VoLTE', 'IMS' and 'MMS'.
-          WiFiCalling is exempted in iOS 13.4 and later.  DeviceCommunication is available
-          in iOS 17.4 and later; it exempts network traffic used for communicating
-          with devices connected via USB or Wi-Fi.
+        content: |-
+          The name of a service that's exempt from Always On VPN.
+
+          `CellularServices` is available in iOS 11.3 and later; it exempts `VoLTE`, `IMS` and `MMS`. WiFiCalling is exempted in iOS 13.4 and later.
+
+          `DeviceCommunication` is available in iOS 17.4 and later; it exempts network traffic used for communicating with devices connected via USB or Wi-Fi.
       - key: Action
         title: Action
         type: <string>
@@ -1729,7 +1846,7 @@ payloadkeys:
         type: <array>
         presence: optional
         content: Limit the exception to only the specified list of protocols, with
-          support for 'UDP' only.
+          support for `UDP` only.
         subkeys:
         - key: LimitToProtocolElement
           title: LimitToProtocol Element
@@ -1744,7 +1861,7 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', allows traffic from Captive Web Sheet outside the VPN tunnel.
+    content: If `1`, allows traffic from Captive Web Sheet outside the VPN tunnel.
   - key: AllowAllCaptiveNetworkPlugins
     title: Allow All Captive Network Plugins
     type: <integer>
@@ -1753,15 +1870,15 @@ payloadkeys:
     - 0
     - 1
     default: 0
-    content: If '1', allows traffic from all captive networking apps outside the VPN
+    content: If `1`, allows traffic from all captive networking apps outside the VPN
       tunnel to perform captive network handling.
   - key: AllowedCaptiveNetworkPlugins
     title: AllowedCaptiveNetworkPlugins
     type: <array>
     presence: optional
     content: The array of captive networking apps whose traffic is allowed outside
-      the VPN tunnel, to perform captive network handling. Used only when 'AllowAllCaptiveNetworkPlugins'
-      is 'false'.
+      the VPN tunnel, to perform captive network handling. Used only when `AllowAllCaptiveNetworkPlugins`
+      is `false`.
     subkeys:
     - key: AllowedCaptiveNetworkPluginElement
       title: An AllowedCaptiveNetworkPlugin Element
@@ -1785,7 +1902,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The dictionary to use when 'VPNType' is 'TransparentProxy'. Available in
+  content: The dictionary to use when `VPNType` is `TransparentProxy`. Available in
     macOS 14 and later.
   subkeys:
   - key: AuthenticationMethod
@@ -1798,7 +1915,8 @@ payloadkeys:
     - Password+Certificate
     default: Password
     content: |-
-      The type of authentication method to use: 'Password', 'Certificate', or 'Password+Certificate'.
+      The type of authentication method to use: `Password`, `Certificate`, or `Password+Certificate`.
+
       Available in macOS 14 and later.
   - key: DisconnectOnIdle
     title: Enable Disconnect on Idle
@@ -1809,14 +1927,16 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', the VPN disconnects automatically disconnect after a period defined by 'DisconnectOnIdleTimer'.
+      If `1`, the VPN disconnects automatically disconnect after a period defined by `DisconnectOnIdleTimer`.
+
       Available in macOS 14 and later.
   - key: DisconnectOnIdleTimer
     title: Disconnect on Idle time
     type: <integer>
     presence: optional
     content: |-
-      The number of seconds before the VPN disconnects. This value is only used if 'DisconnectOnIdle' is '1'.
+      The number of seconds before the VPN disconnects. This value is only used if `DisconnectOnIdle` is `1`.
+
       Available in macOS 14 and later.
   - key: EnforceRoutes
     title: Enforce Routes
@@ -1827,7 +1947,8 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', then all the VPN's non-default routes take precedence over any locally-defined routes. If 'IncludeAllNetworks' is '1', the system ignores the value of 'EnforceRoutes'.
+      If `1`, then all the VPN's non-default routes take precedence over any locally-defined routes. If `IncludeAllNetworks` is `1`, the system ignores the value of `EnforceRoutes`.
+
       Available in macOS 14 and later.
   - key: OnDemandEnabled
     title: Enable VPN On Demand
@@ -1838,7 +1959,8 @@ payloadkeys:
     - 1
     default: 0
     content: |-
-      If '1', the system brings up the VPN on demand.
+      If `1`, the system brings up the VPN on demand.
+
       Available in macOS 14 and later.
   - key: OnDemandRules
     title: On Demand Rules
@@ -1846,6 +1968,7 @@ payloadkeys:
     presence: optional
     content: |-
       Determines when and how the system uses an OnDemand VPN.
+
       Available in macOS 14 and later.
     subkeytype: OnDemandRulesElement
     subkeys: *id004
@@ -1854,14 +1977,16 @@ payloadkeys:
     type: <string>
     presence: optional
     content: |-
-      The UUID of the identity certificate as the account credential. If 'AuthenticationMethod' is 'Certificate', and extended authentication (EAP) isn't used, this certificate is sent out for IKE client authentication. If extended authentication is used, this certificate can be used for EAP-TLS.
+      The UUID of the identity certificate as the account credential. If `AuthenticationMethod` is `Certificate`, and extended authentication (EAP) isn't used, this certificate is sent out for IKE client authentication. If extended authentication is used, this certificate can be used for EAP-TLS.
+
       Available in macOS 14 and later.
   - key: Password
     title: Account Password
     type: <string>
     presence: optional
     content: |-
-      The password to use for the account credentials. Only used if 'AuthenticationMethod' is 'Password'.
+      The password to use for the account credentials. Only used if `AuthenticationMethod` is `Password`.
+
       Available in macOS 14 and later.
   - key: ProviderBundleIdentifier
     title: Provider Bundle Identifier
@@ -1869,6 +1994,7 @@ payloadkeys:
     presence: optional
     content: |-
       If the VPNSubType field contains the bundle identifier of an app that contains multiple VPN providers of the same type (app-proxy or packet-tunnel), then the system uses this field to choose which provider to use for this configuration. If the VPN provider is implemented as a System Extension, then this field is required.
+
       Available in macOS 14 and later.
   - key: ProviderDesignatedRequirement
     title: Provider Designated Requirement
@@ -1876,6 +2002,7 @@ payloadkeys:
     presence: optional
     content: |-
       If the VPN provider is implemented as a System Extension, then this field is required.
+
       Available in macOS 14 and later.
   - key: ProviderType
     type: <string>
@@ -1885,7 +2012,8 @@ payloadkeys:
     - app-proxy
     default: packet-tunnel
     content: |-
-      If the value of this key is 'app-proxy', the VPN service tunnels traffic at the application layer. If the value of this key is 'packet-tunnel', the VPN service tunnels traffic at the IP layer.
+      If the value of this key is `app-proxy`, the VPN service tunnels traffic at the application layer. If the value of this key is `packet-tunnel`, the VPN service tunnels traffic at the IP layer.
+
       Available in macOS 14 and later.
   - key: Order
     title: Order
@@ -1893,4 +2021,5 @@ payloadkeys:
     presence: optional
     content: |-
       A positive integer.
+
       Available in macOS 14 and later.

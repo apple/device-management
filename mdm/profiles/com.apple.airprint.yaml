@@ -1,5 +1,6 @@
 title: AirPrint
-description: Use this section to define settings for AirPrint.
+description: The payload that configures AirPrint printer discoverability in the user's
+  printer list.
 payload:
   payloadtype: com.apple.airprint
   supportedOS:
@@ -63,11 +64,12 @@ payloadkeys:
       type: <string>
       presence: required
       content: |-
-        The resource path associated with the printer. This path corresponds to the 'rp' parameter of the '_ipps.tcp' Bonjour record. For example:
-        * 'printers/Canon_MG5300_series'
-        * 'printers/Xerox_Phaser_7600'
-        * 'ipp/print'
-        * 'Epson_IPP_Printer'
+        The resource path associated with the printer. This path corresponds to the `rp` parameter of the `_ipps.tcp` Bonjour record. For example:
+
+        - `printers/Canon_MG5300_series`
+        - `printers/Xerox_Phaser_7600`
+        - `ipp/print`
+        - `Epson_IPP_Printer`
     - key: Port
       title: Port Number
       supportedOS:
@@ -92,5 +94,5 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If 'true', AirPrint connections are secured by Transport Layer Security
+      content: If `true`, AirPrint connections are secured by Transport Layer Security
         (TLS). Available only in iOS 11 and later.
