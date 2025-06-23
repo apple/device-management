@@ -526,8 +526,8 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The key to skip the mandatory software update screen in iOS. This key is
-    available in iOS 12 and later.
+  content: The key to skip the mandatory software update screen in iOS and macOS. This key is
+    available in iOS 12 and later, and macOS 15.4 and later.
 - key: SpokenLanguage
   title: Skip Dictation pane
   supportedOS:
