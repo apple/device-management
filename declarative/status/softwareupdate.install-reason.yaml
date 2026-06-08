@@ -1,5 +1,5 @@
 title: Status Software Update Install Reason
-description: A status report of the reason for a pending software update on the device.
+description: The status item that reports the device's pending software update reason.
 payload:
   statusitemtype: softwareupdate.install-reason
   supportedOS:
@@ -80,3 +80,7 @@ payloadkeys:
     content: The identifier of the declaration that caused the software update to
       occur. This key is present only if the `reason` array contains the `declaration`
       value.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.install-reason/example1.json

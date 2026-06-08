@@ -272,12 +272,10 @@ payloadkeys:
     > Note:
     > At least one of `FilterBrowsers` or `FilterSockets` needs to be `true`.
 - key: FilterDataProviderDesignatedRequirement
-  title: Filter Data Provider Designated Requirement
+  title: Filter data provider designated requirement
   supportedOS:
     iOS:
       introduced: n/a
-    macOS:
-      introduced: '10.15'
     visionOS:
       introduced: n/a
   type: <string>
@@ -286,21 +284,14 @@ payloadkeys:
     of the filter data provider system extension. This string identifies the filter
     data provider when the filter starts running. Required if `FilterSockets` is `true`.
 - key: FilterDataProviderBundleIdentifier
-  title: Filter Data Provider Bundle Identifier
-  supportedOS:
-    iOS:
-      introduced: n/a
-    macOS:
-      introduced: '10.15'
-    visionOS:
-      introduced: n/a
+  title: Filter data provider bundle identifier
   type: <string>
   presence: optional
   content: The bundle identifier string of the filter data provider system extension.
     This string identifies the filter data provider when the filter starts running.
     Required if `FilterSockets` is `true`.
 - key: FilterPackets
-  title: Filter Network Packets
+  title: Filter network packets
   supportedOS:
     iOS:
       introduced: n/a
@@ -317,7 +308,7 @@ payloadkeys:
     > Note:
     > At least one of `FilterPackets` or `FilterSockets` needs to be `true`.
 - key: FilterPacketProviderDesignatedRequirement
-  title: Filter Packet Provider Designated Requirement
+  title: Filter packet provider designated requirement
   supportedOS:
     iOS:
       introduced: n/a
@@ -332,7 +323,7 @@ payloadkeys:
     packet provider when the filter starts running. Required if `FilterPackets` is
     `true`.
 - key: FilterPacketProviderBundleIdentifier
-  title: Filter Packet Provider Bundle Identifier
+  title: Filter packet provider bundle identifier
   supportedOS:
     iOS:
       introduced: n/a
@@ -346,7 +337,7 @@ payloadkeys:
     This string identifies the filter packet provider when the filter starts running.
     Required if `FilterPackets` is `true`.
 - key: FilterGrade
-  title: Filter Grade
+  title: Filter grade
   supportedOS:
     iOS:
       introduced: n/a
@@ -365,7 +356,7 @@ payloadkeys:
     of `inspector`. However, the system doesn't define the order of filters within
     a grade.
 - key: ContentFilterUUID
-  title: Content Filter UUID
+  title: Content filter UUID
   supportedOS:
     iOS:
       introduced: '16.0'
@@ -390,7 +381,6 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system filters URL requests. Use when `FilterType` is `Plugin`.
-    Available in iOS 26 and macOS 26, and later.
 - key: URLFilterParameters
   supportedOS:
     iOS:
@@ -402,35 +392,35 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: A dictionary containing URL filter parameters. Required when `FilterURLs`
-    is `true`. Available in iOS 26 and macOS 26 and later.
+    is `true`.
   subkeys:
   - key: URLFilterControlProviderDesignatedRequirement
-    title: URL Filter Control Provider Designated Requirement
+    title: URL filter control provider designated requirement
     type: <string>
     presence: optional
     content: The designated requirement string in the code signature of the URL filter
       control provider app extension. The system uses this string to identify the
       URL filter control provider when the filter starts running. Required in macOS.
   - key: URLFilterControlProviderBundleIdentifier
-    title: URL Filter Control Provider Bundle Identifier
+    title: URL filter control provider bundle identifier
     type: <string>
     presence: required
     content: The bundle identifier string of the URL filter control provider app extension.
       The system uses this string to identify the URL filter control provider when
       the filter starts running.
   - key: PIRServerURL
-    title: Private Information Retrieval server URL
+    title: Private information retrieval server URL
     type: <string>
     presence: required
     content: The URL containing the domain name of the private information retrieval
       server.
   - key: PIRPrivacyPassIssuerURL
-    title: Privacy Pass Issuer URL
+    title: Privacy pass issuer URL
     type: <string>
     presence: required
     content: The URL containing the domain name of Privacy Pass Issuer.
   - key: PIRAuthenticationToken
-    title: Authentication Token
+    title: Authentication token
     type: <string>
     presence: required
     content: The per-user authentication token string, which is an HTTP bearer token
@@ -469,3 +459,7 @@ notes:
     Matching discards a `www` subdomain prefix if present, so if the system doesn't allow `www.test.com`, it also blocks `m.test.com`.
 
     All filtering options are active simultaneously. The system only permits URLs and sites that pass all rules.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.webcontent-filter/example1.plist

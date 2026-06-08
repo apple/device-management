@@ -52,8 +52,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The message to display on the Lock Screen of the device. This value doesn't
-    apply to a Shared iPad device. This value is available in iOS 4 and later, and
-    macOS 10.14 and later.
+    apply to a Shared iPad device.
 - key: PhoneNumber
   supportedOS:
     iOS:
@@ -67,8 +66,8 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The phone number to display on the Lock Screen. This value doesn't apply
-    to a Shared iPad device. This value is available in iOS 7 and later and macOS
-    11.5 and later (for a Mac with Apple silicon only).
+    to a Shared iPad device. This value is available for a Mac with Apple silicon
+    only.
 - key: PIN
   supportedOS:
     iOS:
@@ -81,8 +80,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The six-character PIN for Find My. This value is available in macOS 10.8
-    and later.
+  content: The six-character PIN for Find My.
 responsekeys:
 - key: MessageResult
   type: <string>
@@ -103,3 +101,8 @@ notes:
     > Sending this command to a Mac with Apple silicon running a version of macOS before 11.5 deactivates the Mac. To reactivate that Mac, it needs a network connection and authentication by a local administrator with Secure Token enabled.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.lock/example1.plist
+    response-file: examples/mdm/commands/device.lock/example2.plist

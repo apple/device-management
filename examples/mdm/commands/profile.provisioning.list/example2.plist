@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_ProvisioningProfileList</string>
+    <key>ProvisioningProfileList</key>
+    <array>
+        <dict>
+            <key>ExpiryDate</key>
+            <date>2020-02-12T20:58:40Z</date>
+            <key>Name</key>
+            <string>My Company (February 2019 - February 2020)</string>
+            <key>UUID</key>
+            <string>493d9dc8-e4c0-4fd8-bd8e-8fd4c0dc7b0c</string>
+        </dict>
+    </array>
+    <key>Status</key>
+    <string>Acknowledged</string>
+    <key>UDID</key>
+    <string>00008020-000915083C80012E</string>
+</dict>
+</plist>

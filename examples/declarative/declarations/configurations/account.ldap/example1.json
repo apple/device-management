@@ -1,0 +1,16 @@
+{
+    "Type": "com.apple.configuration.account.ldap",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Work Directory",
+        "HostName": "ldap.example.com",
+        "SearchSettings": [
+            {
+                "VisibleName": "Search Work",
+                "SearchBase": "dc=example,dc=com",
+                "Scope": "Subtree"
+            }
+        ]
+    }
+}

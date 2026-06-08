@@ -1,5 +1,5 @@
 title: Status Passcode Compliance
-description: A status report of passcode compliance.
+description: The status item that reports the device's passcode compliance.
 payload:
   statusitemtype: passcode.is-compliant
   supportedOS:
@@ -45,3 +45,7 @@ payloadkeys:
     on the device. If `false`, the passcode isn't in compliance with one or more passcode
     policies set on the device. When there are no passcode policies on the device,
     this value `true`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/passcode.is-compliant/example1.json

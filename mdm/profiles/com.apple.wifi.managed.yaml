@@ -43,7 +43,7 @@ payload:
       allowmanualinstall: true
 payloadkeys:
 - key: AutoJoin
-  title: Auto Join
+  title: Auto join
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -70,7 +70,7 @@ payloadkeys:
   default: false
   content: If `true`, defines this network as hidden.
 - key: ProxyType
-  title: Proxy Type
+  title: Proxy type
   supportedOS:
     iOS:
       userenrollment:
@@ -90,7 +90,7 @@ payloadkeys:
     password into the proxy server. If you choose the auto proxy type, you can enter
     a proxy autoconfiguration (PAC) URL.
 - key: EncryptionType
-  title: Encryption Type
+  title: Encryption type
   type: <string>
   presence: optional
   rangelist:
@@ -129,13 +129,13 @@ payloadkeys:
   content: The UUID of the certificate payload within the same profile to use for
     the client credential.
 - key: EAPClientConfiguration
-  title: EAP Client Configuration
+  title: EAP client configuration
   type: <dictionary>
   presence: optional
   content: The enterprise network configuration.
   subkeys:
   - key: AcceptEAPTypes
-    title: Accept EAP Types
+    title: Accept EAP types
     type: <array>
     presence: required
     content: |-
@@ -152,7 +152,7 @@ payloadkeys:
       For EAP-TLS authentication without a network payload, install the necessary identity certificates and have your users select EAP-TLS mode in the 802.1X credentials dialog that appears when they connect to the network. For other EAP types, a network payload is necessary and must specify the correct settings for the network.
     subkeys:
     - key: EAPType
-      title: EAP Type
+      title: EAP type
       type: <integer>
       rangelist:
       - 13
@@ -175,21 +175,21 @@ payloadkeys:
     content: The user's password. If you don't specify a value, the system prompts
       the user during login.
   - key: PayloadCertificateAnchorUUID
-    title: Certificate Anchor UUID
+    title: Certificate anchor UUID
     type: <array>
     presence: optional
     content: An array of the UUID of each certificate payload in the same profile
       to trust for authentication. Use this key to prevent the device from asking
-      the user whether to trust the listed certificates. Dynamic trust (the certificate
-      dialogue) is in a disabled state if you specify this property without also enabling
+      the user whether to trust the listed certificates. The device disables dynamic
+      trust (the certificate dialogue) if you specify this property without also enabling
       'TLSAllowTrustExceptions'.
     subkeys:
     - key: CertificateAnchorUUID
-      title: Individual Certificate Anchor UUID
+      title: Individual certificate anchor UUID
       type: <string>
       format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
   - key: TLSTrustedCertificates
-    title: TLS Trusted Certificates
+    title: TLS trusted certificates
     type: <array>
     presence: optional
     content: An array of trusted certificates. Each entry in the array must contain
@@ -201,19 +201,19 @@ payloadkeys:
       presence: required
       content: A certificate identifier.
   - key: TLSTrustedServerNames
-    title: TLS Trusted Server Names
+    title: TLS trusted server names
     type: <array>
     presence: optional
     content: |-
       The list of accepted server certificate common names. If a server presents a certificate that isn't in this list, the system doesn't trust it.
       If you specify this property, the system disables dynamic trust (the certificate dialog) unless you also specify 'TLSAllowTrustExceptions' with the value 'true'.
-      If necessary, use wildcards to specify the name, such as 'wpa.*.example.com'.
+      If necessary, use a single "*" character to specify a wildcard for an individual component of the name, such as 'wpa.*.example.com'.
     subkeys:
     - key: TLSTrustedServerName
-      title: Individual Trusted TLS Server Name
+      title: Individual trusted TLS server name
       type: <string>
   - key: TLSAllowTrustExceptions
-    title: Allow Trust Exceptions
+    title: Allow trust exceptions
     supportedOS:
       iOS:
         removed: '8.0'
@@ -237,7 +237,7 @@ payloadkeys:
       If 'true', allows for two-factor authentication for EAP-TTLS, PEAP, or EAP-FAST. If 'false', allows for zero-factor authentication for EAP-TLS.
       If you don't specify a value, the default is 'true' for EAP-TLS, and 'false' for other EAP types.
   - key: TTLSInnerAuthentication
-    title: TTLS Inner Authentication
+    title: TTLS inner authentication
     type: <string>
     presence: optional
     rangelist:
@@ -283,7 +283,7 @@ payloadkeys:
     default: '1.2'
     content: The maximum TLS version for EAP authentication.
   - key: OuterIdentity
-    title: Outer Identity
+    title: Outer identity
     type: <string>
     presence: optional
     content: |-
@@ -307,14 +307,14 @@ payloadkeys:
 
       This value is only applicable if 'EAPFASTUsePAC' is 'true'. This value must be 'true' for EAP-FAST PAC usage to succeed because there's no other way to provision a PAC.
   - key: EAPFASTProvisionPACAnonymously
-    title: Provision PAC Anonymously
+    title: Provision PAC anonymously
     type: <boolean>
     presence: optional
     default: false
     content: If 'true', provisions the device anonymously. Note that there are known
       machine-in-the-middle attacks for anonymous provisioning.
   - key: EAPSIMNumberOfRANDs
-    title: Allow Two RANDs
+    title: Allow two RANDs
     supportedOS:
       iOS:
         introduced: '8.0'
@@ -341,7 +341,7 @@ payloadkeys:
       If 'true', the system mode connection tries to use the Open Directory credentials.
       If using this property, you can't use 'SystemModeCredentialsSource'.
   - key: OneTimeUserPassword
-    title: Per-Connection Password
+    title: Per-connection password
     supportedOS:
       iOS:
         introduced: '8.0'
@@ -355,7 +355,7 @@ payloadkeys:
     content: If 'true', the user receives a prompt for a password each time they connect
       to the network.
 - key: DisplayedOperatorName
-  title: Displayed Operator Name
+  title: Displayed operator name
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -366,7 +366,7 @@ payloadkeys:
   content: The operator name to display when connected to this network. Used only
     with Wi-Fi Hotspot 2.0 access points.
 - key: DomainName
-  title: Domain Name
+  title: Domain name
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -391,7 +391,7 @@ payloadkeys:
     type: <string>
     format: ^([0-9A-Za-z]{6})|([0-9A-Za-z]{9})$
 - key: ServiceProviderRoamingEnabled
-  title: Roaming Enable
+  title: Roaming enable
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -402,7 +402,7 @@ payloadkeys:
   default: false
   content: If `true`, allows connection to roaming service providers.
 - key: IsHotspot
-  title: Is Hotspot
+  title: Is hotspot
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -420,7 +420,7 @@ payloadkeys:
   presence: optional
   content: The HESSID used for Wi-Fi Hotspot 2.0 negotiation.
 - key: NAIRealmNames
-  title: Realm Names
+  title: Realm names
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -449,7 +449,7 @@ payloadkeys:
     type: <string>
     format: ^[0-9]{6}$
 - key: CaptiveBypass
-  title: Disable Captive Network Detection
+  title: Disable captive network detection
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -461,7 +461,7 @@ payloadkeys:
   content: If `true`, the system bypasses Captive Network detection when the device
     connects to the network.
 - key: QoSMarkingPolicy
-  title: QoS Marking Policy
+  title: QoS marking policy
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -475,7 +475,7 @@ payloadkeys:
     lane.
   subkeys:
   - key: QoSMarkingAllowListAppIdentifiers
-    title: Allowlisted App Identifiers
+    title: Allowlisted app identifiers
     supportedOS:
       iOS:
         introduced: '14.5'
@@ -489,10 +489,10 @@ payloadkeys:
       use L2 and L3 marking.
     subkeys: &id001
     - key: appBundleID
-      title: Allowlisted App
+      title: Allowlisted app
       type: <string>
   - key: QoSMarkingWhitelistedAppIdentifiers
-    title: Whitelisted App Identifiers
+    title: Whitelisted app identifiers
     supportedOS:
       iOS:
         deprecated: '14.5'
@@ -552,14 +552,14 @@ payloadkeys:
   default: true
   content: If `true`, enables IPv6 on this interface.
 - key: TLSCertificateRequired
-  title: Certificate Required
+  title: Certificate required
   type: <boolean>
   presence: optional
   default: false
   content: If `true`, allows for two-factor authentication for EAP-TTLS, PEAP, or
     EAP-FAST. If `false`, allows for zero-factor authentication for EAP-TLS.
 - key: ProxyServer
-  title: Proxy Server
+  title: Proxy server
   supportedOS:
     iOS:
       userenrollment:
@@ -574,7 +574,7 @@ payloadkeys:
   presence: optional
   content: The proxy server's network address.
 - key: ProxyServerPort
-  title: Proxy Server Port
+  title: Proxy server port
   supportedOS:
     iOS:
       userenrollment:
@@ -592,7 +592,7 @@ payloadkeys:
     max: 65535
   content: The proxy server's port number.
 - key: ProxyUsername
-  title: Proxy Username
+  title: Proxy username
   supportedOS:
     iOS:
       userenrollment:
@@ -607,7 +607,7 @@ payloadkeys:
   presence: optional
   content: The user name used to authenticate to the proxy server.
 - key: ProxyPassword
-  title: Proxy Password
+  title: Proxy password
   supportedOS:
     iOS:
       userenrollment:
@@ -634,7 +634,7 @@ payloadkeys:
   presence: optional
   content: The URL of the PAC file that defines the proxy configuration.
 - key: ProxyPACFallbackAllowed
-  title: Proxy PAC Fallback Allowed
+  title: Proxy PAC fallback allowed
   supportedOS:
     iOS:
       userenrollment:
@@ -678,7 +678,7 @@ payloadkeys:
 
     This value is only locked when MDM installs the profile. If the profile is manually installed, the system sets the value but the user can change it.
 - key: AllowJoinBeforeFirstUnlock
-  title: Allow Join Before First Unlock
+  title: Allow join before first unlock
   supportedOS:
     iOS:
       introduced: n/a
@@ -697,15 +697,19 @@ payloadkeys:
   presence: optional
   default: false
   content: |-
-    If `true`, the device makes this network available for joining before the device is unlocked for the first time following a reboot, on a device configured for return to service. Any network credentials are placed into Class D storage within the keychain, and information about the network is stored on disk in Class D.
+    If `true`, the device makes this network available for joining before the device is unlocked for the first time following a reboot, on a device configured for return to service. The device places any network credentials into Class D storage within the keychain and stores information about the network on disk in Class D.
 
     There are several restrictions on the use of this flag:
 
     - This property is only available in the return to service mode.
-    - Only one network can be designated as available before first unlock.
+    - You can designate only one network as available before first unlock.
     - `EAPClientConfiguration` must not be present.
     - If `IsHotspot` is present, it must be set to `false`.
     - `QoSMarkingPolicy` must not be present.
     - If `ProxyType` is present, it must be set to `None`.
 
-    The device fails to install the profile payload if any of these conditions are not met.
+    The device fails to install the profile payload if any of these conditions aren't met.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.wifi.managed/example1.plist

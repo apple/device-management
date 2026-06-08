@@ -1,5 +1,5 @@
 title: Status Software Update Pending Version
-description: A status report of the pending software update version.
+description: The status item that reports the device's pending software update version.
 payload:
   statusitemtype: softwareupdate.pending-version
   supportedOS:
@@ -63,3 +63,7 @@ payloadkeys:
     content: The local date time value that indicates when the pending software update
       will be installed. This key is only present when the pending software update
       is being enforced.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.pending-version/example1.json

@@ -44,12 +44,12 @@ payload:
   content: Password-protected identity certificate. Only one certificate may be included.
 payloadkeys:
 - key: PayloadCertificateFileName
-  title: Payload Certificate Filename
+  title: Payload certificate filename
   type: <string>
   presence: optional
   content: The file name of the enclosed certificate.
 - key: PayloadContent
-  title: Payload Certificate Data
+  title: Payload certificate data
   type: <data>
   presence: required
   content: The binary representation of the payload, encoded in Base64.
@@ -59,7 +59,7 @@ payloadkeys:
   presence: optional
   content: The password to the identity.
 - key: AllowAllAppsAccess
-  title: Allow All Apps Access
+  title: Allow all apps access
   supportedOS:
     iOS:
       introduced: n/a
@@ -74,8 +74,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system allows apps access to the private key. Available
-    in macOS 10.10 and later.
+  content: If `true`, the system allows apps access to the private key.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
@@ -104,3 +103,7 @@ notes:
     - Securely deliver the profile to authorized users only, such as through MDM.
     - Encrypt the profile so that only authorized devices can decrypt it.
     - Use `SCEP` or `ACMECertificate` to provision the identity.
+examples:
+  title: Example profile
+  files:
+  - file: examples/mdm/profiles/com.apple.security.pkcs12/example1.plist

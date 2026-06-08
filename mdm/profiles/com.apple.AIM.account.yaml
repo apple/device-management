@@ -27,24 +27,24 @@ payload:
   content: An AIM payload creates an AIM account on the device.
 payloadkeys:
 - key: AIMAccountDescription
-  title: Account Description
+  title: Account description
   type: <string>
   presence: optional
   content: The description of the account.
 - key: AIMHostName
-  title: Account Hostname
+  title: Account hostname
   type: <string>
   presence: required
   rangelist:
   - slogin.oscar.aol.com
   content: The server address.
 - key: AIMUserName
-  title: Account Username
+  title: Account username
   type: <string>
   presence: optional
   content: The user's login name.
 - key: AIMPassword
-  title: Account Password
+  title: Account password
   type: <string>
   presence: optional
   content: The user's password.
@@ -55,7 +55,7 @@ payloadkeys:
   default: true
   content: If `true`, enables SSL.
 - key: AIMPort
-  title: Port Number
+  title: Port number
   type: <integer>
   presence: optional
   range:
@@ -64,7 +64,7 @@ payloadkeys:
   default: 5190
   content: The connection port for the server.
 - key: AIMAuthentication
-  title: AIM Authentication
+  title: AIM authentication
   type: <string>
   presence: required
   rangelist:

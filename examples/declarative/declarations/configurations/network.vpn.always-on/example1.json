@@ -1,0 +1,27 @@
+{
+    "Type": "com.apple.configuration.network.vpn.always-on",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Always-On VPN",
+        "UIToggleEnabled": false,
+        "TunnelConfigurations": [
+            {
+                "ProtocolType": "IKEv2",
+                "Interfaces": [
+                    "Cellular",
+                    "WiFi"
+                ],
+                "IKEV2": {
+                    "HostName": "vpn.example.com",
+                    "LocalIdentifier": "device@example.com",
+                    "RemoteIdentifier": "vpn.example.com",
+                    "Authentication": {
+                        "Method": "Certificate",
+                        "IdentityAssetReference": "CB3E6C7F-2318-437B-8A9E-D50C69376DE4"
+                    }
+                }
+            }
+        ]
+    }
+}

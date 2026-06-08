@@ -55,8 +55,8 @@ payloadkeys:
     - key: BundleID
       type: <string>
       presence: optional
-      content: The bundle identifier of the app. This setting is required if the type
-        is `Application`.
+      content: The bundle identifier of the app. The device requires this setting
+        if the type is `Application`.
     - key: Pages
       type: <array>
       presence: optional
@@ -75,7 +75,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: |-
-        The URL of the existing web clip for this item. This setting is required if `type` is `WebClip`. If more than one web clip exists with the same URL, the behavior is undefined.
+        The URL of the existing web clip for this item. The device requires this setting if `type` is `WebClip`. If more than one web clip exists with the same URL, the behavior is undefined.
 
         Specifying a web clip in this payload doesn't create the web clip. Use the `WebClip` payload to create a web clip.
 - key: Pages
@@ -93,3 +93,7 @@ notes:
     If a Home Screen layout puts more than four items in the iPhone Dock the location of the fifth and succeeding items may be undefined but they will not be omitted.
 
     To disable deletion of apps, set `allowAppRemoval` to `false` with `Restrictions`.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.homescreenlayout/example1.plist

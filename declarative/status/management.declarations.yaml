@@ -1,5 +1,5 @@
 title: Status Management Declarations
-description: A status report of the client's processed declarations.
+description: The status item that reports the device's processed declarations.
 payload:
   statusitemtype: management.declarations
   supportedOS:
@@ -61,7 +61,7 @@ payloadkeys:
     subkeytype: Declaration
     subkeys:
     - key: _activations
-      title: Status Declaration Item
+      title: Status declaration item
       type: <dictionary>
       content: Status for a declaration processed by the client.
       subkeytype: Declaration
@@ -72,17 +72,17 @@ payloadkeys:
         presence: required
         content: The `identifier` of the declaration this status report refers to.
       - key: server-token
-        title: Server-Token
+        title: Server-token
         type: <string>
         presence: required
         content: The `ServerToken` of the declaration this status report refers to.
       - key: active
-        title: Declaration's Active State
+        title: Declaration's active state
         type: <boolean>
         presence: required
         content: If `true`, the declaration is active on the device.
       - key: valid
-        title: Declaration's Valid State
+        title: Declaration's valid state
         type: <string>
         presence: required
         rangelist:
@@ -92,30 +92,30 @@ payloadkeys:
         content: This string defines the validity of the declaration. If it's `invalid`,
           the `reasons` property contains more details.
       - key: reasons
-        title: Status Reasons
+        title: Status reasons
         type: <array>
         presence: optional
         content: The details of any client errors.
         subkeytype: StatusReason
         subkeys:
         - key: _reasons
-          title: Status Reason
+          title: Status reason
           type: <dictionary>
           content: Information about a status error.
           subkeytype: StatusReason
           subkeys:
           - key: code
-            title: Error Code
+            title: Error code
             type: <string>
             presence: required
             content: The error code for this error.
           - key: description
-            title: Error Description
+            title: Error description
             type: <string>
             presence: optional
             content: The description for this error.
           - key: details
-            title: Error Details
+            title: Error details
             type: <dictionary>
             presence: optional
             content: A dictionary that contains further details about this error.
@@ -133,7 +133,7 @@ payloadkeys:
     subkeytype: Declaration
     subkeys:
     - key: _configurations
-      title: Status Declaration Item
+      title: Status declaration item
       type: <dictionary>
       content: Status for a declaration processed by the client.
       subkeytype: Declaration
@@ -146,7 +146,7 @@ payloadkeys:
     subkeytype: Declaration
     subkeys:
     - key: _assets
-      title: Status Declaration Item
+      title: Status declaration item
       type: <dictionary>
       content: Status for a declaration processed by the client.
       subkeytype: Declaration
@@ -160,7 +160,7 @@ payloadkeys:
     subkeytype: Declaration
     subkeys:
     - key: _management
-      title: Status Declaration Item
+      title: Status declaration item
       type: <dictionary>
       content: Status for a declaration processed by the client.
       subkeytype: Declaration
@@ -168,3 +168,7 @@ payloadkeys:
 notes:
 - title: ''
   content: The name of the declaration status item is `management.declarations`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/management.declarations/example1.json

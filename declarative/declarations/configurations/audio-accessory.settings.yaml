@@ -23,7 +23,7 @@ payload:
   apply: combined
 payloadkeys:
 - key: TemporaryPairing
-  title: Temporary Pairing
+  title: Temporary pairing
   type: <dictionary>
   presence: optional
   content: A dictionary that describes audio accessory temporary pairing behavior.
@@ -32,14 +32,14 @@ payloadkeys:
     when temporary pairing is active.
   subkeys:
   - key: Disabled
-    title: Temporary Pairing Disabled
+    title: Temporary pairing disabled
     type: <boolean>
     presence: optional
     default: false
     combinetype: boolean-or
     content: If `true`, temporary pairing of audio accessories is disabled.
   - key: Configuration
-    title: Temporary Pairing Configuration
+    title: Temporary pairing configuration
     type: <dictionary>
     presence: optional
     combinetype: first
@@ -47,14 +47,14 @@ payloadkeys:
       if `Disabled` isn't present or is `false`.
     subkeys:
     - key: UnpairingTime
-      title: Temporary Pairing Unpairing Time
+      title: Temporary pairing unpairing time
       type: <dictionary>
       presence: required
       content: A dictionary that describes when the device automatically unpairs temporarily
         paired audio accessories.
       subkeys:
       - key: Policy
-        title: Unpairing Policy
+        title: Unpairing policy
         type: <string>
         presence: required
         rangelist:
@@ -65,7 +65,7 @@ payloadkeys:
           - `None`: The device doesn't automatically unpair. Use this only with a return to service device that you erase and reenroll when assigning it from one user to another.
           - `Hour`: The device automatically unpairs temporarily paired audio accessories at the local time that the `Hour` key specifies.
       - key: Hour
-        title: Hour of Unpairing
+        title: Hour of unpairing
         type: <integer>
         presence: optional
         range:
@@ -81,3 +81,9 @@ notes:
 
     - Pair and use audio accessories - the device records the pairing and synchronizes it to their iCloud account.
     - Use the audio accessory AirPods Sharing feature.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration enables temporary pairing and sets an unpairing
+      time of 6 pm.
+    file: examples/declarative/declarations/configurations/audio-accessory.settings/example1.json

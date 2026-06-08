@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_InstalledApplicationList</string>
+    <key>InstalledApplicationList</key>
+    <array>
+        <dict>
+            <key>AdHocCodeSigned</key>
+            <false/>
+            <key>AppStoreVendable</key>
+            <false/>
+            <key>BetaApp</key>
+            <false/>
+            <key>BundleSize</key>
+            <integer>1036288</integer>
+            <key>DeviceBasedVPP</key>
+            <false/>
+            <key>DynamicSize</key>
+            <integer>8192</integer>
+            <key>ExternalVersionIdentifier</key>
+            <integer>0</integer>
+            <key>Identifier</key>
+            <string>com.acme.myenterpriseapp</string>
+            <key>Installing</key>
+            <false/>
+            <key>IsValidated</key>
+            <true/>
+            <key>Name</key>
+            <string>MyEnterpriseApp</string>
+            <key>ShortVersion</key>
+            <string>1.0</string>
+            <key>Version</key>
+            <string>1.0</string>
+        </dict>
+    </array>
+    <key>Status</key>
+    <string>Acknowledged</string>
+    <key>UDID</key>
+    <string>00008020-000915083C80012E</string>
+</dict>
+</plist>

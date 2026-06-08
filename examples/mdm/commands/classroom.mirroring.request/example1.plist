@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>DestinationName</key>
+        <string>Apple TV</string>
+        <key>Password</key>
+        <string>password</string>
+        <key>RequestType</key>
+        <string>RequestMirroring</string>
+        <key>ScanTime</key>
+        <integer>30</integer>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_RequestMirroring</string>
+</dict>
+</plist>

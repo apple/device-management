@@ -1,5 +1,5 @@
 title: Status Device Battery Health
-description: The device's battery health.
+description: The status item that reports the device's battery health.
 payload:
   statusitemtype: device.power.battery-health
   supportedOS:
@@ -47,7 +47,7 @@ payloadkeys:
     - `unknown`: The system couldn't determine battery health information.
     - `unsupported`: The device doesn't support battery health reporting.
 
-    Available in iOS 17 and later on iPhone, iPadOS 18.4 and later on supported iPad models, and macOS 14.4 and later on a Mac with Apple silicon.
+    Supported on iPhones, specific iPad models, and Mac computers with Apple silicon.
 notes:
 - title: ''
   content: |-
@@ -56,3 +56,7 @@ notes:
     - [iPhone devices](https://support.apple.com/101575)
     - [iPad devices](https://support.apple.com/117759)
     - [macOS devices](https://support.apple.com/108376)
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.power.battery-health/example1.json

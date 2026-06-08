@@ -1,5 +1,5 @@
 title: Status Device UDID
-description: A status report of the device's UDID.
+description: The status item that reports the device's UDID.
 payload:
   statusitemtype: device.identifier.udid
   supportedOS:
@@ -54,3 +54,7 @@ payloadkeys:
   content: The device's UDID. This value is always available on the device channel.
     This value is only available on user channels whose organization matches that
     of the device channel.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.identifier.udid/example1.json

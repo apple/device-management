@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+    <key>FileVaultUnlock</key>
+    <dict>
+        <key>Password</key>
+        <string>mypassword</string>
+    </dict>
+    <key>KeyType</key>
+    <string>institutional</string>
+    <key>NewCertificate</key>
+    <data>
+    MIIDKTCCAhGgAwIBAgIFAKGAf9cwDQYJKoZIhvcNAQELBQAwRTEfMB0GA1UEAwwWRmls
+    ZVZhdWx0IFJlY292ZXJ5IEtleTEiMCAGA1UEDQwZR3JhaGFtcy1NYWNCb29rLVByby5s
+    b2NhbDAeFw0yMDA2MTEyMzIwMjNaFw0yMTA2MTEyMzIwMjNaMEUxHzAdBgNVBAMMFkZp
+    bGVWYXVsdCBSZWNvdmVyeSBLZXkxIjAgBgNVBA0MHNdyYWhhbXMtTWFjQm9vay1Qcm8u
+    bG9jYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSNk47J9l7Amit4JPf
+    YEj6PvqZ5nH4kPsRmoAO1FfACpzskN7gA1qui7N+O0NNjtleUI2pX8X9NvINxfPX/KTy
+    eP0VXlhixvYgKMiEUkrVFBrxRtQ+7Ow80MQUAKlDBe5FVj4GyN9sAPuAu7WaJtvDAWAW
+    rBSRJNqdOYpKEkgK8N9a52BmuDEBtmpaq5o5JgR2Vc+OmjcogknZi++11dKI7sDCzF3e
+    jO28e9E8XNBFRO716XdyEd/VU6rE8SQmpYqrfun1pRNtiiv3dTKKn9Gl42kg7RQHjMjx
+    OjmBjzWLdFrO51crcJqbT/IQ0pjWqjDcwOz9Z2gWqbtxTrrWyuJZAgMBAAGjIDAeMAsG
+    A1UdDwQEAwICtDAPBgNVHRMBAf8EBTADAQEAMA0GCSqGSIb3DQEBCwUAA4IBAQCcA999
+    lIN+t6u/DrTXhWlLKj8HXTmVVl8gkhxm42aZo/QsJr+gPsXF0yOWqkPpnhkrq6GVXgPx
+    T7xmNv5+nDIcHX/mKRXBAUdWi/HDa3Wiytk4g9wO4xYsnBIhL5y2PHid9bSA1peKZsLL
+    CX1v8vuA66trSp2fKYxW54VkLXR6xMqUcxTjp0qlfNRL6IHA6G/ogyjRkd0kt0+BwbYy
+    81dDKJHVxsYOUtQlmfa8dUl20SmLwZ/bujPFetfuvWmSHrnM//J5OT4HLoGRzqXhuC/m
+    XEildp3HTCm6epem3cP6Sx99aGIi08xddDzmH/5XoPmuG4uw2+ry+qbhD/UYbJbX
+    </data>
+    <key>RequestType</key>
+    <string>RotateFileVaultKey</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_RotateFileVaultKey</string>
+</dict>
+</plist>

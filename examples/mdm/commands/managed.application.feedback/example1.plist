@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>DeleteFeedback</key>
+        <false/>
+        <key>Identifiers</key>
+        <array>
+            <string>com.acme.myenterpriseapp</string>
+        </array>
+        <key>RequestType</key>
+        <string>ManagedApplicationFeedback</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_ManagedApplicationFeedback</string>
+</dict>
+</plist>

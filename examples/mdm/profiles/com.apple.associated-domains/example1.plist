@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>Configuration</key>
+            <array>
+                <dict>
+                    <key>ApplicationIdentifier</key>
+                    <string>com.apple.mobilesafari</string>
+                    <key>AssociatedDomains</key>
+                    <array>
+                        <string>www.example.com</string>
+                    </array>
+                </dict>
+            </array>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myassociateddomainpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.associated-domains</string>
+            <key>PayloadUUID</key>
+            <string>7f6e26da-c381-4666-9dc6-50b4cd418652</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Associated Domains</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>2c8c95c4-fde5-4e90-9dea-f8e9ab633562</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

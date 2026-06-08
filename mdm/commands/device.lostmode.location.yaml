@@ -89,3 +89,8 @@ notes:
     - `12078`: If the command is invalid while in Lost Mode.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.lostmode.location/example1.plist
+    response-file: examples/mdm/commands/device.lostmode.location/example2.plist

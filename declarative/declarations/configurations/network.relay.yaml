@@ -1,0 +1,190 @@
+title: Network:Relay
+description: The declaration to configure Network Relay settings.
+payload:
+  declarationtype: com.apple.configuration.network.relay
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - user
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: multiple
+payloadkeys:
+- key: VisibleName
+  title: Visible name
+  type: <string>
+  presence: required
+  content: The name of the network relays that the system displays on the device.
+- key: Relays
+  title: Relays
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describe one or more relay servers that the
+    system can chain together.
+  subkeys:
+  - key: Relay
+    title: Network relay
+    type: <dictionary>
+    subkeys:
+    - key: HTTP3RelayURL
+      title: HTTP/3 relay URL
+      type: <string>
+      presence: optional
+      content: |-
+        The URL or URI template, as defined in RFC 9298, of a relay server that's reachable using HTTP/3 and supports proxying TCP and UDP using the CONNECT method.
+
+        Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
+    - key: HTTP2RelayURL
+      title: HTTP/2 relay URL
+      type: <string>
+      presence: optional
+      content: |-
+        The URL or URI template, as defined in RFC 9298, of a relay server that's reachable using HTTP/2 and supports proxying TCP and UDP using the CONNECT method.
+
+        Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
+    - key: AdditionalHTTPHeaderFields
+      title: Additional HTTP header fields
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains custom HTTP header keys and values to add
+        to each request. The dictionary key name represents the HTTP header field
+        name to use, and the dictionary value is the string to use as the HTTP header
+        field value.
+      subkeys:
+      - key: ANY
+        type: <string>
+        presence: required
+        content: The HTTP header field value for the corresponding header field name.
+    - key: CredentialAssetReference
+      title: Credential asset reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.credential.identity
+      - com.apple.asset.credential.scep
+      - com.apple.asset.credential.acme
+      presence: optional
+      content: The identifier of an asset declaration that contains the identity to
+        install.
+    - key: PublicKeyData
+      title: Public keys
+      type: <array>
+      assettypes:
+      - com.apple.asset.data
+      presence: optional
+      content: |-
+        An array of references to data assets containing DER-encoded public key data that the system uses to authenticate the server during a TLS handshake. The server needs to use one of the keys in the handshake to authenticate.
+        If this array is empty, the system uses the default TLS trust evaluation.
+      subkeys:
+      - key: PublicKeyDataAssetReference
+        title: Public key asset reference
+        type: <string>
+- key: MatchDomains
+  title: Match domains
+  type: <array>
+  presence: optional
+  content: |-
+    A list of domain strings that the system uses to determine which connection to route through the servers in `Relays`.
+
+    Any connection that matches a domain in the list exactly or is a subdomain of the listed domain uses the relay servers, unless it matches a domain in `ExcludedDomains`.
+
+    If this list and `MatchFQDNs` are empty, the system routes traffic to all domains to the relay servers, except those that match an excluded domain or excluded FQDN.
+  subkeys:
+  - key: MatchDomainsElement
+    title: Match domains element
+    type: <string>
+- key: ExcludedDomains
+  title: Excluded domains
+  type: <array>
+  presence: optional
+  content: A list of domain strings to exclude from routing through the servers in
+    `Relays`. Any connection that matches a domain in the list exactly or is a subdomain
+    of the listed domain won't use the relay server.
+  subkeys:
+  - key: ExcludedDomainsElement
+    title: Excluded domains element
+    type: <string>
+- key: MatchFQDNs
+  title: Match FQDNs
+  type: <array>
+  presence: optional
+  content: A list of Fully Qualified Domain Names (FQDNs) to route through the servers
+    contained in `Relays`. Any connection that matches an FQDN in the list exactly
+    uses the relay servers. If this list and `MatchDomains` are empty, the system
+    routes traffic to all domains to the relay servers, except those that match an
+    excluded domain or excluded FQDN.
+  subkeys:
+  - key: MatchFQDNsElement
+    title: Match FQDNs element
+    type: <string>
+- key: ExcludedFQDNs
+  title: Excluded FQDNs
+  type: <array>
+  presence: optional
+  content: A list of Fully Qualified Domain Names (FQDNs) to exclude from routing
+    through the servers contained in `Relays`. Any connection that matches an FQDN
+    in the list exactly won't use the relay server. When `MatchDomains` is also present,
+    any FQDN listed in the list should be a subdomain of at least one `MatchDomain`
+    value, otherwise it won't have any effect.
+  subkeys:
+  - key: ExcludedFQDNsElement
+    title: Excluded FQDNs element
+    type: <string>
+- key: RelayUUID
+  title: Relay UUID
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: A globally unique identifier for this relay configuration. The system uses
+    this UUID to route managed apps through the servers in `Relays`. This key is required
+    for user enrollment.
+- key: UIToggleEnabled
+  title: UI toggle enabled
+  type: <boolean>
+  presence: optional
+  default: true
+  content: If `true`, the device allows the user to disable this network relay configuration.
+- key: AllowDNSFailover
+  title: Allow DNS failover
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the device allows the relay to failover to the default system
+    DNS resolver.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Single relay
+    description: This configuration routes traffic to two domains through a single
+      HTTP/2 relay with a custom authorization header.
+    file: examples/declarative/declarations/configurations/network.relay/example1.json
+  - tab: Chained relays
+    description: This configuration routes specific hostnames through two chained
+      relay hops supporting both HTTP/2 and HTTP/3.
+    file: examples/declarative/declarations/configurations/network.relay/example2.json

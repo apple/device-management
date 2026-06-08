@@ -18,8 +18,8 @@ payloadkeys:
   presence: required
   rangelist:
   - com.apple.unrecognized.device
-  content: Indicates that the device is not recognized by the server. This causes
-    the device to unenroll from MDM.
+  content: Indicates that the device isn't recognized by the server. This causes the
+    device to unenroll from MDM.
 - key: description
   type: <string>
   presence: optional

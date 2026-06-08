@@ -34,9 +34,9 @@ payloadkeys:
   presence: optional
   default: true
   content: If `false`, the system disables smart cards for logins, authorizations,
-    and screen saver unlocking. It is still allowed for other functions, such as signing
-    emails and accessing the web. A restart is required for a setting change to take
-    effect.
+    and screen saver unlocking. It's still allowed for other functions, such as signing
+    emails and accessing the web. The device requires a restart for a setting change
+    to take effect.
 - key: checkCertificateTrust
   type: <integer>
   presence: optional
@@ -50,9 +50,9 @@ payloadkeys:
     Configures the certificate trust check and has one of the following possible values:
 
     - `0`: Turns off certificate trust check.
-    - `1`: Turns on certificate trust check. A standard validity check is performed but doesn't include additional revocation checks.
-    - `2`: Turns on certificate trust check. A soft revocation check is also performed. Until the certificate is explicitly rejected by CRL/OCSP, it's considered valid. This setting means that unavailable or unreachable CRL/OCSP allow this check to succeed.
-    - `3`: Turns on certificate trust check. A hard revocation check is also performed. Unless CRL/OCSP explicitly says "This certificate is OK," it's considered invalid. This option is the most secure.
+    - `1`: Turns on certificate trust check. The device performs a standard validity check but doesn't include additional revocation checks.
+    - `2`: Turns on certificate trust check. The device also performs a soft revocation check. Until CRL/OCSP explicitly rejects the certificate, the device considers it valid. This setting means that unavailable or unreachable CRL/OCSP allow this check to succeed.
+    - `3`: Turns on certificate trust check. The device also performs a hard revocation check. Unless CRL/OCSP explicitly says "This certificate is OK," the device considers it invalid. This option is the most secure.
 - key: oneCardPerUser
   type: <boolean>
   presence: optional
@@ -69,8 +69,8 @@ payloadkeys:
   - 0
   - 1
   default: 0
-  content: If `1`, the system enables the screen saver when the smart card is removed.
-    Available in macOS 10.13.4 and later.
+  content: If `1`, the device enables the screen saver when the user removes the smart
+    card.
 - key: enforceSmartCard
   supportedOS:
     macOS:
@@ -78,5 +78,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, a user can only log in or authenticate with a smart card. Available
-    in macOS 10.13.2 and later.
+  content: If `true`, a user can only log in or authenticate with a smart card.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.security.smartcard/example1.plist

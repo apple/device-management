@@ -35,8 +35,8 @@ payloadkeys:
 - key: UserName
   type: <string>
   presence: optional
-  content: The user name of the account to delete. This key is required when the value
-    for `DeleteAllUsers` is absent or `false`.
+  content: The user name of the account to delete. The device requires this key when
+    the value for `DeleteAllUsers` is absent or `false`.
 - key: ForceDeletion
   supportedOS:
     macOS:
@@ -45,7 +45,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system deletes the account even if the user has data that's
-    pending sync to the cloud. This value is available on iOS 9.3 and later.
+    pending sync to the cloud.
 - key: DeleteAllUsers
   supportedOS:
     iOS:
@@ -57,8 +57,7 @@ payloadkeys:
   default: false
   content: If `true`, the system attempts to delete all users from the device. If
     `ForceDeletion` is `false`, the system generates an error instead and doesn't
-    delete users who have data that's pending sync. This value is available in iOS
-    14 and later.
+    delete users who have data that's pending sync.
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
@@ -71,3 +70,8 @@ notes:
     - `12072`: The user is currently logged in.
     - `12073`: The user has data to sync and ForceDeletion is false or unspecified.
     - `12074`: Unable to delete the user. In macOS, this error code also returns for an attempt to delete the last administrator account.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/classroom.user.delete/example1.plist
+    response-file: examples/mdm/commands/classroom.user.delete/example2.plist

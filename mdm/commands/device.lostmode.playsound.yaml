@@ -36,3 +36,8 @@ notes:
     The sound plays until the server disables Lost Mode or the user disables the sound on the device.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.lostmode.playsound/example1.plist
+    response-file: examples/mdm/commands/device.lostmode.playsound/example2.plist

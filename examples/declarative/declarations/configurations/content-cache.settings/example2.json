@@ -1,0 +1,22 @@
+{
+    "Type": "com.apple.configuration.content-cache.settings",
+    "Identifier": "2A3B4C5D-6E7F-8A9B-0C1D-2E3F4A5B6C7D",
+    "ServerToken": "F1E2D3C4-B5A6-7890-ABCD-EF1234567890",
+    "Payload": {
+        "AutoActivation": true,
+        "AllowPersonalCaching": false,
+        "AllowSharedCaching": true,
+        "LocalSubnetsOnly": false,
+        "ListenRangesOnly": true,
+        "ListenRanges": [
+            {
+                "type": "IPv4",
+                "first": "192.168.1.1",
+                "last": "192.168.1.254"
+            }
+        ],
+        "Parents": ["10.0.0.1"],
+        "ParentSelectionPolicy": "first-available",
+        "Port": 8080
+    }
+}

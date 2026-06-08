@@ -48,11 +48,11 @@ payloadkeys:
     system can chain together.
   subkeys:
   - key: Relay
-    title: Network Relay
+    title: Network relay
     type: <dictionary>
     subkeys:
     - key: HTTP3RelayURL
-      title: HTTP/3 Relay URL
+      title: HTTP/3 relay URL
       type: <string>
       presence: optional
       content: |-
@@ -60,7 +60,7 @@ payloadkeys:
 
         Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
     - key: HTTP2RelayURL
-      title: HTTP/2 Relay URL
+      title: HTTP/2 relay URL
       type: <string>
       presence: optional
       content: |-
@@ -68,7 +68,7 @@ payloadkeys:
 
         Each relay needs to include either `HTTP2RelayURL` or `HTTP3RelayURL`, or it can include both.
     - key: AdditionalHTTPHeaderFields
-      title: Additional HTTP Header Fields
+      title: Additional HTTP header fields
       type: <dictionary>
       presence: optional
       content: A dictionary that contains custom HTTP header keys and values to add
@@ -88,7 +88,7 @@ payloadkeys:
       content: The UUID that points to an identity certificate payload, which the
         system uses to authenticate the user to the relay server.
     - key: RawPublicKeys
-      title: Raw Public Keys
+      title: Raw public keys
       type: <array>
       presence: optional
       content: |-
@@ -97,10 +97,10 @@ payloadkeys:
         If this array is empty, the system uses the default TLS trust evaluation.
       subkeys:
       - key: RawPublicKeysElement
-        title: Raw Public Key Element
+        title: Raw public key element
         type: <data>
 - key: MatchDomains
-  title: Match Domains
+  title: Match domains
   type: <array>
   presence: optional
   content: |-
@@ -111,10 +111,10 @@ payloadkeys:
     If this list and `MatchFQDNs` are empty, the system routes traffic to all domains to the relay servers, except those that match an excluded domain or excluded FQDN.
   subkeys:
   - key: MatchDomainsElement
-    title: Match Domains Element
+    title: Match domains element
     type: <string>
 - key: ExcludedDomains
-  title: Excluded Domains
+  title: Excluded domains
   type: <array>
   presence: optional
   content: A list of domain strings to exclude from routing through the servers in
@@ -122,7 +122,7 @@ payloadkeys:
     of the listed domain won't use the relay server.
   subkeys:
   - key: ExcludedDomainsElement
-    title: Excluded Domains Element
+    title: Excluded domains element
     type: <string>
 - key: MatchFQDNs
   title: Match FQDNs
@@ -137,14 +137,14 @@ payloadkeys:
       introduced: '2.4'
   type: <array>
   presence: optional
-  content: A list of Fully Qualified Domain Names (FQDNs) to be routed through the
-    servers contained in `Relays`. Any connection that matches an FQDN in the list
-    exactly uses the relay servers. If this list and `MatchDomains` are empty, the
-    system routes traffic to all domains to the relay servers, except those that match
-    an excluded domain or excluded FQDN.
+  content: A list of Fully Qualified Domain Names (FQDNs) to route through the servers
+    contained in `Relays`. Any connection that matches an FQDN in the list exactly
+    uses the relay servers. If this list and `MatchDomains` are empty, the system
+    routes traffic to all domains to the relay servers, except those that match an
+    excluded domain or excluded FQDN.
   subkeys:
   - key: MatchFQDNsElement
-    title: Match FQDNs Element
+    title: Match FQDNs element
     type: <string>
 - key: ExcludedFQDNs
   title: Excluded FQDNs
@@ -163,19 +163,23 @@ payloadkeys:
     through the servers contained in `Relays`. Any connection that matches an FQDN
     in the list exactly won't use the relay server. When `MatchDomains` is also present,
     any FQDN listed in the list should be a subdomain of at least one `MatchDomain`
-    value, otherwise it will not have any effect.
+    value, otherwise it won't have any effect.
   subkeys:
   - key: ExcludedFQDNsElement
-    title: Excluded FQDNs Element
+    title: Excluded FQDNs element
     type: <string>
 - key: RelayUUID
+  title: Relay UUID
+  supportedOS:
+    macOS:
+      introduced: n/a
   type: <string>
   presence: optional
   content: A globally unique identifier for this relay configuration. The system uses
     this UUID to route managed apps through the servers in `Relays`. This key is required
     for user enrollment.
 - key: UIToggleEnabled
-  title: UI Toggle Enabled
+  title: UI toggle enabled
   supportedOS:
     iOS:
       introduced: '26.0'
@@ -190,7 +194,7 @@ payloadkeys:
   default: true
   content: If `true`, the device allows the user to disable this network relay configuration.
 - key: AllowDNSFailover
-  title: Allow DNS Failover
+  title: Allow DNS failover
   supportedOS:
     iOS:
       introduced: '26.0'

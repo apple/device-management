@@ -37,16 +37,15 @@ payload:
     watchOS:
       introduced: n/a
   apply: multiple
-  content: This payload configures an Exchange ActiveSync account on an iOS device.
 payloadkeys:
 - key: VisibleName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The name that apps show to the user for this Exchange account. If not present,
     the system generates a suitable default.
 - key: EnabledProtocolTypes
-  title: Enabled Protocol Types
+  title: Enabled protocol types
   type: <array>
   presence: required
   content: |-
@@ -66,7 +65,7 @@ payloadkeys:
     - EAS
     - EWS
 - key: UserIdentityAssetReference
-  title: User Identity Asset Reference
+  title: User identity asset reference
   type: <string>
   assettypes:
   - com.apple.asset.useridentity
@@ -74,12 +73,12 @@ payloadkeys:
   content: The identifier of an asset declaration that contains the user identity
     for this account. The corresponding asset must be of type `UserIdentity`.
 - key: HostName
-  title: Server Host Name
+  title: Server host name
   type: <string>
   presence: optional
   content: The IP address or fully qualified domain name (FQDN) of the Exchange host.
 - key: Port
-  title: Server Port
+  title: Server port
   supportedOS:
     iOS:
       introduced: n/a
@@ -90,7 +89,7 @@ payloadkeys:
   content: The port number of the EWS server. The system uses this only when this
     declaration has a `HostName` value.
 - key: Path
-  title: Server Path
+  title: Server path
   supportedOS:
     iOS:
       introduced: n/a
@@ -101,7 +100,7 @@ payloadkeys:
   content: The path of the EWS server. The system uses this only when this declaration
     has a `HostName` value.
 - key: ExternalHostName
-  title: Server External Host Name
+  title: Server external host name
   supportedOS:
     iOS:
       introduced: n/a
@@ -111,7 +110,7 @@ payloadkeys:
   presence: optional
   content: The external hostname of the EWS server (or IP address).
 - key: ExternalPort
-  title: Server External Port
+  title: Server external port
   supportedOS:
     iOS:
       introduced: n/a
@@ -122,7 +121,7 @@ payloadkeys:
   content: The external port number of the EWS server. The system uses this only when
     this declaration has a `ExternalHostName` value.
 - key: External Path
-  title: Server External Path
+  title: Server external path
   supportedOS:
     iOS:
       introduced: n/a
@@ -144,6 +143,7 @@ payloadkeys:
     presence: required
     content: If `true`, enables OAuth for this account.
   - key: SignInURL
+    title: Sign in URL
     type: <string>
     presence: optional
     content: The URL that this account uses for signing in with OAuth. The system
@@ -151,6 +151,7 @@ payloadkeys:
       when a declaration contains this URL, so the declaration must also contain a
       `HostName`.
   - key: TokenRequestURL
+    title: Token request URL
     supportedOS:
       macOS:
         introduced: n/a
@@ -159,7 +160,7 @@ payloadkeys:
     content: The URL that this account uses for token requests with OAuth. The system
       ignores this value unless `Enabled` is `true`.
 - key: AuthenticationCredentialsAssetReference
-  title: Authentication Credentials Asset Reference
+  title: Authentication credentials asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.userpassword
@@ -168,7 +169,7 @@ payloadkeys:
     this account to authenticate with an Exchange server. Set the corresponding asset
     type to `CredentialUserNameAndPassword`.
 - key: AuthenticationIdentityAssetReference
-  title: Authentication Identity Asset Reference
+  title: Authentication identity asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.acme
@@ -178,7 +179,7 @@ payloadkeys:
   content: The identifier of a credential asset declaration that contains the identity
     that this account requires to authenticate with the Exchange server.
 - key: SMIME
-  title: S/MIME Settings
+  title: S/MIME settings
   supportedOS:
     iOS:
       introduced: '17.0'
@@ -189,18 +190,18 @@ payloadkeys:
   content: Settings for S/MIME.
   subkeys:
   - key: Signing
-    title: S/MIME Signing Settings
+    title: S/MIME signing settings
     type: <dictionary>
     presence: optional
     content: Settings for S/MIME signing.
     subkeys:
     - key: Enabled
-      title: Signing Enabled
+      title: Signing enabled
       type: <boolean>
       presence: required
       content: If `true`, the system enables S/MIME signing.
     - key: IdentityAssetReference
-      title: S/MIME Signing Identity Asset Reference
+      title: S/MIME signing identity asset reference
       type: <string>
       assettypes:
       - com.apple.asset.credential.acme
@@ -210,31 +211,31 @@ payloadkeys:
       content: Specifies the identifier of an asset declaration containing the identity
         required for S/MIME signing of messages sent from this account.
     - key: UserOverrideable
-      title: Signing User Overrideable
+      title: Signing user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can turn S/MIME signing on or off in Settings.
     - key: IdentityUserOverrideable
-      title: Signing Identity User Overrideable
+      title: Signing identity user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can select an S/MIME signing identity in Settings.
   - key: Encryption
-    title: S/MIME Encryption Settings
+    title: S/MIME encryption settings
     type: <dictionary>
     presence: optional
     content: Settings for S/MIME encryption.
     subkeys:
     - key: Enabled
-      title: Encryption By Default Enabled
+      title: Encryption by default enabled
       type: <boolean>
       presence: required
       content: If `true`, the system enables S/MIME encryption by default, which the
         user can't override if `PerMessageSwitchEnabled` is `false`.
     - key: IdentityAssetReference
-      title: S/MIME Encryption Identity Asset Reference
+      title: S/MIME encryption identity asset reference
       type: <string>
       assettypes:
       - com.apple.asset.credential.acme
@@ -247,31 +248,33 @@ payloadkeys:
         sends encrypted mail, the system uses the public certificate to encrypt the
         copy of the mail in their Sent mailbox.
     - key: UserOverrideable
-      title: Encryption By Default User Overrideable
+      title: Encryption by default user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can turn S/MIME encryption by default on or off
         in Settings.
     - key: IdentityUserOverrideable
-      title: Encryption Identity User Overrideable
+      title: Encryption identity user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can select an S/MIME signing identity in Settings.
     - key: PerMessageSwitchEnabled
-      title: Per Message Switch Enabled
+      title: Per message switch enabled
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the system enables the per-message encryption switch in
         the compose view.
 - key: MailServiceActive
+  title: Mail service active
   type: <boolean>
   presence: optional
   default: true
   content: If `true`, the system activates the mail service for this account.
 - key: LockMailService
+  title: Lock mail service
   supportedOS:
     macOS:
       introduced: n/a
@@ -281,11 +284,13 @@ payloadkeys:
   content: If `true`, the system prevents the user from changing the status of the
     mail service for this account.
 - key: ContactsServiceActive
+  title: Contacts service active
   type: <boolean>
   presence: optional
   default: true
   content: If `true`, activates the address book service for this account.
 - key: LockContactsService
+  title: Lock contacts service
   supportedOS:
     macOS:
       introduced: n/a
@@ -295,11 +300,13 @@ payloadkeys:
   content: If `true`, the system prevents the user from changing the status of the
     address book service for this account.
 - key: CalendarServiceActive
+  title: Calendar service active
   type: <boolean>
   presence: optional
   default: true
   content: If `true`, activates the calendar service for this account.
 - key: LockCalendarService
+  title: Lock calendar service
   supportedOS:
     macOS:
       introduced: n/a
@@ -309,11 +316,13 @@ payloadkeys:
   content: If `true`, the system prevents the user from changing the status of the
     calendar service for this account.
 - key: RemindersServiceActive
+  title: Reminders service active
   type: <boolean>
   presence: optional
   default: true
   content: If `true`, the system activates the reminders service for this account.
 - key: LockRemindersService
+  title: Lock reminders service
   supportedOS:
     macOS:
       introduced: n/a
@@ -323,11 +332,13 @@ payloadkeys:
   content: If `true`, the system prevents the user from changing the status of the
     reminders service for this account.
 - key: NotesServiceActive
+  title: Notes service active
   type: <boolean>
   presence: optional
   default: true
   content: If `true`, the system activates the notes service for this account.
 - key: LockNotesService
+  title: Lock notes service
   supportedOS:
     macOS:
       introduced: n/a
@@ -340,3 +351,8 @@ related-status-items:
 - status-items:
   - account.list.exchange
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a Microsoft Exchange account.
+    file: examples/declarative/declarations/configurations/account.exchange/example1.json

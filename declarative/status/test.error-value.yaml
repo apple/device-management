@@ -55,3 +55,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The test status error value.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/test.error-value/example1.json

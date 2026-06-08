@@ -15,7 +15,7 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: SyncTokens
-  title: Synchronization Tokens
+  title: Synchronization tokens
   type: <dictionary>
   presence: required
   content: A dictionary of synchronization tokens that describes the state of different

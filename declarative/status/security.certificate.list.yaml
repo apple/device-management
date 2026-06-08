@@ -1,5 +1,5 @@
 title: Status Security Certificate List
-description: A status report of the client's managed certificates.
+description: The status item that lists the device's managed certificates.
 payload:
   statusitemtype: security.certificate.list
   supportedOS:
@@ -58,8 +58,9 @@ payloadkeys:
   subkeytype: Certificate
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of a security certificate.
+    content: A security certificate.
     subkeys:
     - key: identifier
       title: Unique identifier of the certificate.
@@ -72,8 +73,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the system removed the app and only this key and the `identifier`
-        key are present in the status item object.
+      content: If `true`, the system removed the certificate and only this key and
+        the `identifier` key are present in the status item object.
     - key: declaration-identifier
       title: Asset declaration identifier.
       type: <string>
@@ -86,12 +87,21 @@ payloadkeys:
       presence: required
       content: The summary of the certificate's subject.
     - key: is-identity
-      title: Is Identity
+      title: Is identity
       type: <boolean>
       presence: required
       content: If `true`, the certificate is an identity certificate.
     - key: data
-      title: Certificate Data
+      title: Certificate data
       type: <data>
       presence: required
       content: The certificate data in DER-encoded X.509 format.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated certificate
+    description: Reports a new or updated certificate.
+    file: data/docc-examples/remotemanagementmodel/status/security.certificate.list/example1.json
+  - tab: Removed certificate
+    description: Reports a removed certificate.
+    file: data/docc-examples/remotemanagementmodel/status/security.certificate.list/example2.json

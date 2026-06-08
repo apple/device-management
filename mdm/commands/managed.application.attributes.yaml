@@ -39,7 +39,7 @@ payloadkeys:
     The bundle identifiers of the managed apps.
 
     > Important:
-    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
+    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone the watch pairs with. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting app and book information (Legacy)`.
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -60,7 +60,7 @@ responsekeys:
         The app's bundle identifier.
 
         > Note:
-        > For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired.
+        > For a watchOS app, the identifier is the watch's bundle identifier, which differs from the main bundle identifier for the iPhone the watch pairs with.
     - key: Attributes
       type: <dictionary>
       presence: optional
@@ -83,10 +83,7 @@ responsekeys:
             introduced: n/a
         type: <string>
         presence: optional
-        content: |-
-          The content Filter UUID assigned to this app.
-
-          Available in iOS 16 and later.
+        content: The content Filter UUID assigned to this app.
       - key: DNSProxyUUID
         supportedOS:
           iOS:
@@ -97,10 +94,7 @@ responsekeys:
             introduced: n/a
         type: <string>
         presence: optional
-        content: |-
-          The DNS Proxy UUID assigned to this app.
-
-          Available in iOS 16 and later.
+        content: The DNS Proxy UUID assigned to this app.
       - key: RelayUUID
         supportedOS:
           iOS:
@@ -120,8 +114,7 @@ responsekeys:
             introduced: n/a
         type: <array>
         presence: optional
-        content: This app's associated domains. This value is available in iOS 13
-          and later.
+        content: This app's associated domains.
         subkeys:
         - key: AssociatedDomain
           type: <string>
@@ -136,8 +129,7 @@ responsekeys:
         default: false
         content: If `true`, perform claimed site association verification directly
           at the domain instead of on Apple's servers. Only set this to `true` for
-          domains that can't access the internet. This value is available in iOS 14
-          and later.
+          domains that can't access the internet.
       - key: Removable
         supportedOS:
           iOS:
@@ -147,8 +139,7 @@ responsekeys:
         type: <boolean>
         presence: optional
         default: true
-        content: If `false`, this app isn't removable while it's a managed app. This
-          value is available in iOS 14 and later.
+        content: If `false`, this app isn't removable while it's a managed app.
       - key: TapToPayScreenLock
         supportedOS:
           iOS:
@@ -162,10 +153,10 @@ responsekeys:
         type: <boolean>
         presence: optional
         default: false
-        content: |-
-          If `true`, Tap to Pay on iPhone requires users to use Face ID or a passcode to unlock their device after every transaction that requires a customer's card PIN. If `false`, the user can configure this setting on their device.
-
-          Available in iOS 16.4 and later.
+        content: If `true`, Tap to Pay on iPhone requires users to use Face ID or
+          a passcode to unlock their device after every transaction that requires
+          a customer's card PIN. If `false`, the user can configure this setting on
+          their device.
       - key: CellularSliceUUID
         supportedOS:
           iOS:
@@ -178,10 +169,10 @@ responsekeys:
             introduced: n/a
         type: <string>
         presence: optional
-        content: |-
-          The data network name (DNN) or app category. For DNN, the value is `DNN:name`, where `name` is the carrier-provided DNN name. For app category, the value is `AppCategory:category`, where `category` is a carrier-provided string like "Enterprise1".
-
-          Available in iOS 17 and later.
+        content: The data network name (DNN) or app category. For DNN, the value is
+          `DNN:name`, where `name` is the carrier-provided DNN name. For app category,
+          the value is `AppCategory:category`, where `category` is a carrier-provided
+          string like "Enterprise1".
       - key: Hideable
         supportedOS:
           iOS:
@@ -221,3 +212,8 @@ notes:
     The response doesn't include apps that Declarative Device Management is managing.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/managed.application.attributes/example1.plist
+    response-file: examples/mdm/commands/managed.application.attributes/example2.plist

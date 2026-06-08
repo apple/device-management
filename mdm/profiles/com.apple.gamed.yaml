@@ -53,3 +53,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If `true`, allows multiplayer gaming.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.gamed/example1.plist

@@ -70,8 +70,7 @@ payloadkeys:
 - key: PayloadContent
   type: <array>
   presence: required
-  content: The array of payload dictionaries. If `IsEncrypted` is `true`, this array
-    isn't needed.
+  content: The array of payload dictionaries. Not present for encrypted payloads.
   subkeys:
   - key: PayloadContentItem
     type: <dictionary>
@@ -84,7 +83,7 @@ payloadkeys:
 - key: EncryptedPayloadContent
   type: <data>
   presence: optional
-  content: Enabled if `IsEncrypted` is `true`.
+  content: The encrypted payload content. Only present for encrypted payloads.
 - key: PayloadDescription
   type: <string>
   presence: optional

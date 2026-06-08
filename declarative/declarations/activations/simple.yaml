@@ -15,6 +15,7 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: StandardConfigurations
+  title: Standard configurations
   type: <array>
   presence: required
   content: An array of strings that specify the identifiers of configurations to install.
@@ -22,10 +23,22 @@ payloadkeys:
     from installing.
   subkeys:
   - key: StandardConfigurationsItems
+    title: Standard configurations items
     type: <string>
 - key: Predicate
+  title: Predicate
   type: <string>
   presence: optional
   content: A predicate format string as [Apple's Predicate Programming](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html)
     describes. The activation only installs when the predicate evaluates to `true`
     or isn't present.
+examples:
+  title: Activation examples
+  files:
+  - tab: One configuration
+    description: This activation applies one configuration.
+    file: examples/declarative/declarations/activations/simple/example1.json
+  - tab: Predicate
+    description: This activation applies two configurations and uses a predicate to
+      limit those to only apply on an Apple TV device.
+    file: examples/declarative/declarations/activations/simple/example2.json

@@ -18,14 +18,15 @@ payload:
     watchOS:
       introduced: n/a
   apply: combined
-  content: Configures the managed migration functions of Migration Assistant.
 payloadkeys:
 - key: ShouldDoManagedMigration
+  title: Should do managed migration
   type: <boolean>
   presence: required
   combinetype: boolean-or
   content: If `true`, the device manages Migration Assistant.
 - key: ExcludedAccounts
+  title: Excluded accounts
   type: <array>
   presence: optional
   combinetype: set-union
@@ -35,6 +36,7 @@ payloadkeys:
   - key: _Accounts
     type: <string>
 - key: ExcludedPaths
+  title: Excluded paths
   type: <array>
   presence: optional
   combinetype: set-union
@@ -46,6 +48,7 @@ payloadkeys:
   - key: _ExcludedPaths
     type: <string>
 - key: RequiredPaths
+  title: Required paths
   type: <array>
   presence: optional
   combinetype: set-union
@@ -57,6 +60,7 @@ payloadkeys:
   - key: _RequiredPaths
     type: <string>
 - key: ShouldMigrateSecurityPrivacySettings
+  title: Should migrate security privacy settings
   type: <boolean>
   presence: required
   combinetype: boolean-or
@@ -69,3 +73,8 @@ notes:
     Configure the device to use the `AwaitingConfiguration` state after it enrolls with the server. The server needs to send the configuration and verify the configuration as both active and valid using the Declarative Device Management status, before it sends the `DeviceConfiguredCommand` command to exit that state.
 
     The device reports Migration Assistant progress using the `StatusMigrationAssistantState` status item, and provides a report when migration completes using the `StatusMigrationAssistantReport` status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration provides settings for a Mac to Mac migration.
+    file: examples/declarative/declarations/configurations/migration-assistant.settings/example1.json

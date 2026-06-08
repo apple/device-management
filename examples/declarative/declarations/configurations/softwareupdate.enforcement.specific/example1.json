@@ -1,0 +1,10 @@
+{
+    "Type": "com.apple.configuration.softwareupdate.enforcement.specific",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "TargetOSVersion": "26.0",
+        "TargetBuildVersion": "23A309",
+        "TargetLocalDateTime": "2025-09-21T01:00:00"
+    }
+}

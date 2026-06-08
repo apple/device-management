@@ -1,5 +1,5 @@
 title: Status App Managed List
-description: The device's declarative managed apps.
+description: The status item that lists the device's declarative managed apps.
 payload:
   statusitemtype: app.managed.list
   supportedOS:
@@ -44,8 +44,9 @@ payloadkeys:
   subkeytype: App
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A dictionary that describes a declarative managed app.
+    content: A managed app.
     subkeys:
     - key: identifier
       title: Unique identifier of the app.
@@ -74,7 +75,7 @@ payloadkeys:
       type: <integer>
       presence: optional
       content: |-
-        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and Books for Organizations`.
+        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and books metadata for organizations`.
 
         If the current external version identifier of an app on the App Store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
     - key: version
@@ -108,7 +109,7 @@ payloadkeys:
 
         - `optional`: The app is optional and the user has to trigger its installation.
         - `queued`: The system has started installation of the app.
-        - `not-present`: Management of the app occurs after it is installed.
+        - `not-present`: Management of the app occurs after it's installed.
         - `prompting-for-consent`: The system is displaying a prompt to the user to proceed with app installation.
         - `prompting-for-login`: The system is displaying an App Store sign-in prompt to the user to allow app installation.
         - `prompting-for-management`: The system is displaying a prompt to the user to allow changing the installed app to a managed app.
@@ -144,7 +145,7 @@ payloadkeys:
         iOS:
           introduced: '18.4'
         macOS:
-          introduced: n/a
+          introduced: '27.0'
       type: <dictionary>
       presence: optional
       content: The status of app or extension managed configurations. This key is
@@ -170,9 +171,9 @@ payloadkeys:
           - valid
           content: |-
             The managed configuration status.
-            - `unknown`: The managed configuration has not been read
-            - `invalid`: The managed configuration was read and deemed to be invalid
-            - `valid`: The managed configuration was read and deemed to be valid
+            - `unknown`: The device hasn't read the managed configuration.
+            - `invalid`: The device read the managed configuration and found it to be invalid.
+            - `valid`: The device read the managed configuration and found it to be valid.
       - key: extension-config-state
         title: Extensions managed configuration status
         type: <dictionary>
@@ -189,7 +190,7 @@ payloadkeys:
           subkeytype: ManagedConfigurationState
           subkeys: *id001
     - key: reasons
-      title: Status Reasons
+      title: Status reasons
       type: <array>
       presence: optional
       content: An array that contains additional details about the app state, including
@@ -197,23 +198,23 @@ payloadkeys:
       subkeytype: StatusReason
       subkeys:
       - key: _reasons
-        title: Status Reason
+        title: Status reason
         type: <dictionary>
         content: Information about a status error.
         subkeytype: StatusReason
         subkeys:
         - key: code
-          title: Error Code
+          title: Error code
           type: <string>
           presence: required
           content: A code for the state.
         - key: description
-          title: Error Description
+          title: Error description
           type: <string>
           presence: optional
           content: A description of the state.
         - key: details
-          title: Error Details
+          title: Error details
           type: <dictionary>
           presence: optional
           content: A dictionary that contains additional details about the state.
@@ -230,6 +231,7 @@ reasons:
   details:
   - key: Timestamp
     type: <string>
+    valuetype: timestamp
     description: The RFC 3339 timestamp of the last download failure.
 - value: Error.DuplicateConfiguredApp
   description: The app is already being managed.
@@ -238,6 +240,7 @@ reasons:
   details:
   - key: Timestamp
     type: <string>
+    valuetype: timestamp
     description: The RFC 3339 timestamp of the last install failure.
 - value: Error.InvalidAppID
   description: The app id could not be found.
@@ -263,4 +266,14 @@ reasons:
   details:
   - key: Timestamp
     type: <string>
+    valuetype: timestamp
     description: The RFC 3339 timestamp of the last update failure.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated app
+    description: Reports a new or updated app.
+    file: data/docc-examples/remotemanagementmodel/status/app.managed.list/example1.json
+  - tab: Removed app
+    description: Reports a removed app.
+    file: data/docc-examples/remotemanagementmodel/status/app.managed.list/example2.json

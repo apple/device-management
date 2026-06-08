@@ -49,7 +49,7 @@ payloadkeys:
     The bundle identifiers of the managed apps to include in the response.
 
     > Important:
-    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
+    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone the watch pairs with. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting app and book information (Legacy)`.
   subkeys:
   - key: IdentifiersItem
     type: <string>
@@ -133,8 +133,7 @@ responsekeys:
       type: <string>
       presence: required
       content: If the user already purchased a paid app, this code is available for
-        use by another user. This code reports only once. This value is available
-        in iOS 5 and later.
+        use by another user. This code reports only once.
     - key: HasConfiguration
       supportedOS:
         iOS:
@@ -143,10 +142,7 @@ responsekeys:
           introduced: '11.0'
       type: <boolean>
       presence: required
-      content: If 'true', the app has an update available. This key is present only
-        for App Store apps. In macOS, this key is present only for Volume Purchase
-        Program (VPP) apps. This status updates daily and isn't always up-to-date
-        when installing an app.
+      content: If 'true', the app has a server-provided managed configuration.
     - key: HasFeedback
       supportedOS:
         iOS:
@@ -156,9 +152,9 @@ responsekeys:
           devicechannel: false
       type: <boolean>
       presence: required
-      content: If 'true', the app has feedback for the server. This value is available
-        in iOS 7 and later, and tvOS 10.2 and later. On macOS 11.3 and later, this
-        value is available if the request was sent on the user channel.
+      content: If 'true', the app has feedback for the server. On macOS 11.3 and later,
+        this value is available if the device management server sent the request on
+        the user channel.
     - key: IsValidated
       supportedOS:
         iOS:
@@ -169,8 +165,7 @@ responsekeys:
       presence: required
       content: If 'true', the app is valid and can run on the device. If the app is
         enterprise-distributed and unvalidated, it won't be able to run until validation
-        has occurred. This value is available in iOS 9.2 and later, and tvOS 10.2
-        and later.
+        has occurred.
     - key: ExternalVersionIdentifier
       supportedOS:
         iOS:
@@ -182,11 +177,9 @@ responsekeys:
       type: <integer>
       presence: required
       content: |-
-        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and Books for Organizations`.
+        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and books metadata for organizations`.
 
         If the current external version identifier of an app on the App Store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
-
-        Available in iOS 10.3 and later, macOS 11.3 and later, and tvOS 10.2 and later.
 
         > Note:
         > A newer version of an app might not be available for installation on the device for a variety of reasons. A common reason is that the device's operating system version or hardware is incompatible with the available version of the app.
@@ -200,3 +193,8 @@ notes:
     This command doesn't return apps that Declarative Device Management is managing.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/application.managed.list/example1.plist
+    response-file: examples/mdm/commands/application.managed.list/example2.plist

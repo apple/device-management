@@ -60,8 +60,6 @@ responsekeys:
 
       > Important:
       > For a device to have data protection, `HardwareEncryptionCaps` must be `3` and `PasscodePresent` must `true`.
-
-      This value is available in iOS 4 and later, and tvOS 6 and later.
   - key: PasscodePresent
     supportedOS:
       iOS:
@@ -74,15 +72,14 @@ responsekeys:
           mode: forbidden
     type: <boolean>
     content: If `true`, the device has a passcode. This key doesn't apply to User-Enrolled
-      devices. This value is available in iOS 4 and later, and tvOS 6 and later.
+      devices.
   - key: PasscodeCompliant
     supportedOS:
       macOS:
         introduced: n/a
     type: <boolean>
     content: If `true`, the user's passcode is compliant with all requirements on
-      the device, including Exchange and other accounts. This value is available in
-      iOS 4 and later, and tvOS 6 and later.
+      the device, including Exchange and other accounts.
   - key: PasscodeCompliantWithProfiles
     supportedOS:
       iOS:
@@ -95,8 +92,7 @@ responsekeys:
           mode: forbidden
     type: <boolean>
     content: If `true`, the user's passcode is compliant with requirements from profiles.
-      This key doesn't apply to User-Enrolled devices. This value is available in
-      iOS 4 and later, and tvOS 6 and later.
+      This key doesn't apply to User-Enrolled devices.
   - key: PasscodeLockGracePeriod
     supportedOS:
       iOS:
@@ -162,7 +158,6 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled FileVault full disk encryption (FDE).
-      This value is available in macOS 10.9 and later.
   - key: FDE_HasPersonalRecoveryKey
     supportedOS:
       iOS:
@@ -179,8 +174,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, FileVault FDE has a personal recovery key. This value is available
-      in macOS 10.9 and later.
+    content: If `true`, FileVault FDE has a personal recovery key.
   - key: FDE_HasInstitutionalRecoveryKey
     supportedOS:
       iOS:
@@ -197,8 +191,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, FileVault FDE has an institutional recovery key. This value
-      is available in macOS 10.9 and later.
+    content: If `true`, FileVault FDE has an institutional recovery key.
   - key: FDE_PersonalRecoveryKeyCMS
     supportedOS:
       iOS:
@@ -217,8 +210,7 @@ responsekeys:
     type: <data>
     content: If the FileVault personal recovery key has enabled escrow with a recovery
       key, this value contains the key. The certificate from the `FDERecoveryKeyEscrow`
-      profile encrypts the key and wraps it as CMS data. This value is available in
-      macOS 10.13 and later.
+      profile encrypts the key and wraps it as CMS data.
   - key: FDE_PersonalRecoveryKeyDeviceKey
     supportedOS:
       iOS:
@@ -240,8 +232,7 @@ responsekeys:
       to the user at the EFI Login Window as part of the help message if they enter
       their password incorrectly three times. The server also uses this value as an
       index when saving the device personal recovery key. This replaces the `recordNumber`
-      that the server returned in the previous escrow mechanism. This value is available
-      in macOS 10.13 and later.
+      that the server returned in the previous escrow mechanism.
   - key: SystemIntegrityProtectionEnabled
     supportedOS:
       iOS:
@@ -257,7 +248,6 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, System Integrity Protection (SIP) is active on the device.
-      This value is available in macOS 10.12 and later.
   - key: FirewallSettings
     supportedOS:
       iOS:
@@ -272,8 +262,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <dictionary>
-    content: A dictionary that contains the firewall settings. This value is available
-      in macOS 10.12 and later.
+    content: A dictionary that contains the firewall settings.
     subkeys:
     - key: FirewallEnabled
       type: <boolean>
@@ -336,8 +325,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <dictionary>
-    content: A dictionary that contains the status of the EFI firmware password. This
-      value is available in macOS 10.13 and later.
+    content: A dictionary that contains the status of the EFI firmware password.
     subkeys:
     - key: PasswordExists
       type: <boolean>
@@ -374,8 +362,8 @@ responsekeys:
         watchOS:
           introduced: n/a
       type: <boolean>
-      content: If `true`, the device enrolled in MDM through the Device Enrollment
-        Program (DEP). This value is available in macOS 10.13.2 and later.
+      content: If `true`, the device enrolled in MDM through Automated Device Enrollment
+        (ADE).
     - key: UserApprovedEnrollment
       supportedOS:
         iOS:
@@ -388,15 +376,13 @@ responsekeys:
           introduced: n/a
       type: <boolean>
       content: If `true`, the enrollment was user-approved. If `false`, the device
-        may reject certain security-sensitive payloads or commands. This value is
-        available in macOS 10.13.2 and later.
+        may reject certain security-sensitive payloads or commands.
     - key: IsUserEnrollment
       supportedOS:
         macOS:
           introduced: '10.15'
       type: <boolean>
-      content: If `true`, the device is user-enrolled. This value is available in
-        iOS 13 and later, and macOS 10.15 and later.
+      content: If `true`, the device is user-enrolled.
     - key: IsActivationLockManageable
       supportedOS:
         iOS:
@@ -411,7 +397,7 @@ responsekeys:
           introduced: n/a
       type: <boolean>
       content: If `true`, the type of enrollment allows the MDM to manage Activation
-        Lock for this device. This value is available in macOS 10.15 and later.
+        Lock for this device.
   - key: SecureBoot
     supportedOS:
       iOS:
@@ -426,8 +412,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <dictionary>
-    content: A dictionary that contains the device's Secure Boot settings. This value
-      is available in macOS 10.15 and later.
+    content: A dictionary that contains the device's Secure Boot settings.
     subkeys:
     - key: SecureBootLevel
       type: <string>
@@ -450,10 +435,9 @@ responsekeys:
         macOS:
           introduced: '11.0'
       type: <array>
-      content: |-
-        Reports which security features the user disables in `recoveryOS`. This property is only present for a Mac with Apple silicon when `SecureBootLevel` is `medium`.
-
-        Available in iOS 11 and later.
+      content: Reports which security features the user disables in `recoveryOS`.
+        This property is only present for a Mac with Apple silicon when `SecureBootLevel`
+        is `medium`.
       subkeys:
       - key: ReducedSecurityItems
         type: <string>
@@ -485,8 +469,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, Remote Desktop is active on the device. This value is available
-      in macOS 10.14.4 and later.
+    content: If `true`, Remote Desktop is active on the device.
   - key: AuthenticatedRootVolumeEnabled
     supportedOS:
       iOS:
@@ -501,8 +484,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, the system booted using an Authenticated Root Volume. This
-      value is available in macOS 11 and later.
+    content: If `true`, the system booted using an Authenticated Root Volume.
   - key: BootstrapTokenAllowedForAuthentication
     supportedOS:
       iOS:
@@ -524,7 +506,7 @@ responsekeys:
     - disallowed
     - not supported
     content: |-
-      This value specifies whether the Secure Enclave Processor (SEP) supports and allows secure operations to use the Bootstrap Token. The value is automatically set for devices enrolled through the Device Enrollment Program (DEP). The user can also manually set this value in the RecoveryOS.
+      This value specifies whether the Secure Enclave Processor (SEP) supports and allows secure operations to use the Bootstrap Token. The device automatically sets this value if enrolled through Automated Device Enrollment (ADE). The user can also manually set this value in the RecoveryOS.
 
       This value is available for a Mac with Apple silicon in macOS 11 and later. Not available for user enrollment.
   - key: BootstrapTokenRequiredForSoftwareUpdate
@@ -589,3 +571,8 @@ notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/information.security/example1.plist
+    response-file: examples/mdm/commands/information.security/example2.plist

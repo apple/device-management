@@ -140,8 +140,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: An array of strings that describe the setup items to skip. `SkipKeys` provides
-    a list of valid strings and their meanings. Available in iOS 14 and later, and
-    macOS 15 and later.
+    a list of valid strings and their meanings.
   subkeys:
   - key: SkipSetupItems
     type: <string>
@@ -167,3 +166,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If 'true', the system skips the Wallpaper selection window.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.SetupAssistant.managed/example1.plist

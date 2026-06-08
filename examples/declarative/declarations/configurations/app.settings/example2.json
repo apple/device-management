@@ -1,0 +1,22 @@
+{
+    "Type": "com.apple.configuration.app.settings",
+    "Identifier": "245E4CBC-021B-4DB0-9B30-25F581119A2A",
+    "ServerToken": "D6472788-7568-4268-99CE-AD8AE114B28C",
+    "Payload": {
+        "Privacy": {
+            "PermissionDefaults": {
+                "com.example.scanner (ABCD1234)": {
+                    "OrganizationJustification": "This app is used for scanning work documents.",
+                    "Camera": "Allow"
+                },
+                "com.example.on-site {anchor apple generic}": {
+                    "OrganizationJustification": "This app is used for video conferences while on-site with customers.",
+                    "Camera": "Allow",
+                    "Microphone": "Allow",
+                    "Location": "WhileUsing",
+                    "LocationAccuracy": "Precise"
+                }
+            }
+        }
+    }
+}

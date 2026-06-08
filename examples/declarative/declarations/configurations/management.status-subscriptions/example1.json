@@ -1,0 +1,30 @@
+{
+    "Type": "com.apple.configuration.management.status-subscriptions",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "StatusItems": [
+            {
+                "Name": "device.identifier.serial-number"
+            },
+            {
+                "Name": "device.identifier.udid"
+            },
+            {
+                "Name": "device.operating-system.build-version"
+            },
+            {
+                "Name": "device.operating-system.version"
+            },
+            {
+                "Name": "device.power.battery-health"
+            },
+            {
+                "Name": "passcode.is-compliant"
+            },
+            {
+                "Name": "security.certificate.list"
+            }
+        ]
+    }
+}

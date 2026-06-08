@@ -1,5 +1,5 @@
 title: Status Disk Management File Vault Enabled
-description: The enabled status of the File Vault.
+description: The status item that reports whether FileVault is enabled.
 payload:
   statusitemtype: diskmanagement.filevault.enabled
   supportedOS:
@@ -24,3 +24,7 @@ payloadkeys:
   type: <boolean>
   presence: required
   content: A Boolean value that specifies the File Vault enabled status on the device.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/diskmanagement.filevault.enabled/example1.json

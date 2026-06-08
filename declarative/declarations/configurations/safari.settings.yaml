@@ -33,7 +33,7 @@ payload:
   apply: combined
 payloadkeys:
 - key: AcceptCookies
-  title: Accept Cookies
+  title: Accept cookies
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -59,7 +59,7 @@ payloadkeys:
     - `VisitedWebsites`: Safari allows cookies only from visited websites.
     - `Always`: Safari always allows cookies.
 - key: AllowDisablingFraudWarning
-  title: Allow Disabling Fraud Warning
+  title: Allow disabling fraud warning
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -74,7 +74,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, the system forces fraud warnings on in Safari.
 - key: AllowHistoryClearing
-  title: Allow History Clearing
+  title: Allow history clearing
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -103,7 +103,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, the system disables JavaScript in Safari.
 - key: AllowPrivateBrowsing
-  title: Allow Private Browsing
+  title: Allow private browsing
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -117,7 +117,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, the system disables private browsing in Safari.
 - key: AllowPopups
-  title: Allow Popups
+  title: Allow popups
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -132,7 +132,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, the system disables popups in Safari.
 - key: AllowSummary
-  title: Allow Summary
+  title: Allow summary
   supportedOS:
     iOS:
       allowed-enrollments:
@@ -146,12 +146,13 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, the system disables summarization of content in Safari.
 - key: NewTabStartPage
-  title: New Tab Start Page
+  title: New tab start page
   type: <dictionary>
   presence: optional
   content: Sets the start page for new tabs in Safari.
   subkeys:
   - key: PageType
+    title: Page type
     type: <string>
     presence: required
     rangelist:
@@ -177,3 +178,109 @@ payloadkeys:
     content: The composed identifier of the extension that provides the start page.
       The required format is "Identifier (TeamIdentifier)", for example "com.example.app
       (ABCD1234)". Required when setting `PageType` to `Extension`.
+- key: Privacy
+  title: Website privacy
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    visionOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: The dictionary of website privacy settings.
+  subkeys:
+  - key: PermissionDefaults
+    title: Website privacy permission defaults
+    type: <dictionary>
+    presence: optional
+    content: |-
+      The dictionary of website permission defaults. Each key in the dictionary represents a single website, or a website and its sub-domains. The dictionary values represent the permission defaults that Safari applies for each website that matches the key.
+
+      Safari supports the following patterns for the website key:
+
+      - A specific domain such as "example.com" or "www.example.com". The permission defaults apply to that website only.
+      - A wildcard domain that uses a single "\*" character as a prefix for the domain, such as "\*example.com". The permission defaults apply to both the exact domain "example.com", and any sub-domains such as "www.example.com". It won't match other domains with a similar string suffix such as "myexample.com".
+
+      When multiple patterns match a website, Safari uses the most precise pattern. For example, for the website "www.example.com", if rules "www.example.com" and "*example.com" match, Safari uses the former.
+    subkeys:
+    - key: ANY
+      type: <dictionary>
+      presence: optional
+      content: The dictionary that defines the website privacy permission defaults.
+        Each key represents a website.
+      subkeytype: WebsiteDictionary
+      subkeys:
+      - key: OrganizationJustification
+        title: Organization justification
+        type: <string>
+        presence: required
+        content: Text that clearly explains to the Safari user the reason why the
+          organization requires these website privacy permission defaults. Safari
+          includes this text in the permission consent prompt it displays when it
+          first displays the website.
+      - key: Camera
+        title: Camera permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether a website privacy permission default is set.
+          * `None`: Safari sets no website privacy permission default for use of the camera.
+          * `Allow`: Safari sets the website privacy permission default to allow use of the camera.
+      - key: Microphone
+        title: Microphone permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether a website privacy permission default is set.
+          * `None`: Safari sets no website privacy permission default for use of the microphone.
+          * `Allow`: Safari sets the website privacy permission default to allow use of the microphone.
+notes:
+- title: Privacy permission defaults
+  content: |-
+    Privacy permission defaults allow an organization to suggest a set of privacy permissions for use on a website. When set, Safari displays a consent prompt listing all the configured defaults. If the user accepts, the system applies those defaults for the website. If the user declines, no defaults are set and Safari prompts the user in the normal way when the website requires permission.
+
+    The consent prompt only shows permissions that the user hasn't previously seen, and won't appear if the user has seen all permissions. The user can choose from one of two options in the prompt:
+
+    * `Allow`: this option sets the website privacy permissions for the specified sub-systems (camera or microphone) to "Allow". Safari doesn't prompt the user when the website uses the sub-system.
+    * `Not Now`: this option ignores the website privacy permission defaults for the specified sub-systems (camera or microphone). Safari prompts the user in the normal way when the website uses the sub-system.
+
+    The user can change the website privacy permission settings in Safari settings if they choose.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Start page
+    description: This configuration sets the Safari start page to show a specific
+      website.
+    file: examples/declarative/declarations/configurations/safari.settings/example1.json
+  - tab: Restrictions
+    description: This configuration restricts several Safari features.
+    file: examples/declarative/declarations/configurations/safari.settings/example2.json
+  - tab: Website privacy (1)
+    description: This configuration sets the camera permission default in Safari for
+      one specific website.
+    file: examples/declarative/declarations/configurations/safari.settings/example3.json
+  - tab: Website privacy (2)
+    description: This configuration sets the camera and microphone permission defaults
+      in Safari for a specific website and its child websites.
+    file: examples/declarative/declarations/configurations/safari.settings/example4.json

@@ -82,3 +82,7 @@ payloadkeys:
 notes:
 - title: ''
   content: For more information, see [https://support.apple.com/en-us/HT205333](https://support.apple.com/en-us/HT205333).
+examples:
+  title: Example profile
+  files:
+  - file: examples/mdm/profiles/com.apple.xsan.preferences/example1.plist

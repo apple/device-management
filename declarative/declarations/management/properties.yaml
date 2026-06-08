@@ -19,3 +19,7 @@ payloadkeys:
   type: <any>
   presence: optional
   content: Each entry represents a property key/value.
+examples:
+  title: Management declaration example
+  files:
+  - file: examples/declarative/declarations/management/properties/example1.json

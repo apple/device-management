@@ -28,3 +28,7 @@ payloadkeys:
   type: <boolean>
   presence: required
   content: If `true`, enables parental controls dictionary restrictions.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.Dictionary/example1.plist

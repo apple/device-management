@@ -33,12 +33,13 @@ payload:
   apply: combined
 payloadkeys:
 - key: ManagedBookmarks
-  title: Managed Bookmarks
+  title: Managed bookmarks
   type: <array>
   presence: optional
   content: A dictionary that specifies a set of managed bookmarks.
   subkeys:
   - key: BookmarkGroup
+    title: Bookmark group
     type: <dictionary>
     presence: required
     content: A group of managed bookmarks.
@@ -67,6 +68,7 @@ payloadkeys:
       subkeytype: BookmarksItem
       subkeys:
       - key: bookmarks-item
+        title: Bookmarks item
         type: <dictionary>
         presence: required
         content: A bookmark that specifies a title, and either a URL for the bookmark,
@@ -96,8 +98,15 @@ payloadkeys:
           subkeytype: BookmarksItem
           subkeys:
           - key: folder-item
+            title: Folder item
             type: <dictionary>
             presence: required
             content: A bookmark that specifies a title, and either a URL for the bookmark,
               or a nested folder of bookmarks.
             subkeys: *id001
+examples:
+  title: Configuration example
+  files:
+  - description: 'This configuration applies a set of managed bookmarks: two bookmarks
+      and one bookmarks folder, which contains two more bookmarks.'
+    file: examples/declarative/declarations/configurations/safari.bookmarks/example1.json

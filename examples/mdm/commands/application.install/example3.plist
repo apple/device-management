@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>ManagementFlags</key>
+        <integer>0</integer>
+        <key>Options</key>
+        <dict>
+            <key>PurchaseMethod</key>
+            <integer>1</integer>
+        </dict>
+        <key>RequestType</key>
+        <string>InstallApplication</string>
+        <key>iTunesStoreID</key>
+        <integer>1096834193</integer>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_InstallApplication</string>
+</dict>
+</plist>

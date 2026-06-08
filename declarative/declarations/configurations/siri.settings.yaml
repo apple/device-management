@@ -20,7 +20,11 @@ payload:
       - system
       - user
     tvOS:
-      introduced: n/a
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
     visionOS:
       introduced: '26.4'
       allowed-enrollments:
@@ -34,7 +38,6 @@ payload:
       allowed-scopes:
       - system
   apply: combined
-  content: Configures Siri settings.
 payloadkeys:
 - key: Enabled
   title: Enabled
@@ -47,9 +50,11 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables Siri.
 - key: AllowUserGeneratedContent
-  title: Allow User Generated Content
+  title: Allow user generated content
   supportedOS:
     macOS:
+      introduced: n/a
+    tvOS:
       introduced: n/a
     visionOS:
       introduced: n/a
@@ -59,9 +64,11 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables Siri user-generated content.
 - key: AllowWhileLocked
-  title: Allow While Locked
+  title: Allow while locked
   supportedOS:
     macOS:
+      introduced: n/a
+    tvOS:
       introduced: n/a
     visionOS:
       introduced: n/a
@@ -71,8 +78,10 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables Siri while locked.
 - key: ForceProfanityFilter
-  title: Force Profanity Filter
+  title: Force profanity filter
   supportedOS:
+    tvOS:
+      introduced: n/a
     visionOS:
       introduced: n/a
     watchOS:
@@ -82,3 +91,9 @@ payloadkeys:
   default: false
   combinetype: boolean-or
   content: If `true`, forces Siri profanity filter.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Siri Restrictions
+    description: This configuration restricts Siri features.
+    file: examples/declarative/declarations/configurations/siri.settings/example1.json

@@ -1,5 +1,6 @@
 title: Software Update
-description: The payload that configures the software update policy.
+description: 'The payload that configures the software update policy. Removed: use
+  the declarative management `com.apple.configuration.softwareupdate.settings` configuration.'
 payload:
   payloadtype: com.apple.SoftwareUpdate
   supportedOS:
@@ -8,6 +9,7 @@ payload:
     macOS:
       introduced: '10.7'
       deprecated: '26.0'
+      removed: '27.0'
       multiple: false
       devicechannel: true
       userchannel: false
@@ -33,10 +35,10 @@ payloadkeys:
         mode: forbidden
   type: <string>
   presence: optional
-  content: The URL of the software update catalog. This property is not supported
-    in macOS 11 and later.
+  content: The URL of the software update catalog. This property isn't supported in
+    macOS 11 and later.
 - key: AllowPreReleaseInstallation
-  title: Allow Pre-Release Update Installation
+  title: Allow pre-release update installation
   supportedOS:
     macOS:
       introduced: '10.9'
@@ -108,3 +110,7 @@ payloadkeys:
   presence: optional
   default: true
   content: If `false`, restricts the automatic installation of configuration data.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.SoftwareUpdate/example1.plist

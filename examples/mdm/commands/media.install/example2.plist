@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_InstallMedia</string>
+    <key>MediaType</key>
+    <string>Book</string>
+    <key>MediaURL</key>
+    <string>https://yourmdmhost.example.com/files/myenterprisebook.pdf</string>
+    <key>PersistentID</key>
+    <string>com.acme.pdf.myenterprisebook</string>
+    <key>State</key>
+    <string>Installing</string>
+    <key>Status</key>
+    <string>Acknowledged</string>
+    <key>UDID</key>
+    <string>00008020-000915083C80012E</string>
+</dict>
+</plist>

@@ -47,3 +47,8 @@ notes:
     While in Lost Mode, a device responds to invalid commands with error code `12078`.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.lostmode.enable/example1.plist
+    response-file: examples/mdm/commands/device.lostmode.enable/example2.plist

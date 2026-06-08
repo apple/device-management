@@ -54,11 +54,37 @@ payloadkeys:
 - key: ProfileURL
   title: Profile's URL.
   type: <string>
-  presence: required
+  presence: optional
   content: |-
-    The URL of the profile to download and install, which needs to start with `https://`, and must be hosted by the MDM server.
+    The URL of the profile to download and install, which needs to start with `https://`. The request uses MDM semantics, which includes the device-identity certificate, and any user authentication. This is equivalent to an MDM request made to the `CheckInURL` or `ServerURL`.
 
-    If a user enrollment triggers this configuration, the system silently ignores any MDMv1 payloads in macOS where the User Enrollment Mode setting is `forbidden`. In iOS, the system rejects the entire profile.
+    One of `ProfileURL` or `ProfileAssetReference` needs to be present.
+- key: ProfileAssetReference
+  title: Profile asset reference
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+    macOS:
+      introduced: '27.0'
+    tvOS:
+      introduced: '27.0'
+    visionOS:
+      introduced: '27.0'
+    watchOS:
+      introduced: '27.0'
+  type: <string>
+  assettypes:
+  - com.apple.asset.data
+  asset-content-types:
+  - application/plist
+  - application/x-plist
+  - application/xml
+  - text/xml
+  presence: optional
+  content: |-
+    The identifier of an asset declaration containing a reference to the profile data. The corresponding asset needs to be of type `com.apple.asset.data`. The referenced data needs to be a property list file, and the asset's "ContentType" value set to match the data type.
+
+    One of `ProfileURL` or `ProfileAssetReference` needs to be present.
 notes:
 - title: ''
   content: |-
@@ -68,3 +94,35 @@ notes:
 
     - `com.apple.mdm`
     - `com.apple.declarations`
+
+    If a user enrollment triggers this configuration: in macOS the system silently ignores any MDMv1 payloads in macOS where the User Enrollment Mode setting is `forbidden`; in iOS, tvOS, watchOS and visionOS, the system rejects the entire profile if any MDMv1 payload has its User Enrollment Mode setting set to `forbidden`.
+- title: Transition profiles from MDM
+  content: |-
+    A declarative device management (DDM) legacy profile can take control of profiles installed via MDM. This avoids the need to first remove the MDM profile, before installing the DDM equivalent. DDM cannot take over control of non-MDM-installed profiles.
+
+    The rules for transitioning profiles are:
+
+    1. An existing MDM-installed profile is present (installed by MDM using the `Install-Profile-Command`).
+    2. DDM is enabled on the device.
+    3. The server sends a legacy profile configuration to the device and ensures it is "activated".
+        1. The DDM profile that the configuration applies needs to conform to the following requirements:
+            1. The DDM profile's `PayloadIdentifier` and `PayloadUUID` need to match that of the MDM profile.
+            2. The DDM profile needs to have the same number of payloads as the MDM profile.
+            3. The DDM profile payloads needs to have the same `PayloadType`, `PayloadIdentifier`, and `PayloadUUID`, in the same order as the profile payloads in the MDM profile.
+        2. If the DDM profile doesn't conform to the above requirements, the configuration isn't applied and its `valid` status is set to `invalid`.
+        3. The `Profile-List-Command` can be used to determine the "structure" of existing MDM profiles to satisfy the above requirements.
+
+    When DDM takes control of the MDM profile, the following occurs:
+
+    1. The system doesn't reinstall the profile. Instead, the MDM profile's existing system state remains unchanged. Thus system state won't include any differences between the MDM and DDM profiles (other than the structural items outlined above that must match).
+    2. Any attempt to install, update, or remove the profile using MDM commands fails (using the usual identifier and UUID matching rules). This holds true while the DDM profile is active.
+    3. Updates to the DDM configuration result in the system reapplying the profile which updates the system state with any new or changed settings.
+examples:
+  title: Configuration examples
+  files:
+  - tab: URL
+    description: Downloads the profile from a URL on the MDM server.
+    file: examples/declarative/declarations/configurations/legacy/example1.json
+  - tab: Asset
+    description: Downloads the profile using an asset.
+    file: examples/declarative/declarations/configurations/legacy/example2.json

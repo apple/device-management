@@ -52,7 +52,7 @@ payloadkeys:
   content: Parameters that the system uses to generate the token.
   subkeys:
   - key: SecurityToken
-    title: Security Token
+    title: Security token
     supportedOS:
       iOS:
         sharedipad:
@@ -65,10 +65,10 @@ payloadkeys:
         introduced: n/a
     type: <string>
     presence: optional
-    content: A security token to generate the server token. Required by the `com.apple.watch.pairing`
-      service type.
+    content: A security token to generate the server token. The `com.apple.watch.pairing`
+      service type requires this key.
   - key: PhoneUDID
-    title: Phone Identifier
+    title: Phone identifier
     supportedOS:
       iOS:
         sharedipad:
@@ -81,10 +81,10 @@ payloadkeys:
         introduced: n/a
     type: <string>
     presence: optional
-    content: The identifier of the phone paired to the watch. Required by the `com.apple.watch.pairing`
-      service type.
+    content: The identifier of the phone paired to the watch. The `com.apple.watch.pairing`
+      service type requires this key.
   - key: WatchUDID
-    title: Watch Identifier
+    title: Watch identifier
     supportedOS:
       iOS:
         sharedipad:
@@ -97,8 +97,8 @@ payloadkeys:
         introduced: n/a
     type: <string>
     presence: optional
-    content: The identifier of the watch paired to the phone. Required by the `com.apple.watch.pairing`
-      service type.
+    content: The identifier of the watch paired to the phone. The `com.apple.watch.pairing`
+      service type requires this key.
 - key: UDID
   supportedOS:
     iOS:
@@ -208,7 +208,7 @@ notes:
     - `jti`: A `String`, per RFC 7519 section 4.1.7, that the server sets to a unique identifier (a random UUID) for the JWT. The Apple Identity Service uses this value to ensure that it only uses the token once.
     - `service_type`: A `String` that the server sets to the value of the `TokenServiceType` key in the `CheckIn` request, which needs to be `com.apple.maid`.
 
-    Sign the JWT using the server's private key that corresponds to the RFC 3280 public key certificate that's registered with Apple Business Manager or Apple School Manager.
+    Sign the JWT using the server's private key that corresponds to the RFC 3280 public key certificate that's registered with Apple School Manager or Apple Business. The Apple Identity Service requires that the signing algorithm is "RS256" as defined in RFC 7518 section 3.1.
 - title: Support Apple Watch pairing
   content: For the service type `com.apple.watch.pairing`, the MDM server requests
     this token to enroll an Apple Watch, with the request coming from the phone that's

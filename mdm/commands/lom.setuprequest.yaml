@@ -50,3 +50,8 @@ notes:
 - title: ''
   content: This command requires the `DeviceLockAndRemovePasscode` access right, `LightsOutManagementLOM`
     configuration and is available in macOS 11 and later on [supported macOS devices](https://support.apple.com/guide/deployment/lights-out-management-payload-settings-dep580cf25bc/web).
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/lom.setuprequest/example1.plist
+    response-file: examples/mdm/commands/lom.setuprequest/example2.plist

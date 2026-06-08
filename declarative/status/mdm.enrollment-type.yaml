@@ -1,0 +1,67 @@
+title: Status MDM Enrollment Type
+description: The status item that reports the device's management enrollment type.
+payload:
+  statusitemtype: mdm.enrollment-type
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - user
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: mdm.enrollment-type
+  title: Status item value.
+  type: <string>
+  presence: required
+  rangelist:
+  - none
+  - supervised
+  - device
+  - user
+  content: |-
+    The device management enrollment type that indicates how the device is enrolled, which has the following possible values:
+
+    - `none`: Device isn't enrolled
+    - `supervised`: Device is supervised
+    - `device`: Device enrollment
+    - `user`: User enrollment
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/mdm.enrollment-type/example1.json

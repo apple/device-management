@@ -1,5 +1,5 @@
 title: Status Account List Mail Outgoing
-description: A status report of the client's outgoing Mail accounts.
+description: The status item that lists the devices's outgoing Mail accounts.
 payload:
   statusitemtype: account.list.mail.outgoing
   supportedOS:
@@ -45,8 +45,9 @@ payloadkeys:
   subkeytype: Account
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of the client's outgoing Mail account details.
+    content: An outgoing Mail account.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -58,8 +59,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the account is removed and the status item object only contains
-        this key and the `identifier` key.
+      content: If `true`, the device removed the account and the status item object
+        only contains this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
@@ -77,7 +78,7 @@ payloadkeys:
       presence: optional
       content: The server host name for the account.
     - key: port
-      title: Server Port
+      title: Server port
       type: <integer>
       presence: optional
       content: The server port for the account.
@@ -86,3 +87,12 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The user name for the account.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated account
+    description: Reports a new or updated account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.mail.outgoing/example1.json
+  - tab: Removed account
+    description: Reports a removed account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.mail.outgoing/example2.json

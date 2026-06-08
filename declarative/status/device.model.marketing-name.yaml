@@ -1,5 +1,5 @@
 title: Status Device Model Marketing Name
-description: A status report of the device's marketing name.
+description: The status item that reports the device's model marketing name.
 payload:
   statusitemtype: device.model.marketing-name
   supportedOS:
@@ -56,3 +56,7 @@ payloadkeys:
   presence: required
   content: The device's marketing name, such as `iPhone 12`. This value may not always
     be available.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.model.marketing-name/example1.json

@@ -15,7 +15,7 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: Declarations
-  title: Manifest Declaration Items
+  title: Manifest declaration items
   type: <dictionary>
   presence: required
   content: The set of available declarations on the server.
@@ -28,18 +28,18 @@ payloadkeys:
     subkeytype: DeclarationItem
     subkeys:
     - key: _Activations
-      title: Manifest Declaration
+      title: Manifest declaration
       type: <dictionary>
       content: Information about an available declaration on the server.
       subkeytype: DeclarationItem
       subkeys: &id001
       - key: Identifier
-        title: Declaration Identifier
+        title: Declaration identifier
         type: <string>
         presence: required
         content: The declaration's identifier.
       - key: ServerToken
-        title: Declaration Server Token
+        title: Declaration server token
         type: <string>
         presence: required
         content: |-
@@ -53,7 +53,7 @@ payloadkeys:
     subkeytype: DeclarationItem
     subkeys:
     - key: _Configurations
-      title: Manifest Declaration
+      title: Manifest declaration
       type: <dictionary>
       content: Information about an available declaration on the server.
       subkeytype: DeclarationItem
@@ -66,7 +66,7 @@ payloadkeys:
     subkeytype: DeclarationItem
     subkeys:
     - key: _Assets
-      title: Manifest Declaration
+      title: Manifest declaration
       type: <dictionary>
       content: Information about an available declaration on the server.
       subkeytype: DeclarationItem
@@ -79,13 +79,13 @@ payloadkeys:
     subkeytype: DeclarationItem
     subkeys:
     - key: _Management
-      title: Manifest Declaration
+      title: Manifest declaration
       type: <dictionary>
       content: Information about an available declaration on the server.
       subkeytype: DeclarationItem
       subkeys: *id001
 - key: DeclarationsToken
-  title: Declarations Token
+  title: Declarations token
   type: <string>
   presence: required
   content: The current value of the declarations token. Clients use this to detect

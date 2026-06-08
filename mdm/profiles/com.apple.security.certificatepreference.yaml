@@ -43,3 +43,7 @@ notes:
     A `CertificatePreference` payload lets you identify a certificate preference item in the user's keychain that references a certificate payload included in the same profile. It can only appear in a user profile, not a device profile. You can include multiple `CertificatePreference` payloads as needed.
 
     See also `IdentityPreference`  for information about setting up identity preferences.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.security.certificatepreference/example1.plist

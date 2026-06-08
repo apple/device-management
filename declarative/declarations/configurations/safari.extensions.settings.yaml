@@ -31,7 +31,7 @@ payload:
   apply: combined
 payloadkeys:
 - key: ManagedExtensions
-  title: Managed Extensions
+  title: Managed extensions
   type: <dictionary>
   presence: optional
   content: |-
@@ -57,12 +57,12 @@ payloadkeys:
       - AlwaysOff
       combinetype: enum-last
       content: |-
-        Controls whether an extension is allowed.
+        Controls whether an extension is allowed. The device uses this key when the extension identifier is a composed identifier or a single "*" character.
         * `Allowed` - The user is allowed to turn the extension on or off.
         * `AlwaysOn` - The extension will always be on.
         * `AlwaysOff` - The extension will always be off.
     - key: PrivateBrowsing
-      title: Private Browsing state
+      title: Private browsing state
       type: <string>
       presence: optional
       rangelist:
@@ -71,7 +71,7 @@ payloadkeys:
       - AlwaysOff
       combinetype: enum-last
       content: |-
-        Controls whether an extension is allowed in Private Browsing.
+        Controls whether an extension is allowed in Private Browsing. The device uses this key when the extension identifier is a composed identifier or a single "*" character.
         * `Allowed` - The user is allowed to turn the extension on or off in Private Browsing.
         * `AlwaysOn` - The extension will always be on in Private Browsing if the extension is on outside of Private Browsing.
         * `AlwaysOff` - The extension will never be on in Private Browsing.
@@ -80,8 +80,8 @@ payloadkeys:
       type: <array>
       presence: optional
       combinetype: set-union
-      content: Controls the domains and sub-domains the extension is granted access
-        to.
+      content: Controls the domains and sub-domains the extension can access. The
+        device ignores this key when the extension identifier is a single "*" character.
       subkeys:
       - key: Domain
         title: Domain
@@ -93,7 +93,8 @@ payloadkeys:
       presence: optional
       combinetype: set-union
       content: Controls the domains and sub-domains the extension isn't allowed to
-        access.
+        access. The device uses this key when the extension identifier is a composed
+        identifier or a single "*" character.
       subkeys:
       - key: Domain
         title: Domain
@@ -144,3 +145,21 @@ notes:
     "AllowedDomains": ["public.example.com"],
     "DeniedDomains": ["*example.com"]
     ```
+examples:
+  title: Configuration examples
+  files:
+  - tab: Disallow all
+    description: This configuration disables all Safari extensions.
+    file: examples/declarative/declarations/configurations/safari.extensions.settings/example1.json
+  - tab: Allow one
+    description: This configuration disables all Safari extensions, except for one
+      that it requires.
+    file: examples/declarative/declarations/configurations/safari.extensions.settings/example2.json
+  - tab: Disallow private browsing
+    description: This configuration allows all Safari extensions, but one isn't allowed
+      in private browsing.
+    file: examples/declarative/declarations/configurations/safari.extensions.settings/example3.json
+  - tab: Disallow domain
+    description: This configuration allows all Safari extensions, but one isn't allowed
+      for use with a domain and its sub-domains.
+    file: examples/declarative/declarations/configurations/safari.extensions.settings/example4.json

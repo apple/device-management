@@ -1,0 +1,11 @@
+{
+    "Type": "com.apple.configuration.webcontent-filter.plugin",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Content Filter",
+        "PluginBundleID": "com.example.contentfilter",
+        "ServerAddress": "filter.example.com",
+        "ContentFilterUUID": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
+    }
+}

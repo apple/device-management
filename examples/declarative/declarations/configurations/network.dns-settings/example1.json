@@ -1,0 +1,19 @@
+{
+    "Type": "com.apple.configuration.network.dns-settings",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "DNS Settings",
+        "DNSSettings": {
+            "DNSProtocol": "HTTPS",
+            "ServerURL": "https://dns.example.com/dns-query",
+            "ServerAddresses": [
+                "12.12.12.12"
+            ],
+            "AllowFailover": false,
+            "SupplementalMatchDomains": [
+                "example.com"
+            ]
+        }
+    }
+}

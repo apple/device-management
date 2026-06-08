@@ -1,0 +1,33 @@
+title: Cancel Enhanced Log Collection Command
+description: Cancel enhanced log collection on the device.
+payload:
+  requesttype: CancelEnhancedLogCollection
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      supervised: true
+      requiresdep: false
+      sharedipad:
+        mode: allowed
+        devicechannel: true
+        userchannel: false
+      userenrollment:
+        mode: forbidden
+    macOS:
+      introduced: '27.0'
+      devicechannel: false
+      userchannel: true
+      supervised: true
+      requiresdep: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: '27.0'
+      supervised: true
+      requiresdep: false
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  content: This command cancels any active enhanced log collection session on a supervised
+    device. If no session is in progress, the command does nothing and returns `Acknowledged`.

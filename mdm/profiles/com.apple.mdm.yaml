@@ -43,7 +43,7 @@ payload:
       allowmanualinstall: false
 payloadkeys:
 - key: IdentityCertificateUUID
-  title: Identity Certificate UUID
+  title: Identity certificate UUID
   type: <string>
   presence: required
   format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
@@ -57,7 +57,7 @@ payloadkeys:
     The topic that MDM listens to for push notifications. The certificate that the server uses to send push notifications must have the same topic in its subject. The topic must begin with the 'com.apple.mgmt.' prefix.
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: ServerURL
   title: Server URL
   type: <string>
@@ -68,9 +68,9 @@ payloadkeys:
     (`:1234`, for example).
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: CheckInURL
-  title: Check In URL
+  title: Check in URL
   type: <string>
   presence: optional
   format: ^https://.*$
@@ -78,16 +78,16 @@ payloadkeys:
     The URL that the device should use to check in during installation. The URL must begin with the `https://` URL scheme and may contain a port number (`:1234`, for example). If not set, the system uses `ServerURL`.
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: SignMessage
-  title: Sign Message
+  title: Sign message
   type: <boolean>
   presence: optional
   default: false
   content: If 'true', each message coming from the device carries the additional 'Mdm-Signature'
     HTTP header.
 - key: AccessRights
-  title: Access Rights
+  title: Access rights
   supportedOS:
     iOS:
       userenrollment:
@@ -122,7 +122,7 @@ payloadkeys:
     > Note:
     > When updating the payload, the addition of any access right is an error, and the update is rejected.
 - key: UseDevelopmentAPNS
-  title: Use Development APNS
+  title: Use development APNS
   type: <boolean>
   presence: optional
   default: false
@@ -169,12 +169,12 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The Managed Apple Account pre-assigned to the authenticated user. Required for account-driven enrollments. Available in iOS 15 and later, and macOS 14 and later.
+    The Managed Apple Account pre-assigned to the authenticated user. Required for account-driven enrollments.
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: EnrollmentMode
-  title: Enrollment Mode
+  title: Enrollment mode
   supportedOS:
     iOS:
       introduced: '15.0'
@@ -190,10 +190,10 @@ payloadkeys:
   - BYOD
   - ADDE
   content: |-
-    The enrollment mode the server indicates to use when enrolling. Required for account-driven enrollment. Available in iOS 15 and macOS 14, and later.
+    The enrollment mode the server indicates to use when enrolling. Required for account-driven enrollment.
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: ServerURLPinningCertificateUUIDs
   supportedOS:
     iOS:
@@ -282,10 +282,9 @@ payloadkeys:
   content: |-
     This property specifies an iTunes Store ID for an app the system can install with the InstallApplicationCommand, without any approval from the user. The MDM vendor or managing organization generally provides this app, which enhances the management experience for the user. The device shows the user details about this app in the account-driven enrollment process prior to installing the MDM profile. Use this property with account-driven MDM enrollments that normally require user approval for app installs through MDM.
     Only account-driven enrollments support this property and other enrollment types ignore it.
-    Available in iOS 15.1 and later.
 
     > Note:
-    > When updating the payload, the value of this key must not change. Any change is an error, and the update is rejected.
+    > When updating the payload, the value of this key must not change. Any change is an error, and the system rejects the update.
 - key: PromptUserToAllowBootstrapTokenForAuthentication
   supportedOS:
     iOS:
@@ -305,19 +304,22 @@ payloadkeys:
     If 'true', the system warns the user that they need to reboot into RecoveryOS and allow the MDM to use the bootstrap token for authentication for certain sensitive operations such as enabling kernel extensions or installing some types of software updates. If the MDM doesn't need to perform these operations, it can leave this key set to 'false', and the user isn't notified.
     The SettingsCommand.Command.Settings.MDMOptions.MDMOptions command overrides this default value.
     This setting only applies to devices that have 'BootstrapTokenRequiredForSoftwareUpdate' or 'BootstrapTokenRequiredForKernelExtensionApproval' set to 'true' in their SecurityInfoResponse.SecurityInfo.
-    DEP-enrolled devices are automatically allowed to use the bootstrap token for authentication.
-    Available in macOS 11 and later.
+    ADE-enrolled devices are automatically allowed to use the bootstrap token for authentication.
 notes:
 - title: ''
   content: |-
     Also define the following four standard payload values in your MDM payload:
 
-    - `PayloadIdentifier`: The reverse-DNS style identifier that identifies the profile; for example, `com.example.myprofile`. The system uses this value to determine whether to replace an existing profile or add a new one.
-    - `PayloadUUID`: A globally unique identifier for the profile. In macOS, you can use `uuidgen` to generate this value.
-    - `PayloadType`: The payload type. Set to `com.apple.mdm` to designate that this payload is an MDM payload.
-    - `PayloadVersion`: The version number of the profile format, which describes the version of the configuration profile as a whole, not of the individual profiles within it. Set this value to `1`.
+    * `PayloadIdentifier`: The reverse-DNS style identifier that identifies the profile; for example, `com.example.myprofile`. The system uses this value to determine whether to replace an existing profile or add a new one.
+    * `PayloadUUID`: A globally unique identifier for the profile. In macOS, you can use `uuidgen` to generate this value.
+    * `PayloadType`: The payload type. Set to `com.apple.mdm` to designate that this payload is an MDM payload.
+    * `PayloadVersion`: The version number of the profile format, which describes the version of the configuration profile as a whole, not of the individual profiles within it. Set this value to `1`.
 
 
 
     > Note:
     > MDM reserves profile payload dictionary keys with the _Payload_ prefix. Don't treat them as managed preferences.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.mdm/example1.plist

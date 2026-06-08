@@ -43,7 +43,7 @@ payload:
   apply: combined
 payloadkeys:
 - key: RequirePasscode
-  title: Require Passcode on Device
+  title: Require passcode on device
   type: <boolean>
   presence: optional
   default: false
@@ -52,7 +52,7 @@ payloadkeys:
     about the length or quality of the passcode. The presence of any other keys implicitly
     requires a passcode, and overrides this key's value.
 - key: RequireAlphanumericPasscode
-  title: Require Alphanumeric Passcode
+  title: Require alphanumeric passcode
   supportedOS:
     iOS:
       introduced: '16.2'
@@ -67,7 +67,7 @@ payloadkeys:
   content: If `true`, the passcode needs to consist of at least one alphabetic character
     and at least one number.
 - key: RequireComplexPasscode
-  title: Require Complex Passcode
+  title: Require complex passcode
   type: <boolean>
   presence: optional
   default: false
@@ -76,7 +76,7 @@ payloadkeys:
     one that doesn't contain repeated characters or increasing or decreasing characters
     (such as 123 or CBA).
 - key: MinimumLength
-  title: Minimum Passcode Length
+  title: Minimum passcode length
   type: <integer>
   presence: optional
   range:
@@ -86,7 +86,7 @@ payloadkeys:
   combinetype: number-max
   content: The minimum number of characters a passcode can contain.
 - key: MinimumComplexCharacters
-  title: Minimum Complex Characters
+  title: Minimum complex characters
   supportedOS:
     iOS:
       introduced: '16.2'
@@ -105,7 +105,7 @@ payloadkeys:
     character is a character other than a number or a letter, such as `&`, `%`, `$`,
     and `#`.
 - key: MaximumFailedAttempts
-  title: Maximum Number of Failed Attempts
+  title: Maximum number of failed attempts
   type: <integer>
   presence: optional
   range:
@@ -118,7 +118,7 @@ payloadkeys:
 
     After the final failed attempt, the system locks a macOS device, or securely erases all data and settings from an iOS, visionOS, or watchOS device.
 - key: FailedAttemptsResetInMinutes
-  title: Failed Attempts Reset
+  title: Failed attempts reset
   supportedOS:
     iOS:
       introduced: n/a
@@ -135,7 +135,7 @@ payloadkeys:
     of failed attempts. Also set the `MaximumFailedAttempts` key for this to take
     effect.
 - key: MaximumGracePeriodInMinutes
-  title: Maximum Grace Period
+  title: Maximum grace period
   type: <integer>
   presence: optional
   combinetype: number-min
@@ -144,7 +144,7 @@ payloadkeys:
     requires a passcode immediately. In the absence of this key, the user can select
     any period. In macOS, the system translates this to screensaver settings.
 - key: MaximumInactivityInMinutes
-  title: Automatic Device Lock
+  title: Automatic device lock
   type: <integer>
   presence: optional
   range:
@@ -157,7 +157,7 @@ payloadkeys:
     the absence of this key, the user can select any period. In macOS, the system
     translates this to screensaver settings.
 - key: MaximumPasscodeAgeInDays
-  title: Maximum Passcode Age
+  title: Maximum passcode age
   supportedOS:
     iOS:
       introduced: '16.2'
@@ -173,7 +173,7 @@ payloadkeys:
     After this number of days, the system forces the user to change the passcode before
     it unlocks the device.
 - key: PasscodeReuseLimit
-  title: Passcode Reuse Limit
+  title: Passcode reuse limit
   type: <integer>
   presence: optional
   range:
@@ -185,7 +185,7 @@ payloadkeys:
     passcode within the specified passcode history range. In the absence of this key,
     the system performs no historical check.
 - key: ChangeAtNextAuth
-  title: Change At Next Auth
+  title: Change at next auth
   supportedOS:
     iOS:
       introduced: n/a
@@ -204,6 +204,7 @@ payloadkeys:
     channel), the setting takes effect for all users, and admin authentication may
     fail until the admin user password is also reset.
 - key: CustomRegex
+  title: Custom regex
   supportedOS:
     iOS:
       introduced: n/a
@@ -228,6 +229,7 @@ payloadkeys:
       whether it complies with a policy. The regular expression uses the ICU syntax.
       The string can't exceed 2048 characters in length.
   - key: Description
+    title: Description
     type: <dictionary>
     presence: optional
     content: A dictionary with supported OS language IDs for the keys (such as `en-US`),
@@ -255,3 +257,12 @@ notes:
     - `RequireComplexPasscode`: always set to `true`
     - `MinimumLength`: always set to `6`
     - `MaximumInactivityInMinutes`: if this key is present its value is ignored, but the `never` option is removed in the Settings UI.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Complex
+    description: This configuration applies a complex passcode policy.
+    file: examples/declarative/declarations/configurations/passcode.settings/example1.json
+  - tab: Regular expression
+    description: This configuration applies a passcode policy using a regular expression.
+    file: examples/declarative/declarations/configurations/passcode.settings/example2.json

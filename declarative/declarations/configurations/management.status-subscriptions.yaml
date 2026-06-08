@@ -47,17 +47,24 @@ payload:
   apply: combined
 payloadkeys:
 - key: StatusItems
-  title: Status Items
+  title: Status items
   type: <array>
   presence: required
   combinetype: set-union
   content: An array of status items that the device notifies subscribers about.
   subkeys:
   - key: StatusItem
+    title: Status item
     type: <dictionary>
     content: The declaration for configuring a specific status subscription.
     subkeys:
     - key: Name
+      title: Name
       type: <string>
       presence: required
       content: The name of the status item to send to subscribers.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration subscribes to a set of device status items.
+    file: examples/declarative/declarations/configurations/management.status-subscriptions/example1.json

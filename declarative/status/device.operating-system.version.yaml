@@ -1,5 +1,5 @@
 title: Status Device Operating System Version
-description: A status report of the device's operating system version.
+description: The status item that reports the device's operating system version.
 payload:
   statusitemtype: device.operating-system.version
   supportedOS:
@@ -55,3 +55,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system's version in use on the device, such as `15.0`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.version/example1.json

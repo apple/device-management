@@ -15,17 +15,17 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: code
-  title: Error Code
+  title: Error code
   type: <string>
   presence: required
   content: The error code for this error.
 - key: description
-  title: Error Description
+  title: Error description
   type: <string>
   presence: optional
   content: A description of this error.
 - key: details
-  title: Error Details
+  title: Error details
   type: <dictionary>
   presence: optional
   content: A dictionary that contains additional details about the error.
@@ -33,3 +33,7 @@ notes:
 - title: ''
   content: Each status item defines its own set of `code`, `description`, and `details`
     values.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/statusreason/example1.json

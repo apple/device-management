@@ -1,0 +1,64 @@
+title: Status Enhanced Logging
+description: The status item that reports the device's enhanced log collection session
+  status.
+payload:
+  statusitemtype: enhanced-logging.status
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: enhanced-logging.status
+  title: Status item value.
+  type: <string>
+  presence: required
+  rangelist:
+  - none
+  - waiting-for-consent
+  - collecting
+  - follow-up-question
+  - upload-consent
+  - uploading
+  - finished
+  - failed
+  - cancelled
+  - declined
+  content: |-
+    The enhanced log collection session status, which has the following values:
+
+    - `none`: The device has never run an enhanced log collection session.
+    - `waiting-for-consent`: The device is waiting for the user to consent to the enhanced log collection.
+    - `collecting`: The enhanced log collection is in progress.
+    - `follow-up-question`: The device is waiting for follow-up response from the user.
+    - `upload-consent`: The device is waiting for the user to approve upload of the enhanced logs.
+    - `uploading`: The device is uploading the enhanced logs.
+    - `finished`: The device completed the enhanced log collection session.
+    - `failed`: The device failed to complete the enhanced log collection session.
+    - `cancelled` - The device management service cancelled the enhanced log collection session.
+    - `declined` - The user declined the enhanced log collection session.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.status/example1.json

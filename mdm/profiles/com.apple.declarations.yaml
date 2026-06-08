@@ -50,7 +50,7 @@ payloadkeys:
     representations of the declaration JSON data.
   subkeys:
   - key: DeclarationsItem
-    title: Declarations Content Item
+    title: Declarations content item
     type: <data>
     presence: required
     content: An item in the declarations list
@@ -61,3 +61,7 @@ notes:
 
     > Important:
     > When a user installs the profile, the device only applies configuration declarations that allow a "local" enrollment. Consult the documentation for each configuration type to see if you can use it.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.declarations/example1.plist

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>com.apple.cachedaccounts.CreateAtLogin</key>
+            <true/>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mymobileccountpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.MCX</string>
+            <key>PayloadUUID</key>
+            <string>93aa2058-4fe5-4f8b-a409-80f05b7fb2f0</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Mobility</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>b89ce975-801b-4994-8f68-dc5cad408ad1</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

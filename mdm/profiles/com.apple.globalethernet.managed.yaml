@@ -46,6 +46,10 @@ notes:
   content: |-
     This payload's contents contain these profile-specific keys:
 
-    - Interface (String): This payload uses the value `GlobalEthernet`.
-    - EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
-    - SetupModes (String): The type of connection mode, which is either `System` or `Loginwindow`. `System` is the default.
+    * Interface (String): This payload uses the value `GlobalEthernet`.
+    * EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
+    * SetupModes (String): The type of connection mode, which is either `System` or `Loginwindow`. `System` is the default.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.globalethernet.managed/example1.plist

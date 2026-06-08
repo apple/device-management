@@ -1,0 +1,43 @@
+title: Status MDM Is Return to Service
+description: The status item that reports the device's return to service with app
+  preservation state.
+payload:
+  statusitemtype: mdm.is-return-to-service
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: mdm.is-return-to-service
+  title: Status item value.
+  type: <boolean>
+  presence: required
+  content: If `true`, the device is using the return to service with app preservation
+    mode.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/mdm.is-return-to-service/example1.json

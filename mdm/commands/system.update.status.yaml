@@ -1,11 +1,13 @@
 title: OS Update Status Command
-description: Get the status of operating-system updates on a device.
+description: 'Get the status of operating-system updates on a device. Removed: subscribe
+  to the declarative management `softwareupdate.install-state` status item.'
 payload:
   requesttype: OSUpdateStatus
   supportedOS:
     iOS:
       introduced: '9.0'
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: AllowAppInstallation
       supervised: true
       requiresdep: false
@@ -18,6 +20,7 @@ payload:
     macOS:
       introduced: 10.11.5
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: None
       devicechannel: true
       userchannel: false
@@ -28,6 +31,7 @@ payload:
     tvOS:
       introduced: '12.0'
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: AllowAppInstallation
       devicechannel: true
       supervised: true
@@ -43,7 +47,7 @@ responsekeys:
   presence: required
   content: |-
     An array of dictionaries that describes the statuses of software updates. The array is empty if there are no software updates currently in progress.
-    This command only returns the status for System Applications and Configuration Data updates when a software update is managed by a Declarative Device Management `SoftwareUpdateEnforcementSpecific` configuration.
+    This command only returns the status for System Applications and Configuration Data updates when a Declarative Device Management `SoftwareUpdateEnforcementSpecific` configuration manages a software update.
   subkeys:
   - key: OSUpdateStatusItem
     type: <dictionary>
@@ -82,10 +86,7 @@ responsekeys:
           introduced: n/a
       type: <integer>
       presence: optional
-      content: |-
-        The number of times a user can defer this OS update.
-
-        Available in macOS 12.3 and later.
+      content: The number of times a user can defer this OS update.
     - key: DeferralsRemaining
       supportedOS:
         iOS:
@@ -96,10 +97,7 @@ responsekeys:
           introduced: n/a
       type: <integer>
       presence: optional
-      content: |-
-        The number of remaining user deferrals for this OS update.
-
-        Available in macOS 12.3 and later.
+      content: The number of remaining user deferrals for this OS update.
     - key: NextScheduledInstall
       supportedOS:
         iOS:
@@ -110,10 +108,7 @@ responsekeys:
           introduced: n/a
       type: <date>
       presence: optional
-      content: |-
-        The date of the next attempt at installing this OS update.
-
-        Available in macOS 12.3 and later.
+      content: The date of the next attempt at installing this OS update.
     - key: PastNotifications
       supportedOS:
         iOS:
@@ -124,15 +119,18 @@ responsekeys:
           introduced: n/a
       type: <array>
       presence: optional
-      content: |-
-        The dates/times when the OS notified the user about installing this OS update.
-
-        Available in macOS 12.3 and later.
+      content: The dates/times when the OS notified the user about installing this
+        OS update.
       subkeys:
       - key: PastNotificationDate
-        title: Past Notification Date
+        title: Past notification date
         type: <date>
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/system.update.status/example1.plist
+    response-file: examples/mdm/commands/system.update.status/example2.plist

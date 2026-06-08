@@ -55,3 +55,7 @@ payloadkeys:
   type: <real>
   presence: required
   content: The test status real value.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/test.real-value/example1.json

@@ -29,3 +29,8 @@ notes:
     After logging out the user, MDM commands aren't available on the device for up to 2 minutes.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/classroom.user.logout/example1.plist
+    response-file: examples/mdm/commands/classroom.user.logout/example2.plist

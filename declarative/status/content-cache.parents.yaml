@@ -1,0 +1,76 @@
+title: Status Content Cache Parents
+description: The status item that reports information about the Content Cache service
+  parent caches.
+payload:
+  statusitemtype: content-cache.parents
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: content-cache.parents
+  title: Content cache parents
+  type: <array>
+  presence: optional
+  content: An array of dictionaries that describes parent Content Caches.
+  subkeys:
+  - key: parents-item
+    title: Parent item
+    type: <dictionary>
+    presence: optional
+    content: A parent Content Cache.
+    subkeys:
+    - key: identifier
+      title: Parent GUID
+      type: <string>
+      presence: required
+      content: The unique identifier of the parent Content Cache.
+    - key: _removed
+      title: Indicates removal of the entry.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If `true`, the system removed the parent entry and only this key and
+        the `identifier` key are present in the status item object.
+    - key: address
+      title: IP address
+      type: <string>
+      presence: required
+      content: The local IPv4 address of the parent Content Cache.
+    - key: port
+      title: Port
+      type: <integer>
+      presence: required
+      content: The IP port number the parent Content Cache listens to for requests.
+    - key: healthy
+      title: Cache health
+      type: <boolean>
+      presence: required
+      content: If `true,` the parent Content Cache is able to respond to requests
+        from this Content Cache.
+    - key: version
+      title: Version
+      type: <string>
+      presence: required
+      content: The version number of the parent Content Cache software.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated parent
+    description: Reports a new or updated parent.
+    file: data/docc-examples/remotemanagementmodel/status/content-cache.parents/example1.json
+  - tab: Removed parent
+    description: Reports a removed parent.
+    file: data/docc-examples/remotemanagementmodel/status/content-cache.parents/example2.json

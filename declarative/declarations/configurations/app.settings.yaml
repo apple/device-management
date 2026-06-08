@@ -1,0 +1,361 @@
+title: App:Settings
+description: The declaration to configure app settings.
+payload:
+  declarationtype: com.apple.configuration.app.settings
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: Allowed
+  title: Allowed apps
+  type: <dictionary>
+  presence: optional
+  content: The dictionary of allowed app settings.
+  subkeys:
+  - key: AllowedApps
+    title: Allowed apps
+    supportedOS:
+      macOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    combinetype: set-intersection
+    content: If present, the device only shows or launches apps with bundle IDs in
+      the array. Include the value `com.apple.webapp` to allow all webclips. This
+      applies to App Store apps, marketplace apps, and locally installed apps (using
+      Configurator, Xcode, and so forth).
+    subkeys: &id001
+    - key: AppIdentifier
+      type: <string>
+      presence: required
+      content: String containing an identifier to match an app.
+  - key: DeniedApps
+    title: Denied apps
+    supportedOS:
+      macOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    combinetype: set-union
+    content: |-
+      If present, the device prevents showing or launching apps with bundle IDs in the
+      array. Include the value `com.apple.webapp` to restrict all webclips. This applies to
+      App Store apps, marketplace apps, and locally installed apps (using Configurator,
+      Xcode, and so forth).
+      > Note:
+      > Denying system apps may disable other functionality. For example, denying the App
+      Store app may prevent users from accepting the terms and conditions for the user-based
+      Volume Purchase Program (VPP).
+    subkeys: *id001
+  - key: AllowedBinaries
+    title: Allowed binaries
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        allowed-scopes:
+        - system
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    combinetype: set-intersection
+    content: If present, the device only allows binaries that match the binary identifier
+      properties to run. A binary only matches when all the binary identifiers match.
+      The device always runs system critical processes. Use "codesign -dvvv <path_to_binary>"
+      to show the information you need to generate these values.
+    subkeys: &id002
+    - key: BinaryIdentifier
+      title: Binary identifier
+      type: <dictionary>
+      presence: required
+      content: Dictionary containing one or more identifier fields to match a binary.
+      subkeys:
+      - key: CDHash
+        title: Code directory hash
+        type: <string>
+        presence: optional
+        content: The code signature code directory hash of the binary.
+      - key: SigningID
+        title: Signing ID
+        type: <string>
+        presence: optional
+        content: The code signature signing identifier of the binary.
+      - key: TeamID
+        title: Team ID
+        type: <string>
+        presence: optional
+        content: The code signature team identifier of the binary. Use the value "*APPLE*"
+          instead of an empty string for Apple binaries with an empty team identifier.
+      - key: PathPrefix
+        title: Path prefix
+        type: <string>
+        presence: optional
+        content: The file system path prefix to match binaries.
+      - key: SigningState
+        title: Signing state
+        type: <string>
+        presence: optional
+        rangelist:
+        - All
+        - TestFlight
+        - DeveloperID
+        - Enterprise
+        - AppStore
+        - Apple
+        default: All
+        combinetype: enum-last
+        content: The code signing state to match binaries.
+  - key: DeniedBinaries
+    title: Denied binaries
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        allowed-scopes:
+        - system
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <array>
+    presence: optional
+    combinetype: set-union
+    content: If present, the device doesn't allow binaries that match the binary identifier
+      properties to run. A binary only matches when all the binary identifiers match.
+    subkeys: *id002
+  - key: AlwaysAllowManagedApps
+    title: Always allow managed apps
+    supportedOS:
+      iOS:
+        introduced: n/a
+      macOS:
+        allowed-scopes:
+        - system
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    combinetype: boolean-or
+    content: If `true`, the device implicitly includes managed apps in the effective
+      allow list when `AllowedApps` or `AllowedBinaries` is present.
+- key: Privacy
+  title: App privacy
+  supportedOS:
+    macOS:
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: The dictionary of app settings.
+  subkeys:
+  - key: PermissionDefaults
+    title: App privacy permission defaults
+    type: <dictionary>
+    presence: optional
+    content: |-
+      The dictionary of app privacy permission defaults. Each key in the dictionary is an app identifier. The dictionary values represent the permission defaults that the device applies for each matching app.
+
+      In iOS, the app identifier is a bundle ID, for example, "com.example.app".
+
+      In macOS, the app identifier is a composed identifier. The format of the composed identifier is either "Bundle-ID", "Bundle-ID (Team-ID)", or "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the app. "Team-ID" is the team identifier from the app's code signature. "Designated-Requirement" is the designated requirement string from the code signature of the app. For example, "com.example.app" for the bundle ID format, "com.example.app (ABCD1234)" for the team ID format, or "com.example.app {anchor apple generic}" for the designated requirement format. The device only applies defaults for an app if its code signature matches the composed identifier.
+    subkeys:
+    - key: ANY
+      type: <dictionary>
+      presence: optional
+      content: The dictionary that defines the app privacy permission defaults. Each
+        key is an app identifier.
+      subkeytype: AppDictionary
+      subkeys:
+      - key: OrganizationJustification
+        title: Organization justification
+        type: <string>
+        presence: required
+        content: Text you provide that clearly explains to the user the reason why
+          the organization requires these app permission defaults. The device includes
+          this text in the permission consent prompt it displays when it launches
+          the app.
+      - key: Accessibility
+        title: Accessibility permission
+        supportedOS:
+          iOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of accessibility.
+          * `Allow`: The app privacy permission default is set to allow use of accessibility.
+      - key: Bluetooth
+        title: Bluetooth permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of Bluetooth.
+          * `Allow`: The app privacy permission default is set to allow use of Bluetooth.
+      - key: Camera
+        title: Camera permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of the camera.
+          * `Allow`: The app privacy permission default is set to allow use of the camera.
+      - key: Dictation
+        title: Dictation permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of dictation.
+          * `Allow`: The app privacy permission default is set to allow use of dictation.
+      - key: LocalNetwork
+        title: Local network permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of the local network.
+          * `Allow`: The app privacy permission default is set to allow use of the local network.
+      - key: Location
+        title: Location permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - WhileUsing
+        - Always
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for access to location.
+          * `WhileUsing`: The app privacy permission default is set to allow access to location only while the user is using the app In macOS, this is equivalent to `Always`.
+          * `Always`: The app privacy permission default is set to allow access to location always.
+      - key: LocationAccuracy
+        title: Location accuracy permission
+        supportedOS:
+          macOS:
+            introduced: n/a
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Approximate
+        - Precise
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for access to precise location.
+          * `Approximate`: The app privacy permission default is set to allow approximate access to location.
+          * `Precise`: The app privacy permission default is set to allow precise access to location.
+      - key: Microphone
+        title: Microphone permission
+        type: <string>
+        presence: optional
+        rangelist:
+        - None
+        - Allow
+        combinetype: enum-last
+        content: |-
+          Controls whether an app privacy permission default is set.
+          * `None`: No app privacy permission default is set for use of the microphone.
+          * `Allow`: The app privacy permission default is set to allow use of the microphone.
+notes:
+- title: Binary identifier rules
+  content: |-
+    The following combinations of binary identifiers are supported for each key:
+
+    * `AllowedBinaries`:
+      * Either `CDHash` or `TeamID` needs to be present.
+      * `SigningID`, `PathPrefix`, or `SigningState` may be present.
+    * `DeniedBinaries`:
+      * Either `CDHash` or `TeamID` or `SigningID` needs to be present.
+      * `PathPrefix` or `SigningState` may be present.
+- title: Privacy permission defaults
+  content: |-
+    Privacy permission defaults allow an organization to suggest a set of privacy permissions for use with an app. When set, the app displays a consent prompt listing all the configured defaults. If the user accepts, the device applies those defaults for the app. If the user declines, no defaults are set and the device prompts the user in the normal way when the app requires permission.
+
+    The consent prompt only shows permissions that the user hasn't previously seen, and won't appear if the user has seen all permissions. The user can choose from one of two options in the prompt:
+
+    * `Allow`: this option sets the app privacy permissions for the specified sub-systems (camera, microphone, and so on) to "Allow". The device doesn't prompt the user when the app uses the sub-system.
+    * `Not Now`: this option ignores the app privacy permission defaults for the specified sub-systems (camera, microphone, and so on). The device prompts the user in the normal way when the app uses the sub-system.
+
+    The user can change the app permission privacy settings in Settings.app if they choose.
+
+    Only AppKit-based apps on macOS support this feature.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Allow various permission defaults for several apps in iOS
+    description: This configuration sets various privacy permission defaults for several
+      apps.
+    file: examples/declarative/declarations/configurations/app.settings/example1.json
+  - tab: Allow various permission defaults for several apps in macOS
+    description: This configuration sets various privacy permission defaults for several
+      apps.
+    file: examples/declarative/declarations/configurations/app.settings/example2.json

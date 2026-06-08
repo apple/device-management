@@ -1,5 +1,5 @@
 title: Status Migration Assistant Report
-description: Reports the status of a completed migration.
+description: The status item that reports the state of a completed migration.
 payload:
   statusitemtype: migration-assistant.report
   supportedOS:
@@ -19,59 +19,63 @@ payload:
       introduced: n/a
 payloadkeys:
 - key: migration-assistant.report
-  title: Migration Assistant Report
+  title: Migration Assistant report
   type: <dictionary>
   presence: required
   content: The Migration Assistant migration status.
   subkeys:
   - key: completed-data-size
-    title: Migration Completed Data Size
+    title: Migration completed data size
     type: <integer>
     presence: optional
     content: The total amount of data the system successfully migrated from the source
       system.
   - key: completed-file-count
-    title: Migration Completed File Count
+    title: Migration completed file count
     type: <integer>
     presence: optional
     content: The number of files successfully migrated from the source system.
   - key: completion-time
-    title: Migration Completion Time
+    title: Migration completion time
     type: <string>
     presence: optional
     content: The RFC 3339 timestamp for when the system completed migration.
   - key: source-user
-    title: Migration Source User
+    title: Migration source user
     type: <string>
     presence: optional
     content: The username of the user that the system migrated from the source system.
   - key: start-time
-    title: Migration Start Time
+    title: Migration start time
     type: <string>
     presence: optional
     content: The RFC 3339 timestamp for when the system started migration.
   - key: target-user
-    title: Migration Target User
+    title: Migration target user
     type: <string>
     presence: optional
     content: The username of the target user account on the destination system.
   - key: total-data-size
-    title: Migration Total Data Size
+    title: Migration total data size
     type: <integer>
     presence: optional
     content: The total amount of data the system considers in scope for migration
       from the source system.
   - key: total-file-count
-    title: Migration Total File Count
+    title: Migration total file count
     type: <integer>
     presence: optional
     content: The number of files the system considers in scope for migration from
       the source system.
   - key: errors
-    title: Migration Errors
+    title: Migration errors
     type: <array>
     presence: optional
     content: The descriptions of migration errors that the system reports.
     subkeys:
     - key: _errors
       type: <string>
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/migration-assistant.report/example1.json

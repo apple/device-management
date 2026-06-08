@@ -1,0 +1,24 @@
+{
+    "Type": "com.apple.configuration.softwareupdate.settings",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "Notifications": false,
+        "Deferrals": {
+            "MajorPeriodInDays": 30
+        },
+        "RecommendedCadence": "All",
+        "AutomaticActions": {
+            "Download": "AlwaysOn",
+            "InstallOSUpdates": "AlwaysOn",
+            "InstallSecurityUpdate": "AlwaysOn"
+        },
+        "RapidSecurityResponse": {
+            "Enable": false
+        },
+        "AllowStandardUserOSUpdates": false,
+        "Beta": {
+            "ProgramEnrollment": "AlwaysOn"
+        }
+    }
+}

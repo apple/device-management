@@ -15,7 +15,7 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: StatusItems
-  title: Status Items
+  title: Status items
   type: <dictionary>
   presence: required
   content: The status items for this report.
@@ -31,40 +31,40 @@ payloadkeys:
     content: Error information for a status item that cannot be returned.
     subkeys:
     - key: StatusItem
-      title: Status Item
+      title: Status item
       type: <string>
       presence: required
       content: The status item that this error pertains to.
     - key: Reasons
-      title: Status Reasons
+      title: Status reasons
       type: <array>
       presence: optional
       content: An array of reasons for the error.
       subkeytype: StatusReason
       subkeys:
       - key: _Reasons
-        title: Status Reason
+        title: Status reason
         type: <dictionary>
         content: Information about a status error.
         subkeytype: StatusReason
         subkeys:
         - key: Code
-          title: Error Code
+          title: Error code
           type: <string>
           presence: required
           content: The error code for this error.
         - key: Description
-          title: Error Description
+          title: Error description
           type: <string>
           presence: optional
           content: The description for this error.
         - key: Details
-          title: Error Details
+          title: Error details
           type: <dictionary>
           presence: optional
           content: A dictionary that contains further details about this error.
 - key: FullReport
-  title: Full Report
+  title: Full report
   supportedOS:
     iOS:
       introduced: '17.0'
@@ -76,7 +76,7 @@ payloadkeys:
   presence: optional
   default: false
   content: The system sets this to `true` to indicate that the status report contains
-    the full set of current status, and is not an incremental report. A full status
+    the full set of current status, and isn't an incremental report. A full status
     report includes the full set of items in any status array item, not just the changes.
     Servers use this to replace their entire status for the device, rather than do
     an incremental update to the existing status. The system sets this to `true` when

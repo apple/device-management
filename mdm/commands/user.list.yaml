@@ -47,44 +47,39 @@ responsekeys:
       type: <string>
       presence: required
       content: The user name for the account. In macOS, this is the short name of
-        the user account. This value is available in iOS 9.3 and later, and macOS
-        10.13 and later.
+        the user account.
     - key: FullName
       supportedOS:
         iOS:
           introduced: n/a
       type: <string>
       presence: required
-      content: The user's full name. This value is available in macOS 10.13 and later.
+      content: The user's full name.
     - key: UID
       supportedOS:
         iOS:
           introduced: n/a
       type: <integer>
       presence: required
-      content: The user's unique identifier. This value is available in macOS 10.13
-        and later.
+      content: The user's unique identifier.
     - key: UserGUID
       supportedOS:
         iOS:
           introduced: n/a
       type: <string>
       presence: required
-      content: The user's `GeneratedUID`. This value is available in macOS 10.13 and
-        later.
+      content: The user's `GeneratedUID`.
     - key: IsLoggedIn
       type: <boolean>
       presence: required
-      content: If `true`, the user is currently logged in on the device. This value
-        is available in iOS 9.3 and later, and macOS 10.13 and later.
+      content: If `true`, the user is currently logged in on the device.
     - key: HasDataToSync
       supportedOS:
         macOS:
           introduced: n/a
       type: <boolean>
       presence: required
-      content: If `true`, the user has data to sync to the cloud. This value is available
-        in iOS 9.3 and later.
+      content: If `true`, the user has data to sync to the cloud.
     - key: DataQuota
       supportedOS:
         macOS:
@@ -92,23 +87,21 @@ responsekeys:
       type: <integer>
       presence: required
       content: If present, the user's data quota in bytes. This isn't present if the
-        account doesn't enforce a quota. This value is available in iOS 9.3 and later.
+        account doesn't enforce a quota.
     - key: DataUsed
       supportedOS:
         macOS:
           introduced: n/a
       type: <integer>
       presence: required
-      content: The amount of data, in bytes, that the user has used. This value is
-        available in iOS 9.3 and later.
+      content: The amount of data, in bytes, that the user has used.
     - key: MobileAccount
       supportedOS:
         iOS:
           introduced: n/a
       type: <boolean>
       presence: required
-      content: If `true`, the account is a mobile account. This value is available
-        in macOS 10.13 and later.
+      content: If `true`, the account is a mobile account.
     - key: HasSecureToken
       supportedOS:
         iOS:
@@ -117,9 +110,13 @@ responsekeys:
           introduced: '11.0'
       type: <boolean>
       presence: required
-      content: If `true`, the user currently has a secure token set. This value is
-        available in macOS 11 and later.
+      content: If `true`, the user currently has a secure token set.
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/classroom.user.list/example1.plist
+    response-file: examples/mdm/commands/classroom.user.list/example2.plist

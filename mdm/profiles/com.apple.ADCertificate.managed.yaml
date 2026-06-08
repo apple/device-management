@@ -27,12 +27,12 @@ payload:
     detailed at support.apple.com/kb/HT5357.
 payloadkeys:
 - key: CertServer
-  title: Certificate Server
+  title: Certificate server
   type: <string>
   presence: required
   content: The fully qualified host name of the CA.
 - key: CertTemplate
-  title: Certificate Template
+  title: Certificate template
   type: <string>
   presence: required
   content: The certificate template for your environment. The default user certificate
@@ -43,20 +43,20 @@ payloadkeys:
   presence: optional
   content: A user-friendly description of the certification identity.
 - key: CertificateRenewalTimeInterval
-  title: Certificate Renewal Time Interval
+  title: Certificate renewal time interval
   type: <integer>
   presence: optional
   content: The number of days in advance of certificate expiration that the notification
     center notifies the user.
 - key: CertificateAuthority
-  title: Certificate Authority
+  title: Certificate authority
   supportedOS:
     macOS:
       introduced: '10.8'
   type: <string>
   presence: optional
   content: |-
-    The name of the certificate authority (CA), which is determined from the common name (CN) of the Active Directory entry. Available in macOS 10.8 and later. Valid values:
+    The name of the certificate authority (CA), which the device determines from the common name (CN) of the Active Directory entry. Valid values:
 
     - CN=<your CA Name>
     - CN=`Certification Authorities`
@@ -65,26 +65,24 @@ payloadkeys:
     - CN=`Configuration`
     - CN=<your base Domain Name>
 - key: CertificateAcquisitionMechanism
-  title: Certificate Acquisition Mechanism
+  title: Certificate acquisition mechanism
   supportedOS:
     macOS:
       introduced: '10.8'
   type: <string>
   presence: optional
   content: This value is most commonly `RPC`; if using web enrollment, use `HTTP`.
-    Available in macOS 10.8 and later.
 - key: AllowAllAppsAccess
-  title: Allow All Apps Access
+  title: Allow all apps access
   supportedOS:
     macOS:
       introduced: '10.10'
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, gives apps access to the private key. Available in macOS 10.10
-    and later.
+  content: If `true`, gives apps access to the private key.
 - key: PromptForCredentials
-  title: Prompt for Credentials
+  title: Prompt for credentials
   supportedOS:
     macOS:
       introduced: '10.8'
@@ -93,30 +91,27 @@ payloadkeys:
   default: false
   content: If `true`, the system prompts the user for credentials when is installs
     the profile. This key applies only to user certificates with the Manual Download
-    profile delivery method. Omit this key for computer certificates. Available in
-    macOS 10.8 and later.
+    profile delivery method. Omit this key for computer certificates.
 - key: KeyIsExtractable
-  title: Key Is Extractable
+  title: Key is extractable
   supportedOS:
     macOS:
       introduced: '10.10'
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system allows exporting the private key. Available in macOS
-    10.10 and later.
+  content: If `true`, the system allows exporting the private key.
 - key: Keysize
-  title: Key Size
+  title: Key size
   supportedOS:
     macOS:
       introduced: '10.11'
   type: <integer>
   presence: optional
   default: 2048
-  content: The RSA key size for the certificate signing request (CSR). Available in
-    macOS 10.11 and later.
+  content: The RSA key size for the certificate signing request (CSR).
 - key: EnableAutoRenewal
-  title: Enable Auto Renewal
+  title: Enable auto renewal
   supportedOS:
     macOS:
       introduced: 10.13.4
@@ -125,8 +120,11 @@ payloadkeys:
   default: false
   content: If `true`, the certificate obtained with this payload attempts auto-renewal.
     Auto-renewal can only be used with device Active Directory certificate payloads.
-    Available in macOS 10.13.4 and later.
 notes:
 - title: ''
   content: To get a certificate from a Microsoft CA, follow the instructions at [Request
     a certificate from a Microsoft Certificate Authority](https://support.apple.com/en-us/HT204602).
+examples:
+  title: Example profile
+  files:
+  - file: examples/mdm/profiles/com.apple.ADCertificate.managed/example1.plist

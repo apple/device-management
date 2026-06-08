@@ -46,7 +46,7 @@ payloadkeys:
     The bundle identifier of the managed app.
 
     > Important:
-    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone to which the watch is paired. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting App and Book Information`.
+    > For a watchOS app, the identifier needs to be the watch's bundle identifier, which differs from the main bundle identifier for the iPhone the watch pairs with. Obtain the watch's bundle identifier for an app with a watch bundle, in the `watchBundleId` key that's part of the Content Metadata query. For more information on this query, see `Getting app and book information (Legacy)`.
 notes:
 - title: ''
   content: |-
@@ -55,3 +55,8 @@ notes:
     This command fails for apps that Declarative Device Management is managing.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/application.remove/example1.plist
+    response-file: examples/mdm/commands/application.remove/example2.plist

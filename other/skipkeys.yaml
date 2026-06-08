@@ -37,6 +37,20 @@ payloadkeys:
 
     > Note:
     > This key doesn't skip the Accessibility pane in Setup Assistant during initial device set up. It does skip the Accessibility pane when Setup Assistant runs due to a new user log in.
+- key: AccessibilityAppearance
+  title: Skip Accessibility Appearance setup pane
+  supportedOS:
+    iOS:
+      introduced: '17.0'
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the Accessibility Appearance configuration pane.
 - key: ActionButton
   title: Skip Action Button setup pane
   supportedOS:
@@ -67,7 +81,7 @@ payloadkeys:
   content: If the Restore pane isn't skipped, this is the key to remove the Move from
     Android option in the Restore pane.
 - key: Appearance
-  title: Skip Choose your Look setup pane
+  title: Skip Choose Your Look setup pane
   supportedOS:
     iOS:
       introduced: '13.0'
@@ -145,7 +159,7 @@ payloadkeys:
   presence: optional
   content: The key to skip the App Analytics pane.
 - key: DisplayTone
-  title: Disables True Tone
+  title: Disables True Tone pane
   supportedOS:
     iOS:
       introduced: 9.3.2
@@ -161,7 +175,7 @@ payloadkeys:
   presence: optional
   content: The key to skip DisplayTone setup.
 - key: EnableLockdownMode
-  title: Skips Enable Lockdown Mode
+  title: Skips enable Lockdown Mode
   supportedOS:
     iOS:
       introduced: '17.1'
@@ -274,6 +288,20 @@ payloadkeys:
   presence: optional
   content: The key to skip the Keyboard pane. This pane isn't always skippable because
     it appears before the device retrieves the Cloud Configuration from the server.
+- key: LiquidGlass
+  title: Skip Liquid Glass pane
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+    macOS:
+      introduced: '27.0'
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the Liquid Glass pane.
 - key: Location
   title: Disables Location Services
   supportedOS:
@@ -453,7 +481,7 @@ payloadkeys:
   presence: optional
   content: The key to skip the Screen Time pane.
 - key: SIMSetup
-  title: Skip SIM-related setup
+  title: Skip sim-related setup
   supportedOS:
     iOS:
       introduced: '12.0'
@@ -554,7 +582,7 @@ payloadkeys:
   presence: optional
   content: The key to skip Terms and Conditions.
 - key: TVHomeScreenSync
-  title: Skip TV Home Screen
+  title: Skip TV Home Screen Layout
   supportedOS:
     iOS:
       introduced: n/a
@@ -568,7 +596,7 @@ payloadkeys:
   presence: optional
   content: The key to skip TV Home Screen layout sync screen.
 - key: TVProviderSignIn
-  title: Skip TV provider sign in
+  title: Skip TV Provider sign in
   supportedOS:
     iOS:
       introduced: n/a
@@ -582,7 +610,7 @@ payloadkeys:
   presence: optional
   content: The key to skip the TV provider sign in screen.
 - key: TVRoom
-  title: Skip Where is this Apple TV pane
+  title: Skip where is this Apple TV pane
   supportedOS:
     iOS:
       introduced: n/a
@@ -596,7 +624,7 @@ payloadkeys:
   presence: optional
   content: The key to skip the "Where is this Apple TV?" screen.
 - key: UnlockWithWatch
-  title: Skips Unlock With Watch pane
+  title: Skips Unlock with Apple Watch pane
   supportedOS:
     iOS:
       introduced: n/a
@@ -653,10 +681,11 @@ payloadkeys:
   presence: optional
   content: The key to skip the screen for watch migration.
 - key: WebContentFiltering
-  title: Skip web content filtering pane
+  title: Skip Web Content Filtering pane
   supportedOS:
     iOS:
       introduced: '18.2'
+      removed: '26.1'
     macOS:
       introduced: n/a
     tvOS:

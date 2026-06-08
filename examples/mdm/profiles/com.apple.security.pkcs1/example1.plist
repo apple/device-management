@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadCertificateFileName</key>
+            <string>example-certificate.cer</string>
+            <key>PayloadContent</key>
+            <data>
+            MIIDXTCCAkWgAwIBAgIJAKoK/heBjcOuMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+            BAYTAkNBMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
+            aWRnaXRzIFB0eSBMdGQwHhcNMjQwMTA1MjMwMDAwWhcNMjUwMTA1MjMwMDAwWjBF
+            MQswCQYDVQQGEwJDQTETMBEGA1UECAwKU29tZS1TdGF0ZTEhMB8GA1UECgwYSW50
+            ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+            CgKCAQEA3VoPN9PKUjKFLMwOge6+G/T8+J8vJKHjadgNkK5HKaVFxnC1JJ8FLZ2K
+            7qtgzbhI8WnqK3r5PjM+ZA5k8sW8e7VhqYi2gDhNJqFRe4XKqL9U7LnG5i9jHHk1
+            2nNSJd8HLZ8sW8e7VhqYi2gDhNJqFRe4XKqL9U7LnG5i9jHHk12nNSJd8HLZ8s7K
+            qtgzbhI8WnqK3r5PjM+ZA5k8sW8e7VhqYi2gDhNJqFRe4XKqL9U7LnG5i9jHHk12
+            nNSJd8HLZZ2K7qtgzbhI8WnqK3r5PjM+ZA5k8sW8e7VhqYi2gDhNJqFRe4XKqL9U
+            7LnG5i9jHHk12nNSJd8HLZ8sW8e7VhqYi2gDhNJqFRQIDAQABo1AwTjAdBgNVHQ4E
+            FgQUhKM6j7nHOBxp0eDe/N9vI4C/JM8wHwYDVR0jBBgwFoAUhKM6j7nHOBxp0eDe
+            /N9vI4C/JM8wDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEA2Z8B+vMT
+            eW+/IEE8sJ8rI4w/b6VhW+j2R1L7R4m8tVz7qRxW2g3J8VzR8l1fYQ7p7R2kZ8u7
+            5nR4gF8sJ8rI4w/b6VhW+j2R1L7R4m8tVz7qRxW2g3J8VzR8l1fYQ7p7R2kZ8u75
+            nR4gF8sJ8rI4w/b6VhW+j2R1L7R4m8tVz7qRxW2g3J8VzR8l1fYQ7p7R2kZ8u75n
+            R4gF8sJ8rI4w/b6VhW+j2R1L7R4m8tVz7qRxW2g3J8VzR8l1fYQ7p7R2kZ8u75nR
+            4gF8sJ8rI4w==
+            </data>
+            <key>PayloadDisplayName</key>
+            <string>CertificatePKCS1</string>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mycertpkcs1payload</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.pkcs1</string>
+            <key>PayloadUUID</key>
+            <string>72d2c549-2a97-4032-b818-d8ebf7cb88f2</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>CertificatePKCS1</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.profile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>d7d678c5-87ea-457d-82b9-25db21cd7868</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

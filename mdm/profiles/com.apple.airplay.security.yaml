@@ -23,7 +23,7 @@ payload:
     password phrase.
 payloadkeys:
 - key: SecurityType
-  title: Security Type
+  title: Security type
   type: <string>
   presence: required
   rangelist:
@@ -33,14 +33,14 @@ payloadkeys:
   content: |-
     The security policy for AirPlay. Allowed values:
 
-    - `PASSCODE_ONCE`: Requires an onscreen passcode on first connection from a device. Subsequent connections from the same device aren't prompted.
-    - `PASSCODE_ALWAYS`: Requires an onscreen passcode for every AirPlay connection. After an AirPlay connection ends, the system allows reconnecting within 30 seconds without a password.
-    - `PASSWORD`: Requires the passphrase set for `Password`.
+    * `PASSCODE_ONCE`: Requires an onscreen passcode on first connection from a device. Subsequent connections from the same device aren't prompted.
+    * `PASSCODE_ALWAYS`: Requires an onscreen passcode for every AirPlay connection. After an AirPlay connection ends, the system allows reconnecting within 30 seconds without a password.
+    * `PASSWORD`: Requires the passphrase set for `Password`.
 
     > Note:
     > `NONE` was deprecated in tvOS 11.3. Existing profiles that use `NONE` get the `PASSWORD_ONCE` behavior.
 - key: AccessType
-  title: Access Type
+  title: Access type
   type: <string>
   presence: required
   rangelist:
@@ -57,3 +57,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The AirPlay password; required if `SecurityType` is `PASSWORD`.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.airplay.security/example1.plist

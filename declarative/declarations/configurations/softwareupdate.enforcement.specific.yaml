@@ -1,5 +1,6 @@
 title: Software Update:Enforcement:Specific
-description: A software update enforcement policy for a specific OS release.
+description: The declaration to configure a software update enforcement policy for
+  a specific OS release.
 payload:
   declarationtype: com.apple.configuration.softwareupdate.enforcement.specific
   supportedOS:
@@ -38,13 +39,13 @@ payload:
   apply: multiple
 payloadkeys:
 - key: TargetOSVersion
-  title: Target OS Version
+  title: Target OS version
   type: <string>
   presence: required
   content: The target OS version to update the device to by the appropriate time.
     This is the OS version number, for example, `16.1`.
 - key: TargetBuildVersion
-  title: Target Build Version
+  title: Target build version
   type: <string>
   presence: optional
   content: The target build version to update the device to by the appropriate time,
@@ -52,13 +53,13 @@ payloadkeys:
     The build version can include a supplemental version identifier, for example,
     `20A242a`.
 - key: TargetLocalDateTime
-  title: Target Local Date Time
+  title: Target local date time
   type: <string>
   presence: required
   content: The local date time value that specifies when to force install the software
-    update. Use the format `yyyy-mm-ddThh:mm:ss`, which is derived from RFC3339 but
-    doesn't include a time zone offset. If the user doesn't trigger the software update
-    before this time, the device force installs it.
+    update. Use the format `yyyy-mm-ddThh:mm:ss`, which is derived from RFC 3339 but
+    doesn't include a time zone offset or fractional seconds. If the user doesn't
+    trigger the software update before this time, the device force installs it.
 - key: DetailsURL
   title: Details URL
   type: <string>
@@ -79,8 +80,14 @@ notes:
 
     To determine available software updates to show to an admin, a device management service uses the Apple GDMF service via `https://gdmf.apple.com/v2/pmv`. Configurations only enforce a software update if GDMF has the corresponding OS version or build available. So device management services need to regularly check available versions, and adjust the list shown to admins, and also remove any deployed configurations that use OS versions or builds that are no longer available. Device management services should check GDMF no more than once a day.
 
-    If the `TargetOSVersion` is an OS version that includes both a minor and patch version, the system installs that specific version, for example, `16.1.1`. If the minor version doesn't include a patch version, the system installs the latest available patch version. For example, if the `TargetOSVersion` is `16.1` and a `.1` patch is available, the system installs `16.1.1`.
+    The system installs the specific version set in the `TargetOSVersion`, and it won't install a patch version if only a minor version is set.
 
     The system can only install a supplemental software update on a device that already has the base OS version installed. For example, the system can only install a `16.1`(a) update on a device that currently has `16.1` installed, but it can't install that update on a device that has only `16.0` installed. To update to a supplemental version from an older base version, use two configurations. Use the first configuration to update to the new base version, and the second configuration to update the new base version to its supplemental version.
 
     If the device isn't running at the target date-time, the system enforces the software update 1 hour after restarting, or when the device meets all required conditions, such as minimum battery level.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration enforces a software update to a specific OS version
+      and build at a specified time.
+    file: examples/declarative/declarations/configurations/softwareupdate.enforcement.specific/example1.json

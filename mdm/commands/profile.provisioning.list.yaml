@@ -54,7 +54,6 @@ payloadkeys:
   default: false
   content: If `true`, only include profiles that MDM has installed. For user enrollments,
     the device ignores this key and always limits the results to managed profiles.
-    This value is available in iOS 13 and later, and tvOS 13 and later.
 responsekeys:
 - key: ProvisioningProfileList
   type: <array>
@@ -81,3 +80,8 @@ notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/profile.provisioning.list/example1.plist
+    response-file: examples/mdm/commands/profile.provisioning.list/example2.plist

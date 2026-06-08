@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>MediaType</key>
+    <string>Book</string>
+    <key>PersistentID</key>
+    <string>com.acme.pdf.myenterprisebook</string>
+    <key>RequestType</key>
+    <string>RemoveMedia</string>
+</dict>
+</plist>

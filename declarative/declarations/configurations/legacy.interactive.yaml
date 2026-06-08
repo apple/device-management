@@ -43,13 +43,37 @@ payloadkeys:
 - key: ProfileURL
   title: Profile's URL.
   type: <string>
-  presence: required
+  presence: optional
   content: |-
-    The URL of the profile to download and install, which needs to start with `https://`, and must be hosted by the MDM server.
+    The URL of the profile to download and install, which needs to start with `https://`. The request uses MDM semantics, which includes the device-identity certificate, and any user authentication. This is equivalent to an MDM request made to the `CheckInURL` or `ServerURL`.
 
-    If a user enrollment triggers this configuration, the system silently ignores any MDMv1 payloads in macOS that are forbidden with user enrollment. In iOS, the system rejects the entire profile.
+    One of `ProfileURL` or `ProfileAssetReference` needs to be present.
+- key: ProfileAssetReference
+  title: Profile asset reference
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+    macOS:
+      introduced: '27.0'
+    tvOS:
+      introduced: '27.0'
+    visionOS:
+      introduced: '27.0'
+  type: <string>
+  assettypes:
+  - com.apple.asset.data
+  asset-content-types:
+  - application/plist
+  - application/x-plist
+  - application/xml
+  - text/xml
+  presence: optional
+  content: |-
+    The identifier of an asset declaration containing a reference to the profile data. The corresponding asset needs to be of type `com.apple.asset.data`. The referenced data needs to be a property list file, and the asset's "ContentType" value set to match the data type.
+
+    One of `ProfileURL` or `ProfileAssetReference` needs to be present.
 - key: VisibleName
-  title: Configuration Visible Name
+  title: Configuration visible name
   type: <string>
   presence: required
   content: The visible name of the configuration. This name needs to indicate the
@@ -63,3 +87,14 @@ notes:
 
     - `com.apple.mdm`
     - `com.apple.declarations`
+
+    If a user enrollment triggers this configuration: in macOS the system silently ignores any MDMv1 payloads in macOS where the User Enrollment Mode setting is `forbidden`; in iOS, tvOS, watchOS and visionOS, the system rejects the entire profile if any MDMv1 payload has its User Enrollment Mode setting set to `forbidden`.
+examples:
+  title: Configuration examples
+  files:
+  - tab: URL
+    description: Downloads the profile from a URL on the MDM server.
+    file: examples/declarative/declarations/configurations/legacy.interactive/example1.json
+  - tab: Asset
+    description: Downloads the profile using an asset.
+    file: examples/declarative/declarations/configurations/legacy.interactive/example2.json

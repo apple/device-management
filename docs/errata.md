@@ -2,6 +2,32 @@
 
 This document lists errata for the YAML schema. This is used when older versions of the schema are incorrect, and a fix was made in later schema to correct the problem.
 
+## Release 27.0
+
+### mdm/commands/settings.yaml
+
+`DefaultApplications` - the setting is allowed on Shared iPad (user channel only), not forbidden.
+
+### mdm/profiles/com.apple.applicationaccess.new.yaml
+
+Replacements for keys deprecated in 10.15 were missing.
+
+### mdm/profiles/com.apple.dnsProxy.managed.yaml
+
+The `ProviderDesignatedRequirement` key in the `com.apple.dnsProxy.managed` profile payload was missing.
+
+### mdm/profiles/com.apple.loginwindow.yaml
+
+Several missing keys have been added.
+
+### mdm/profiles/com.apple.relay.managed.yaml
+
+`RelayUUID` is not available on macOS.
+
+### mdm/profiles/com.apple.webcontent-filter.yaml
+
+`FilterDataProviderBundleIdentifier` is available on iOS and visionOS.
+
 ## iOS 26.4
 
 ### other/skipkeys.yaml

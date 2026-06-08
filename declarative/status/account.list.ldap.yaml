@@ -1,6 +1,6 @@
 title: Status Account List LDAP
-description: A status report of the client's Lightweight Directory Access Protocol
-  (LDAP) accounts.
+description: The status item that lists the devices's Lightweight Directory Access
+  Protocol (LDAP) accounts.
 payload:
   statusitemtype: account.list.ldap
   supportedOS:
@@ -46,8 +46,9 @@ payloadkeys:
   subkeytype: Account
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of the client's LDAP account details.
+    content: An LDAP account.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -59,8 +60,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the account is removed and the status item object only contains
-        this key and the `identifier` key.
+      content: If `true`, the device removed the account and the status item object
+        only contains this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
@@ -78,7 +79,7 @@ payloadkeys:
       presence: optional
       content: The server host name for the account.
     - key: port
-      title: Server Port
+      title: Server port
       type: <integer>
       presence: optional
       content: The server port for the account.
@@ -93,3 +94,12 @@ payloadkeys:
       presence: optional
       content: A Boolean value that indicates whether the account is enabled for use
         with the Contacts app.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated account
+    description: Reports a new or updated account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.ldap/example1.json
+  - tab: Removed account
+    description: Reports a removed account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.ldap/example2.json

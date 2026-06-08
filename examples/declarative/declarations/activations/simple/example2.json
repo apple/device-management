@@ -1,0 +1,12 @@
+{
+    "Type": "com.apple.activation.simple",
+    "Identifier": "04BECEFA-47B9-4F2E-8040-246509A52409",
+    "ServerToken": "CBE396A0-637B-438D-9F0C-EA912A5BB587",
+    "Payload": {
+        "Predicate": "@status(device.model.family) == 'AppleTV'",
+        "StandardConfigurations": [
+            "892853C1-DDD1-4562-84B9-1591A76AD42B",
+            "DCF869F1-09B7-4EC2-83B5-073F6FE94597"
+        ]
+    }
+}

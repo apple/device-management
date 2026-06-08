@@ -1,5 +1,5 @@
 title: Package
-description: The declaration to install a package.
+description: The declaration to configure a package.
 payload:
   declarationtype: com.apple.configuration.package
   supportedOS:
@@ -27,7 +27,7 @@ payloadkeys:
     The manifest is returned as a `ManifestURL` property list. The `url` property
     of the manifest must point to the package (.pkg) file to install.
 - key: InstallBehavior
-  title: Install Behavior
+  title: Install behavior
   type: <dictionary>
   presence: optional
   content: A dictionary that describes how and when to install the package.
@@ -45,8 +45,29 @@ payloadkeys:
 
       - `Optional`: The user can install the package after the system activates the configuration.
       - `Required`: The system installs the package after it activates the configuration.
+- key: UninstallBehavior
+  title: Uninstall behavior
+  supportedOS:
+    macOS:
+      introduced: '27.0'
+  type: <dictionary>
+  presence: optional
+  content: A dictionary that describes how to uninstall the package.
+  subkeys:
+  - key: Remove
+    title: Remove
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the system removes the files that the package installs when
+      removing the configuration.
 notes:
 - title: ''
   content: This declaration installs a package on a device. Packages can contain apps,
     fonts, documents, and other items. Apps that a package installs aren't automatically
     managed; you can manage them using the `AppManaged` declaration.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration installs a required package.
+    file: examples/declarative/declarations/configurations/package/example1.json

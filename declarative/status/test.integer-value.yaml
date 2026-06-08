@@ -55,3 +55,7 @@ payloadkeys:
   type: <integer>
   presence: required
   content: The test status integer value.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/test.integer-value/example1.json

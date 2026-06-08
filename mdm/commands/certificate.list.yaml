@@ -52,8 +52,7 @@ payloadkeys:
   default: false
   content: If `true`, only include certificates that MDM installed or that are in
     the same profile as the MDM payload. User-enrolled devices ignore this value and
-    always only include managed certificates. This value is available in iOS 13 and
-    later, macOS 10.15 and later, and tvOS 13 and later.
+    always only include managed certificates.
 responsekeys:
 - key: CertificateList
   type: <array>
@@ -86,3 +85,8 @@ notes:
     Starting with iOS 15.4, this command returns a Not Now response before the passcode-protected device's first unlock after a device boots. Between iOS 15.0 and iOS 15.4, devices in that state didn't respond with Not Now, but the response might not contain all identity certificates.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/certificate.list/example1.plist
+    response-file: examples/mdm/commands/certificate.list/example2.plist

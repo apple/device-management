@@ -1,5 +1,5 @@
 title: Services Configuration Files
-description: The managed configuration files for services.
+description: The declaration to configure managed configuration files for services.
 payload:
   declarationtype: com.apple.configuration.services.configuration-files
   supportedOS:
@@ -20,13 +20,13 @@ payload:
   apply: multiple
 payloadkeys:
 - key: ServiceType
-  title: Service Type
+  title: Service type
   type: <string>
   presence: required
   content: The identifier of the system service with managed configuration files.
     Use a reverse DNS style for this identifier.
 - key: DataAssetReference
-  title: Data Asset Reference
+  title: Data asset reference
   type: <string>
   assettypes:
   - com.apple.asset.data
@@ -87,3 +87,8 @@ notes:
 
     > Important:
     > The system reserves the `com.apple` prefix for built-in services.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration deploys configuration files for a system service.
+    file: examples/declarative/declarations/configurations/services.configuration-files/example1.json

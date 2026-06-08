@@ -34,8 +34,12 @@ notes:
   content: |-
     This payload's contents contain these profile-specific keys:
 
-    - Interface (String): This payload uses the value `SecondEthernet`.
-    - EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
-    - SetupModes (String): The type of connection mode, which is either "System" or "Loginwindow." "System" is the default.
+    * Interface (String): This payload uses the value `SecondEthernet`.
+    * EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
+    * SetupModes (String): The type of connection mode, which is either "System" or "Loginwindow." "System" is the default.
 
     This payload applies to Ethernet interfaces according to service order, regardless of whether the interface is working.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.secondethernet.managed/example1.plist

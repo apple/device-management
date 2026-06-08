@@ -39,19 +39,19 @@ payload:
   content: An email payload creates an email account on the device.
 payloadkeys:
 - key: EmailAccountDescription
-  title: Account Description
+  title: Account description
   type: <string>
   presence: optional
   content: A user-visible description of the email account, shown in the Mail and
     Settings applications.
 - key: EmailAccountName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The full user name for the account. The system displays this name in sent
     messages.
 - key: EmailAccountType
-  title: Account Type
+  title: Account type
   type: <string>
   presence: required
   rangelist:
@@ -59,14 +59,14 @@ payloadkeys:
   - EmailTypePOP
   content: Defines the protocol to use for the account.
 - key: EmailAddress
-  title: Email Address
+  title: Email address
   type: <string>
   presence: optional
   content: The full email address for the account. If this string isn't present in
     the payload, the device prompts the user for this string during interactive profile
     installation in Settings or System Preferences.
 - key: IncomingMailServerAuthentication
-  title: Incoming Mail Server Authentication
+  title: Incoming mail server authentication
   type: <string>
   presence: required
   rangelist:
@@ -77,7 +77,7 @@ payloadkeys:
   - EmailAuthHTTPMD5
   content: The authentication scheme for incoming mail.
 - key: IncomingMailServerHostName
-  title: Mail Server
+  title: Mail server
   type: <string>
   presence: required
   content: The incoming mail server host name.
@@ -113,16 +113,16 @@ payloadkeys:
   presence: optional
   content: The password for the outgoing mail server. Only use this in encrypted profiles.
 - key: OutgoingPasswordSameAsIncomingPassword
-  title: Outgoing Password Same As Incoming
+  title: Outgoing password same as incoming
   type: <boolean>
   presence: optional
   default: false
   content: |-
     If `true`, the system prompts the user only once for the password, which it uses for both outgoing and incoming mail.
 
-    This setting is only supported by interactive profile installations. Not supported by non-interactive installations, such as MDM on iOS.
+    This setting supports only interactive profile installations. Non-interactive installations, such as MDM on iOS, don't support this setting.
 - key: OutgoingMailServerAuthentication
-  title: Authentication Type
+  title: Authentication type
   type: <string>
   presence: required
   rangelist:
@@ -133,7 +133,7 @@ payloadkeys:
   - EmailAuthHTTPMD5
   content: The authentication scheme for outgoing mail.
 - key: OutgoingMailServerHostName
-  title: Mail Server
+  title: Mail server
   type: <string>
   presence: required
   content: The outgoing mail server host name.
@@ -158,7 +158,7 @@ payloadkeys:
     outgoing email, the device prompts the user for this string during interactive
     profile installation in Settings or System Preferences.
 - key: PreventMove
-  title: Prevent Move
+  title: Prevent move
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -171,7 +171,7 @@ payloadkeys:
     and into another account. It also prevents forwarding or replying from an account
     other than the recipient of the message.
 - key: PreventAppSheet
-  title: Prevent App Sheet
+  title: Prevent app sheet
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -183,7 +183,7 @@ payloadkeys:
   content: If `true`, the system prevents this account from sending mail in any app
     other than the Apple Mail app.
 - key: SMIMEEnabled
-  title: S/MIME Enabled
+  title: S/MIME enabled
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -195,7 +195,7 @@ payloadkeys:
   content: If `true`, the system enables S/MIME encryption. The system ignores this
     key in iOS 10.0 and later.
 - key: SMIMESigningEnabled
-  title: S/MIME Signing Enabled
+  title: S/MIME signing enabled
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -206,7 +206,7 @@ payloadkeys:
   default: false
   content: If `true`, the system enables S/MIME signing for this account.
 - key: SMIMESigningCertificateUUID
-  title: S/MIME Signing Certificate
+  title: S/MIME signing certificate
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -218,7 +218,7 @@ payloadkeys:
   content: The payload UUID of the identity certificate used to sign messages sent
     from this account.
 - key: SMIMEEncryptionEnabled
-  title: S/MIME Encryption Enabled
+  title: S/MIME encryption enabled
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -229,7 +229,7 @@ payloadkeys:
   default: false
   content: If `true`, the system enables S/MIME encryption for this account.
 - key: SMIMEEncryptionCertificateUUID
-  title: S/MIME Encryption Certificate
+  title: S/MIME encryption certificate
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -243,7 +243,7 @@ payloadkeys:
     the user to receive encrypted mail. When the user sends encrypted mail, the system
     uses the public certificate to encrypt the copy of the mail in their Sent mailbox.
 - key: SMIMEEnablePerMessageSwitch
-  title: S/MIME Enable Per-Message Switch
+  title: S/MIME enable per-message switch
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -259,7 +259,7 @@ payloadkeys:
     Mail Compose UI. Deprecated in iOS 12.0. Use `SMIMEEnableEncryptionPerMessageSwitch`
     instead.
 - key: disableMailRecentsSyncing
-  title: Disable Mail Recents Syncing
+  title: Disable mail recents syncing
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -268,7 +268,7 @@ payloadkeys:
   default: false
   content: If `true`, the system excludes this account from Recent Addresses syncing.
 - key: allowMailDrop
-  title: Allow Mail Drop
+  title: Allow mail drop
   supportedOS:
     iOS:
       introduced: '9.2'
@@ -279,7 +279,7 @@ payloadkeys:
   default: false
   content: If `true`, the system enables this account to use Mail Drop.
 - key: IncomingMailServerIMAPPathPrefix
-  title: Path Prefix
+  title: Path prefix
   type: <string>
   presence: optional
   content: The path prefix for the IMAP mail server.
@@ -356,4 +356,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
-    Available in iOS 14 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.mail.managed/example1.plist

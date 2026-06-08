@@ -25,7 +25,7 @@ payload:
     requests.
 payloadkeys:
 - key: DeviceCertificateUUID
-  title: Device Certificate payload UUID
+  title: Device certificate payload UUID
   type: <string>
   presence: optional
   content: The UUID certificate for the device. This key indicates the device can
@@ -34,7 +34,7 @@ payloadkeys:
     and Data Encipherment. As well as the Extended Key Usage attributes of Server
     Authentication and Client Authentication.
 - key: ControllerCertificateUUID
-  title: Controller Certificate payload UUID
+  title: Controller certificate payload UUID
   type: <string>
   presence: optional
   content: The UUID certificate for the LOM controller. This key configures the device
@@ -65,3 +65,7 @@ notes:
   content: You can configure a compatible macOS device to be both a controller and
     a device. Include the UUID of the certificate in both `DeviceCertificateUUID`
     and `ControllerCertificateUUID` properties.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.lom/example1.plist

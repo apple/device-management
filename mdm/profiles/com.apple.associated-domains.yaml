@@ -61,8 +61,12 @@ payloadkeys:
       default: false
       content: If `true`, the system enables direct download of data for this domain
         instead of through a CDN. Set the entitlement value for this domain to `service:domain?mode=managed`;
-        otherwise, the system ignores this value. Available in macOS 11 and later.
+        otherwise, the system ignores this value.
 notes:
 - title: ''
   content: You can use associated domains with features such as Extensible AppSSO,
     universal links, and Password AutoFill.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.associated-domains/example1.plist

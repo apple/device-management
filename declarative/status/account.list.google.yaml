@@ -1,5 +1,5 @@
 title: Status Account List Google
-description: A status report of the client's Google accounts.
+description: The status item that lists the client's Google accounts.
 payload:
   statusitemtype: account.list.google
   supportedOS:
@@ -45,8 +45,9 @@ payloadkeys:
   subkeytype: Account
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of the client's Google account details.
+    content: A Google account.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -58,8 +59,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the account is removed and the status item object only contains
-        this key and the `identifier` key.
+      content: If `true`, the device removed the account and the status item object
+        only contains this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
@@ -100,3 +101,12 @@ payloadkeys:
       presence: optional
       content: A Boolean value that indicates whether the Notes app displays notes
         for this account.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated account
+    description: Reports a new or updated account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.google/example1.json
+  - tab: Removed account
+    description: Reports a removed account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.google/example2.json

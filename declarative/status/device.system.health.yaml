@@ -1,0 +1,128 @@
+title: Status Device System Health
+description: The status item that reports the device's system health.
+payload:
+  statusitemtype: device.system.health
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: device.system.health
+  title: Status item value.
+  type: <dictionary>
+  presence: required
+  content: |-
+    A dictionary where each key represents a hardware component name and each value is a string indicating the component's health status, which has the following values:
+
+    - `ok`: The component is operating normally.
+    - `error`: The component has a detected error or failure.
+    - `non-genuine`: The component isn't a genuine Apple component.
+
+    Not all keys are supported on each device. The dictionary includes only components that are present and reportable on the device.
+  subkeys:
+  - key: Baseband
+    title: Baseband health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    content: |-
+      The baseband health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+  - key: Camera
+    title: Camera health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    - non-genuine
+    content: |-
+      The camera health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+      - `non-genuine`: The component isn't a genuine Apple component.
+  - key: Display
+    title: Display health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    - non-genuine
+    content: |-
+      The display health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+      - `non-genuine`: The component isn't a genuine Apple component.
+  - key: FaceID
+    title: Face ID health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    content: |-
+      The Face ID health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+  - key: NFC
+    title: NFC health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    content: |-
+      The NFC (Near Field Communication) health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+  - key: TouchID
+    title: Touch ID health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    content: |-
+      The Touch ID health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+  - key: UWB
+    title: Ultra-wideband radio health status
+    type: <string>
+    presence: optional
+    rangelist:
+    - ok
+    - error
+    content: |-
+      The UWB (Ultra-Wideband) radio health status, which has the following values:
+
+      - `ok`: The component is operating normally.
+      - `error`: The component has a detected error or failure.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.system.health/example1.json

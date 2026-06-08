@@ -26,10 +26,9 @@ payload:
     watchOS:
       introduced: n/a
   apply: combined
-  content: Configures keyboard settings.
 payloadkeys:
 - key: AllowAutoCorrection
-  title: Allow Auto-Correction
+  title: Allow auto-correction
   supportedOS:
     macOS:
       introduced: n/a
@@ -39,21 +38,21 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables auto-correction.
 - key: AllowDefinitionLookup
-  title: Allow Definition Lookup
+  title: Allow definition lookup
   type: <boolean>
   presence: optional
   default: true
   combinetype: boolean-and
   content: If `false`, disables definition lookup.
 - key: AllowDictation
-  title: Allow Dictation
+  title: Allow dictation
   type: <boolean>
   presence: optional
   default: true
   combinetype: boolean-and
   content: If `false`, disables dictation.
 - key: AllowMathKeyboardSuggestions
-  title: Allow Math Keyboard Suggestions
+  title: Allow math keyboard suggestions
   type: <boolean>
   presence: optional
   default: true
@@ -61,7 +60,7 @@ payloadkeys:
   content: If `false`, disables keyboard suggestions that include math solutions.
     This key is also supported by the math.settings configuration.
 - key: AllowPredictiveText
-  title: Allow Predictive Text
+  title: Allow predictive text
   supportedOS:
     macOS:
       introduced: n/a
@@ -71,7 +70,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables predictive text.
 - key: AllowSlideToType
-  title: Allow Slide to Type
+  title: Allow slide to type
   supportedOS:
     macOS:
       introduced: n/a
@@ -81,7 +80,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables slide to type.
 - key: AllowSpellCheck
-  title: Allow Spell Check
+  title: Allow spell check
   supportedOS:
     macOS:
       introduced: n/a
@@ -91,7 +90,7 @@ payloadkeys:
   combinetype: boolean-and
   content: If `false`, disables spell check.
 - key: AllowTextReplacement
-  title: Allow Text Replacement
+  title: Allow text replacement
   supportedOS:
     macOS:
       introduced: n/a
@@ -100,3 +99,9 @@ payloadkeys:
   default: true
   combinetype: boolean-and
   content: If `false`, disables text replacement.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Keyboard Restrictions
+    description: This configuration restricts keyboard features.
+    file: examples/declarative/declarations/configurations/keyboard.settings/example1.json

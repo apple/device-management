@@ -1,5 +1,5 @@
 title: Status Software Update Device ID
-description: A status report of the device's update device ID.
+description: The status item that reports the device's software update device ID.
 payload:
   statusitemtype: softwareupdate.device-id
   supportedOS:
@@ -42,3 +42,7 @@ payloadkeys:
   presence: required
   content: The device identifier to use when looking up available software updates
     via `https://gdmf.apple.com/v2/pmv`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.device-id/example1.json

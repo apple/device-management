@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>CommandUUID</key>
+        <string>0001_DeclarativeManagement</string>
+        <key>Command</key>
+        <dict>
+            <key>RequestType</key>
+            <string>DeclarativeManagement</string>
+            <key>Data</key>
+            <data>
+            eyJTeW5jVG9rZW5zIjogeyJUaW1lc3RhbXAiOiAiMjAyMS0wNi0wMlQwMToy
+            ODowMFoiLCAiRGVjbGFyYXRpb25zVG9rZW4iOiAiYjY1NDQwMjdhMzE1Y2Qw
+            MDg1ZDRjZjA4MTc0NjI0YzJkMTQyNDQ0ODA0MzBhODdiMTc2YTI3MjdlNzM2
+            NjEzOCJ9fQ==
+            </data>
+        </dict>
+    </dict>
+</dict>
+</plist>

@@ -60,13 +60,13 @@ payloadkeys:
     determine whether to trust the device. Though this is a relatively weak indication
     because of the risk that an attacker can intercept the client identifier.
 - key: KeySize
-  title: Key Size
+  title: Key size
   type: <integer>
   presence: required
   content: The valid values for `KeySize` depend on the values of `KeyType` and `HardwareBound`.
     See those keys for specific requirements.
 - key: KeyType
-  title: Key Type
+  title: Key type
   type: <string>
   presence: required
   rangelist:
@@ -81,7 +81,7 @@ payloadkeys:
     > Note:
     > The key size is `521`, not `512`, even though the other key sizes are multiples of 64.
 - key: HardwareBound
-  title: Hardware Bound
+  title: Hardware bound
   type: <boolean>
   presence: required
   content: |-
@@ -91,7 +91,7 @@ payloadkeys:
 
     If `true`, `KeyType` must be `ECSECPrimeRandom` and `KeySize` must be 256 or 384.
 
-    Setting this key to `true` is supported as of macOS 14 on Apple Silicon and Intel devices that have a T2 chip. Older macOS versions or other Mac devices require this key but it must have a value of `false`.
+    macOS 14 on Apple silicon and Intel devices that have a T2 chip support setting this key to `true`. Older macOS versions or other Mac devices require this key but it must have a value of `false`.
 - key: Subject
   title: Subject
   type: <array>
@@ -106,21 +106,21 @@ payloadkeys:
     Dotted numbers can represent OIDs , with shortcuts for country (C), locality (L), state (ST), organization (O), organizational unit (OU), and common name (CN).
   subkeys:
   - key: ACMESubjectArrayInnerArray
-    title: Array Inside ACME Subject Array
+    title: Array inside ACME subject array
     type: <array>
     subkeys:
     - key: ACMESubjectArrayPair
-      title: Subject Array Pair
+      title: Subject array pair
       type: <array>
       subkeys:
       - key: ACMESubjectArrayPairItem
-        title: ACME Subject Array Pair Item
+        title: ACME subject array pair item
         type: <string>
         repetition:
           min: 2
           max: 2
 - key: SubjectAltName
-  title: Subject Alt Name
+  title: Subject alt name
   type: <dictionary>
   presence: optional
   content: The Subject Alt Name that the device requests for the certificate that
@@ -128,12 +128,12 @@ payloadkeys:
     certificate it issues.
   subkeys:
   - key: rfc822Name
-    title: RFC 822 Name
+    title: RFC 822 name
     type: <string>
     presence: optional
     content: The RFC 822 (email address) string.
   - key: dNSName
-    title: DNS Name
+    title: DNS name
     type: <string>
     presence: optional
     content: The DNS name.
@@ -143,12 +143,12 @@ payloadkeys:
     presence: optional
     content: The Uniform Resource Identifier.
   - key: ntPrincipalName
-    title: NT Principal Name
+    title: NT principal name
     type: <string>
     presence: optional
     content: The NT principal name. Use an other name OID set to `1.3.6.1.4.1.311.20.2.3`.
 - key: UsageFlags
-  title: Key Usage
+  title: Key usage
   type: <integer>
   presence: optional
   content: |-
@@ -159,7 +159,7 @@ payloadkeys:
 
     The device requests this key for the certificate that the ACME server issues. The ACME server may override or ignore this field in the certificate it issues.
 - key: ExtendedKeyUsage
-  title: Extended Key Usage
+  title: Extended key usage
   type: <array>
   presence: optional
   content: |-
@@ -183,7 +183,7 @@ payloadkeys:
 
     When `Attest` is `true`, `HardwareBound` also needs to be `true`.
 
-    Setting this key to `true` is supported as of macOS 14. Older macOS versions require this key but it must have a value of `false`. See below for hardware requirements.
+    macOS 14 supports setting this key to `true`. Older macOS versions require this key but it must have a value of `false`. See below for hardware requirements.
 - key: KeyIsExtractable
   supportedOS:
     iOS:
@@ -197,10 +197,11 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `true`, the private key of the identity obtained through Automated Certificate
-    Management Environment (ACME) needs to be tagged as "non-extractable" in the keychain.
+  content: If `false`, the device tags the private key of the identity obtained through
+    Automated Certificate Management Environment (ACME) as "non-extractable" in the
+    keychain.
 - key: AllowAllAppsAccess
-  title: Allow All Apps Access
+  title: Allow all apps access
   supportedOS:
     iOS:
       introduced: n/a
@@ -231,4 +232,8 @@ notes:
     |--------------------|--------------------------------------|----------------|-------------------------|----------------|------------|
     | Must be false      | none                                 | T1 and earlier | none                    | none           | none       |
     | Ignored            | A10x Fusion and earlier              | T2             | A10x Fusion and earlier | S3 and earlier | none       |
-    | Supported          | A11 Bionic and later<br>All M series | Apple Silicon  | A12 Bionic and later    | S4 and later   | All        |
+    | Supported          | A11 Bionic and later<br>All M series | Apple silicon  | A12 Bionic and later    | S4 and later   | All        |
+examples:
+  title: Example profile
+  files:
+  - file: examples/mdm/profiles/com.apple.security.acme/example1.plist

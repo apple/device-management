@@ -38,26 +38,25 @@ payload:
     watchOS:
       introduced: n/a
   apply: multiple
-  content: An LDAP configuration defines an LDAP directory account for a user.
 payloadkeys:
 - key: VisibleName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The name that apps show to the user for this LDAP account. If not present,
     the system generates a suitable default.
 - key: HostName
-  title: Server Host Name
+  title: Server host name
   type: <string>
   presence: required
   content: The hostname or IP address of the LDAP server.
 - key: Port
-  title: Server Port
+  title: Server port
   type: <integer>
   presence: optional
   content: The port number or IP address of the LDAP server.
 - key: AuthenticationCredentialsAssetReference
-  title: Authentication Credentials Asset Reference
+  title: Authentication credentials asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.userpassword
@@ -65,7 +64,7 @@ payloadkeys:
   content: The identifier of an asset declaration that contains the credentials for
     this account. Set the corresponding asset type to `CredentialUserNameAndPassword`.
 - key: SearchSettings
-  title: Search Settings
+  title: Search settings
   type: <array>
   presence: optional
   content: The array of nodes to start LDAP searches from. There must be at least
@@ -73,17 +72,17 @@ payloadkeys:
     other items in the array.
   subkeys:
   - key: SearchSettingsItem
-    title: An LDAP Search Setting
+    title: An LDAP search setting
     type: <dictionary>
     subkeys:
     - key: VisibleDescription
-      title: Visible Description
+      title: Visible description
       type: <string>
       presence: optional
       content: The description of this search setting in the Contacts and Settings
         apps. If not present, the apps display no name.
     - key: SearchBase
-      title: Search Base
+      title: Search base
       type: <string>
       presence: required
       content: The path to the node where a search starts. For example, `ou=people,o=example
@@ -107,3 +106,8 @@ related-status-items:
 - status-items:
   - account.list.ldap
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up an LDAP directory account.
+    file: examples/declarative/declarations/configurations/account.ldap/example1.json

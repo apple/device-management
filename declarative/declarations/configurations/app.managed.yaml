@@ -41,7 +41,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The App Store ID of the managed app that is downloaded from the App Store.
+    The App Store ID of the managed app that's downloaded from the App Store.
 
     Only one of `AppStoreID`, `BundleID`, `ManifestURL`, or `AppComposedIdentifier` needs to be present.
 - key: BundleID
@@ -49,7 +49,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The bundle ID of the managed app that is downloaded from the App Store.
+    The bundle ID of the managed app that's downloaded from the App Store.
 
     Only one of `AppStoreID`, `BundleID`, `ManifestURL`, or `AppComposedIdentifier` needs to be present.
 - key: ManifestURL
@@ -60,13 +60,11 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    The URL of the manifest for the managed app that the device downloads from a web site. The manifest is returned as a `ManifestURL` property list.
+    The URL of the manifest for the managed app that the device downloads from a web site. The manifest is a `ManifestURL` property list.
 
     Only one of `AppStoreID`, `BundleID`, `ManifestURL`, or `AppComposedIdentifier` needs to be present.
-
-    Available only in iOS and visionOS.
 - key: AppComposedIdentifier
-  title: App Composed Identifier
+  title: App composed identifier
   supportedOS:
     iOS:
       introduced: n/a
@@ -77,20 +75,18 @@ payloadkeys:
   type: <string>
   presence: optional
   content: |-
-    A string that specifies the composed identifier of an existing app that needs to be managed. The device uses this to take over management of an app installed by some other process, for example installed manually by the user, or via a package configuration. If the app isn't present when the device applies the configuration, the device takes over management of it when it does install.
+    A string that specifies the composed identifier of an existing app that needs to be managed. The device uses this to take over management of an app installed by some other process, for example installed manually by the user, or via a package configuration. If the app isn't present when the device applies the configuration, the device takes over management of it when it does install. Management of the app occurs only if its code signature matches the composed identifier.
 
     The following rules apply when the device takes over management:
 
     - If the `InstallBehavior.Install` key is set to `Required`, the device takes over management of the app.
     - If the `InstallBehavior.Install` key is set to `Optional`, the device takes over management of the app when the user "installs" it using an MDM management app.
 
-    The format of the composed identifier is either "Bundle-ID (Team-ID)" or "Bundle-ID {Designated-Requirement}". For example, `com.example.app (ABCD1234)` for the team ID format, or `com.example.app {anchor apple generic}` for the designated requirement format. Management of the app occurs only if its code signature matches the composed identifier.
+    The format of the composed identifier is either "Bundle-ID" or "Bundle-ID (Team-ID)". "Bundle-ID" is the bundle identifier string of the provider. "Team-ID" is the team identifier from the provider's code signature. For example, "com.example.app" for the bundle ID format, or "com.example.app (ABCD1234)" for the team ID format.
 
     In macOS, only one of `AppStoreID`, `BundleID`, or `AppComposedIdentifier` needs to be present.
-
-    Available only in macOS.
 - key: iOSApp
-  title: iOS App
+  title: iOS app
   supportedOS:
     iOS:
       introduced: n/a
@@ -101,12 +97,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If `true`, the device installs an iOS or iPadOS app that runs on a Mac with Apple Silicon. This is only used when the app is an App Store app.
-
-    Available only in macOS.
+  content: If `true`, the device installs an iOS or iPadOS app that runs on a Mac
+    with Apple silicon. This is only used when the app is an App Store app.
 - key: InstallBehavior
-  title: Install Behavior
+  title: Install behavior
   type: <dictionary>
   presence: optional
   content: A dictionary that describes how and when to install the app.
@@ -147,7 +141,7 @@ payloadkeys:
 
         This key needs to be present for App Store apps, when either `AppStoreID` or `BundleID` are present in the configuration.
     - key: VPPType
-      title: VPP Type
+      title: VPP type
       supportedOS:
         iOS:
           removed: '18.0'
@@ -179,7 +173,7 @@ payloadkeys:
     type: <integer>
     presence: optional
     content: |-
-      The App Store external version identifier (EVID) of the version of the app the device installs. You can retrieve this value from the App Store. For more information, see `Apps and Books for Organizations`. This key is ignored if the app isn't an App Store app.
+      The App Store external version identifier (EVID) of the version of the app the device installs. You can retrieve this value from the App Store. For more information, see `Apps and books metadata for organizations`. This key is ignored if the app isn't an App Store app.
 
       The following rules apply when the device applies or updates the configuration:
 
@@ -196,7 +190,7 @@ payloadkeys:
       > Note:
       > The device never installs an older version of the app over a newer version.
   - key: AllowDownloadsOverCellular
-    title: Allow Downloads Over Cellular
+    title: Allow downloads over cellular
     supportedOS:
       iOS:
         introduced: '26.0'
@@ -221,10 +215,8 @@ payloadkeys:
       - `StoreSettings`: The device uses the settings for the corresponding store when downloading apps.
 
       The device always uses the store settings to download apps when the install or update operation is user initiated.
-
-      Available only in iOS.
 - key: UpdateBehavior
-  title: Update Behavior
+  title: Update behavior
   supportedOS:
     iOS:
       introduced: '26.0'
@@ -237,7 +229,7 @@ payloadkeys:
   content: A dictionary that specifies how the device updates apps.
   subkeys:
   - key: AutomaticAppUpdates
-    title: Automatic App Updates
+    title: Automatic app updates
     type: <string>
     presence: required
     rangelist:
@@ -251,35 +243,29 @@ payloadkeys:
       - `AlwaysOff`: The device never automatically updates the app.
       - `StoreSettings`: The device uses the settings for the corresponding store to determine when to automatically update the app. For Enterprise apps, this setting behaves the same as `AlwaysOff`.
 
-      When the `InstallBehavior.Version` key is specified, the device ignores this key and Automatic App Updates are disabled.
+      When you specify the `InstallBehavior.Version` key, the device ignores this key and Automatic App Updates are disabled.
 
       In macOS, the device ignores this setting if the `AppComposedIdentifier` key is set in the configuration.
 - key: IncludeInBackup
-  title: Include in Backup
+  title: Include in backup
   supportedOS:
     macOS:
       introduced: n/a
   type: <boolean>
   presence: optional
   default: true
-  content: |-
-    If `true`, backups contain the app and its data.
-
-    Available only in iOS and visionOS.
+  content: If `true`, backups contain the app and its data.
 - key: Attributes
-  title: App Attributes
+  title: App attributes
   supportedOS:
     macOS:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: |-
-    A dictionary of values to associate with the app.
-
-    Available only in iOS and visionOS.
+  content: A dictionary of values to associate with the app.
   subkeys:
   - key: AssociatedDomains
-    title: Associated Domains
+    title: Associated domains
     type: <array>
     presence: optional
     content: An array of domain names to associate with the app.
@@ -290,13 +276,13 @@ payloadkeys:
       presence: required
       content: A domain to be associated with the app.
   - key: AssociatedDomainsEnableDirectDownloads
-    title: Associated Domains Enable Direct Downloads
+    title: Associated domains enable direct downloads
     type: <boolean>
     presence: optional
     default: false
     content: If `true`, the system enables direct downloads for the `AssociatedDomains`.
   - key: CellularSliceUUID
-    title: Cellular Slice UUID
+    title: Cellular slice UUID
     supportedOS:
       visionOS:
         introduced: n/a
@@ -307,12 +293,12 @@ payloadkeys:
       carrier-provided DNN name. For app category, encode the value as "AppCategory:category",
       where "category" is a carrier-provided string such as "Enterprise1".
   - key: ContentFilterUUID
-    title: Content Filter UUID
+    title: Content filter UUID
     type: <string>
     presence: optional
     content: The UUID of the content filter to associate with the app.
   - key: DNSProxyUUID
-    title: DNS Proxy UUID
+    title: DNS proxy UUID
     type: <string>
     presence: optional
     content: The UUID of the DNS proxy to associate with the app.
@@ -347,7 +333,7 @@ payloadkeys:
     presence: optional
     content: The UUID of the relay to associate with the app.
   - key: TapToPayScreenLock
-    title: Tap to Pay Screen Lock
+    title: Tap to pay screen lock
     supportedOS:
       visionOS:
         introduced: n/a
@@ -362,22 +348,19 @@ payloadkeys:
     presence: optional
     content: The UUID of the VPN to associate with the app.
 - key: AppConfig
-  title: App Config
+  title: App config
   supportedOS:
     iOS:
       introduced: '18.4'
     macOS:
-      introduced: n/a
+      introduced: '27.0'
   type: <dictionary>
   presence: optional
-  content: |-
-    A dictionary of app config data and credentials.
-
-    Available only in iOS and visionOS.
+  content: A dictionary of app config data and credentials.
   subkeytype: AppConfigDictionary
   subkeys: &id001
   - key: DataAssetReference
-    title: App/Extension Config Data Asset Reference
+    title: App/Extension config data asset reference
     type: <string>
     assettypes:
     - com.apple.asset.data
@@ -392,7 +375,7 @@ payloadkeys:
       type `com.apple.asset.data`. The referenced data needs to be a property list
       file, and the asset's "ContentType" value set to match the data type.
   - key: Passwords
-    title: Password App/Extension Configs.
+    title: Password App/Extension configs.
     type: <array>
     presence: optional
     content: Provides passwords to the managed app or extension. Each element in the
@@ -401,19 +384,20 @@ payloadkeys:
     subkeytype: CredentialConfig
     subkeys:
     - key: PasswordAppConfigItem
+      title: Password app config item
       type: <dictionary>
       presence: required
       content: A dictionary of values associated with a credential config.
       subkeys:
       - key: Identifier
-        title: Password Identifier
+        title: Password identifier
         type: <string>
         presence: required
         content: The app or extension uses this identifier to fetch the corresponding
           password using the `ManagedApp` framework. App developers define the values
           for these identifiers.
       - key: AssetReference
-        title: Asset Reference
+        title: Asset reference
         type: <string>
         assettypes:
         - com.apple.asset.credential.userpassword
@@ -422,7 +406,7 @@ payloadkeys:
           and password. The `ManagedApp` framework makes the password available to
           the app or extension. The `ManagedApp` framework ignores the username.
   - key: Identities
-    title: Identity App/Extension Configs.
+    title: Identity App/Extension configs.
     type: <array>
     presence: optional
     content: Provides identities to the managed app or extension. Each element in
@@ -431,19 +415,20 @@ payloadkeys:
     subkeytype: CredentialConfig
     subkeys:
     - key: IdentityAppConfigItem
+      title: Identity app config item
       type: <dictionary>
       presence: required
       content: A dictionary of values associated with a credential config.
       subkeys:
       - key: Identifier
-        title: Identity Identifier
+        title: Identity identifier
         type: <string>
         presence: required
         content: The app or extension uses this identifier to fetch the corresponding
           identity using the `ManagedApp` framework. App developers define the values
           for these identifiers.
       - key: AssetReference
-        title: Asset Reference
+        title: Asset reference
         type: <string>
         assettypes:
         - com.apple.asset.credential.identity
@@ -452,7 +437,7 @@ payloadkeys:
         presence: required
         content: Specifies the identifier of an asset declaration containing an identity.
   - key: Certificates
-    title: Certificate App/Extension Configs.
+    title: Certificate App/Extension configs.
     type: <array>
     presence: optional
     content: Provides certificates to the managed app or extension. Each element in
@@ -461,53 +446,53 @@ payloadkeys:
     subkeytype: CredentialConfig
     subkeys:
     - key: CertificateAppConfigItem
+      title: Certificate app config item
       type: <dictionary>
       presence: required
       content: A dictionary of values associated with a credential config.
       subkeys:
       - key: Identifier
-        title: Certificate Identifier
+        title: Certificate identifier
         type: <string>
         presence: required
         content: The app or extension uses this identifier to fetch the corresponding
           certificate using the `ManagedApp` framework. App developers define the
           values for these identifiers.
       - key: AssetReference
-        title: Asset Reference
+        title: Asset reference
         type: <string>
         assettypes:
         - com.apple.asset.credential.certificate
         presence: required
         content: Specifies the identifier of an asset declaration containing a certificate.
 - key: ExtensionConfigs
-  title: Extension Configs
+  title: Extension configs
   supportedOS:
     iOS:
       introduced: '18.4'
     macOS:
-      introduced: n/a
+      introduced: '27.0'
   type: <dictionary>
   presence: optional
-  content: |-
-    A dictionary of extension config data and credentials.
-
-    Available only in iOS and visionOS.
+  content: A dictionary of extension config data and credentials.
   subkeys:
   - key: ANY
-    title: Extension Composed Identifier
+    title: Extension composed identifier
     type: <dictionary>
     presence: optional
-    content: A dictionary mapping extension composed identifiers to the extension
-      config data and credentials. The expected format is "Identifier (TeamIdentifier)".
+    content: |-
+      A dictionary mapping extension composed identifiers to the extension config data and credentials.
+
+      The format of the composed identifier is either "Bundle-ID" or "Bundle-ID (Team-ID)". "Bundle-ID" is the bundle identifier string of the provider. "Team-ID" is the team identifier from the provider's code signature. For example, "com.example.app" for the bundle ID format, or "com.example.app (ABCD1234)" for the team ID format.
     subkeytype: AppConfigDictionary
     subkeys: *id001
 - key: LegacyAppConfigAssetReference
-  title: App Config MDMv1 Asset Reference
+  title: App config MDMv1 asset reference
   supportedOS:
     iOS:
       introduced: '18.4'
     macOS:
-      introduced: n/a
+      introduced: '27.0'
   type: <string>
   assettypes:
   - com.apple.asset.data
@@ -520,9 +505,26 @@ payloadkeys:
   content: |-
     The identifier of an asset declaration containing a reference to the app config data. The device provides the app config data to the app using the MDMv1 behavior. The corresponding asset needs to be of type `com.apple.asset.data`. The referenced data needs to be a property list file, and the asset's "ContentType"
     value set to match the data type.
-
-    Available only in iOS and visionOS.
 related-status-items:
 - status-items:
   - app.managed.list
   note: Each configuration has a corresponding status item.
+examples:
+  title: Configuration examples
+  files:
+  - tab: App Store
+    description: This configuration installs an App Store app with `Required` install
+      behavior and a device license.
+    file: examples/declarative/declarations/configurations/app.managed/example1.json
+  - tab: Enterprise
+    description: This configuration installs an enterprise app with app attributes,
+      cellular downloads disallowed, and an update policy.
+    file: examples/declarative/declarations/configurations/app.managed/example2.json
+  - tab: Packaged
+    description: This configuration manages an app installed by a package using a
+      composed identifier to identify the app.
+    file: examples/declarative/declarations/configurations/app.managed/example3.json
+  - tab: Configuration
+    description: This configuration installs an enterprise app with declarative app
+      configuration for the app and an extension.
+    file: examples/declarative/declarations/configurations/app.managed/example4.json

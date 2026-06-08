@@ -29,24 +29,23 @@ payload:
     watchOS:
       introduced: n/a
   apply: combined
-  content: Configures External Intelligence Integrations settings.
 payloadkeys:
 - key: Enabled
-  title: Allow External Intelligence Integrations
+  title: Allow external intelligence integrations
   type: <boolean>
   presence: optional
   default: true
   combinetype: boolean-and
   content: If `false`, disables external intelligence integrations.
 - key: AllowSignIn
-  title: Allow External Intelligence Integrations Sign In
+  title: Allow external intelligence integrations sign in
   type: <boolean>
   presence: optional
   default: true
   combinetype: boolean-and
   content: If `false`, disables sign-in for external intelligence integrations.
 - key: AllowedWorkspaceIDs
-  title: Allowed External Intelligence Workspace IDs
+  title: Allowed external intelligence workspace IDs
   type: <array>
   presence: optional
   combinetype: set-intersection
@@ -57,5 +56,11 @@ payloadkeys:
     operation.
   subkeys:
   - key: workspaceID
-    title: Allowed Workspace ID
+    title: Allowed workspace ID
     type: <string>
+examples:
+  title: Configuration examples
+  files:
+  - tab: External Intelligence Restrictions
+    description: This configuration restricts external intelligence integrations.
+    file: examples/declarative/declarations/configurations/external-intelligence.settings/example1.json

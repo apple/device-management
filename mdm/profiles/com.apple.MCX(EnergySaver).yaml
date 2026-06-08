@@ -147,3 +147,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, disables sleep.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.MCX(EnergySaver)/example1.plist

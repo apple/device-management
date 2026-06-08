@@ -118,10 +118,8 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: |-
-    The per-enrollment identifier for the device. The system requires this value if the enrollment type is a user enrollment.
-
-    Available in iOS 13 and later, macOS 10.15 and later, and visionOS 2 and later.
+  content: The per-enrollment identifier for the device. The system requires this
+    value if the enrollment type is a user enrollment.
 - key: OSVersion
   supportedOS:
     iOS:

@@ -1,0 +1,82 @@
+title: Status Content Cache Peers
+description: The status item that reports information about the Content Cache service
+  peer caches.
+payload:
+  statusitemtype: content-cache.peers
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: content-cache.peers
+  title: Content cache peers
+  type: <array>
+  presence: required
+  content: An array of dictionaries that describes peer Content Caches.
+  subkeys:
+  - key: peer-item
+    title: Peer item
+    type: <dictionary>
+    presence: optional
+    content: A peer Content Cache.
+    subkeys:
+    - key: identifier
+      title: Peer GUID
+      type: <string>
+      presence: required
+      content: The unique identifier of the peer Content Cache.
+    - key: _removed
+      title: Indicates removal of the entry.
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If `true`, the system removed the peer entry and only this key and
+        the `identifier` key are present in the status item object.
+    - key: address
+      title: IP address
+      type: <string>
+      presence: required
+      content: The local IPv4 address of the peer Content Cache.
+    - key: port
+      title: Port
+      type: <integer>
+      presence: required
+      content: The IP port number the peer Content Cache listens to for requests.
+    - key: friendly
+      title: Friendly
+      type: <boolean>
+      presence: required
+      content: If `true`, the peer Content Cache is willing to respond to requests
+        from this Content Cache.
+    - key: healthy
+      title: Cache health
+      type: <boolean>
+      presence: required
+      content: If `true`, the peer Content Cache is able to respond to requests from
+        this Content Cache.
+    - key: version
+      title: Version
+      type: <string>
+      presence: required
+      content: The version number of the peer Content Cache software.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated peer
+    description: Reports a new or updated peer.
+    file: data/docc-examples/remotemanagementmodel/status/content-cache.peers/example1.json
+  - tab: Removed peer
+    description: Reports a removed peer.
+    file: data/docc-examples/remotemanagementmodel/status/content-cache.peers/example2.json

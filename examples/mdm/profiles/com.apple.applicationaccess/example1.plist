@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>allowActivityContinuation</key>
+            <false/>
+            <key>blockedAppBundleIDs</key>
+            <array>
+                <string>com.apple.mobilesafari</string>
+            </array>
+            <key>ratingApps</key>
+            <integer>500</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myrestrictionspayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.applicationaccess</string>
+            <key>PayloadUUID</key>
+            <string>53bec1be-ffec-4f88-acbd-b02aee8f04a9</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Restrictions</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>6020206c-12c2-4ada-987a-dd4c560ca73a</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

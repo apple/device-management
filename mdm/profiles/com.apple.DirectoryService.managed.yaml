@@ -272,3 +272,7 @@ payloadkeys:
   presence: optional
   content: The number of days before requiring a change of the computer trust account
     password. Set to `0` to disable the feature.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.DirectoryService.managed/example1.plist

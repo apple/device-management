@@ -40,14 +40,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the device reports restrictions from each profile. This value
-    is available in iOS 4 and later, and tvOS 6.1 and later.
+  content: If `true`, the device reports restrictions from each profile.
 responsekeys:
 - key: GlobalRestrictions
   type: <dictionary>
   presence: required
-  content: A dictionary that contains the global restrictions in effect. This value
-    is available in iOS 4 and later, and tvOS 6.1 and later.
+  content: A dictionary that contains the global restrictions in effect.
   subkeytype: RestrictionsDictionary
   subkeys: &id001
   - key: restrictedBool
@@ -124,8 +122,7 @@ responsekeys:
   presence: required
   content: A dictionary that contains dictionaries of restrictions from each profile.
     This value is only available when `ProfileRestrictions` is `true` in the command.
-    The keys are the identifiers of the profiles. This value is available in iOS 4
-    and later, and tvOS 6.1 and later.
+    The keys are the identifiers of the profiles.
   subkeys:
   - key: ANY profile identifier
     type: <dictionary>
@@ -138,3 +135,8 @@ notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.restrictions.list/example1.plist
+    response-file: examples/mdm/commands/device.restrictions.list/example2.plist

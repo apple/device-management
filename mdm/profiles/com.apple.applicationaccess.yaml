@@ -69,7 +69,7 @@ payloadkeys:
   content: If `false`, the system disables modification of accounts, such as Apple
     Accounts, and internet-based accounts, such as Mail, Contacts, and Calendar.
 - key: allowActivityContinuation
-  title: Allow Handoff
+  title: Allow handoff
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -95,7 +95,7 @@ payloadkeys:
     In a future release, this restriction will begin requiring supervision and will
     apply to personal Apple Accounts only.
 - key: allowAddingGameCenterFriends
-  title: Allow Adding Game Center Friends
+  title: Allow adding Game Center friends
   supportedOS:
     iOS:
       introduced: 4.2.1
@@ -182,7 +182,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables AirPrint.
 - key: allowAirPrintCredentialsStorage
-  title: Allow storage of AirPrint credentials in Keychain
+  title: Allow storage of AirPrint credentials in keychain
   supportedOS:
     iOS:
       introduced: '11.0'
@@ -224,7 +224,7 @@ payloadkeys:
   content: If `false`, the system disables iBeacon discovery of AirPrint printers,
     which prevents spurious AirPrint Bluetooth beacons from phishing for network traffic.
 - key: allowAppCellularDataModification
-  title: Allow Modifying Cellular Data Usage for Apps Settings
+  title: Allow modifying cellular data usage for apps settings
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -266,7 +266,7 @@ payloadkeys:
   content: If `false`, the system prevents a user from adding any App Clips, and removes
     any existing App Clips on the device.
 - key: allowAppInstallation
-  title: Allow App Installation
+  title: Allow app installation
   supportedOS:
     iOS:
       supervised: true
@@ -291,7 +291,7 @@ payloadkeys:
 
     In iOS 10 and later, MDM commands can override this restriction. Requires a supervised device in iOS 13 and later.
 - key: allowAppleIntelligenceReport
-  title: Allow Apple Intelligence Report
+  title: Allow Apple Intelligence report
   supportedOS:
     iOS:
       introduced: '18.4'
@@ -315,7 +315,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables Apple Intelligence reports.
+  content: |-
+    If `false`, the system disables Apple Intelligence reports.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowApplePersonalizedAdvertising
   supportedOS:
     iOS:
@@ -341,7 +344,7 @@ payloadkeys:
   default: true
   content: If `false`, the system limits Apple personalized advertising.
 - key: allowAppRemoval
-  title: Allow App Removal
+  title: Allow app removal
   supportedOS:
     iOS:
       introduced: 4.2.1
@@ -363,7 +366,7 @@ payloadkeys:
     applies to App Store apps, marketplace apps, and locally installed apps (using
     Configurator, Xcode, and so forth).
 - key: allowAppsToBeHidden
-  title: Allow Hiding Apps
+  title: Allow hiding apps
   supportedOS:
     iOS:
       introduced: '18.0'
@@ -387,7 +390,7 @@ payloadkeys:
     affect the user's ability to leave it in the App Library, while removing it from
     the Home Screen.
 - key: allowAppsToBeLocked
-  title: Allow Locking Apps
+  title: Allow locking apps
   supportedOS:
     iOS:
       introduced: '18.0'
@@ -450,7 +453,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables Siri.
+  content: |-
+    If `false`, the system disables Siri.
+
+    Deprecated: use the declarative management `com.apple.configuration.siri.settings` configuration.
 - key: allowAssistantUserGeneratedContent
   supportedOS:
     iOS:
@@ -471,10 +477,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system prevents Siri from querying user-generated content
-    from the web.
+  content: |-
+    If `false`, the system prevents Siri from querying user-generated content from the web.
+
+    Deprecated: use the declarative management `com.apple.configuration.siri.settings` configuration.
 - key: allowAssistantWhileLocked
-  title: Allow Siri While Locked
+  title: Allow Siri while locked
   supportedOS:
     iOS:
       introduced: '5.1'
@@ -490,10 +498,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables Siri when the device is locked. The system
-    ignores this restriction if the device doesn't have a passcode set.
+  content: |-
+    If `false`, the system disables Siri when the device is locked. The system ignores this restriction if the device doesn't have a passcode set.
+
+    Deprecated: use the declarative management `com.apple.configuration.siri.settings` configuration.
 - key: allowAutoCorrection
-  title: Allow Auto Correction
+  title: Allow auto correction
   supportedOS:
     iOS:
       introduced: 8.1.3
@@ -512,9 +522,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables keyboard autocorrection.
+  content: |-
+    If `false`, the system disables keyboard autocorrection.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowAutoDim
-  title: Allow Auto Dim
+  title: Allow auto dim
   supportedOS:
     iOS:
       introduced: '17.4'
@@ -536,7 +549,7 @@ payloadkeys:
   default: true
   content: If `false`, disables auto dim on iPads with OLED displays.
 - key: allowAutomaticAppDownloads
-  title: Allow Automatic App Downloads
+  title: Allow automatic app downloads
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -611,7 +624,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '27.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -619,7 +635,7 @@ payloadkeys:
   default: true
   content: If `false`, the system prevents modification of Bluetooth settings.
 - key: allowBluetoothSharingModification
-  title: Allow modifying Bluetooth Sharing setting
+  title: Allow modifying Bluetooth sharing setting
   supportedOS:
     iOS:
       introduced: n/a
@@ -639,7 +655,7 @@ payloadkeys:
   content: If `false`, the system prevents modifying Bluetooth settings in System
     Settings.
 - key: allowBookstore
-  title: Allow Bookstore
+  title: Allow Book Store
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -661,7 +677,7 @@ payloadkeys:
   default: true
   content: If `false`, the system removes the Book Store tab from the Books app.
 - key: allowBookstoreErotica
-  title: Allow Bookstore Erotica
+  title: Allow Book Store erotica
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -685,7 +701,7 @@ payloadkeys:
     that's tagged as erotica. Support for this restriction on unsupervised devices
     is deprecated.
 - key: allowCallRecording
-  title: Allow Call Recording
+  title: Allow call recording
   supportedOS:
     iOS:
       introduced: '18.1'
@@ -709,7 +725,7 @@ payloadkeys:
   default: true
   content: If `false`, disables call recording.
 - key: allowCamera
-  title: Allow Camera Use
+  title: Allow camera use
   supportedOS:
     iOS:
       userenrollment:
@@ -765,7 +781,10 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '27.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -793,7 +812,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables iCloud Contacts services.
 - key: allowCloudBackup
-  title: Allow iCloud Backup
+  title: Allow iCloud backup
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -869,7 +888,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables iCloud Desktop and Document services.
 - key: allowCloudDocumentSync
-  title: Allow iCloud Document Sync
+  title: Allow iCloud document sync
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -977,7 +996,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables iCloud Notes services.
 - key: allowCloudPhotoLibrary
-  title: Allow iCloud Photo Library
+  title: Allow iCloud photo library
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -1066,7 +1085,7 @@ payloadkeys:
   content: If `false`, the system disables content caching. This restriction is not
     supported on the user channel.
 - key: allowContinuousPathKeyboard
-  title: Allow Continuous Path Keyboard
+  title: Allow continuous path keyboard
   supportedOS:
     iOS:
       introduced: '13.0'
@@ -1085,7 +1104,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables QuickPath keyboard.
+  content: |-
+    If `false`, the system disables QuickPath keyboard.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowDefaultBrowserModification
   title: Allow default browser modification
   supportedOS:
@@ -1152,7 +1174,7 @@ payloadkeys:
     MDM Settings command to set the default messaging app preference still works when
     applying this.
 - key: allowDefinitionLookup
-  title: Allow Define
+  title: Allow definition lookup
   supportedOS:
     iOS:
       introduced: 8.1.3
@@ -1174,9 +1196,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables definition lookup.
+  content: |-
+    If `false`, the system disables definition lookup.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowDeviceNameModification
-  title: Allow Modifying Device Name
+  title: Allow modifying device name
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -1202,7 +1227,7 @@ payloadkeys:
   default: true
   content: If `false`, the system prevents the user from changing the device name.
 - key: allowDeviceSleep
-  title: Allow Device Sleep
+  title: Allow device sleep
   supportedOS:
     iOS:
       introduced: n/a
@@ -1282,9 +1307,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disallows dictation input.
+  content: |-
+    If `false`, the system disallows dictation input.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowedCameraRestrictionBundleIDs
-  title: Allowed Exceptions to Camera Restriction
+  title: Allowed exceptions to camera restriction
   supportedOS:
     iOS:
       introduced: '26.0'
@@ -1314,7 +1342,7 @@ payloadkeys:
     title: Bundle ID to be excepted
     type: <string>
 - key: allowedExternalIntelligenceWorkspaceIDs
-  title: Allowed External Intelligence Workspace IDs
+  title: Allowed external intelligence workspace IDs
   supportedOS:
     iOS:
       introduced: '18.3'
@@ -1344,18 +1372,16 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: An array of strings, but currently restricted to a single element. If present,
-    Apple Intelligence allows use of only the given external integration workspace
-    ID, and requires a sign-in to make requests. The user is required to sign in to
-    integrations that support signing in. Multiple payloads combine using an intersect
-    operation. This means the allowed set of workspace IDs can become the empty set
-    if multiple payloads specify conflicting values.
+  content: |-
+    An array of strings, but currently restricted to a single element. If present, Apple Intelligence allows use of only the given external integration workspace ID, and requires a sign-in to make requests. The user is required to sign in to integrations that support signing in. Multiple payloads combine using an intersect operation. This means the allowed set of workspace IDs can become the empty set if multiple payloads specify conflicting values.
+
+    Deprecated: use the declarative management `com.apple.configuration.external-intelligence.settings` configuration.
   subkeys:
   - key: allowedWorkspaceID
-    title: Allowed Workspace ID
+    title: Allowed workspace ID
     type: <string>
 - key: allowEnablingRestrictions
-  title: Allow Configuring Restrictions or ScreenTime
+  title: Allow configuring restrictions or ScreenTime
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -1383,7 +1409,7 @@ payloadkeys:
     ScreenTime option in the ScreenTime UI in Settings and disables ScreenTime if
     already enabled.
 - key: allowEnterpriseAppTrust
-  title: Allow Trusting Enterprise Apps
+  title: Allow trusting enterprise apps
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -1408,7 +1434,7 @@ payloadkeys:
     accounts and enterprise app developers that aren't implicitly trusted by apps
     that install through MDM. This restriction doesn't revoke previously granted trust.
 - key: allowEnterpriseBookBackup
-  title: Allow Enterprise Books Backup
+  title: Allow enterprise books backup
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -1425,7 +1451,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables backup of Enterprise books.
 - key: allowEnterpriseBookMetadataSync
-  title: Allow Enterprise Books Notes and Highlights Sync
+  title: Allow enterprise books notes and highlights sync
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -1442,7 +1468,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables sync of Enterprise books, notes, and highlights.
 - key: allowEraseContentAndSettings
-  title: Allow Erase All Content and Settings
+  title: Allow erase all content and settings
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -1468,7 +1494,7 @@ payloadkeys:
   content: If `false`, the system disables the Erase All Content and Settings option
     in the Reset UI.
 - key: allowESIMModification
-  title: Allow eSIM Modification
+  title: Allow eSIM modification
   supportedOS:
     iOS:
       introduced: '12.1'
@@ -1486,9 +1512,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables modifications of eSIMs.
+  content: If `false`, the system disables modifications of eSIMs. This also disables
+    the phone number sharing setup on iPhones, in iOS 27 and later.
 - key: allowESIMOutgoingTransfers
-  title: Allow eSIM Outgoing Transfers
+  title: Allow eSIM outgoing transfers
   supportedOS:
     iOS:
       introduced: '18.0'
@@ -1509,7 +1536,7 @@ payloadkeys:
   content: If `false`, prevents the transfer of an eSIM from the device on which the
     restriction is installed to a different device.
 - key: allowExplicitContent
-  title: Allow Explicit Content
+  title: Allow explicit content
   supportedOS:
     iOS:
       supervised: true
@@ -1560,10 +1587,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables the use of external, cloud-based intelligence services
-    with Siri. In iOS, this restriction is temporarily allowed on unsupervised and
-    user enrollments. In a future release, this restriction will require supervision,
-    and will be ignored on unsupervised devices.
+  content: |-
+    If `false`, disables the use of external, cloud-based intelligence services with Siri. In iOS, this restriction is temporarily allowed on unsupervised and user enrollments. In a future release, this restriction will require supervision, and will be ignored on unsupervised devices.
+
+    Deprecated: use the declarative management `com.apple.configuration.external-intelligence.settings` configuration.
 - key: allowExternalIntelligenceIntegrationsSignIn
   title: Allow external intelligence integrations sign-in
   supportedOS:
@@ -1591,11 +1618,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, forces external intelligence providers into anonymous mode.
-    If a user is already signed in to an external intelligence provider, applying
-    this restriction signs them out when attempting the next request.
+  content: |-
+    If `false`, forces external intelligence providers into anonymous mode. If a user is already signed in to an external intelligence provider, applying this restriction signs them out when attempting the next request.
+
+    Deprecated: use the declarative management `com.apple.configuration.external-intelligence.settings` configuration.
 - key: allowFileSharingModification
-  title: Allow modifying File Sharing setting
+  title: Allow modifying file sharing setting
   supportedOS:
     iOS:
       introduced: n/a
@@ -1723,7 +1751,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables changes to Find My Friends.
 - key: allowFingerprintForUnlock
-  title: Allow Touch ID to Unlock Device
+  title: Allow Touch ID to unlock device
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -1747,7 +1775,7 @@ payloadkeys:
   content: If `false`, the system prevents Touch ID, Face ID, or Optic ID from unlocking
     a device. Support for this restriction on unsupervised devices is deprecated.
 - key: allowFingerprintModification
-  title: Allow Modifying Touch ID Fingerprints
+  title: Allow modifying Touch ID fingerprints
   supportedOS:
     iOS:
       introduced: '8.3'
@@ -1826,9 +1854,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, prohibits creating new Genmoji.
+  content: |-
+    If `false`, prohibits creating new Genmoji.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowGlobalBackgroundFetchWhenRoaming
-  title: Allow Automatic Sync While Roaming
+  title: Allow automatic sync while roaming
   supportedOS:
     iOS:
       userenrollment:
@@ -1898,7 +1929,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, prohibits the use of image generation.
+  content: |-
+    If `false`, prohibits the use of image generation.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowImageWand
   title: Allow Image Wand
   supportedOS:
@@ -1925,9 +1959,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, prohibits the use of Image Wand.
+  content: |-
+    If `false`, prohibits the use of Image Wand.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowInAppPurchases
-  title: Allow In App Purchases
+  title: Allow in app purchases
   supportedOS:
     iOS:
       userenrollment:
@@ -1946,7 +1983,7 @@ payloadkeys:
   content: If `false`, the system prohibits in-app purchasing. Support for this restriction
     on unsupervised devices is deprecated.
 - key: allowInternetSharingModification
-  title: Allow modifying Internet Sharing setting
+  title: Allow modifying internet sharing setting
   supportedOS:
     iOS:
       introduced: n/a
@@ -2054,7 +2091,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables iTunes file sharing services.
 - key: allowKeyboardShortcuts
-  title: Allow Keyboard Shortcuts
+  title: Allow keyboard shortcuts
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -2073,12 +2110,16 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables keyboard shortcuts.
+  content: |-
+    If `false`, the system disables keyboard shortcuts.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowListedAppBundleIDs
-  title: Allow Listed Apps
+  title: Allow listed apps
   supportedOS:
     iOS:
       introduced: '15.0'
+      deprecated: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -2086,23 +2127,28 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: '15.0'
+      deprecated: '27.0'
       supervised: true
     visionOS:
-      introduced: n/a
+      introduced: '27.0'
+      deprecated: '27.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <array>
   presence: optional
-  content: If present, the system only shows or can launch apps with bundle IDs in
-    the array. Include the value `com.apple.webapp` to allow all webclips. This applies
-    to App Store apps, marketplace apps, and locally installed apps (using Configurator,
-    Xcode, and so forth).
+  content: |-
+    If present, the system only shows or can launch apps with bundle IDs in the array. Include the value `com.apple.webapp` to allow all webclips. This applies to App Store apps, marketplace apps, and locally installed apps (using Configurator, Xcode, and so forth).
+
+    Deprecated: use the declarative management `com.apple.configuration.app.settings` configuration.
   subkeys:
   - key: appAllowlistedBundleID
-    title: Allow Listed App
+    title: Allow listed app
     type: <string>
 - key: allowLiveVoicemail
-  title: Allow Live Voicemail
+  title: Allow live voicemail
   supportedOS:
     iOS:
       introduced: '17.2'
@@ -2241,7 +2287,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables smart replies in Mail.
+  content: |-
+    If `false`, disables smart replies in Mail.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowMailSummary
   supportedOS:
     iOS:
@@ -2270,10 +2319,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables the ability to create summaries of email messages
-    manually. This doesn't affect automatic summary generation.
+  content: |-
+    If `false`, disables the ability to create summaries of email messages manually. This doesn't affect automatic summary generation.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowManagedAppsCloudSync
-  title: Allow iCloud Sync for Managed Apps
+  title: Allow iCloud sync for managed apps
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -2317,7 +2368,7 @@ payloadkeys:
     > Important:
     > Use MDM to install profiles that contain this restriction.
 - key: allowMarketplaceAppInstallation
-  title: Allow App Installation from alternative marketplaces
+  title: Allow app installation from alternative marketplaces
   supportedOS:
     iOS:
       introduced: '17.4'
@@ -2360,7 +2411,7 @@ payloadkeys:
   default: true
   content: If `false`, prevents modification of Media Sharing settings.
 - key: allowMultiplayerGaming
-  title: Allow Multiplayer Gaming
+  title: Allow multiplayer gaming
   supportedOS:
     iOS:
       introduced: '4.1'
@@ -2467,7 +2518,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables transcription in Notes.
+  content: |-
+    If `false`, disables transcription in Notes.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowNotesTranscriptionSummary
   supportedOS:
     iOS:
@@ -2492,9 +2546,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables transcription summarization in Notes.
+  content: |-
+    If `false`, disables transcription summarization in Notes.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowNotificationsModification
-  title: Allow Modifying Notifications Settings
+  title: Allow modifying notifications settings
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -2572,7 +2629,7 @@ payloadkeys:
   content: If `false`, the system disables over-the-air PKI updates. Setting this
     restriction to `false` doesn't disable CRL and OCSP checks.
 - key: allowPairedWatch
-  title: Allow Pairing With Apple Watch
+  title: Allow pairing with Apple Watch
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -2593,7 +2650,7 @@ payloadkeys:
   content: If `false`, the system disables pairing with an Apple Watch, and the system
     unpairs any currently paired Apple Watch and erases its content.
 - key: allowPassbookWhileLocked
-  title: Allow Wallet While Locked
+  title: Allow Wallet while locked
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -2612,7 +2669,7 @@ payloadkeys:
   default: true
   content: If `false`, the system hides Passbook notifications from the Lock Screen.
 - key: allowPasscodeModification
-  title: Allow Modifying Passcode
+  title: Allow modifying passcode
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -2721,7 +2778,7 @@ payloadkeys:
   content: If `false`, the system disables sharing passwords with the AirDrop passwords
     feature, or with the Passwords app.
 - key: allowPersonalHotspotModification
-  title: Allow modifying Personal Hotspot settings
+  title: Allow modifying personal hotspot settings
   supportedOS:
     iOS:
       introduced: '12.2'
@@ -2762,7 +2819,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If false, prevents the system from generating text in the user's handwriting.
+  content: |-
+    If false, prevents the system from generating text in the user's handwriting.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowPhotoStream
   title: Allow Photo Stream
   supportedOS:
@@ -2803,7 +2863,7 @@ payloadkeys:
   default: true
   content: If `false`, the system disables podcasts.
 - key: allowPredictiveKeyboard
-  title: Allow Predictive Keyboard
+  title: Allow predictive keyboard
   supportedOS:
     iOS:
       introduced: 8.1.3
@@ -2822,7 +2882,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables predictive keyboards.
+  content: |-
+    If `false`, the system disables predictive keyboards.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowPrinterSharingModification
   title: Allow modifying Printer Sharing setting
   supportedOS:
@@ -2867,7 +2930,7 @@ payloadkeys:
     Starting with iOS 26.3, this also prevents exporting iOS data to set up new Android
     devices.
 - key: allowRadioService
-  title: Allow iTunes Radio
+  title: Allow iTunes radio
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -2887,17 +2950,19 @@ payloadkeys:
   default: true
   content: If `false`, the system disables Apple Music Radio.
 - key: allowRapidSecurityResponseInstallation
-  title: Allow Background Security Improvement Installation
+  title: Allow Background Security Improvements installation
   supportedOS:
     iOS:
       introduced: '16.0'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
     macOS:
       introduced: '13.0'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -2909,19 +2974,24 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system prohibits installation of Background Security Improvements.
+  content: |-
+    If `false`, the system prohibits installation of Background Security Improvements.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: allowRapidSecurityResponseRemoval
-  title: Allow Background Security Improvement Removal
+  title: Allow Background Security Improvements removal
   supportedOS:
     iOS:
       introduced: '16.0'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
     macOS:
       introduced: '13.0'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -2933,7 +3003,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system prohibits removal of Background Security Improvements.
+  content: |-
+    If `false`, the system prohibits removal of Background Security Improvements.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: allowRCSMessaging
   supportedOS:
     iOS:
@@ -2954,7 +3027,7 @@ payloadkeys:
   default: true
   content: If `false`, prevents the use of RCS messaging.
 - key: allowRemoteAppleEventsModification
-  title: Allow modifying Remote Apple Events Sharing setting
+  title: Allow modifying remote Apple Events Sharing setting
   supportedOS:
     iOS:
       introduced: n/a
@@ -2993,7 +3066,7 @@ payloadkeys:
   content: If `false`, the system disables pairing Apple TV for use with the Control
     Center widget.
 - key: allowRemoteScreenObservation
-  title: Allow Remote Screen Observation
+  title: Allow remote screen observation
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -3032,9 +3105,9 @@ payloadkeys:
   presence: optional
   default: true
   content: If `false`, disables Rosetta usage awareness. When Rosetta usage awareness
-    is active, a pop-up dialog is displayed to the user when an app that is using
-    Rosetta is launched. The pop-up dialog indicates that Rosetta will be removed
-    in a future version of the operating system so that the user can contact the app
+    is active, the device displays a pop-up dialog to the user when launching an app
+    that uses Rosetta. The pop-up dialog indicates that Rosetta will be removed in
+    a future version of the operating system so that the user can contact the app
     vendor regarding a replacement for the current app.
 - key: allowSafari
   title: Allow use of Safari
@@ -3141,7 +3214,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables the ability to summarize content in Safari.
+  content: |-
+    If `false`, the system disables the ability to summarize content in Safari.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowSatelliteConnection
   title: Allow use of satellite connectivity
   supportedOS:
@@ -3166,7 +3242,7 @@ payloadkeys:
   content: If `false`, the system prohibits the connection to and use of satellite
     services.
 - key: allowScreenShot
-  title: Allow Screenshots and Screen Recording
+  title: Allow screenshots and screen recording
   supportedOS:
     iOS:
       introduced: '3.1'
@@ -3204,7 +3280,7 @@ payloadkeys:
   default: true
   content: If `false`, the system makes temporary sessions unavailable on Shared iPad.
 - key: allowSharedStream
-  title: Allow Shared Stream
+  title: Allow shared stream
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -3224,7 +3300,7 @@ payloadkeys:
   content: If `false`, the system disables Shared Photo Stream. Support for this restriction
     on unsupervised devices is deprecated.
 - key: allowSpellCheck
-  title: Allow Spell Check
+  title: Allow spell check
   supportedOS:
     iOS:
       introduced: 8.1.3
@@ -3243,9 +3319,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables the keyboard spell checker.
+  content: |-
+    If `false`, the system disables the keyboard spell checker.
+
+    Deprecated: use the declarative management `com.apple.configuration.keyboard.settings` configuration.
 - key: allowSpotlightInternetResults
-  title: Allow Siri Suggestions
+  title: Allow Siri suggestions
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -3267,7 +3346,7 @@ payloadkeys:
   content: If `false`, the system disables Spotlight Internet search results in Siri
     Suggestions. Support for this restriction on unsupervised devices is deprecated.
 - key: allowStartupDiskModification
-  title: Allow modifying Startup Disk settings
+  title: Allow modifying startup disk settings
   supportedOS:
     iOS:
       introduced: n/a
@@ -3328,9 +3407,9 @@ payloadkeys:
   presence: optional
   default: true
   content: If `false`, the system prevents modification of Time Machine settings in
-    System Settings. This restriction is not supported on the user channel.
+    System Settings. This restriction isn't supported on the user channel.
 - key: allowUIAppInstallation
-  title: Allow App Installation from App Store
+  title: Allow app installation from app store
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -3356,7 +3435,7 @@ payloadkeys:
 
     In iOS 10 and later, MDM commands can override this restriction.
 - key: allowUIConfigurationProfileInstallation
-  title: Allow UI Configuration Profile Installation
+  title: Allow UI configuration profile installation
   supportedOS:
     iOS:
       introduced: '6.0'
@@ -3488,9 +3567,9 @@ payloadkeys:
   content: If `false`, the system allows iOS devices to always connect to USB accessories
     while locked. In macOS, allows new USB and Thunderbolt accessories, and SD cards
     to connect without authorization. If the system has Lockdown mode enabled, it
-    ignores this value. This restriction is not supported on the user channel.
+    ignores this value. This restriction isn't supported on the user channel.
 - key: allowVideoConferencing
-  title: Allow Video Conferencing
+  title: Allow video conferencing
   supportedOS:
     iOS:
       supervised: true
@@ -3513,7 +3592,7 @@ payloadkeys:
   content: If `false`, the system hides the FaceTime app. Requires a supervised device
     in iOS 13 and later.
 - key: allowVideoConferencingRemoteControl
-  title: Allow Video Conferencing Remote Control
+  title: Allow video conferencing remote control
   supportedOS:
     iOS:
       introduced: '18.4'
@@ -3534,7 +3613,7 @@ payloadkeys:
   content: If `false`, disables the ability for a remote FaceTime session to request
     control of the device.
 - key: allowVisualIntelligenceSummary
-  title: Allow Visual Intelligence Summary
+  title: Allow visual intelligence summary
   supportedOS:
     iOS:
       introduced: '18.3'
@@ -3555,9 +3634,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables visual intelligence summarization.
+  content: |-
+    If `false`, the system disables visual intelligence summarization.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: allowVoiceDialing
-  title: Allow Voice Dialing While Device is Locked
+  title: Allow voice dialing while device is locked
   supportedOS:
     iOS:
       deprecated: '17.0'
@@ -3577,7 +3659,7 @@ payloadkeys:
   content: If `false`, the system disables voice dialing if the device is locked with
     a passcode.
 - key: allowVPNCreation
-  title: Allow Adding VPN Configurations (Supervised devices only)
+  title: Allow adding VPN configurations (supervised devices only)
   supportedOS:
     iOS:
       introduced: '11.0'
@@ -3601,7 +3683,7 @@ payloadkeys:
   content: If `false`, the system allows only managed apps to create VPN configurations.
     Prior to iOS 18, the system also allows unmanaged apps to create VPN configurations.
 - key: allowWallpaperModification
-  title: Allow Modifying Wallpaper
+  title: Allow modifying wallpaper
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -3623,7 +3705,7 @@ payloadkeys:
   default: true
   content: If `false`, the system prevents changing the wallpaper.
 - key: allowWebDistributionAppInstallation
-  title: Allow App Installation from web sites
+  title: Allow app installation from web sites
   supportedOS:
     iOS:
       introduced: '17.5'
@@ -3674,7 +3756,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, disables Apple Intelligence writing tools.
+  content: |-
+    If `false`, disables Apple Intelligence writing tools.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: autonomousSingleAppModePermittedAppIDs
   supportedOS:
     iOS:
@@ -3696,10 +3781,10 @@ payloadkeys:
     in the array to autonomously enter Single App Mode.
   subkeys:
   - key: appAutonomousSingleAppModePermittedID
-    title: Apps allow list for Autonomous Single App Mode
+    title: Apps allow list for autonomous single app mode
     type: <string>
 - key: blacklistedAppBundleIDs
-  title: Blacklisted Apps
+  title: Blacklisted apps
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -3719,16 +3804,18 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: Use `blockedAppBundleIDs` instead.
+  content: 'Deprecated: use the declarative management `com.apple.configuration.app.settings`
+    configuration.'
   subkeys:
   - key: appBlacklistedBundleID
-    title: Blacklisted App
+    title: Blacklisted app
     type: <string>
 - key: blockedAppBundleIDs
-  title: Blocked Apps
+  title: Blocked apps
   supportedOS:
     iOS:
       introduced: '15.0'
+      deprecated: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
@@ -3736,9 +3823,14 @@ payloadkeys:
       introduced: n/a
     tvOS:
       introduced: '15.0'
+      deprecated: '27.0'
       supervised: true
     visionOS:
-      introduced: n/a
+      introduced: '27.0'
+      deprecated: '27.0'
+      supervised: true
+      userenrollment:
+        mode: forbidden
     watchOS:
       introduced: n/a
   type: <array>
@@ -3746,11 +3838,13 @@ payloadkeys:
   content: |-
     If present, the system prevents showing or launching apps with bundle IDs in the array. Include the value `com.apple.webapp` to restrict all webclips. This applies to App Store apps, marketplace apps, and locally installed apps (using Configurator, Xcode, and so forth).
 
+    Deprecated: use the declarative management `com.apple.configuration.app.settings` configuration.
+
     > Note:
     > Denying system apps may disable other functionality. For example, denying the App Store app may prevent users from accepting the terms and conditions for the user-based Volume Purchase Program (VPP).
   subkeys:
   - key: appBlockedBundleID
-    title: Blocked App
+    title: Blocked app
     type: <string>
 - key: deniedICCIDsForiMessageFaceTime
   supportedOS:
@@ -3826,17 +3920,20 @@ payloadkeys:
     iOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
     macOS:
       introduced: 10.13.4
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
       introduced: '12.2'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
     visionOS:
       introduced: n/a
@@ -3848,10 +3945,10 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: How many days to delay a software update on the device. With this restriction
-    in place, the user doesn't see a software update until the specified number of
-    days after the software update release date. The restrictions `forceDelayedAppSoftwareUpdates`
-    and `forceDelayedSoftwareUpdates` use this value.
+  content: |-
+    How many days to delay a software update on the device. With this restriction in place, the user doesn't see a software update until the specified number of days after the software update release date. The restrictions `forceDelayedAppSoftwareUpdates` and `forceDelayedSoftwareUpdates` use this value.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: enforcedSoftwareUpdateMajorOSDeferredInstallDelay
   supportedOS:
     iOS:
@@ -3859,6 +3956,7 @@ payloadkeys:
     macOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -3873,10 +3971,10 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: This restriction allows the administrator to set the number of days to
-    delay a major software upgrade on the device. When this restriction is in place,
-    the user sees a software upgrade only after the specified delay after the release
-    of the software upgrade. This value controls the delay for `forceDelayedMajorSoftwareUpdates`.
+  content: |-
+    This restriction allows the administrator to set the number of days to delay a major software upgrade on the device. When this restriction is in place, the user sees a software upgrade only after the specified delay after the release of the software upgrade. This value controls the delay for `forceDelayedMajorSoftwareUpdates`.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: enforcedSoftwareUpdateMinorOSDeferredInstallDelay
   supportedOS:
     iOS:
@@ -3884,6 +3982,7 @@ payloadkeys:
     macOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -3898,10 +3997,10 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: This restriction allows the administrator to set the number of days to
-    delay a minor OS software update on the device. When this restriction is in place,
-    the user sees a software update only after the specified delay after the release
-    of the software update. This value controls the delay for `forceDelayedSoftwareUpdates`.
+  content: |-
+    This restriction allows the administrator to set the number of days to delay a minor OS software update on the device. When this restriction is in place, the user sees a software update only after the specified delay after the release of the software update. This value controls the delay for `forceDelayedSoftwareUpdates`.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: enforcedSoftwareUpdateNonOSDeferredInstallDelay
   supportedOS:
     iOS:
@@ -3909,6 +4008,7 @@ payloadkeys:
     macOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -3923,12 +4023,12 @@ payloadkeys:
     min: 1
     max: 90
   default: 30
-  content: This restriction allows the administrator to set the number of days to
-    delay an app software update on the device. When this restriction is in place,
-    the user sees a non-OS software update only after the specified delay after the
-    release of the software. This value controls the delay for `forceDelayedAppSoftwareUpdates`.
+  content: |-
+    This restriction allows the administrator to set the number of days to delay an app software update on the device. When this restriction is in place, the user sees a non-OS software update only after the specified delay after the release of the software. This value controls the delay for `forceDelayedAppSoftwareUpdates`.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: forceAirDropUnmanaged
-  title: Treat AirDrop as Unmanaged Destination
+  title: Treat AirDrop as unmanaged destination
   supportedOS:
     iOS:
       introduced: '9.0'
@@ -3998,7 +4098,7 @@ payloadkeys:
   default: false
   content: If `true`, the system requires trusted certificates for TLS printing communication.
 - key: forceAssistantProfanityFilter
-  title: Enable Siri Profanity Filter
+  title: Enable Siri profanity filter
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -4020,8 +4120,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system forces the use of the profanity filter for Siri and
-    dictation. Requires a supervised device in iOS.
+  content: |-
+    If `true`, the system forces the use of the profanity filter for Siri and dictation. Requires a supervised device in iOS.
+
+    Deprecated: use the declarative management `com.apple.configuration.siri.settings` configuration.
 - key: forceAuthenticationBeforeAutoFill
   supportedOS:
     iOS:
@@ -4093,6 +4195,28 @@ payloadkeys:
   default: false
   content: If `true`, then the system bypasses the presentation of a screen capture
     alert.
+- key: ForceCaptivePortalConnectionFromLockScreen
+  title: Enable captive WiFi portal for login and unlock
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.0'
+      supervised: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system allows use of the captive WiFi portal at login or
+    unlock.
 - key: forceClassroomAutomaticallyJoinClasses
   supportedOS:
     iOS:
@@ -4198,6 +4322,7 @@ payloadkeys:
     macOS:
       introduced: '11.0'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -4219,6 +4344,7 @@ payloadkeys:
     macOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
@@ -4230,23 +4356,29 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system delays user visibility of major OS updates.
+  content: |-
+    If `true`, the system delays user visibility of major OS updates.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: forceDelayedSoftwareUpdates
   supportedOS:
     iOS:
       introduced: '11.3'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
       userenrollment:
         mode: forbidden
     macOS:
       introduced: '10.13'
       deprecated: '26.0'
+      removed: '27.0'
       userenrollment:
         mode: forbidden
     tvOS:
       introduced: '12.2'
       deprecated: '26.0'
+      removed: '27.0'
       supervised: true
     visionOS:
       introduced: n/a
@@ -4255,11 +4387,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system delays user visibility of software updates. In macOS,
-    the system allows seed build updates without delay. The delay is 30 days unless
-    you set `enforcedSoftwareUpdateDelay` to another value.
+  content: |-
+    If `true`, the system delays user visibility of software updates. In macOS, the system allows seed build updates without delay. The delay is 30 days unless you set `enforcedSoftwareUpdateDelay` to another value.
+
+    Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration.
 - key: forceEncryptedBackup
-  title: Force Encrypted Backups
+  title: Force encrypted backups
   supportedOS:
     macOS:
       introduced: n/a
@@ -4331,8 +4464,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system disables connections to Siri servers for the purposes
-    of dictation.
+  content: |-
+    If `true`, the system disables connections to Siri servers for the purposes of dictation.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: forceOnDeviceOnlyTranslation
   supportedOS:
     iOS:
@@ -4349,10 +4484,12 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the device can't connect to Siri servers for the purposes of
-    translation.
+  content: |-
+    If `true`, the device can't connect to Siri servers for the purposes of translation.
+
+    Deprecated: use the declarative management `com.apple.configuration.intelligence.settings` configuration.
 - key: forcePreserveESIMOnErase
-  title: Force Preserve ESIM on Erase
+  title: Force preserve ESIM on erase
   supportedOS:
     iOS:
       introduced: '17.2'
@@ -4378,7 +4515,7 @@ payloadkeys:
     > Note:
     > The system doesn't preserve eSIM if Find My initiates erasing the device.
 - key: forceWatchWristDetection
-  title: Force Apple Watch Wrist Detection
+  title: Force Apple Watch wrist detection
   supportedOS:
     iOS:
       introduced: '8.2'
@@ -4392,6 +4529,28 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system forces a paired Apple Watch to use Wrist Detection.
+- key: ForceWifiConfigurationOnLockScreen
+  title: Enable WiFi network selection for login and unlock
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.0'
+      supervised: true
+      allowmanualinstall: false
+      userenrollment:
+        mode: forbidden
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system allows the user to select WiFi networks at login
+    or unlock.
 - key: forceWiFiPowerOn
   title: Disallow Wi-Fi from being turned off
   supportedOS:
@@ -4459,7 +4618,7 @@ payloadkeys:
   default: false
   content: Use `forceWiFiToAllowedNetworksOnly` instead.
 - key: ratingApps
-  title: Apps Ranking Number
+  title: Apps ranking number
   supportedOS:
     iOS:
       userenrollment:
@@ -4512,7 +4671,7 @@ payloadkeys:
 
     This restriction will require supervision in a future release.
 - key: ratingAppsExemptedBundleIDs
-  title: Apps Exempted from Rating Restrictions
+  title: Apps exempted from rating restrictions
   supportedOS:
     iOS:
       introduced: '26.1'
@@ -4534,10 +4693,10 @@ payloadkeys:
     payloads and any exceptions that parental control apps provide, including ScreenTime.
   subkeys:
   - key: ratingAppsExemptedBundleID
-    title: Exempted App
+    title: Exempted app
     type: <string>
 - key: ratingMovies
-  title: Movies Ranking Number
+  title: Movies ranking number
   supportedOS:
     iOS:
       userenrollment:
@@ -4571,7 +4730,7 @@ payloadkeys:
     - `100`: G
     - `0`: None
 - key: ratingRegion
-  title: Region Code
+  title: Region code
   supportedOS:
     visionOS:
       introduced: n/a
@@ -4592,7 +4751,7 @@ payloadkeys:
   content: The two-letter key that profile tools use to display the proper ratings
     for the given region. The client doesn't recognize or report this data.
 - key: ratingTVShows
-  title: TV Shows Ranking Number
+  title: TV shows ranking number
   supportedOS:
     iOS:
       userenrollment:
@@ -4641,10 +4800,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, copy-and-paste functionality is limited by the `allowOpenFromManagedToUnmanaged`
-    and `allowOpenFromUnmanagedToManaged` restrictions.
+  content: If `true`, the `allowOpenFromManagedToUnmanaged` and `allowOpenFromUnmanagedToManaged`
+    restrictions also limit copy-and-paste functionality.
 - key: safariAcceptCookies
-  title: Accept Cookies in Safari
+  title: Accept cookies in Safari
   supportedOS:
     iOS:
       userenrollment:
@@ -4719,7 +4878,7 @@ payloadkeys:
   content: If `false`, Safari doesn't execute JavaScript. This restriction will require
     supervision in a future release.
 - key: safariAllowPopups
-  title: Allow Pop-ups
+  title: Allow pop-ups
   supportedOS:
     iOS:
       userenrollment:
@@ -4738,7 +4897,7 @@ payloadkeys:
   content: If `false`, Safari doesn't allow pop-up windows. Support for this restriction
     on unsupervised devices is deprecated.
 - key: safariForceFraudWarning
-  title: Enable Fraud Warning
+  title: Enable fraud warning
   supportedOS:
     macOS:
       introduced: n/a
@@ -4753,7 +4912,7 @@ payloadkeys:
   default: false
   content: If `true`, the system enables Safari fraud warning.
 - key: whitelistedAppBundleIDs
-  title: Whitelisted Apps
+  title: Whitelisted apps
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -4773,13 +4932,18 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: Use `allowListedAppBundleIDs` instead.
+  content: 'Deprecated: use the declarative management `com.apple.configuration.app.settings`
+    configuration.'
   subkeys:
   - key: appWhitelistedBundleID
-    title: Whitelisted App
+    title: Whitelisted app
     type: <string>
 notes:
 - title: ''
   content: |-
     > Important:
     > The system allows multiple Restrictions payloads. However, don't attempt to manage the same restriction in different payloads. Doing so results in unexpected behavior.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.applicationaccess/example1.plist

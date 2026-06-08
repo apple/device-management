@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>CardDAVAccountDescription</key>
+            <string>My CardDAV Account</string>
+            <key>CardDAVHostName</key>
+            <string>server.example.com</string>
+            <key>CardDAVPassword</key>
+            <string>Password123</string>
+            <key>CardDAVPort</key>
+            <integer>443</integer>
+            <key>CardDAVUseSSL</key>
+            <true/>
+            <key>CardDAVUsername</key>
+            <string>juanchavez4</string>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mycardavpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.carddav.account</string>
+            <key>PayloadUUID</key>
+            <string>b23d14e3-2f9d-4087-a819-747903fbb176</string>
+            <key>PayloadVersion</key>
+            <real>1</real>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>CardDAV</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>4fdb234d-8c58-48de-a76d-9ed9d241d273</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

@@ -8,11 +8,13 @@ This release corresponds to the following OS versions
 
 | OS       | Version |
 |----------|---------|
-| iOS      | 26.4    |
-| macOS    | 26.4    |
-| tvOS     | 26.4    |
-| visionOS | 26.4    |
-| watchOS  | 26.4    |
+| iOS      | 27.0    |
+| macOS    | 27.0    |
+| tvOS     | 27.0    |
+| visionOS | 27.0    |
+| watchOS  | 27.0    |
+
+See [Changes](CHANGES.md) for the significant changes in this release.
 
 ## What's Available
 
@@ -28,6 +30,12 @@ The following schema items are available:
 * Declarative device management protocol - `declarative/protocol`
 
 * Other device management data formats
+
+* Examples for schema items - `examples`
+    * This directory contains `declarative`, `mdm`, and `other` directories.
+    * Each sub-directory contains directories and files that mirror the structure of the corresponding schema directories.
+    * Each schema item has its own directory containing the example files for the schema object.
+    * Each YAML schema file contains an `examples` key that includes relative file paths to its example files.
 
 ## YAML Schema Definition
 

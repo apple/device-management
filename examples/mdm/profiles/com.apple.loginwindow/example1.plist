@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>AdminHostInfo</key>
+            <string>HostName</string>
+            <key>AdminMayDisableMCX</key>
+            <true/>
+            <key>AllowList</key>
+            <array/>
+            <key>AlwaysShowWorkgroupDialog</key>
+            <true/>
+            <key>CombineUserWorkgroups</key>
+            <true/>
+            <key>DenyList</key>
+            <array/>
+            <key>DisableConsoleAccess</key>
+            <true/>
+            <key>EnableExternalAccounts</key>
+            <false/>
+            <key>FlattenUserWorkgroups</key>
+            <true/>
+            <key>HideAdminUsers</key>
+            <false/>
+            <key>HideLocalUsers</key>
+            <false/>
+            <key>HideMobileAccounts</key>
+            <false/>
+            <key>IncludeNetworkUser</key>
+            <true/>
+            <key>LocalUserLoginEnabled</key>
+            <true/>
+            <key>LocalUsersHaveWorkgroups</key>
+            <true/>
+            <key>RestartDisabled</key>
+            <false/>
+            <key>RetriesUntilHint</key>
+            <integer>0</integer>
+            <key>SHOWFULLNAME</key>
+            <false/>
+            <key>SHOWOTHERUSERS_MANAGED</key>
+            <true/>
+            <key>ShutDownDisabled</key>
+            <false/>
+            <key>SleepDisabled</key>
+            <false/>
+            <key>UseComputerNameForComputerRecordName</key>
+            <true/>
+            <key>com.apple.login.mcx.DisableAutoLoginClient</key>
+            <true/>
+            <key>showInputMenu</key>
+            <true/>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myloginwindowpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.loginwindow</string>
+            <key>PayloadUUID</key>
+            <string>fe9ba3c5-0f1a-45c7-b6df-a5f4489695fe</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Login Window</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>61bd7d63-4a4a-4b67-9112-5ceb16afb4dc</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

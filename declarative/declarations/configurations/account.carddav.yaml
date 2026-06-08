@@ -37,31 +37,30 @@ payload:
     watchOS:
       introduced: n/a
   apply: multiple
-  content: A CardDAV configuration defines a CardDAV contacts account for a user.
 payloadkeys:
 - key: VisibleName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The name that apps show to the user for this address book account. If not
     present, the system generates a suitable default.
 - key: HostName
-  title: Server Host Name
+  title: Server host name
   type: <string>
   presence: required
   content: The hostname or IP address of the CardDAV server.
 - key: Port
-  title: Server Port
+  title: Server port
   type: <integer>
   presence: optional
   content: The port number for the CardDAV server.
 - key: Path
-  title: Server Path
+  title: Server path
   type: <string>
   presence: optional
   content: The path for the CardDAV server.
 - key: AuthenticationCredentialsAssetReference
-  title: Authentication Credentials Asset Reference
+  title: Authentication credentials asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.userpassword
@@ -72,3 +71,8 @@ related-status-items:
 - status-items:
   - account.list.carddav
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a CardDAV account for contacts.
+    file: examples/declarative/declarations/configurations/account.carddav/example1.json

@@ -26,13 +26,13 @@ payload:
     Lock Screen (i.e. a footnote and Asset Tag Information).
 payloadkeys:
 - key: AssetTagInformation
-  title: Asset Tag
+  title: Asset tag
   type: <string>
   presence: optional
   content: The asset tag information for the device, displayed in the Login Window
     and Lock Screen.
 - key: IfLostReturnToMessage
-  title: If Lost message
+  title: If lost message
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -52,3 +52,7 @@ notes:
   content: This payload allows administrators to specify optional text displayed in
     the Login Window and Lock Screen (for example, an "If Lost, Return To" message
     and asset tag information). There can only be one Lock Screen payload.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.shareddeviceconfiguration/example1.plist

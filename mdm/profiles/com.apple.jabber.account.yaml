@@ -27,22 +27,22 @@ payload:
   content: A Jabber payload creates a Jabber account on the device.
 payloadkeys:
 - key: JabberAccountDescription
-  title: Account Description
+  title: Account description
   type: <string>
   presence: optional
   content: The description of the account.
 - key: JabberHostName
-  title: Account Hostname
+  title: Account hostname
   type: <string>
   presence: required
   content: The server's address.
 - key: JabberUserName
-  title: Account Username
+  title: Account username
   type: <string>
   presence: optional
   content: The user's user name.
 - key: JabberPassword
-  title: Account Password
+  title: Account password
   type: <string>
   presence: optional
   content: The user's password.
@@ -53,7 +53,7 @@ payloadkeys:
   default: false
   content: If `true`, enables SSL.
 - key: JabberPort
-  title: Port Number
+  title: Port number
   type: <integer>
   presence: optional
   range:
@@ -62,7 +62,7 @@ payloadkeys:
   default: 5222
   content: The server's port.
 - key: JabberAuthentication
-  title: Jabber Authentication
+  title: Jabber authentication
   type: <string>
   presence: required
   rangelist:

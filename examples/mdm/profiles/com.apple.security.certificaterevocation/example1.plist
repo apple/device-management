@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>EnabledForCerts</key>
+            <array>
+                <dict>
+                    <key>Algorithm</key>
+                    <string>sha256</string>
+                    <key>Hash</key>
+                    <data>ExampleDatY=</data>
+                </dict>
+            </array>
+            <key>PayloadDescription</key>
+            <string>Configures certificate Revocation</string>
+            <key>PayloadDisplayName</key>
+            <string>Certificate Revocation</string>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mycertrevpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.certificaterevocation</string>
+            <key>PayloadUUID</key>
+            <string>2a4deb38-4c9f-43fd-a933-6598f4866e3b</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Certificate Revocation</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>b548e6df-10ad-438a-a65b-6b39374b7aff</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

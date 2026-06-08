@@ -35,3 +35,8 @@ notes:
     Erasing a device also disables Lost Mode. To reenable Lost Mode, the MDM server needs to store the device's Lost Mode state before erasing it, and restore that state if the device enrolls again.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.lostmode.disable/example1.plist
+    response-file: examples/mdm/commands/device.lostmode.disable/example2.plist

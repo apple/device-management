@@ -1,5 +1,5 @@
 title: Status Account List Subscribed Calendar
-description: A status report of the client's subscribed calendars.
+description: The status item that lists the devices's subscribed calendars.
 payload:
   statusitemtype: account.list.subscribed-calendar
   supportedOS:
@@ -45,8 +45,9 @@ payloadkeys:
   subkeytype: Account
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of the client's subscribed calendar details.
+    content: A subscribed calendar.
     subkeys:
     - key: identifier
       title: Unique identifier of the subscribed calendar.
@@ -58,8 +59,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the subscribed calendar is removed and the status item object
-        only contains this key and the `identifier` key.
+      content: If `true`, the device removed the subscribed calendar and the status
+        item object only contains this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the subscribed calendar.
       type: <string>
@@ -87,3 +88,12 @@ payloadkeys:
       presence: optional
       content: A Boolean value that indicates whether the Calendar app displays this
         subscribed calendar.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated account
+    description: Reports a new or updated account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.subscribed-calendar/example1.json
+  - tab: Removed account
+    description: Reports a removed account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.subscribed-calendar/example2.json

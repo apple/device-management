@@ -1,0 +1,53 @@
+title: Status MDM Is Awaiting Configuration
+description: The status item that reports the device management awaiting configuration
+  state.
+payload:
+  statusitemtype: mdm.is-awaiting-configuration
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - user
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: mdm.is-awaiting-configuration
+  title: Status item value.
+  type: <boolean>
+  presence: required
+  content: If `true`, the device is awaiting configuration from the MDM server.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/mdm.is-awaiting-configuration/example1.json

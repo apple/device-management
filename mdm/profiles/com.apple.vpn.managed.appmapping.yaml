@@ -106,3 +106,7 @@ payloadkeys:
           presence: optional
           content: The file-system path of the command-line tool using the per-app
             VPN.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.vpn.managed.appmapping/example1.plist

@@ -36,11 +36,16 @@ payload:
         mode: forbidden
     watchOS:
       introduced: n/a
-  content: Informs the device that it can continue past DEP enrollment. Only works
-    on devices in DEP that have their cloud configuration set to await configuration.
+  content: Informs the device that it can continue past ADE enrollment. Only works
+    on devices in ADE that have their cloud configuration set to await configuration.
 notes:
 - title: ''
   content: |-
-    This command only works on Device Enrollment Program (DEP) devices that have their cloud configuration set to await configuration.
+    This command only works on Automated Device Enrollment (ADE) devices that have their cloud configuration set to await configuration.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.configured/example1.plist
+    response-file: examples/mdm/commands/device.configured/example2.plist

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>Message</key>
+        <string>Lock Message</string>
+        <key>PhoneNumber</key>
+        <string>408-555-5555</string>
+        <key>RequestType</key>
+        <string>DeviceLock</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_DeviceLock</string>
+</dict>
+</plist>

@@ -24,8 +24,8 @@ payload:
     watchOS:
       introduced: n/a
   content: Inform the device that it can continue past Setup Assistant and finish
-    login. Only works on Shared iPads that have the AwaitUserConfiguration feature
-    enabled.
+    login. Only works on Shared iPad devices that have the AwaitUserConfiguration
+    feature enabled.
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements.

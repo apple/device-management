@@ -38,3 +38,7 @@ payloadkeys:
   presence: optional
   content: The number of seconds of inactivity before the screen saver activates (`0`
     = Never activate).
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.screensaver.user/example1.plist

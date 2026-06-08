@@ -45,3 +45,7 @@ notes:
     You can include multiple `IdentityPreference` payloads as needed.
 
     See also `CertificatePreference` for setting up certificate preferences.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.security.identitypreference/example1.plist

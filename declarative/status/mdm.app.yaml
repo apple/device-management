@@ -1,5 +1,5 @@
 title: Status MDM App
-description: A status report of the client's MDM-installed apps.
+description: The status item that lists the devices's MDM-installed apps.
 payload:
   statusitemtype: mdm.app
   supportedOS:
@@ -43,11 +43,12 @@ payloadkeys:
   title: Status item value.
   type: <array>
   presence: required
-  content: The list of apps. The response doesn't include apps that are managed by
-    Declarative Device Management.
+  content: The list of apps. The response doesn't include apps that Declarative Device
+    Management manages.
   subkeytype: App
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
     content: A status report that contains details about an MDM-installed app.
     subkeys:
@@ -75,7 +76,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: |-
-        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and Books for Organizations`.
+        The app's external version identifier. You can also retrieve this value from the App Store. For more information, see `Apps and books metadata for organizations`.
 
         If the current external version identifier of an app on the App Store doesn't match the external version identifier reported by the device, there may be an app update available for the device.
     - key: version
@@ -114,3 +115,12 @@ payloadkeys:
       - management-rejected
       - failed
       content: The status of the app that `ManagedApplicationListCommand` reports.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated app
+    description: Reports a new or updated app.
+    file: data/docc-examples/remotemanagementmodel/status/mdm.app/example1.json
+  - tab: Removed app
+    description: Reports a removed app.
+    file: data/docc-examples/remotemanagementmodel/status/mdm.app/example2.json

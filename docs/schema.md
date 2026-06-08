@@ -15,6 +15,7 @@ The definition of the schema used here is in the `schema.yaml` file. That file c
 | responsekeys | array  | A list of YAML objects representing the command response |
 | reasons      | array  | A list of YAML objects representing declarative device management status reason codes |
 | notes        | array  | A list of YAML objects representing additional notes for the schema item as a whole |
+| examples     | array  | A list of references to example files for this schema object |
 
 ### Payload Object
 

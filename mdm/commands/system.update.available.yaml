@@ -1,11 +1,14 @@
 title: Available OS Updates Command
-description: Get a list of available operating-system updates for a device.
+description: 'Get a list of available operating-system updates for a device. Removed:
+  use the declarative management `com.apple.configuration.softwareupdate.enforcement.specific`
+  configuration.'
 payload:
   requesttype: AvailableOSUpdates
   supportedOS:
     iOS:
       introduced: '9.0'
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: AllowAppInstallation
       supervised: true
       requiresdep: false
@@ -18,6 +21,7 @@ payload:
     macOS:
       introduced: '10.11'
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: None
       devicechannel: true
       userchannel: false
@@ -28,6 +32,7 @@ payload:
     tvOS:
       introduced: '12.0'
       deprecated: '26.0'
+      removed: '27.0'
       accessrights: AllowAppInstallation
       devicechannel: true
       supervised: true
@@ -36,7 +41,7 @@ payload:
       introduced: n/a
     watchOS:
       introduced: n/a
-  content: Queries the device for a list of available OS updates. On OS X, a ScheduleOSUpdateScan
+  content: Queries the device for a list of available OS updates. On macOS, a ScheduleOSUpdateScan
     must be performed to update the results returned by this query.
 responsekeys:
 - key: AvailableOSUpdates
@@ -73,7 +78,7 @@ responsekeys:
       type: <string>
       presence: required
       content: The locale, in IOS639-1 Alpha-2 code format, of the `HumanReadableName`
-        value. This value is available in macOS 10.11 and later.
+        value.
     - key: MetadataURL
       supportedOS:
         iOS:
@@ -84,16 +89,14 @@ responsekeys:
       presence: required
       content: A URL where the MDM server can request additional localized names for
         this update. This key isn't present for certain updates, such as mobile software
-        updates (MSUs) or major OS updates. This value is available in macOS 10.11
-        and later.
+        updates (MSUs) or major OS updates.
     - key: ProductName
       supportedOS:
         macOS:
           introduced: n/a
       type: <string>
       presence: required
-      content: The product name; for example, _iOS_. This value is available in iOS
-        9.0 and later, and tvOS 12.0 and later.
+      content: The product name; for example, _iOS_.
     - key: Version
       type: <string>
       presence: required
@@ -117,8 +120,7 @@ responsekeys:
           introduced: n/a
       type: <integer>
       presence: required
-      content: The storage size necessary to install the update. This value is available
-        in iOS 9.0 and later, and tvOS 12.0 and later.
+      content: The storage size necessary to install the update.
     - key: AppIdentifiersToClose
       supportedOS:
         iOS:
@@ -128,7 +130,7 @@ responsekeys:
       type: <array>
       presence: required
       content: An array that contains app identifiers of apps to close so you can
-        install the update. This value is available in macOS 10.11 and later.
+        install the update.
       subkeys:
       - key: AppIdentifiersToCloseItem
         type: <string>
@@ -146,8 +148,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, this is an update to a configuration file. This value is
-        available in macOS 10.11 and later.
+      content: If `true`, this is an update to a configuration file.
     - key: IsFirmwareUpdate
       supportedOS:
         iOS:
@@ -157,8 +158,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, this is an update to firmware. This value is available in
-        macOS 10.11 and later.
+      content: If `true`, this is an update to firmware.
     - key: IsMajorOSUpdate
       supportedOS:
         iOS:
@@ -170,8 +170,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, this is a major update; for example, 10.15.x to 11. This
-        value is available in macOS 10.11 and later.
+      content: If `true`, this is a major update; for example, 10.15.x to 11.
     - key: RestartRequired
       type: <boolean>
       presence: optional
@@ -192,8 +191,7 @@ responsekeys:
           introduced: n/a
       type: <date>
       presence: optional
-      content: If present, the date when you want the update to install. This value
-        is available in macOS 10.12.4 and later.
+      content: If present, the date when you want the update to install.
     - key: RequiresBootstrapToken
       supportedOS:
         iOS:
@@ -251,3 +249,8 @@ notes:
     A device must have a total of `DownloadSize` + `InstallSize` bytes available to successfully install a software update. In macOS, execute the `ScheduleOSUpdateScan` command to update the results that this command returns. In iOS and tvOS, the list only contains the latest available updates.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/system.update.available/example1.plist
+    response-file: examples/mdm/commands/system.update.available/example2.plist

@@ -1,0 +1,39 @@
+title: Status Security Lockdown Mode
+description: The status item that reports the device's Lockdown Mode state.
+payload:
+  statusitemtype: security.lockdown-mode
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: security.lockdown-mode
+  title: Status item value.
+  type: <boolean>
+  presence: required
+  content: If `true`, indicates that Lockdown Mode is enabled.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/security.lockdown-mode/example1.json

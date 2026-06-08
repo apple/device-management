@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>RequestType</key>
+        <string>Settings</string>
+        <key>Settings</key>
+        <array>
+            <dict>
+                <key>DeviceName</key>
+                <string>NewName</string>
+                <key>Item</key>
+                <string>DeviceName</string>
+            </dict>
+        </array>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_Settings</string>
+</dict>
+</plist>

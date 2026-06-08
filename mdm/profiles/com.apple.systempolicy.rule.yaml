@@ -33,9 +33,9 @@ payloadkeys:
 - key: Comment
   type: <string>
   presence: optional
-  content: This string appears in the System Policy UI. If it's missing, `PayloadDisplayName`
-    or `PayloadDescription` is entered into this field before the rule is added to
-    the System Policy database.
+  content: This string appears in the System Policy UI. If it's missing, the device
+    enters `PayloadDisplayName` or `PayloadDescription` into this field before adding
+    the rule to the System Policy database.
 - key: Priority
   type: <real>
   presence: optional
@@ -56,10 +56,14 @@ payloadkeys:
 - key: LeafCertificate
   type: <data>
   presence: optional
-  content: The single leaf certificate for the app that is in the allow list.
+  content: The single leaf certificate for the app that's in the allow list.
 notes:
 - title: ''
   content: |-
     This payload allows control over Gatekeeper's system policy rules. The keys and functionality are tightly related to the `spctl` command line tool. For more information, see the manual page for `spctl`.
 
     This payload can only exist in a device profile. If the payload is present in a user profile, an error occurs during installation and the profile installation fails.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.systempolicy.rule/example1.plist

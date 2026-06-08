@@ -113,3 +113,7 @@ notes:
 - title: ''
   content: Removing this profile from a device doesn't automatically remove printers
     from the device.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.mcxprinting/example1.plist

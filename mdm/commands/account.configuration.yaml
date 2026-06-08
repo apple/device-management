@@ -20,8 +20,8 @@ payload:
       introduced: n/a
     watchOS:
       introduced: n/a
-  content: When a macOS (v10.11 and later) device is configured via DEP to enroll
-    in an MDM server and the DEP profile has the await_device_configuration flag set
+  content: When a macOS (v10.11 and later) device is configured via ADE to enroll
+    in an MDM server and the ADE profile has the await_device_configuration flag set
     to true, the AccountConfiguration command can be sent to the device to have it
     create the local administrator account (thereby skipping the page to create this
     account in Setup Assistant). This command can only be sent to a macOS device that
@@ -47,8 +47,7 @@ payloadkeys:
   presence: optional
   content: The full name for the primary account. If present, Setup Assistant uses
     this value to prefill the Full Name field. However, Setup Assistant ignores this
-    value if `DontAutoPopulatePrimaryAccountInfo` is `true`. This value is available
-    in macOS 10.15 and later.
+    value if `DontAutoPopulatePrimaryAccountInfo` is `true`.
 - key: PrimaryAccountUserName
   supportedOS:
     macOS:
@@ -57,8 +56,7 @@ payloadkeys:
   presence: optional
   content: The account name for the primary account. If present, Setup Assistant uses
     this value to prefill the User Name field. However, Setup Assistant ignores this
-    value if `DontAutoPopulatePrimaryAccountInfo` is `true`. This value is available
-    in macOS 10.15 and later.
+    value if `DontAutoPopulatePrimaryAccountInfo` is `true`.
 - key: DontAutoPopulatePrimaryAccountInfo
   supportedOS:
     macOS:
@@ -69,7 +67,7 @@ payloadkeys:
   content: If `true`, Setup Assistant ignores the primary account information and
     requires the user to enter that information. If `false`, Setup Assistant prefills
     the Full Name field with `PrimaryAccountFullName` and the User Name field with
-    `PrimaryAccountUserName`. This value is available in macOS 10.15 and later.
+    `PrimaryAccountUserName`.
 - key: LockPrimaryAccountInfo
   supportedOS:
     macOS:
@@ -81,8 +79,6 @@ payloadkeys:
     If `true`, and you provide values for `PrimaryAccountFullName` or `PrimaryAccountUserName`, Setup Assistant disables editing for the corresponding fields. `DontAutoPopulatePrimaryAccountInfo` must also be 0 (or missing).
 
     If the user's password is also available from authentication through ConfigurationURL, Setup Assistant automatically creates the primary account with that information and skips showing the user interface to view or edit these fields.
-
-    This value is available in macOS 10.15 and later.
 - key: AutoSetupAdminAccounts
   type: <array>
   presence: optional
@@ -108,10 +104,10 @@ payloadkeys:
       title: passwordHash
       type: <data>
       presence: optional
-      content: Data that contains the pre-created salted PBKDF2 SHA512 password hash
+      content: Data that contains the pre-created salted PBKDF2 SHA512 `PasswordHash`
         for the account.
     - key: hidden
-      title: hidden
+      title: Hidden
       type: <boolean>
       presence: optional
       default: false
@@ -126,8 +122,13 @@ payloadkeys:
   content: If present, this is the short name of the local account to manage, which
     can also be the account that results from setting `AutoSetupAdminAccounts` to
     `true`. Otherwise, only the local account that Setup Assistant creates is a managed
-    account. This value is available in macOS 11 and later.
+    account.
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/account.configuration/example1.plist
+    response-file: examples/mdm/commands/account.configuration/example2.plist

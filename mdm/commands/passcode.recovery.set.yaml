@@ -20,7 +20,7 @@ payload:
       introduced: n/a
     watchOS:
       introduced: n/a
-  content: Sets or clears the recovery lock password (Apple Silicon devices only).
+  content: Sets or clears the recovery lock password (Apple silicon devices only).
     Requires the "Device lock and passcode removal right".
 payloadkeys:
 - key: CurrentPassword
@@ -39,3 +39,8 @@ notes:
     This command sets, or clears, a password on booting to recoveryOS. When the device unenrolls MDM the system removes the recovery password.
 
     This command is only available on a Mac with Apple silicon.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/passcode.recovery.set/example1.plist
+    response-file: examples/mdm/commands/passcode.recovery.set/example2.plist

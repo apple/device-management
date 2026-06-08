@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_LOMDeviceRequest</string>
+    <key>ResponseData</key>
+    <array>
+        <dict>
+            <key>DeviceRequestSucess</key>
+            <true/>
+            <key>DeviceRequestUUID</key>
+            <string>0001</string>
+        </dict>
+    </array>
+    <key>Status</key>
+    <string>Acknowledged</string>
+    <key>UDID</key>
+    <string>37CECCAB-99C1-5ADF-8A9A-2AFA3B6387B5</string>
+</dict>
+</plist>

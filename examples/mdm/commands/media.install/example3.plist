@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>MediaType</key>
+        <string>Book</string>
+        <key>RequestType</key>
+        <string>InstallMedia</string>
+        <key>iTunesStoreID</key>
+        <integer>1420662672</integer>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_InstallMedia</string>
+</dict>
+</plist>

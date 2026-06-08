@@ -55,7 +55,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, preserve the data plan on an iPhone or iPad with eSIM functionality,
-    if one exists. This value is available in iOS 11 and later.
+    if one exists.
 - key: DisallowProximitySetup
   supportedOS:
     iOS:
@@ -74,8 +74,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, disable Proximity Setup on the next reboot and skip the pane
-    in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS
-    14, don't use this option with any other option.
+    in Setup Assistant. Prior to iOS 14, don't use this option with any other option.
 - key: PIN
   supportedOS:
     iOS:
@@ -90,8 +89,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The six-character PIN for Find My. This value is available in macOS 10.8
-    and later.
+  content: The six-character PIN for Find My.
 - key: ObliterationBehavior
   supportedOS:
     iOS:
@@ -141,9 +139,7 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: The configuration settings for return to service. This value is available
-    in iOS 17 and later, with Shared iPad, in tvOS 18 and later, and in visionOS 26
-    and later.
+  content: The configuration settings for return to service.
   subkeys:
   - key: Enabled
     title: Use return to service
@@ -180,9 +176,31 @@ payloadkeys:
     content: The bootstrap token the system uses to implement return to service with
       app preservation. Required when enabling return to service through the cloud
       configuration.
+  - key: ShouldRetryEnrollment
+    supportedOS:
+      iOS:
+        introduced: '27.0'
+      macOS:
+        introduced: n/a
+      tvOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+      watchOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the device retries service enrollment when the initial enrollment
+      fails after erasure.
 notes:
 - title: ''
   content: |-
     This command allows the server to immediately erase a device, even a locked device, without warning the user. The device sends a response to the server, but it doesn't retry if it isn't successful the first time.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.erase/example1.plist
+    response-file: examples/mdm/commands/device.erase/example2.plist

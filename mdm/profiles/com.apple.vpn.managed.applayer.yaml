@@ -149,10 +149,9 @@ payloadkeys:
       introduced: '11.0'
   type: <array>
   presence: optional
-  content: |-
-    An array with entries that must each specify a domain that triggers this VPN. The domains must also be part of the `apple-app-site-association` file, as described in `Supporting associated domains`.
-
-    Available in iOS 14 and later, and macOS 11 and later.
+  content: An array with entries that must each specify a domain that triggers this
+    VPN. The domains must also be part of the `apple-app-site-association` file, as
+    described in `Supporting associated domains`.
   subkeys:
   - key: AssociatedDomainsItem
     type: <string>
@@ -166,10 +165,8 @@ payloadkeys:
       introduced: '11.0'
   type: <array>
   presence: optional
-  content: |-
-    An array with entries that each specify a domain that doesn't trigger this VPN for connections to the domain.
-
-    Available in iOS 14 and later, and macOS 11 and later.
+  content: An array with entries that each specify a domain that doesn't trigger this
+    VPN for connections to the domain.
   subkeys:
   - key: ExcludedDomainsItem
     type: <string>
@@ -193,10 +190,7 @@ payloadkeys:
       introduced: n/a
   type: <array>
   presence: optional
-  content: |-
-    An array of SMB domains that's accessible through this VPN connection.
-
-    Available in iOS 13 and later.
+  content: An array of SMB domains that's accessible through this VPN connection.
   subkeys:
   - key: SMBDomainsItem
     type: <string>
@@ -207,3 +201,7 @@ notes:
   content: This profile defines per-app VPN behavior and applies only to VPN services
     of type `VPN`, `IPsec`, and `IKEv2`. All the properties of VPN apply to the top
     level of this profile as well.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.vpn.managed.applayer/example1.plist

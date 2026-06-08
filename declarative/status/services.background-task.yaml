@@ -1,5 +1,5 @@
 title: Status Services Background Task
-description: A status report of the device's background task details.
+description: The status item that reports the device's background task details.
 payload:
   statusitemtype: services.background-task
   supportedOS:
@@ -27,8 +27,9 @@ payloadkeys:
   subkeytype: Background Task
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of a background task.
+    content: The status item that reports a background task.
     subkeys:
     - key: identifier
       title: Identifier
@@ -40,8 +41,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the background task is removed and the status item object
-        only contains this key and the `identifier` key.
+      content: If `true`, the system removed the background task and the status item
+        object only contains this key and the `identifier` key.
     - key: code-signature
       title: Code signature
       type: <string>
@@ -112,7 +113,7 @@ payloadkeys:
         presence: required
         content: The hash value of the `launchd` `plist` file.
       - key: device-management
-        title: Device Management
+        title: Device management
         supportedOS:
           macOS:
             introduced: '15.0'
@@ -124,20 +125,29 @@ payloadkeys:
           for the task.
         subkeys:
         - key: configuration-identifier
-          title: Configuration Identifier
+          title: Configuration identifier
           type: <string>
           presence: required
           content: The identifier of the `ServicesBackgroundTasks` configuration that
             created this task.
         - key: asset-identifier
-          title: Asset Identifier
+          title: Asset identifier
           type: <string>
           presence: required
           content: The `Identifier` of the declaration asset that provided the launchd
             plist for this task.
         - key: asset-server-token
-          title: Asset Server Token
+          title: Asset server token
           type: <string>
           presence: required
           content: The `ServerToken` of the declaration asset that provided the launchd
             plist for this task.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated task
+    description: Reports a new or updated background task.
+    file: data/docc-examples/remotemanagementmodel/status/services.background-task/example1.json
+  - tab: Removed task
+    description: Reports a removed background task.
+    file: data/docc-examples/remotemanagementmodel/status/services.background-task/example2.json

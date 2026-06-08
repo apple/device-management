@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>RequestList</key>
+    <array>
+        <dict>
+            <key>DeviceDNSName</key>
+            <string>lomdevice.com</string>
+            <key>DeviceRequestType</key>
+            <string>Reset</string>
+            <key>DeviceRequestUUID</key>
+            <string>0001</string>
+            <key>PrimaryIPv6AddressList</key>
+            <array>
+                <string>fe80::94f6:d6ff:fef3:c05b</string>
+                <string>fe80::94f6:d6ff:fef3:c1a4</string>
+            </array>
+            <key>SecondaryIPv6AddressList</key>
+            <array/>
+        </dict>
+    </array>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_LOMDeviceRequest</string>
+</dict>
+</plist>

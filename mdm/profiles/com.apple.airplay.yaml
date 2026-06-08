@@ -52,7 +52,7 @@ payloadkeys:
     device. This allow list applies to supervised devices.
   subkeys: &id001
   - key: AllowListItem
-    title: AllowList Content Item
+    title: AllowList content item
     supportedOS:
       iOS:
         introduced: '7.0'
@@ -85,7 +85,7 @@ payloadkeys:
 
         As of tvOS 18, `DeviceID` isn't supported.
     - key: DeviceName
-      title: Device Name
+      title: Device name
       supportedOS:
         iOS:
           introduced: '18.0'
@@ -106,19 +106,18 @@ payloadkeys:
     installed payloads, is an error and results in undefined behavior.
   subkeys:
   - key: PasswordsItem
-    title: Password Content Item
+    title: Password content item
     type: <dictionary>
     presence: required
     subkeys:
     - key: DeviceName
-      title: Device Name
+      title: Device name
       supportedOS:
         macOS:
           introduced: '15.0'
       type: <string>
       presence: optional
-      content: The name of the AirPlay destination; used in iOS, and available in
-        macOS 15 and later.
+      content: The name of the AirPlay destination.
     - key: Password
       title: Password
       type: <string>
@@ -152,3 +151,7 @@ payloadkeys:
   presence: optional
   content: Use `AllowList` instead. This key is deprecated in iOS 14.5 and macOS 11.3.
   subkeys: *id001
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.airplay/example1.plist

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+
+            <key>RequireAdminToAddPrinters</key>
+            <false/>
+            <key>AllowLocalPrinters</key>
+            <true/>
+            <key>RequireAdminToPrintLocally</key>
+            <true/>
+            <key>ShowOnlyManagedPrinters</key>
+            <true/>
+            <key>PrintFooter</key>
+            <true/>
+            <key>PrintMACAddress</key>
+            <true/>
+            <key>FooterFontSize</key>
+            <string>7</string>
+            <key>FooterFontName</key>
+            <string>Helvetica</string>
+            <key>DefaultPrinter</key>
+            <dict>
+                <key>DeviceURI</key>
+                <string>ipp://printer.example.com/</string>
+                <key>DisplayName</key>
+                <string>printer.example.com</string>
+            </dict>
+            <key>UserPrinterList</key>
+            <dict>
+                <key>printer_example_com</key>
+                <dict>
+                    <key>DeviceURI</key>
+                    <string>ipp://printer.example.com/</string>
+                    <key>DisplayName</key>
+                    <string>printer.example.com</string>
+                    <key>Location</key>
+                    <string>My Office</string>
+                    <key>Model</key>
+                    <string>PrinterModel1</string>
+                    <key>PrinterLocked</key>
+                    <true/>
+                    <key>PPDURL</key>
+                    <string>file://localhost/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Resources/Generic.ppd</string>
+                </dict>
+            </dict>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myprinterpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.mcxprinting</string>
+            <key>PayloadUUID</key>
+            <string>8242d870-95c0-0135-0b44-0c4de9ce4c04</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Printing</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>ab59f143-1478-419a-885e-7994fb13c9c3</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

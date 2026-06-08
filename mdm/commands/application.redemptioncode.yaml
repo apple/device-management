@@ -37,3 +37,8 @@ notes:
     Sending a redemption code to an app that doesn't need it produces an error.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/application.redemptioncode/example1.plist
+    response-file: examples/mdm/commands/application.redemptioncode/example2.plist

@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.network.dns-proxy",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "DNS Proxy",
+        "AppBundleIdentifier": "com.example.mydnsproxyapp",
+        "ProviderComposedIdentifier": "com.example.mydnsproxyapp.mydnsproxyprovider",
+        "ProviderConfiguration": {
+            "resolver": {
+                "ipaddress": "9.9.9.9"
+            }
+        }
+    }
+}

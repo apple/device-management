@@ -107,7 +107,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: |-
-      A string or an array of media action strings. Internally installed SD cards and USB flash drives are included in the hard disk-external category.
+      A string or an array of media action strings. The hard disk-external category includes internally installed SD cards and USB flash drives.
 
       This key is the default for media types that don't fall into other categories.
     subkeytype: ActionStringItem

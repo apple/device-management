@@ -39,37 +39,33 @@ payload:
   content: This payload defines web domains that are under an enterprise's management.
 payloadkeys:
 - key: EmailDomains
-  title: Email Domains
+  title: Email domains
   supportedOS:
     visionOS:
       introduced: n/a
   type: <array>
   presence: optional
-  content: |-
-    An array of domains. Mail marks in red all email addresses that lack a suffix matching any of these strings.
-
-    Available in iOS 8 and later and macOS 10.10 and later.
+  content: An array of domains. Mail marks in red all email addresses that lack a
+    suffix matching any of these strings.
   subkeys:
   - key: EmailDomainsItem
     type: <string>
     presence: required
     content: An email address.
 - key: WebDomains
-  title: Web Domains
+  title: Web domains
   supportedOS:
     macOS:
       introduced: n/a
   type: <array>
   presence: optional
-  content: |-
-    An array of domains. The system considers URLs matching the patterns listed in this property managed.
-
-    Available in iOS 9.3 and later.
+  content: An array of domains. The system considers URLs matching the patterns listed
+    in this property managed.
   subkeys:
   - key: WebDomainsItem
     type: <string>
 - key: SafariPasswordAutoFillDomains
-  title: Password Autofill Domains
+  title: Password autofill domains
   supportedOS:
     iOS:
       introduced: '9.3'
@@ -83,14 +79,12 @@ payloadkeys:
   content: |-
     An array of domains. Users can only save passwords in Safari from URLs matching the patterns listed here. This property doesn't disable the autofill feature itself.
 
-    Supervised devices or Shared iPads need this property to enable saving passwords in Safari.
-
-    Available in iOS 9.3 and later.
+    Supervised devices or Shared iPad need this property to enable saving passwords in Safari.
   subkeys:
   - key: SafariPasswordAutoFillDomainsItem
     type: <string>
 - key: CrossSiteTrackingPreventionRelaxedDomains
-  title: Cross-Site Tracking Prevention Relaxed Domains
+  title: Cross-site tracking prevention relaxed domains
   supportedOS:
     iOS:
       introduced: '16.2'
@@ -103,15 +97,13 @@ payloadkeys:
       allowmanualinstall: false
   type: <array>
   presence: optional
-  content: |-
-    An array of up to 10 strings. URLs matching the patterns listed here have relaxed enforcement of cross-site tracking prevention.
-
-    Available in iOS 16.2 and later and macOS 13.1 and later.
+  content: An array of up to 10 strings. URLs matching the patterns listed here have
+    relaxed enforcement of cross-site tracking prevention.
   subkeys:
   - key: CrossSiteTrackingPreventionRelaxedDomainItem
     type: <string>
 - key: CrossSiteTrackingPreventionRelaxedApps
-  title: Cross-Site Tracking Prevention Relaxed Apps
+  title: Cross-site tracking prevention relaxed apps
   supportedOS:
     iOS:
       introduced: '18.0'
@@ -124,10 +116,9 @@ payloadkeys:
       allowmanualinstall: false
   type: <array>
   presence: optional
-  content: |-
-    An array of up to 10 strings representing app bundle-ids. Apps matching the bundle-ids listed here have relaxed enforcement of cross-site tracking prevention for the domains listed in `CrossSiteTrackingPreventionRelaxedDomains`.
-
-    Available in iOS 18 and later and macOS 15 and later.
+  content: An array of up to 10 strings representing app bundle-ids. Apps matching
+    the bundle-ids listed here have relaxed enforcement of cross-site tracking prevention
+    for the domains listed in `CrossSiteTrackingPreventionRelaxedDomains`.
   subkeys:
   - key: CrossSiteTrackingPreventionRelaxedAppsItem
     type: <string>
@@ -149,3 +140,7 @@ notes:
     Trailing slashes are ignored.
 
     If a domain string contains a port number, the system considers only addresses that specify that port number managed. Otherwise, the system matches the domain without regard to the port number specified. For example, the pattern `*.example.com:8080` matches `http://site.example.com:8080/page.html` but not `http://site.example.com/page.html`, while the pattern `*.example.com` matches both URLs.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.domains/example1.plist

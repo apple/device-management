@@ -66,8 +66,6 @@ payloadkeys:
     If `true`, install the app as a managed app. Otherwise, the system installs the app as unmanaged. If you reinstall a manged app and omit this value or set it to `false`, the app becomes unmanaged.
 
     For manifest-based installs, if `true`, the system only considers apps installed in `/Applications` as managed. In macOS 11 through 13, the system requires that the `pkg` only contains a single signed app.
-
-    Available in macOS 11 and later.
 - key: ManagementFlags
   supportedOS:
     macOS:
@@ -81,9 +79,7 @@ payloadkeys:
   content: |-
     The management flags. The possible values are:
 
-    - `1`: If `InstallAsManaged` is `true`, remove the app upon removal of the MDM profile.
-
-    Available in macOS 11 and later.
+    * `1`: If `InstallAsManaged` is `true`, remove the app upon removal of the MDM profile.
 - key: Configuration
   supportedOS:
     macOS:
@@ -91,7 +87,7 @@ payloadkeys:
   type: <dictionary>
   presence: optional
   content: A dictionary that contains the initial configuration of the app, if you
-    choose to provide it. Available in macOS 11 and later.
+    choose to provide it.
   subkeys:
   - key: ANY
     type: <any>
@@ -110,9 +106,7 @@ payloadkeys:
   content: |-
     The change management state. This value doesn't work with the user enrollments. The only possible value is:
 
-    - `Managed`: Take management of the app if the user installed it already and `InstallAsManaged` is `true`.
-
-    Available in macOS 11 and later.
+    * `Managed`: Take management of the app if the user installed it already and `InstallAsManaged` is `true`.
 - key: iOSApp
   supportedOS:
     iOS:
@@ -134,3 +128,8 @@ notes:
     This command fails if Declarative Device Management is managing the app.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/application.install.enterprise/example1.plist
+    response-file: examples/mdm/commands/application.install.enterprise/example2.plist

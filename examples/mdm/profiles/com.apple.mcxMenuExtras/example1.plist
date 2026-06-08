@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>Battery.menu</key>
+            <false/>
+            <key>delaySeconds</key>
+            <integer>30</integer>
+            <key>maxWaitSeconds</key>
+            <integer>60</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mymanagedmenuextraspayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.mcxMenuExtras</string>
+            <key>PayloadUUID</key>
+            <string>93bd5b68-0141-4055-aaaf-a6cebc1cfeeb</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Menu Extras</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>dc2618ce-736c-4af7-b652-f9cdf3eb9ce4</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

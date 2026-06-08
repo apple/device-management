@@ -70,8 +70,6 @@ responsekeys:
         - `epub`: An EPUB file in `gzip` format
         - `ibooks`: An iBooks Author file in `gzip` format
         - The file extension in the URL
-
-        This value is available in iOS 8 and later.
     - key: Version
       type: <string>
       presence: optional
@@ -88,3 +86,8 @@ notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/media.managed.list/example1.plist
+    response-file: examples/mdm/commands/media.managed.list/example2.plist

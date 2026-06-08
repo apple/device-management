@@ -1,5 +1,5 @@
 title: Status Device Operating System Build Version
-description: A status report of the device's software build identifier.
+description: The status item that reports the device's operating system build version.
 payload:
   statusitemtype: device.operating-system.build-version
   supportedOS:
@@ -55,3 +55,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system's build version on the device, such as `18F132`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.build-version/example1.json

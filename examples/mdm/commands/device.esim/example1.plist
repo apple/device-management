@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>RequestType</key>
+        <string>RefreshCellularPlans</string>
+        <key>eSIMServerURL</key>
+        <string>http://server.example.com</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_RefreshCellularPlans</string>
+</dict>
+</plist>

@@ -1,5 +1,5 @@
 title: Status Device Model Family
-description: A status report of the device's hardware family.
+description: The status item that reports the device's hardware model family.
 payload:
   statusitemtype: device.model.family
   supportedOS:
@@ -55,3 +55,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The hardware family of the device, such as `Mac`, `iPhone`, or `iPad`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.model.family/example1.json

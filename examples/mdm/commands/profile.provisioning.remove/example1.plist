@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>RequestType</key>
+        <string>RemoveProvisioningProfile</string>
+        <key>UUID</key>
+        <string>493d9dc8-e4c0-4fd8-bd8e-8fd4c0dc7b0c</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_RemoveProvisioningProfile</string>
+</dict>
+</plist>

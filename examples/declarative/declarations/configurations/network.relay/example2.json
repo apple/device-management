@@ -1,0 +1,21 @@
+{
+    "Type": "com.apple.configuration.network.relay",
+    "Identifier": "2A3B4C5D-6E7F-8A9B-0C1D-2E3F4A5B6C7D",
+    "ServerToken": "F1E2D3C4-B5A6-7890-ABCD-EF1234567890",
+    "Payload": {
+        "VisibleName": "Two-Hop Privacy Relay",
+        "Relays": [
+            {
+                "HTTP3RelayURL": "https://relay1.example.com/hop1",
+                "HTTP2RelayURL": "https://relay1.example.com/hop1"
+            },
+            {
+                "HTTP3RelayURL": "https://relay2.example.com/hop2"
+            }
+        ],
+        "MatchFQDNs": ["secure.example.com", "api.example.com"],
+        "ExcludedDomains": ["cdn.example.com"],
+        "RelayUUID": "D4E5F6A7-B8C9-0123-DEF0-234567890123",
+        "AllowDNSFailover": true
+    }
+}

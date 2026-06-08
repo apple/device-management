@@ -1,0 +1,9 @@
+{
+    "Type": "com.apple.configuration.services.configuration-files",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "ServiceType": "com.openssh.sshd",
+        "DataAssetReference": "168663D8-A06D-4C8A-93A4-AD225D85BF69"
+    }
+}

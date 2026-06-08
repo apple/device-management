@@ -48,3 +48,8 @@ notes:
   content: The server uses this command to turn on the declarative management engine
     on the device the first time the server sends it. Subsequent commands trigger
     a declarative management synchronization operation.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/declarativemanagement/example1.plist
+    response-file: examples/mdm/commands/declarativemanagement/example2.plist

@@ -1,0 +1,280 @@
+title: WebContentFilter:Plugin
+description: The declaration to configure a WebContent Filter that uses a plugin.
+payload:
+  declarationtype: com.apple.configuration.webcontent-filter.plugin
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: multiple
+payloadkeys:
+- key: VisibleName
+  title: Visible name
+  type: <string>
+  presence: required
+  content: The name of the web content filter that the system displays on the device.
+- key: PluginBundleID
+  title: Plugin bundle ID
+  type: <string>
+  presence: required
+  content: The bundle ID of the plug-in that provides filtering service. Consult your
+    filtering solution vendor to determine what to specify for this value.
+- key: ContentFilterUUID
+  title: Content filter UUID
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: A globally unique identifier for this content filter configuration. The
+    content filter processes network traffic for managed apps with the same `ContentFilterUUID`
+    in their app attributes. This key must be present for unsupervised devices and
+    user enrollment.
+- key: ServerAddress
+  title: Server address
+  type: <string>
+  presence: optional
+  content: The server address, which may be the IP address, hostname, or URL.
+- key: Organization
+  title: Organization
+  type: <string>
+  presence: optional
+  content: The organization string to pass to the third-party plug-in.
+- key: VendorConfig
+  title: Vendor config
+  type: <dictionary>
+  presence: optional
+  content: The custom dictionary that the filtering service plug-in needs.
+  subkeys:
+  - key: ANY
+    type: <any>
+    presence: required
+    content: The custom key/value pairs for the filtering service.
+- key: Authentication
+  title: Authentication details
+  type: <dictionary>
+  presence: optional
+  content: Settings that control authentication.
+  subkeys:
+  - key: CredentialsAssetReference
+    title: Credentials asset reference
+    type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
+    presence: optional
+    content: The identifier of an asset declaration that contains the credentials
+      (user name and password) to authenticate with the service.
+  - key: IdentityAssetReference
+    title: Identity asset reference
+    type: <string>
+    assettypes:
+    - com.apple.asset.credential.acme
+    - com.apple.asset.credential.identity
+    - com.apple.asset.credential.scep
+    presence: optional
+    content: The identifier of a credential asset declaration that contains the identity
+      that this account requires to authenticate with the service.
+- key: Filter
+  title: Filter details
+  type: <dictionary>
+  presence: optional
+  content: Settings that control authentication.
+  subkeys:
+  - key: Grade
+    title: Filter grade
+    supportedOS:
+      iOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+    type: <string>
+    presence: optional
+    rangelist:
+    - firewall
+    - inspector
+    default: firewall
+    content: The system uses this value to derive the relative order of content filters.
+      Filters with a grade of `firewall` see network traffic before filters with a
+      grade of `inspector`. However, the system doesn't define the order of filters
+      within a grade.
+  - key: Browsers
+    title: Browser filter details
+    supportedOS:
+      macOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: Settings that control the browser filter. If not present, the system
+      doesn't use browser filtering.
+    subkeys:
+    - key: Enabled
+      title: Enable browser filter
+      type: <boolean>
+      presence: required
+      content: If `true`, the system enables filtering WebKit traffic.
+  - key: Sockets
+    title: Socket filter details
+    type: <dictionary>
+    presence: optional
+    content: Settings that control the socket filter. If not present, the system doesn't
+      use socket filtering.
+    subkeys:
+    - key: Enabled
+      title: Enable socket filter
+      type: <boolean>
+      presence: required
+      content: If `true`, enables the filtering of socket traffic.
+    - key: ProviderComposedIdentifier
+      title: Data provider composed identifier
+      type: <string>
+      presence: optional
+      content: |-
+        The data provider identifier. This string identifies the filter data provider when the filter starts running. Required when Enabled is true.
+
+        In iOS and visionOS, the identifier is a bundle ID, for example, "com.example.app".
+
+        In macOS, the identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Designated-Requirement" is the designated requirement string from the code signature of the provider. For example, "com.example.app {anchor apple generic}".
+  - key: Packets
+    title: Packet filter details
+    supportedOS:
+      iOS:
+        introduced: n/a
+      visionOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: Settings that control the packet filter. If not present, the system doesn't
+      use packet filtering.
+    subkeys:
+    - key: Enabled
+      title: Enable packet filter
+      type: <boolean>
+      presence: required
+      content: If `true`, the system enables filtering network packets.
+    - key: ProviderComposedIdentifier
+      title: Packet provider composed identifier
+      type: <string>
+      presence: optional
+      content: |-
+        The packet provider identifier. This string identifies the filter data provider when the filter starts running. Required when Enabled is true.
+
+        The identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Designated-Requirement" is the designated requirement string from the code signature of the provider. For example, "com.example.app {anchor apple generic}".
+  - key: URLs
+    title: URL filter details
+    supportedOS:
+      visionOS:
+        introduced: n/a
+    type: <dictionary>
+    presence: optional
+    content: Settings that control the URL filter. If not present, the system doesn't
+      use URL filtering.
+    subkeys:
+    - key: Enabled
+      title: Enable URL filter
+      type: <boolean>
+      presence: required
+      content: If `true`, the system filters URL requests.
+    - key: Parameters
+      title: URL filter parameters.
+      type: <dictionary>
+      presence: optional
+      content: A dictionary containing URL filter parameters. Required when `Enabled`
+        is `true`.
+      subkeys:
+      - key: ProviderComposedIdentifier
+        title: Control provider composed identifier
+        type: <string>
+        presence: required
+        content: |-
+          The URL filter control provider identifier. This string identifies the filter data provider when the filter starts running. Required when Enabled is true.
+
+          In iOS, the identifier is a bundle ID, for example, "com.example.app".
+
+          In macOS, the identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Designated-Requirement" is the designated requirement string from the code signature of the provider. For example, "com.example.app {anchor apple generic}".
+      - key: PIR
+        title: Private information retrieval server settings.
+        type: <dictionary>
+        presence: required
+        content: A dictionary containing Private Information Retrieval server settings.
+        subkeys:
+        - key: ServerURL
+          title: Private information retrieval server URL
+          type: <string>
+          presence: required
+          content: The URL containing the domain name of the private information retrieval
+            server.
+        - key: PrivacyPassIssuerURL
+          title: Privacy pass issuer URL
+          type: <string>
+          presence: required
+          content: The URL containing the domain name of Privacy Pass Issuer.
+        - key: AuthenticationTokenAssetReference
+          title: Authentication token asset reference
+          type: <string>
+          assettypes:
+          - com.apple.asset.credential.userpassword
+          presence: optional
+          content: The identifier of an asset declaration containing the HTTP bearer
+            token required to authenticate with the service. The bearer token is provided
+            in the `Password` field of the asset data. The system uses this token
+            to attest that it's a valid user when requesting anonymous authentication
+            tokens for PIR exchanges.
+      - key: FailClosed
+        title: URL filter fail closed
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If `true`, the system blocks URLs if the filter is enabled, but it
+          fails to make any filtering decision; for example, if there's a communication
+          failure with the PIR server. If `false`, the system allows URLs if the filter
+          is enabled, but it fails to make any filtering decision.
+      - key: PrefilterFetchFrequency
+        title: Prefilter fetch frequency
+        type: <integer>
+        presence: optional
+        range:
+          min: 2700
+        default: 86400
+        content: The time interval in seconds that the system uses to periodically
+          run the `NEURLFilterControlProvider` app extension. The default value is
+          86400 seconds (1 day). The minimum allowed value is 2700 seconds (45 minutes).
+          The system allows `NEURLFilterControlProvider` implementations to download
+          prefilter Bloom filter data onto the device periodically at the specified
+          interval. Implementations need to allow for a slight difference between
+          the scheduled time and the actual runtime of the task, due to the scheduling
+          mechanism on the system.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a web content filter using a Network Extension
+      plugin bundle.
+    file: examples/declarative/declarations/configurations/network.webcontent-filter.plugin/example1.json

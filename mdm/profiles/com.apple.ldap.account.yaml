@@ -39,22 +39,22 @@ payload:
       introduced: n/a
 payloadkeys:
 - key: LDAPAccountDescription
-  title: Account Description
+  title: Account description
   type: <string>
   presence: optional
   content: The description of the account.
 - key: LDAPAccountHostName
-  title: Account Hostname
+  title: Account hostname
   type: <string>
   presence: required
   content: The server's address.
 - key: LDAPAccountUserName
-  title: Account Username
+  title: Account username
   type: <string>
   presence: optional
   content: The user's user name.
 - key: LDAPAccountPassword
-  title: Account Password
+  title: Account password
   type: <string>
   presence: optional
   content: The user's password. Only use this in encrypted profiles.
@@ -65,13 +65,13 @@ payloadkeys:
   default: true
   content: If `true`, the system enables SSL.
 - key: LDAPSearchSettings
-  title: Search Settings
+  title: Search settings
   type: <array>
   presence: optional
   content: An array of search settings dictionaries.
   subkeys:
   - key: LDAPSearchSettingsItem
-    title: An LDAP Search Setting
+    title: An LDAP search setting
     type: <dictionary>
     subkeys:
     - key: LDAPSearchSettingDescription
@@ -80,12 +80,12 @@ payloadkeys:
       presence: optional
       content: The description of this search setting.
     - key: LDAPSearchSettingSearchBase
-      title: Search Setting Search Base
+      title: Search setting search base
       type: <string>
       presence: required
       content: The path to the node where a search should start.
     - key: LDAPSearchSettingScope
-      title: Search Setting Scope
+      title: Search setting scope
       type: <string>
       presence: optional
       rangelist:
@@ -109,4 +109,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
-    Available in iOS 14 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.ldap.account/example1.plist

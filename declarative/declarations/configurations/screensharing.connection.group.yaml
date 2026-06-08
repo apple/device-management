@@ -23,26 +23,32 @@ payload:
   apply: multiple
 payloadkeys:
 - key: ConnectionGroupUUID
-  title: Unique Identifier
+  title: Unique identifier
   type: <string>
   presence: required
   content: A unique identifier for this connection group.
 - key: GroupName
-  title: Group Name
+  title: Group name
   type: <string>
   presence: required
   content: The name of the connection group.
 - key: Members
-  title: Group Members
+  title: Group members
   type: <array>
   presence: required
   content: An array of `ConnectionUUID`s that represent connections declared in `ScreenSharingConnection`
     configurations that are members of this group.
   subkeys:
   - key: ConnectionUUID
+    title: Connection UUID
     type: <string>
 related-status-items:
 - status-items:
   - screensharing.connection.group.unresolved-connection
   note: Any unresolved connection groups in the configuration will appear in the corresponding
     status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration defines a group of screen-sharing connections.
+    file: examples/declarative/declarations/configurations/screensharing.connection.group/example1.json

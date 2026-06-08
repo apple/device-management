@@ -1,0 +1,19 @@
+{
+    "Type": "com.apple.configuration.network.relay",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Corporate Relay",
+        "Relays": [
+            {
+                "HTTP2RelayURL": "https://relay.example.com/proxy",
+                "AdditionalHTTPHeaderFields": {
+                    "Authorization": "Bearer enterprise-token-12345"
+                }
+            }
+        ],
+        "MatchDomains": ["example.com", "internal.example.com"],
+        "RelayUUID": "C3D4E5F6-A7B8-9012-CDEF-123456789012",
+        "UIToggleEnabled": false
+    }
+}

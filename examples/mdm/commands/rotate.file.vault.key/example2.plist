@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_RotateFileVaultKey</string>
+    <key>RotateResult</key>
+    <dict>
+        <key>EncryptedNewRecoveryKey</key>
+        <data>
+        MIAGCSqGSIb3DQEHA6CAMIACAQAxggFqMIIBZgIBADBOMEUxHzAdBgNVBAMM
+        FkZpbGVWYXVsdCBSZWNvdmVyeSBLZXkxIjAgBgNVBA0MGUdyYWhhbXMtTWFj
+        Qm9vay1Qcm8ubG9jYWwCBQChgH/XMA0GDSqGSIb3DQEBAQUABIIBAFBvGbMf
+        6D4hDmw3QenxL1/+3aiiMLR0Gb9hM60mnpOA9BA0o2G3QpjSRB1QBXx/Neiy
+        +p3Ov1YJRdTNoECTjUSJJhxrtnj4TBykqLBlDmkuykz38ykvH85OUP17LMRh
+        ThwmLVXPl9I+VZJHjFMRexjo1xiHDiIjji6o3FX2Ym0Vwt9j9+OlbN/7a6Zg
+        ojVvi6DTuqxOsdr6w5ASzenWoTnahzEDJ0gijHaVV2EQOuyeHGYiBO6Y4R5x
+        hpZPvw0YWY5cczRsUN+SmOuVpGNnL3wsUnDOrzbDM04u5jRkPG5v/kViTsPK
+        SKLZ3UXf4kuRzUuRDSY9ScjNKmw4z7VHSU0wgAYJKoZIhvcNAQcBMBQGCCqG
+        SIb3DQMHBAgwBpgbOFMR0qCABBip8ehhj0meZHHlEJYtifUFt7UIG37X/9IE
+        CFaxcdPJL8tsAAAAAAAAAAAAAA==
+        </data>
+    </dict>
+    <key>Status</key>
+    <string>Acknowledged</string>
+    <key>UDID</key>
+    <string>99710D9B-9D05-5CC2-8BAE-590865D2753C</string>
+</dict>
+</plist>

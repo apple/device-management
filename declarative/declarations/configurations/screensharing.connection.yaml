@@ -23,7 +23,7 @@ payload:
   apply: multiple
 payloadkeys:
 - key: ConnectionUUID
-  title: Unique Identifier
+  title: Unique identifier
   type: <string>
   presence: required
   content: A unique identifier for this connection when it's in a connection group.
@@ -33,22 +33,23 @@ payloadkeys:
   presence: required
   content: The name of the connection.
 - key: HostName
-  title: Host Name
+  title: Host name
   type: <string>
   presence: required
   content: The host name or IP address of the Mac that hosts the screen-sharing connection.
 - key: Port
-  title: TCP Port
+  title: TCP port
   type: <integer>
   presence: optional
   content: The TCP port number on the host to initiate the connection.
 - key: DisplayConfiguration
-  title: Display Configuration
+  title: Display configuration
   type: <dictionary>
   presence: required
   content: The display configuration for this connection.
   subkeys:
   - key: DisplayType
+    title: Display type
     type: <string>
     presence: required
     rangelist:
@@ -60,7 +61,7 @@ payloadkeys:
       - `Virtual1`: Create one virtual display.
       - `Virtual2`: Create two virtual displays.
 - key: AuthenticationCredentialsAssetReference
-  title: Authentication Credentials Asset Reference
+  title: Authentication credentials asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.userpassword
@@ -68,3 +69,9 @@ payloadkeys:
   content: The identifier of an asset declaration that contains the required credentials
     for this connection to authenticate with the screen-sharing server. Set the corresponding
     asset type to `com.apple.asset.credential.userpassword`.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a screen-sharing connection to a remote
+      Mac.
+    file: examples/declarative/declarations/configurations/screensharing.connection/example1.json

@@ -1,5 +1,5 @@
 title: Status Passcode Is Present
-description: A status report of the passcode on the device.
+description: The status item that reports whether the device has a passcode.
 payload:
   statusitemtype: passcode.is-present
   supportedOS:
@@ -46,3 +46,7 @@ payloadkeys:
     of the passcode, such as length or number of complex characters, aren't reported.
     Instead, use the `passcode.is-compliant` status item to verify that the passcode
     complies with all passcode policies set on the device.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/passcode.is-present/example1.json

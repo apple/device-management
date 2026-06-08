@@ -1,5 +1,5 @@
 title: Status Device Serial Number
-description: A status report of the device's serial number.
+description: The status item that reports the device's serial number.
 payload:
   statusitemtype: device.identifier.serial-number
   supportedOS:
@@ -52,3 +52,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The device's serial number.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.identifier.serial-number/example1.json

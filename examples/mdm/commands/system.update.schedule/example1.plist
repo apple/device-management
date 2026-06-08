@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>RequestType</key>
+        <string>ScheduleOSUpdate</string>
+        <key>Updates</key>
+        <array>
+            <dict>
+                <key>InstallAction</key>
+                <string>DownloadOnly</string>
+                <key>ProductKey</key>
+                <string>iOSUpdate17A576</string>
+                <key>ProductVersion</key>
+                <string>13.0</string>
+            </dict>
+        </array>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_ScheduleOSUpdate</string>
+</dict>
+</plist>

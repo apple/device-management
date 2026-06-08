@@ -145,3 +145,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, enables Invert Colors in Display Accommodations.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.universalaccess/example1.plist

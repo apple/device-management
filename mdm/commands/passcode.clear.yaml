@@ -41,3 +41,8 @@ notes:
     Clearing the passcode in iOS 16 no longer adds the passcode to the history of passcodes. Therefore, the user can reuse the cleared passcode even when the `Passcode` payload has the `pinHistory` key set.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/passcode.clear/example1.plist
+    response-file: examples/mdm/commands/passcode.clear/example2.plist

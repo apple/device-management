@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.math.settings",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "Calculator": {
+            "ScientificMode": {
+                "Enabled": false
+            },
+            "ProgrammerMode": {
+                "Enabled": false
+            }
+        }
+    }
+}

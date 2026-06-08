@@ -32,13 +32,13 @@ payload:
     Updating this payload overrides any settings that the user customized, such as EnableMail/Contacts/Calendars/Reminders/Notes and MailNumberOfPastDaysToSync.
 payloadkeys:
 - key: EmailAddress
-  title: Email Address
+  title: Email address
   type: <string>
   presence: optional
   content: The full email address for the account. If not present in the payload,
     the device prompts for this string during profile installation.
 - key: Host
-  title: Exchange ActiveSync Host
+  title: Exchange ActiveSync host
   type: <string>
   presence: optional
   content: The Exchange server host name or IP address.
@@ -72,7 +72,7 @@ payloadkeys:
   presence: optional
   content: The password of the account. Use only with encrypted profiles.
 - key: Certificate
-  title: Authentication Credential
+  title: Authentication credential
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -81,7 +81,7 @@ payloadkeys:
   content: The `.p12` identity certificate in NSData blob format, for accounts that
     allow authentication via certificate.
 - key: CertificateName
-  title: Authentication Credential Name
+  title: Authentication credential name
   supportedOS:
     iOS:
       introduced: '7.0'
@@ -89,13 +89,13 @@ payloadkeys:
   presence: optional
   content: The name or description of the certificate.
 - key: CertificatePassword
-  title: Authentication Credential Password
+  title: Authentication credential password
   type: <string>
   presence: optional
   content: The password necessary for the `.p12` identity certificate. Used with mandatory
     encryption of profiles.
 - key: PreventMove
-  title: Prevent Move
+  title: Prevent move
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -106,7 +106,7 @@ payloadkeys:
     into another account. This setting also prevents forwarding or replying from an
     account other than the recipient of the message.
 - key: PreventAppSheet
-  title: Prevent App Sheet
+  title: Prevent app sheet
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -116,7 +116,7 @@ payloadkeys:
   content: If `true`, prevents this account from sending mail in any app other than
     the Apple Mail app.
 - key: PayloadCertificateUUID
-  title: Payload Certificate UUID
+  title: Payload certificate UUID
   type: <string>
   presence: optional
   format: ^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$
@@ -124,7 +124,7 @@ payloadkeys:
     the identity credential. If this field is present, the Certificate field isn't
     used.
 - key: SMIMEEnabled
-  title: S/MIME Enabled
+  title: S/MIME enabled
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -137,17 +137,16 @@ payloadkeys:
   content: If `true`, the system enables S/MIME encryption. In iOS 10.0 and later,
     this key is ignored. Use `SMIMESigningEnabled` instead.
 - key: SMIMESigningEnabled
-  title: S/MIME Signing Enabled
+  title: S/MIME signing enabled
   supportedOS:
     iOS:
       introduced: '10.3'
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system enables S/MIME signing for this account. Available
-    in iOS 10.0 and later.
+  content: If `true`, the system enables S/MIME signing for this account.
 - key: SMIMESigningCertificateUUID
-  title: S/MIME Signing Certificate
+  title: S/MIME signing certificate
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -157,7 +156,7 @@ payloadkeys:
   content: The UUID of the identity certificate used to sign messages sent from this
     account.
 - key: SMIMEEncryptionEnabled
-  title: S/MIME Encryption Enabled
+  title: S/MIME encryption enabled
   supportedOS:
     iOS:
       introduced: '10.3'
@@ -167,11 +166,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system enables S/MIME encryption for this account. Available
-    in iOS 10.0 and later. As of iOS 12.0, this key is deprecated. Use `SMIMEEncryptByDefault`
-    instead.
+  content: If `true`, the system enables S/MIME encryption for this account. This
+    key is deprecated. Use `SMIMEEncryptByDefault` instead.
 - key: SMIMEEncryptionCertificateUUID
-  title: S/MIME Encryption Certificate
+  title: S/MIME encryption certificate
   supportedOS:
     iOS:
       introduced: '5.0'
@@ -184,7 +182,7 @@ payloadkeys:
     the system uses the public certificate to encrypt the copy of the mail in the
     user's Sent mailbox.
 - key: SMIMEEnablePerMessageSwitch
-  title: S/MIME Enable Per-Message Switch
+  title: S/MIME enable per-message switch
   supportedOS:
     iOS:
       introduced: '8.0'
@@ -197,15 +195,15 @@ payloadkeys:
   content: |-
     If `true`, the system displays the per-message encryption switch in the Mail Compose UI.
 
-    Available in iOS 8.0 and later. As of iOS 12.0, this key is deprecated. Use `SMIMEEnableEncryptionPerMessageSwitch` instead.
+     This key is deprecated. Use `SMIMEEnableEncryptionPerMessageSwitch` instead.
 - key: disableMailRecentsSyncing
-  title: Disable Mail Recents Syncing
+  title: Disable mail recents syncing
   type: <boolean>
   presence: optional
   default: false
   content: If `true`, the system excludes this account from Recent Addresses syncing.
 - key: MailNumberOfPastDaysToSync
-  title: Past Days of Mail to Sync
+  title: Past days of mail to sync
   type: <integer>
   presence: optional
   rangelist:
@@ -230,7 +228,7 @@ payloadkeys:
   presence: optional
   content: The value of the `X-Apple-Config-Magic` header in each EAS HTTP request.
 - key: CommunicationServiceRules
-  title: Communication Service Rules
+  title: Communication service rules
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -239,7 +237,7 @@ payloadkeys:
   content: The communication service handler rules for this account.
   subkeys:
   - key: DefaultServiceHandlers
-    title: Default Service Handlers
+    title: Default service handlers
     supportedOS:
       iOS:
         introduced: '10.0'
@@ -257,7 +255,7 @@ payloadkeys:
       content: The bundle identifier of the default application to use for audio calls
         made to contacts from this account.
 - key: allowMailDrop
-  title: Allow Mail Drop
+  title: Allow mail drop
   supportedOS:
     iOS:
       introduced: '9.2'
@@ -272,8 +270,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the user can turn S/MIME signing on or off in Settings. Available
-    in iOS 12.0 and later.
+  content: If `true`, the user can turn S/MIME signing on or off in Settings.
 - key: SMIMESigningCertificateUUIDUserOverrideable
   supportedOS:
     iOS:
@@ -281,8 +278,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the user can select the signing identity. Available in iOS 12.0
-    and later.
+  content: If `true`, the user can select the signing identity.
 - key: SMIMEEncryptByDefault
   supportedOS:
     iOS:
@@ -291,7 +287,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system enables S/MIME encryption by default. If `SMIMEEnableEncryptionPerMessageSwitch`
-    is `false`, the user can't change this default. Available in iOS 12.0 and later.
+    is `false`, the user can't change this default.
 - key: SMIMEEncryptByDefaultUserOverrideable
   supportedOS:
     iOS:
@@ -300,7 +296,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system enables encryption by default and the user can't
-    change it. Available in iOS 12.0 and later.
+    change it.
 - key: SMIMEEncryptionCertificateUUIDUserOverrideable
   supportedOS:
     iOS:
@@ -309,7 +305,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the user can select the S/MIME encryption identity, and encryption
-    is on.Available in iOS 12.0 and later.
+    is on.
 - key: SMIMEEnableEncryptionPerMessageSwitch
   supportedOS:
     iOS:
@@ -318,7 +314,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system displays the per-message encryption switch in the
-    Mail Compose UI. Available in iOS 12.0 and later.
+    Mail Compose UI.
 - key: EnableMail
   supportedOS:
     iOS:
@@ -449,7 +445,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system overrides the previous user/EAS password with the
-    new EAS password in the payload. Available in iOS 14 and later.
+    new EAS password in the payload.
 - key: VPNUUID
   title: VPNUUID
   supportedOS:
@@ -458,4 +454,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
-    Available in iOS 14 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.eas.account/example1.plist

@@ -60,7 +60,7 @@ payloadkeys:
       - key: CodeRequirement
         type: <string>
         presence: required
-        content: Obtained via the command `codesign -display -r -`.
+        content: Obtain this value by running `codesign -display -r -`.
       - key: StaticCode
         type: <boolean>
         presence: optional
@@ -94,8 +94,6 @@ payloadkeys:
 
           > Note:
           > Every payload needs to include either `Authorization` or `Allowed`, but not both.
-
-          Available in macOS 11 and later.
       - key: Comment
         type: <string>
         presence: optional
@@ -139,25 +137,35 @@ payloadkeys:
     subkeytype: Identity
     subkeys: *id001
   - key: Camera
+    supportedOS:
+      macOS:
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: A system camera. Access to the camera can't be given in a profile; it
-      can only be denied.
+    content: A system camera. A profile can't grant access to the camera; it can only
+      deny it.
     subkeytype: Identity
     subkeys: *id001
   - key: Microphone
+    supportedOS:
+      macOS:
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: A system microphone. Access to the microphone can't be given in a profile;
-      it can only be denied.
+    content: A system microphone. A profile can't grant access to the microphone;
+      it can only deny it.
     subkeytype: Identity
     subkeys: *id001
   - key: Accessibility
+    supportedOS:
+      macOS:
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: Specifies the policies for the app via the Accessibility subsystem. The
-      ability to grant access by this profile is deprecated as of macOS 26.2, and
-      will be removed in macOS 27.0.
+    content: |-
+      Specifies the policies for the app via the Accessibility subsystem. This profile deprecated its ability to grant access as of macOS 26.2, and removes that ability in macOS 27.0.
+
+      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app-settings` configuration.
     subkeytype: Identity
     subkeys: *id001
   - key: PostEvent
@@ -214,8 +222,8 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Allows the application to use CoreGraphics and HID APIs to listen to
-      (receive) CGEvents and HID events from all processes. Access to these events
-      can't be given in a profile; it can only be denied.
+      (receive) CGEvents and HID events from all processes. A profile can't grant
+      access to these events; it can only deny it.
     subkeytype: Identity
     subkeys: *id001
   - key: ScreenCapture
@@ -225,17 +233,20 @@ payloadkeys:
     type: <array>
     presence: optional
     content: Allows the application to capture (read) the contents of the system display.
-      Access to the contents can't be given in a profile; it can only be denied.
+      A profile can't grant access to the contents; it can only deny it.
     subkeytype: Identity
     subkeys: *id001
   - key: SpeechRecognition
     supportedOS:
       macOS:
         introduced: '10.15'
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: Allows the application to use the system Speech Recognition facility
-      and to send speech data to Apple.
+    content: |-
+      Allows the application to use the system Speech Recognition facility and to send speech data to Apple.
+
+      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app-settings` configuration.
     subkeytype: Identity
     subkeys: *id001
   - key: SystemPolicyDesktopFolder
@@ -289,8 +300,7 @@ payloadkeys:
         introduced: '13.0'
     type: <array>
     presence: optional
-    content: Allows the application to update or delete other apps. Available in macOS
-      13 and later.
+    content: Allows the application to update or delete other apps.
     subkeytype: Identity
     subkeys: *id001
   - key: SystemPolicyAppData
@@ -306,8 +316,16 @@ payloadkeys:
     supportedOS:
       macOS:
         introduced: '11.0'
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: Specifies the policies for the app to access Bluetooth devices.
+    content: |-
+      Specifies the policies for the app to access Bluetooth devices.
+
+      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app-settings` configuration.
     subkeytype: Identity
     subkeys: *id001
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.TCC.configuration-profile-policy/example1.plist

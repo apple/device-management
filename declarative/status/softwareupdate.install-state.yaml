@@ -1,5 +1,5 @@
 title: Status Software Update Install State
-description: A status report of the software update install state.
+description: The status item that reports the device's software update install state.
 payload:
   statusitemtype: softwareupdate.install-state
   supportedOS:
@@ -50,8 +50,11 @@ payloadkeys:
     The software update install status, which has the following values:
 
     - `none`: There's no software update pending, and any previous software update succeeded.
-    - `waiting': A software update is waiting to start.
     - `downloading`: The system is downloading data for a software update.
     - `prepared`: The system prepared the software update and it's ready for installation.
     - `installing`: The system is installing the software update.
     - `failed`: The software update failed.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.install-state/example1.json

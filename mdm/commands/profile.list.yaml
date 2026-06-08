@@ -55,8 +55,6 @@ payloadkeys:
   default: false
   content: If `true`, only include profiles that MDM has installed. For user enrollments,
     the device ignores this key and always limits the results to managed profiles.
-    This value is available in iOS 13 and later, macOS 10.5 and later, and tvOS 13
-    and later.
 responsekeys:
 - key: ProfileList
   type: <array>
@@ -125,9 +123,8 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the current MDM service installed the profile. MDM doesn't
-        return this value for supervised devices, and can remove or replace all profiles
-        on supervised devices.
+      content: If `true`, the current MDM service installed the profile. MDM can remove
+        or replace all profiles on supervised devices.
     - key: Source
       supportedOS:
         iOS:
@@ -195,3 +192,8 @@ notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
     and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/profile.list/example1.plist
+    response-file: examples/mdm/commands/profile.list/example2.plist

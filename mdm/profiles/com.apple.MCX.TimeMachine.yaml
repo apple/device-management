@@ -67,3 +67,7 @@ payloadkeys:
   - key: SkipPathItem
     type: <string>
     presence: required
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.MCX.TimeMachine/example1.plist

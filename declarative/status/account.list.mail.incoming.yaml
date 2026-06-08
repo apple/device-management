@@ -1,5 +1,5 @@
 title: Status Account List Mail Incoming
-description: A status report of the client's incoming Mail accounts.
+description: The status item that lists the devices's incoming Mail accounts.
 payload:
   statusitemtype: account.list.mail.incoming
   supportedOS:
@@ -45,8 +45,9 @@ payloadkeys:
   subkeytype: Account
   subkeys:
   - key: status_value
+    title: Status value
     type: <dictionary>
-    content: A status report of the client's incoming Mail account details.
+    content: An incoming Mail account.
     subkeys:
     - key: identifier
       title: Unique identifier of the account.
@@ -58,8 +59,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the account is removed and the status item object only contains
-        this key and the `identifier` key.
+      content: If `true`, the device removed the account and the status item object
+        only contains this key and the `identifier` key.
     - key: declaration-identifier
       title: Identifier of the declaration that installed the account.
       type: <string>
@@ -77,7 +78,7 @@ payloadkeys:
       presence: optional
       content: The server host name for the account.
     - key: port
-      title: Server Port
+      title: Server port
       type: <integer>
       presence: optional
       content: The server port for the account.
@@ -98,3 +99,12 @@ payloadkeys:
       presence: optional
       content: A Boolean value that indicates whether the Notes app displays notes
         for this account.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated account
+    description: Reports a new or updated account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.mail.incoming/example1.json
+  - tab: Removed account
+    description: Reports a removed account.
+    file: data/docc-examples/remotemanagementmodel/status/account.list.mail.incoming/example2.json

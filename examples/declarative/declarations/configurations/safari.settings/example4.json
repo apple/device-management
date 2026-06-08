@@ -1,0 +1,16 @@
+{
+    "Type": "com.apple.configuration.safari.settings",
+    "Identifier": "614B7CD6-2E0B-4BFE-812F-E4E6277C9624",
+    "ServerToken": "19B9F819-D65F-4805-9D12-CC264C19D191",
+    "Payload": {
+        "Privacy": {
+            "PermissionDefaults": {
+                "*example.com": {
+                    "OrganizationJustification": "The camera and microphone are required for video conferencing.",
+                    "Camera": "Allow",
+                    "Microphone": "Allow"
+                }
+            }
+        }
+    }
+}

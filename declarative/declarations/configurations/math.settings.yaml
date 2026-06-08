@@ -25,20 +25,22 @@ payload:
     watchOS:
       introduced: n/a
   apply: combined
-  content: Configures the built-in math and calculator app settings.
 payloadkeys:
 - key: Calculator
+  title: Calculator
   type: <dictionary>
   presence: optional
   content: If present, configures the built-in Calculator app.
   subkeys:
   - key: BasicMode
+    title: Basic mode
     type: <dictionary>
     presence: optional
     content: If present, configures the basic mode of the calculator. Basic mode is
       always enabled.
     subkeys:
     - key: AddSquareRoot
+      title: Add square root
       type: <boolean>
       presence: required
       combinetype: boolean-or
@@ -46,17 +48,20 @@ payloadkeys:
         +/- button. Normally, the square root button is available in scientific mode,
         so this key can be used to make it available when the scientific mode is restricted.
   - key: ScientificMode
+    title: Scientific mode
     type: <dictionary>
     presence: optional
     content: If present, configures the scientific mode of the calculator. If not
       present, scientific mode is enabled.
     subkeys:
     - key: Enabled
+      title: Enabled
       type: <boolean>
       presence: required
       combinetype: boolean-and
       content: Controls whether the mode is enabled.
   - key: ProgrammerMode
+    title: Programmer mode
     supportedOS:
       iOS:
         introduced: n/a
@@ -66,33 +71,39 @@ payloadkeys:
       present, programmer mode is enabled.
     subkeys:
     - key: Enabled
+      title: Enabled
       type: <boolean>
       presence: required
       combinetype: boolean-and
       content: Controls whether the mode is enabled.
   - key: MathNotesMode
+    title: Math notes mode
     type: <dictionary>
     presence: optional
     content: If present, configures the Math Notes mode of the calculator. If not
       present, Math Notes mode is enabled.
     subkeys:
     - key: Enabled
+      title: Enabled
       type: <boolean>
       presence: required
       combinetype: boolean-and
       content: Controls whether the mode is enabled.
   - key: InputModes
+    title: Input modes
     type: <dictionary>
     presence: optional
     content: If present, controls global input options of the calculator. If not present,
       all input modes are enabled.
     subkeys:
     - key: UnitConversion
+      title: Unit conversion
       type: <boolean>
       presence: required
       combinetype: boolean-and
       content: Configures whether unit conversions are enabled.
     - key: RPN
+      title: RPN
       supportedOS:
         iOS:
           introduced: n/a
@@ -101,18 +112,27 @@ payloadkeys:
       combinetype: boolean-and
       content: Configures whether RPN input is enabled.
 - key: SystemBehavior
+  title: System behavior
   type: <dictionary>
   presence: optional
   content: If present, configures math behavior in the system.
   subkeys:
   - key: KeyboardSuggestions
+    title: Keyboard suggestions
     type: <boolean>
     presence: required
     combinetype: boolean-and
     content: Controls whether keyboard suggestions include math solutions. This key
       is also supported by the keyboard.settings configuration.
   - key: MathNotes
+    title: Math notes
     type: <boolean>
     presence: required
     combinetype: boolean-and
     content: Controls whether Math Notes is allowed in other apps such as Notes.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration prevents the use of scientific and programmer
+      modes in calculator app.
+    file: examples/declarative/declarations/configurations/math.settings/example1.json

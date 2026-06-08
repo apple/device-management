@@ -15,12 +15,16 @@ payload:
       introduced: '10.0'
 payloadkeys:
 - key: FullName
-  title: Full Name
+  title: Full name
   type: <string>
   presence: optional
   content: The user's full name.
 - key: EmailAddress
-  title: Email Address
+  title: Email address
   type: <string>
   presence: optional
   content: The email address of the user.
+examples:
+  title: Asset example
+  files:
+  - file: examples/declarative/declarations/assets/useridentity/example1.json

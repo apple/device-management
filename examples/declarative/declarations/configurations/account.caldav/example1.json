@@ -1,0 +1,12 @@
+{
+    "Type": "com.apple.configuration.account.caldav",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Work Calendar",
+        "HostName": "calendar.example.com",
+        "Port": 8443,
+        "Path": "/principals",
+        "AuthenticationCredentialsAssetReference": "64BF8F5C-8CFD-40AA-9082-A0B594D4E100"
+    }
+}

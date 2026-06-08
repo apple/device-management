@@ -61,3 +61,7 @@ payloadkeys:
           type: <boolean>
           presence: required
           content: If `true`, the target path is located within a user home directory.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.systemmigration/example1.plist

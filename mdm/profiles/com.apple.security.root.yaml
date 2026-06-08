@@ -44,12 +44,16 @@ payload:
   content: Alias for com.apple.security.pkcs1.
 payloadkeys:
 - key: PayloadCertificateFileName
-  title: Payload Certificate Filename
+  title: Payload certificate filename
   type: <string>
   presence: optional
   content: The file name of the enclosed certificate.
 - key: PayloadContent
-  title: Payload Certificate Data
+  title: Payload certificate data
   type: <data>
   presence: required
   content: The binary representation of the payload encoded in base64.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.security.root/example1.plist

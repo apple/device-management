@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.network.vpn.ipsec",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "VisibleName": "Corporate IPSec VPN",
+        "HostName": "vpn.example.com",
+        "Authentication": {
+            "Method": "SharedSecret",
+            "LocalIdentifier": "vpngroup",
+            "LocalIdentifierType": "KeyID",
+            "CredentialsAssetReference": "64BF8F5C-8CFD-40AA-9082-A0B594D4E100"
+        }
+    }
+}

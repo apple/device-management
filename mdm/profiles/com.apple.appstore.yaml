@@ -42,9 +42,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system prevents App Store from launching. Available in macOS
-    10.14 and later. Restricts installations to software updates only in macOS 10.10
-    through 10.13.
+  content: If `true`, the system prevents App Store from launching. Restricts installations
+    to software updates only in macOS 10.10 through 10.13.
 - key: restrict-store-disable-app-adoption
   supportedOS:
     macOS:
@@ -52,8 +51,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system disables app adoption by users. Available in macOS
-    10.10 and later.
+  content: If `true`, the system disables app adoption by users.
 - key: DisableSoftwareUpdateNotifications
   supportedOS:
     macOS:
@@ -61,5 +59,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system disables software update notifications. Available
-    in macOS 10.10 and later.
+  content: If `true`, the system disables software update notifications.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.appstore/example1.plist

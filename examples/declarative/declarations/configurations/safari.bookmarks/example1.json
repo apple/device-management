@@ -1,0 +1,36 @@
+{
+    "Type": "com.apple.configuration.safari.bookmarks",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "ManagedBookmarks": [
+            {
+                "GroupIdentifier": "Group1",
+                "Title": "Company Bookmarks",
+                "Bookmarks": [
+                    {
+                        "Title": "Public Site",
+                        "URL": "https://www.example.com"
+                    },
+                    {
+                        "Title": "Store",
+                        "URL": "https://store.example.com"
+                    },
+                    {
+                        "Title": "Internal Developers",
+                        "Folder": [
+                            {
+                                "Title": "Developers",
+                                "URL": "https://developer.example.com"
+                            },
+                            {
+                                "Title": "Repositories",
+                                "URL": "https://repo.example.com"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

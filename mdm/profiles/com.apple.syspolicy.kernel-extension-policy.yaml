@@ -32,10 +32,8 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If `true`, nonadministrative users can approve additional kernel extensions in the Security & Privacy preferences.
-
-    Available in macOS 11 and later.
+  content: If `true`, nonadministrative users can approve additional kernel extensions
+    in the Security & Privacy preferences.
 - key: AllowUserOverrides
   type: <boolean>
   presence: optional
@@ -67,3 +65,7 @@ payloadkeys:
       type: <string>
       presence: required
       content: Kernel extension data.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.syspolicy.kernel-extension-policy/example1.plist

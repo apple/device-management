@@ -1,0 +1,16 @@
+{
+    "Type": "com.apple.configuration.services.background-tasks",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "TaskType": "com.example.bgtask",
+        "TaskDescription": "Test script",
+        "ExecutableAssetReference": "5840A1CB-A769-4C08-8968-13E8BA705B3E",
+        "LaunchdConfigurations": [
+            {
+                "FileAssetReference": "F6A59159-FFA5-4DA9-B2E8-316AC4C99C78",
+                "Context": "daemon"
+            }
+        ]
+    }
+}

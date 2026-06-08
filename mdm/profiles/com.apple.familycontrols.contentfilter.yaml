@@ -58,7 +58,7 @@ payloadkeys:
   content: |-
     An array of sites that defines an allow list. If specified, this defines additional allowed sites besides those in the automated allow list and deny list, including disallowed adult sites.
 
-    This key is required if `allowListEnabled` is `true`.
+    The device requires this key if `allowListEnabled` is `true`.
   subkeys:
   - key: siteAllowListItem
     type: <dictionary>
@@ -142,3 +142,7 @@ payloadkeys:
     type: <string>
     presence: required
     content: A disallowed site.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.familycontrols.contentfilter/example1.plist

@@ -22,7 +22,7 @@ payload:
   apply: single
 payloadkeys:
 - key: EnrollmentProfileURL
-  title: Watch Enrollment Profile's URL.
+  title: Watch enrollment profile's URL.
   type: <string>
   presence: required
   content: The URL of the profile that the Apple Watch downloads and installs if the
@@ -31,7 +31,7 @@ payloadkeys:
     and the profile contains an MDM payload. Apple Watch attempts to install each
     payload that the profile contains.
 - key: AnchorCertificateAssetReferences
-  title: Anchor Certificate Asset References.
+  title: Anchor certificate asset references.
   type: <array>
   assettypes:
   - com.apple.asset.credential.certificate
@@ -47,3 +47,8 @@ payloadkeys:
     type: <string>
     content: Specifies the identifier of an asset declaration containing the anchor
       certificate to be used.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration enrolls an Apple Watch using a profile URL.
+    file: examples/declarative/declarations/configurations/watch.enrollment/example1.json

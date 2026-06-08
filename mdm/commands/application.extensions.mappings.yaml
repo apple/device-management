@@ -55,3 +55,8 @@ notes:
     This list is a superset of the list that `ActiveNSExtensionsCommand` returns. It may contain extensions that the system never enables due to various restrictions.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/application.extensions.mappings/example1.plist
+    response-file: examples/mdm/commands/application.extensions.mappings/example2.plist

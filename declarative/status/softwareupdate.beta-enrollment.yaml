@@ -1,5 +1,5 @@
 title: Status Software Update Beta Enrollment
-description: A status report of the device's enrolled beta program.
+description: The status item that reports the device's enrolled beta program.
 payload:
   statusitemtype: softwareupdate.beta-enrollment
   supportedOS:
@@ -32,3 +32,7 @@ payloadkeys:
   presence: required
   content: The device's enrolled beta program name, or an empty string if there's
     no enrolled beta program.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.beta-enrollment/example1.json

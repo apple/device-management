@@ -60,7 +60,7 @@ payloadkeys:
     presence: optional
     content: The password for the user.
   - key: AllowedProtocolMask
-    title: Supported IP Versions
+    title: Supported IP versions
     supportedOS:
       iOS:
         introduced: '10.3'
@@ -135,13 +135,13 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The default Internet Protocol versions. Available in iOS 10.3 but no longer used in iOS 11 and later. Allowed values:
+        The default Internet Protocol versions. Allowed values:
 
         - `1`: IPv4
         - `2`: IPv6
         - `3`: Both
     - key: AllowedProtocolMask
-      title: Supported IP Versions
+      title: Supported IP versions
       supportedOS:
         iOS:
           introduced: '10.3'
@@ -152,13 +152,13 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports. Available in iOS 10.3 and later. Allowed values:
+        The Internet Protocol versions that the system supports. Allowed values:
 
         - `1`: IPv4
         - `2`: IPv6
         - `3`: Both
     - key: AllowedProtocolMaskInRoaming
-      title: Supported Roaming IP Versions
+      title: Supported roaming IP versions
       supportedOS:
         iOS:
           introduced: '10.3'
@@ -169,13 +169,13 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Allowed values:
+        The Internet Protocol versions that the system supports while roaming. Allowed values:
 
         - `1`: IPv4
         - `2`: IPv6
         - `3`: Both
     - key: AllowedProtocolMaskInDomesticRoaming
-      title: Supported Roaming IP Versions
+      title: Supported roaming IP versions
       supportedOS:
         iOS:
           introduced: '10.3'
@@ -186,7 +186,7 @@ payloadkeys:
       - 2
       - 3
       content: |-
-        The Internet Protocol versions that the system supports while roaming. Available in iOS 10.3 and later. Allowed values:
+        The Internet Protocol versions that the system supports while roaming. Allowed values:
 
         - `1`: IPv4
         - `2`: IPv6
@@ -201,5 +201,8 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the system enables XLAT464. Available in iOS 16 and later
-        and watchOS 9 and later.
+      content: If `true`, the system enables XLAT464.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.cellular/example1.plist

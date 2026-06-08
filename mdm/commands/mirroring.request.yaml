@@ -69,3 +69,8 @@ notes:
     Provide either the `DestinationName` or the `DestinationDeviceID`. If you provide both values, MDM uses `DestinationDeviceID`.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/classroom.mirroring.request/example1.plist
+    response-file: examples/mdm/commands/classroom.mirroring.request/example2.plist

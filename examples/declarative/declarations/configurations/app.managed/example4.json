@@ -1,0 +1,39 @@
+{
+    "Type": "com.apple.configuration.app.managed",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "ManifestURL": "https://example.com/apps/TestApp.plist",
+        "InstallBehavior": {
+            "Install": "Required",
+            "AllowDownloadsOverCellular": "AlwaysOff"
+        },
+        "UpdateBehavior": {
+            "AutomaticAppUpdates": "AlwaysOn"
+        },
+        "AppConfig": {
+            "DataAssetReference": "52C7D562-1DEC-472A-BFDF-3A8BE630385B",
+            "Certificates": [
+                {
+                    "Identifier": "Certificate1",
+                    "AssetReference": "84965BAD-11B2-48CE-9766-CE32387C508E"
+                }
+            ]
+        },
+        "ExtensionConfigs": {
+            "com.example.TestApp.extension1 (ABCDE12345)": {
+                "DataAssetReference": "52C7D562-1DEC-472A-BFDF-3A8BE630385B",
+                "Certificates": [
+                    {
+                        "Identifier": "Certificate1",
+                        "AssetReference": "84965BAD-11B2-48CE-9766-CE32387C508E"
+                    },
+                    {
+                        "Identifier": "Certificate2",
+                        "AssetReference": "4CEF7D59-CDB5-477A-B51B-6A1E8A63D678"
+                    }
+                ]
+            }
+        }
+    }
+}

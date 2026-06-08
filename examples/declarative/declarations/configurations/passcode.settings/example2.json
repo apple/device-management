@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.passcode.settings",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "CustomRegex": {
+            "Regex": "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$",
+            "Description": {
+                "default": "Default: Minimum 8 characters, 1 number, 1 uppercase, 1 lowercase.",
+                "en-US": "Minimum 8 characters, 1 number, 1 uppercase, 1 lowercase.",
+                "fr": "Minimum 8 caractères, 1 chiffre, 1 majuscule, 1 minuscule."
+            }
+        }
+    }
+}

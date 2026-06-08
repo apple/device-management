@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CommandUUID</key>
+    <string>0001_DeclarativeManagement</string>
+    <key>EnrollmentID</key>
+    <string>8DB29EAB-A5BB-4B60-8DDA-F75517766FAC</string>
+    <key>Status</key>
+    <string>Acknowledged</string>
+</dict>
+</plist>

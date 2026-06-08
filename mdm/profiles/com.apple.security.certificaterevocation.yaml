@@ -30,7 +30,7 @@ payload:
   content: Policies that affect system-wide certificate revocation checking.
 payloadkeys:
 - key: EnabledForCerts
-  title: Enabled Certs
+  title: Enabled certs
   type: <array>
   presence: optional
   content: |-
@@ -57,3 +57,7 @@ payloadkeys:
         The hash of the DER-encoding of the certificate's `subjectPublicKeyInfo`.
 
         The hash field requires the data (`subjectPublicKeyInfo` hash) in a specific format: a Base64 encoded (binary) SHA-256 hash of the certificate's public key.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.security.certificaterevocation/example1.plist

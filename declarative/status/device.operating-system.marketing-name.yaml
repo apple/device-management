@@ -1,5 +1,6 @@
 title: Status Device Operating System Marketing Name
-description: A status report of the device's operating system marketing name.
+description: The status item that reports the device's operating system marketing
+  name.
 payload:
   statusitemtype: device.operating-system.marketing-name
   supportedOS:
@@ -55,3 +56,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system's marketing name in use on the device, such as `Catalina`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.marketing-name/example1.json

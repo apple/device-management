@@ -1,0 +1,22 @@
+{
+    "Type": "com.apple.configuration.network.vpn.ikev2",
+    "Identifier": "2A3B4C5D-6E7F-8A9B-0C1D-2E3F4A5B6C7D",
+    "ServerToken": "F1E2D3C4-B5A6-7890-ABCD-EF1234567890",
+    "Payload": {
+        "VisibleName": "Corporate IKEv2 VPN (Certificate)",
+        "HostName": "vpn.example.com",
+        "LocalIdentifier": "device@example.com",
+        "RemoteIdentifier": "vpn.example.com",
+        "Authentication": {
+            "Method": "Certificate",
+            "IdentityAssetReference": "CB3E6C7F-2318-437B-8A9E-D50C69376DE4",
+            "IdentityCertificateType": "RSA",
+            "ExtendedAuth": {
+                "Enabled": true,
+                "CredentialsAssetReference": "64BF8F5C-8CFD-40AA-9082-A0B594D4E100",
+                "ServerCertificateIssuerCommonName": "Example Corp CA",
+                "TLSMinimumVersion": "1.2"
+            }
+        }
+    }
+}

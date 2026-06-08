@@ -387,3 +387,38 @@ properties:
         content:
           type: string
           description: The note content in "markdown" format.
+
+  examples:
+    type: object
+    description: An array of examples.
+    additionalProperties: false
+    required:
+    - title
+    - files
+    properties:
+      title:
+        type: string
+        description: Title for the example.
+      files:
+        type: array
+        description: An array of files with their own descriptions.
+        items:
+          type: object
+          description: A description and path for an example file.
+          additionalProperties: false
+          properties:
+            tab:
+              type: string
+              description: Tab title. Must be present when there are multiple items in files array. Must be unique.
+            description:
+              type: string
+              description: Description for the example. Must be present when there are multiple items in files array.
+            file:
+              type: string
+              description: The file path for the example data.
+            request-file:
+              type: string
+              description: The file path for the request example data in a tabbed request/response.
+            response-file:
+              type: string
+              description: The file path for the response example data in a tabbed request/response.

@@ -49,7 +49,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system enables OAuth for authentication. Don't specify a
-    password if `OAuth` is `true`. Available in macOS 10.14 and later
+    password if `OAuth` is `true`.
 - key: OAuthSignInURL
   title: URL for OAuth sign-in
   supportedOS:
@@ -70,7 +70,7 @@ payloadkeys:
   presence: optional
   content: The password of the account. Use only with encrypted profiles.
 - key: PayloadCertificateUUID
-  title: Payload Certificate UUID
+  title: Payload certificate UUID
   supportedOS:
     macOS:
       introduced: '10.12'
@@ -89,7 +89,7 @@ payloadkeys:
     the identity credential. Supported on macOS 10.11 or later. On macOS 10.12 or
     later use the PayloadCertificateUUID.
 - key: allowMailDrop
-  title: Allow Mail Drop
+  title: Allow mail drop
   supportedOS:
     macOS:
       introduced: '10.12'
@@ -122,3 +122,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The external server port number.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.ews.account/example1.plist

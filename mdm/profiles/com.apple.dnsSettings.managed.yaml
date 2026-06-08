@@ -37,13 +37,13 @@ payload:
       introduced: n/a
 payloadkeys:
 - key: DNSSettings
-  title: DNS Settings
+  title: DNS settings
   type: <dictionary>
   presence: required
   content: A dictionary that defines a configuration for an encrypted DNS server.
   subkeys:
   - key: DNSProtocol
-    title: DNS Protocol
+    title: DNS protocol
     type: <string>
     presence: required
     rangelist:
@@ -60,7 +60,7 @@ payloadkeys:
       are provided, the system uses the hostname or address in the URL to determine
       the server addresses. Required if `DNSProtocol` is `HTTPS`.
   - key: ServerName
-    title: Server Name
+    title: Server name
     type: <string>
     presence: optional
     content: The hostname of a DNS-over-TLS server used to validate the server certificate,
@@ -68,17 +68,17 @@ payloadkeys:
       the hostname to determine the server addresses. This key must be present only
       if the DNSProtocol is `TLS`.
   - key: ServerAddresses
-    title: DNS Server Addresses
+    title: DNS server addresses
     type: <array>
     presence: optional
     content: An unordered list of DNS server IP address strings. These IP addresses
       can be a mixture of IPv4 and IPv6 addresses.
     subkeys:
     - key: ServerAddressesElement
-      title: Server Address Element
+      title: Server address element
       type: <string>
   - key: AllowFailover
-    title: Allow Failover
+    title: Allow failover
     supportedOS:
       iOS:
         introduced: '26.0'
@@ -103,7 +103,7 @@ payloadkeys:
     content: The UUID that points to an identity certificate payload. The system uses
       this identity to authenticate the user to the DNS resolver.
   - key: SupplementalMatchDomains
-    title: Supplemental Match Domains
+    title: Supplemental match domains
     type: <array>
     presence: optional
     content: |-
@@ -112,10 +112,10 @@ payloadkeys:
       The system supports a single wildcard (`*`) prefix, but it's not required. For example, both `*.example.com` and `example.com` match against `mydomain.example.com` and `your.domain.example.com`, but don't match against `mydomain-example.com`.
     subkeys:
     - key: SupplementalMatchDomainsElement
-      title: Supplemental Match Domains Element
+      title: Supplemental match domains element
       type: <string>
 - key: OnDemandRules
-  title: On Demand Rules
+  title: On demand rules
   type: <array>
   presence: optional
   content: An array of rules that define the DNS settings. If not set, the system
@@ -124,11 +124,11 @@ payloadkeys:
   subkeytype: OnDemandRulesElement
   subkeys:
   - key: OnDemandRulesElement
-    title: On Demand Rules Element
+    title: On demand rules element
     type: <dictionary>
     subkeys:
     - key: Action
-      title: On Demand Action
+      title: On demand action
       type: <string>
       presence: required
       rangelist:
@@ -142,14 +142,14 @@ payloadkeys:
         - `Disconnect`: Don't apply DNS Settings when the dictionary matches.
         - `EvaluateConnection`: Apply DNS Settings with per-domain exceptions when the dictionary matches.
     - key: ActionParameters
-      title: Action Parameters
+      title: Action parameters
       type: <array>
       presence: optional
       content: An array of dictionaries that provide per-connection rules. The system
         uses this array only for settings where the `Action` value is `EvaluateConnection`.
       subkeys:
       - key: ActionParameter
-        title: Action Parameter
+        title: Action parameter
         type: <dictionary>
         presence: optional
         content: |-
@@ -163,10 +163,10 @@ payloadkeys:
           content: The domains for which this evaluation applies.
           subkeys:
           - key: DomainsElement
-            title: Domains Element
+            title: Domains element
             type: <string>
         - key: DomainAction
-          title: Domain Action
+          title: Domain action
           type: <string>
           presence: required
           rangelist:
@@ -178,7 +178,7 @@ payloadkeys:
             * 'NeverConnect': Don't use the DNS Settings for the specified domains.
             * 'ConnectIfNeeded': Allow using the DNS Settings for the specified domains.
     - key: DNSDomainMatch
-      title: DNS Domain Match
+      title: DNS domain match
       type: <array>
       presence: optional
       content: |-
@@ -187,10 +187,10 @@ payloadkeys:
         The system supports a single wildcard (`*`) prefix, but it's not required. For example, both `*.example.com` and `example.com` match against `mydomain.example.com` and `your.domain.example.com`, but don't match against `mydomain-example.com`.
       subkeys:
       - key: DNSDomainMatchElement
-        title: DNS Domain Match Element
+        title: DNS domain match element
         type: <string>
     - key: DNSServerAddressMatch
-      title: DNS Server Address Match
+      title: DNS server address match
       type: <array>
       presence: optional
       content: |-
@@ -199,10 +199,10 @@ payloadkeys:
         The system supports matching with a single wildcard. For example, `17.*` matches any DNS server in the 17.0.0.0/8 subnet.
       subkeys:
       - key: DNSServerAddressMatchElement
-        title: DNS Server Address Match Element
+        title: DNS server address match element
         type: <string>
     - key: InterfaceTypeMatch
-      title: Interface Type Match
+      title: Interface type match
       type: <string>
       presence: optional
       rangelist:
@@ -212,7 +212,7 @@ payloadkeys:
       content: An interface type. If specified, this rule matches only if the primary
         network interface hardware matches the specified type.
     - key: SSIDMatch
-      title: SSID Match
+      title: SSID match
       type: <array>
       presence: optional
       content: An array of SSIDs to match against the current network. If the network
@@ -220,16 +220,29 @@ payloadkeys:
         fails. Omit this key and the corresponding array to match against any SSID.
       subkeys:
       - key: SSIDMatchElement
-        title: SSID Match Element
+        title: SSID match element
         type: <string>
     - key: URLStringProbe
-      title: URL String Probe
+      title: URL string probe
       type: <string>
       presence: optional
       content: A URL to probe. This rule matches if this URL is successfully fetched
         and returns a 200 HTTP status code without redirection.
 - key: ProhibitDisablement
-  title: Prohibit Disablement
+  title: Prohibit disablement
+  supportedOS:
+    iOS:
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    macOS:
+      supervised: true
+      userenrollment:
+        mode: forbidden
+    visionOS:
+      supervised: true
+      userenrollment:
+        mode: forbidden
   type: <boolean>
   presence: optional
   default: false

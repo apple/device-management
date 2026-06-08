@@ -1,6 +1,6 @@
 title: Status Screen Sharing Connection Group Unresolved Connections
-description: Information about connection groups with member connection references
-  that the system couldn't resolve.
+description: The status item that lists connection groups with member connection references
+  that the device couldn't resolve.
 payload:
   statusitemtype: screensharing.connection.group.unresolved-connection
   supportedOS:
@@ -23,15 +23,16 @@ payload:
       introduced: n/a
 payloadkeys:
 - key: screensharing.connection.group.unresolved-connection
-  title: Connection Groups status
+  title: Connection groups status
   type: <array>
   presence: required
-  content: A status item that contains an array of unresolved connection groups.
+  content: The status item that contains an array of unresolved connection groups.
   subkeytype: UnresolvedGroup
   subkeys:
   - key: unresolved_group
+    title: Unresolved group
     type: <dictionary>
-    content: A status item that contains an unresolved connection group.
+    content: The status item that contains an unresolved connection group.
     subkeys:
     - key: identifier
       title: Unique identifier of the connection group.
@@ -53,7 +54,16 @@ payloadkeys:
         in the group's declaration for the unresolved connections.
       subkeys:
       - key: ConnectionUUID
-        title: Connection Unique Identifier
+        title: Connection unique identifier
         type: <string>
         content: The unique identifier (i.e., ConnectionUUID) of a connection which
           could not be resolved.
+examples:
+  title: Status item example
+  files:
+  - tab: New or updated connection group
+    description: Reports a new or updated connection group.
+    file: data/docc-examples/remotemanagementmodel/status/screensharing.connection.group.unresolved-connection/example1.json
+  - tab: Removed connection group
+    description: Reports a removed connection group.
+    file: data/docc-examples/remotemanagementmodel/status/screensharing.connection.group.unresolved-connection/example2.json

@@ -36,52 +36,42 @@ payload:
     yet), and those settings will always be enforced.
 payloadkeys:
 - key: NotificationSettings
-  title: Notification Settings
+  title: Notification settings
   type: <array>
   presence: required
   content: An array of notification settings dictionaries.
   subkeys:
   - key: NotificationSettingsItem
-    title: Notification Setting
+    title: Notification setting
     type: <dictionary>
     subkeys:
     - key: BundleIdentifier
-      title: App Bundle Identifier
+      title: App bundle identifier
       type: <string>
       presence: required
-      content: |-
-        The bundle identifier of the app to which to apply these notification settings.
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
+      content: The bundle identifier of the app to which to apply these notification
+        settings.
     - key: NotificationsEnabled
-      title: Enable Notifications
+      title: Enable notifications
       type: <boolean>
       presence: optional
       default: true
-      content: |-
-        If `true`, enables notifications for this app.
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
+      content: If `true`, enables notifications for this app.
     - key: ShowInNotificationCenter
       title: Show in Notification Center
       type: <boolean>
       presence: optional
       default: true
-      content: |-
-        If `true`, enables notifications in the notification center for this app.
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
+      content: If `true`, enables notifications in the Notification Center for this
+        app.
     - key: ShowInLockScreen
       title: Show in Lock Screen
       type: <boolean>
       presence: optional
       default: true
-      content: |-
-        If `true`, enables notifications on the Lock Screen for this app.
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
+      content: If `true`, enables notifications on the Lock Screen for this app.
     - key: AlertType
-      title: Alert Type
+      title: Alert type
       type: <integer>
       presence: optional
       rangelist:
@@ -95,19 +85,14 @@ payloadkeys:
         - `0`: None
         - `1`: Temporary Banner
         - `2`: Persistent Banner
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
     - key: BadgesEnabled
-      title: Badges Enabled
+      title: Badges enabled
       type: <boolean>
       presence: optional
       default: true
-      content: |-
-        If `true`, enables badges for this app.
-
-        Available in iOS 9.3 and later and macOS 10.15 and later.
+      content: If `true`, enables badges for this app.
     - key: SoundsEnabled
-      title: Sounds Enabled
+      title: Sounds enabled
       type: <boolean>
       presence: optional
       default: true
@@ -122,24 +107,19 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: true
-      content: |-
-        If `true`, enables notifications in CarPlay for this app.
-
-        Available in iOS 12 and later.
+      content: If `true`, enables notifications in CarPlay for this app.
     - key: CriticalAlertEnabled
-      title: Critical Alert Enabled
+      title: Critical alert enabled
       supportedOS:
         iOS:
           introduced: '12.0'
       type: <boolean>
       presence: optional
       default: false
-      content: |-
-        If `true`, enables critical alerts that can ignore Do Not Disturb and ringer settings for this app.
-
-        Available in iOS 12 and later and macOS 10.15 and later.
+      content: If `true`, enables critical alerts that can ignore Do Not Disturb and
+        ringer settings for this app.
     - key: GroupingType
-      title: Grouping Type
+      title: Grouping type
       supportedOS:
         iOS:
           introduced: '12.0'
@@ -158,10 +138,8 @@ payloadkeys:
         - `0`: Automatic: Group notifications into app-specified groups.
         - `1`: By app: Group notifications into one group.
         - `2`: Off: Don't group notifications.
-
-        Available in iOS 12 and later.
     - key: PreviewType
-      title: Preview Type
+      title: Preview type
       supportedOS:
         iOS:
           introduced: '14.0'
@@ -176,8 +154,10 @@ payloadkeys:
       content: |-
         The type previews for notifications. This key overrides the value at Settings>Notifications>Show Previews.
 
-        - `0` - Always: Previews will be shown when the device is locked and unlocked
-        - `1` - When Unlocked: Previews will only be shown when the device is unlocked
-        - `2` - Never: Previews will never be shown
-
-        Available in iOS 14 and later.
+        - `0` - Always: The device shows previews when locked and unlocked
+        - `1` - When Unlocked: The device shows previews only when unlocked
+        - `2` - Never: The device never shows previews
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.notificationsettings/example1.plist

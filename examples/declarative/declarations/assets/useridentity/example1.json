@@ -1,0 +1,9 @@
+{
+  "Type": "com.apple.asset.useridentity",
+  "Identifier": "CB3E6C7F-2318-437B-8A9E-D50C69376DE4",
+  "ServerToken": "F25C68F6-D2E5-4A09-9170-F21E8FAD6A2F",
+  "Payload": {
+    "FullName": "A User",
+    "EmailAddress": "a.user@example.com"
+  }
+}

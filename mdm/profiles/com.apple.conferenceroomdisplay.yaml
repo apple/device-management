@@ -28,3 +28,7 @@ notes:
 - title: ''
   content: Conference Room Display mode locks Apple TV into that mode, to prevent
     other types of usage.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.conferenceroomdisplay/example1.plist

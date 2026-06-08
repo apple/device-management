@@ -22,7 +22,7 @@ payloadkeys:
   content: The iTunes Store ID of the app to download prior to enrollment, to support
     Enrollment SSO during enrollment. Using developer mode ignores this key.
 - key: AppIDs
-  title: Developer App IDs
+  title: Developer app IDs
   type: <array>
   presence: optional
   content: An array of App IDs that specify apps that Enrollment SSO developer mode
@@ -34,17 +34,17 @@ payloadkeys:
     title: App ID
     type: <string>
 - key: AssociatedDomains
-  title: Associated Domains
+  title: Associated domains
   type: <array>
   presence: optional
   content: An array of associated domains that the device uses with the Enrollment
     SSO extension.
   subkeys:
   - key: AssociatedDomain
-    title: Associated Domain
+    title: Associated domain
     type: <string>
 - key: AssociatedDomainsEnableDirectDownloads
-  title: Associated Domains Enable Direct Downloads
+  title: Associated domains enable direct downloads
   type: <boolean>
   presence: optional
   default: false
@@ -52,7 +52,7 @@ payloadkeys:
     of at Apple's servers. Use this verification only with domains that are inaccessible
     on the public Internet.
 - key: ConfigurationProfile
-  title: Configuration Profile
+  title: Configuration profile
   type: <data>
   presence: optional
   content: |-
@@ -71,12 +71,12 @@ payloadkeys:
   content: |-
     An array of base64-encoded JSON formatted Declarative Device Management declarations that specify the managed app and its configuration, including any certificates or identities.
 
-    The set of declarations must include one `com.apple.configuration.app.managed` configuration, and one activation declaration that references the configuration. Asset declarations may be present if required by the app config.
+    The set of declarations must include one `com.apple.configuration.app.managed` configuration, and one activation declaration that references the configuration. Include asset declarations if the app config requires them.
 
-    The app configuration must include `AppStoreID` when developer mode is not being used, or it must include `BundleID` when developer mode is used.
+    The app configuration must include `AppStoreID` when developer mode isn't being used, or it must include `BundleID` when developer mode is used.
 
     One of `ConfigurationProfile` and `Declarations` must be present.
   subkeys:
   - key: Declaration
-    title: Declaration Domain
+    title: Declaration domain
     type: <data>

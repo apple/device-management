@@ -52,54 +52,57 @@ payloadkeys:
           content: The kind of manifest item to install. Use `software-package` for
             apps and macOS packages.
         - key: md5
-          title: md5 hash
+          title: MD5 hash
           type: <string>
           presence: optional
           content: The MD5 hash value the device uses when verifying the hash of the
             manifest item data. When this key is present, the device ignores the `md5-size`
             and `md5s` keys.
         - key: md5-size
-          title: md5 chunk size
+          title: MD5 chunk size
           type: <integer>
           presence: optional
           content: The data *chunk* size the device uses when verifying the hash of
-            the manifest item data. Required when the `md5s` key is present.
+            the manifest item data. The device requires this key when the `md5s` key
+            is present.
         - key: md5s
-          title: md5 hashes
+          title: MD5 hashes
           type: <array>
           presence: optional
           content: An array of strings representing a set of MD5 hash values. The
             device uses these values to verify the integrity of the downloaded manifest
-            item data. Required when the `md5-size` key is present.
+            item data. The device requires this key when the `md5-size` key is present.
           subkeys:
           - key: md5s-item
-            title: md5 hash
+            title: MD5 hash
             type: <string>
             presence: required
             content: An MD5 hash value.
         - key: sha256
-          title: sha256 hash
+          title: SHA256 hash
           type: <string>
           presence: optional
           content: The SHA-256 hash value the device uses when verifying the hash
             of the manifest item data. When this key is present, the device ignores
             the `sha256-size` and `sha256` keys.
         - key: sha256-size
-          title: sha256 chunk size
+          title: SHA256 chunk size
           type: <integer>
           presence: optional
           content: The data *chunk* size the device uses when verifying the hash of
-            the manifest item data. Required when the `sha256s` key is present.
+            the manifest item data. The device requires this key when the `sha256s`
+            key is present.
         - key: sha256s
-          title: If there are multiple sha256 hashes provide a chunk size
+          title: If there are multiple SHA256 hashes provide a chunk size
           type: <array>
           presence: optional
           content: An array of strings representing a set of SHA-256 hash values.
             The device uses these values to verify the integrity of the downloaded
-            manifest item data. Required when the `sha256-size` key is present.
+            manifest item data. The device requires this key when the `sha256-size`
+            key is present.
           subkeys:
           - key: sha256s-item
-            title: sha256 hash
+            title: SHA256 hash
             type: <string>
             presence: required
             content: A SHA-256 hash value.
@@ -125,7 +128,7 @@ payloadkeys:
           type: <boolean>
           presence: optional
           default: false
-          content: removed
+          content: Removed
     - key: metadata
       title: Application metadata
       type: <dictionary>
@@ -165,7 +168,7 @@ payloadkeys:
             introduced: n/a
         type: <integer>
         presence: optional
-        content: removed
+        content: Removed
       - key: subtitle
         title: The application subtitle
         type: <string>
@@ -198,17 +201,21 @@ payloadkeys:
           presence: optional
           subkeys:
           - key: bundle-identifier
-            title: removed
+            title: Removed
             type: <string>
             presence: optional
-            content: removed
+            content: Removed
           - key: bundle-version
-            title: removed
+            title: Removed
             type: <string>
             presence: optional
-            content: removed
+            content: Removed
 notes:
 - title: ''
   content: Use SHA-256 hashes instead of MD5 because SHA-256 has stronger security.
     If both SHA-256 and MD5 hash properties are present, the device uses only the
     SHA-256 hashes to verify the manifest data.
+examples:
+  title: Example manifest
+  files:
+  - file: examples/other/manifesturl/example1.plist

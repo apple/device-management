@@ -49,7 +49,7 @@ payloadkeys:
     type: <dictionary>
     subkeys:
     - key: IPAddress
-      title: IP Address
+      title: IP address
       supportedOS:
         iOS:
           introduced: '7.0'
@@ -57,7 +57,7 @@ payloadkeys:
       presence: required
       content: The IP address or hostname of the AirPrint destination.
     - key: ResourcePath
-      title: Resource Path
+      title: Resource path
       supportedOS:
         iOS:
           introduced: '7.0'
@@ -71,7 +71,7 @@ payloadkeys:
         - `ipp/print`
         - `Epson_IPP_Printer`
     - key: Port
-      title: Port Number
+      title: Port number
       supportedOS:
         iOS:
           introduced: '11.0'
@@ -94,5 +94,9 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, AirPrint connections are secured by Transport Layer Security
-        (TLS). Available only in iOS 11 and later.
+      content: If `true`, Transport Layer Security (TLS) secures AirPrint connections.
+        Available only in iOS 11 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.airprint/example1.plist

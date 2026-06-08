@@ -38,7 +38,7 @@ payload:
       introduced: n/a
 payloadkeys:
 - key: CardDAVAccountDescription
-  title: Account Description
+  title: Account description
   supportedOS:
     macOS:
       introduced: '10.7'
@@ -46,7 +46,7 @@ payloadkeys:
   presence: optional
   content: The description of the account.
 - key: CardDAVHostName
-  title: Account Hostname
+  title: Account hostname
   supportedOS:
     macOS:
       introduced: '10.7'
@@ -54,7 +54,7 @@ payloadkeys:
   presence: required
   content: The server's address.
 - key: CardDAVUsername
-  title: Account Username
+  title: Account username
   supportedOS:
     macOS:
       introduced: '10.7'
@@ -62,7 +62,7 @@ payloadkeys:
   presence: optional
   content: The user name for logins.
 - key: CardDAVPassword
-  title: Account Password
+  title: Account password
   supportedOS:
     macOS:
       introduced: '10.7'
@@ -87,7 +87,7 @@ payloadkeys:
   default: true
   content: If `true`, the system enables SSL.
 - key: CardDAVPort
-  title: Port Number
+  title: Port number
   supportedOS:
     macOS:
       introduced: '10.7'
@@ -95,7 +95,7 @@ payloadkeys:
   presence: optional
   content: The server's port.
 - key: CommunicationServiceRules
-  title: Communication Service Rules
+  title: Communication service rules
   supportedOS:
     iOS:
       introduced: '10.0'
@@ -106,7 +106,7 @@ payloadkeys:
   content: An array of communication service rules for this account.
   subkeys:
   - key: DefaultServiceHandlers
-    title: Default Service Handlers
+    title: Default service handlers
     supportedOS:
       iOS:
         introduced: '10.0'
@@ -137,4 +137,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
-    Available in iOS 14 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.carddav.account/example1.plist

@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.safari.settings",
+    "Identifier": "B5C63FC4-3D53-4705-AC70-9F03C178A7B4",
+    "ServerToken": "40E91AFE-464D-4DA1-842F-3838CEE7597C",
+    "Payload": {
+        "Privacy": {
+            "PermissionDefaults": {
+                "example.com": {
+                    "OrganizationJustification": "The camera is required to scan your QR code for authentication.",
+                    "Camera": "Allow"
+                }
+            }
+        }
+    }
+}

@@ -32,3 +32,7 @@ payloadkeys:
   default: false
   content: If `true`, the system prevents the user from disabling login item launches
     by using the Shift key.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/loginwindow/example1.plist

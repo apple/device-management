@@ -101,3 +101,7 @@ payloadkeys:
     A string using the 3GPP "CSG_ID" format (defined in 3GPP 23.003, Section 4.7). The device uses this value to match a SIM present on the device.
 
     All combinations of `NetworkIdentifier` and `CsgNetworkIdentifier` must be unique across all profiles installed on the device.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.cellularprivatenetwork.managed/example1.plist

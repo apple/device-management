@@ -1,0 +1,57 @@
+title: Status MDM Push Magic
+description: The status item that reports the device's push magic value.
+payload:
+  statusitemtype: mdm.push-magic
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+        - user
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - user
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - user
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+payloadkeys:
+- key: mdm.push-magic
+  title: Status item value.
+  type: <string>
+  presence: required
+  content: The push magic value that the device expects the MDM server to include
+    in Apple Push Notification service messages.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/mdm.push-magic/example1.json

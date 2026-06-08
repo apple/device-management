@@ -1,5 +1,5 @@
 title: Security:Certificate
-description: The declaration to add a certificate to the device.
+description: The declaration to configure a certificate.
 payload:
   declarationtype: com.apple.configuration.security.certificate
   supportedOS:
@@ -63,3 +63,8 @@ related-status-items:
 - status-items:
   - security.certificate.list
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration installs a certificate on the device.
+    file: examples/declarative/declarations/configurations/security.certificate/example1.json

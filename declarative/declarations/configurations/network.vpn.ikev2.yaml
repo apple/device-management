@@ -1,0 +1,854 @@
+title: Network:VPN:IKEV2
+description: The declaration to configure a VPN using the IKEv2 sub-type.
+payload:
+  declarationtype: com.apple.configuration.network.vpn.ikev2
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - local
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - local
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - device
+      - local
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: multiple
+payloadkeys:
+- key: VisibleName
+  title: Visible name
+  type: <string>
+  presence: required
+  content: The name of the VPN connection that the system displays on the device.
+- key: HostName
+  title: Host name
+  type: <string>
+  presence: required
+  content: The IP address or hostname of the VPN server.
+- key: LocalIdentifier
+  title: Local identifier
+  type: <string>
+  presence: required
+  content: Identifier of the IKEv2 client.
+- key: RemoteIdentifier
+  title: Remote identifier
+  type: <string>
+  presence: required
+  content: The remote identifier.
+- key: Authentication
+  title: Authentication details
+  type: <dictionary>
+  presence: required
+  content: Settings that control authentication.
+  subkeys:
+  - key: Method
+    title: Authentication method
+    type: <string>
+    presence: required
+    rangelist:
+    - None
+    - SharedSecret
+    - Certificate
+    content: |-
+      The type of authentication method for the VPN.
+
+      To enable EAP-only authentication, set this to `None` and `ExtendedAuthEnabled` to `true`. If this is `None` and the `ExtendedAuthEnabled` key isn't set, the authentication configuration defaults to `SharedSecret`.
+  - key: CredentialsAssetReference
+    title: Credentials asset reference
+    type: <string>
+    assettypes:
+    - com.apple.asset.credential.userpassword
+    presence: optional
+    content: The identifier of an asset declaration that contains the credentials
+      (password) to authenticate with the VPN server. Required when `Authentication.Method`
+      is set to `SharedSecret`.
+  - key: IdentityCertificateType
+    title: Certificate type
+    type: <string>
+    presence: optional
+    rangelist:
+    - RSA
+    - ECDSA256
+    - ECDSA384
+    - ECDSA521
+    - RSA-PSS
+    default: RSA
+    content: The type of key used by the identity set in the `IdentityAssetReference`
+      to use for IKEv2 machine authentication. If this key is included, the system
+      requires a value for `ServerCertificateIssuerCommonName`.
+  - key: IdentityAssetReference
+    title: Identity asset reference
+    type: <string>
+    assettypes:
+    - com.apple.asset.credential.acme
+    - com.apple.asset.credential.identity
+    - com.apple.asset.credential.scep
+    presence: optional
+    content: The identifier of a credential asset declaration that contains the identity
+      that this account requires to authenticate with the VPN server. If the value
+      of `AuthenticationMethod` is `Certificate`, the system sends this certificate
+      out for IKEv2 machine authentication. If extended authentication (EAP) is used,
+      the system sends this certificate out for EAP-TLS authentication. Required when
+      `Authentication.Method` is set to `Certificate`.
+  - key: ExtendedAuth
+    title: Extended authentication (EAP)
+    type: <dictionary>
+    presence: optional
+    content: Specifies details about how the VPN routes different types of network
+      traffic.
+    subkeys:
+    - key: Enabled
+      title: Enabled
+      type: <boolean>
+      presence: optional
+      default: false
+      content: If `true`, enables EAP-only authentication.
+    - key: CredentialsAssetReference
+      title: Credentials asset reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.credential.userpassword
+      presence: optional
+      content: The identifier of an asset declaration that contains the credentials
+        (user name and password) to authenticate with the VPN server. Required when
+        `Enabled` is set to `true`. Implies the use of EAP-MSCHAPv2.
+    - key: ServerCertificateIssuerCommonName
+      title: Server certificate issuer common name
+      type: <string>
+      presence: optional
+      content: Common Name of the server certificate issuer. If set, this field causes
+        IKE to send a certificate request based on this certificate issuer to the
+        server. This key is required if the `IdentityCertificateType` key is included
+        and the `ExtendedAuth.Enabled` key is `true`.
+    - key: ServerCertificateCommonName
+      title: Server certificate common name
+      type: <string>
+      presence: optional
+      content: The common name of the server certificate. The system uses this name
+        to validate the certificate sent by the IKE server. If not set, the system
+        uses the remote identifier to validate the certificate.
+    - key: TLSMinimumVersion
+      title: TLS minimum version
+      type: <string>
+      presence: optional
+      rangelist:
+      - '1.0'
+      - '1.1'
+      - '1.2'
+      - '1.3'
+      default: '1.0'
+      content: The minimum TLS version to use with EAP-TLS authentication.
+    - key: TLSMaximumVersion
+      title: TLS maximum version
+      type: <string>
+      presence: optional
+      rangelist:
+      - '1.0'
+      - '1.1'
+      - '1.2'
+      - '1.3'
+      default: '1.2'
+      content: The maximum TLS version to use with EAP-TLS authentication.
+- key: Provider
+  title: Provider details
+  type: <dictionary>
+  presence: optional
+  content: Specifies details about the provider.
+  subkeys:
+  - key: Type
+    title: Type
+    type: <string>
+    presence: optional
+    rangelist:
+    - packet-tunnel
+    - app-proxy
+    default: packet-tunnel
+    content: The type of VPN service. If the value is `app-proxy`, the service tunnels
+      traffic at the app level. If the value is `packet-tunnel`, the service tunnels
+      traffic at the IP layer.
+  - key: ComposedIdentifier
+    title: Composed identifier
+    type: <string>
+    presence: optional
+    content: |-
+      In iOS, tvOS, and visionOS, the identifier is a bundle ID, for example, "com.example.app".
+
+      In macOS, the identifier is a composed identifier. The format of the composed identifier is either "Bundle-ID" or "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Designated-Requirement" is the designated requirement string from the code signature of the provider. For example, "com.example.app" for the bundle ID format, or "com.example.app {anchor apple generic}" for the designated requirement format.
+- key: NetworkRouting
+  title: Network routing details
+  supportedOS:
+    tvOS:
+      introduced: n/a
+  type: <dictionary>
+  presence: optional
+  content: Specifies details about how the VPN routes different types of network traffic.
+  subkeys:
+  - key: EnforceRoutes
+    title: Enforce routes
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If `true`, all the VPN's non-default routes take precedence over any locally defined routes.
+
+      If `IncludeAllNetworks` is `true`, the system ignores the value of `EnforceRoutes`.
+  - key: IncludeAllNetworks
+    title: Include all networks
+    type: <boolean>
+    presence: optional
+    default: false
+    content: |-
+      If `true`, routes all traffic through the VPN, with some exclusions. Several of the exclusions can be controlled with the `ExcludeLocalNetworks`, `ExcludeCellularServices`, `ExcludeAPNs` and `ExcludeDeviceCommunication` properties. The following traffic is always excluded from the tunnel:
+
+      - Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
+      - Traffic necessary for connecting to captive networks.
+      - Certain cellular services traffic that's not routable over the internet and is instead directly routed to the cellular network. See the ExcludeCellularServices property for more details.
+  - key: ExcludeLocalNetworks
+    title: Exclude local networks
+    type: <boolean>
+    presence: optional
+    content: If `true` and `IncludeAllNetworks` is `true`, routes all local network
+      traffic outside the VPN.
+  - key: ExcludeCellularServices
+    title: Exclude cellular services
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If `true` and `IncludeAllNetworks` is `true`, then the system excludes
+      internet-routable network traffic for cellular services (VoLTE, Wi-Fi Calling,
+      IMS, MMS, Visual Voicemail, etc.) from the tunnel. Note that some cellular carriers
+      route cellular services traffic directly to the carrier network, bypassing the
+      internet. Such cellular services traffic is always excluded from the tunnel.
+  - key: ExcludeAPNs
+    title: Exclude APNs
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If `true` and `IncludeAllNetworks` is `true`, then the system excludes
+      the network traffic for the Apple Push Notification service (APNs) from the
+      tunnel.
+  - key: ExcludeDeviceCommunication
+    title: Exclude device communication
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If set to `true` and `IncludeAllNetworks` is set to `true`, the device
+      excludes network traffic used for communicating with devices connected via USB
+      or Wi-Fi from the tunnel.
+- key: Idle
+  title: Disconnect on idle settings.
+  type: <dictionary>
+  presence: optional
+  content: Specifies details about how the system handles idle VPN connections.
+  subkeys:
+  - key: Disconnect
+    title: Enable disconnect on idle
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, disconnects after an on-demand connection idles.
+  - key: Timer
+    title: Disconnect on idle time
+    type: <integer>
+    presence: optional
+    content: The length of time to wait, in seconds, before disconnecting an on-demand
+      connection.
+  - key: DeadPeerDetectionRate
+    title: Dead peer detection rate
+    type: <string>
+    presence: optional
+    rangelist:
+    - None
+    - Low
+    - Medium
+    - High
+    default: Medium
+    content: |-
+      One of the following:
+
+      - `None`: No keepalive.
+      - `Low`: Send keepalive every 30 minutes.
+      - `Medium`: Send keepalive every 10 minutes.
+      - `High`: Send keepalive every 1 minute.
+- key: OnDemand
+  title: On demand details
+  type: <dictionary>
+  presence: optional
+  content: Specifies details about how the system controls on-demand VPN.
+  subkeys:
+  - key: Enabled
+    title: Enable VPN on demand
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, enables VPN On Demand.
+  - key: DisableUserOverride
+    title: Prevent users from toggling VPN on demand
+    supportedOS:
+      macOS:
+        introduced: n/a
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, the device disables the Connect On Demand toggle in Settings
+      for this configuration.
+  - key: Rules
+    title: On demand rules
+    type: <array>
+    presence: optional
+    content: An array of dictionaries defining On Demand Rules.
+    subkeytype: RulesElement
+    subkeys:
+    - key: RulesElement
+      title: Rules element
+      type: <dictionary>
+      subkeys:
+      - key: Action
+        title: On demand action
+        type: <string>
+        presence: required
+        rangelist:
+        - Allow
+        - Connect
+        - Disconnect
+        - EvaluateConnection
+        - Ignore
+        content: |-
+          The action to take if this dictionary matches the current network. Possible values are:
+          - `Allow`: Deprecated. Allow VPN On Demand to connect if triggered.
+          - `Connect`: Unconditionally initiate a VPN connection on the next network attempt.
+          - `Disconnect`: Tear down the VPN connection and don't reconnect on demand as long as this dictionary matches.
+          - `EvaluateConnection`: Evaluate the ActionParameters array for each connection attempt.
+          - `Ignore`: Leave any existing VPN connection up, but don't reconnect on demand as long as this dictionary matches.
+      - key: ActionParameters
+        title: Action parameters
+        type: <array>
+        presence: optional
+        content: An array of dictionaries that provides rules similar to the `OnDemandRules`
+          dictionary, but evaluated on each connection instead of when the network
+          changes. This value is only for use with dictionaries in which the `Action`
+          value is `EvaluateConnection`. The system evaluates these dictionaries in
+          order and the first dictionary that matches determines the behavior.
+        subkeys:
+        - key: ActionParameter
+          title: Action parameter
+          type: <dictionary>
+          presence: optional
+          content: |-
+            A dictionary that provides rules similar to the OnDemandRules dictionary, but evaluated on each connection instead of when the network changes. These dictionaries are evaluated in order, and the behavior is determined by the first dictionary that matches.
+            The keys allowed in each dictionary are described below. Note: This array is used only for dictionaries in which EvaluateConnection is the Action value.
+          subkeys:
+          - key: Domains
+            title: Domains
+            type: <array>
+            presence: required
+            content: The domains to apply this evaluation.
+            subkeys:
+            - key: DomainsElement
+              title: Domains element
+              type: <string>
+          - key: DomainAction
+            title: Domain action
+            type: <string>
+            presence: required
+            rangelist:
+            - ConnectIfNeeded
+            - NeverConnect
+            content: |-
+              Defines the VPN behavior for the specified domains. Allowed values are:
+              * 'ConnectIfNeeded': The specified domains should trigger a VPN connection attempt if domain name resolution fails, such as when the DNS server indicates that it can't resolve the domain, responds with a redirection to a different server, or fails to respond (timeout).
+              * 'NeverConnect': The specified domains should never trigger a VPN connection attempt.
+          - key: RequiredDNSServers
+            title: Required DNS servers
+            type: <array>
+            presence: optional
+            content: |-
+              An array of IP addresses of DNS servers to use for resolving the specified domains. These servers don't need to be part of the device's current network configuration. If these DNS servers aren't reachable, the system establishes a VPN connection. These DNS servers need to be either internal DNS servers or trusted external DNS servers.
+              This key is valid only if the value of 'DomainAction' is 'ConnectIfNeeded'.
+            subkeys:
+            - key: RequiredDNSServersElement
+              title: Required DNS servers element
+              type: <string>
+          - key: RequiredURLStringProbe
+            title: Required URL string probe
+            type: <string>
+            presence: optional
+            content: |-
+              An HTTP or HTTPS (preferred) URL to probe, using a GET request. If the URL's hostname can't be resolved, if the server is unreachable, or if the server doesn't respond with a 200 HTTP status code, a VPN connection is established in response.
+              This key is valid only if the value of 'DomainAction' is 'ConnectIfNeeded'.
+      - key: DNSDomainMatch
+        title: DNS domain match
+        type: <array>
+        presence: optional
+        content: |-
+          An array of domain names. This rule matches if any of the domain names in the specified list matches any domain in the device's search domains list.
+          The system supports a wildcard (`*`) prefix. For example, `*.example.com` matches against either `mydomain.example.com` or `yourdomain.example.com`.
+        subkeys:
+        - key: DNSDomainMatchElement
+          title: DNS domain match element
+          type: <string>
+      - key: DNSServerAddressMatch
+        title: DNS server address match
+        type: <array>
+        presence: optional
+        content: |-
+          An array of IP addresses. This rule matches if any of the network's specified DNS servers match any entry in the array.
+          The system supports matching with a single wildcard. For example, `17.*` matches any DNS server in the `17.0.0.0/8` subnet.
+        subkeys:
+        - key: DNSServerAddressMatchElement
+          title: DNS server address match element
+          type: <string>
+      - key: InterfaceTypeMatch
+        title: Interface type match
+        type: <string>
+        presence: optional
+        rangelist:
+        - Ethernet
+        - WiFi
+        - Cellular
+        content: An interface type. If specified, this rule matches only if the primary
+          network interface hardware matches the specified type.
+      - key: SSIDMatch
+        title: SSID match
+        type: <array>
+        presence: optional
+        content: |-
+          An array of SSIDs to match against the current network. If the network isn't a Wi-Fi network or if the SSID doesn't appear in this array, the match fails.
+          Omit this key and the corresponding array to match against any SSID.
+        subkeys:
+        - key: SSIDMatchElement
+          title: SSID match element
+          type: <string>
+      - key: URLStringProbe
+        title: URL string probe
+        type: <string>
+        presence: optional
+        content: A URL to probe. This rule matches when this URL is successfully fetched
+          (returns a `200` HTTP status code) without redirection.
+- key: UseConfigurationAttributeInternalIPSubnet
+  title: Use IPv4 / IPv6 internal subnet attributes
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, negotiations should use IKEv2 Configuration Attribute `INTERNAL_IP4_SUBNET`
+    and `INTERNAL_IP6_SUBNET`.
+- key: DisableMOBIKE
+  title: Disable mobility and multihoming
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system disables MOBIKE.
+- key: DisableRedirect
+  title: Disable redirect
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system disables IKEv2 redirect. If not set, the system redirects
+    an IKEv2 connection when it receives a redirect request from the server.
+- key: EnableNATKeepAliveOffload
+  title: Enable NAT keep alive offload
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If `true`, enables NAT keepalive offload for Always On VPN IKEv2 connections. The device sends keepalive packets to maintain NAT mappings for IKEv2 connections that have a NAT on the path. It sends keepalive packets at regular intervals when the device is awake. If `NATKeepAliveOffloadEnable` is `true`, the system offloads keepalive packets to hardware while the device is asleep.
+
+    NAT keepalive offload has an impact on the battery life due to the extra workload during sleep. The default interval for the keepalive offload packets is 20 seconds over Wi-Fi and 110 seconds over Cellular interface. The default NAT keepalive works well on networks with small NAT mapping timeouts but imposes a potential battery impact. If a network has larger NAT mapping timeouts, larger keepalive intervals may be safely used to minimize battery impact. Modify the keepalive interval through the `NATKeepAliveInterval` key.
+- key: NATKeepAliveInterval
+  title: NAT keepalive interval
+  type: <integer>
+  presence: optional
+  default: 20
+  content: The NAT Keepalive interval for Always On VPN IKEv2 connections. This value
+    controls the interval that the device sends keepalive offload packets. The minimum
+    value is 20 seconds. If no key is specified, the default is 20 seconds over Wi-Fi
+    and 110 seconds over a cellular interface.
+- key: EnablePFS
+  title: Enable perfect forward secrecy
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`,  enables Perfect Forward Secrecy (PFS) for IKEv2 Connections.
+- key: EnableCertificateRevocationCheck
+  title: Enable certificate revocation check
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system performs a certificate revocation check for IKEv2
+    connections. This is a best-effort revocation check and server response timeouts
+    won't cause it to fail.
+- key: EnableFallback
+  title: Enable fallback
+  supportedOS:
+    macOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: false
+  content: |-
+    If `true`, the system enables a tunnel over cellular data to carry traffic that's eligible for Wi-Fi Assist and also requires VPN.
+
+    Enabling fallback requires that the server support multiple tunnels for a single user.
+- key: MTU
+  title: Maximum transmission unit
+  type: <integer>
+  presence: optional
+  range:
+    min: 1280
+    max: 1400
+  default: 1280
+  content: The Maximum Transmission Unit (MTU) specifies the maximum size in bytes
+    of each packet that the system sends over the IKEv2 VPN interface.
+- key: EnforceStrictAlgorithmSelection
+  title: Enforce strict algorithm selection
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If set to `true`, the device doesn't allow DES, 3DES, and Diffie-Hellman
+    groups less than 14. Also the device requires the encryption algorithm specified
+    in `IKESecurityAssociationParameters` to be at least as cryptographically strong
+    as the algorithm specified in `ChildSecurityAssociationParameters`. The device
+    rejects this configuration if these requirements aren't met.
+- key: PostQuantumKeyExchange
+  title: Post quantum key exchange
+  type: <dictionary>
+  presence: optional
+  content: Post Quantum Key Exchange settings.
+  subkeys:
+  - key: PPK
+    title: Post-quantum pre-shared key
+    type: <data>
+    presence: optional
+    content: The Post-quantum Pre-shared key (PPK) the device uses for this VPN. This
+      key is is used with VPN servers that support RFC 8784. If this key is present
+      `PPKIdentifier` must also be present.
+  - key: PPKIdentifier
+    title: Post-quantum pre-shared key identifier
+    type: <string>
+    presence: optional
+    content: The identifier for the Post-quantum Pre-shared key (PPK) the device uses
+      for this VPN. This key is is used with VPN servers that support RFC 8784. If
+      this key is present `PPK` must also be present.
+  - key: PPKMandatory
+    title: Post-quantum pre-shared key mandatory
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If set to `true`, the VPN doesn't establish a connection if the server
+      doesn't support RFC 8784 or doesn't accept the PPK identifier specified in `PPKIdentifier`.
+      The device ignores this key if `PPK` and `PPKIdentifier` aren't present.
+  - key: AllowFallback
+    title: Allow post-quantum key exchange fallback
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If set to `false`, the VPN doesn't establish a connection if the server
+      doesn't support or doesn't allow post-quantum key exchanges. Thd device ignores
+      this key if `PostQuantumKeyExchangeMethods` isn't present in `IKESecurityAssociationParameters`
+      or `ChildSecurityAssociationParameters`.
+- key: IKESecurityAssociationParameters
+  title: IKE security association parameters
+  type: <dictionary>
+  presence: optional
+  content: These parameters apply to Child Security Association unless `ChildSecurityAssociationParameters`
+    is specified.
+  subkeytype: SecurityAssociationParameters
+  subkeys: &id001
+  - key: EncryptionAlgorithm
+    title: Encryption algorithm
+    type: <string>
+    presence: optional
+    rangelist:
+    - AES-128
+    - AES-256
+    - AES-128-GCM
+    - AES-256-GCM
+    - ChaCha20Poly1305
+    default: AES-256
+    content: |-
+      The encryption algorithm.
+
+      On tvOS, the default value is `AES-256-GCM`.
+  - key: IntegrityAlgorithm
+    title: Integrity algorithm
+    type: <string>
+    presence: optional
+    rangelist:
+    - SHA2-256
+    - SHA2-384
+    - SHA2-512
+    default: SHA2-256
+    content: The integrity algorithm.
+  - key: DiffieHellmanGroup
+    title: Diffie hellman group
+    type: <integer>
+    presence: optional
+    rangelist:
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 31
+    - 32
+    default: 14
+    content: |-
+      The Diffie-Hellman group.
+
+      For `AlwaysOn` VPN, the minimum allowed value is `14`.
+  - key: PostQuantumKeyExchangeMethods
+    title: Post-quantum key exchange methods
+    type: <array>
+    presence: optional
+    content: An array of integers representing postquantum key exchange methods the
+      device uses during SA establishment and rekey. You can specify up to seven items,
+      which correspond to ADDKE1 - ADDKE7 from RFC 9370.
+    subkeys:
+    - key: PostQuantumKeyExchangeMethod
+      title: Post-quantum key exchange method
+      type: <integer>
+      rangelist:
+      - 0
+      - 36
+      - 37
+  - key: LifeTimeInMinutes
+    title: Life time in minutes
+    type: <integer>
+    presence: optional
+    range:
+      min: 10
+      max: 1440
+    default: 1440
+    content: The SA lifetime (rekey interval) in minutes.
+- key: ChildSecurityAssociationParameters
+  title: Child security association parameters
+  type: <dictionary>
+  presence: optional
+  content: The `ChildSecurityAssociationParameters` dictionaries.
+  subkeytype: SecurityAssociationParameters
+  subkeys: *id001
+- key: DNS
+  title: DNS
+  type: <dictionary>
+  presence: optional
+  content: A dictionary to use for all VPN types.
+  subkeys:
+  - key: Protocol
+    title: DNS protocol
+    type: <string>
+    presence: required
+    rangelist:
+    - Cleartext
+    - HTTPS
+    - TLS
+    content: The transport protocol to communicate with the DNS server.
+  - key: ServerURL
+    title: Server URL
+    type: <string>
+    presence: optional
+    content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484,
+      which needs to use the `https://` scheme. The system uses the hostname or address
+      in the URL to validate the server certificate. If `ServerAddresses` isn't specified,
+      the system uses the hostname or address in the URL to determine the server addresses.
+      This key is required if the `DNSProtocol` is `HTTPS`.
+  - key: ServerName
+    title: Server name
+    type: <string>
+    presence: optional
+    content: The hostname of a DNS-over-TLS server to validate the server certificate,
+      as defined in RFC 7858. If `ServerAddresses` isn't specified, the system uses
+      the hostname to determine the server addresses. This key is required if the
+      `DNSProtocol` is `TLS`.
+  - key: ServerAddresses
+    title: DNS server addresses
+    type: <array>
+    presence: required
+    content: The array of DNS server IP address strings. These IP addresses can be
+      a mixture of IPv4 and IPv6 addresses.
+    subkeys:
+    - key: ServerAddressesElement
+      title: Server address element
+      type: <string>
+  - key: SearchDomains
+    title: DNS search domains
+    type: <array>
+    presence: optional
+    content: The list of domain strings used to fully qualify single-label host names.
+    subkeys:
+    - key: SearchDomainsElement
+      title: Search domains element
+      type: <string>
+  - key: DomainName
+    title: Domain name
+    type: <string>
+    presence: optional
+    content: The primary domain of the tunnel.
+  - key: SupplementalMatchDomains
+    title: Supplemental match domains
+    type: <array>
+    presence: optional
+    content: |-
+      The list of domain strings used to determine which DNS queries use the DNS resolver settings in `ServerAddresses`. The system uses this key to create a split DNS configuration where it resolves only hosts in certain domains using the tunnel's DNS resolver. The system uses the default resolver for hosts that aren't in one of the domains in this list.
+
+      If `SupplementalMatchDomains` contains the empty string it becomes the default domain.
+
+      Split-tunnel configurations can direct all DNS queries to the VPN DNS servers before the primary DNS servers. If the VPN tunnel becomes the network's default route, the servers listed in `ServerAddresses` become the default resolver and the system ignores the `SupplementalMatchDomains` list.
+    subkeys: &id002
+    - key: SupplementalMatchDomainsElement
+      title: Supplemental match domains element
+      type: <string>
+  - key: SupplementalMatchDomainsNoSearch
+    title: Supplemental match domains no search
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, don't append the domains in the `SupplementalMatchDomains`
+      list to the resolver's list of search domains.
+  - key: IdentityAssetReference
+    title: Identity asset reference
+    type: <string>
+    assettypes:
+    - com.apple.asset.credential.acme
+    - com.apple.asset.credential.identity
+    - com.apple.asset.credential.scep
+    presence: optional
+    content: The identifier of a credential asset declaration that contains the identity
+      that the system uses to authenticate the user to the DNS resolver.
+- key: Proxies
+  title: Proxies
+  type: <dictionary>
+  presence: optional
+  content: The dictionary to use to configure `Proxies` for use with `VPN`.
+  subkeys:
+  - key: AutoConfigEnable
+    title: Proxy auto config enable
+    type: <boolean>
+    presence: optional
+    default: false
+    content: If `true`, enables automatic proxy configuration.
+  - key: AutoDiscoveryEnable
+    title: Proxy auto discovery enable
+    type: <boolean>
+    presence: optional
+    default: true
+    content: If `true`, enables proxy auto discovery.
+  - key: AutoConfigURLString
+    title: Proxy server URL
+    type: <string>
+    presence: optional
+    content: The URL to the location of the proxy auto-configuration file. Used only
+      when `ProxyAutoConfigEnable` is `true`.
+  - key: SupplementalMatchDomains
+    title: Supplemental match domains
+    type: <array>
+    presence: optional
+    content: An array of domains that defines which hosts use proxy settings for hosts.
+    subkeys: *id002
+  - key: Protocol
+    title: Protocol
+    type: <dictionary>
+    presence: optional
+    content: The dictionary to use to configure HTTP servers  for `Proxies` for use
+      with `VPN`.
+    subkeys:
+    - key: HTTP
+      title: HTTP protocol
+      type: <dictionary>
+      presence: optional
+      content: The dictionary to use to configure the HTTP (non-TLS) server.
+      subkeys:
+      - key: Enable
+        title: Enable HTTP
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If `true`, enables proxy for HTTP traffic.
+      - key: HostName
+        title: HTTP host name
+        type: <string>
+        presence: optional
+        content: The host name of the HTTP proxy.
+      - key: Port
+        title: HTTP port
+        type: <integer>
+        presence: optional
+        range:
+          min: 0
+          max: 65535
+        content: The port number of the HTTP proxy. This field is required if `HostName`
+          is specified.
+    - key: HTTPS
+      title: HTTPS protocol
+      type: <dictionary>
+      presence: optional
+      content: The dictionary to use to configure the HTTPS (TLS) server.
+      subkeys:
+      - key: Enable
+        title: Enable HTTPS
+        type: <boolean>
+        presence: optional
+        default: false
+        content: If `true`, enables proxy for HTTPS traffic.
+      - key: HostName
+        title: HTTPS host name
+        type: <string>
+        presence: optional
+        content: The host name of the HTTPS proxy.
+      - key: Port
+        title: HTTPS port
+        type: <integer>
+        presence: optional
+        range:
+          min: 0
+          max: 65535
+        content: The port number of the HTTPS proxy. This field is required if `HostName`
+          is specified.
+    - key: CredentialsAssetReference
+      title: Credentials asset reference
+      type: <string>
+      assettypes:
+      - com.apple.asset.credential.userpassword
+      presence: optional
+      content: The identifier of an asset declaration that contains the credentials
+        (user name and password) to authenticate with the proxy server.
+examples:
+  title: Configuration examples
+  files:
+  - tab: Shared secret
+    description: This configuration sets up an IKEv2 VPN using a shared-secret credential
+      asset for authentication.
+    file: examples/declarative/declarations/configurations/network.vpn.ikev2/example1.json
+  - tab: Certificate
+    description: This configuration sets up an IKEv2 VPN using certificate-based machine
+      authentication and EAP-MSCHAPv2 for extended user authentication.
+    file: examples/declarative/declarations/configurations/network.vpn.ikev2/example2.json

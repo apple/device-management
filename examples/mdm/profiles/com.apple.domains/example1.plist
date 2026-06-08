@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>EmailDomains</key>
+            <array>
+                <string>example.com</string>
+            </array>
+            <key>SafariPasswordAutoFillDomains</key>
+            <array>
+                <string>example.com</string>
+            </array>
+            <key>WebDomains</key>
+            <array>
+                <string>example.com</string>
+            </array>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mysafaridomainspayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.domains</string>
+            <key>PayloadUUID</key>
+            <string>0f94e664-4c36-4637-b264-19a533adc8e1</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Domains</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>0cf6d95f-8e9f-49f3-9cba-c5e78de5430e</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

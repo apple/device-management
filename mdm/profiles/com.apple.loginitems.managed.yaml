@@ -44,3 +44,7 @@ payloadkeys:
       default: false
       content: If `true`, the system hides this item in the Users & Groups login items
         list.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.loginitems.managed/example1.plist

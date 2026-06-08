@@ -48,7 +48,7 @@ payloadkeys:
   content: If `true`, the system rebuilds the kernel cache during a device restart.
     If `BootstrapTokenAllowedForAuthentication` is `true` in the `SecurityInfo` response,
     the device requests the bootstrap token from the MDM server prior to executing
-    this command. This value is available in macOS 11 and later.
+    this command.
 - key: KextPaths
   supportedOS:
     iOS:
@@ -62,7 +62,6 @@ payloadkeys:
   content: If `RebuildKernelCache` is `true`, this value specifies the paths to kexts
     to add to the auxiliary kernel cache since the last kernel cache rebuild. If not
     present, the system only adds previously discovered kexts to the kernel cache.
-    This value is available in macOS 11 and later.
   subkeys:
   - key: KextPathsItem
     type: <string>
@@ -77,13 +76,18 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: |-
-    If `true`, notifies the user to restart the device at their convenience. No forced restart occurs unless the device is at `loginwindow` with no logged-in users. The user can dismiss the notification and ignore the request. No further notifications display unless you resend the command.
-
-    This value is available in macOS 11.3 and later.
+  content: If `true`, notifies the user to restart the device at their convenience.
+    No forced restart occurs unless the device is at `loginwindow` with no logged-in
+    users. The user can dismiss the notification and ignore the request. No further
+    notifications display unless you resend the command.
 notes:
 - title: ''
   content: |-
     A passcode-locked iOS device doesn't rejoin a Wi-Fi network after restarting, so it may not be able to communicate with the server.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/device.restart/example1.plist
+    response-file: examples/mdm/commands/device.restart/example2.plist

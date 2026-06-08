@@ -47,14 +47,14 @@ payloadkeys:
     content: A dictionary of options that the user can't change.
     subkeys:
     - key: DisableTouch
-      title: Disable Touch
+      title: Disable touch
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the system disables the touch screen. In tvOS, it disables
         the touch surface on the Apple TV Remote.
     - key: DisableDeviceRotation
-      title: Disable Device Rotation
+      title: Disable device rotation
       supportedOS:
         tvOS:
           introduced: n/a
@@ -63,7 +63,7 @@ payloadkeys:
       default: false
       content: If `true`, the system disables device rotation sensing.
     - key: DisableVolumeButtons
-      title: Disable Volume Buttons
+      title: Disable volume buttons
       supportedOS:
         tvOS:
           introduced: n/a
@@ -72,7 +72,7 @@ payloadkeys:
       default: false
       content: If `true`, the system disables the volume buttons.
     - key: DisableRingerSwitch
-      title: Disable Ringer Switch
+      title: Disable ringer switch
       supportedOS:
         tvOS:
           introduced: n/a
@@ -83,7 +83,7 @@ payloadkeys:
         ringer behavior depends on what position the switch was in when it was first
         disabled.
     - key: DisableSleepWakeButton
-      title: Disable Sleep Wake Button
+      title: Disable sleep wake button
       supportedOS:
         tvOS:
           introduced: n/a
@@ -92,14 +92,14 @@ payloadkeys:
       default: false
       content: If `true`, the system disables the sleep/wake button.
     - key: DisableAutoLock
-      title: Disable Auto Lock
+      title: Disable auto lock
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the device doesn't automatically go to sleep after an idle
         period.
     - key: EnableVoiceOver
-      title: Enable Voice Over
+      title: Enable VoiceOver
       type: <boolean>
       presence: optional
       default: false
@@ -117,7 +117,7 @@ payloadkeys:
       default: false
       content: If `true`, the system enables Invert Colors.
     - key: EnableAssistiveTouch
-      title: Enable Assistive Touch
+      title: Enable AssistiveTouch
       supportedOS:
         tvOS:
           introduced: n/a
@@ -155,7 +155,7 @@ payloadkeys:
       default: false
       content: If `true`, the system enables Voice Control.
   - key: UserEnabledOptions
-    title: User Enabled Options
+    title: User enabled options
     supportedOS:
       iOS:
         introduced: '7.0'
@@ -175,7 +175,7 @@ payloadkeys:
       default: false
       content: If `true`, the system allows the user to toggle Voice Control.
     - key: VoiceOver
-      title: Voice Over
+      title: VoiceOver
       type: <boolean>
       presence: optional
       default: false
@@ -193,7 +193,7 @@ payloadkeys:
       default: false
       content: If `true`, the system allows the user to toggle Invert Colors.
     - key: AssistiveTouch
-      title: Assistive Touch
+      title: AssistiveTouch
       supportedOS:
         tvOS:
           introduced: n/a
@@ -207,3 +207,7 @@ notes:
     With an app lock profile, the device locks to the specified app until removal of the profile. The device returns to the app automatically upon wake or restart.
 
     Only use an app lock payload after installing the target app.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.app.lock/example1.plist

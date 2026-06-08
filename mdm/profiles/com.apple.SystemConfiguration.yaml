@@ -134,3 +134,7 @@ payloadkeys:
       type: <string>
       presence: required
       content: Bypass proxy settings for these Hosts & Domains
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.SystemConfiguration/example1.plist

@@ -1,0 +1,100 @@
+title: Status Content Cache Info
+description: The status item that reports information about the Content Cache service.
+payload:
+  statusitemtype: content-cache.info
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      - local
+      allowed-scopes:
+      - system
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: content-cache.info
+  title: Cache info
+  type: <dictionary>
+  presence: required
+  content: A dictionary that contains info about the usage of the Content Cache on
+    the device
+  subkeys:
+  - key: cache-details
+    title: Cache details
+    type: <array>
+    presence: optional
+    content: The amount of disk space that various categories of cached content use.
+      Apple defines these categories and they're subject to change.
+    subkeys:
+    - key: detail-item
+      title: Example file category
+      type: <string>
+      presence: required
+      content: The amount of disk space in bytes, that this category of cached content
+        uses.
+  - key: cache-free
+    title: Cache free space
+    type: <integer>
+    presence: optional
+    content: The amount of disk space in bytes, available to the Content Cache.
+  - key: cache-limit
+    title: Cache limit
+    type: <integer>
+    presence: optional
+    content: The maximum amount of disk space in bytes, available to the Content Cache.
+      A value of `0` indicates an unlimited amount. This value corresponds to `CacheLimit`
+      in the installed `ContentCaching` configuration.
+  - key: cache-status
+    title: Cache status
+    type: <string>
+    presence: optional
+    rangelist:
+    - LOWSPACE
+    - OK
+    content: The level of cache pressure. `LOWSPACE` means cache pressure is high.
+  - key: cache-used
+    title: Cache used
+    type: <integer>
+    presence: optional
+    content: The amount of disk space in bytes, cached content uses. The Content Cache
+      allocates space in its cache for entire files even when it stores only part
+      of those files in its cache.
+  - key: max-cache-pressure-last-hour
+    title: Maximum cache pressure
+    type: <real>
+    presence: optional
+    range:
+      min: 0.0
+      max: 1.0
+    content: A floating-point number between `0.0` and `1.0` that represents how often
+      the cache needed more disk space over the last hour of operation. A lower value
+      is better.
+  - key: personal-cache-free
+    title: Personal cache free
+    type: <integer>
+    presence: optional
+    content: The amount of disk space in bytes, available to the Content Cache for
+      personal iCloud content.
+  - key: personal-cache-limit
+    title: Personal cache limit
+    type: <integer>
+    presence: optional
+    content: The maximum amount of disk space in bytes, available to the Content Cache
+      for personal iCloud content. A value of `0` indicates an unlimited amount.
+  - key: personal-cache-used
+    title: Personal cache used
+    type: <integer>
+    presence: optional
+    content: The amount of disk space, in bytes, available to the Content Cache for
+      personal iCloud content.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/content-cache.info/example1.json

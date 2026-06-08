@@ -97,7 +97,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    The list of disabled System Settings extensions. All other items will be enabled. When `DisabledSystemSettings` is specified, the device ignores `DisabledPreferencePanes` and `EnabledPreferencePanes`.
+    The list of disabled System Settings extensions. The device enables all other items. When you specify `DisabledSystemSettings`, the device ignores `DisabledPreferencePanes` and `EnabledPreferencePanes`.
 
     > Note:
     > A given System Settings extension can supply more than one section in System Settings; disabling such an extension disables all sections it supplies.
@@ -151,3 +151,7 @@ payloadkeys:
     - com.apple.settings.Storage
     - com.apple.systempreferences.AppleIDSettings
     - com.apple.wifi-settings-extension
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.systempreferences/example1.plist

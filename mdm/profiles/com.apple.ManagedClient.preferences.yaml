@@ -60,3 +60,7 @@ payloadkeys:
       presence: optional
       content: The dictionary of one-time settings.
       subkeys: *id001
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.ManagedClient.preferences/example1.plist

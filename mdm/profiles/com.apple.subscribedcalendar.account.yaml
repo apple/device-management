@@ -62,4 +62,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
-    Available in iOS 14 and later.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.subscribedcalendar.account/example1.plist

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>RequireAdminForAirPortNetworkChange</key>
+            <true/>
+            <key>RequireAdminForIBSS</key>
+            <true/>
+            <key>RequireAdminToTurnAirPortOnOff</key>
+            <true/>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mymanagedwifipayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.MCX</string>
+            <key>PayloadUUID</key>
+            <string>8d527efa-0768-49e4-b328-9b222d23c379</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Managed Wi-Fi</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>944429fb-2a8d-4d48-81ab-056428104593</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

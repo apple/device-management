@@ -1,0 +1,42 @@
+title: Status Enhanced Logging AppleCare Token
+description: The status item that reports the device's enhanced log collection session
+  AppleCare token.
+payload:
+  statusitemtype: enhanced-logging.applecare-token
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes:
+        - system
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - user
+    tvOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: enhanced-logging.applecare-token
+  title: AppleCare token value.
+  type: <string>
+  presence: optional
+  content: The current enhanced log collection session AppleCare token. The device
+    returns an empty string if there's no session status to report.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.applecare-token/example1.json

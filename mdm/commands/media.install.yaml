@@ -44,7 +44,7 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The URL to retrieve the book. This value is available in iOS 8 and later.
+  content: The URL to retrieve the book.
 - key: MediaType
   type: <string>
   presence: required
@@ -58,7 +58,6 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The book's persistent identifier in reverse-DNS form; for example, `com.acme.manuals.training`.
-    This value is available in iOS 8 and later.
 - key: Kind
   supportedOS:
     macOS:
@@ -76,28 +75,28 @@ payloadkeys:
     - `epub`: An EPUB file in `gzip` format.
     - `ibooks`: An iBooks Author file in `gzip` format.
 
-    If you omit this value, its value is the file extension in the URL. This value is available in iOS 8 and later.
+    If you omit this value, its value is the file extension in the URL.
 - key: Version
   supportedOS:
     macOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The book's version number. This value is available in iOS 8 and later.
+  content: The book's version number.
 - key: Author
   supportedOS:
     macOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The name of the book's author. This value is available in iOS 8 and later.
+  content: The name of the book's author.
 - key: Title
   supportedOS:
     macOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The book's title. This value is available in iOS 8 and later.
+  content: The book's title.
 responsekeys:
 - key: iTunesStoreID
   type: <integer>
@@ -109,16 +108,14 @@ responsekeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The URL to retrieve the book, if present in the command. This value is
-    available in iOS 8 and later.
+  content: The URL to retrieve the book, if present in the command.
 - key: PersistentID
   supportedOS:
     macOS:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The book's persistent identifier, if present in the command. This value
-    is available in iOS 8 and later.
+  content: The book's persistent identifier, if present in the command.
 - key: MediaType
   type: <string>
   presence: optional
@@ -175,3 +172,14 @@ notes:
     If you install a book that isn't from the Book Store with the same `PersistentID` as an existing book that also isn't from the Book Store, the new book replaces the existing one.
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
+examples:
+  title: Example request and response
+  files:
+  - tab: Enterprise
+    description: This command installs an enterprise book.
+    request-file: examples/mdm/commands/media.install/example1.plist
+    response-file: examples/mdm/commands/media.install/example2.plist
+  - tab: Book Store
+    description: This command installs a book from the Book Store.
+    request-file: examples/mdm/commands/media.install/example3.plist
+    response-file: examples/mdm/commands/media.install/example4.plist

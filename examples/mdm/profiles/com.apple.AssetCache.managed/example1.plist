@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>AllowPersonalCaching</key>
+            <false/>
+            <key>AllowSharedCaching</key>
+            <true/>
+            <key>AutoActivation</key>
+            <true/>
+            <key>CacheLimit</key>
+            <integer>180000000000</integer>
+            <key>DenyTetheredCaching</key>
+            <false/>
+            <key>ListenRangesOnly</key>
+            <false/>
+            <key>LocalSubnetsOnly</key>
+            <true/>
+            <key>LogClientIdentity</key>
+            <false/>
+            <key>ParentSelectionPolicy</key>
+            <string>round-robin</string>
+            <key>PeerLocalSubnetsOnly</key>
+            <true/>
+            <key>Port</key>
+            <integer>0</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mycontentcachingpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.AssetCache.managed</string>
+            <key>PayloadUUID</key>
+            <string>c7d8c850-e4ef-0135-0bd6-0c4de9ce4c04</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Content Caching</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>a430c370-b5d5-4e5b-b46b-137931e8b230</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

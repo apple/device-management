@@ -20,19 +20,19 @@ payload:
   apply: multiple
 payloadkeys:
 - key: TaskType
-  title: Task Type
+  title: Task type
   type: <string>
   presence: required
   content: The unique identifier of the set of background tasks managed with this
     configuration. This should be a reverse DNS style identifier. The system uses
     this identifier to differentiate between tasks in different configurations.
 - key: TaskDescription
-  title: Task Description
+  title: Task description
   type: <string>
   presence: optional
   content: A description of the set of background tasks managed by this configuration.
 - key: ExecutableAssetReference
-  title: Executable Asset Reference
+  title: Executable asset reference
   type: <string>
   assettypes:
   - com.apple.asset.data
@@ -46,18 +46,19 @@ payloadkeys:
 
     This file should contain background task executables, scripts, and configuration files, but not the `launchd` configuration files.
 - key: LaunchdConfigurations
-  title: Launchd Configurations
+  title: Launchd configurations
   type: <array>
   presence: optional
   content: An array of `launchd` configuration files used to run the background tasks.
   subkeys:
   - key: launchd-item
+    title: Launchd item
     type: <dictionary>
     presence: required
     content: A dictionary of launchd configurations.
     subkeys:
     - key: FileAssetReference
-      title: File Asset Reference
+      title: File asset reference
       type: <string>
       assettypes:
       - com.apple.asset.data
@@ -73,14 +74,14 @@ payloadkeys:
         The asset's "ContentType" and "Hash-SHA-256" keys in the "Reference" key are
         required.
     - key: Context
-      title: Launchd Context
+      title: Launchd context
       type: <string>
       presence: required
       rangelist:
       - daemon
       - agent
-      content: Indicates whether the launchd configuration file is applied to the
-        system daemon, or system agent domain.
+      content: Indicates whether the system applies the launchd configuration file
+        to the system daemon or system agent domain.
 related-status-items:
 - status-items:
   - services.background-task
@@ -99,3 +100,8 @@ notes:
 
     > Note:
     > If an executable is an app, the system can't manage the app as it can only manage apps installed in `/Applications`. Also, the system can't use system extensions in the app as it only loads them from apps installed in `/Applications`.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a background task using a launchd daemon.
+    file: examples/declarative/declarations/configurations/services.background-tasks/example1.json

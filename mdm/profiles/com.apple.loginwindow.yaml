@@ -63,6 +63,14 @@ payloadkeys:
     this string could only contain host name, system version, or IP address. After
     macOS 10.10, setting this key to any value allows the user to click the time area
     of the menu bar to toggle through various computer information values.
+- key: AdminMayDisableMCX
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, a local administrator user can bypass or disable managed preferences
+    (MCX settings) for their login session. The device presents the user with this
+    option at login only when the user is a local administrator, and other users are
+    not logged in.
 - key: AllowList
   type: <array>
   presence: optional
@@ -101,6 +109,12 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system disables the Restart item.
+- key: RetriesUntilHint
+  type: <integer>
+  presence: optional
+  default: 0
+  content: If specified, allows a certain number of retries until the device shows
+    a password hint. The device shows no hints if set to a value of 0.
 - key: SleepDisabled
   type: <boolean>
   presence: optional
@@ -142,7 +156,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system disables the Log Out menu item when the user is logged
-    in. Available in macOS 10.13 and later.
+    in.
 - key: DisableScreenLockImmediate
   supportedOS:
     macOS:
@@ -150,8 +164,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: false
-  content: If `true`, the system disables the immediate Screen Lock functions. Available
-    in macOS 10.13 and later.
+  content: If `true`, the system disables the immediate Screen Lock functions.
 - key: showInputMenu
   supportedOS:
     macOS:
@@ -185,3 +198,7 @@ payloadkeys:
   presence: optional
   content: An optional user password to set up auto login. This must match the `AutologinUsername`
     user's current password.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.loginwindow/example1.plist

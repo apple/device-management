@@ -188,7 +188,7 @@ payloadkeys:
   type: <array>
   presence: optional
   content: |-
-    One or more special folders that may be created at user login time and placed in the Dock.
+    One or more special folders that the device may create at user login time and place in the Dock.
 
 
 
@@ -210,7 +210,7 @@ payloadkeys:
   default: false
   content: If `true`, use the file in `/Library/Preferences/com.apple.dockfixup.plist`
     when a new user or migrated user logs in. This option has no effect for existing
-    users. Available in macOS 10.12 and later. Only available on the device channel.
+    users. Only available on the device channel.
 - key: static-only
   type: <boolean>
   presence: optional
@@ -222,8 +222,8 @@ payloadkeys:
 - key: static-others
   type: <array>
   presence: optional
-  content: An array of items located on the Documents side of the Dock and cannot
-    be removed from that location.
+  content: An array of items located on the Documents side of the Dock that users
+    can't remove from that location.
   subkeytype: StaticItem
   subkeys: &id001
   - key: StaticItem
@@ -277,21 +277,25 @@ payloadkeys:
 - key: static-apps
   type: <array>
   presence: optional
-  content: An array of items located on the Applications side of the Dock and cannot
-    be removed from that location.
+  content: An array of items located on the Applications side of the Dock that users
+    can't remove from that location.
   subkeytype: StaticItem
   subkeys: *id001
 - key: persistent-apps
   type: <array>
   presence: optional
-  content: An array of items located on the Applications side of the Dock that can
-    be removed from the Dock.
+  content: An array of items located on the Applications side of the Dock that users
+    can remove from the Dock.
   subkeytype: StaticItem
   subkeys: *id001
 - key: persistent-others
   type: <array>
   presence: optional
-  content: An array of items located on the Documents side of the Dock that can be
-    removed from the Dock.
+  content: An array of items located on the Documents side of the Dock that users
+    can remove from the Dock.
   subkeytype: StaticItem
   subkeys: *id001
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.dock/example1.plist

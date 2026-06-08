@@ -39,3 +39,7 @@ payloadkeys:
   default: false
   content: If `true`, the system disables the guest account. This property has no
     effect if `EnableGuestAccount` is `true`.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.MCX(Accounts)/example1.plist

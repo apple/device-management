@@ -143,3 +143,7 @@ payloadkeys:
   type: <boolean>
   presence: optional
   content: If `true`, enables the WWAN menu extra.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.mcxMenuExtras/example1.plist

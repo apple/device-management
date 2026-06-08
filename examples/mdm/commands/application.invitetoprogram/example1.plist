@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Command</key>
+    <dict>
+        <key>InvitationURL</key>
+        <string>https://invite.example.com/invitation?id=39E92FBA-C853-4973-9922-17AF04DDDB3C</string>
+        <key>ProgramID</key>
+        <string>com.apple.cloudvpp</string>
+        <key>RequestType</key>
+        <string>InviteToProgram</string>
+    </dict>
+    <key>CommandUUID</key>
+    <string>0001_InviteToProgram</string>
+</dict>
+</plist>

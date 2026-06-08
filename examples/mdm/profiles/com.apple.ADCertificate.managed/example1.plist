@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>CertServer</key>
+            <string>server.example.com</string>
+            <key>CertTemplate</key>
+            <string>MachineUser</string>
+            <key>CertificateAcquisitionMechanism</key>
+            <string>RPC</string>
+            <key>CertificateAuthority</key>
+            <string>Example</string>
+            <key>Description</key>
+            <string>Active Directory Certificate</string>
+            <key>PromptForCredentials</key>
+            <false/>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myADcertpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.myadcertificate.managed</string>
+            <key>PayloadUUID</key>
+            <string>59729e65-4c09-4fa1-b367-7a38cfd1b190</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Active Directory Certificate</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>com.apple.ADCertificate.managed</string>
+    <key>PayloadUUID</key>
+    <string>55a22a34-02b7-49d8-8116-ea95c3545261</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

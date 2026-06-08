@@ -1,5 +1,5 @@
 title: Status Device Operating System Family
-description: A status report of the device's operating system family.
+description: The status item that reports the device's operating system family.
 payload:
   statusitemtype: device.operating-system.family
   supportedOS:
@@ -55,3 +55,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The operating system family in use on the device, such as `macOS` or `iOS`.
+examples:
+  title: Status item example
+  files:
+  - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.family/example1.json

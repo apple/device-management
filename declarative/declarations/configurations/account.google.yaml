@@ -37,18 +37,15 @@ payload:
     watchOS:
       introduced: n/a
   apply: multiple
-  content: A Google configuration defines a Google account for a user. The user will
-    be prompted to enter their credentials shortly after the configuration successfully
-    installs.
 payloadkeys:
 - key: VisibleName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The name that apps show to the user for this Google account. If not present,
     the system generates a suitable default.
 - key: UserIdentityAssetReference
-  title: User Identity Asset Reference
+  title: User identity asset reference
   type: <string>
   assettypes:
   - com.apple.asset.useridentity
@@ -61,3 +58,8 @@ related-status-items:
 - status-items:
   - account.list.google
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a Google account.
+    file: examples/declarative/declarations/configurations/account.google/example1.json

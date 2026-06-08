@@ -62,7 +62,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: The mapping of team identifier to an array of strings, where each string
-      is a type of system extension that may be installed for that team identifier.
+      is a type of system extension that you can install for that team identifier.
     subkeys:
     - key: AllowedSystemExtensionTypesItems
       type: <string>
@@ -82,7 +82,7 @@ payloadkeys:
     type: <array>
     presence: optional
     content: The mapping of team identifiers to arrays of bundle identifiers, where
-      the bundle identifier is that of the system extension to be installed.
+      the bundle identifier defines the system extension to install.
     subkeys:
     - key: AllowedSystemExtensionsItems
       type: <string>
@@ -94,10 +94,11 @@ payloadkeys:
       introduced: '12.0'
   type: <dictionary>
   presence: optional
-  content: |-
-    A dictionary of system extensions that are allowed to remove themselves from the machine. The dictionary maps team identifiers (keys) to arrays of bundle identifiers, where the bundle identifier defines the system extension. An application using the `OSSystemExtensionDeactivationRequest` API can deactivate the specified system extensions without requiring an administrator to authorize the operation.
-
-    Available in macOS 12 and later.
+  content: A dictionary of system extensions that are allowed to remove themselves
+    from the machine. The dictionary maps team identifiers (keys) to arrays of bundle
+    identifiers, where the bundle identifier defines the system extension. An application
+    using the `OSSystemExtensionDeactivationRequest` API can deactivate the specified
+    system extensions without requiring an administrator to authorize the operation.
   subkeys:
   - key: ANY
     type: <array>
@@ -141,7 +142,7 @@ payloadkeys:
     the team identifiers (keys) to arrays of bundle identifiers, where the bundle
     identifier defines the system extension which can't be disabled or uninstalled
     from System Settings or Finder. The set of system extensions between `RemovableSystemExtensions`
-    and `NonRemovableFromUISystemExtensions` can to overlap.
+    and `NonRemovableFromUISystemExtensions` can't overlap.
   subkeys:
   - key: ANY
     type: <array>
@@ -161,3 +162,7 @@ notes:
     - All the other values combine together.
 
     Beginning in macOS 11.3, installing or removing this payload can change the state of system extensions on the computer. If a containing application activates a system extension, and the system extension is in a pending state, installing a payload that allows the extension completes the activation process. If a system extension is active, removing a payload that allows the extension deactivates that extension.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.system-extension-policy/example1.plist

@@ -89,8 +89,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the device identifier for provisioning profiles. This
-        value differs from the UDID for a Mac with Apple silicon. Available in macOS
-        11.3 and later.
+        value differs from the UDID for a Mac with Apple silicon.
     - key: OrganizationInfo
       supportedOS:
         iOS:
@@ -142,8 +141,7 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: The key to get the date of the most-recent iCloud backup. Available
-        in iOS 8 and later.
+      content: The key to get the date of the most-recent iCloud backup.
     - key: AwaitingConfiguration
       supportedOS:
         iOS:
@@ -372,7 +370,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is a Mac with Apple silicon
-        (for example, an Apple M1 chip). Available in macOS 12 and later.
+        (for example, an Apple M1 chip).
     - key: ProductName
       supportedOS:
         iOS:
@@ -426,7 +424,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the device's total capacity. Requires the Device Information
-        access right. Available in iOS 4 and later, and macOS 10.7 and later.
+        access right.
     - key: AvailableDeviceCapacity
       supportedOS:
         iOS:
@@ -442,7 +440,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the available capacity. Requires the Device Information
-        access right. Available in iOS 4 and later, and macOS 10.7 and later.
+        access right.
     - key: IMEI
       supportedOS:
         iOS:
@@ -501,7 +499,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the modem firmware version. Requires the Device Information
-        access right. Available in iOS 4 and later.
+        access right.
     - key: CellularTechnology
       supportedOS:
         iOS:
@@ -518,7 +516,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the cellular technology type. Requires the Device Information
-        access right. Available in iOS 4.2.6 and later.
+        access right.
     - key: BatteryLevel
       supportedOS:
         iOS:
@@ -536,7 +534,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the battery level. Requires the Device Information access
-        right. Available in iOS 5 and later.
+        right.
     - key: HasBattery
       supportedOS:
         iOS:
@@ -570,8 +568,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is supervised. Requires the
-        Device Information access right. Available in iOS 6 and later, macOS 10.15
-        and later, and tvOS 9 and later.
+        Device Information access right.
     - key: IsMultiUser
       supportedOS:
         iOS:
@@ -588,7 +585,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is a Shared iPad. Requires
-        the Device Information access right. Available in iOS 9.3 and later.
+        the Device Information access right.
     - key: IsDeviceLocatorServiceEnabled
       supportedOS:
         iOS:
@@ -606,7 +603,6 @@ payloadkeys:
       presence: optional
       content: The key to determine whether the system enabled a device locator service
         such as Find My on the device. Requires the Device Information access right.
-        Available in iOS 7 and later.
     - key: IsActivationLockEnabled
       supportedOS:
         iOS:
@@ -651,8 +647,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device supports Activation Lock. Also
-        see `IsActivationLockManageable` in `ManagementStatus`. Available in macOS
-        10.9 and later.
+        see `IsActivationLockManageable` in `ManagementStatus`.
     - key: IsDoNotDisturbInEffect
       supportedOS:
         iOS:
@@ -673,8 +668,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is in Do Not Disturb (DND)
-        mode. Requires the Device Information access right. Available in iOS 7 and
-        later.
+        mode. Requires the Device Information access right.
     - key: DeviceID
       supportedOS:
         iOS:
@@ -691,7 +685,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the device ID. Requires the Device Information access
-        right. Available in tvOS 6 and later.
+        right.
     - key: EASDeviceIdentifier
       supportedOS:
         iOS:
@@ -708,7 +702,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the device identifier for Exchange ActiveSync (EAS).
-        Requires the Device Information access right. Available in iOS 7 and later.
+        Requires the Device Information access right.
     - key: IsCloudBackupEnabled
       supportedOS:
         iOS:
@@ -729,8 +723,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the system enabled iCloud Backup on the
-        device. Requires the Device Information access right. Available in iOS 7.1
-        and later.
+        device. Requires the Device Information access right.
     - key: ActiveManagedUsers
       supportedOS:
         iOS:
@@ -748,8 +741,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get an array of directory GUIDs for logged-in managed users.
-        Requires the Device Information access right. Available in macOS 10.11 and
-        later.
+        Requires the Device Information access right.
     - key: OSUpdateSettings
       supportedOS:
         iOS:
@@ -757,6 +749,7 @@ payloadkeys:
         macOS:
           introduced: '10.11'
           deprecated: '26.0'
+          removed: '27.0'
           accessrights: AllowQueryDeviceInformation
           userenrollment:
             mode: forbidden
@@ -769,7 +762,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the contents of `OSUpdateSettings`. Requires the Device
-        Information access right. Available in macOS 10.11 and later.
+        Information access right.
     - key: LocalHostName
       supportedOS:
         iOS:
@@ -785,8 +778,7 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: The key to get the local hostname from Bonjour. Available in macOS
-        10.11 and later.
+      content: The key to get the local hostname from Bonjour.
     - key: HostName
       supportedOS:
         iOS:
@@ -802,7 +794,7 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: The key to get the hostname. Available in macOS 10.11 and later.
+      content: The key to get the hostname.
     - key: AutoSetupAdminAccounts
       supportedOS:
         iOS:
@@ -823,7 +815,7 @@ payloadkeys:
       presence: optional
       content: The key to get the contents of `AutoSetupAdminAccountsItem`, which
         Setup Assistant automatically creates during enrollment. Requires the Device
-        Information access right. Available in macOS 10.11 and later.
+        Information access right.
     - key: SystemIntegrityProtectionEnabled
       supportedOS:
         iOS:
@@ -858,8 +850,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device can receive `PowerON`, `PowerOFF`,
-        and `Reset` commands from a lights-out management (LOM) controller. Available
-        in macOS 11 and later.
+        and `Reset` commands from a lights-out management (LOM) controller.
     - key: IsMDMLostModeEnabled
       supportedOS:
         iOS:
@@ -878,8 +869,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the system enabled Managed Lost Mode on
-        the device. Requires the Device Information access right. Available in iOS
-        9.3 and later.
+        the device. Requires the Device Information access right.
     - key: MaximumResidentUsers
       supportedOS:
         iOS:
@@ -905,7 +895,7 @@ payloadkeys:
       presence: optional
       content: The key to get the maximum number of users that can use this Shared
         iPad device. In iOS 13.4 and later, this value is always `32`. Requires the
-        Device Information access right. Available in iOS 9.3 and later.
+        Device Information access right.
     - key: EstimatedResidentUsers
       supportedOS:
         iOS:
@@ -931,8 +921,7 @@ payloadkeys:
       presence: optional
       content: The key to get the estimated number of users that can use this Shared
         iPad device, according to the available space of the device and each user's
-        quota. Requires the Device Information access right. Available in iOS 14 and
-        later.
+        quota. Requires the Device Information access right.
     - key: QuotaSize
       supportedOS:
         iOS:
@@ -957,7 +946,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the quota size for each user on this Shared iPad device.
-        Requires the Device Information access right. Available in iOS 13.4 and later.
+        Requires the Device Information access right.
     - key: ResidentUsers
       supportedOS:
         iOS:
@@ -982,7 +971,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the number of users currently on this Shared iPad device.
-        Requires the Device Information access right. Available in iOS 13.4 and later.
+        Requires the Device Information access right.
     - key: UserSessionTimeout
       supportedOS:
         iOS:
@@ -1079,7 +1068,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the list of domains that the device suggests on the
-        Shared iPad login screen. Available in iOS 16 and later.
+        Shared iPad login screen.
     - key: OnlineAuthenticationGracePeriod
       supportedOS:
         iOS:
@@ -1104,7 +1093,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the grace period for Shared iPad online authentication
-        (in days). Available in iOS 16 and later.
+        (in days).
     - key: SkipLanguageAndLocaleSetupForNewUsers
       supportedOS:
         iOS:
@@ -1151,8 +1140,7 @@ payloadkeys:
       presence: optional
       content: The key to get the push token for the current user-channel connection.
         The MDM server ignores this query for the device channel. Requires the Device
-        Information access right. Available in iOS 9.3 and later, and macOS 10.12
-        and later.
+        Information access right.
     - key: DiagnosticSubmissionEnabled
       supportedOS:
         iOS:
@@ -1169,8 +1157,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the system enabled the diagnostic submission
-        setting on the device. Requires the Device Information access right. Available
-        in iOS 9.3 and later.
+        setting on the device. Requires the Device Information access right.
     - key: AppAnalyticsEnabled
       supportedOS:
         iOS:
@@ -1187,8 +1174,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is sharing app analytics. Requires
-        the Device Information access right. Available in iOS 4 and later, and macOS
-        10.7 and later.
+        the Device Information access right.
     - key: TimeZone
       supportedOS:
         iOS:
@@ -1208,9 +1194,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the current Internet Assigned Numbers Authority (IANA)
-        time zone database name. Requires the Device Information access right. Available
-        in macOS 26 and later, iOS 14 and later, tvOS 14 and later, and visionOS 2
-        and later.
+        time zone database name. Requires the Device Information access right.
     - key: ICCID
       supportedOS:
         iOS:
@@ -1293,7 +1277,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the primary Ethernet MAC address. Requires the Network
-        Information access right. Available in macOS 10.7 and later.
+        Information access right.
     - key: CurrentCarrierNetwork
       supportedOS:
         iOS:
@@ -1414,8 +1398,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the system enabled data roaming on the
-        device. Requires the Network Information access right. Available in iOS 5
-        and later.
+        device. Requires the Network Information access right.
     - key: VoiceRoamingEnabled
       supportedOS:
         iOS:
@@ -1457,7 +1440,7 @@ payloadkeys:
       presence: optional
       content: The key to determine whether the system enabled Personal Hotspot on
         the device, which isn't available for all carriers. Requires the Network Information
-        access right. Available in iOS 7 and later.
+        access right.
     - key: IsNetworkTethered
       supportedOS:
         iOS:
@@ -1474,7 +1457,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is network-tethered. Requires
-        the Network Information access right. Available in iOS 10.3 and later.
+        the Network Information access right.
     - key: IsRoaming
       supportedOS:
         iOS:
@@ -1495,7 +1478,7 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the device is roaming. Requires the Network
-        Information access right. Available in iOS 4.2 and later.
+        Information access right.
     - key: SubscriberMCC
       supportedOS:
         iOS:
@@ -1617,7 +1600,6 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the `EraseDeviceCommand` requires a PIN.
-        Available in macOS 11 and later.
     - key: PINRequiredForDeviceLock
       supportedOS:
         iOS:
@@ -1636,7 +1618,6 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the `DeviceLockCommand` requires a PIN.
-        Available in macOS 11 and later.
     - key: SupportsiOSAppInstalls
       supportedOS:
         iOS:
@@ -1653,37 +1634,42 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to determine whether the macOS device supports iOS or iPadOS
-        app installs. Available in macOS 11 and later.
+        app installs.
     - key: SoftwareUpdateDeviceID
       supportedOS:
         iOS:
           introduced: '15.0'
           deprecated: '26.0'
+          removed: '27.0'
           userenrollment:
             mode: forbidden
         macOS:
           introduced: '12.0'
           deprecated: '26.0'
+          removed: '27.0'
           userenrollment:
             mode: forbidden
         tvOS:
           introduced: n/a
         visionOS:
           deprecated: '26.0'
+          removed: '27.0'
           userenrollment:
             mode: forbidden
         watchOS:
           introduced: n/a
       type: <string>
       presence: optional
-      content: The key to get the device identifier to look up available OS updates
-        through [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv). Available
-        in iOS 15 and later, and macOS 12 and later.
+      content: |-
+        The key to get the device identifier to look up available OS updates through [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv).
+
+        Removed: subscribe to the declarative management `softwareupdate.device-id` status item.
     - key: SoftwareUpdateSettings
       supportedOS:
         iOS:
           introduced: '14.5'
           deprecated: '26.0'
+          removed: '27.0'
           userenrollment:
             mode: forbidden
         macOS:
@@ -1696,8 +1682,10 @@ payloadkeys:
           introduced: n/a
       type: <string>
       presence: optional
-      content: The key to get the device settings that control which updates appear
-        in the Software Update pane in Settings. Available in iOS 14.5 and later.
+      content: |-
+        The key to get the device settings that control which updates appear in the Software Update pane in Settings.
+
+        Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration to set values.
     - key: AccessibilitySettings
       supportedOS:
         iOS:
@@ -1719,7 +1707,6 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The key to get the current state of settable accessibility settings.
-        Available in iOS 16 and later.
     - key: DevicePropertiesAttestation
       supportedOS:
         iOS:
@@ -1735,9 +1722,8 @@ payloadkeys:
             mode: allowed
       type: <string>
       presence: optional
-      content: The key to get an attestation of the device's properties. Available
-        in iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10
-        and later. The hardware requirements for attestation are described below.
+      content: The key to get an attestation of the device's properties. See the hardware
+        requirements for attestation below.
     - key: EACSPreflight
       supportedOS:
         iOS:
@@ -1776,9 +1762,9 @@ payloadkeys:
   content: |-
     A freshness code that appears in the resulting attestation. This value can contain up to 32 bytes of data. If specified, queries need to contain `DevicePropertiesAttestation`.
 
-    The MDM server uses this value to prove that an attestation was recently generated. The system caches the most recently generated attestation on the device. If omitted or if the value matches the cached attestation, the system returns the cached attestation. To request a new attestation, provide a new freshness code. Requests for new attestations are rate limited. If it is fewer than 7 days since the system generated an attestation, the device returns the cached attestation rather than generating a new one.
+    The MDM server uses this value to prove that an attestation was recently generated. The system caches the most recently generated attestation on the device. If omitted or if the value matches the cached attestation, the system returns the cached attestation. To request a new attestation, provide a new freshness code. Requests for new attestations are rate limited. If it's fewer than 7 days since the system generated an attestation, the device returns the cached attestation rather than generating a new one.
 
-    Available in iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10 and later. The hardware requirements for attestation are described below.
+    See the hardware requirements for attestation below.
 responsekeys:
 - key: QueryResponses
   type: <dictionary>
@@ -1805,7 +1791,7 @@ responsekeys:
         introduced: n/a
     type: <string>
     content: The device identifier to use in provisioning profiles. This value differs
-      from the UDID on a Mac with Apple silicon. Available in macOS 11.3 and later.
+      from the UDID on a Mac with Apple silicon.
   - key: OrganizationInfo
     supportedOS:
       iOS:
@@ -1821,30 +1807,24 @@ responsekeys:
       type: <string>
       presence: required
       content: A string that describes the organization operating the MDM server.
-        This value is available in iOS 7 and later, macOS 10.11 and later, and tvOS
-        9 and later.
     - key: OrganizationAddress
       type: <string>
       presence: optional
       content: The organization's address. Use the LF character (`&#10`) to insert
-        line breaks. This value is available in iOS 7 and later, macOS 10.11 and later,
-        and tvOS 9 and later.
+        line breaks.
     - key: OrganizationPhone
       type: <string>
       presence: optional
-      content: The organization's phone number. This value is available in iOS 7 and
-        later, macOS 10.11 and later, and tvOS 9 and later.
+      content: The organization's phone number.
     - key: OrganizationEmail
       type: <string>
       presence: optional
-      content: The organization's support email address. This value is available in
-        iOS 7 and later, macOS 10.11 and later, and tvOS 9 and later.
+      content: The organization's support email address.
     - key: OrganizationMagic
       type: <string>
       presence: optional
       content: A unique identifier for the various services a single organization
-        manages. This value is available in iOS 7 and later, macOS 10.11 and later,
-        and tvOS 9 and later.
+        manages.
   - key: MDMOptions
     supportedOS:
       iOS:
@@ -1866,9 +1846,7 @@ responsekeys:
       presence: optional
       default: false
       content: If `true`, a supervised device registers itself with Activation Lock
-        when the user enables Find My. Unsupervised devices ignore this value. This
-        value is available in iOS 7 and later, macOS 11 and later, and tvOS 9 and
-        later.
+        when the user enables Find My. Unsupervised devices ignore this value.
     - key: BootstrapTokenAllowed
       supportedOS:
         iOS:
@@ -1884,8 +1862,7 @@ responsekeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the server supports Bootstrap Token commands. This value
-        is available in macOS 11 and later.
+      content: If `true`, the server supports Bootstrap Token commands.
     - key: PromptUserToAllowBootstrapTokenForAuthentication
       supportedOS:
         iOS:
@@ -1917,7 +1894,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <date>
-    content: The date of the last iCloud backup. Available in iOS 8 and later.
+    content: The date of the last iCloud backup.
   - key: AwaitingConfiguration
     supportedOS:
       iOS:
@@ -2033,8 +2010,7 @@ responsekeys:
     type: <real>
     content: The total capacity in floating-point base-10 gigabytes (GB) on iOS and
       macOS 12 or later. The capacity is in base-2 gibibytes (GiB) on macOS 11 and
-      earlier. Requires the Device Information access right. Available in iOS 4 and
-      later, and macOS 10.7 and later.
+      earlier. Requires the Device Information access right.
   - key: AvailableDeviceCapacity
     supportedOS:
       tvOS:
@@ -2042,8 +2018,7 @@ responsekeys:
     type: <real>
     content: The available capacity in floating-point base-10 gigabytes (GB) in iOS
       and macOS 12 or later. The capacity is in base-2 gibibytes (GiB) in macOS 11
-      and earlier. Requires the Device Information access right. Available in iOS
-      4 and later, and macOS 10.7 and later.
+      and earlier. Requires the Device Information access right.
   - key: IMEI
     supportedOS:
       iOS:
@@ -2089,7 +2064,6 @@ responsekeys:
         introduced: n/a
     type: <string>
     content: The modem firmware version. Requires the Device Information access right.
-      Available in iOS 4 and later.
   - key: CellularTechnology
     supportedOS:
       iOS:
@@ -2115,7 +2089,7 @@ responsekeys:
       - `2`: CDMA
       - `3`: GSM and CDMA
 
-      Requires the Device Information access right. Available in iOS 4.2.6 and later.
+      Requires the Device Information access right.
   - key: BatteryLevel
     supportedOS:
       iOS:
@@ -2126,8 +2100,7 @@ responsekeys:
         introduced: n/a
     type: <real>
     content: The battery level, between `0.0` and `1.0`, or `-1.0` if MDM can't determine
-      the battery level. Requires the Device Information access right. Available in
-      iOS 5 and later, and macOS 13.3 and later.
+      the battery level. Requires the Device Information access right.
   - key: HasBattery
     supportedOS:
       iOS:
@@ -2152,8 +2125,7 @@ responsekeys:
         introduced: '9.0'
     type: <boolean>
     content: If `true`, it's a supervised device. Requires the Device Information
-      access right. Available in iOS 6 and later, macOS 10.15 and later, and tvOS
-      9 and later.
+      access right.
   - key: IsMultiUser
     supportedOS:
       iOS:
@@ -2168,7 +2140,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device is a Shared iPad. Requires the Device Information
-      access right. Available in iOS 9.3 and later.
+      access right.
   - key: IsDeviceLocatorServiceEnabled
     supportedOS:
       iOS:
@@ -2179,7 +2151,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled a device locator service, such as Find
-      My. Requires the Device Information access right. Available in iOS 7 and later.
+      My. Requires the Device Information access right.
   - key: IsActivationLockEnabled
     supportedOS:
       iOS:
@@ -2212,7 +2184,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device supports Activation Lock. Also see `IsActivationLockManageable`
-      in `ManagementStatus`. Available in macOS 10.9 and later.
+      in `ManagementStatus`.
   - key: IsDoNotDisturbInEffect
     supportedOS:
       iOS:
@@ -2224,7 +2196,7 @@ responsekeys:
     type: <boolean>
     content: If `true`, the device is in Do Not Disturb (DND) mode. This value is
       `true` even if DND is only in effect for a locked device. Requires the Device
-      Information access right. Available in iOS 7 and later.
+      Information access right.
   - key: SupportsLOMDevice
     supportedOS:
       iOS:
@@ -2239,8 +2211,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device can receive `PowerON`, `PowerOFF`, and `Reset`
-      commands from a lights-out management (LOM) controller. Available in macOS 11
-      and later.
+      commands from a lights-out management (LOM) controller.
   - key: DeviceID
     supportedOS:
       iOS:
@@ -2255,7 +2226,6 @@ responsekeys:
         introduced: n/a
     type: <string>
     content: The device identifier. Requires the Device Information access right.
-      Available in tvOS 6 and later.
   - key: EASDeviceIdentifier
     supportedOS:
       iOS:
@@ -2268,7 +2238,7 @@ responsekeys:
         introduced: n/a
     type: <string>
     content: The device identifier for Exchange Active Sync (EAS). Requires the Device
-      Information access right. Available in iOS 7 and later.
+      Information access right.
   - key: IsCloudBackupEnabled
     supportedOS:
       iOS:
@@ -2281,7 +2251,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled iCloud backup. Requires the Device
-      Information access right. Available in iOS 7.1 and later.
+      Information access right.
   - key: ActiveManagedUsers
     supportedOS:
       iOS:
@@ -2298,7 +2268,6 @@ responsekeys:
     content: An array of the directory GUIDs of the logged-in managed users. If one
       of these users is currently logged in to the console, the `CurrentConsoleManagedUser`
       key returns the GUID of that user. Requires the Device Information access right.
-      Available in macOS 10.11 and later.
     subkeys:
     - key: ActiveManagedUsersItems
       type: <string>
@@ -2309,6 +2278,7 @@ responsekeys:
       macOS:
         introduced: '10.11'
         deprecated: '26.0'
+        removed: '27.0'
       tvOS:
         introduced: n/a
       visionOS:
@@ -2316,22 +2286,21 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <dictionary>
-    content: The contents of ``OSUpdateSettings-dictionary``. Requires the Device
-      Information access right. Available in macOS 10.11 and later.
+    content: |-
+      The contents of ``OSUpdateSettings-dictionary``. Requires the Device Information access right.
+
+      Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration to set values.
     subkeys:
     - key: CatalogURL
       type: <string>
       presence: optional
-      content: The URL to the software update catalog the client is using. This value
-        is available in macOS 10.11 and later.
+      content: The URL to the software update catalog the client is using.
     - key: IsDefaultCatalog
       type: <boolean>
-      content: If `true`, `CatalogURL` is the default catalog. This value is available
-        in macOS 10.11 and later.
+      content: If `true`, `CatalogURL` is the default catalog.
     - key: PreviousScanDate
       type: <date>
-      content: The date of the last software update scan. This value is available
-        in macOS 10.11 and later.
+      content: The date of the last software update scan.
     - key: PreviousScanResult
       supportedOS:
         macOS:
@@ -2339,32 +2308,26 @@ responsekeys:
           removed: '15.0'
       type: <string>
       presence: optional
-      content: The result code of last software update scan; `0` = success. This value
-        is available in macOS 10.11 and no longer available in macOS 15 and later.
+      content: The result code of last software update scan; `0` = success.
     - key: PerformPeriodicCheck
       type: <boolean>
-      content: If `true`, start a new scan. This value is available in macOS 10.11
-        and later.
+      content: If `true`, start a new scan.
     - key: AutoCheckEnabled
       type: <boolean>
-      content: The preference to automatically check for app updates. This value is
-        available in macOS 10.11 and later.
+      content: The preference to automatically check for app updates.
     - key: BackgroundDownloadEnabled
       type: <boolean>
-      content: The preference to download app updates in the background. This value
-        is available in macOS 10.11 and later.
+      content: The preference to download app updates in the background.
     - key: AutomaticAppInstallationEnabled
       type: <boolean>
-      content: The preference to automatically install app updates. This value is
-        available in macOS 10.11 and later.
+      content: The preference to automatically install app updates.
     - key: AutomaticOSInstallationEnabled
       type: <boolean>
-      content: The preference to automatically install operating system updates. This
-        value is available in macOS 10.11 and later.
+      content: The preference to automatically install operating system updates.
     - key: AutomaticSecurityUpdatesEnabled
       type: <boolean>
       content: The preference to automatically install system data files and security
-        updates. This value is available in macOS 10.11 and later.
+        updates.
   - key: LocalHostName
     supportedOS:
       iOS:
@@ -2378,7 +2341,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <string>
-    content: The local host name from Bonjour. Available in macOS 10.11 and later.
+    content: The local host name from Bonjour.
   - key: HostName
     supportedOS:
       iOS:
@@ -2392,7 +2355,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <string>
-    content: The host name. Available in macOS 10.11 and later.
+    content: The host name.
   - key: AutoSetupAdminAccounts
     supportedOS:
       iOS:
@@ -2407,8 +2370,8 @@ responsekeys:
         introduced: n/a
     type: <array>
     content: The contents of ``AutoSetupAdminAccountsItem``, which Setup Assistant
-      automatically creates during DEP enrollment. Requires the Device Information
-      access right. Available in macOS 10.11 and later.
+      automatically creates during ADE enrollment. Requires the Device Information
+      access right.
     subkeys:
     - key: AutoSetupAdminAccountsItem
       type: <dictionary>
@@ -2416,12 +2379,10 @@ responsekeys:
       subkeys:
       - key: GUID
         type: <string>
-        content: The `GeneratedUID` of the administrator account. This value is available
-          in macOS 10.11 and later.
+        content: The `GeneratedUID` of the administrator account.
       - key: shortName
         type: <string>
-        content: The short name of the administrator account. This value is available
-          in macOS 10.11 and later.
+        content: The short name of the administrator account.
   - key: SystemIntegrityProtectionEnabled
     supportedOS:
       iOS:
@@ -2436,7 +2397,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled System Integrity Protection. Requires
-      the Device Information access right. Available in macOS 10.12 and later.
+      the Device Information access right.
   - key: IsMDMLostModeEnabled
     supportedOS:
       iOS:
@@ -2449,7 +2410,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled Managed Lost Mode. Requires the Device
-      Information access right. Available in iOS 9.3 and later.
+      Information access right.
   - key: MaximumResidentUsers
     supportedOS:
       iOS:
@@ -2465,7 +2426,7 @@ responsekeys:
     type: <integer>
     content: The maximum number of users that can use this Shared iPad device. Starting
       with iOS 13.4, the value that returns is always `32`. Requires the Device Information
-      access right. Available in iOS 9.3 and later.
+      access right.
   - key: EstimatedResidentUsers
     supportedOS:
       iOS:
@@ -2481,7 +2442,7 @@ responsekeys:
     type: <integer>
     content: The estimated number of users that can use this Shared iPad device, according
       to the space available on the device and each user's quota. Requires the Device
-      Information access right. Available in iOS 14 and later.
+      Information access right.
   - key: QuotaSize
     supportedOS:
       iOS:
@@ -2496,7 +2457,7 @@ responsekeys:
         introduced: n/a
     type: <integer>
     content: The quota size in megabytes for each user on this Shared iPad device.
-      Requires the Device Information access right. Available in iOS 13.4 and later.
+      Requires the Device Information access right.
   - key: ResidentUsers
     supportedOS:
       iOS:
@@ -2511,7 +2472,7 @@ responsekeys:
         introduced: n/a
     type: <integer>
     content: The number of users currently on this Shared iPad device. Requires the
-      Device Information access right. Available in iOS 13.4 and later.
+      Device Information access right.
   - key: UserSessionTimeout
     supportedOS:
       iOS:
@@ -2570,7 +2531,7 @@ responsekeys:
         introduced: n/a
     type: <array>
     content: The list of domains that the device suggests on the Shared iPad login
-      screen. Available in iOS 16 and later.
+      screen.
     subkeys:
     - key: AppleID domain
       type: <string>
@@ -2589,7 +2550,6 @@ responsekeys:
     type: <integer>
     content: The grace period for Shared iPad online authentication (in days). A value
       of `0` indicates that the device requires online authentication for every login.
-      Available in iOS 16 and later.
   - key: SkipLanguageAndLocaleSetupForNewUsers
     supportedOS:
       iOS:
@@ -2620,8 +2580,7 @@ responsekeys:
     type: <data>
     content: The push token for the user-channel connection, in the same format as
       in `TokenUpdateRequest`. MDM ignores this query for the device channel. Requires
-      the Device Information access right. Available in iOS 9.3 and later, and macOS
-      10.12 and later.
+      the Device Information access right.
   - key: DiagnosticSubmissionEnabled
     supportedOS:
       iOS:
@@ -2632,7 +2591,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled diagnostic submission. Requires the
-      Device Information access right. Available in iOS 9.3 and later.
+      Device Information access right.
   - key: AppAnalyticsEnabled
     supportedOS:
       iOS:
@@ -2643,7 +2602,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device is sharing app analytics. Requires the Device Information
-      access right. Available in iOS 9.3 and later.
+      access right.
   - key: TimeZone
     supportedOS:
       iOS:
@@ -2654,8 +2613,7 @@ responsekeys:
         introduced: '14.0'
     type: <string>
     content: The current Internet Assigned Numbers Authority (IANA) time zone database
-      name. Requires the Device Information access right. Available in iOS 14 and
-      later, and tvOS 14 and later.
+      name. Requires the Device Information access right.
   - key: ICCID
     supportedOS:
       iOS:
@@ -2695,7 +2653,7 @@ responsekeys:
         introduced: n/a
     type: <string>
     content: The primary Ethernet MAC address. Requires the Network Information access
-      right. Available in macOS 10.7 and later.
+      right.
   - key: CurrentCarrierNetwork
     supportedOS:
       iOS:
@@ -2790,7 +2748,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device has enabled data roaming. Requires the Network
-      Information access right. Available in iOS 5 and later.
+      Information access right.
   - key: VoiceRoamingEnabled
     supportedOS:
       iOS:
@@ -2824,8 +2782,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true,` the device has enabled Personal Hotspot, which isn't available
-      for all carriers. Requires the Network Information access right. Available in
-      iOS 7 and later.
+      for all carriers. Requires the Network Information access right.
   - key: IsNetworkTethered
     supportedOS:
       iOS:
@@ -2840,7 +2797,7 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device is network-tethered. Requires the Network Information
-      access right. Available in iOS 10.3 and later.
+      access right.
   - key: IsRoaming
     supportedOS:
       iOS:
@@ -2974,24 +2931,19 @@ responsekeys:
       subkeys:
       - key: CarrierSettingsVersion
         type: <string>
-        content: The version of the carrier settings. This value is available in iOS
-          12 and later.
+        content: The version of the carrier settings.
       - key: CurrentCarrierNetwork
         type: <string>
-        content: The name of the current carrier network. This value is available
-          in iOS 12 and later.
+        content: The name of the current carrier network.
       - key: CurrentMCC
         type: <string>
-        content: The current mobile country code (MCC). This value is available in
-          iOS 12 and later.
+        content: The current mobile country code (MCC).
       - key: CurrentMNC
         type: <string>
-        content: The current mobile network code (MNC). This value is available in
-          iOS 12 and later.
+        content: The current mobile network code (MNC).
       - key: ICCID
         type: <string>
-        content: The integrated circuit card identifier (ICCID) value. This value
-          is available in iOS 12 and later.
+        content: The integrated circuit card identifier (ICCID) value.
       - key: EID
         supportedOS:
           iOS:
@@ -3001,43 +2953,35 @@ responsekeys:
           tvOS:
             introduced: n/a
         type: <string>
-        content: The eSIM identifier. This value is available in iOS 14 and later.
+        content: The eSIM identifier.
       - key: IMEI
         type: <string>
         content: The device International Mobile Equipment Identity (IMEI) number.
-          This value is available in iOS 12 and later.
       - key: IsDataPreferred
         type: <boolean>
-        content: If `true`, this subscription is the preference for data. This value
-          is available in iOS 12 and later.
+        content: If `true`, this subscription is the preference for data.
       - key: IsRoaming
         type: <boolean>
-        content: If `true`, the phone is roaming. This value is available in iOS 12
-          and later.
+        content: If `true`, the phone is roaming.
       - key: IsVoicePreferred
         type: <boolean>
-        content: If `true`, this subscription is the preference for voice. This value
-          is available in iOS 12 and later.
+        content: If `true`, this subscription is the preference for voice.
       - key: Label
         type: <string>
-        content: The label of this subscription. This value is available in iOS 12
-          and later.
+        content: The label of this subscription.
       - key: LabelID
         type: <string>
-        content: The unique identifier for this subscription. This value is available
-          in iOS 12 and later.
+        content: The unique identifier for this subscription.
       - key: MEID
         type: <string>
-        content: The device Mobile Equipment Identifier (MEID) number. This query
-          is available in iOS 12 and later.
+        content: The device Mobile Equipment Identifier (MEID) number.
       - key: PhoneNumber
         type: <string>
         content: The raw phone number without punctuation and including country code.
-          This value is available in iOS 12 and later.
       - key: Slot
         type: <string>
         content: The description of the slot that contains the SIM representing this
-          subscription. This value is available in iOS 12 and later.
+          subscription.
       - key: SubscriberCarrierNetwork
         supportedOS:
           iOS:
@@ -3047,8 +2991,7 @@ responsekeys:
           tvOS:
             introduced: n/a
         type: <string>
-        content: The name of the home carrier network. This value is available in
-          iOS 16 and later.
+        content: The name of the home carrier network.
   - key: PINRequiredForEraseDevice
     supportedOS:
       iOS:
@@ -3062,8 +3005,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, the `EraseDeviceCommand` requires a PIN. Available in macOS
-      11 and later.
+    content: If `true`, the `EraseDeviceCommand` requires a PIN.
   - key: PINRequiredForDeviceLock
     supportedOS:
       iOS:
@@ -3077,8 +3019,7 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <boolean>
-    content: If `true`, the `DeviceLockCommand` requires a PIN. Available in macOS
-      11 and later.
+    content: If `true`, the `DeviceLockCommand` requires a PIN.
   - key: SupportsiOSAppInstalls
     supportedOS:
       iOS:
@@ -3093,35 +3034,40 @@ responsekeys:
         introduced: n/a
     type: <boolean>
     content: If `true`, the device supports iOS or iPadOS app installs through MDM.
-      Available in macOS 11 and later.
   - key: SoftwareUpdateDeviceID
     supportedOS:
       iOS:
         introduced: '15.0'
         deprecated: '26.0'
+        removed: '27.0'
         userenrollment:
           mode: forbidden
       macOS:
         introduced: '12.0'
         deprecated: '26.0'
+        removed: '27.0'
         userenrollment:
           mode: forbidden
       tvOS:
         introduced: n/a
       visionOS:
         deprecated: '26.0'
+        removed: '27.0'
         userenrollment:
           mode: forbidden
       watchOS:
         introduced: n/a
     type: <string>
-    content: The device identifier to look up available OS updates through [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv).
-      Available in iOS 15 and later, and macOS 12 and later.
+    content: |-
+      The device identifier to look up available OS updates through [https://gdmf.apple.com/v2/pmv](https://gdmf.apple.com/v2/pmv).
+
+      Removed: subscribe to the declarative management `softwareupdate.device-id` status item.
   - key: SoftwareUpdateSettings
     supportedOS:
       iOS:
         introduced: '14.5'
         deprecated: '26.0'
+        removed: '27.0'
         userenrollment:
           mode: forbidden
       macOS:
@@ -3133,10 +3079,12 @@ responsekeys:
       watchOS:
         introduced: n/a
     type: <dictionary>
-    content: The device settings that control which updates appear in the Software
-      Update pane in Settings. Available in iOS 14.5 and later.
+    content: |-
+      The device settings that control which updates appear in the Software Update pane in Settings.
+
+      Removed: use the declarative management `com.apple.configuration.softwareupdate.settings` configuration to set values.
     subkeys:
-    - key: RecommendationsCadence
+    - key: RecommendationCadence
       type: <integer>
       content: |-
         Which software updates to present to the user.
@@ -3165,8 +3113,7 @@ responsekeys:
       watchOS:
         supervised: true
     type: <dictionary>
-    content: The current state of settable accessibility settings. Available in iOS
-      16 and later.
+    content: The current state of settable accessibility settings.
     subkeys:
     - key: BoldTextEnabled
       type: <boolean>
@@ -3233,20 +3180,20 @@ responsekeys:
           mode: allowed
     type: <array>
     content: |-
-      The key to get an attestation of the device's properties. Available in iOS 16 and later, macOS 14 and later, tvOS 16 and later, and watchOS 10 and later. The hardware requirements for attestation are described below.
+      The key to get an attestation of the device's properties. See the hardware requirements for attestation below.
 
       The value is an array of certificates in DER form that forms a certificate chain. The chain is rooted with the Apple CA `Apple Enterprise Attestation Root CA`. The first array item is the leaf certificate. The leaf certificate contains custom OIDs describing a device. The OS version of the device, and the type of enrollment, determine which OIDs are present in the certificate. If Apple's attestation servers are unable to verify a device property they generate a blank value, omit the OID entirely, or refuse to issue an attestation certificate.
 
       The following OIDs were introduced in iOS 16, iPadOS 16, tvOS 16, watchOS 10, visionOS 1 and macOS 14:
 
-      - `1.2.840.113635.100.8.9.1` serial number: This is the serial number of the device. It is omitted if the enrollment is a user enrollment.
-      - `1.2.840.113635.100.8.9.2` UDID: For a Mac this has the same value as the `ProvisioningUDID` key, and does not match the UDID used elsewhere in the MDM protocol. It is omitted if the enrollment is a user enrollment.
+      - `1.2.840.113635.100.8.9.1` serial number: This is the serial number of the device. It's omitted if the enrollment is a user enrollment.
+      - `1.2.840.113635.100.8.9.2` UDID: For a Mac this has the same value as the `ProvisioningUDID` key, and doesn't match the UDID used elsewhere in the MDM protocol. It's omitted if the enrollment is a user enrollment.
       - `1.2.840.113635.100.8.10.2` sepOS version: This is the version of the operating system running on the Secure Enclave when the attestation is generated. Typically this matches the version of the main operating system.
-      - `1.2.840.113635.100.8.11.1` Freshness code: This is the freshness code. See the `DeviceAttestationNonce`. This may not match the requested freshness code if a cached attestation was returned.
+      - `1.2.840.113635.100.8.11.1` Freshness code: This is the freshness code. See the `DeviceAttestationNonce`. This may not match the requested freshness code if the device returned a cached attestation.
 
       The following OIDs were introduced in iOS 17.2, iPadOS 17.2, tvOS 17.2, watchOS 10.2, visionOS 1.l0, and macOS 14.2:
 
-      - `1.2.840.113635.100.8.9.4` Software Update Device ID: This is an identifier of the device model. It is expected to match the `SoftwareUpdateDeviceID` in the `DeviceInformation`` response. This is the device identifier to use when looking up available OS updates through <https://gdmf.apple.com/v2/pmv>.
+      - `1.2.840.113635.100.8.9.4` Software Update Device ID: This is an identifier of the device model. It's expected to match the `SoftwareUpdateDeviceID` in the `DeviceInformation`` response. This is the device identifier to use when looking up available OS updates through <https://gdmf.apple.com/v2/pmv>.
       - `1.2.840.113635.100.8.10.1` OS Version: This is the version of iOS, iPadOS or tvOS running on the device when the attestation is generated.
       - `1.2.840.113635.100.8.10.3` LLB Version: This is the version of the Low Level Bootloader firmware running on the device when the attestation is generated. For more information about the boot process, see the documentation of the boot process in the Apple Platform Security guide.
 
@@ -3254,7 +3201,7 @@ responsekeys:
 
       - `1.2.840.113635.100.8.13.1` System Integrity Protection (SIP) status: This indicates whether SIP is enabled or disabled when the attestation is generated. `0` indicates enabled, `1` indicates disabled.
       - `1.2.840.113635.100.8.13.2` Secure boot status: This describes part of the configuration of the LocalPolicy when the attestation is generated. The values are `Full Security`, `Reduced Security`, or `Permissive Security`. For a description of these values see the Apple Platform Security guide.
-      - `1.2.840.113635.100.8.13.3` Third party kernel extensions allowed: This indicates whether third party kernel extensions are allowed. A value of `0` indicates third party kernel extensions are not allowed. Any other value means that some kinds of third party kernel extensions are allowed.
+      - `1.2.840.113635.100.8.13.3` Third party kernel extensions allowed: This indicates whether third party kernel extensions are allowed. A value of `0` indicates third party kernel extensions aren't allowed. Any other value means that some kinds of third party kernel extensions are allowed.
     subkeys:
     - key: AttestationCertificate
       type: <data>
@@ -3275,10 +3222,10 @@ responsekeys:
     type: <string>
     content: |-
       Specifies whether the device can perform an `EraseDeviceCommand` using Erase All Content and Settings (EACS), which is one of the following values:
-      - `success`: The device supports EACS.
-      - `not supported`: The device is too old to support EACS.
-      - `unknown failure`: A problem occurred for which there isn't a more specific error message.
-      - `(other string)`: A reason why the device can't perform EACS, such as "System is not sealed"
+      * `success`: The device supports EACS.
+      * `not supported`: The device is too old to support EACS.
+      * `unknown failure`: A problem occurred for which there isn't a more specific error message.
+      * `(other string)`: A reason why the device can't perform EACS, such as "System is not sealed"
 notes:
 - title: ''
   content: Refer to the following sections to determine supported channels and requirements,
@@ -3291,4 +3238,9 @@ notes:
     | Support status | iPhone, iPad                         | Mac           | Apple TV                | Apple Watch    | Vision Pro |
     |----------------|--------------------------------------|---------------|-------------------------|----------------|------------|
     | Unsupported    | A10x Fusion and earlier              | Intel         | A10x Fusion and earlier | S3 and earlier | none       |
-    | Supported      | A11 Bionic and later<br>All M series | Apple Silicon | A12 Bionic and later    | S4 and later   | All        |
+    | Supported      | A11 Bionic and later<br>All M series | Apple silicon | A12 Bionic and later    | S4 and later   | All        |
+examples:
+  title: Example request and response
+  files:
+  - request-file: examples/mdm/commands/information.device/example1.plist
+    response-file: examples/mdm/commands/information.device/example2.plist

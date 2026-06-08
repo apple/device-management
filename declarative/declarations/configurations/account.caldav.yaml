@@ -37,32 +37,30 @@ payload:
     watchOS:
       introduced: n/a
   apply: multiple
-  content: A CalDAV configuration defines a CalDAV calendar and reminders account
-    for a user.
 payloadkeys:
 - key: VisibleName
-  title: Account Name
+  title: Account name
   type: <string>
   presence: optional
   content: The name that apps show to the user for this calendar account. If not present,
     the system generates a suitable default.
 - key: HostName
-  title: Server Host Name
+  title: Server host name
   type: <string>
   presence: required
   content: The hostname or IP address of the CalDAV server.
 - key: Port
-  title: Server Port
+  title: Server port
   type: <integer>
   presence: optional
   content: The port number for the CalDAV server.
 - key: Path
-  title: Server Path
+  title: Server path
   type: <string>
   presence: optional
   content: The path for the CalDAV server.
 - key: AuthenticationCredentialsAssetReference
-  title: Authentication Credentials Asset Reference
+  title: Authentication credentials asset reference
   type: <string>
   assettypes:
   - com.apple.asset.credential.userpassword
@@ -73,3 +71,8 @@ related-status-items:
 - status-items:
   - account.list.caldav
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration sets up a CalDAV account for calendars.
+    file: examples/declarative/declarations/configurations/account.caldav/example1.json

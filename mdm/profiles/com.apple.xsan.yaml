@@ -65,7 +65,7 @@ payloadkeys:
 
 
 
-    Only one value is accepted: `auth_secret`
+    The SAN accepts only one value: `auth_secret`
 - key: sharedSecret
   type: <string>
   presence: required
@@ -75,3 +75,7 @@ payloadkeys:
 notes:
 - title: ''
   content: For more information, see [https://support.apple.com/en-us/HT205333](https://support.apple.com/en-us/HT205333).
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.xsan/example1.plist

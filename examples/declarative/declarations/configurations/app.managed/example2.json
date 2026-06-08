@@ -1,0 +1,29 @@
+{
+    "Type": "com.apple.configuration.app.managed",
+    "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
+    "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
+    "Payload": {
+        "ManifestURL": "https://example.com/apps/TestApp.plist",
+        "InstallBehavior": {
+            "Install": "Required",
+            "AllowDownloadsOverCellular": "AlwaysOff"
+        },
+        "UpdateBehavior": {
+            "AutomaticAppUpdates": "AlwaysOn"
+        },
+        "Attributes": {
+            "AssociatedDomains": [
+                "www.example.com"
+            ],
+            "AssociatedDomainsEnableDirectDownloads": true,
+            "CellularSliceUUID": "Cellular-12345",
+            "ContentFilterUUID": "ContentFilter-12345",
+            "DNSProxyUUID": "DNSProxy-12345",
+            "Hideable": false,
+            "Lockable": false,
+            "RelayUUID": "Relay-12345",
+            "TapToPayScreenLock": true,
+            "VPNUUID": "VPN-12345"
+        }
+    }
+}

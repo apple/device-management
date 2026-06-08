@@ -21,7 +21,7 @@ payload:
   apply: single
 payloadkeys:
 - key: MaximumVirtualDisplays
-  title: Maximum number of Virtual Displays
+  title: Maximum number of virtual displays
   type: <integer>
   presence: optional
   range:
@@ -29,7 +29,7 @@ payloadkeys:
     max: 2
   content: The maximum number of virtual displays to make available to clients.
 - key: PortBase
-  title: UDP Port base
+  title: UDP port base
   type: <integer>
   presence: optional
   range:
@@ -54,9 +54,14 @@ payloadkeys:
   content: If `true`, the system prevents users from copying files to the screen-sharing
     host.
 - key: PreventHighPerformanceConnections
-  title: Prevent High Performance connections
+  title: Prevent high performance connections
   type: <boolean>
   presence: optional
   default: false
   content: If `true`, the system prevents clients from establishing high-performance
     connections to the host.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration manages screen-sharing host settings and restrictions.
+    file: examples/declarative/declarations/configurations/screensharing.host.settings/example1.json

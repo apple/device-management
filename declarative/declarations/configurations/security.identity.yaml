@@ -1,5 +1,5 @@
 title: Security:Identity
-description: The declaration to install an identity on the device.
+description: The declaration to configure an identity.
 payload:
   declarationtype: com.apple.configuration.security.identity
   supportedOS:
@@ -94,3 +94,8 @@ related-status-items:
 - status-items:
   - security.certificate.list
   note: Each configuration will have a corresponding status item.
+examples:
+  title: Configuration example
+  files:
+  - description: This configuration installs a certificate identity on the device.
+    file: examples/declarative/declarations/configurations/security.identity/example1.json

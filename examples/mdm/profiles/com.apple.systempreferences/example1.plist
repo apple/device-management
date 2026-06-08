@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>EnabledPreferencePanes</key>
+            <array>
+                <string>com.apple.preferences.users</string>
+            </array>
+            <key>DisabledPreferencePanes</key>
+            <array>
+                <string>com.apple.preference.dock</string>
+            </array>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mysystempayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.systempreferences</string>
+            <key>PayloadUUID</key>
+            <string>6e7d6ddc-70fc-4126-a0a3-c312c4e16e06</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>System Preferences</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>28114fac-d230-484f-8747-4f3f1077f95c</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>ClientIdentifier</key>
+            <string>this is an identifier</string>
+            <key>ExtendedKeyUsage</key>
+            <array>
+                <string>1.3.6.1.5.5.7.3.2</string>
+            </array>
+            <key>HardwareBound</key>
+            <true/>
+            <key>KeySize</key>
+            <integer>384</integer>
+            <key>KeyType</key>
+            <string>ECSECPrimeRandom</string>
+            <key>UsageFlags</key>
+            <integer>5</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.example.myacmepayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.security.acme</string>
+            <key>PayloadUUID</key>
+            <string>cbdc6238-feec-4171-878d-34e576bbb813</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>Subject</key>
+            <array>
+                <array>
+                    <array>
+                        <string>C</string>
+                        <string>US</string>
+                    </array>
+                </array>
+                <array>
+                    <array>
+                        <string>O</string>
+                        <string>Example Inc.</string>
+                    </array>
+                </array>
+                <array>
+                    <array>
+                        <string>1.2.840.113635.100.6.99999.99999</string>
+                        <string>test custom OID value</string>
+                    </array>
+                </array>
+            </array>
+            <key>SubjectAltName</key>
+            <dict>
+                <key>dNSName</key>
+                <string>site.example.com</string>
+            </dict>
+            <key>DirectoryURL</key>
+            <string>https://acme.example.com/acme</string>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>ACME</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>ce876f81-abf0-46f9-9e68-9b3a7ede8097</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

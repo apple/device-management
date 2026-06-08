@@ -62,3 +62,7 @@ notes:
     You can manage extensions by bundle identifiers in allow and deny lists, or by a deny list of extension points.
 
     You can also start with all public extensions disallowed. To do so, include `AllPublicExtensionPoints` in `DeniedExtensionPoints`. This causes the system to expand the list to include all extensions that belong to any public extension points. This expansion occurs at evaluation time. The list of extension points can change from release to release. The expanded list disallows Apple and third-party extensions, but still allows extensions that belong to system-critcial extension points to execute.
+examples:
+  title: Profile example
+  files:
+  - file: examples/mdm/profiles/com.apple.NSExtension/example1.plist
