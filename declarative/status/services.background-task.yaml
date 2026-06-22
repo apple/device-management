@@ -143,7 +143,7 @@ payloadkeys:
           content: The `ServerToken` of the declaration asset that provided the launchd
             plist for this task.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated task
     description: Reports a new or updated background task.

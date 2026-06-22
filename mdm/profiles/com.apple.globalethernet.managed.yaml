@@ -50,6 +50,6 @@ notes:
     * EAPClientConfiguration (`EAPClientConfiguration`): The dictionary that defines the enterprise profile for the network.
     * SetupModes (String): The type of connection mode, which is either `System` or `Loginwindow`. `System` is the default.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.globalethernet.managed/example1.plist

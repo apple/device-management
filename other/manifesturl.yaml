@@ -216,6 +216,6 @@ notes:
     If both SHA-256 and MD5 hash properties are present, the device uses only the
     SHA-256 hashes to verify the manifest data.
 examples:
-  title: Example manifest
+- title: Example manifest
   files:
   - file: examples/other/manifesturl/example1.plist

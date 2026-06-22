@@ -40,6 +40,6 @@ notes:
 
     This payload applies to Ethernet interfaces according to service order, regardless of whether the interface is working.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.firstethernet.managed/example1.plist

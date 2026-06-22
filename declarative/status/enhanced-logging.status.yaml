@@ -1,4 +1,4 @@
-title: Status Enhanced Logging
+title: Status Enhanced Logging Status
 description: The status item that reports the device's enhanced log collection session
   status.
 payload:
@@ -59,6 +59,6 @@ payloadkeys:
     - `cancelled` - The device management service cancelled the enhanced log collection session.
     - `declined` - The user declined the enhanced log collection session.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.status/example1.json

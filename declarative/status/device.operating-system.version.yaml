@@ -56,6 +56,6 @@ payloadkeys:
   presence: required
   content: The operating system's version in use on the device, such as `15.0`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.version/example1.json

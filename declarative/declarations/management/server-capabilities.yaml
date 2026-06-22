@@ -33,6 +33,6 @@ payloadkeys:
     presence: optional
     content: Additional keys may be present.
 examples:
-  title: Management declaration example
+- title: Management declaration example
   files:
   - file: examples/declarative/declarations/management/server-capabilities/example1.json

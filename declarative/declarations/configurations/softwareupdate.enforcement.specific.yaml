@@ -86,7 +86,7 @@ notes:
 
     If the device isn't running at the target date-time, the system enforces the software update 1 hour after restarting, or when the device meets all required conditions, such as minimum battery level.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration enforces a software update to a specific OS version
       and build at a specified time.

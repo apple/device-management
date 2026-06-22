@@ -29,6 +29,6 @@ payloadkeys:
   default: false
   content: If `true`, disables the iCloud password for local accounts.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.preferences.users/example1.plist

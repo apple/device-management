@@ -56,6 +56,6 @@ payloadkeys:
   presence: required
   content: The name of the screen saver module.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.screensaver/example1.plist

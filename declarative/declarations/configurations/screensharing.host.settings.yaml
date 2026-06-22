@@ -61,7 +61,7 @@ payloadkeys:
   content: If `true`, the system prevents clients from establishing high-performance
     connections to the host.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration manages screen-sharing host settings and restrictions.
     file: examples/declarative/declarations/configurations/screensharing.host.settings/example1.json

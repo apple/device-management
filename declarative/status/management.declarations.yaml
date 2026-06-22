@@ -169,6 +169,6 @@ notes:
 - title: ''
   content: The name of the declaration status item is `management.declarations`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/management.declarations/example1.json

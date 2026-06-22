@@ -48,7 +48,7 @@ payloadkeys:
     content: Specifies the identifier of an asset declaration containing the anchor
       certificate to be used.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration enrolls an Apple Watch using a profile URL.
     file: examples/declarative/declarations/configurations/watch.enrollment/example1.json

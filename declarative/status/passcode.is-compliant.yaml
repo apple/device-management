@@ -46,6 +46,6 @@ payloadkeys:
     policies set on the device. When there are no passcode policies on the device,
     this value `true`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/passcode.is-compliant/example1.json

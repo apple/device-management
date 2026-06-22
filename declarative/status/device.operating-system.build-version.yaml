@@ -56,6 +56,6 @@ payloadkeys:
   presence: required
   content: The operating system's build version on the device, such as `18F132`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.build-version/example1.json

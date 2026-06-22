@@ -161,8 +161,11 @@ payloadkeys:
   rangelist:
   - Password
   - UserSecureEnclaveKey
-  content: The Platform SSO authentication method the extension uses. Requires that
-    the SSO Extension also supports the method.
+  - SmartCard
+  - OpenID
+  content: |-
+    The Platform SSO authentication method the extension uses. Requires that the SSO Extension also supports the method.
+    Don't use this. Use the `AuthenticationMethod` key in the `PlatformSSO` dictionary instead.
 - key: RegistrationToken
   supportedOS:
     iOS:
@@ -571,6 +574,6 @@ notes:
 - title: ''
   content: The system supports user channel installation in macOS 11 and later.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.extensiblesso/example1.plist

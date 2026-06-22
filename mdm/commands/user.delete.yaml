@@ -71,7 +71,7 @@ notes:
     - `12073`: The user has data to sync and ForceDeletion is false or unspecified.
     - `12074`: Unable to delete the user. In macOS, this error code also returns for an attempt to delete the last administrator account.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/classroom.user.delete/example1.plist
     response-file: examples/mdm/commands/classroom.user.delete/example2.plist

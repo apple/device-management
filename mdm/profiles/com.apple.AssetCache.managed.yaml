@@ -300,6 +300,6 @@ payloadkeys:
   subkeytype: Ranges
   subkeys: *id001
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.AssetCache.managed/example1.plist

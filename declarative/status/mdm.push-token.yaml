@@ -52,6 +52,6 @@ payloadkeys:
   content: The device push token that the MDM server uses for Apple Push Notification
     service messages.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.push-token/example1.json

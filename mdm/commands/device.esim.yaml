@@ -41,7 +41,7 @@ notes:
     - `36002`: The hardware doesn't support this command.
     - `36003`: The cellular stack was unable to perform the request. This error can also occur if the cellular stack is busy, in which case, retrying the command later may resolve the issue.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/device.esim/example1.plist
     response-file: examples/mdm/commands/device.esim/example2.plist

@@ -63,6 +63,6 @@ payloadkeys:
       failure. This key isn't present if there are no failures or no pending software
       update.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.failure-reason/example1.json

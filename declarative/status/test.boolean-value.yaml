@@ -56,6 +56,6 @@ payloadkeys:
   presence: required
   content: The test status Boolean value.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/test.boolean-value/example1.json

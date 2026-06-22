@@ -54,7 +54,7 @@ notes:
     > Note:
     > Don't remove a provisioning profile to revoke access to an enterprise app. An app continues to be usable until the device restarts, even with no provisioning profile. Provisioning profiles also synchronize with iTunes and the system reinstalls them when users sync devices. For more information on removing apps, see `Remove-Application-Command`.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/profile.provisioning.remove/example1.plist
     response-file: examples/mdm/commands/profile.provisioning.remove/example2.plist

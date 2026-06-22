@@ -43,6 +43,6 @@ payloadkeys:
   content: The device identifier to use when looking up available software updates
     via `https://gdmf.apple.com/v2/pmv`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.device-id/example1.json

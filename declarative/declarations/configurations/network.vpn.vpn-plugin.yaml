@@ -578,7 +578,7 @@ payloadkeys:
       content: The identifier of an asset declaration that contains the credentials
         (user name and password) to authenticate with the proxy server.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Password
     description: This configuration sets up a VPN plugin using username and password

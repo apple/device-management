@@ -30,6 +30,6 @@ payloadkeys:
   presence: required
   content: If `true`, the device is a Shared iPad.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.is-shared-ipad/example1.json

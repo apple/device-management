@@ -123,6 +123,6 @@ payloadkeys:
   presence: optional
   content: The external server port number.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.ews.account/example1.plist

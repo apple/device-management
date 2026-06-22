@@ -230,70 +230,6 @@ payloadkeys:
             In iOS, tvOS, and visionOS, the identifier is a bundle ID, for example, "com.example.app".
 
             In macOS, the identifier is a composed identifier. The format of the composed identifier is either "Bundle-ID", "Bundle-ID (Team-ID)", or "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Team-ID" is the team identifier from the provider's code signature. "Designated-Requirement" is the designated requirement string from the code signature of the provider. For example, "com.example.app" for the bundle ID format, "com.example.app (ABCD1234)" for the team ID format, or "com.example.app {anchor apple generic}" for the designated requirement format.
-      - key: NetworkRouting
-        title: Network routing details
-        supportedOS:
-          tvOS:
-            introduced: n/a
-        type: <dictionary>
-        presence: optional
-        content: Specifies details about how the VPN routes different types of network
-          traffic.
-        subkeys:
-        - key: EnforceRoutes
-          title: Enforce routes
-          type: <boolean>
-          presence: optional
-          default: false
-          content: |-
-            If `true`, all the VPN's non-default routes take precedence over any locally defined routes.
-
-            If `IncludeAllNetworks` is `true`, the system ignores the value of `EnforceRoutes`.
-        - key: IncludeAllNetworks
-          title: Include all networks
-          type: <boolean>
-          presence: optional
-          default: false
-          content: |-
-            If `true`, routes all traffic through the VPN, with some exclusions. Several of the exclusions can be controlled with the `ExcludeLocalNetworks`, `ExcludeCellularServices`, `ExcludeAPNs` and `ExcludeDeviceCommunication` properties. The following traffic is always excluded from the tunnel:
-
-            - Traffic necessary for connecting and maintaining the device's network connection, such as DHCP.
-            - Traffic necessary for connecting to captive networks.
-            - Certain cellular services traffic that's not routable over the internet and is instead directly routed to the cellular network. See the ExcludeCellularServices property for more details.
-            - Network communication with a companion device such as a watchOS device.
-        - key: ExcludeLocalNetworks
-          title: Exclude local networks
-          type: <boolean>
-          presence: optional
-          content: If `true` and `IncludeAllNetworks` is `true`, routes all local
-            network traffic outside the VPN.
-        - key: ExcludeCellularServices
-          title: Exclude cellular services
-          type: <boolean>
-          presence: optional
-          default: true
-          content: If `true` and `IncludeAllNetworks` is `true`, then the system excludes
-            internet-routable network traffic for cellular services (VoLTE, Wi-Fi
-            Calling, IMS, MMS, Visual Voicemail, etc.) from the tunnel. Note that
-            some cellular carriers route cellular services traffic directly to the
-            carrier network, bypassing the internet. The device always excludes such
-            cellular services traffic from the tunnel.
-        - key: ExcludeAPNs
-          title: Exclude APNs
-          type: <boolean>
-          presence: optional
-          default: true
-          content: If `true` and `IncludeAllNetworks` is `true`, then the system excludes
-            the network traffic for the Apple Push Notification service (APNs) from
-            the tunnel.
-        - key: ExcludeDeviceCommunication
-          title: Exclude device communication
-          type: <boolean>
-          presence: optional
-          default: true
-          content: If set to `true` and `IncludeAllNetworks` is set to `true`, the
-            device excludes network traffic used for communicating with devices connected
-            via USB or Wi-Fi from the tunnel.
       - key: Idle
         title: Disconnect on idle settings.
         type: <dictionary>
@@ -968,7 +904,7 @@ payloadkeys:
       content: The identifier of an asset declaration that contains the credentials
         (user name and password) to authenticate with the proxy server.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up an always-on IKEv2 VPN for both Cellular
       and Wi-Fi interfaces using certificate authentication.

@@ -64,6 +64,6 @@ notes:
 
     This payload can only exist in a device profile. If the payload is present in a user profile, an error occurs during installation and the profile installation fails.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.systempolicy.rule/example1.plist

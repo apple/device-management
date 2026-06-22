@@ -24,13 +24,13 @@ payloadkeys:
   type: <string>
   presence: required
   content: The unique identifier of the set of background tasks managed with this
-    configuration. This should be a reverse DNS style identifier. The system uses
+    configuration. This should be a reverse DNS style identifier. The device uses
     this identifier to differentiate between tasks in different configurations.
 - key: TaskDescription
   title: Task description
   type: <string>
   presence: optional
-  content: A description of the set of background tasks managed by this configuration.
+  content: A description of the set of background tasks this configuration manages.
 - key: ExecutableAssetReference
   title: Executable asset reference
   type: <string>
@@ -42,14 +42,19 @@ payloadkeys:
   content: |-
     Specifies the identifier of an asset declaration containing a reference to the files to be used for the background task configuration. The corresponding asset must be of type `com.apple.asset.data`.
 
-    The referenced data must be a zip archive of an entire directory, that will be expanded and stored in a well known location for the background task. The asset's "ContentType" and "Hash-SHA-256" keys in the "Reference" key are required.
+    The referenced data must be a zip archive of an entire directory that the device expands and stores in a well known location for the background task. The asset's "ContentType" and "Hash-SHA-256" keys in the "Reference" key are required.
 
-    This file should contain background task executables, scripts, and configuration files, but not the `launchd` configuration files.
+    This zip archive should contain background task executables, scripts, and configuration files, but not the `launchd` configuration files.
+
+    The device stores the expanded zip archive in the tamper-proof `/var/db/ManagedConfigurationFiles/BackgroundTaskServices/Services/<TaskType>` directory, where `<TaskType>` is the value of the `TaskType` key in the configuration.
 - key: LaunchdConfigurations
   title: Launchd configurations
   type: <array>
   presence: optional
-  content: An array of `launchd` configuration files used to run the background tasks.
+  content: |-
+    An array of `launchd` configuration files used to run the background tasks.
+
+    The device stores the configuration files in the tamper-proof `/var/db/ManagedConfigurationFiles/BackgroundTaskServices/LaunchDaemons` or `/var/db/ManagedConfigurationFiles/BackgroundTaskServices/LaunchAgents` directories, based on the `Context` value for each item.
   subkeys:
   - key: launchd-item
     title: Launchd item
@@ -80,7 +85,7 @@ payloadkeys:
       rangelist:
       - daemon
       - agent
-      content: Indicates whether the system applies the launchd configuration file
+      content: Indicates whether the device applies the launchd configuration file
         to the system daemon or system agent domain.
 related-status-items:
 - status-items:
@@ -99,9 +104,9 @@ notes:
     If both `ExecutableAssetReference` and `LaunchdConfigurations` are present, and the device changes just the executable data, it kills and restarts any running tasks associated with the launchd configurations.
 
     > Note:
-    > If an executable is an app, the system can't manage the app as it can only manage apps installed in `/Applications`. Also, the system can't use system extensions in the app as it only loads them from apps installed in `/Applications`.
+    > If an executable is an app, the device can't manage the app as it can only manage apps installed in `/Applications`. Also, the device can't use system extensions in the app as it only loads them from apps installed in `/Applications`.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up a background task using a launchd daemon.
     file: examples/declarative/declarations/configurations/services.background-tasks/example1.json

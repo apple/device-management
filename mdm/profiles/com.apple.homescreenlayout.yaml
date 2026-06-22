@@ -94,6 +94,6 @@ notes:
 
     To disable deletion of apps, set `allowAppRemoval` to `false` with `Restrictions`.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.homescreenlayout/example1.plist

@@ -1999,6 +1999,6 @@ payloadkeys:
     presence: optional
     content: A positive integer.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.vpn.managed/example1.plist

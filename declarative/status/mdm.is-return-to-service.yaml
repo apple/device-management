@@ -38,6 +38,6 @@ payloadkeys:
   content: If `true`, the device is using the return to service with app preservation
     mode.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.is-return-to-service/example1.json

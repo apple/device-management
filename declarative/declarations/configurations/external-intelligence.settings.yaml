@@ -59,7 +59,7 @@ payloadkeys:
     title: Allowed workspace ID
     type: <string>
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: External Intelligence Restrictions
     description: This configuration restricts external intelligence integrations.

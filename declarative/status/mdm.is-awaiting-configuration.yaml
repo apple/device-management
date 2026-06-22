@@ -48,6 +48,6 @@ payloadkeys:
   presence: required
   content: If `true`, the device is awaiting configuration from the MDM server.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.is-awaiting-configuration/example1.json

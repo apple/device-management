@@ -510,7 +510,7 @@ related-status-items:
   - app.managed.list
   note: Each configuration has a corresponding status item.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: App Store
     description: This configuration installs an App Store app with `Required` install

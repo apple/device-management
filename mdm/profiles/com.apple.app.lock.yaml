@@ -208,6 +208,6 @@ notes:
 
     Only use an app lock payload after installing the target app.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.app.lock/example1.plist

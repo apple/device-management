@@ -296,6 +296,6 @@ payloadkeys:
   subkeytype: StaticItem
   subkeys: *id001
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.dock/example1.plist

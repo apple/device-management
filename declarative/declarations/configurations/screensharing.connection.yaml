@@ -70,7 +70,7 @@ payloadkeys:
     for this connection to authenticate with the screen-sharing server. Set the corresponding
     asset type to `com.apple.asset.credential.userpassword`.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up a screen-sharing connection to a remote
       Mac.

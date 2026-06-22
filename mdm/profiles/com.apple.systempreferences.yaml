@@ -152,6 +152,6 @@ payloadkeys:
     - com.apple.systempreferences.AppleIDSettings
     - com.apple.wifi-settings-extension
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.systempreferences/example1.plist

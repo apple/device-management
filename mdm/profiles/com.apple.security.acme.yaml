@@ -234,6 +234,6 @@ notes:
     | Ignored            | A10x Fusion and earlier              | T2             | A10x Fusion and earlier | S3 and earlier | none       |
     | Supported          | A11 Bionic and later<br>All M series | Apple silicon  | A12 Bionic and later    | S4 and later   | All        |
 examples:
-  title: Example profile
+- title: Example profile
   files:
   - file: examples/mdm/profiles/com.apple.security.acme/example1.plist

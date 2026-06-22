@@ -59,7 +59,7 @@ payloadkeys:
         content: The unique identifier (i.e., ConnectionUUID) of a connection which
           could not be resolved.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated connection group
     description: Reports a new or updated connection group.

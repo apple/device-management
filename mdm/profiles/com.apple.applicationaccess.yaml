@@ -4944,6 +4944,6 @@ notes:
     > Important:
     > The system allows multiple Restrictions payloads. However, don't attempt to manage the same restriction in different payloads. Doing so results in unexpected behavior.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.applicationaccess/example1.plist

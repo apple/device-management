@@ -202,6 +202,6 @@ notes:
     of type `VPN`, `IPsec`, and `IKEv2`. All the properties of VPN apply to the top
     level of this profile as well.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.vpn.managed.applayer/example1.plist

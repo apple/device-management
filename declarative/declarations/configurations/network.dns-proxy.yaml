@@ -77,7 +77,7 @@ payloadkeys:
     processes DNS lookups traffic for managed apps with the same `DNSProxyUUID` in
     their app attributes. This key is required for user enrollment.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up a DNS proxy using a Network Extension
       app.

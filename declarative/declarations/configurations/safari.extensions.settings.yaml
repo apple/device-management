@@ -146,7 +146,7 @@ notes:
     "DeniedDomains": ["*example.com"]
     ```
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Disallow all
     description: This configuration disables all Safari extensions.

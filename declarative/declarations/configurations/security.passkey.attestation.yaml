@@ -57,7 +57,7 @@ payloadkeys:
     title: Relying party
     type: <string>
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration enables enterprise passkey attestation for a relying
       party.

@@ -34,6 +34,6 @@ payloadkeys:
   presence: required
   content: If `true`, indicates that Lockdown Mode is enabled.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/security.lockdown-mode/example1.json

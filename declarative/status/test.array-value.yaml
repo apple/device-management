@@ -73,6 +73,6 @@ payloadkeys:
       presence: optional
       content: The value of the second sub-key.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/test.array-value/example1.json

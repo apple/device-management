@@ -105,7 +105,7 @@ payloadkeys:
               or a nested folder of bookmarks.
             subkeys: *id001
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: 'This configuration applies a set of managed bookmarks: two bookmarks
       and one bookmarks folder, which contains two more bookmarks.'

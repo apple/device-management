@@ -53,6 +53,6 @@ notes:
     the Login Window and Lock Screen (for example, an "If Lost, Return To" message
     and asset tag information). There can only be one Lock Screen payload.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.shareddeviceconfiguration/example1.plist

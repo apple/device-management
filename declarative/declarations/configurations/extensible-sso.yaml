@@ -558,7 +558,7 @@ payloadkeys:
       content: If `true`, the system detects the password during web authentication
         and synchronizes it to the local account password for the user.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Credential
     description: This configuration sets up a Credential-type SSO extension that handles

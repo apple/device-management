@@ -321,6 +321,6 @@ notes:
     - You configure  member certificates to have the common name prefix "member", which is case-insensitive
     - You configure TLS server certificates issued on or after September 1, 2020 00:00 GMT/UTC to have a validity period greater than 398 days; see [About Upcoming Limits on Trusted Certificates](https://support.apple.com/en-us/HT211025) for more information.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.education/example1.plist

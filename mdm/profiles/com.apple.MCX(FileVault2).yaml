@@ -42,6 +42,6 @@ payloadkeys:
   default: false
   content: If `true`, the system won't store th FileVault key across restarts.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.MCX(FileVault2)/example1.plist

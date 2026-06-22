@@ -150,6 +150,6 @@ notes:
     - If the path to the binary being launched matches or is a subdirectory of a path in the allow list, the binary is allowed to launch.
     - The binary is denied permission to launch.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.applicationaccess.new/example1.plist

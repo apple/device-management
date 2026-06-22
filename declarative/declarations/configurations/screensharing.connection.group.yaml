@@ -48,7 +48,7 @@ related-status-items:
   note: Any unresolved connection groups in the configuration will appear in the corresponding
     status item.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration defines a group of screen-sharing connections.
     file: examples/declarative/declarations/configurations/screensharing.connection.group/example1.json

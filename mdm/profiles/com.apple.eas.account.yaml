@@ -455,6 +455,6 @@ payloadkeys:
   presence: optional
   content: The VPNUUID of the per-app VPN the account uses for network communication.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.eas.account/example1.plist

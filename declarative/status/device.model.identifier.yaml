@@ -60,6 +60,6 @@ payloadkeys:
     is the version, and the second part is a variant, such as `MacBookPro15,1` or
     `iPhone13,2`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.model.identifier/example1.json

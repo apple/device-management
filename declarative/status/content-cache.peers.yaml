@@ -72,7 +72,7 @@ payloadkeys:
       presence: required
       content: The version number of the peer Content Cache software.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated peer
     description: Reports a new or updated peer.

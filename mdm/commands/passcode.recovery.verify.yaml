@@ -35,7 +35,7 @@ notes:
 - title: ''
   content: This command is only available on a Mac with Apple silicon.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/passcode.recovery.verify/example1.plist
     response-file: examples/mdm/commands/passcode.recovery.verify/example2.plist

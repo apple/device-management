@@ -117,6 +117,6 @@ notes:
 
     For Shared iPad devices, the system supports this payload on the user channel only.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.webClip.managed/example1.plist

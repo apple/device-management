@@ -25,6 +25,6 @@ payloadkeys:
   presence: required
   content: A Boolean value that specifies the File Vault enabled status on the device.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/diskmanagement.filevault.enabled/example1.json

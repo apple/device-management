@@ -38,6 +38,6 @@ payloadkeys:
      - `cancelled`: The user cancelled migration.
      - `unknown`: Migration status is unknown.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/migration-assistant.state/example1.json

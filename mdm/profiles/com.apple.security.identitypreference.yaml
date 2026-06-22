@@ -46,6 +46,6 @@ notes:
 
     See also `CertificatePreference` for setting up certificate preferences.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.identitypreference/example1.plist

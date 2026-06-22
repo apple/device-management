@@ -89,7 +89,7 @@ payloadkeys:
       content: A Boolean value that indicates whether the Calendar app displays this
         subscribed calendar.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated account
     description: Reports a new or updated account.

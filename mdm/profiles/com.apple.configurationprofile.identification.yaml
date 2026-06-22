@@ -76,6 +76,6 @@ payloadkeys:
     presence: optional
     content: The additional descriptive text for the user prompt.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.configurationprofile.identification/example1.plist

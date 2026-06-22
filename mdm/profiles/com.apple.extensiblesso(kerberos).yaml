@@ -508,6 +508,6 @@ notes:
 
     The system supports user channel installation in macOS 11 and later.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.extensiblesso(kerberos)/example1.plist

@@ -248,7 +248,7 @@ notes:
     * For device enrollments, the settings are limited to only managed networks.
     * For local installs, the settings apply to all networks.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up encrypted DNS using DNS-over-HTTPS.
     file: examples/declarative/declarations/configurations/network.dns-settings/example1.json

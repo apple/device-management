@@ -25,6 +25,6 @@ payloadkeys:
   presence: optional
   content: The email address of the user.
 examples:
-  title: Asset example
+- title: Asset example
   files:
   - file: examples/declarative/declarations/assets/useridentity/example1.json

@@ -95,6 +95,6 @@ payloadkeys:
     content: The amount of disk space, in bytes, available to the Content Cache for
       personal iCloud content.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/content-cache.info/example1.json

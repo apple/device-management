@@ -67,6 +67,6 @@ notes:
   content: You can use associated domains with features such as Extensible AppSSO,
     universal links, and Password AutoFill.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.associated-domains/example1.plist

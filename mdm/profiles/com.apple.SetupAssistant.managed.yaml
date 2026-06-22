@@ -167,6 +167,6 @@ payloadkeys:
   default: false
   content: If 'true', the system skips the Wallpaper selection window.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.SetupAssistant.managed/example1.plist

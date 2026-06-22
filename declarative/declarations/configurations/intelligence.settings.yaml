@@ -197,7 +197,7 @@ payloadkeys:
   combinetype: boolean-or
   content: If `true`, forces On-Device Only Translation.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Intelligence Restrictions
     description: This configuration restricts several Apple Intelligence features.

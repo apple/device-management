@@ -111,6 +111,6 @@ notes:
 
     If more than one profile contains this payload, the system uses the most restrictive union of settings.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.firewall/example1.plist

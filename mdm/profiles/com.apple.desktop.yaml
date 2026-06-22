@@ -37,6 +37,6 @@ payloadkeys:
   presence: optional
   content: The path to the desktop picture. If set, this picture is always locked.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.desktop/example1.plist

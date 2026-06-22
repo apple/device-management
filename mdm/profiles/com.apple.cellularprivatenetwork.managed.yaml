@@ -102,6 +102,6 @@ payloadkeys:
 
     All combinations of `NetworkIdentifier` and `CsgNetworkIdentifier` must be unique across all profiles installed on the device.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.cellularprivatenetwork.managed/example1.plist

@@ -152,6 +152,6 @@ payloadkeys:
   content: Use `AllowList` instead. This key is deprecated in iOS 14.5 and macOS 11.3.
   subkeys: *id001
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.airplay/example1.plist

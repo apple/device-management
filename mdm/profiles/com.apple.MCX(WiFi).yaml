@@ -47,6 +47,6 @@ payloadkeys:
   default: false
   content: If `true`, requires administrator authorization to turn Wi-Fi on or off.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.MCX(WiFi)/example1.plist

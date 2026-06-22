@@ -69,6 +69,6 @@ notes:
 
     Although the system no longer supports the previous FDE Recovery payload in macOS 10.13 and later, it's still supported in macOS 10.9 through 10.12. Designate that payload by specifying `com.apple.security.FDERecoveryRedirect` as the payload type.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.FDERecoveryKeyEscrow/example1.plist

@@ -68,6 +68,6 @@ payloadkeys:
     type: <string>
     presence: required
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.MCX.TimeMachine/example1.plist

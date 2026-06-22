@@ -54,6 +54,6 @@ payloadkeys:
   presence: required
   content: The binary representation of the payload encoded in base64.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.root/example1.plist

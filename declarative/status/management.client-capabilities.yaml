@@ -143,6 +143,6 @@ payloadkeys:
         type: <string>
         content: Supported status item.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/management.client-capabilities/example1.json

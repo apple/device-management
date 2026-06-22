@@ -205,6 +205,6 @@ notes:
   content: A SCEP payload automates the request of a client certificate from a SCEP
     server, as described in [Over-the-Air Profile Delivery and Configuration](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/iPhoneOTAConfiguration/Introduction/Introduction.html).
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.scep/example1.plist

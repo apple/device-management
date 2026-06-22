@@ -97,7 +97,7 @@ payloadkeys:
       presence: required
       content: The certificate data in DER-encoded X.509 format.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated certificate
     description: Reports a new or updated certificate.

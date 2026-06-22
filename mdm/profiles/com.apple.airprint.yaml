@@ -97,6 +97,6 @@ payloadkeys:
       content: If `true`, Transport Layer Security (TLS) secures AirPrint connections.
         Available only in iOS 11 and later.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.airprint/example1.plist

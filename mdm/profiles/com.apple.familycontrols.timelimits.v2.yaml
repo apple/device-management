@@ -85,6 +85,6 @@ payloadkeys:
     subkeytype: Allowance
     subkeys: *id001
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.familycontrols.timelimits.v2/example1.plist

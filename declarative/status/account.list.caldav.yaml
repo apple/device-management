@@ -99,7 +99,7 @@ payloadkeys:
       presence: optional
       content: If `true`, the Reminders app is displaying reminders for the account.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated account
     description: Reports a new or updated account.

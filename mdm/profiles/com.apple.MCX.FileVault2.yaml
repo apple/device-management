@@ -132,6 +132,6 @@ notes:
 
     As of macOS 10.15, FileVault settings require supervision or user approval when installed manually.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.MCX.FileVault2/example1.plist

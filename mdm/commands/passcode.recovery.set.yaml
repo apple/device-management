@@ -40,7 +40,7 @@ notes:
 
     This command is only available on a Mac with Apple silicon.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/passcode.recovery.set/example1.plist
     response-file: examples/mdm/commands/passcode.recovery.set/example2.plist

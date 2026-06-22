@@ -52,7 +52,7 @@ notes:
     - Erasing and not restoring the device from a backup.
     - Erasing and restoring the device from a backup from a different device.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/device.activationlock.bypasscode/example1.plist
     response-file: examples/mdm/commands/device.activationlock.bypasscode/example2.plist

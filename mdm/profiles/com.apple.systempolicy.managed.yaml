@@ -32,6 +32,6 @@ payloadkeys:
   default: false
   content: If `true`, disables the Finder's contextual menu item.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.systempolicy.managed/example1.plist

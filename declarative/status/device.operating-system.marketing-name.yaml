@@ -57,6 +57,6 @@ payloadkeys:
   presence: required
   content: The operating system's marketing name in use on the device, such as `Catalina`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.marketing-name/example1.json

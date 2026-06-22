@@ -76,6 +76,6 @@ notes:
 - title: ''
   content: For more information, see [https://support.apple.com/en-us/HT205333](https://support.apple.com/en-us/HT205333).
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.xsan/example1.plist

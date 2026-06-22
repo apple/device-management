@@ -64,7 +64,7 @@ payloadkeys:
       presence: required
       content: The name of the status item to send to subscribers.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration subscribes to a set of device status items.
     file: examples/declarative/declarations/configurations/management.status-subscriptions/example1.json

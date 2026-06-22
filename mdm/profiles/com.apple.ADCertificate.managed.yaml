@@ -125,6 +125,6 @@ notes:
   content: To get a certificate from a Microsoft CA, follow the instructions at [Request
     a certificate from a Microsoft Certificate Authority](https://support.apple.com/en-us/HT204602).
 examples:
-  title: Example profile
+- title: Example profile
   files:
   - file: examples/mdm/profiles/com.apple.ADCertificate.managed/example1.plist

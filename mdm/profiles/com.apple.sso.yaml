@@ -79,6 +79,6 @@ notes:
 - title: ''
   content: Deprecated in iOS 26. Use the `ExtensibleSingleSignOn` payload instead.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.sso/example1.plist

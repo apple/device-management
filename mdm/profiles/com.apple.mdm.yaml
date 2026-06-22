@@ -320,6 +320,6 @@ notes:
     > Note:
     > MDM reserves profile payload dictionary keys with the _Payload_ prefix. Don't treat them as managed preferences.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.mdm/example1.plist

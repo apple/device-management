@@ -90,6 +90,6 @@ notes:
   content: Beginning with iOS 15, this profile is unsupervised and needs to be installed
     through MDM.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.dnsProxy.managed/example1.plist

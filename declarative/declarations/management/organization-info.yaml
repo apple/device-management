@@ -43,6 +43,6 @@ payloadkeys:
     content: A token that verifies the identity of the organization when using this
       service.
 examples:
-  title: Management declaration example
+- title: Management declaration example
   files:
   - file: examples/declarative/declarations/management/organization-info/example1.json

@@ -58,6 +58,6 @@ payloadkeys:
   presence: optional
   content: The AirPlay password; required if `SecurityType` is `PASSWORD`.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.airplay.security/example1.plist

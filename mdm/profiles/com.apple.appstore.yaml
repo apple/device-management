@@ -61,6 +61,6 @@ payloadkeys:
   default: false
   content: If `true`, the system disables software update notifications.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.appstore/example1.plist

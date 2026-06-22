@@ -69,6 +69,6 @@ payloadkeys:
       content: The name of an Apple TV device that the system permits this iOS device
         to control.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.tvremote/example1.plist

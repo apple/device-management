@@ -63,7 +63,7 @@ notes:
 
     This command isn't supported on a Mac with Apple silicon.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/passcode.firmware.set/example1.plist
     response-file: examples/mdm/commands/passcode.firmware.set/example2.plist

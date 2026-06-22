@@ -80,6 +80,6 @@ payloadkeys:
   default: false
   content: If `true`, a user can only log in or authenticate with a smart card.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.security.smartcard/example1.plist

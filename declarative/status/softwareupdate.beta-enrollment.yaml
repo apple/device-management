@@ -33,6 +33,6 @@ payloadkeys:
   content: The device's enrolled beta program name, or an empty string if there's
     no enrolled beta program.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.beta-enrollment/example1.json

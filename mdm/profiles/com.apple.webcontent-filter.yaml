@@ -460,6 +460,6 @@ notes:
 
     All filtering options are active simultaneously. The system only permits URLs and sites that pass all rules.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.webcontent-filter/example1.plist

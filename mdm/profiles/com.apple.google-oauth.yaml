@@ -101,6 +101,6 @@ notes:
 
     The payload never contains credentials; the system prompts the user to enter credentials shortly after installation of the payload.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.google-oauth/example1.plist

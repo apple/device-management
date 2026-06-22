@@ -62,6 +62,6 @@ notes:
     > Important:
     > When a user installs the profile, the device only applies configuration declarations that allow a "local" enrollment. Consult the documentation for each configuration type to see if you can use it.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.declarations/example1.plist

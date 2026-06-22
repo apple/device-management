@@ -39,6 +39,6 @@ payloadkeys:
   default: false
   content: If `true`, disables user changes to the firewall settings.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.preference.security/example1.plist

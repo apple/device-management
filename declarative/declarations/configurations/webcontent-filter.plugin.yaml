@@ -273,7 +273,7 @@ payloadkeys:
           the scheduled time and the actual runtime of the task, due to the scheduling
           mechanism on the system.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration sets up a web content filter using a Network Extension
       plugin bundle.

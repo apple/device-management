@@ -67,7 +67,7 @@ notes:
     fonts, documents, and other items. Apps that a package installs aren't automatically
     managed; you can manage them using the `AppManaged` declaration.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration installs a required package.
     file: examples/declarative/declarations/configurations/package/example1.json

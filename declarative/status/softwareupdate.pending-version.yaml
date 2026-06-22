@@ -64,6 +64,6 @@ payloadkeys:
       will be installed. This key is only present when the pending software update
       is being enforced.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.pending-version/example1.json

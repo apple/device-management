@@ -95,7 +95,7 @@ payloadkeys:
       content: A Boolean value that indicates whether the account is enabled for use
         with the Contacts app.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated account
     description: Reports a new or updated account.

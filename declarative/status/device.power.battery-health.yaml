@@ -57,6 +57,6 @@ notes:
     - [iPad devices](https://support.apple.com/117759)
     - [macOS devices](https://support.apple.com/108376)
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.power.battery-health/example1.json

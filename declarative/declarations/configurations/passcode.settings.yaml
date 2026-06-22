@@ -258,7 +258,7 @@ notes:
     - `MinimumLength`: always set to `6`
     - `MaximumInactivityInMinutes`: if this key is present its value is ignored, but the `never` option is removed in the Settings UI.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Complex
     description: This configuration applies a complex passcode policy.

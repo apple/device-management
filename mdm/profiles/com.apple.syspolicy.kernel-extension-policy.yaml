@@ -66,6 +66,6 @@ payloadkeys:
       presence: required
       content: Kernel extension data.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.syspolicy.kernel-extension-policy/example1.plist

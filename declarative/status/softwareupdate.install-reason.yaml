@@ -81,6 +81,6 @@ payloadkeys:
       occur. This key is present only if the `reason` array contains the `declaration`
       value.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/softwareupdate.install-reason/example1.json

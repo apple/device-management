@@ -199,6 +199,6 @@ payloadkeys:
   content: An optional user password to set up auto login. This must match the `AutologinUsername`
     user's current password.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.loginwindow/example1.plist

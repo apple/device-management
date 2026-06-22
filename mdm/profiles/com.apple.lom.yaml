@@ -66,6 +66,6 @@ notes:
     a device. Include the UUID of the certificate in both `DeviceCertificateUUID`
     and `ControllerCertificateUUID` properties.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.lom/example1.plist

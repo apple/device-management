@@ -55,6 +55,6 @@ payloadkeys:
     This value is only available on user channels whose organization matches that
     of the device channel.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.identifier.udid/example1.json

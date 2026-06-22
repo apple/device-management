@@ -118,7 +118,7 @@ notes:
     2. Any attempt to install, update, or remove the profile using MDM commands fails (using the usual identifier and UUID matching rules). This holds true while the DDM profile is active.
     3. Updates to the DDM configuration result in the system reapplying the profile which updates the system state with any new or changed settings.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: URL
     description: Downloads the profile from a URL on the MDM server.

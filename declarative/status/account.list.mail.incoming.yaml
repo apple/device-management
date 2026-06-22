@@ -100,7 +100,7 @@ payloadkeys:
       content: A Boolean value that indicates whether the Notes app displays notes
         for this account.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated account
     description: Reports a new or updated account.

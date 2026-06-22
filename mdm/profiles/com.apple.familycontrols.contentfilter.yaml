@@ -143,6 +143,6 @@ payloadkeys:
     presence: required
     content: A disallowed site.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.familycontrols.contentfilter/example1.plist

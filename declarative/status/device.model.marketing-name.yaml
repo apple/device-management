@@ -57,6 +57,6 @@ payloadkeys:
   content: The device's marketing name, such as `iPhone 12`. This value may not always
     be available.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.model.marketing-name/example1.json

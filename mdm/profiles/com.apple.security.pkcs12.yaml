@@ -104,6 +104,6 @@ notes:
     - Encrypt the profile so that only authorized devices can decrypt it.
     - Use `SCEP` or `ACMECertificate` to provision the identity.
 examples:
-  title: Example profile
+- title: Example profile
   files:
   - file: examples/mdm/profiles/com.apple.security.pkcs12/example1.plist

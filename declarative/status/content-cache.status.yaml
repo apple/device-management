@@ -1,4 +1,4 @@
-title: Status Content Cache Service
+title: Status Content Cache Status
 description: The status item that reports the status of the Content Cache service.
 payload:
   statusitemtype: content-cache.status
@@ -154,6 +154,6 @@ payloadkeys:
     presence: required
     content: The version number of the Content Cache software.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/content-cache.status/example1.json

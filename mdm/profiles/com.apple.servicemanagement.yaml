@@ -66,6 +66,6 @@ payloadkeys:
       content: An additional constraint to limit the scope of the rule that the system
         tests after matching the `RuleType` and `RuleValue`.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.servicemanagement/example1.plist

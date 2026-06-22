@@ -62,6 +62,6 @@ payloadkeys:
     - `device`: Device enrollment
     - `user`: User enrollment
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.enrollment-type/example1.json

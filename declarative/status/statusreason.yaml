@@ -34,6 +34,6 @@ notes:
   content: Each status item defines its own set of `code`, `description`, and `details`
     values.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/statusreason/example1.json

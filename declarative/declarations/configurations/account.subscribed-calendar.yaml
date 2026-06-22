@@ -63,7 +63,7 @@ related-status-items:
   - account.list.subscribed-calendar
   note: Each configuration will have a corresponding status item.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration subscribes to a calendar feed.
     file: examples/declarative/declarations/configurations/account.subscribed-calendar/example1.json

@@ -393,7 +393,7 @@ notes:
 
     Refer to the following sections to determine supported channels and requirements, and to see an example request and response.
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - tab: Enterprise
     description: This command installs an enterprise app.

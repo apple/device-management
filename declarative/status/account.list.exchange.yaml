@@ -118,7 +118,7 @@ payloadkeys:
       content: A Boolean value that indicates whether the Reminders app displays reminders
         for this account.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated account
     description: Reports a new or updated account.

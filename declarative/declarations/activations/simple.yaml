@@ -33,7 +33,7 @@ payloadkeys:
     describes. The activation only installs when the predicate evaluates to `true`
     or isn't present.
 examples:
-  title: Activation examples
+- title: Activation examples
   files:
   - tab: One configuration
     description: This activation applies one configuration.

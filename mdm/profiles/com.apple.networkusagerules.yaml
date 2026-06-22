@@ -102,6 +102,6 @@ notes:
     such as cellular data networks. iOS 9-12 require the application rules. In iOS
     13, application rules, SIM rules, or both must be present.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.networkusagerules/example1.plist

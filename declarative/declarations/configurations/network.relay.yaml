@@ -178,7 +178,7 @@ payloadkeys:
   content: If `true`, the device allows the relay to failover to the default system
     DNS resolver.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Single relay
     description: This configuration routes traffic to two domains through a single

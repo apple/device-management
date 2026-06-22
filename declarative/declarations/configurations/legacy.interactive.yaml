@@ -90,7 +90,7 @@ notes:
 
     If a user enrollment triggers this configuration: in macOS the system silently ignores any MDMv1 payloads in macOS where the User Enrollment Mode setting is `forbidden`; in iOS, tvOS, watchOS and visionOS, the system rejects the entire profile if any MDMv1 payload has its User Enrollment Mode setting set to `forbidden`.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: URL
     description: Downloads the profile from a URL on the MDM server.

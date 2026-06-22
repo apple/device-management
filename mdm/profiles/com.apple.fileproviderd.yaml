@@ -150,6 +150,6 @@ payloadkeys:
     presence: required
     content: A composed app identifier. The format is "Bundle.Identifier (TeamIdentifier)".
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.fileproviderd/example1.plist

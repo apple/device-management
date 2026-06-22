@@ -111,6 +111,6 @@ payloadkeys:
   default: true
   content: If `false`, restricts the automatic installation of configuration data.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.SoftwareUpdate/example1.plist

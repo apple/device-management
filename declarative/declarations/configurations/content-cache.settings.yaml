@@ -316,7 +316,7 @@ payloadkeys:
     system uses to verify the security of the status reporting https connection. Required
     when `ManagementSecurityConfig` is set to `signedByCACert` or `specificServerCert`.
 examples:
-  title: Configuration examples
+- title: Configuration examples
   files:
   - tab: Basic caching
     description: This configuration enables content caching for both personal and

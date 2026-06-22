@@ -710,6 +710,6 @@ payloadkeys:
 
     The device fails to install the profile payload if any of these conditions aren't met.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.wifi.managed/example1.plist

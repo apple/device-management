@@ -3240,7 +3240,7 @@ notes:
     | Unsupported    | A10x Fusion and earlier              | Intel         | A10x Fusion and earlier | S3 and earlier | none       |
     | Supported      | A11 Bionic and later<br>All M series | Apple silicon | A12 Bionic and later    | S4 and later   | All        |
 examples:
-  title: Example request and response
+- title: Example request and response
   files:
   - request-file: examples/mdm/commands/information.device/example1.plist
     response-file: examples/mdm/commands/information.device/example2.plist

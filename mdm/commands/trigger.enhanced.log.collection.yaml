@@ -56,7 +56,7 @@ notes:
   content: |-
     The enhanced log collection process reports declarative status to the device management service using the following status items:
 
-    * `enhanced-logging.status`: Reports the device's enhanced log collection session state. See `StatusEnhancedLogging`.
+    * `enhanced-logging.status`: Reports the device's enhanced log collection session state. See `StatusEnhancedLoggingStatus`.
     * `enhanced-logging.applecare-token`: Reports the device's enhanced log collection session AppleCare token. See `StatusEnhancedLoggingAppleCareToken`.
     * `enhanced-logging.timestamp`: Reports the device's enhanced log collection session timestamp. See `StatusEnhancedLoggingTimestamp`.
 - title: Tokens for testing

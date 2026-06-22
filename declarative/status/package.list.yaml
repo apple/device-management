@@ -131,7 +131,7 @@ reasons:
     valuetype: timestamp
     description: The RFC 3339 timestamp of the last install failure.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated package
     description: Reports a new or updated package.

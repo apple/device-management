@@ -60,6 +60,6 @@ notes:
   content: In iPadOS 18 and later, the font profile is available on the user channel
     for Shared iPad.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.font/example1.plist

@@ -123,6 +123,6 @@ payloadkeys:
       - `ok`: The component is operating normally.
       - `error`: The component has a detected error or failure.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.system.health/example1.json

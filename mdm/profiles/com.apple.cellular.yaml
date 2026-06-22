@@ -203,6 +203,6 @@ payloadkeys:
       default: false
       content: If `true`, the system enables XLAT464.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.cellular/example1.plist

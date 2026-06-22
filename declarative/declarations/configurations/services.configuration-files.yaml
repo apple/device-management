@@ -88,7 +88,7 @@ notes:
     > Important:
     > The system reserves the `com.apple` prefix for built-in services.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration deploys configuration files for a system service.
     file: examples/declarative/declarations/configurations/services.configuration-files/example1.json

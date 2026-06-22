@@ -83,7 +83,7 @@ payloadkeys:
   content: The status the system reports back when the device implements the configuration.
     Use this to override the normal `success` result.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration tests the management framework with a custom status
       result.

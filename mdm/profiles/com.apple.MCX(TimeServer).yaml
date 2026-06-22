@@ -42,6 +42,6 @@ notes:
     time server to the value in the last payload installed. Removing the payload won't
     change the settings back to the prior settings.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.MCX(TimeServer)/example1.plist

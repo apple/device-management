@@ -79,6 +79,6 @@ payloadkeys:
   default: true
   content: If `false`, the system doesn't warn the user before emptying the trash.
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.finder/example1.plist

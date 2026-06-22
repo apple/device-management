@@ -38,6 +38,6 @@ payloadkeys:
     reports for the last session status change. The device returns an empty string
     if there's no session status to report.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.timestamp/example1.json

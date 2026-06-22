@@ -52,6 +52,6 @@ payloadkeys:
   content: The push magic value that the device expects the MDM server to include
     in Apple Push Notification service messages.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/mdm.push-magic/example1.json

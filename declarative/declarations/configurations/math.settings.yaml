@@ -131,7 +131,7 @@ payloadkeys:
     combinetype: boolean-and
     content: Controls whether Math Notes is allowed in other apps such as Notes.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration prevents the use of scientific and programmer
       modes in calculator app.

@@ -158,6 +158,6 @@ payloadkeys:
         - `1` - When Unlocked: The device shows previews only when unlocked
         - `2` - Never: The device never shows previews
 examples:
-  title: Profile example
+- title: Profile example
   files:
   - file: examples/mdm/profiles/com.apple.notificationsettings/example1.plist

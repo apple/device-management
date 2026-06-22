@@ -349,7 +349,7 @@ notes:
 
     Only AppKit-based apps on macOS support this feature.
 examples:
-  title: Configuration examples
+- title: App privacy examples
   files:
   - tab: Allow various permission defaults for several apps in iOS
     description: This configuration sets various privacy permission defaults for several

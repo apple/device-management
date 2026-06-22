@@ -82,7 +82,7 @@ notes:
     - Pair and use audio accessories - the device records the pairing and synchronizes it to their iCloud account.
     - Use the audio accessory AirPods Sharing feature.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration enables temporary pairing and sets an unpairing
       time of 6 pm.

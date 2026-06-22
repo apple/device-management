@@ -116,7 +116,7 @@ payloadkeys:
       - failed
       content: The status of the app that `ManagedApplicationListCommand` reports.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - tab: New or updated app
     description: Reports a new or updated app.

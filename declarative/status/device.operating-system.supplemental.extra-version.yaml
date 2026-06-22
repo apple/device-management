@@ -58,6 +58,6 @@ payloadkeys:
   content: The operating system's Background Security Improvement version in use on
     the device, for example, `a`.
 examples:
-  title: Status item example
+- title: Status item example
   files:
   - file: data/docc-examples/remotemanagementmodel/status/device.operating-system.supplemental.extra-version/example1.json

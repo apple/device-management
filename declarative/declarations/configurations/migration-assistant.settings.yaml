@@ -74,7 +74,7 @@ notes:
 
     The device reports Migration Assistant progress using the `StatusMigrationAssistantState` status item, and provides a report when migration completes using the `StatusMigrationAssistantReport` status item.
 examples:
-  title: Configuration example
+- title: Configuration example
   files:
   - description: This configuration provides settings for a Mac to Mac migration.
     file: examples/declarative/declarations/configurations/migration-assistant.settings/example1.json
