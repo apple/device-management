@@ -1,0 +1,10 @@
+{
+    "Type": "com.apple.configuration.accessibility.settings",
+    "Identifier": "119D31F8-E3A2-454A-A019-FD3F05A008D3",
+    "ServerToken": "DC31F056-0ADE-4D01-8E63-A7CA093EC7CD",
+    "Payload": {
+        "Vision": {
+            "AllowLiveRecognition": false
+        }
+    }
+}

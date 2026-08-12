@@ -140,27 +140,6 @@ payloadkeys:
         - `User`: The app has a user license.
 
         This key needs to be present for App Store apps, when either `AppStoreID` or `BundleID` are present in the configuration.
-    - key: VPPType
-      title: VPP type
-      supportedOS:
-        iOS:
-          removed: '18.0'
-        macOS:
-          introduced: n/a
-        visionOS:
-          introduced: n/a
-      type: <string>
-      presence: optional
-      rangelist:
-      - Device
-      - User
-      content: |-
-        The type of VPP license that the app uses for installation through the App Store, which is one of the following values:
-
-        - `Device`: The app has a VPP device license.
-        - `User`: The app has a VPP user license.
-
-        This key needs to be present to install an app through the App Store.
   - key: Version
     title: Version
     supportedOS:

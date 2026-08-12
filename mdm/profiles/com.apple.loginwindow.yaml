@@ -198,6 +198,28 @@ payloadkeys:
   presence: optional
   content: An optional user password to set up auto login. This must match the `AutologinUsername`
     user's current password.
+- key: ForceWifiConfigurationOnLockScreen
+  title: Enable WiFi network selection for login and unlock
+  supportedOS:
+    macOS:
+      introduced: '27.0'
+      allowmanualinstall: false
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system allows the user to select WiFi networks at login
+    or unlock.
+- key: ForceCaptivePortalConnectionFromLockScreen
+  title: Enable captive WiFi portal for login and unlock
+  supportedOS:
+    macOS:
+      introduced: '27.0'
+      allowmanualinstall: false
+  type: <boolean>
+  presence: optional
+  default: false
+  content: If `true`, the system allows use of the captive WiFi portal at login or
+    unlock.
 examples:
 - title: Profile example
   files:

@@ -207,7 +207,7 @@ payloadkeys:
     content: |-
       The list of accepted server certificate common names. If a server presents a certificate that isn't in this list, the system doesn't trust it.
       If you specify this property, the system disables dynamic trust (the certificate dialog) unless you also specify 'TLSAllowTrustExceptions' with the value 'true'.
-      If necessary, use a single "*" character to specify a wildcard for an individual component of the name, such as 'wpa.*.example.com'.
+      If necessary, use a single "\*" character to specify a wildcard for an individual component of the name, such as 'wpa.\*.example.com'.
     subkeys:
     - key: TLSTrustedServerName
       title: Individual trusted TLS server name

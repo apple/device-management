@@ -31,6 +31,8 @@ The following schema items are available:
 
 * Other device management data formats
 
+* OpenAPI specifications for select services - `openapi`
+
 * Examples for schema items - `examples`
     * This directory contains `declarative`, `mdm`, and `other` directories.
     * Each sub-directory contains directories and files that mirror the structure of the corresponding schema directories.

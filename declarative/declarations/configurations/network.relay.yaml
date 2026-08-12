@@ -9,18 +9,20 @@ payload:
       - supervised
       - device
       - user
+      - local
       allowed-scopes:
       - system
       sharedipad:
         allowed-scopes:
-        - user
+        - system
     macOS:
       introduced: '27.0'
       allowed-enrollments:
       - supervised
-      - user
+      - local
       allowed-scopes:
       - system
+      - user
     tvOS:
       introduced: n/a
     visionOS:
@@ -29,6 +31,7 @@ payload:
       - supervised
       - device
       - user
+      - local
       allowed-scopes:
       - system
     watchOS:
@@ -80,8 +83,8 @@ payloadkeys:
         type: <string>
         presence: required
         content: The HTTP header field value for the corresponding header field name.
-    - key: CredentialAssetReference
-      title: Credential asset reference
+    - key: IdentityAssetReference
+      title: Identity asset reference
       type: <string>
       assettypes:
       - com.apple.asset.credential.identity

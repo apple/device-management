@@ -73,9 +73,26 @@ payloadkeys:
   default: true
   combinetype: boolean-and
   content: If `false`, disables Personalized Handwriting Results.
+- key: AllowVisualIntelligence
+  title: Allow Visual Intelligence
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+    macOS:
+      introduced: '27.0'
+    visionOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, disables Visual Intelligence.
 - key: AllowVisualIntelligenceSummary
   title: Allow Visual Intelligence Summary
   supportedOS:
+    iOS:
+      introduced: '26.4'
+      deprecated: '27.0'
     macOS:
       introduced: n/a
     visionOS:
@@ -84,7 +101,10 @@ payloadkeys:
   presence: optional
   default: true
   combinetype: boolean-and
-  content: If `false`, disables Visual Intelligence Summary.
+  content: |-
+    If `false`, disables Visual Intelligence Summary.
+
+    Deprecated: use the `AllowVisualIntelligence` key.
 - key: AllowWritingTools
   title: Allow Writing Tools
   type: <boolean>

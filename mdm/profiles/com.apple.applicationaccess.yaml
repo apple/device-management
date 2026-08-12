@@ -3299,6 +3299,29 @@ payloadkeys:
   default: true
   content: If `false`, the system disables Shared Photo Stream. Support for this restriction
     on unsupervised devices is deprecated.
+- key: allowSiriAI
+  title: Allow Siri Apple Intelligence integration
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      deprecated: '27.0'
+      sharedipad:
+        mode: forbidden
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  content: |-
+    If `false`, the system disables Apple Intelligence integration in Siri.
+
+    Deprecated: use the declarative management `com.apple.configuration.siri.settings` configuration.
 - key: allowSpellCheck
   title: Allow spell check
   supportedOS:
@@ -4195,28 +4218,6 @@ payloadkeys:
   default: false
   content: If `true`, then the system bypasses the presentation of a screen capture
     alert.
-- key: ForceCaptivePortalConnectionFromLockScreen
-  title: Enable captive WiFi portal for login and unlock
-  supportedOS:
-    iOS:
-      introduced: n/a
-    macOS:
-      introduced: '27.0'
-      supervised: true
-      allowmanualinstall: false
-      userenrollment:
-        mode: forbidden
-    tvOS:
-      introduced: n/a
-    visionOS:
-      introduced: n/a
-    watchOS:
-      introduced: n/a
-  type: <boolean>
-  presence: optional
-  default: false
-  content: If `true`, the system allows use of the captive WiFi portal at login or
-    unlock.
 - key: forceClassroomAutomaticallyJoinClasses
   supportedOS:
     iOS:
@@ -4529,28 +4530,6 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system forces a paired Apple Watch to use Wrist Detection.
-- key: ForceWifiConfigurationOnLockScreen
-  title: Enable WiFi network selection for login and unlock
-  supportedOS:
-    iOS:
-      introduced: n/a
-    macOS:
-      introduced: '27.0'
-      supervised: true
-      allowmanualinstall: false
-      userenrollment:
-        mode: forbidden
-    tvOS:
-      introduced: n/a
-    visionOS:
-      introduced: n/a
-    watchOS:
-      introduced: n/a
-  type: <boolean>
-  presence: optional
-  default: false
-  content: If `true`, the system allows the user to select WiFi networks at login
-    or unlock.
 - key: forceWiFiPowerOn
   title: Disallow Wi-Fi from being turned off
   supportedOS:

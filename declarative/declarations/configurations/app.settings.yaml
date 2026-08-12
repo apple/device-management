@@ -108,7 +108,7 @@ payloadkeys:
         title: Code directory hash
         type: <string>
         presence: optional
-        content: The code signature code directory hash of the binary.
+        content: The 40 character code signature code directory hash of the binary.
       - key: SigningID
         title: Signing ID
         type: <string>
@@ -118,7 +118,7 @@ payloadkeys:
         title: Team ID
         type: <string>
         presence: optional
-        content: The code signature team identifier of the binary. Use the value "*APPLE*"
+        content: The code signature team identifier of the binary. Use the value "\*APPLE\*"
           instead of an empty string for Apple binaries with an empty team identifier.
       - key: PathPrefix
         title: Path prefix
@@ -202,7 +202,7 @@ payloadkeys:
 
       In iOS, the app identifier is a bundle ID, for example, "com.example.app".
 
-      In macOS, the app identifier is a composed identifier. The format of the composed identifier is either "Bundle-ID", "Bundle-ID (Team-ID)", or "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the app. "Team-ID" is the team identifier from the app's code signature. "Designated-Requirement" is the designated requirement string from the code signature of the app. For example, "com.example.app" for the bundle ID format, "com.example.app (ABCD1234)" for the team ID format, or "com.example.app {anchor apple generic}" for the designated requirement format. The device only applies defaults for an app if its code signature matches the composed identifier.
+      In macOS, the app identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the app. "Designated-Requirement" is the designated requirement string the device uses to match the code signature of the app. For example, "com.example.app {anchor apple generic}". The device only applies defaults for an app if its code signature matches the composed identifier.
     subkeys:
     - key: ANY
       type: <dictionary>
@@ -359,3 +359,55 @@ examples:
     description: This configuration sets various privacy permission defaults for several
       apps.
     file: examples/declarative/declarations/configurations/app.settings/example2.json
+- title: App settings allowlist examples
+  files:
+  - tab: Allow apps by code directory hash
+    description: This configuration allows an app with a specific code directory hash
+      to run on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-cdhash-base-allowlist-only.json
+  - tab: Allow apps by team ID
+    description: This configuration allows any app with a specific team ID to run
+      on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-team-id-base-allowlist-only.json
+  - tab: Complex rules in an allowlist
+    description: This configuration allows any app that matches a set of complex rules
+      to run on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-complex-allowlist-only.json
+- title: App settings denylist examples
+  files:
+  - tab: Deny apps by code directory hash
+    description: This configuration prevents an app with a specific code directory
+      hash from running on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-cdhash-base-denylist-only.json
+  - tab: Deny apps by team ID
+    description: This configuration prevents any app with a specific team ID from
+      running on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-team-id-base-denylist-only.json
+  - tab: Deny apps by signing ID
+    description: This configuration prevents any app with a specific signing ID from
+      running on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-signing-id-base-denylist-only.json
+  - tab: Complex rules in a denylist
+    description: This configuration prevents any app that matches a set of complex
+      rules from running on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-complex-denylist-only.json
+- title: App settings allowlist and denylist examples
+  files:
+  - tab: Combine allowlist and denylist rules
+    description: This configuration allows one set of apps to run, and prevents ome
+      other apps that would otherwise be allowed from running.
+    file: examples/declarative/declarations/configurations/app.settings/alr-denylist-and-allowlist-rules.json
+- title: App settings managed apps examples
+  files:
+  - tab: Always allow managed apps
+    description: This configuration always allows all managed apps and one other app
+      to run on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-single-rule-always-allow-managed-apps.json
+- title: App settings WebClips examples
+  files:
+  - tab: Allow WebClips on macOS
+    description: This configuration allows only WebClips to be run on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-allow-webclips.json
+  - tab: Deny WebClips on macOS
+    description: This configuration prevents all WebClips from running on macOS.
+    file: examples/declarative/declarations/configurations/app.settings/alr-deny-webclips.json

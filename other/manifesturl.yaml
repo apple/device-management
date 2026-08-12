@@ -62,7 +62,7 @@ payloadkeys:
           title: MD5 chunk size
           type: <integer>
           presence: optional
-          content: The data *chunk* size the device uses when verifying the hash of
+          content: The data chunk size the device uses when verifying the hash of
             the manifest item data. The device requires this key when the `md5s` key
             is present.
         - key: md5s
@@ -89,7 +89,7 @@ payloadkeys:
           title: SHA256 chunk size
           type: <integer>
           presence: optional
-          content: The data *chunk* size the device uses when verifying the hash of
+          content: The data chunk size the device uses when verifying the hash of
             the manifest item data. The device requires this key when the `sha256s`
             key is present.
         - key: sha256s
@@ -112,23 +112,6 @@ payloadkeys:
           presence: required
           content: The URL that hosts the manifest item data. The URL needs to start
             with `https://`.
-        - key: needs-shine
-          title: Icon treatment
-          supportedOS:
-            iOS:
-              removed: '0'
-            macOS:
-              removed: '0'
-            tvOS:
-              removed: '0'
-            visionOS:
-              removed: '0'
-            watchOS:
-              introduced: n/a
-          type: <boolean>
-          presence: optional
-          default: false
-          content: Removed
     - key: metadata
       title: Application metadata
       type: <dictionary>
@@ -153,22 +136,6 @@ payloadkeys:
         - software
         content: The type of manifest item. For an app or package, this needs to be
           `software`.
-      - key: sizeInBytes
-        title: Size in bytes
-        supportedOS:
-          iOS:
-            removed: '0'
-          macOS:
-            removed: '0'
-          tvOS:
-            removed: '0'
-          visionOS:
-            removed: '0'
-          watchOS:
-            introduced: n/a
-        type: <integer>
-        presence: optional
-        content: Removed
       - key: subtitle
         title: The application subtitle
         type: <string>
@@ -179,37 +146,6 @@ payloadkeys:
         type: <string>
         presence: required
         content: The title of the app or package being installed.
-      - key: items
-        title: The items
-        supportedOS:
-          iOS:
-            removed: '0'
-          macOS:
-            removed: '0'
-          tvOS:
-            removed: '0'
-          visionOS:
-            removed: '0'
-          watchOS:
-            introduced: n/a
-        type: <array>
-        presence: optional
-        content: Removed
-        subkeys:
-        - key: metadata-items-item
-          type: <dictionary>
-          presence: optional
-          subkeys:
-          - key: bundle-identifier
-            title: Removed
-            type: <string>
-            presence: optional
-            content: Removed
-          - key: bundle-version
-            title: Removed
-            type: <string>
-            presence: optional
-            content: Removed
 notes:
 - title: ''
   content: Use SHA-256 hashes instead of MD5 because SHA-256 has stronger security.

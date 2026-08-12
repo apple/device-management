@@ -23,7 +23,7 @@ payload:
     watchOS:
       introduced: n/a
   content: |-
-    *** This payload will be ignored on macOS 10.13 and later. See "com.apple.security.FDERecoveryKeyEscrow" payload. ***
+    This payload will be ignored on macOS 10.13 and later. See "com.apple.security.FDERecoveryKeyEscrow" payload.
     Old notes:
     Once installed, this payload will cause any FDE (Full Disk Encryption) recovery keys to be redirected to the specified URL instead of being sent to Apple. This will require sites to implement their own HTTPS server that will receive the recovery keys via a POST request. Details of the data sent to the server will be provided in a different document.
     Notes:

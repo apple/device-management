@@ -214,7 +214,7 @@ payloadkeys:
       - A specific domain such as "example.com" or "www.example.com". The permission defaults apply to that website only.
       - A wildcard domain that uses a single "\*" character as a prefix for the domain, such as "\*example.com". The permission defaults apply to both the exact domain "example.com", and any sub-domains such as "www.example.com". It won't match other domains with a similar string suffix such as "myexample.com".
 
-      When multiple patterns match a website, Safari uses the most precise pattern. For example, for the website "www.example.com", if rules "www.example.com" and "*example.com" match, Safari uses the former.
+      When multiple patterns match a website, Safari uses the most precise pattern. For example, for the website "www.example.com", if rules "www.example.com" and "\*example.com" match, Safari uses the former.
     subkeys:
     - key: ANY
       type: <dictionary>

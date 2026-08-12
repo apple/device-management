@@ -87,7 +87,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The port number of the EWS server. The system uses this only when this
-    declaration has a `HostName` value.
+    declaration has a `HostName` value. Applicable for "EWS" only.
 - key: Path
   title: Server path
   supportedOS:
@@ -98,7 +98,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The path of the EWS server. The system uses this only when this declaration
-    has a `HostName` value.
+    has a `HostName` value. Applicable for "EWS" only.
 - key: ExternalHostName
   title: Server external host name
   supportedOS:
@@ -108,7 +108,8 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The external hostname of the EWS server (or IP address).
+  content: The external hostname of the EWS server (or IP address). Applicable for
+    "EWS" only.
 - key: ExternalPort
   title: Server external port
   supportedOS:
@@ -119,7 +120,7 @@ payloadkeys:
   type: <integer>
   presence: optional
   content: The external port number of the EWS server. The system uses this only when
-    this declaration has a `ExternalHostName` value.
+    this declaration has an `ExternalHostName` value. Applicable for "EWS" only.
 - key: External Path
   title: Server external path
   supportedOS:
@@ -130,7 +131,7 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The external path of the EWS server. The system uses this only when this
-    declaration has a `ExternalHostName` value.
+    declaration has an `ExternalHostName` value. Applicable for "EWS" only.
 - key: OAuth
   title: Controls use of OAuth
   type: <dictionary>
@@ -158,7 +159,7 @@ payloadkeys:
     type: <string>
     presence: optional
     content: The URL that this account uses for token requests with OAuth. The system
-      ignores this value unless `Enabled` is `true`.
+      ignores this value unless `Enabled` is `true`. Applicable for "EAS" only.
 - key: AuthenticationCredentialsAssetReference
   title: Authentication credentials asset reference
   type: <string>
@@ -187,19 +188,20 @@ payloadkeys:
       introduced: n/a
   type: <dictionary>
   presence: optional
-  content: Settings for S/MIME.
+  content: Settings for S/MIME. Applicable for "EAS" only.
   subkeys:
   - key: Signing
     title: S/MIME signing settings
     type: <dictionary>
     presence: optional
-    content: Settings for S/MIME signing.
+    content: Settings for S/MIME signing. Applicable for "EAS" only.
     subkeys:
     - key: Enabled
       title: Signing enabled
       type: <boolean>
       presence: required
-      content: If `true`, the system enables S/MIME signing.
+      content: If `true`, the system enables S/MIME signing. Applicable for "EAS"
+        only.
     - key: IdentityAssetReference
       title: S/MIME signing identity asset reference
       type: <string>
@@ -208,32 +210,36 @@ payloadkeys:
       - com.apple.asset.credential.identity
       - com.apple.asset.credential.scep
       presence: optional
-      content: Specifies the identifier of an asset declaration containing the identity
-        required for S/MIME signing of messages sent from this account.
+      content: The identifier of an asset declaration containing the identity required
+        for S/MIME signing of messages sent from this account. Applicable for "EAS"
+        only.
     - key: UserOverrideable
       title: Signing user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can turn S/MIME signing on or off in Settings.
+        Applicable for "EAS" only.
     - key: IdentityUserOverrideable
       title: Signing identity user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can select an S/MIME signing identity in Settings.
+        Applicable for "EAS" only.
   - key: Encryption
     title: S/MIME encryption settings
     type: <dictionary>
     presence: optional
-    content: Settings for S/MIME encryption.
+    content: Settings for S/MIME encryption. Applicable for "EAS" only.
     subkeys:
     - key: Enabled
       title: Encryption by default enabled
       type: <boolean>
       presence: required
       content: If `true`, the system enables S/MIME encryption by default, which the
-        user can't override if `PerMessageSwitchEnabled` is `false`.
+        user can't override if `PerMessageSwitchEnabled` is `false`. Applicable for
+        "EAS" only.
     - key: IdentityAssetReference
       title: S/MIME encryption identity asset reference
       type: <string>
@@ -242,31 +248,32 @@ payloadkeys:
       - com.apple.asset.credential.identity
       - com.apple.asset.credential.scep
       presence: optional
-      content: Specifies the identifier of an asset declaration containing the identity
-        required for S/MIME encryption. The system attaches the public certificate
-        to outgoing mail to allow the user to receive encrypted mail. When the user
-        sends encrypted mail, the system uses the public certificate to encrypt the
-        copy of the mail in their Sent mailbox.
+      content: The identifier of an asset declaration containing the identity required
+        for S/MIME encryption. The system attaches the public certificate to outgoing
+        mail to allow the user to receive encrypted mail. When the user sends encrypted
+        mail, the system uses the public certificate to encrypt the copy of the mail
+        in their Sent mailbox. Applicable for "EAS" only.
     - key: UserOverrideable
       title: Encryption by default user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can turn S/MIME encryption by default on or off
-        in Settings.
+        in Settings. Applicable for "EAS" only.
     - key: IdentityUserOverrideable
       title: Encryption identity user overrideable
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the user can select an S/MIME signing identity in Settings.
+        Applicable for "EAS" only.
     - key: PerMessageSwitchEnabled
       title: Per message switch enabled
       type: <boolean>
       presence: optional
       default: false
       content: If `true`, the system enables the per-message encryption switch in
-        the compose view.
+        the compose view. Applicable for "EAS" only.
 - key: MailServiceActive
   title: Mail service active
   type: <boolean>
@@ -282,7 +289,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system prevents the user from changing the status of the
-    mail service for this account.
+    mail service for this account. Applicable for "EAS" only.
 - key: ContactsServiceActive
   title: Contacts service active
   type: <boolean>
@@ -298,7 +305,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system prevents the user from changing the status of the
-    address book service for this account.
+    address book service for this account. Applicable for "EAS" only.
 - key: CalendarServiceActive
   title: Calendar service active
   type: <boolean>
@@ -314,7 +321,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system prevents the user from changing the status of the
-    calendar service for this account.
+    calendar service for this account. Applicable for "EAS" only.
 - key: RemindersServiceActive
   title: Reminders service active
   type: <boolean>
@@ -330,7 +337,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system prevents the user from changing the status of the
-    reminders service for this account.
+    reminders service for this account. Applicable for "EAS" only.
 - key: NotesServiceActive
   title: Notes service active
   type: <boolean>
@@ -346,7 +353,7 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system prevents the user from changing the status of the
-    notes service for this account.
+    notes service for this account. Applicable for "EAS" only.
 related-status-items:
 - status-items:
   - account.list.exchange

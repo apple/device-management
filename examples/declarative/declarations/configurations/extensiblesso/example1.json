@@ -3,8 +3,7 @@
     "Identifier": "EB13EE2B-5D63-4EBA-810F-5B81D07F5017",
     "ServerToken": "E180CA9A-F089-4FA3-BBDF-94CC159C4AE8",
     "Payload": {
-        "ExtensionIdentifier": "com.example.sso.extension",
-        "TeamIdentifier": "ABCDE12345",
+        "ExtensionComposedIdentifier": "com.example.sso.extension (ABCDE12345)",
         "Type": "Credential",
         "Realm": "EXAMPLE.COM",
         "Hosts": [

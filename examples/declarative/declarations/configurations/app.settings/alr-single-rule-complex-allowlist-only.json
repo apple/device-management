@@ -1,0 +1,18 @@
+{
+    "Type": "com.apple.configuration.app.settings",
+    "Identifier": "AF389B6F-5784-4DB6-BEFF-EA6D689BD4B7",
+    "ServerToken": "A5CA3371-559E-44B4-B9ED-A0A7DFEC1941",
+    "Payload": {
+        "Allowed": {
+            "AllowedBinaries": [
+                {
+                    "TeamID": "XXXXXXXXXX",
+                    "CDHash": "90bc96cd95be55c12e7d9b1611cbc677610bb70c",
+                    "SigningID": "com.example.app",
+                    "PathPrefix": "/Applications/Example.app",
+                    "SigningState": "All"
+                }
+            ]
+        }
+    }
+}

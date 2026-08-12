@@ -1,0 +1,50 @@
+title: Accessibility Settings
+description: The declaration to configure accessibility settings.
+payload:
+  declarationtype: com.apple.configuration.accessibility.settings
+  supportedOS:
+    iOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: '27.0'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: Vision
+  title: Vision
+  type: <dictionary>
+  presence: optional
+  content: If present, configures vision accessibility settings.
+  subkeys:
+  - key: AllowLiveRecognition
+    title: Allow live recognition
+    type: <boolean>
+    presence: optional
+    default: true
+    combinetype: boolean-and
+    content: If `false`, disables the Live Recognition accessibility feature.
+examples:
+- title: Configuration example
+  files:
+  - description: This configuration prevents the use of Live Recognition.
+    file: examples/declarative/declarations/configurations/accessibility.settings/example1.json

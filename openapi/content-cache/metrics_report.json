@@ -1,0 +1,513 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Apple Cache Server Metrics Report",
+    "description": "Metrics data collected from Apple Content Cache servers.",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "{scheme}://{host}",
+      "description": "Metrics ingest endpoint (host configured per deployment)",
+      "variables": {
+        "scheme": {
+          "default": "https",
+          "enum": [
+            "https",
+            "http"
+          ]
+        },
+        "host": {
+          "default": "metrics.example.invalid",
+          "description": "Hostname or IP of the metrics ingest service"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/metrics": {
+      "post": {
+        "operationId": "postCacheServerMetricsReport",
+        "summary": "Submit a cache server metrics report",
+        "description": "Upload a single CacheServerMetricsReport document describing the state of an Apple Content Cache server and its byte/replies/requests counters since the last report.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CacheServerMetricsReport"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Report accepted for asynchronous ingest."
+          },
+          "400": {
+            "description": "Malformed report (failed schema validation)."
+          },
+          "401": {
+            "description": "Authentication or client-certificate validation failed."
+          },
+          "415": {
+            "description": "Unsupported media type (expects application/json)."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CacheServerMetricsReport": {
+        "type": "object",
+        "required": [
+          "version",
+          "reportDate",
+          "hostname",
+          "hardware",
+          "serverGUID"
+        ],
+        "properties": {
+          "version": {
+            "type": "integer",
+            "description": "Schema version for tracking migrations and evolution"
+          },
+          "reportDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Collection timestamp in ISO 8601 format - PRIMARY TIME INDEX"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Collection timestamp in ISO 8601 format for byte count metrics (60-second cadence, only emitted when values change)"
+          },
+          "hostname": {
+            "type": "string",
+            "description": "Hostname of the cache"
+          },
+          "hardware": {
+            "type": "string",
+            "description": "Machine model identifier (e.g. MacBookPro7,1)"
+          },
+          "memorySize": {
+            "type": "integer",
+            "description": "Total RAM in bytes on the cache machine"
+          },
+          "hardwareUUID": {
+            "type": "string",
+            "description": "Hardware UUID"
+          },
+          "serialNumber": {
+            "type": "string",
+            "description": "Hardware serial number"
+          },
+          "buildVersion": {
+            "type": "string",
+            "description": "The software version of the cache"
+          },
+          "connectedClients": {
+            "type": "integer",
+            "description": "Number of currently connected clients"
+          },
+          "uniqueClients": {
+            "type": "integer",
+            "description": "Count of unique clients in the collection period"
+          },
+          "peakClients": {
+            "type": "integer",
+            "description": "Maximum number of simultaneously connected clients during the period"
+          },
+          "numberOfCacheEntries": {
+            "type": "integer",
+            "description": "Total number of cached files/objects"
+          },
+          "transactions": {
+            "type": "integer",
+            "description": "Total transaction count since last metric collection"
+          },
+          "recentErrors": {
+            "type": "string",
+            "description": "Array of recent errors as 'errorCode : reasonCode : count' comma separated triples"
+          },
+          "cpuLoad": {
+            "type": "number",
+            "description": "Number of threads ready to run (corresponds to the load average reported via top/uptime)"
+          },
+          "reportPeriod": {
+            "type": "integer",
+            "description": "Period of the overall report in seconds"
+          },
+          "assetsLessThan10M": {
+            "type": "integer",
+            "description": "Assets in the cache that are less than 10 MB in size"
+          },
+          "assetsFrom10to100M": {
+            "type": "integer",
+            "description": "Assets in the cache that are between 10 MB and 100 MB in size"
+          },
+          "assetsFrom100Mto1G": {
+            "type": "integer",
+            "description": "Assets in the cache that are between 100 MB and 1 GB in size"
+          },
+          "assetsMoreThan1G": {
+            "type": "integer",
+            "description": "Assets in the cache that are greater than 1 GB in size"
+          },
+          "averageAssetSizeInM": {
+            "type": "integer",
+            "description": "Average size of asset files in the cache in megabytes"
+          },
+          "serverGUID": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server unique identifier - UUID string (e.g. 13D4D110-B2B7-4F26-8E25-CD22E58C00EE)"
+          },
+          "registrationState": {
+            "type": "integer",
+            "enum": [
+              -1,
+              0,
+              1
+            ],
+            "description": "Cache registration status with Apple: Registration Failed (-1), Registration Pending (0), Registration Succeeded (1)"
+          },
+          "registrationStarted": {
+            "type": "string",
+            "format": "date-time",
+            "description": "[Optional] Last time registration was attempted (only present when not registered)"
+          },
+          "registrationError": {
+            "type": "integer",
+            "description": "[Optional] Error code from last registration attempt with Apple servers (0 = success)"
+          },
+          "actualCacheUsed": {
+            "type": "integer",
+            "description": "Actual bytes stored (real content) for bandwidth calculations (macOS 10.15+) - distinct from cacheUsed"
+          },
+          "startupStatus": {
+            "type": "boolean",
+            "description": "Cache startup completion status (true = finished startup OK)"
+          },
+          "restrictedMedia": {
+            "type": "boolean",
+            "description": "Media restrictions enabled for content filtering"
+          },
+          "tetheratorStatus": {
+            "type": "integer",
+            "enum": [
+              -1,
+              0,
+              1
+            ],
+            "description": "Tethered caching status: Unknown (-1), Disabled (0), Enabled (1)"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Cache service running status (true = running)"
+          },
+          "activated": {
+            "type": "boolean",
+            "description": "Cache service activation status (true = ordered to start up)"
+          },
+          "cacheDetails": {
+            "type": "string",
+            "description": "Human-readable cache breakdown by content type (e.g. \"iCloud: 1.83GB Other: 487KB\") - keys configured by Apple config bag"
+          },
+          "cacheFree": {
+            "type": "integer",
+            "description": "Available cache space in bytes (derived from cacheLimit - cacheUsed when limit > 0, or DiskFree when unlimited)"
+          },
+          "cacheLimit": {
+            "type": "integer",
+            "description": "Maximum cache size in bytes (0 = unlimited) - administrative limit"
+          },
+          "cacheUsed": {
+            "type": "integer",
+            "description": "Allocated cache space with overhead for capacity management - distinct from actualCacheUsed"
+          },
+          "publicAddress": {
+            "type": "string",
+            "description": "Internet-facing IP address (e.g. 17.192.77.246)"
+          },
+          "port": {
+            "type": "integer",
+            "description": "Service port number (e.g. 56636)"
+          },
+          "privateAddresses": {
+            "type": "string",
+            "description": "Internal network IP addresses as a space-separated list (e.g. \"10.10.1.67 10.23.1.83\")"
+          },
+          "parents": {
+            "type": "array",
+            "description": "Array of parent cache server info",
+            "items": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "description": "Parent cache IP address"
+                },
+                "port": {
+                  "type": "integer",
+                  "description": "Parent cache port"
+                },
+                "guid": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "Parent cache server UUID"
+                },
+                "healthy": {
+                  "type": "boolean",
+                  "description": "Parent cache health status"
+                },
+                "version": {
+                  "type": "string",
+                  "description": "Parent cache software version"
+                },
+                "details": {
+                  "type": "string",
+                  "description": "Additional details"
+                }
+              }
+            }
+          },
+          "peers": {
+            "type": "array",
+            "description": "Array of peer cache server info",
+            "items": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "description": "Peer cache IP address"
+                },
+                "port": {
+                  "type": "integer",
+                  "description": "Peer cache port"
+                },
+                "guid": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "Peer cache server UUID"
+                },
+                "healthy": {
+                  "type": "boolean",
+                  "description": "Peer cache health status"
+                },
+                "friendly": {
+                  "type": "boolean",
+                  "description": "Peer allows peering"
+                },
+                "version": {
+                  "type": "string",
+                  "description": "Peer cache software version"
+                },
+                "details": {
+                  "type": "string",
+                  "description": "Additional details"
+                }
+              }
+            }
+          },
+          "personalCacheFree": {
+            "type": "integer",
+            "description": "Free space in personal (iCloud) cache in bytes"
+          },
+          "personalCacheUsed": {
+            "type": "integer",
+            "description": "Used space in personal (iCloud) cache in bytes"
+          },
+          "personalCacheLimit": {
+            "type": "integer",
+            "description": "Personal (iCloud) cache size limit in bytes (0 = unlimited)"
+          },
+          "allowPersonalCaching": {
+            "type": "boolean",
+            "description": "Personal (iCloud read/write) caching enabled setting"
+          },
+          "allowSharedCaching": {
+            "type": "boolean",
+            "description": "Generic read-only caching enabled setting"
+          },
+          "allowTetheredCaching": {
+            "type": "boolean",
+            "description": "Tethered caching enabled setting (requires macOS 10.13+)"
+          },
+          "listenRangesOnly": {
+            "type": "boolean",
+            "description": "Restrict serving to specific IP ranges only"
+          },
+          "localSubnetsOnly": {
+            "type": "boolean",
+            "description": "Serve local subnets only (client filtering)"
+          },
+          "peerLocalSubnetsOnly": {
+            "type": "boolean",
+            "description": "Peer with local subnets only (peer filtering)"
+          },
+          "listenRanges": {
+            "type": "string",
+            "description": "Network IP ranges for client filtering - array of dicts with first/last IP addresses"
+          },
+          "parentSelectionPolicy": {
+            "type": "string",
+            "enum": [
+              "first-available",
+              "random",
+              "round-robin",
+              "sticky-available",
+              "url-path-hash"
+            ],
+            "description": "Parent selection algorithm: first-available | random | round-robin | sticky-available | url-path-hash"
+          },
+          "period": {
+            "type": "integer",
+            "description": "Metric collection period duration in seconds"
+          },
+          "bytesDropped": {
+            "type": "integer",
+            "description": "Bytes dropped due to errors or capacity issues"
+          },
+          "bytesFromCacheToChild": {
+            "type": "integer",
+            "description": "Bytes served from local cache to downstream child caches"
+          },
+          "bytesFromCacheToClient": {
+            "type": "integer",
+            "description": "Bytes served from local cache to end-user clients"
+          },
+          "bytesFromCacheToPeer": {
+            "type": "integer",
+            "description": "Bytes served from local cache to peer caches"
+          },
+          "bytesFromOriginToChild": {
+            "type": "integer",
+            "description": "Bytes proxied from origin server to downstream child caches"
+          },
+          "bytesFromOriginToClient": {
+            "type": "integer",
+            "description": "Bytes proxied from origin server to end-user clients"
+          },
+          "bytesFromOriginToPeer": {
+            "type": "integer",
+            "description": "Bytes proxied from origin server to peer caches"
+          },
+          "bytesFromParentToChild": {
+            "type": "integer",
+            "description": "Bytes proxied from parent cache to downstream child caches"
+          },
+          "bytesFromParentToClient": {
+            "type": "integer",
+            "description": "Bytes proxied from parent cache to end-user clients"
+          },
+          "bytesFromParentToPeer": {
+            "type": "integer",
+            "description": "Bytes proxied from parent cache to peer caches"
+          },
+          "bytesFromPeerToChild": {
+            "type": "integer",
+            "description": "Bytes proxied from peer cache to downstream child caches"
+          },
+          "bytesFromPeerToClient": {
+            "type": "integer",
+            "description": "Bytes proxied from peer cache to end-user clients"
+          },
+          "bytesImportedByHTTP": {
+            "type": "integer",
+            "description": "Bytes imported into cache via HTTP protocol"
+          },
+          "bytesImportedByXPC": {
+            "type": "integer",
+            "description": "Bytes imported into cache via XPC (inter-process communication)"
+          },
+          "bytesPurgedTotal": {
+            "type": "integer",
+            "description": "Total bytes purged/evicted from cache"
+          },
+          "bytesPurgedYoungerThan1Day": {
+            "type": "integer",
+            "description": "Bytes purged that were cached for less than 1 day"
+          },
+          "bytesPurgedYoungerThan7Days": {
+            "type": "integer",
+            "description": "Bytes purged that were cached for less than 7 days"
+          },
+          "bytesPurgedYoungerThan30Days": {
+            "type": "integer",
+            "description": "Bytes purged that were cached for less than 30 days"
+          },
+          "importsByHTTP": {
+            "type": "integer",
+            "description": "Number of content imports via HTTP protocol"
+          },
+          "importsByXPC": {
+            "type": "integer",
+            "description": "Number of content imports via XPC (inter-process communication)"
+          },
+          "repliesFromCacheToChild": {
+            "type": "integer",
+            "description": "Number of replies from local cache to downstream child caches"
+          },
+          "repliesFromCacheToClient": {
+            "type": "integer",
+            "description": "Number of replies from local cache to end-user clients"
+          },
+          "repliesFromCacheToPeer": {
+            "type": "integer",
+            "description": "Number of replies from local cache to peer caches"
+          },
+          "repliesFromOriginToChild": {
+            "type": "integer",
+            "description": "Number of replies proxied from origin to downstream child caches"
+          },
+          "repliesFromOriginToClient": {
+            "type": "integer",
+            "description": "Number of replies proxied from origin to end-user clients"
+          },
+          "repliesFromOriginToPeer": {
+            "type": "integer",
+            "description": "Number of replies proxied from origin to peer caches"
+          },
+          "repliesFromParentToChild": {
+            "type": "integer",
+            "description": "Number of replies proxied from parent to downstream child caches"
+          },
+          "repliesFromParentToClient": {
+            "type": "integer",
+            "description": "Number of replies proxied from parent to end-user clients"
+          },
+          "repliesFromParentToPeer": {
+            "type": "integer",
+            "description": "Number of replies proxied from parent to peer caches"
+          },
+          "repliesFromPeerToChild": {
+            "type": "integer",
+            "description": "Number of replies proxied from peer to downstream child caches"
+          },
+          "repliesFromPeerToClient": {
+            "type": "integer",
+            "description": "Number of replies proxied from peer to end-user clients"
+          },
+          "requestsFromChild": {
+            "type": "integer",
+            "description": "Number of requests received from downstream child caches"
+          },
+          "requestsFromClient": {
+            "type": "integer",
+            "description": "Number of requests received from end-user clients"
+          },
+          "requestsFromPeer": {
+            "type": "integer",
+            "description": "Number of requests received from peer caches"
+          },
+          "requestsRejectedForNoSpace": {
+            "type": "integer",
+            "description": "Number of requests rejected due to insufficient disk space"
+          }
+        }
+      }
+    }
+  }
+}

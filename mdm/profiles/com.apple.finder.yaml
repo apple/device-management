@@ -28,16 +28,6 @@ payloadkeys:
   presence: optional
   default: false
   content: If `true`, the system disables the Finder's burn support.
-- key: InterfaceLevel
-  supportedOS:
-    macOS:
-      removed: '10.15'
-  type: <string>
-  presence: optional
-  rangelist:
-  - Simple
-  - Full
-  content: Specifies whether Finder should operate in Simple or Full mode.
 - key: ProhibitConnectTo
   type: <boolean>
   presence: optional
