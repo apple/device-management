@@ -147,7 +147,7 @@ examples:
   files:
   - tab: New or updated task
     description: Reports a new or updated background task.
-    file: data/docc-examples/remotemanagementmodel/status/services.background-task/example1.json
+    file: examples/declarative/status/services.background-task/example1.json
   - tab: Removed task
     description: Reports a removed background task.
-    file: data/docc-examples/remotemanagementmodel/status/services.background-task/example2.json
+    file: examples/declarative/status/services.background-task/example2.json

@@ -1,0 +1,14 @@
+{
+    "content-cache": {
+        "info": {
+            "cache-free": 10737418240,
+            "cache-limit": 0,
+            "cache-status": "OK",
+            "cache-used": 5368709120,
+            "max-cache-pressure-last-hour": 0.15,
+            "personal-cache-free": 2147483648,
+            "personal-cache-limit": 0,
+            "personal-cache-used": 1073741824
+        }
+    }
+}

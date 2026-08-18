@@ -1,0 +1,13 @@
+{
+    "package": {
+        "list": [
+            {
+                "identifier": "com.example.package.enterprise-tools",
+                "declaration-identifier": "com.example.package-management",
+                "name": "Enterprise Tools",
+                "version": "2.1.0",
+                "state": "installed"
+            }
+        ]
+    }
+}

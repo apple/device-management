@@ -3874,6 +3874,8 @@ payloadkeys:
     iOS:
       introduced: '26.0'
       supervised: true
+      sharedipad:
+        mode: forbidden
       userenrollment:
         mode: forbidden
     macOS:
@@ -3899,6 +3901,8 @@ payloadkeys:
     iOS:
       introduced: '26.0'
       supervised: true
+      sharedipad:
+        mode: forbidden
       userenrollment:
         mode: forbidden
     macOS:

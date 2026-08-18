@@ -120,7 +120,7 @@ examples:
   files:
   - tab: New or updated app
     description: Reports a new or updated app.
-    file: data/docc-examples/remotemanagementmodel/status/mdm.app/example1.json
+    file: examples/declarative/status/mdm.app/example1.json
   - tab: Removed app
     description: Reports a removed app.
-    file: data/docc-examples/remotemanagementmodel/status/mdm.app/example2.json
+    file: examples/declarative/status/mdm.app/example2.json

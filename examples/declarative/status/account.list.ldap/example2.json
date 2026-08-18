@@ -1,0 +1,12 @@
+{
+    "account": {
+        "list": {
+            "ldap": [
+                {
+                    "identifier": "G2E12309-JG22-8F88-EI51-567890123456",
+                    "_removed": true
+                }
+            ]
+        }
+    }
+}

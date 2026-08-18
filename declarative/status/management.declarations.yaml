@@ -171,4 +171,4 @@ notes:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/management.declarations/example1.json
+  - file: examples/declarative/status/management.declarations/example1.json

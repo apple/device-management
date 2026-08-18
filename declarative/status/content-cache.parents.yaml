@@ -70,7 +70,7 @@ examples:
   files:
   - tab: New or updated parent
     description: Reports a new or updated parent.
-    file: data/docc-examples/remotemanagementmodel/status/content-cache.parents/example1.json
+    file: examples/declarative/status/content-cache.parents/example1.json
   - tab: Removed parent
     description: Reports a removed parent.
-    file: data/docc-examples/remotemanagementmodel/status/content-cache.parents/example2.json
+    file: examples/declarative/status/content-cache.parents/example2.json

@@ -121,7 +121,7 @@ payloadkeys:
     tvOS:
       introduced: n/a
     visionOS:
-      introduced: n/a
+      introduced: '27.0'
     watchOS:
       introduced: n/a
   type: <boolean>

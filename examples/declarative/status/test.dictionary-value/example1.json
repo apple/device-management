@@ -1,0 +1,8 @@
+{
+    "test": {
+        "dictionary-value": {
+            "key1": "test-value-1",
+            "key2": "test-value-2"
+        }
+    }
+}

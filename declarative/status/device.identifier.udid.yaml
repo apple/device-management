@@ -57,4 +57,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/device.identifier.udid/example1.json
+  - file: examples/declarative/status/device.identifier.udid/example1.json

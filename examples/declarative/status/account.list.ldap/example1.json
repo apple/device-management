@@ -1,0 +1,17 @@
+{
+    "account": {
+        "list": {
+            "ldap": [
+                {
+                    "identifier": "G2E12309-JG22-8F88-EI51-567890123456",
+                    "declaration-identifier": "com.example.ldap-account",
+                    "visible-name": "Corporate Directory",
+                    "hostname": "ldap.example.com",
+                    "port": 636,
+                    "username": "user@example.com",
+                    "is-enabled": true
+                }
+            ]
+        }
+    }
+}

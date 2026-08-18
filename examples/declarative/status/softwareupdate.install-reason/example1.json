@@ -1,0 +1,10 @@
+{
+    "softwareupdate": {
+        "install-reason": {
+            "reason": [
+                "declaration"
+            ],
+            "declaration-id": "com.example.softwareupdate-config"
+        }
+    }
+}

@@ -75,4 +75,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/test.array-value/example1.json
+  - file: examples/declarative/status/test.array-value/example1.json

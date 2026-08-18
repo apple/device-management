@@ -1,0 +1,17 @@
+{
+    "app": {
+        "managed": {
+            "list": [
+                {
+                    "identifier": "com.example.productivity",
+                    "declaration-identifier": "com.example.app-management",
+                    "name": "Productivity App",
+                    "external-version-id": 845960,
+                    "version": "5.2.1",
+                    "short-version": "5.2.1",
+                    "state": "managed"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "account": {
+        "list": {
+            "google": [
+                {
+                    "identifier": "F1D01298-IF11-7E77-DH40-456789012345",
+                    "declaration-identifier": "com.example.google-account",
+                    "visible-name": "Work Google",
+                    "username": "user@example.com",
+                    "is-mail-enabled": true,
+                    "are-calendars-enabled": true,
+                    "are-contacts-enabled": true,
+                    "are-notes-enabled": false
+                }
+            ]
+        }
+    }
+}

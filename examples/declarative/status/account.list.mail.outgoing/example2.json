@@ -1,0 +1,14 @@
+{
+    "account": {
+        "list": {
+            "mail": {
+                "outgoing": [
+                    {
+                        "identifier": "I4G34521-LI44-0H00-GK73-789012345678",
+                        "_removed": true
+                    }
+                ]
+            }
+        }
+    }
+}

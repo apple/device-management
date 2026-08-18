@@ -48,4 +48,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/passcode.is-compliant/example1.json
+  - file: examples/declarative/status/passcode.is-compliant/example1.json

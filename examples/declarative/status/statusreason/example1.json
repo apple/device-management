@@ -1,0 +1,7 @@
+{
+    "code": "Error.InstallFailed",
+    "description": "The app installation failed.",
+    "details": {
+        "Timestamp": "2025-05-15T10:30:00Z"
+    }
+}

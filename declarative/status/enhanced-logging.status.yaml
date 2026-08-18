@@ -61,4 +61,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.status/example1.json
+  - file: examples/declarative/status/enhanced-logging.status/example1.json

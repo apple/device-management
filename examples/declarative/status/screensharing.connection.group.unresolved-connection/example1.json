@@ -1,0 +1,16 @@
+{
+    "screensharing": {
+        "connection": {
+            "group": {
+                "unresolved-connection": [
+                    {
+                        "identifier": "D4E5F6A7-B8C9-0123-DEFA-123456789012",
+                        "unresolved_connections": [
+                            "E5F6A7B8-C9D0-1234-EFAB-234567890123"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

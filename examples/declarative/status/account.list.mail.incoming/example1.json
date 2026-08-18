@@ -1,0 +1,20 @@
+{
+    "account": {
+        "list": {
+            "mail": {
+                "incoming": [
+                    {
+                        "identifier": "H3F23410-KH33-9G99-FJ62-678901234567",
+                        "declaration-identifier": "com.example.mail-account",
+                        "visible-name": "Work Mail",
+                        "hostname": "imap.example.com",
+                        "port": 993,
+                        "username": "user@example.com",
+                        "is-mail-enabled": true,
+                        "are-notes-enabled": true
+                    }
+                ]
+            }
+        }
+    }
+}

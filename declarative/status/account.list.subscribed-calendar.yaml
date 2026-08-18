@@ -93,7 +93,7 @@ examples:
   files:
   - tab: New or updated account
     description: Reports a new or updated account.
-    file: data/docc-examples/remotemanagementmodel/status/account.list.subscribed-calendar/example1.json
+    file: examples/declarative/status/account.list.subscribed-calendar/example1.json
   - tab: Removed account
     description: Reports a removed account.
-    file: data/docc-examples/remotemanagementmodel/status/account.list.subscribed-calendar/example2.json
+    file: examples/declarative/status/account.list.subscribed-calendar/example2.json

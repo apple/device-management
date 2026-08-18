@@ -1,0 +1,18 @@
+{
+    "account": {
+        "list": {
+            "mail": {
+                "outgoing": [
+                    {
+                        "identifier": "I4G34521-LI44-0H00-GK73-789012345678",
+                        "declaration-identifier": "com.example.mail-account",
+                        "visible-name": "Work Mail (SMTP)",
+                        "hostname": "smtp.example.com",
+                        "port": 587,
+                        "username": "user@example.com"
+                    }
+                ]
+            }
+        }
+    }
+}

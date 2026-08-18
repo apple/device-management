@@ -59,4 +59,4 @@ notes:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/device.power.battery-health/example1.json
+  - file: examples/declarative/status/device.power.battery-health/example1.json

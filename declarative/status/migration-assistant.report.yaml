@@ -78,4 +78,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/migration-assistant.report/example1.json
+  - file: examples/declarative/status/migration-assistant.report/example1.json

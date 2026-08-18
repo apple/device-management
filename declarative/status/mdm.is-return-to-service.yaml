@@ -40,4 +40,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/mdm.is-return-to-service/example1.json
+  - file: examples/declarative/status/mdm.is-return-to-service/example1.json

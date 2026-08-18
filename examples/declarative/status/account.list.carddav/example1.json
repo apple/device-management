@@ -1,0 +1,16 @@
+{
+    "account": {
+        "list": {
+            "carddav": [
+                {
+                    "identifier": "D9BE9076-GD99-5C55-BF28-234567890123",
+                    "declaration-identifier": "com.example.carddav-account",
+                    "visible-name": "Work Contacts",
+                    "hostname": "carddav.example.com",
+                    "port": 443,
+                    "username": "user@example.com"
+                }
+            ]
+        }
+    }
+}

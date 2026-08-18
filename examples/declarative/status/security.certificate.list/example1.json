@@ -1,0 +1,15 @@
+{
+    "security": {
+        "certificate": {
+            "list": [
+                {
+                    "identifier": "F6A7B8C9-D0E1-2345-FABC-345678901234",
+                    "declaration-identifier": "com.example.certificate",
+                    "subject-summary": "Example Corp Root CA",
+                    "is-identity": false,
+                    "data": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
+                }
+            ]
+        }
+    }
+}

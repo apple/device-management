@@ -273,7 +273,7 @@ examples:
   files:
   - tab: New or updated app
     description: Reports a new or updated app.
-    file: data/docc-examples/remotemanagementmodel/status/app.managed.list/example1.json
+    file: examples/declarative/status/app.managed.list/example1.json
   - tab: Removed app
     description: Reports a removed app.
-    file: data/docc-examples/remotemanagementmodel/status/app.managed.list/example2.json
+    file: examples/declarative/status/app.managed.list/example2.json

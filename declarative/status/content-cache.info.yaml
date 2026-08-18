@@ -97,4 +97,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/content-cache.info/example1.json
+  - file: examples/declarative/status/content-cache.info/example1.json

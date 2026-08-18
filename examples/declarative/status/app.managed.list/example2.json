@@ -1,0 +1,12 @@
+{
+    "app": {
+        "managed": {
+            "list": [
+                {
+                    "identifier": "com.example.productivity",
+                    "_removed": true
+                }
+            ]
+        }
+    }
+}

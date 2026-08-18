@@ -1,0 +1,14 @@
+{
+    "content-cache": {
+        "peers": [
+            {
+                "identifier": "B2C3D4E5-F6A7-8901-BCDE-F01234567891",
+                "address": "192.168.1.20",
+                "port": 51194,
+                "friendly": true,
+                "healthy": true,
+                "version": "2.0"
+            }
+        ]
+    }
+}

@@ -36,4 +36,4 @@ notes:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/statusreason/example1.json
+  - file: examples/declarative/status/statusreason/example1.json

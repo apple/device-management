@@ -27,4 +27,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/diskmanagement.filevault.enabled/example1.json
+  - file: examples/declarative/status/diskmanagement.filevault.enabled/example1.json

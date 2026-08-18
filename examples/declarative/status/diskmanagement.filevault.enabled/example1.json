@@ -1,0 +1,7 @@
+{
+    "diskmanagement": {
+        "filevault": {
+            "enabled": true
+        }
+    }
+}

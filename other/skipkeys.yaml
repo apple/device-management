@@ -42,6 +42,7 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '17.0'
+      always-skippable: false
     macOS:
       introduced: n/a
     tvOS:
@@ -50,7 +51,9 @@ payloadkeys:
       introduced: n/a
   type: <string>
   presence: optional
-  content: The key to skip the Accessibility Appearance configuration pane.
+  content: The key to skip the Accessibility Appearance configuration pane. This pane
+    isn't always skippable because it appears before the device retrieves the Cloud
+    Configuration from the server.
 - key: ActionButton
   title: Skip Action Button setup pane
   supportedOS:

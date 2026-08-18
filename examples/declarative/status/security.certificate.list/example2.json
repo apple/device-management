@@ -1,0 +1,12 @@
+{
+    "security": {
+        "certificate": {
+            "list": [
+                {
+                    "identifier": "F6A7B8C9-D0E1-2345-FABC-345678901234",
+                    "_removed": true
+                }
+            ]
+        }
+    }
+}

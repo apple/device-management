@@ -8,6 +8,7 @@ Significant changes in this release.
 
 ### New Objects
 
+- New: declarative/declarations/configurations/accessibility.settings.yaml
 - New: declarative/declarations/configurations/app.settings.yaml
 - New: declarative/declarations/configurations/content-cache.settings.yaml
 - New: declarative/declarations/configurations/extensible-sso.yaml
@@ -22,11 +23,14 @@ Significant changes in this release.
 
 ### New Payload Keys
 
+- New: declarative/declarations/configurations/intelligence.settings.yaml/AllowVisualIntelligence
 - New: declarative/declarations/configurations/intelligence.settings.yaml/Apps/Calendar
 - New: declarative/declarations/configurations/legacy.interactive.yaml/ProfileAssetReference
 - New: declarative/declarations/configurations/legacy.yaml/ProfileAssetReference
 - New: declarative/declarations/configurations/package.yaml/UninstallBehavior
 - New: declarative/declarations/configurations/safari.settings.yaml/Privacy
+- New: declarative/declarations/configurations/siri.settings.yaml/AllowSiriAI
+- New: declarative/declarations/configurations/siri.settings.yaml/ForceReduceSensitiveContent
 
 ### Objects with New OS Support
 
@@ -37,6 +41,10 @@ Significant changes in this release.
 - Changed: declarative/declarations/configurations/app.managed.yaml/AppConfig [macOS 27.0]
 - Changed: declarative/declarations/configurations/app.managed.yaml/ExtensionConfigs [macOS 27.0]
 - Changed: declarative/declarations/configurations/app.managed.yaml/LegacyAppConfigAssetReference [macOS 27.0]
+
+### Removed Payload Keys
+
+- Removed: declarative/declarations/configurations/app.managed.yaml/VPPType
 
 ---
 
@@ -107,10 +115,11 @@ Significant changes in this release.
 
 ### New Payload Keys
 
-- New: mdm/profiles/com.apple.applicationaccess.yaml/ForceCaptivePortalConnectionFromLockScreen
-- New: mdm/profiles/com.apple.applicationaccess.yaml/ForceWifiConfigurationOnLockScreen
+- New: mdm/profiles/com.apple.applicationaccess.yaml/allowSiriAI
 - New: mdm/profiles/com.apple.extensiblesso.yaml/PlatformSSO/AllowWebLoginPasswordSync
 - New: mdm/profiles/com.apple.extensiblesso.yaml/PlatformSSO/WebLoginURLAllowList
+- New: mdm/profiles/com.apple.loginwindow.yaml/ForceCaptivePortalConnectionFromLockScreen
+- New: mdm/profiles/com.apple.loginwindow.yaml/ForceWifiConfigurationOnLockScreen
 
 ### Payload Keys with New OS Support
 
@@ -134,6 +143,11 @@ Significant changes in this release.
 - Removed: mdm/profiles/com.apple.applicationaccess.yaml/forceDelayedAppSoftwareUpdates
 - Removed: mdm/profiles/com.apple.applicationaccess.yaml/forceDelayedMajorSoftwareUpdates
 - Removed: mdm/profiles/com.apple.applicationaccess.yaml/forceDelayedSoftwareUpdates
+- Removed: mdm/profiles/com.apple.system.logging.yaml/Processes
+
+### Renamed Objects
+
+- Renamed: mdm/profiles/com.apple.MCX(Mobililty).yaml -> mdm/profiles/com.apple.MCX(Mobility).yaml
 
 ---
 
@@ -148,4 +162,13 @@ No changes.
 ### New Payload Keys
 
 - New: other/skipkeys.yaml/AccessibilityAppearance
+- New: other/skipkeys.yaml/DeviceFeaturesTour
 - New: other/skipkeys.yaml/LiquidGlass
+
+---
+
+## openapi
+
+### New Objects
+
+- New: openapi/content-cache/metrics_report.json

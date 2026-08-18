@@ -32,4 +32,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/mdm.is-shared-ipad/example1.json
+  - file: examples/declarative/status/mdm.is-shared-ipad/example1.json

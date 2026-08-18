@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>Subsystems</key>
+            <dict>
+                <key>com.example.app</key>
+                <dict>
+                    <key>DEFAULT-OPTIONS</key>
+                    <dict>
+                        <key>Level</key>
+                        <dict>
+                            <key>Enable</key>
+                            <string>Info</string>
+                        </dict>
+                        <key>Default-Privacy-Setting</key>
+                        <string>Public</string>
+                    </dict>
+                </dict>
+            </dict>
+            <key>PayloadIdentifier</key>
+            <string>com.example.mysystemloggingpayload</string>
+            <key>PayloadType</key>
+            <string>com.apple.system.logging</string>
+            <key>PayloadUUID</key>
+            <string>0ff59613-35e9-495c-88c8-01963de4ac80</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>System Logging</string>
+    <key>PayloadIdentifier</key>
+    <string>com.example.myprofile</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>0fbfa83e-c8ec-49d0-b50c-3acc3c05749c</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

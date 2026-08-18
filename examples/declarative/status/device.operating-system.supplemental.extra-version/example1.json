@@ -1,0 +1,9 @@
+{
+    "device": {
+        "operating-system": {
+            "supplemental": {
+                "extra-version": "a"
+            }
+        }
+    }
+}

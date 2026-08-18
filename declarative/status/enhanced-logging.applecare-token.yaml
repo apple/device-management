@@ -39,4 +39,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/enhanced-logging.applecare-token/example1.json
+  - file: examples/declarative/status/enhanced-logging.applecare-token/example1.json

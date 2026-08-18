@@ -1,0 +1,10 @@
+{
+    "mdm": {
+        "app": [
+            {
+                "identifier": "com.example.enterprise.app",
+                "_removed": true
+            }
+        ]
+    }
+}

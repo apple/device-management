@@ -1,0 +1,18 @@
+{
+    "account": {
+        "list": {
+            "caldav": [
+                {
+                    "identifier": "C8AD8975-FC88-4B44-AE17-123456789012",
+                    "declaration-identifier": "com.example.caldav-account",
+                    "visible-name": "Work Calendar",
+                    "hostname": "caldav.example.com",
+                    "port": 443,
+                    "username": "user@example.com",
+                    "are-calendars-enabled": true,
+                    "are-reminders-enabled": true
+                }
+            ]
+        }
+    }
+}

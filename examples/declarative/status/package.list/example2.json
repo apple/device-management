@@ -1,0 +1,10 @@
+{
+    "package": {
+        "list": [
+            {
+                "identifier": "com.example.package.enterprise-tools",
+                "_removed": true
+            }
+        ]
+    }
+}

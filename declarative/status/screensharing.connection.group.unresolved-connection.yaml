@@ -63,7 +63,7 @@ examples:
   files:
   - tab: New or updated connection group
     description: Reports a new or updated connection group.
-    file: data/docc-examples/remotemanagementmodel/status/screensharing.connection.group.unresolved-connection/example1.json
+    file: examples/declarative/status/screensharing.connection.group.unresolved-connection/example1.json
   - tab: Removed connection group
     description: Reports a removed connection group.
-    file: data/docc-examples/remotemanagementmodel/status/screensharing.connection.group.unresolved-connection/example2.json
+    file: examples/declarative/status/screensharing.connection.group.unresolved-connection/example2.json

@@ -1,0 +1,13 @@
+{
+    "content-cache": {
+        "parents": [
+            {
+                "identifier": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890",
+                "address": "192.168.1.10",
+                "port": 51194,
+                "healthy": true,
+                "version": "2.0"
+            }
+        ]
+    }
+}

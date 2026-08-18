@@ -135,7 +135,7 @@ examples:
   files:
   - tab: New or updated package
     description: Reports a new or updated package.
-    file: data/docc-examples/remotemanagementmodel/status/package.list/example1.json
+    file: examples/declarative/status/package.list/example1.json
   - tab: Removed package
     description: Reports a removed package.
-    file: data/docc-examples/remotemanagementmodel/status/package.list/example2.json
+    file: examples/declarative/status/package.list/example2.json

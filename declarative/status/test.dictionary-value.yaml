@@ -70,4 +70,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/test.dictionary-value/example1.json
+  - file: examples/declarative/status/test.dictionary-value/example1.json

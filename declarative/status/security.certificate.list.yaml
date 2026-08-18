@@ -101,7 +101,7 @@ examples:
   files:
   - tab: New or updated certificate
     description: Reports a new or updated certificate.
-    file: data/docc-examples/remotemanagementmodel/status/security.certificate.list/example1.json
+    file: examples/declarative/status/security.certificate.list/example1.json
   - tab: Removed certificate
     description: Reports a removed certificate.
-    file: data/docc-examples/remotemanagementmodel/status/security.certificate.list/example2.json
+    file: examples/declarative/status/security.certificate.list/example2.json

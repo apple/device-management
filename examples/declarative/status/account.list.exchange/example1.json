@@ -1,0 +1,21 @@
+{
+    "account": {
+        "list": {
+            "exchange": [
+                {
+                    "identifier": "E0CF0187-HE00-6D66-CG39-345678901234",
+                    "declaration-identifier": "com.example.exchange-account",
+                    "visible-name": "Work Exchange",
+                    "hostname": "mail.example.com",
+                    "port": 443,
+                    "username": "user@example.com",
+                    "is-mail-enabled": true,
+                    "are-calendars-enabled": true,
+                    "are-contacts-enabled": true,
+                    "are-notes-enabled": true,
+                    "are-reminders-enabled": true
+                }
+            ]
+        }
+    }
+}

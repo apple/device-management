@@ -1,0 +1,13 @@
+{
+    "mdm": {
+        "app": [
+            {
+                "identifier": "com.example.enterprise.app",
+                "name": "Enterprise App",
+                "version": "3.1.0",
+                "short-version": "3.1.0",
+                "state": "managed"
+            }
+        ]
+    }
+}

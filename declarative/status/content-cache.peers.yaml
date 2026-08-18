@@ -76,7 +76,7 @@ examples:
   files:
   - tab: New or updated peer
     description: Reports a new or updated peer.
-    file: data/docc-examples/remotemanagementmodel/status/content-cache.peers/example1.json
+    file: examples/declarative/status/content-cache.peers/example1.json
   - tab: Removed peer
     description: Reports a removed peer.
-    file: data/docc-examples/remotemanagementmodel/status/content-cache.peers/example2.json
+    file: examples/declarative/status/content-cache.peers/example2.json

@@ -1,0 +1,16 @@
+{
+    "account": {
+        "list": {
+            "subscribed-calendar": [
+                {
+                    "identifier": "J5H45632-MJ55-1I11-HL84-890123456789",
+                    "declaration-identifier": "com.example.subscribed-calendar",
+                    "visible-name": "Company Holidays",
+                    "calendar-url": "https://calendar.example.com/holidays.ics",
+                    "username": "user@example.com",
+                    "is-enabled": true
+                }
+            ]
+        }
+    }
+}

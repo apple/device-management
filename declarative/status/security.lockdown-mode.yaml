@@ -36,4 +36,4 @@ payloadkeys:
 examples:
 - title: Status item example
   files:
-  - file: data/docc-examples/remotemanagementmodel/status/security.lockdown-mode/example1.json
+  - file: examples/declarative/status/security.lockdown-mode/example1.json
