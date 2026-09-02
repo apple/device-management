@@ -37,7 +37,7 @@ payloadkeys:
   - key: apns
     type: <array>
     presence: required
-    content: An array of APN dictionaries (\`APN.DefaultsData.Apns\`).
+    content: An array of APN dictionaries.
     subkeys:
     - key: apnsItem
       type: <dictionary>

@@ -42,6 +42,10 @@ Significant changes in this release.
 - Changed: declarative/declarations/configurations/app.managed.yaml/ExtensionConfigs [macOS 27.0]
 - Changed: declarative/declarations/configurations/app.managed.yaml/LegacyAppConfigAssetReference [macOS 27.0]
 
+### Deprecated Payload Keys
+
+- Deprecated: declarative/declarations/configurations/intelligence.settings.yaml/AllowVisualIntelligenceSummary [iOS 27.0]
+
 ### Removed Payload Keys
 
 - Removed: declarative/declarations/configurations/app.managed.yaml/VPPType
@@ -127,6 +131,26 @@ Significant changes in this release.
 - Changed: mdm/profiles/com.apple.applicationaccess.yaml/allowCamera [visionOS 27.0]
 - Changed: mdm/profiles/com.apple.applicationaccess.yaml/allowListedAppBundleIDs [visionOS 27.0]
 - Changed: mdm/profiles/com.apple.applicationaccess.yaml/blockedAppBundleIDs [visionOS 27.0]
+
+### Deprecated Objects
+
+- Deprecated: mdm/profiles/com.apple.AssetCache.managed.yaml [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.applicationaccess.new.yaml [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.dnsProxy.managed.yaml [iOS 27.0, macOS 27.0, visionOS 27.0]
+- Deprecated: mdm/profiles/com.apple.dnsSettings.managed.yaml [iOS 27.0, macOS 27.0, visionOS 27.0]
+- Deprecated: mdm/profiles/com.apple.mobiledevice.passwordpolicy.yaml [iOS 27.0, macOS 27.0, visionOS 27.0, watchOS 27.0]
+- Deprecated: mdm/profiles/com.apple.relay.managed.yaml [iOS 27.0, macOS 27.0, visionOS 27.0]
+
+### Deprecated Payload Keys
+
+- Deprecated: mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml/Services/Accessibility [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml/Services/BluetoothAlways [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml/Services/Camera [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml/Services/Microphone [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml/Services/SpeechRecognition [macOS 27.0]
+- Deprecated: mdm/profiles/com.apple.applicationaccess.yaml/allowListedAppBundleIDs [iOS 27.0, tvOS 27.0, visionOS 27.0]
+- Deprecated: mdm/profiles/com.apple.applicationaccess.yaml/allowSiriAI [iOS 27.0]
+- Deprecated: mdm/profiles/com.apple.applicationaccess.yaml/blockedAppBundleIDs [iOS 27.0, tvOS 27.0, visionOS 27.0]
 
 ### Removed Objects
 

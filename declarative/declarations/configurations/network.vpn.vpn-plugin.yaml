@@ -399,32 +399,6 @@ payloadkeys:
   presence: optional
   content: A dictionary to use for all VPN types.
   subkeys:
-  - key: Protocol
-    title: DNS protocol
-    type: <string>
-    presence: required
-    rangelist:
-    - Cleartext
-    - HTTPS
-    - TLS
-    content: The transport protocol to communicate with the DNS server.
-  - key: ServerURL
-    title: Server URL
-    type: <string>
-    presence: optional
-    content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484,
-      which needs to use the `https://` scheme. The system uses the hostname or address
-      in the URL to validate the server certificate. If `ServerAddresses` isn't specified,
-      the system uses the hostname or address in the URL to determine the server addresses.
-      This key is required if the `DNSProtocol` is `HTTPS`.
-  - key: ServerName
-    title: Server name
-    type: <string>
-    presence: optional
-    content: The hostname of a DNS-over-TLS server to validate the server certificate,
-      as defined in RFC 7858. If `ServerAddresses` isn't specified, the system uses
-      the hostname to determine the server addresses. This key is required if the
-      `DNSProtocol` is `TLS`.
   - key: ServerAddresses
     title: DNS server addresses
     type: <array>

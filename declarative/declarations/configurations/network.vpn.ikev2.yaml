@@ -176,31 +176,6 @@ payloadkeys:
       - '1.3'
       default: '1.2'
       content: The maximum TLS version to use with EAP-TLS authentication.
-- key: Provider
-  title: Provider details
-  type: <dictionary>
-  presence: optional
-  content: Specifies details about the provider.
-  subkeys:
-  - key: Type
-    title: Type
-    type: <string>
-    presence: optional
-    rangelist:
-    - packet-tunnel
-    - app-proxy
-    default: packet-tunnel
-    content: The type of VPN service. If the value is `app-proxy`, the service tunnels
-      traffic at the app level. If the value is `packet-tunnel`, the service tunnels
-      traffic at the IP layer.
-  - key: ComposedIdentifier
-    title: Composed identifier
-    type: <string>
-    presence: optional
-    content: |-
-      In iOS, tvOS, and visionOS, the identifier is a bundle ID, for example, "com.example.app".
-
-      In macOS, the identifier is a composed identifier. The format of the composed identifier is either "Bundle-ID" or "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the provider. "Designated-Requirement" is the designated requirement string the device uses to match the code signature of the provider. For example, "com.example.app" for the bundle ID format, or "com.example.app {anchor apple generic}" for the designated requirement format.
 - key: NetworkRouting
   title: Network routing details
   supportedOS:
@@ -472,24 +447,6 @@ payloadkeys:
   default: false
   content: If `true`, the system disables IKEv2 redirect. If not set, the system redirects
     an IKEv2 connection when it receives a redirect request from the server.
-- key: EnableNATKeepAliveOffload
-  title: Enable NAT keep alive offload
-  type: <boolean>
-  presence: optional
-  default: true
-  content: |-
-    If `true`, enables NAT keepalive offload for Always On VPN IKEv2 connections. The device sends keepalive packets to maintain NAT mappings for IKEv2 connections that have a NAT on the path. It sends keepalive packets at regular intervals when the device is awake. If `NATKeepAliveOffloadEnable` is `true`, the system offloads keepalive packets to hardware while the device is asleep.
-
-    NAT keepalive offload has an impact on the battery life due to the extra workload during sleep. The default interval for the keepalive offload packets is 20 seconds over Wi-Fi and 110 seconds over Cellular interface. The default NAT keepalive works well on networks with small NAT mapping timeouts but imposes a potential battery impact. If a network has larger NAT mapping timeouts, larger keepalive intervals may be safely used to minimize battery impact. Modify the keepalive interval through the `NATKeepAliveInterval` key.
-- key: NATKeepAliveInterval
-  title: NAT keepalive interval
-  type: <integer>
-  presence: optional
-  default: 20
-  content: The NAT Keepalive interval for Always On VPN IKEv2 connections. This value
-    controls the interval that the device sends keepalive offload packets. The minimum
-    value is 20 seconds. If no key is specified, the default is 20 seconds over Wi-Fi
-    and 110 seconds over a cellular interface.
 - key: EnablePFS
   title: Enable perfect forward secrecy
   type: <boolean>
@@ -663,32 +620,6 @@ payloadkeys:
   presence: optional
   content: A dictionary to use for all VPN types.
   subkeys:
-  - key: Protocol
-    title: DNS protocol
-    type: <string>
-    presence: required
-    rangelist:
-    - Cleartext
-    - HTTPS
-    - TLS
-    content: The transport protocol to communicate with the DNS server.
-  - key: ServerURL
-    title: Server URL
-    type: <string>
-    presence: optional
-    content: The URI template of a DNS-over-HTTPS server, as defined in RFC 8484,
-      which needs to use the `https://` scheme. The system uses the hostname or address
-      in the URL to validate the server certificate. If `ServerAddresses` isn't specified,
-      the system uses the hostname or address in the URL to determine the server addresses.
-      This key is required if the `DNSProtocol` is `HTTPS`.
-  - key: ServerName
-    title: Server name
-    type: <string>
-    presence: optional
-    content: The hostname of a DNS-over-TLS server to validate the server certificate,
-      as defined in RFC 7858. If `ServerAddresses` isn't specified, the system uses
-      the hostname to determine the server addresses. This key is required if the
-      `DNSProtocol` is `TLS`.
   - key: ServerAddresses
     title: DNS server addresses
     type: <array>

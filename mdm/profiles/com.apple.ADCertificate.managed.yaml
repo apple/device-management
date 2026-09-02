@@ -36,7 +36,7 @@ payloadkeys:
   type: <string>
   presence: required
   content: The certificate template for your environment. The default user certificate
-    value is \`User\`. The default computer certificate value is \`Machine\`.
+    value is `User`. The default computer certificate value is `Machine`.
 - key: Description
   title: Description
   type: <string>

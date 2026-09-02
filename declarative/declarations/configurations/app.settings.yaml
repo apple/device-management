@@ -176,7 +176,7 @@ payloadkeys:
     default: false
     combinetype: boolean-or
     content: If `true`, the device implicitly includes managed apps in the effective
-      allow list when `AllowedApps` or `AllowedBinaries` is present.
+      allow list when `AllowedBinaries` is present.
 - key: Privacy
   title: App privacy
   supportedOS:

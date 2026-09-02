@@ -42,7 +42,8 @@ payloadkeys:
     presence: optional
     default: true
     combinetype: boolean-and
-    content: If `false`, disables the Live Recognition accessibility feature.
+    content: If `false`, disables the Accessibility Live Recognition Ask about Images
+      and Surroundings features.
 examples:
 - title: Configuration example
   files:
