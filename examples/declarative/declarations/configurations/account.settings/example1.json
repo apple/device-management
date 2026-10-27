@@ -1,0 +1,10 @@
+{
+    "Type": "com.apple.configuration.account.settings",
+    "Identifier": "D699D1DB-28B3-4899-8554-1630D201EF55",
+    "ServerToken": "62EA7624-7603-4C15-B747-7334476C1BDE",
+    "Payload": {
+        "Exchange": {
+            "AllowEWSRetirementAlerts": false
+        }
+    }
+}

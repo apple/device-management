@@ -8,11 +8,11 @@ This release corresponds to the following OS versions
 
 | OS       | Version |
 |----------|---------|
-| iOS      | 27.0    |
-| macOS    | 27.0    |
-| tvOS     | 27.0    |
-| visionOS | 27.0    |
-| watchOS  | 27.0    |
+| iOS      | 27.2    |
+| macOS    | 27.2    |
+| tvOS     | 27.2    |
+| visionOS | 27.2    |
+| watchOS  | 27.2    |
 
 See [Changes](CHANGES.md) for the significant changes in this release.
 

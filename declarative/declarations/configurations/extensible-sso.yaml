@@ -504,6 +504,16 @@ payloadkeys:
         - RequireTouchIDOrWatch
         - AllowOpenIDForTouchIDFallback
         content: The policy to apply.
+    - key: AlwaysUseLoginUI
+      supportedOS:
+        macOS:
+          introduced: '27.2'
+      type: <boolean>
+      presence: optional
+      default: false
+      content: |-
+        If `true`, the system uses the Platform SSO login UI at the Login Window, screensaver unlock, and FileVault unlock for every configuration that supports it.
+        If `false`, the system uses the Platform SSO login UI only when `AuthenticationMethod` is set to `OpenID`, or when `LoginPolicy`, `UnlockPolicy` or `FileVaultPolicy` are set to `RequireTouchID` or `RequireTouchIDOrWatch`.
     - key: OfflineGracePeriod
       title: Offline grace period
       type: <integer>
@@ -558,6 +568,22 @@ payloadkeys:
       default: false
       content: If `true`, the system detects the password during web authentication
         and synchronizes it to the local account password for the user.
+  - key: AdditionalHTTPHeaders
+    supportedOS:
+      macOS:
+        introduced: '27.2'
+    type: <dictionary>
+    presence: optional
+    content: A dictionary with keys and values that are strings. The keys are HTTP
+      header names, and the values are HTTP header values. The device adds these headers
+      to nonce, pre-authentication, login, key and key exchange requests for Platform
+      SSO. The device limits the number of headers to 20, the length of the header
+      name to 128 characters, and the length of the header value to 2048 characters.
+    subkeys:
+    - key: ANY
+      type: <string>
+      presence: optional
+      content: Keys and values to pass as HTTP headers to the identity provider.
 examples:
 - title: Configuration examples
   files:

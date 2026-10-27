@@ -31,6 +31,7 @@ payloadkeys:
     - `ok`: The component is operating normally.
     - `error`: The component has a detected error or failure.
     - `non-genuine`: The component isn't a genuine Apple component.
+    - `pending-repair`: The component is a genuine Apple component that requires a restart to finish its repair.
 
     Not all keys are supported on each device. The dictionary includes only components that are present and reportable on the device.
   subkeys:
@@ -54,12 +55,14 @@ payloadkeys:
     - ok
     - error
     - non-genuine
+    - pending-repair
     content: |-
       The camera health status, which has the following values:
 
       - `ok`: The component is operating normally.
       - `error`: The component has a detected error or failure.
       - `non-genuine`: The component isn't a genuine Apple component.
+      - `pending-repair`: The component is a genuine Apple component that requires a restart to finish its repair.
   - key: Display
     title: Display health status
     type: <string>
@@ -68,12 +71,14 @@ payloadkeys:
     - ok
     - error
     - non-genuine
+    - pending-repair
     content: |-
       The display health status, which has the following values:
 
       - `ok`: The component is operating normally.
       - `error`: The component has a detected error or failure.
       - `non-genuine`: The component isn't a genuine Apple component.
+      - `pending-repair`: The component is a genuine Apple component that requires a restart to finish its repair.
   - key: FaceID
     title: Face ID health status
     type: <string>
@@ -81,11 +86,13 @@ payloadkeys:
     rangelist:
     - ok
     - error
+    - pending-repair
     content: |-
       The Face ID health status, which has the following values:
 
       - `ok`: The component is operating normally.
       - `error`: The component has a detected error or failure.
+      - `pending-repair`: The component is a genuine Apple component that requires a restart to finish its repair.
   - key: NFC
     title: NFC health status
     type: <string>
@@ -105,11 +112,13 @@ payloadkeys:
     rangelist:
     - ok
     - error
+    - pending-repair
     content: |-
       The Touch ID health status, which has the following values:
 
       - `ok`: The component is operating normally.
       - `error`: The component has a detected error or failure.
+      - `pending-repair`: The component is a genuine Apple component that requires a restart to finish its repair.
   - key: UWB
     title: Ultra-wideband radio health status
     type: <string>

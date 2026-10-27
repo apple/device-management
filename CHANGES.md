@@ -1,8 +1,66 @@
-# Changes
+# Changes in 27.2
 
-Significant changes in this release.
+## declarative/declarations/configurations
+
+### New Objects
+
+- New: declarative/declarations/configurations/account.settings.yaml
+
+### New Payload Keys
+
+- New: declarative/declarations/configurations/extensible-sso.yaml/PlatformSSO/AdditionalHTTPHeaders
+- New: declarative/declarations/configurations/extensible-sso.yaml/PlatformSSO/Policies/AlwaysUseLoginUI
 
 ---
+
+## declarative/status
+
+### New Objects
+
+- New: declarative/status/enhanced-logging.noninteractive-eligibility.yaml
+
+---
+
+## mdm/checkin
+
+No changes.
+
+---
+
+## mdm/commands
+
+No changes.
+
+---
+
+## mdm/profiles
+
+### New Payload Keys
+
+- New: mdm/profiles/com.apple.extensiblesso.yaml/PlatformSSO/AdditionalHTTPHeaders
+- New: mdm/profiles/com.apple.extensiblesso.yaml/PlatformSSO/AlwaysUseLoginUI
+
+---
+
+## mdm/errors
+
+No changes.
+
+---
+
+## other
+
+No changes.
+
+---
+
+## openapi
+
+No changes.
+
+---
+
+# Changes in 27.0
 
 ## declarative/declarations/configurations
 

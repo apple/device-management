@@ -33,7 +33,7 @@ payload:
       - system
     watchOS:
       introduced: n/a
-  apply: multiple
+  apply: single
 payloadkeys:
 - key: VisibleName
   title: Visible name

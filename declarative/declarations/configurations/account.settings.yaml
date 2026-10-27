@@ -1,0 +1,43 @@
+title: Account Settings
+description: The declaration to configure account settings.
+payload:
+  declarationtype: com.apple.configuration.account.settings
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: '27.2'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      - user
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: Exchange
+  title: Exchange
+  type: <dictionary>
+  presence: optional
+  content: If present, configures settings for Exchange accounts.
+  subkeys:
+  - key: AllowEWSRetirementAlerts
+    title: Allow EWS Retirement Alerts
+    type: <boolean>
+    presence: optional
+    default: true
+    combinetype: boolean-and
+    content: If `false`, the system doesn't alert the user that an Exchange account
+      has lost, or is about to lose, access because Microsoft is ending support for
+      Exchange Web Services. Only applies to Exchange accounts installed by an organization.
+examples:
+- title: Configuration example
+  files:
+  - description: This configuration prevents alerts about the retirement of Exchange
+      Web Services.
+    file: examples/declarative/declarations/configurations/account.settings/example1.json

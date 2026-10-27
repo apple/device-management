@@ -2,6 +2,12 @@
 
 This document lists errata for the YAML schema. This is used when older versions of the schema are incorrect, and a fix was made in later schema to correct the problem.
 
+## Release 27.2
+
+### declarative/declarations/configurations/network.dns-proxy.yaml
+
+The `apply` mode has been corrected from `multiple` to `single`.
+
 ## Release 27.0
 
 ### mdm/commands/settings.yaml
