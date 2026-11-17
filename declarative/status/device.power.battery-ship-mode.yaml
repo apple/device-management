@@ -1,0 +1,56 @@
+title: Status Device Battery Ship Mode
+description: The status item that reports the device's battery ship mode.
+payload:
+  statusitemtype: device.power.battery-ship-mode
+  supportedOS:
+    iOS:
+      introduced: '27.3'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+payloadkeys:
+- key: device.power.battery-ship-mode
+  title: Status item value.
+  type: <string>
+  presence: required
+  rangelist:
+  - normal
+  - preparing
+  - shippable
+  - reverting
+  - error
+  - not-applicable
+  content: |-
+    The battery ship mode status, which has the following values:
+
+    - `normal`: The device charges its battery normally.
+    - `preparing`: The device is limiting and discharging the battery to reach a charge level that meets shipping regulations.
+    - `shippable`: The battery is at a charge level that meets shipping regulations.
+    - `reverting`: The device is waiting for the ship mode lock to expire before it resumes normal charging.
+    - `error`: The device can't bring the battery to a charge level that meets shipping regulations.
+    - `not-applicable`: Battery ship mode doesn't apply to the device.
+
+    The `preparing` and `reverting` states are transient.
+notes:
+- title: ''
+  content: |-
+    The device reports `preparing` and `reverting` while it moves towards the target mode set by the `ShipMode` key of the `com.apple.configuration.battery.settings` configuration. Both transitions take time to complete: `preparing` lasts until the battery discharges to a compliant charge level, and `reverting` lasts until the ship mode lock expires.
+
+    A device that reports `error` doesn't meet shipping regulations and can't reach a compliant charge level.
+
+    A device that reports `not-applicable` doesn't need ship mode: its battery capacity is already within shipping regulations, so it can ship without any preparation.
+examples:
+- title: Status item example
+  files:
+  - file: examples/declarative/status/device.power.battery-ship-mode/example1.json

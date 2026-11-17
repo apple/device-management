@@ -1,0 +1,17 @@
+{
+    "Type": "com.apple.configuration.network.vpn.vpn-plugin",
+    "Identifier": "5D4C3B2A-1F0E-4D9C-8B7A-6F5E4D3C2B1A",
+    "ServerToken": "A9B8C7D6-E5F4-4A3B-8C2D-1E0F9A8B7C6D",
+    "Payload": {
+        "VisibleName": "Corporate VPN (macOS)",
+        "HostName": "vpn.example.com",
+        "SubType": "com.example.vpn",
+        "Provider": {
+            "ComposedIdentifier": "com.example.vpn.plugin {identifier \"com.example.vpn.plugin\" and anchor apple generic and certificate leaf[subject.OU] = \"ABCDE12345\"}"
+        },
+        "Authentication": {
+            "Method": "Password",
+            "CredentialsAssetReference": "64BF8F5C-8CFD-40AA-9082-A0B594D4E100"
+        }
+    }
+}

@@ -67,6 +67,7 @@ notes:
     | | /etc/zshrc |
     | com.apple.cryptoTokenKit | /etc/SmartcardLogin.plist |
     | com.apple.authorization | /Library/Security/ |
+    | com.apple.smbclient | /etc/nsmb.conf |
 
     The files in the zip archive need to mirror the folder structure and configuration files that the service expects to be present starting at the root of the file system. The service uses only the files the declaration provides and ignores the ones in its default directories.
 

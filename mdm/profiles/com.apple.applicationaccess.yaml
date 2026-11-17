@@ -1082,8 +1082,10 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables content caching. This restriction is not
-    supported on the user channel.
+  content: |-
+    If `false`, the system disables content caching. This restriction is not supported on the user channel.
+
+    For declarative management, use the `DenyActivation` key in the `com.apple.configuration.content-cache.settings` configuration, which is the inverse of this restriction.
 - key: allowContinuousPathKeyboard
   title: Allow continuous path keyboard
   supportedOS:
@@ -3081,11 +3083,13 @@ payloadkeys:
   type: <boolean>
   presence: optional
   default: true
-  content: If `false`, the system disables remote screen observation by the Classroom
-    app. Nest this key beneath `allowScreenShot` as a subrestriction. If `allowScreenShot`
-    is `false`, the Classroom app doesn't observe remote screens. Requires a supervised
-    device until iOS 13 and macOS 10.15. Allowed for user enrollments in macOS 12
-    and later.
+  content: If `false`, the system denies remote screen observation by the Classroom
+    app and turns off the Screen Sharing service on macOS. Active screen sharing sessions
+    are stopped when this restriction is applied and users can't turn on Screen Sharing
+    in System Settings. If `allowScreenShot` is `false`, the same behavior applies
+    as remote screen observation requires `allowScreenShot` to be `true`. Requires
+    a supervised device until iOS 13 and macOS 10.15. Allowed for user enrollments
+    in macOS 12 and later.
 - key: allowRosettaUsageAwareness
   supportedOS:
     iOS:

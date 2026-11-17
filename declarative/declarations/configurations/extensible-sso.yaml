@@ -155,8 +155,13 @@ payloadkeys:
     - UserSecureEnclaveKey
     - SmartCard
     - OpenID
-    content: The Platform SSO authentication method to use with the extension. Requires
-      that the SSO Extension also support the method.
+    content: |-
+      The Platform SSO authentication method to use with the extension. Requires the SSO extension to also support the method. Allowed values:
+
+      * `Password`: The account uses a password for authentication.
+      * `UserSecureEnclaveKey`: The account uses a Secure Enclave-backed key for authentication.
+      * `SmartCard`: The account uses a smart card for authentication.
+      * `OpenID`: The account uses OpenID for authentication. Requires `UseSharedDeviceKeys` to be `true`.
   - key: RegistrationToken
     title: Registration token
     supportedOS:
@@ -228,7 +233,7 @@ payloadkeys:
       presence: optional
       default: false
       content: Enables creating users at the Login Window with an `AuthenticationMethod`
-        of either `Password` or `SmartCard`. Requires that `UseSharedDeviceKeys` is
+        of either `Password` or `SmartCard`. Requires `UseSharedDeviceKeys` to be
         `true`.
     - key: EnableFirstUserDuringSetup
       title: Enable first user during setup
@@ -242,10 +247,10 @@ payloadkeys:
       type: <boolean>
       presence: optional
       default: false
-      content: If `true`, the system enables the PlatformSSO registration process
-        during Setup Assistant on devices running macOS 26 and later. Set this key
-        to `true` when configuring PlatformSSO before enrollment using the `com.apple.psso.required`
-        error response.
+      content: If `true`, the system enables the Platform SSO registration process
+        during Setup Assistant. Set this key to `true` when you use the `com.apple.psso.required`
+        error response to configure Platform SSO before enrollment. Requires `UseSharedDeviceKeys`
+        to be `true`.
     - key: NewUserAuthenticationMethods
       title: New user authentication methods
       type: <array>
@@ -268,7 +273,7 @@ payloadkeys:
           * `Password`: The account uses a password for authentication.
           * `SmartCard`: The account uses a smart card for authentication.
           * `AccessKey`: The account uses an access key for authentication.
-          * `OpenID`: The account uses OpenID for authentication.
+          * `OpenID`: The account uses OpenID for authentication. Requires `UseSharedDeviceKeys` to be `true`.
     - key: NewUserAuthorizationMode
       title: New user authorization mode
       type: <string>
@@ -284,7 +289,7 @@ payloadkeys:
         * `Standard`: The account is a standard user.
         * `Admin`: The system adds the account to the local administrators group.
         * `Groups`: The system assigns groups to the account using `Authorization.AdministratorGroups`, `Authorization.AdditionalGroups`, or `Authorization.AuthorizationGroups`.
-        * `Temporary`: The system uses a temporary session configuration for newly created accounts at login.
+        * `Temporary`: The system uses a temporary session configuration for newly created accounts at login. Requires `UseSharedDeviceKeys` to be `true`.
     - key: TokenToUserMapping
       title: Token to user mapping
       type: <dictionary>
@@ -323,7 +328,7 @@ payloadkeys:
       presence: optional
       default: false
       content: Enables using identity provider accounts at authorization prompts.
-        Requires that `UseSharedDeviceKeys` is `true`. The system assigns groups using
+        Requires `UseSharedDeviceKeys` to be `true`. The system assigns groups using
         `AdministratorGroups`, `AdditionalGroups`, or `AuthorizationGroups`.
     - key: UserAuthorizationMode
       title: User authorization mode
@@ -383,7 +388,7 @@ payloadkeys:
       type: <data>
       presence: optional
       content: The reader group identifier for use with the `AccessKey`. The value
-        needs to match the configured access key. Required if `UserCreation.AuthenticationMethods`
+        needs to match the configured access key. Required if `UserCreation.NewUserAuthenticationMethods`
         contains `AccessKey`.
     - key: TerminalIdentityAssetReference
       title: Terminal identity asset reference
@@ -395,7 +400,8 @@ payloadkeys:
       presence: optional
       content: The identifier of an asset declaration that contains the identity to
         use as the Terminal identity of the Access Key. The Access Key needs to trust
-        the identity. Required if `UserCreation.AuthenticationMethods` includes `AccessKey`.
+        the identity. Required if `UserCreation.NewUserAuthenticationMethods` includes
+        `AccessKey`.
     - key: ReaderIssuerCertificateAssetReference
       title: Reader issuer certificate asset reference
       type: <string>
@@ -405,7 +411,7 @@ payloadkeys:
       content: The identifier of an asset declaration that contains the certificate
         for the issuer certificate of the `Terminal` identity of the access key. Other
         specifications refer to the key as the "Reader CA Public Key". The key must
-        be an elliptic curve key. Required if `UserCreation.AuthenticationMethods`
+        be an elliptic curve key. Required if `UserCreation.NewUserAuthenticationMethods`
         includes `AccessKey`. The issuer of the Terminal identity of the access key
         needs to match this certificate, otherwise the device fails the authentication.
     - key: AllowExpressMode
@@ -432,9 +438,9 @@ payloadkeys:
         * `RequireAuthentication`: The device requires Platform SSO authentication before proceeding. If the device is offline and `AllowOfflineGracePeriod` is enabled, then the device uses the offline `OfflineGracePeriod` to determine if the user can proceed or not. If online and the credential is incorrect, then the device requires a valid Platform SSO authentication to proceed, regardless of the `OfflineGracePeriod`. If the account isn't registered for Platform SSO and `AllowAuthenticationGracePeriod` is enabled, then the device uses `AuthenticationGracePeriod` to determine if the user can proceed or not. Only use when `AuthenticationMethod` is `Password`.
         * `AllowOfflineGracePeriod`: The device allows the use of the `OfflineGracePeriod`. If `AllowOfflineGracePeriod` isn't set, then the device denies offline access. Only use when `AuthenticationMethod` is `Password` and `RequireAuthentication` is enabled, or `AuthenticationMethod` is `OpenID`.
         * `AllowAuthenticationGracePeriod`: The device allows the use of the `AuthenticationGracePeriod` for other local accounts when `RequireAuthentication` is enabled. The `AuthenticationGracePeriod` starts when any of the policies are updated. If `AllowAuthenticationGracePeriod` isn't set, then the device denies unregistered account access. Only use when `AuthenticationMethod` is `Password`.
-        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for FileVault unlock. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for FileVault unlock. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `AllowOpenIDForTouchIDFallback`: The device allows web login as a fallback if Touch ID fails or isn't available. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
+        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for FileVault unlock. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for FileVault unlock. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `AllowOpenIDForTouchIDFallback`: The device allows web login as a fallback if Touch ID fails or isn't available. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
       subkeys:
       - key: policy
         type: <string>
@@ -459,9 +465,9 @@ payloadkeys:
         * `RequireAuthentication`: The device requires Platform SSO authentication before proceeding. If the device is offline and `AllowOfflineGracePeriod` is enabled, then the device uses the offline `OfflineGracePeriod` to determine if the user can proceed or not. If online and the credential is incorrect, then the device requires a valid Platform SSO authentication to proceed, regardless of the `OfflineGracePeriod`. If the account isn't registered for Platform SSO and `AllowAuthenticationGracePeriod` is enabled, then the device uses the `AuthenticationGracePeriod` to determine if the user can proceed or not. Only use when `AuthenticationMethod` is `Password`.
         * `AllowOfflineGracePeriod`: The device allows the use of the `OfflineGracePeriod`. If `AllowOfflineGracePeriod` isn't set, then the device denies offline access. Only use when `AuthenticationMethod` is `Password` and `RequireAuthentication` is enabled, or `AuthenticationMethod` is `OpenID`.
         * `AllowAuthenticationGracePeriod`: The device allows the use of the `AuthenticationGracePeriod` for other local accounts when `RequireAuthentication` is enabled. The `AuthenticationGracePeriod` starts when any of the policies have been updated. If `AllowAuthenticationGracePeriod` isn't set, then the device denies unregistered account access. Only use when `AuthenticationMethod` is `Password`.
-        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for login. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for login. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `AllowOpenIDForTouchIDFallback`: The device allows web login as fallback if Touch ID fails or isn't available. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
+        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for login. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for login. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `AllowOpenIDForTouchIDFallback`: The device allows web login as fallback if Touch ID fails or isn't available. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
       subkeys:
       - key: policy
         type: <string>
@@ -487,9 +493,9 @@ payloadkeys:
         * `AllowOfflineGracePeriod`: The device allows the use of the `OfflineGracePeriod`. If `AllowOfflineGracePeriod` isn't set, then the device denies offline access. Only use when `AuthenticationMethod` is `Password` and `RequireAuthentication` is enabled, or `AuthenticationMethod` is `OpenID`.
         * `AllowAuthenticationGracePeriod`: The device allows the use of the `AuthenticationGracePeriod` for other local accounts when `RequireAuthentication` is enabled. The `AuthenticationGracePeriod` starts when any of the policies have been updated. If `AllowAuthenticationGracePeriod` isn't set, then the device denies the unregistered account access. Only use when `AuthenticationMethod` is `Password`.
         * `AllowTouchIDOrWatchForUnlock`: The device allows Touch ID or Apple Watch to unlock the screensaver instead of Platform SSO authentication when `RequireAuthentication` is enabled. Only use when `AuthenticationMethod` is `Password`.
-        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for unlock. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for unlock. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
-        * `AllowOpenIDForTouchIDFallback`: The device allows web login as fallback if Touch ID fails or isn't available. Only use when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
+        * `RequireTouchID`: The device requires the use of Touch ID (and not Apple Watch) for unlock. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `RequireTouchIDOrWatch`: The device requires the use of Touch ID or Apple Watch for unlock. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey` and `UseSharedDeviceKeys` is `true`.
+        * `AllowOpenIDForTouchIDFallback`: The device allows web login as fallback if Touch ID fails or isn't available. Use only when `AuthenticationMethod` is `Password` or `UserSecureEnclaveKey`.
       subkeys:
       - key: policy
         type: <string>
@@ -554,7 +560,7 @@ payloadkeys:
       type: <array>
       presence: optional
       content: The set of allowed hosts that the system can load in the PSSO web view.
-        Required if `AuthenticationMethod` is set to `OpenID`, or `UserCreation.AuthenticationMethods`
+        Required if `AuthenticationMethod` is set to `OpenID`, or `UserCreation.NewUserAuthenticationMethods`
         contains `OpenID`.
       subkeys:
       - key: Hosts
@@ -584,6 +590,10 @@ payloadkeys:
       type: <string>
       presence: optional
       content: Keys and values to pass as HTTP headers to the identity provider.
+notes:
+- title: ''
+  content: The device installs only one configuration with a `PlatformSSO` key present.
+    The device rejects any additional configurations with a `PlatformSSO` key.
 examples:
 - title: Configuration examples
   files:

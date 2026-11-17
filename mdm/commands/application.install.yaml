@@ -76,6 +76,8 @@ payloadkeys:
       - `1`: Volume Purchase Program (VPP) app assignment.
 
       Set this value to `1` to install first-party apps without user login to the iTunes Store, such as Mail or Safari, or to install an iOS app with user enrollment.
+
+      Purchase method `0` remains supported for regions where app licensing isn't available, but it should generally be avoided as it relies on the user's personal purchase history.
 - key: ManifestURL
   supportedOS:
     iOS:

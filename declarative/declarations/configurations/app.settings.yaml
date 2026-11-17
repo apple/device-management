@@ -202,7 +202,7 @@ payloadkeys:
 
       In iOS, the app identifier is a bundle ID, for example, "com.example.app".
 
-      In macOS, the app identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the app. "Designated-Requirement" is the designated requirement string the device uses to match the code signature of the app. For example, "com.example.app {anchor apple generic}". The device only applies defaults for an app if its code signature matches the composed identifier.
+      In macOS, the app identifier is a composed identifier. The format of the composed identifier is "Bundle-ID {Designated-Requirement}". "Bundle-ID" is the bundle identifier string of the app. "Designated-Requirement" is the designated requirement string the device uses to match the code signature of the app. For example, "com.example.app {anchor apple generic}". The device only applies defaults for an app if its code signature matches the composed identifier. The format of the designated requirement is defined in [Inside Code Signing Requirements](https://developer.apple.com/documentation/technotes/tn3127-inside-code-signing-requirements).
     subkeys:
     - key: ANY
       type: <dictionary>

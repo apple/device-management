@@ -72,6 +72,126 @@ payloadkeys:
       type: <string>
       presence: optional
       content: The name of the account.
+    - key: protocol-type
+      title: Exchange protocol type
+      supportedOS:
+        iOS:
+          introduced: '27.3'
+        macOS:
+          introduced: '27.3'
+        visionOS:
+          introduced: '27.3'
+      type: <string>
+      presence: optional
+      rangelist:
+      - EAS
+      - EWS
+      - Graph
+      content: |-
+        The protocol the account uses to communicate with the Exchange server, with the following possible values:
+
+        - `EAS`: Exchange ActiveSync
+        - `EWS`: Exchange Web Services
+        - `Graph`: Microsoft Graph API
+    - key: graph-migration-state
+      title: Graph migration state
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '27.3'
+        visionOS:
+          introduced: n/a
+      type: <dictionary>
+      presence: optional
+      content: The state of this account's data migration from Exchange Web Services
+        to the Microsoft Graph API. Each key is only present when the device reports
+        a migration state for the corresponding data.
+      subkeytype: GraphMigrationState
+      subkeys:
+      - key: mail
+        title: Mail migration state
+        type: <string>
+        presence: optional
+        rangelist:
+        - eligible
+        - converting
+        - syncing
+        - migrated
+        - skipped
+        - failed
+        content: |-
+          The state of this account's Mail data migration, which has the following values:
+
+          - `eligible`: The account is eligible to migrate, and the migration hasn't started.
+          - `converting`: The account is offline while the device converts its data in place.
+          - `syncing`: The device is synchronizing the account with the Microsoft Graph API.
+          - `migrated`: The migration completed successfully.
+          - `skipped`: The account has no data to convert, so the migration can't run.
+          - `failed`: The migration failed, and the device re-downloads the account's data.
+      - key: contacts
+        title: Contacts migration state
+        type: <string>
+        presence: optional
+        rangelist:
+        - eligible
+        - converting
+        - syncing
+        - migrated
+        - skipped
+        - failed
+        content: |-
+          The state of this account's Contacts data migration, which has the following values:
+
+          - `eligible`: The account is eligible to migrate, and the migration hasn't started.
+          - `converting`: The account is offline while the device converts its data in place.
+          - `syncing`: The device is synchronizing the account with the Microsoft Graph API.
+          - `migrated`: The migration completed successfully.
+          - `skipped`: The account has no data to convert, so the migration can't run.
+          - `failed`: The migration failed, and the device re-downloads the account's data.
+      - key: other
+        title: Other data migration state
+        type: <string>
+        presence: optional
+        rangelist:
+        - eligible
+        - converting
+        - syncing
+        - migrated
+        - skipped
+        - failed
+        content: |-
+          The state of this account's Calendars, Reminders, and Notes data migration, which has the following values:
+
+          - `eligible`: The account is eligible to migrate, and the migration hasn't started.
+          - `converting`: The account is offline while the device converts its data in place.
+          - `syncing`: The device is synchronizing the account with the Microsoft Graph API.
+          - `migrated`: The migration completed successfully.
+          - `skipped`: The account has no data to convert, so the migration can't run.
+          - `failed`: The migration failed, and the device re-downloads the account's data.
+    - key: graph-support
+      title: Graph support
+      supportedOS:
+        iOS:
+          introduced: n/a
+        macOS:
+          introduced: '27.3'
+        visionOS:
+          introduced: n/a
+      type: <string>
+      presence: optional
+      rangelist:
+      - unknown
+      - supported
+      - unsupported
+      content: |-
+        Indicates if the account's mailbox supports the Microsoft Graph API. This key is present only for an account that uses Exchange Web Services. The support has the following values:
+
+        - `unknown`: The device hasn't classified the mailbox.
+        - `supported`: The mailbox supports the Microsoft Graph API.
+        - `unsupported`: The mailbox doesn't support the Microsoft Graph API.
+
+        The device can reclassify a mailbox later, so `unsupported` isn't permanent.
     - key: hostname
       title: Account hostname
       type: <string>

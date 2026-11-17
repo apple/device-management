@@ -5,7 +5,10 @@
     "Payload": {
         "VisibleName": "Corporate VPN",
         "HostName": "vpn.example.com",
-        "SubType": "com.example.vpn.plugin",
+        "SubType": "com.example.vpn",
+        "Provider": {
+            "ComposedIdentifier": "com.example.vpn.plugin"
+        },
         "Authentication": {
             "Method": "Password",
             "CredentialsAssetReference": "64BF8F5C-8CFD-40AA-9082-A0B594D4E100"

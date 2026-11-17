@@ -1,0 +1,8 @@
+{
+    "Type": "com.apple.configuration.battery.settings",
+    "Identifier": "6E5F0B21-4B7C-4E64-9C1B-8F0D3A9E5C42",
+    "ServerToken": "A1D9C7F3-2E58-4B0A-9D6E-5C3B7A1F8E04",
+    "Payload": {
+        "ShipMode": "shippable"
+    }
+}

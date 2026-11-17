@@ -1,3 +1,103 @@
+# Changes in 27.3
+
+## declarative/declarations/configurations
+
+### New Objects
+
+- New: declarative/declarations/configurations/battery.settings.yaml
+
+### New Payload Keys
+
+- New: declarative/declarations/configurations/siri.settings.yaml/AllowAutomaticNotes
+- New: declarative/declarations/configurations/siri.settings.yaml/AllowLiveRewind
+
+### Other Changes
+
+- Account declarations: added rules for updating accounts and for DDM taking over MDM accounts.
+- siri.settings.yaml: more keys apply to the user scope on Shared iPad.
+- extensible-sso.yaml: `OpenID` and `Temporary` require `UseSharedDeviceKeys`.
+- DNS proxy, web content filter, VPN plugin: clarified macOS composed identifiers and added macOS examples.
+- services.configuration-files.yaml: added `com.apple.smbclient`.
+
+---
+
+## declarative/status
+
+### New Objects
+
+- New: declarative/status/device.power.battery-ship-mode.yaml
+
+### New Payload Keys
+
+- New: declarative/status/account.list.exchange.yaml/account.list.exchange/status_value/graph-migration-state
+- New: declarative/status/account.list.exchange.yaml/account.list.exchange/status_value/graph-support
+
+---
+
+## mdm/checkin
+
+No changes.
+
+---
+
+## mdm/commands
+
+### New Payload Keys
+
+- New: mdm/commands/information.device.yaml/Queries/AuthenticatedTemporarySession
+- New: mdm/commands/information.device.yaml/Queries/UseManagedAccountPasswordAsDevicePasscode
+- New: mdm/commands/information.device.yaml/QueryResponses/AuthenticatedTemporarySession
+- New: mdm/commands/information.device.yaml/QueryResponses/UseManagedAccountPasswordAsDevicePasscode
+- New: mdm/commands/settings.yaml/Settings/SharedDeviceConfiguration/AuthenticatedTemporarySession
+- New: mdm/commands/settings.yaml/Settings/SharedDeviceConfiguration/AuthenticatedTemporarySession/Enabled
+- New: mdm/commands/settings.yaml/Settings/SharedDeviceConfiguration/AuthenticatedTemporarySession/UseManagedAccountPasswordAsDevicePasscode
+
+---
+
+## mdm/profiles
+
+### Other Changes
+
+- com.apple.applicationaccess.yaml: `allowContentCaching` points to the declarative `DenyActivation` key.
+- com.apple.extensiblesso.yaml: same `OpenID` and `Temporary` updates as the declaration.
+- com.apple.TCC.configuration-profile-policy: updates description of `Accessibility` behavior.
+---
+
+## mdm/errors
+
+No changes.
+
+---
+
+## other
+
+### New Payload Keys
+
+- New: other/skipkeys.yaml/RemoteTutorial
+- New: other/skipkeys.yaml/SiriMic
+
+### Payload Keys with New OS Support
+
+- Changed: other/skipkeys.yaml/SoftwareUpdate [tvOS 27.3]
+- Changed: other/skipkeys.yaml/Welcome [tvOS 27.3]
+- Changed: other/skipkeys.yaml/ExpressLanguage [macOS 15.0]
+- Changed: other/skipkeys.yaml/Keyboard [macOS 15.0]
+- Changed: other/skipkeys.yaml/Language [macOS 15.0]
+- Changed: other/skipkeys.yaml/TapToSetup [macOS 15.4]
+
+### Other Changes
+
+- skipkeys.yaml: `ExpressLanguage` removed for iOS, `UnlockWithWatch` for macOS; `Zoom` is now removed, not deprecated.
+- skipkeys.yaml: documented `TapToSetup` on macOS.
+
+---
+
+## openapi
+
+No changes.
+
+---
+
 # Changes in 27.2
 
 ## declarative/declarations/configurations

@@ -29,10 +29,16 @@ payloadkeys:
     the case of conflicting specifications, the most restrictive setting (deny) is
     used.
   subkeys:
-  - key: AddressBook
+  - key: Accessibility
+    supportedOS:
+      macOS:
+        deprecated: '27.0'
     type: <array>
     presence: optional
-    content: Specifies the policies for contact information managed by the Contacts.app.
+    content: |-
+      Specifies the policies for the app via the Accessibility subsystem. In macOS 27.0, the device shows a non-blocking notification for each application when this setting is applied, and it allows the user to make changes to the setting in the System Settings app. In macOS 27.3, the device shows a non-blocking notification for each application when this setting is applied, and it allows the user to make changes to the setting in the System Settings app.
+
+      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app.settings` configuration.
     subkeytype: Identity
     subkeys: &id001
     - key: IdentityDict
@@ -117,23 +123,36 @@ payloadkeys:
         presence: optional
         content: The code requirement for the receiving binary. This code requirement
           is required for AppleEvents service; not valid for other services.
+  - key: AddressBook
+    type: <array>
+    presence: optional
+    content: Specifies the policies for contact information managed by the Contacts.app.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: AppleEvents
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the app sending restricted AppleEvents to
+      another process.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: BluetoothAlways
+    supportedOS:
+      macOS:
+        introduced: '11.0'
+        deprecated: '27.0'
+    type: <array>
+    presence: optional
+    content: |-
+      Specifies the policies for the app to access Bluetooth devices.
+
+      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app.settings` configuration.
+    subkeytype: Identity
+    subkeys: *id001
   - key: Calendar
     type: <array>
     presence: optional
     content: Specifies the policies for calendar information managed by the Calendar.app.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: Reminders
-    type: <array>
-    presence: optional
-    content: Specifies the policies for reminders information managed by the Reminders
-      app.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: Photos
-    type: <array>
-    presence: optional
-    content: The pictures managed by the Photos app in `~/Pictures/.photoslibrary`.
     subkeytype: Identity
     subkeys: *id001
   - key: Camera
@@ -144,65 +163,6 @@ payloadkeys:
     presence: optional
     content: A system camera. A profile can't grant access to the camera; it can only
       deny it.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: Microphone
-    supportedOS:
-      macOS:
-        deprecated: '27.0'
-    type: <array>
-    presence: optional
-    content: A system microphone. A profile can't grant access to the microphone;
-      it can only deny it.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: Accessibility
-    supportedOS:
-      macOS:
-        deprecated: '27.0'
-    type: <array>
-    presence: optional
-    content: |-
-      Specifies the policies for the app via the Accessibility subsystem. In macOS 27.0, the device shows a non-blocking notification for each application when this setting is applied, and it allows the user to make changes to the setting in the System Settings app.
-
-      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app.settings` configuration.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: PostEvent
-    type: <array>
-    presence: optional
-    content: Specifies the policies for the application to use CoreGraphics APIs to
-      send CGEvents to the system event stream.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: SystemPolicyAllFiles
-    type: <array>
-    presence: optional
-    content: Allows the application access to all protected files, including system
-      administration files.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: SystemPolicySysAdminFiles
-    type: <array>
-    presence: optional
-    content: Allows the application access to some files used in system administration.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: AppleEvents
-    type: <array>
-    presence: optional
-    content: Specifies the policies for the app sending restricted AppleEvents to
-      another process.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: MediaLibrary
-    supportedOS:
-      macOS:
-        introduced: '10.15'
-    type: <array>
-    presence: optional
-    content: Allows the application to access Apple Music, music and video activity,
-      and the media library.
     subkeytype: Identity
     subkeys: *id001
   - key: FileProviderPresence
@@ -226,6 +186,46 @@ payloadkeys:
       access to these events; it can only deny it.
     subkeytype: Identity
     subkeys: *id001
+  - key: MediaLibrary
+    supportedOS:
+      macOS:
+        introduced: '10.15'
+    type: <array>
+    presence: optional
+    content: Allows the application to access Apple Music, music and video activity,
+      and the media library.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Microphone
+    supportedOS:
+      macOS:
+        deprecated: '27.0'
+    type: <array>
+    presence: optional
+    content: A system microphone. A profile can't grant access to the microphone;
+      it can only deny it.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Photos
+    type: <array>
+    presence: optional
+    content: The pictures managed by the Photos app in `~/Pictures/.photoslibrary`.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: PostEvent
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the application to use CoreGraphics APIs to
+      send CGEvents to the system event stream.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: Reminders
+    type: <array>
+    presence: optional
+    content: Specifies the policies for reminders information managed by the Reminders
+      app.
+    subkeytype: Identity
+    subkeys: *id001
   - key: ScreenCapture
     supportedOS:
       macOS:
@@ -247,6 +247,31 @@ payloadkeys:
       Allows the application to use the system Speech Recognition facility and to send speech data to Apple.
 
       Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app.settings` configuration.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAllFiles
+    type: <array>
+    presence: optional
+    content: Allows the application access to all protected files, including system
+      administration files.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAppBundles
+    supportedOS:
+      macOS:
+        introduced: '13.0'
+    type: <array>
+    presence: optional
+    content: Allows the application to update or delete other apps.
+    subkeytype: Identity
+    subkeys: *id001
+  - key: SystemPolicyAppData
+    supportedOS:
+      macOS:
+        introduced: '14.0'
+    type: <array>
+    presence: optional
+    content: Specifies the policies for the app to access the data of other apps.
     subkeytype: Identity
     subkeys: *id001
   - key: SystemPolicyDesktopFolder
@@ -294,35 +319,10 @@ payloadkeys:
     content: Allows the application to access files on removable volumes.
     subkeytype: Identity
     subkeys: *id001
-  - key: SystemPolicyAppBundles
-    supportedOS:
-      macOS:
-        introduced: '13.0'
+  - key: SystemPolicySysAdminFiles
     type: <array>
     presence: optional
-    content: Allows the application to update or delete other apps.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: SystemPolicyAppData
-    supportedOS:
-      macOS:
-        introduced: '14.0'
-    type: <array>
-    presence: optional
-    content: Specifies the policies for the app to access the data of other apps.
-    subkeytype: Identity
-    subkeys: *id001
-  - key: BluetoothAlways
-    supportedOS:
-      macOS:
-        introduced: '11.0'
-        deprecated: '27.0'
-    type: <array>
-    presence: optional
-    content: |-
-      Specifies the policies for the app to access Bluetooth devices.
-
-      Deprecated: use the `Privacy` key in the declarative management `com.apple.configuration.app.settings` configuration.
+    content: Allows the application access to some files used in system administration.
     subkeytype: Identity
     subkeys: *id001
 examples:

@@ -1,0 +1,52 @@
+title: Battery Settings
+description: The declaration to configure battery settings.
+payload:
+  declarationtype: com.apple.configuration.battery.settings
+  supportedOS:
+    iOS:
+      introduced: '27.3'
+      allowed-enrollments:
+      - supervised
+      allowed-scopes:
+      - system
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  apply: combined
+payloadkeys:
+- key: ShipMode
+  title: Ship mode
+  type: <string>
+  presence: optional
+  rangelist:
+  - normal
+  - shippable
+  default: normal
+  combinetype: enum-last
+  content: |-
+    The target ship mode for the device's battery, which has the following values:
+
+    - `normal`: The device charges its battery normally.
+    - `shippable`: The device limits and discharges its battery so that it meets shipping regulations.
+
+    The device reaches the target mode asynchronously and reports its progress with the `device.power.battery-ship-mode` status item.
+notes:
+- title: ''
+  content: |-
+    The device doesn't reach the target charge level immediately. After the `shippable` mode is applied, the device starts discharges the battery and reports the `preparing` state during the discharge. When the charge level has reached a level that meets shipping regulations, the device reports the `shippable` state.
+
+    Once the device is `shippable`, it locks ship mode for a period. Changing the value back to `normal` before that lock expires doesn't resume normal charging right away: the device reports `reverting` until the lock expires, and then reports `normal`.
+
+    For more information about battery ship mode see [Prepare your iPhone 18 Pro Max to ship](https://support.apple.com/127848).
+examples:
+- title: Configuration example
+  files:
+  - description: This configuration makes the device prepare its battery for shipping.
+    file: examples/declarative/declarations/configurations/battery.settings/example1.json

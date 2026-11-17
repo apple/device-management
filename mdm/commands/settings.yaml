@@ -886,6 +886,28 @@ payloadkeys:
         If `true`, the user only sees the Guest Welcome pane and can only log in as a guest user.
 
         If `false`, the user can sign in with a Managed Apple Account (the existing behavior).
+    - key: AuthenticatedTemporarySession
+      supportedOS:
+        iOS:
+          introduced: '27.3'
+      type: <dictionary>
+      presence: optional
+      content: A dictionary that contains settings for the Authenticated Guest Mode.
+        When turned on, a user can log in with their Managed Apple Account during
+        a temporary session. The system removes the session data when the user logs
+        out.
+      subkeys:
+      - key: Enabled
+        type: <boolean>
+        presence: required
+        content: If `true`, the Shared iPad turns on Authenticated Guest Mode.
+      - key: UseManagedAccountPasswordAsDevicePasscode
+        type: <boolean>
+        presence: optional
+        content: If `true`, the device uses the password of the Managed Apple Account
+          as the device passcode during Authenticated Guest Mode. This setting only
+          supports Managed Apple Accounts that use native authentication, not federated
+          authentication.
     - key: ManagedAppleIDDefaultDomains
       supportedOS:
         iOS:

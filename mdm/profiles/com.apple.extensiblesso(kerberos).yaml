@@ -11,7 +11,7 @@ payload:
       allowmanualinstall: false
       sharedipad:
         mode: allowed
-        devicechannel: false
+        devicechannel: true
         userchannel: true
       userenrollment:
         mode: allowed

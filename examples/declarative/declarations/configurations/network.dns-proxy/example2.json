@@ -1,0 +1,15 @@
+{
+    "Type": "com.apple.configuration.network.dns-proxy",
+    "Identifier": "6F2B8C1A-3D4E-4F5A-9B7C-8D9E0F1A2B3C",
+    "ServerToken": "2C3D4E5F-6A7B-4C8D-9E0F-1A2B3C4D5E6F",
+    "Payload": {
+        "VisibleName": "DNS Proxy",
+        "AppBundleIdentifier": "com.example.mydnsproxyapp",
+        "ProviderComposedIdentifier": "com.example.mydnsproxyapp.mydnsproxyprovider {identifier \"com.example.mydnsproxyapp.mydnsproxyprovider\" and anchor apple generic and certificate leaf[subject.OU] = \"ABCDE12345\"}",
+        "ProviderConfiguration": {
+            "resolver": {
+                "ipaddress": "9.9.9.9"
+            }
+        }
+    }
+}

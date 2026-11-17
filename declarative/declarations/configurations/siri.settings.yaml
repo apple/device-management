@@ -11,6 +11,7 @@ payload:
       - system
       sharedipad:
         allowed-scopes:
+        - system
         - user
     macOS:
       introduced: '26.4'
@@ -42,6 +43,10 @@ payloadkeys:
 - key: Enabled
   title: Enabled
   supportedOS:
+    iOS:
+      sharedipad:
+        allowed-scopes:
+        - user
     watchOS:
       introduced: n/a
   type: <boolean>
@@ -49,6 +54,48 @@ payloadkeys:
   default: true
   combinetype: boolean-and
   content: If `false`, disables Siri.
+- key: AllowAutomaticNotes
+  title: Allow Automatic Siri Notes
+  supportedOS:
+    iOS:
+      introduced: '27.3'
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, disables Siri Automatic Notes on any Apple Watch paired with
+    an iPhone.
+- key: AllowLiveRewind
+  title: Allow Live Rewind
+  supportedOS:
+    iOS:
+      introduced: '27.3'
+      sharedipad:
+        allowed-scopes: []
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: n/a
+    visionOS:
+      introduced: n/a
+    watchOS:
+      introduced: n/a
+  type: <boolean>
+  presence: optional
+  default: true
+  combinetype: boolean-and
+  content: If `false`, disables Siri Live Rewind on any Apple Watch paired with an
+    iPhone.
 - key: AllowSiriAI
   title: Allow Siri AI
   supportedOS:
@@ -72,6 +119,10 @@ payloadkeys:
 - key: AllowUserGeneratedContent
   title: Allow user generated content
   supportedOS:
+    iOS:
+      sharedipad:
+        allowed-scopes:
+        - user
     macOS:
       introduced: n/a
     tvOS:
@@ -86,6 +137,10 @@ payloadkeys:
 - key: AllowWhileLocked
   title: Allow while locked
   supportedOS:
+    iOS:
+      sharedipad:
+        allowed-scopes:
+        - user
     macOS:
       introduced: n/a
     tvOS:
@@ -100,6 +155,10 @@ payloadkeys:
 - key: ForceProfanityFilter
   title: Force profanity filter
   supportedOS:
+    iOS:
+      sharedipad:
+        allowed-scopes:
+        - user
     tvOS:
       introduced: n/a
     visionOS:
@@ -116,6 +175,9 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '27.0'
+      sharedipad:
+        allowed-scopes:
+        - user
     macOS:
       introduced: '27.0'
     tvOS:

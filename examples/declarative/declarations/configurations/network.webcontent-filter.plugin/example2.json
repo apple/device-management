@@ -1,0 +1,16 @@
+{
+    "Type": "com.apple.configuration.webcontent-filter.plugin",
+    "Identifier": "7C1D2E3F-4A5B-4C6D-8E9F-0A1B2C3D4E5F",
+    "ServerToken": "9B8A7C6D-5E4F-4A3B-9C2D-1E0F9A8B7C6D",
+    "Payload": {
+        "VisibleName": "Content Filter (System Extension)",
+        "PluginBundleID": "com.example.contentfilter",
+        "ContentFilterUUID": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890",
+        "Filter": {
+            "Sockets": {
+                "Enabled": true,
+                "ProviderComposedIdentifier": "com.example.contentfilter.dataprovider {identifier \"com.example.contentfilter.dataprovider\" and anchor apple generic and certificate leaf[subject.OU] = \"ABCDE12345\"}"
+            }
+        }
+    }
+}

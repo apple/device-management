@@ -296,7 +296,8 @@ payloadkeys:
       introduced: '13.0'
       always-skippable: false
     macOS:
-      introduced: n/a
+      introduced: '15.0'
+      always-skippable: false
     tvOS:
       introduced: n/a
     visionOS:
@@ -419,6 +420,22 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The key to skip the privacy pane.
+- key: RemoteTutorial
+  title: Skip Siri Remote Tutorial pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '27.3'
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the Siri Remote tutorial screen, which shows how to navigate
+    Apple TV using the Siri Remote. Apple TV shows this screen only when a supported
+    Siri Remote is connected.
 - key: Restore
   title: Disables restoring from backup
   supportedOS:
@@ -522,6 +539,22 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The key to disable Siri.
+- key: SiriMic
+  title: Skip Speak Directly to Siri pane
+  supportedOS:
+    iOS:
+      introduced: n/a
+    macOS:
+      introduced: n/a
+    tvOS:
+      introduced: '27.3'
+    visionOS:
+      introduced: n/a
+  type: <string>
+  presence: optional
+  content: The key to skip the "Speak Directly to Siri" screen, which sets up Siri
+    voice activation through the Apple TV microphone. Skipping Siri also skips this
+    screen.
 - key: SoftwareUpdate
   title: Skip automatic software update configuration pane
   supportedOS:
@@ -530,7 +563,7 @@ payloadkeys:
     macOS:
       introduced: '15.4'
     tvOS:
-      introduced: n/a
+      introduced: '27.3'
   type: <string>
   presence: optional
   content: The key to skip the mandatory software update screen.
@@ -556,7 +589,8 @@ payloadkeys:
     iOS:
       introduced: n/a
     macOS:
-      introduced: n/a
+      introduced: '15.4'
+      always-skippable: false
     tvOS:
       always-skippable: false
     visionOS:
@@ -564,7 +598,12 @@ payloadkeys:
   type: <string>
   presence: optional
   content: The key to skip the Tap To Set Up option in Apple TV related to using an
-    iOS device to set up your Apple TV.
+    iOS device to set up your Apple TV. On macOS, skips the Quickly Set Up Mac pane
+    in Setup Assistant, which offers to use an iPhone or iPad to set up the Mac. This
+    pane isn't always skippable because it appears before the device retrieves the
+    Cloud Configuration from the server. If the key gets applied after the user has
+    started the process to set up their device with iPhone or iPad, only Wi-Fi settings
+    and, on macOS, the user name are applied, transferring other data is cancelled.
 - key: TermsOfAddress
   title: Skips Terms of Address
   supportedOS:
@@ -722,7 +761,7 @@ payloadkeys:
     macOS:
       introduced: '15.0'
     tvOS:
-      introduced: n/a
+      introduced: '27.3'
   type: <string>
   presence: optional
   content: The key to skip the Get Started pane.
@@ -731,7 +770,7 @@ payloadkeys:
   supportedOS:
     iOS:
       introduced: '8.3'
-      deprecated: '17.0'
+      removed: '17.0'
     macOS:
       introduced: n/a
     tvOS:

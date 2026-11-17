@@ -71,6 +71,29 @@ related-status-items:
 - status-items:
   - account.list.caldav
   note: Each configuration will have a corresponding status item.
+notes:
+- title: Updating accounts
+  content: |-
+    When the device applies an updated configuration to an existing account, the device has to recreate the account (remove the old one and add a new one) when significant properties of the account change. That process discards any data in the existing account, and the new account reloads the data from the server. The device does an in-place account update when there are no changes to the significant properties, and it preserves the existing account data. The device recreates the account when updating if any of the following significant properties in the configuration change:
+
+    * `HostName`
+    * `Port`
+    * `UserName` in `AuthenticationCredentialsAssetReference`
+- title: Transition account profiles to declarative device management
+  content: |-
+    A declarative account configuration can take control of an account installed using a profile payload, provided the accounts are the same. This avoids the need to first remove the profile and its account, before installing the declarative equivalent. Only accounts installed using device management can be migrated.
+
+    The device detects if an account configuration can be migrated by comparing properties of the new account configuration with those of any accounts of the same type installed using a profile. Control is only migrated to declarative device management when there is exactly one match for the account properties. The account properties checked are:
+
+    * `HostName`
+    * `Port`
+    * `UserName` in `AuthenticationCredentialsAssetReference`
+
+    When declarative device management takes control of an account, the following occurs:
+
+    1. The existing account is updated in-place with the configuration properties, without loss of account data or the need to resend account data.
+    2. Any attempt to update the account via the profile payload fails.
+    3. Removing the profile doesn't remove an account controlled by declarative device management.
 examples:
 - title: Configuration example
   files:

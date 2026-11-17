@@ -14,10 +14,10 @@
                     <string>com.apple.mobilemail</string>
                     <key>NotificationsEnabled</key>
                     <false/>
+                    <key>ShowInLockScreen</key>
+                    <true/>
                 </dict>
             </array>
-            <key>ShowInLockScreen</key>
-            <true/>
             <key>PayloadIdentifier</key>
             <string>com.example.mynotificationspayload</string>
             <key>PayloadType</key>
